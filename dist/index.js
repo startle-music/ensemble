@@ -2,7 +2,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
 var styled = require('styled-components');
-var reactRouterDom = require('react-router-dom');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -415,7 +414,7 @@ var btnBase = styled.css(_templateObject3$1(), function (props) {
   return props.outline === true ? btnOline : btnFull;
 });
 var LinkBtnBase = styled__default['default'].a(_templateObject4(), btnBase);
-var RouteLinkBase = styled__default['default'](reactRouterDom.Link)(_templateObject5(), btnBase);
+var RouteLinkBase = styled__default['default'].a(_templateObject5(), btnBase);
 var SubmitBtnBase = styled__default['default'].button(_templateObject6(), btnBase);
 var IconBtnBase = styled__default['default'].button(_templateObject7(), btnBase);
 var TableIconBase = styled.css(_templateObject8(), btnBase, function (props) {
@@ -436,7 +435,7 @@ var TableIconBase = styled.css(_templateObject8(), btnBase, function (props) {
   return props.product && props.theme.products[props.product] ? props.theme.products[props.product].buttonColor : props.theme.products["default"].buttonColor;
 });
 var TableIconBtnBase = styled__default['default'].button(_templateObject9(), TableIconBase);
-var TableLinkIconBtnBase = styled__default['default'](reactRouterDom.Link)(_templateObject10(), TableIconBase);
+var TableLinkIconBtnBase = styled__default['default'](Link)(_templateObject10(), TableIconBase);
 var CancelBtnBase = styled__default['default'].button(_templateObject11(), btnBase, function (props) {
   return props.theme.main.bodyColor;
 });
