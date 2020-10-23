@@ -1,8 +1,7 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { transparentize } from 'polished';
-import { Link } from 'react-router-dom';
-import Loading from '../loader/spinner';
+import React from 'react'
+import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
+import Loading from '../loader/spinner'
 
 const btnOline = css`
     background: ${({ theme }) => theme.main.background};

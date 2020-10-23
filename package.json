@@ -1,6 +1,6 @@
 {
   "name": "ensemble",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A full orchestra of React UI components",
   "author": "novocast",
   "license": "Apache-2.0",
@@ -17,17 +17,23 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": ">= 16.12.0 < 2",
-    "react-dom": ">= 16.12.0 < 2"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/react": "^16.3.13",
     "@types/react-dom": "^16.0.5",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "rollup": "^1.29.0"
+    "rollup": "^2.22.0"
   },
   "files": [
     "dist"
