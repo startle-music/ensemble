@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 const OuterDiv = styled.div`

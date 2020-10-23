@@ -1,6 +1,5 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { Link } from 'react-router-dom'
 import Loading from '../loader/spinner'
 
 const btnOline = css`
@@ -68,7 +67,7 @@ const LinkBtnBase = styled.a`
     ${btnBase}
 `;
 
-const RouteLinkBase = styled(Link)`
+const RouteLinkBase = styled.a`
     ${btnBase}
     vertical-align: middle;
 `;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
-import { Link } from 'react-router-dom';
 
 import Form from './form';
 import Marquess from '../../marquee';
@@ -98,7 +97,7 @@ const TableField = styled.td`
     }
 `;
 
-const ChipDiv = styled(Link)`
+const ChipDiv = styled.a`
     background-color: ${p => p.theme.boxColors[p.color].backgroundColor};
     color: ${p => p.theme.boxColors[p.color].borderColor};
     border-color: ${p => p.theme.boxColors[p.color].borderColor};

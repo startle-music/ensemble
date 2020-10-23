@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ModalHeader = styled.h2`
@@ -121,6 +119,6 @@ const mapStateToProps = state => ({
 });
 
 // Connect container component to store
-const ModalContainer = withRouter(connect(mapStateToProps)(Modal));
+const ModalContainer = Modal;
 
 export default ModalContainer;
