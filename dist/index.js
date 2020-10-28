@@ -758,7 +758,7 @@ var Times = function Times() {
 };
 
 function _templateObject$3() {
-  var data = _taggedTemplateLiteral(["\n    display: inline-flex;\n    border-radius: 10.325rem;\n    margin: 0 0.325rem 0 0;\n    overflow: hidden;\n    background: red;\n    color: white;\n\n    input,\n    input:checked {\n        display: none;\n    }\n\n    label {\n        padding: 0.5rem 0.75rem;\n        color: white;\n        cursor: pointer;\n\n        &:focus {\n            background: rgba(0, 0, 0, 0.175);\n        }\n    }\n\n    button {\n        padding: 0.5rem 0.6rem 0.5rem 0.5rem;\n        width: 1.7rem;\n        height: 100%;\n        box-sizing: border-box;\n        background: rgba(40, 40, 40, 0.075);\n        cursor: pointer;\n\n        svg {\n            width: 100%;\n            height: 100%;\n            color: white;\n            fill: white;\n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    display: inline-flex;\n    border-radius: 10.325em;\n    margin: 0 0.325em 0 0;\n    overflow: hidden;\n    background: red;\n    color: white;\n\n    input,\n    input:checked {\n        display: none;\n    }\n\n    label {\n        padding: 0.5em 0.75em;\n        color: white;\n        cursor: pointer;\n\n        &:focus {\n            background: rgba(0, 0, 0, 0.175);\n        }\n    }\n\n    button {\n        padding: 0.5em 0.6em 0.5em 0.5em;\n        width: 1.7em;\n        height: 100%;\n        box-sizing: border-box;\n        background: rgba(40, 40, 40, 0.075);\n        cursor: pointer;\n\n        svg {\n            width: 100%;\n            height: 100%;\n            color: white;\n            fill: white;\n        }\n    }\n"]);
 
   _templateObject$3 = function _templateObject() {
     return data;
@@ -817,7 +817,7 @@ var Chip = function Chip(_ref) {
     product: product
   }, /*#__PURE__*/React__default['default'].createElement("label", {
     style: {
-      padding: '0.5rem 0.75rem',
+      padding: '0.5em 0.75em',
       color: '#FFF',
       width: 'auto',
       margin: '0'
