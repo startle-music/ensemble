@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
 
-import CheckCircleLight from '../../icons/CheckCircleLight';
-import ExclamationCircleLight from '../../icons/ExclamationCircleLight';
-import TimesCircleLight from '../../icons/TimesCircleLight';
-import InfoCircleLight from '../../icons/InfoCircleLight';
+import CheckCircleLight from '../icons/CheckCircleLight';
+import ExclamationCircleLight from '../icons/ExclamationCircleLight';
+import TimesCircleLight from '../icons/TimesCircleLight';
+import InfoCircleLight from '../icons/InfoCircleLight';
 
 const IconWrap = styled.div`
     width: 1.5rem;

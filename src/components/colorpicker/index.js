@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { ChromePicker } from 'react-color';
-import Close from '../../icons/Times';
+//import { ChromePicker } from 'react-color';
+import Close from '../icons/Times';
 import Button from '../button';
 
 const Remove = styled.div`

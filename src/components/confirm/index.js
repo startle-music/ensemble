@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import styled from 'styled-components';
-import { transparentize } from 'polished';
 import Button from '../button';
-import theme from '../../../style/theme';
 
 const Preview = styled.div``;
 const ModalHeader = styled.div`

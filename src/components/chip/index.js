@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Close from '../../icons/Times';
+import Close from '../icons/Times';
 
 const Wrap = styled.div`
     display: inline-flex;
-    border-radius: 10.325rem;
-    margin: 0 0.325rem 0 0;
+    border-radius: 10.325em;
+    margin: 0 0.325em 0 0;
     overflow: hidden;
-    background: ${props =>
-        props.product && props.theme.products[props.product]
-            ? props.theme.products[props.product].primary
-            : props.theme.products.default.primary};
-    color: ${props =>
-        props.product && props.theme.products[props.product]
-            ? props.theme.products[props.product].contrast
-            : props.theme.products.default.contrast};
+    background: red;
+    color: white;
 
     input,
     input:checked {
@@ -22,11 +16,8 @@ const Wrap = styled.div`
     }
 
     label {
-        padding: 0.5rem 0.75rem;
-        color: ${props =>
-            props.product && props.theme.products[props.product]
-                ? props.theme.products[props.product].contrast
-                : props.theme.products.default.contrast};
+        padding: 0.5em 0.75em;
+        color: white;
         cursor: pointer;
 
         &:focus {
@@ -35,8 +26,8 @@ const Wrap = styled.div`
     }
 
     button {
-        padding: 0.5rem 0.6rem 0.5rem 0.5rem;
-        width: 1.7rem;
+        padding: 0.5em 0.6em 0.5em 0.5em;
+        width: 1.7em;
         height: 100%;
         box-sizing: border-box;
         background: rgba(40, 40, 40, 0.075);
@@ -45,14 +36,8 @@ const Wrap = styled.div`
         svg {
             width: 100%;
             height: 100%;
-            color: ${props =>
-                props.product && props.theme.products[props.product]
-                    ? props.theme.products[props.product].contrast
-                    : props.theme.products.default.contrast};
-            fill: ${props =>
-                props.product && props.theme.products[props.product]
-                    ? props.theme.products[props.product].contrast
-                    : props.theme.products.default.contrast};
+            color: white;
+            fill: white;
         }
     }
 `;
@@ -85,7 +70,7 @@ const Chip = ({ label, value, name = null, product = 'default', onClick = null, 
     return (
         <Wrap product={product}>
             <label
-                style={{ padding: '0.5rem 0.75rem', color: '#FFF', width: 'auto', margin: '0' }}
+                style={{ padding: '0.5em 0.75em', color: '#FFF', width: 'auto', margin: '0' }}
                 htmlFor={chipName}
                 onClick={onClickFunction}
             >

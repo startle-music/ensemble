@@ -1,11 +1,10 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { darken } from 'polished';
-import Times from '../../icons/Times';
-import CheckCircleLight from '../../icons/CheckCircleLight';
-import ExclamationCircleLight from '../../icons/ExclamationCircleLight';
-import TimesCircleLight from '../../icons/TimesCircleLight';
-import InfoCircleLight from '../../icons/InfoCircleLight';
+import styled from 'styled-components';
+import Times from '../icons/Times';
+import CheckCircleLight from '../icons/CheckCircleLight';
+import ExclamationCircleLight from '../icons/ExclamationCircleLight';
+import TimesCircleLight from '../icons/TimesCircleLight';
+import InfoCircleLight from '../icons/InfoCircleLight';
 
 const ResponseBoxText = styled.div`
     display: flex;
@@ -40,8 +39,6 @@ const XWrap = styled.button`
     svg {
         width: 100%;
         height: 100%;
-
-        fill: ${props => darken(0.25, props.color)};
     }
     &:hover {
         opacity: 0.8;
@@ -57,8 +54,6 @@ const IconWrap = styled.div`
     svg {
         width: 100%;
         height: 100%;
-
-        fill: ${props => darken(0.25, props.color)};
     }
 `;
 

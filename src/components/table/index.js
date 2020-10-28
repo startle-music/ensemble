@@ -1,7 +1,21 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Pagination from '../pagination';
-import { debounce } from '../../../helpers';
+
+const debounce = (func, wait, immediate) => {
+    let timeout;
+    return function(...args) {
+        const context = this;
+        const later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+}
 
 export const TableElementBase = css`
     padding: 10px 15px;

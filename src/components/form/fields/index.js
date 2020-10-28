@@ -6,7 +6,7 @@ import RegularInput from './regularInput';
 import ChipInput from './chipInput';
 import ChipSelectInput from './chipSelectInput';
 import TimeSelectInput from './timeSelectInput';
-import ColorPickerInput from './colorPickerInput';
+// import ColorPickerInput from './colorPickerInput';
 
 export const Select = SelectBase;
 export const CheckBox = CheckInput;
@@ -16,4 +16,4 @@ export const Field = RegularInput;
 export const Chip = ChipInput;
 export const ChipSelect = ChipSelectInput;
 export const TimeSelect = TimeSelectInput;
-export const ColorPicker = ColorPickerInput;
+//  export const ColorPicker = ColorPickerInput;

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import pageFunction from './paginate';
 import Button from '../button';
-import ArrowRight from '../../icons/ArrowRight';
-import ArrowLeft from '../../icons/ArrowLeft';
+import ArrowRight from '../icons/ArrowRight';
+import ArrowLeft from '../icons/ArrowLeft';
 
 const Wrap = styled.div`
     display: block;

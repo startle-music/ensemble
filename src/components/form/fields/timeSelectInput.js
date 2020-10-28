@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Label from '../labels';
-import TimeSelect from '../../../TimeSelect';
-import { pad } from '../../../../helpers';
+
+const pad = (n, width, z) => {
+    z = z || '0';
+    n += '';
+    return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+};
 
 const Wrap = styled.div`
     display: flex;

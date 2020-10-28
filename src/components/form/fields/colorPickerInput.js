@@ -1,8 +1,5 @@
 import styled, { css } from 'styled-components';
 import React, { Component } from 'react';
-import { ChromePicker } from 'react-color';
-import Close from '../../../icons/Times';
-import Button from '../../button';
 import Label from '../labels';
 import ColorPicker from '../../colorpicker';
 

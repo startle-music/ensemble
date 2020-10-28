@@ -20,9 +20,9 @@ const btnOline = css`
 `;
 
 const btnFull = css`
-    background: ${props => props.theme.products[props.product || 'default'].button};
-    border: 1px solid ${props => props.theme.products[props.product || 'default'].button};
-    color: ${props => props.theme.products[props.product || 'default'].buttonColor};
+    background: 'red';
+    border: 1px solid red;
+    color: 'white';
 
     &:disabled {
         opacity: 0.4;
@@ -46,7 +46,7 @@ const btnBase = css`
     text-align: center;
     box-sizing: border-box;
     font-weight: bold;
-    border-radius: ${props => (props.rounded === 'true' ? '10rem' : props.theme.main.borderRadius)};
+    border-radius: ${props => (props.rounded === 'true' ? '10rem' : '0')};
     cursor: pointer;
     box-shadow: none;
     ${props => (props.outline === true ? btnOline : btnFull)}
@@ -89,42 +89,20 @@ const TableIconBase = css`
     ${btnBase}
     border: 0px;
     padding: 0.4rem 0rem;
-    width:29px
+    width:29px;
     
-    background: ${props => props.theme.main.background};
-    color: ${props => props.theme.main.bodyColor};
-
-    /*color: ${props => (props.product ? props.theme.products[props.product || 'default'].contrast : '#696f7c')};*/
-/*    background: ${props => (props.product ? props.theme.products[props.product || 'default'].primary : '#eef0f4')};*/
+    background: 'red';
+    color: 'white';
     border-radius: 0.18rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s linear;
 
-    &:hover {
-        color: ${props =>
-            props.product && props.theme.products[props.product]
-                ? props.theme.products[props.product].button
-                : props.theme.products.default.button};
-    }
-
     &:disabled{
         &:hover{
             opacity: 0.4;
-            color: ${props => props.theme.main.bodyColor};
         }
-    }
-    
-    &.active {
-        background: ${props =>
-            props.product && props.theme.products[props.product]
-                ? props.theme.products[props.product].button
-                : props.theme.products.default.button};
-        color: ${props =>
-            props.product && props.theme.products[props.product]
-                ? props.theme.products[props.product].buttonColor
-                : props.theme.products.default.buttonColor};
     }
 `;
 
@@ -132,7 +110,7 @@ const TableIconBtnBase = styled.button`
     ${TableIconBase}
 `;
 
-const TableLinkIconBtnBase = styled(Link)`
+const TableLinkIconBtnBase = styled.a`
     ${TableIconBase}
     vertical-align: middle;
 `;
@@ -140,15 +118,12 @@ const TableLinkIconBtnBase = styled(Link)`
 const CancelBtnBase = styled.button`
     ${btnBase}
     background: transparent;
-    color: ${props => props.theme.main.bodyColor};
     border-color: transparent;
     box-shadow: none;
 `;
 
 const CustomBtnColor = styled.button`
     ${btnBase}
-    background-color: ${props => props.color};
-    border-color: ${props => props.color};
 `;
 
 const ButtonBtnBase = styled.button`

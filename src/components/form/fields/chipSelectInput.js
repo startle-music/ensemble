@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Chip from '../../chip';
 import Label from '../labels';
-import CopyMusicProfileContainer from '../../../../containers/CopyMusicProfileContainer';
 
 const Wrap = styled.div`
     display: flex;
