@@ -20,6 +20,7 @@ import Table from './components/table'
 import Tr from './components/table/tr'
 import Td from './components/table/td'
 import Th from './components/table/th'
+import ProgressBar from './components/progressBar'
 // import Toast from './components/toast'
 
 
@@ -44,5 +45,6 @@ export {
     ResponseBox,
     Table,
     Tr, Td, Th,
+    ProgressBar,
     // Toast
 }
