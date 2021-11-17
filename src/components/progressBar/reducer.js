@@ -1,6 +1,6 @@
 const initialState = {};
 
-export const progressBars = (state = initialState, action) => {
+const progressBars = (state = initialState, action) => {
     switch (action.type) {
         case 'CREATE_PROGRESS_BAR':
             return {
@@ -22,3 +22,4 @@ export const progressBars = (state = initialState, action) => {
             return { ...state };
     }
 };
+export default progressBars;
