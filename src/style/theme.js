@@ -11,3 +11,5 @@ const theme = {
         purpleRain: '#6033b9',
     },
 };
+
+export default theme;
