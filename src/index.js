@@ -50,7 +50,8 @@ export {
     ResponseBox,
     Table,
     Tr, Td, Th,
-    ProgressBar, ProgressBarReducer,
+    ProgressBar, 
+    ProgressBarReducer,
     HoverIcon,
     ToolTip, TooltipReducer,
     ProgressBarActions
