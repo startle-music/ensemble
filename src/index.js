@@ -22,6 +22,7 @@ import Td from './components/table/td'
 import Th from './components/table/th'
 import ProgressBar from './components/progressBar'
 import ProgressBarReducer from './components/progressBar/reducer'
+import * as ProgressBarActions from './components/progressBar/action'
 import HoverIcon from './components/hovericon'
 import ToolTip from './components/tooltip'
 import TooltipReducer from './components/tooltip/reducer'
@@ -52,5 +53,6 @@ export {
     ProgressBar, ProgressBarReducer,
     HoverIcon,
     ToolTip, TooltipReducer,
+    ProgressBarActions
     // Toast
 }
