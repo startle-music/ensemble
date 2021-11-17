@@ -11,7 +11,7 @@ function isTouchDevice() {
     return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 }
 
-const onHoverStart = (wrapRef, dispatch, width, height, text) => {
+const onHoverStart = (wrapRef, dispatch, width, height, children) => {
     if (!isTouchDevice()) {
         const position = wrapRef.current.getBoundingClientRect();
         console.log(position);
@@ -19,7 +19,7 @@ const onHoverStart = (wrapRef, dispatch, width, height, text) => {
         const y = position.top - height * 16;
         dispatch(
             updateToolTip({
-                content: text,
+                content: children,
                 isOpen: true,
                 maxWidth: `${width}rem`,
                 maxHeight: `${height}rem`,
@@ -37,13 +37,13 @@ const onHoverEnd = (dispatch) => {
     );
 };
 
-const HoverIcon = ({ width = 13, height = 4.2, text }) => {
+const HoverIcon = ({ width = 13, height = 4.2, children }) => {
     const dispatch = useDispatch();
     const wrapRef = useRef(null);
     return (
         <Wrap
             ref={wrapRef}
-            onMouseOver={() => debounce(onHoverStart(wrapRef, dispatch, width, height, text), 500)}
+            onMouseOver={() => debounce(onHoverStart(wrapRef, dispatch, width, height, children), 500)}
             onMouseOut={() => debounce(onHoverEnd(dispatch), 500)}
         >
             <svg
