@@ -21,9 +21,10 @@ import Tr from './components/table/tr'
 import Td from './components/table/td'
 import Th from './components/table/th'
 import ProgressBar from './components/progressBar'
+import ProgressBarReducer from './components/progressBar/reducer'
 import HoverIcon from './components/hovericon'
 import ToolTip from './components/tooltip'
-import tooltipReducer from './components/tooltip/reducer'
+import TooltipReducer from './components/tooltip/reducer'
 // import Toast from './components/toast'
 
 
@@ -48,9 +49,8 @@ export {
     ResponseBox,
     Table,
     Tr, Td, Th,
-    ProgressBar,
+    ProgressBar, ProgressBarReducer,
     HoverIcon,
-    ToolTip,
-    tooltipReducer
+    ToolTip, TooltipReducer,
     // Toast
 }
