@@ -306,5 +306,3 @@ export const absoluteFill = {
 
 export default theme;
 
-
-export default theme;
