@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 import Label from '../labels';
+import theme from '../../../style/theme';
 
 const FieldBase = css`
     display: flex;
@@ -9,7 +10,7 @@ const FieldBase = css`
 
     input {
         //border: 1px solid #ccc;
-        border-radius: ${props => props.theme.main.borderRadius};
+        border-radius: ${props => theme.main.borderRadius};
         font-size: 1rem;
         padding: 0.875rem 0.6rem;
     }
