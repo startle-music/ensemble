@@ -1,38 +1,39 @@
 import styled, {css} from 'styled-components'
+import theme from '../../style/theme';
 
 export const headingBase = css`
     font-weight: lighter;
-    color: ${props => props.theme.headings.color};
-    font-family: ${props => props.theme.headings.font};
+    color: ${props => theme.headings.color};
+    font-family: ${props => theme.headings.font};
     margin: 0;
 `
 
 export const H1 = styled.h1`
     ${headingBase}
-    font-size: ${props => props.theme.headings.h1.size};
+    font-size: ${props => theme.headings.h1.size};
 `
 
 export const H2 = styled.h1`
     ${headingBase}
-    font-size: ${props => props.theme.headings.h2.size};
+    font-size: ${props => theme.headings.h2.size};
 `
 
 export const H3 = styled.h1`
     ${headingBase}
-    font-size: ${props => props.theme.headings.h3.size};
+    font-size: ${props => theme.headings.h3.size};
 `
 
 export const H4 = styled.h1`
     ${headingBase}
-    font-size: ${props => props.theme.headings.h4.size};
+    font-size: ${props => theme.headings.h4.size};
 `
 
 export const H5 = styled.h1`
     ${headingBase}
-    font-size: ${props => props.theme.headings.h5.size};
+    font-size: ${props => theme.headings.h5.size};
 `
 
 export const H6 = styled.h1`
     ${headingBase}
-    font-size: ${props => props.theme.headings.h6.size};
+    font-size: ${props => theme.headings.h6.size};
 `
