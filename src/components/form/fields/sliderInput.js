@@ -66,13 +66,16 @@ const SliderDiv = styled.div`
     }
 `;
 const PaddedLabel = styled(Label)`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
     position: relative;
 `;
 const SpanLabel = styled.span`
-    font-size: 18px;
+    font-size: 1.1em;
     margin-left: 0.75rem;
-    top: 2px;
-    position: absolute;
 `;
 
 class Slider extends PureComponent {
@@ -92,10 +95,10 @@ class Slider extends PureComponent {
         return (
             <SliderDiv product={product} className={className}>
                 <PaddedLabel htmlFor={name}>
-                    <label htmlFor={name} className="switch">
+                    <div htmlFor={name} className="switch">
                         <input onChange={this.onChange} id={id} value={value} checked={checked} type="checkbox" />
                         <span className="slider round"></span>
-                    </label>
+                    </div>
                     <SpanLabel className="spanLabel">{label}</SpanLabel>
                 </PaddedLabel>
             </SliderDiv>
