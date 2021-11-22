@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled, { css } from 'styled-components';
 import Label from '../labels';
+import theme from '../../../style/theme';
 
 const SliderDiv = styled.div`
     .switch {
@@ -43,11 +44,11 @@ const SliderDiv = styled.div`
     }
 
     input:checked + .slider {
-        background-color: ${props => props.theme.products[props.product || 'default'].primary};
+        background-color: ${props => theme.products[props.product || 'default'].primary};
     }
 
     input:focus + .slider {
-        box-shadow: 0 0 1px ${props => props.theme.products[props.product || 'default'].primary};
+        box-shadow: 0 0 1px ${props => theme.products[props.product || 'default'].primary};
     }
 
     input:checked + .slider:before {
