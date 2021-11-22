@@ -26,6 +26,7 @@ import * as ProgressBarActions from './components/progressBar/actions'
 import HoverIcon from './components/hovericon'
 import ToolTip from './components/tooltip'
 import TooltipReducer from './components/tooltip/reducer'
+import Hr from './components/hr'
 // import Toast from './components/toast'
 
 
@@ -54,6 +55,7 @@ export {
     ProgressBarReducer,
     HoverIcon,
     ToolTip, TooltipReducer,
-    ProgressBarActions
+    ProgressBarActions,
+    Hr
     // Toast
 }
