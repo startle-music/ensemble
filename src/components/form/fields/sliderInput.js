@@ -96,9 +96,10 @@ class Slider extends PureComponent {
         return (
             <SliderDiv product={product} className={className}>
                 <PaddedLabel htmlFor={name}>
-                    <div htmlFor={name} className="switch">
+                    <div><div htmlFor={name} className="switch">
                         <input onChange={this.onChange} id={id} value={value} checked={checked} type="checkbox" />
                         <span className="slider round"></span>
+                    </div>
                     </div>
                     <SpanLabel className="spanLabel">{label}</SpanLabel>
                 </PaddedLabel>
