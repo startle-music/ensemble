@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useState } from 'react';
 
 const THUNDERSTRUCK = 'thunderstruck';
 const INVIGORATED = 'invigorated';
@@ -80,9 +80,9 @@ const MoodPath = ({ d, className, fill, transform, opacity = 1, selected, adjace
 const MoodSelector = ({onMoodClick = ()=>{}}) => {
     const [selected, setSelected] = useState('thunderstruck-adjacent');
     const passToAll = {
-        setSelected={setSelected},
-        selected={selected},
-        parentOnClick={onMoodClick}
+        setSelected:setSelected,
+        selected:selected,
+        parentOnClick:onMoodClick
     }
     return (
             <svg width="342px" height="241px" viewBox="0 0 342 241" version="1.1" xmlns="http://www.w3.org/2000/svg">
