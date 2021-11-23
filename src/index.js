@@ -28,6 +28,7 @@ import HoverIcon from './components/hovericon'
 import ToolTip from './components/tooltip'
 import TooltipReducer from './components/tooltip/reducer'
 import Hr from './components/hr'
+import MoodSelector from './components/MoodSelector';
 // import Toast from './components/toast'
 
 
@@ -58,6 +59,7 @@ export {
     ToolTip, TooltipReducer,
     ProgressBarActions,
     Hr,
-    Slider
+    Slider,
+    MoodSelector
     // Toast
 }
