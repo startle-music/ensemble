@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 const THUNDERSTRUCK = 'thunderstruck';
 const INVIGORATED = 'invigorated';
@@ -29,23 +30,29 @@ const moods = [
     DELIGHTED,
 ];
 
+const Radio = styled.input`
+    display:none;
+`;
+
 const handleClick = (className, setSelected, parentOnClick) => {
-    parentOnClick(moods.find((obj) => className.includes(obj)));
-    setSelected(moods.find((obj) => className.includes(obj)));
+    const mood = moods.find((obj) => className.includes(obj));
+    parentOnClick(mood);
+    setSelected(mood);
 };
 
 const MoodPath = ({ d, className, fill, transform, opacity = 1, selected, adjacent = [], setSelected, parentOnClick }) => {
+    const pathProps = {
+        onClick:() => handleClick(className, setSelected, parentOnClick),
+        d:d,
+        className:className,
+        fill:fill,
+        transform:transform,
+        opacity:opacity
+    }
     if (className.includes('selected')) {
         if (className.includes(selected)) {
             return (
-                <path
-                    onClick={() => handleClick(className, setSelected, parentOnClick)}
-                    d={d}
-                    className={className}
-                    fill={fill}
-                    transform={transform}
-                    opacity={opacity}
-                />
+                <path {...pathProps}/>
             );
         }
         return null;
@@ -53,38 +60,25 @@ const MoodPath = ({ d, className, fill, transform, opacity = 1, selected, adjace
     if (className.includes('adjacent')) {
         if (adjacent.includes(selected)) {
             return (
-                <path
-                    onClick={() => handleClick(className, setSelected, parentOnClick)}
-                    d={d}
-                    className={className}
-                    fill={fill}
-                    transform={transform}
-                    opacity={opacity}
-                />
+                <path {...pathProps}/>
             );
         }
         return null;
     }
     return (
-        <path
-            onClick={() => handleClick(className, setSelected, parentOnClick)}
-            d={d}
-            className={className}
-            fill={fill}
-            transform={transform}
-            opacity={opacity}
-        />
+        <path {...pathProps}/>
     );
 };
 
 const MoodSelector = ({onMoodClick = ()=>{}}) => {
-    const [selected, setSelected] = useState('thunderstruck-adjacent');
+    const [selected, setSelected] = useState('');
     const passToAll = {
         setSelected:setSelected,
         selected:selected,
         parentOnClick:onMoodClick
     }
     return (
+        <>
             <svg width="342px" height="241px" viewBox="0 0 342 241" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <title>mood-selector</title>
                 <g className="mood-selector" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -136,9 +130,8 @@ const MoodSelector = ({onMoodClick = ()=>{}}) => {
                         transform="translate(128.972198, 56.725536) rotate(300.000000) translate(-128.972198, -56.725536) "
                     />
                     <MoodPath
-                        setSelected={setSelected}
+                        {...passToAll}
                         adjacent={[CONTEMPLATIVE, DAZZLED]}
-                        selected={selected}
                         d="M79.5937742,75.1073908 C97.9316196,75.1073908 115.116608,80.0433595 129.892609,88.6591676 L114.803198,114.593774 C104.459943,108.562622 92.4303651,105.107391 79.5937742,105.107391 L79.5937742,75.1073908 L79.5937742,75.1073908 Z"
                         className="anticipatory-adjacent"
                         fill="#6D398B"
@@ -160,9 +153,8 @@ const MoodSelector = ({onMoodClick = ()=>{}}) => {
                         transform="translate(104.743192, 94.850583) rotate(270.000000) translate(-104.743192, -94.850583) "
                     />
                     <MoodPath
-                        setSelected={setSelected}
+                        {...passToAll}
                         adjacent={[ANTICIPATORY, SOOTHING]}
-                        selected={selected}
                         d="M77.6733627,120.239153 C96.0112082,120.239153 113.196196,125.175121 127.972198,133.790929 L112.882787,159.725536 C102.539532,153.694384 90.5099536,150.239153 77.6733627,150.239153 L77.6733627,120.239153 L77.6733627,120.239153 Z"
                         className="contemplative-adjacent"
                         fill="#454E98"
@@ -184,9 +176,8 @@ const MoodSelector = ({onMoodClick = ()=>{}}) => {
                         transform="translate(102.822780, 139.982344) rotate(240.000000) translate(-102.822780, -139.982344) "
                     />
                     <MoodPath
-                        setSelected={setSelected}
+                        {...passToAll}
                         adjacent={[CONTEMPLATIVE, SLEEPY]}
-                        selected={selected}
                         d="M98.5761185,160.284611 C116.913964,160.284611 134.098952,165.220579 148.874954,173.836387 L133.785543,199.770994 C123.442288,193.739842 111.412709,190.284611 98.5761185,190.284611 L98.5761185,160.284611 L98.5761185,160.284611 Z"
                         className="soothing-adjacent"
                         fill="#2B70B1"
@@ -208,9 +199,8 @@ const MoodSelector = ({onMoodClick = ()=>{}}) => {
                         transform="translate(123.725536, 180.027802) rotate(210.000000) translate(-123.725536, -180.027802) "
                     />
                     <MoodPath
-                        setSelected={setSelected}
+                        {...passToAll}
                         adjacent={[SERENE, SOOTHING]}
-                        selected={selected}
                         d="M136.701165,184.513617 C155.03901,184.513617 172.223999,189.449585 187,198.065393 L171.910589,224 C161.567334,217.968848 149.537756,214.513617 136.701165,214.513617 L136.701165,184.513617 L136.701165,184.513617 Z"
                         className="sleepy-adjacent"
                         fill="#30A4C5"
@@ -232,9 +222,8 @@ const MoodSelector = ({onMoodClick = ()=>{}}) => {
                         transform="translate(161.850583, 204.256808) rotate(180.000000) translate(-161.850583, -204.256808) "
                     />
                     <MoodPath
-                        setSelected={setSelected}
+                        {...passToAll}
                         adjacent={[RELAXED, SLEEPY]}
-                        selected={selected}
                         d="M181.832927,186.434028 C200.170772,186.434028 217.35576,191.369997 232.131762,199.985805 L217.042351,225.920411 C206.699096,219.88926 194.669518,216.434028 181.832927,216.434028 L181.832927,186.434028 L181.832927,186.434028 Z"
                         className="serene-adjacent"
                         fill="#2C8D5A"
@@ -256,9 +245,8 @@ const MoodSelector = ({onMoodClick = ()=>{}}) => {
                         transform="translate(206.982344, 206.177220) rotate(150.000000) translate(-206.982344, -206.177220) "
                     />
                     <MoodPath
-                        setSelected={setSelected}
+                        {...passToAll}
                         adjacent={[SERENE, SATISFIED]}
-                        selected={selected}
                         d="M221.878385,165.531272 C240.21623,165.531272 257.401218,170.467241 272.17722,179.083049 L257.087809,205.017656 C246.744554,198.986504 234.714976,195.531272 221.878385,195.531272 L221.878385,165.531272 L221.878385,165.531272 Z"
                         className="relaxed-adjacent"
                         fill="#7CC530"
@@ -280,9 +268,8 @@ const MoodSelector = ({onMoodClick = ()=>{}}) => {
                         transform="translate(247.027802, 185.274464) rotate(120.000000) translate(-247.027802, -185.274464) "
                     />
                     <MoodPath
-                        setSelected={setSelected}
+                        {...passToAll}
                         adjacent={[RELAXED, MERRY]}
-                        selected={selected}
                         d="M246.107391,127.406226 C264.445236,127.406226 281.630224,132.342195 296.406226,140.958003 L281.316815,166.892609 C270.97356,160.861457 258.943982,157.406226 246.107391,157.406226 L246.107391,127.406226 L246.107391,127.406226 Z"
                         className="satisfied-adjacent"
                         fill="#FFCE01"
@@ -304,9 +291,8 @@ const MoodSelector = ({onMoodClick = ()=>{}}) => {
                         transform="translate(271.256808, 147.149417) rotate(90.000000) translate(-271.256808, -147.149417) "
                     />
                     <MoodPath
-                        setSelected={setSelected}
+                        {...passToAll}
                         adjacent={[DELIGHTED, SATISFIED]}
-                        selected={selected}
                         d="M248.027802,82.274464 C266.365648,82.274464 283.550636,87.2104327 298.326637,95.8262407 L283.237226,121.760847 C272.893972,115.729695 260.864393,112.274464 248.027802,112.274464 L248.027802,82.274464 L248.027802,82.274464 Z"
                         className="merry-adjacent"
                         fill="#F9BD45"
@@ -328,9 +314,8 @@ const MoodSelector = ({onMoodClick = ()=>{}}) => {
                         transform="translate(273.177220, 102.017656) rotate(60.000000) translate(-273.177220, -102.017656) "
                     />
                     <MoodPath
-                        setSelected={setSelected}
+                        {...passToAll}
                         adjacent={[MERRY, INVIGORATED]}
-                        selected={selected}
                         d="M227.125046,42.229006 C245.462892,42.229006 262.64788,47.1649747 277.423881,55.7807828 L262.334471,81.7153894 C251.991216,75.6842375 239.961637,72.229006 227.125046,72.229006 L227.125046,42.229006 L227.125046,42.229006 Z"
                         className="delighted-adjacent"
                         fill="#F7823B"
@@ -352,9 +337,8 @@ const MoodSelector = ({onMoodClick = ()=>{}}) => {
                         transform="translate(252.274464, 61.972198) rotate(30.000000) translate(-252.274464, -61.972198) "
                     />
                     <MoodPath
-                        setSelected={setSelected}
+                        {...passToAll}
                         adjacent={[DELIGHTED, THUNDERSTRUCK]}
-                        selected={selected}
                         d="M189,18 C207.337845,18 224.522834,22.9359687 239.298835,31.5517767 L224.209424,57.4863834 C213.866169,51.4552315 201.836591,48 189,48 L189,18 L189,18 Z"
                         className="invigorated-adjacent"
                         fill="#EC611D"
@@ -436,6 +420,10 @@ const MoodSelector = ({onMoodClick = ()=>{}}) => {
                     </g>
                 </g>
             </svg>
+            {moods.map(obj=>{
+                return(<Radio checked={selected===obj} type="radio" id="html" name={"mood"} value={obj}></Radio>)
+            })}
+            </>
     );
 };
 
