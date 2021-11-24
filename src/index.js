@@ -20,12 +20,15 @@ import Table from './components/table'
 import Tr from './components/table/tr'
 import Td from './components/table/td'
 import Th from './components/table/th'
+import Slider from './components/form/fields/sliderInput';
 import ProgressBar from './components/progressBar'
 import ProgressBarReducer from './components/progressBar/reducer'
 import * as ProgressBarActions from './components/progressBar/actions'
 import HoverIcon from './components/hovericon'
 import ToolTip from './components/tooltip'
 import TooltipReducer from './components/tooltip/reducer'
+import Hr from './components/hr'
+import MoodSelector from './components/MoodSelector';
 // import Toast from './components/toast'
 
 
@@ -54,6 +57,9 @@ export {
     ProgressBarReducer,
     HoverIcon,
     ToolTip, TooltipReducer,
-    ProgressBarActions
+    ProgressBarActions,
+    Hr,
+    Slider,
+    MoodSelector
     // Toast
 }

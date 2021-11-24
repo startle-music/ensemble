@@ -1,10 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import theme from '../../../style/theme';
 
 const labelBase = css`
     //margin-bottom:5px;
     //font-size: 0.9rem;
-    color: ${p => p.theme.main.color};
+    color: ${p => theme.main.color};
 `;
 
 const Label = styled.label`

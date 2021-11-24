@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled, { css } from 'styled-components';
 import Label from '../labels';
+import theme from '../../../style/theme';
 
 const SliderDiv = styled.div`
     .switch {
@@ -43,11 +44,11 @@ const SliderDiv = styled.div`
     }
 
     input:checked + .slider {
-        background-color: ${props => props.theme.products[props.product || 'default'].primary};
+        background-color: ${props => theme.products[props.product || 'default'].primary};
     }
 
     input:focus + .slider {
-        box-shadow: 0 0 1px ${props => props.theme.products[props.product || 'default'].primary};
+        box-shadow: 0 0 1px ${props => theme.products[props.product || 'default'].primary};
     }
 
     input:checked + .slider:before {
@@ -66,13 +67,16 @@ const SliderDiv = styled.div`
     }
 `;
 const PaddedLabel = styled(Label)`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
     position: relative;
 `;
 const SpanLabel = styled.span`
-    font-size: 18px;
+    font-size: 1.1em;
     margin-left: 0.75rem;
-    top: 2px;
-    position: absolute;
 `;
 
 class Slider extends PureComponent {
@@ -92,10 +96,11 @@ class Slider extends PureComponent {
         return (
             <SliderDiv product={product} className={className}>
                 <PaddedLabel htmlFor={name}>
-                    <label htmlFor={name} className="switch">
+                    <div><div htmlFor={name} className="switch">
                         <input onChange={this.onChange} id={id} value={value} checked={checked} type="checkbox" />
                         <span className="slider round"></span>
-                    </label>
+                    </div>
+                    </div>
                     <SpanLabel className="spanLabel">{label}</SpanLabel>
                 </PaddedLabel>
             </SliderDiv>
