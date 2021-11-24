@@ -71,7 +71,7 @@ const MoodPath = ({ d, className, fill, transform, opacity = 1, selected, adjace
 };
 
 const MoodSelector = ({onMoodClick = ()=>{}}) => {
-    const [selected, setSelected] = useState('');
+    const [selected, setSelected] = useState('thunderstruck-adjacent');
     const passToAll = {
         setSelected:setSelected,
         selected:selected,
