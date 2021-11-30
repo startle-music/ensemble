@@ -20,7 +20,29 @@ const Field = styled.div`
     ${FieldBase}
 `;
 
-class FieldComponent extends Component {
+const FieldComponent = ({id, name, label= false, type='text', required=false, placeholder=false, defaultValue = null}) => {
+    return (
+        <Field>
+            {label ? <Label htmlFor={name}>{label}</Label> : null}
+
+            <input
+                type={type}
+                name={name}
+                required={required}
+                //pattern={pattern}
+                //minLength={minlength}
+                //maxLength={maxlength}
+                //onChange={this.onChange}
+                placeholder={placeholder}
+                defaultValue={defaultValue}
+                id={id}
+            />
+        </Field>
+    );
+}
+
+
+/*class FieldComponent extends Component {
     constructor(props) {
         super(props);
         const { value } = props;
@@ -73,6 +95,6 @@ class FieldComponent extends Component {
             </Field>
         );
     }
-}
+}*/
 
 export default FieldComponent;
