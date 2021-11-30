@@ -2,38 +2,51 @@ import styled, {css} from 'styled-components'
 import theme from '../../style/theme';
 
 export const headingBase = css`
-    font-weight: lighter;
-    color: ${props => theme.headings.color};
-    font-family: ${props => theme.headings.font};
+    color: ${props => theme.main.color};
+    font-family: ${props => theme.main.font};
     margin: 0;
 `
 
-export const H1 = styled.h1`
+const Hero = styled.h3`
     ${headingBase}
-    font-size: ${props => theme.headings.h1.size};
-`
+    font-size: 2.2rem;
+`;
 
-export const H2 = styled.h1`
+const Title = styled.h1`
     ${headingBase}
-    font-size: ${props => theme.headings.h2.size};
-`
+    font-size: 1.6rem;
+`;
 
-export const H3 = styled.h1`
+const Subtitle = styled.h2`
     ${headingBase}
-    font-size: ${props => theme.headings.h3.size};
-`
+    font-weight: lighter;
+    font-size: 1.4rem;
+`;
+const Standard = styled.h4`
+    ${headingBase}
+    font-size: 1.2rem;
+`;
 
-export const H4 = styled.h1`
-    ${headingBase}
-    font-size: ${props => theme.headings.h4.size};
-`
+const Heading = ({type='heading', children, ...rest}) => {
+    
+    switch(type.toLowerCase()) {
 
-export const H5 = styled.h1`
-    ${headingBase}
-    font-size: ${props => theme.headings.h5.size};
-`
+        case 'hero': 
+            return <Hero {...rest}>{children}</Hero>
 
-export const H6 = styled.h1`
-    ${headingBase}
-    font-size: ${props => theme.headings.h6.size};
-`
+        case 'title': 
+            return <Title {...rest}>{children}</Title>
+
+        case 'subtitle': 
+            return <Subtitle {...rest}>{children}</Subtitle>
+
+        case 'heading':
+        default:
+            return <Standard {...rest}>{children}</Standard>
+
+    }
+    
+    
+}
+
+export default Heading
