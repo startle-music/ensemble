@@ -49,5 +49,5 @@ Checkable.args = {
     label: 'Checkbox 3',
     required: false,
     value: 1,
-    
+    colour: 'yellowSubmarine'
 };

@@ -1,6 +1,7 @@
-import React, { PureComponent } from 'react';
-import styled, { css } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import Label from '../labels';
+import theme from '../../../style/theme';
 
 const Wrap = styled.div`
     font-family: MuseoSansReg, sans-serif;
@@ -44,11 +45,11 @@ const Wrap = styled.div`
     }
 
     input:checked + .slider {
-        background-color: ${props => props.theme.products[props.product || 'default'].primary};
+        background-color: ${props => props.primaryColour};
     }
 
     input:focus + .slider {
-        box-shadow: 0 0 1px ${props => props.theme.products[props.product || 'default'].primary};
+        box-shadow: 0 0 1px  ${props => props.primaryColour};
     }
 
     input:checked + .slider:before {
@@ -80,14 +81,30 @@ const SpanLabel = styled.span`
     margin-left: 0.75rem;
 `;
 
-const Switch = ({name, id, checked, value, label, product, className = null}) => {
+
+const getColours = (colour) => {
     
+    let altColour = theme.selectionPanel.color;
+    let primaryColour = theme.selectionPanel.background;
+        
+    if(theme.colors[colour]) {
+        altColour = theme.generalColors.white;
+        primaryColour = theme.colors[colour];
+    }
+
+    return { altColour, primaryColour };
+}
+
+const Switch = ({name, id, checked, value, label, colour='simplyRed', className = null, ...rest}) => {
+    
+    const attributes = {...rest, ...getColours(colour, checked)};
+    console.log('switch attributes', attributes);
     return (
-        <Wrap product={product} className={className}>
-            <PaddedLabel htmlFor={name}>
+        <Wrap className={className} {...attributes}>
+            <PaddedLabel htmlFor={name} {...attributes}>
                 <div className="switch">
-                    <input id={id} name={name} value={value} defaultChecked={checked} type="checkbox" />
-                    <span className="slider round"></span>
+                    <input id={id} name={name} value={value} defaultChecked={checked} type="checkbox" {...attributes} />
+                    <span className="slider round" {...attributes}></span>
                 </div>
                 <SpanLabel className="spanLabel">{label}</SpanLabel>
             </PaddedLabel>
