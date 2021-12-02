@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
 import styled, { css } from 'styled-components';
 import Label from '../labels';
-import theme from '../../../style/theme';
 
-const SliderDiv = styled.div`
+const Wrap = styled.div`
+    font-family: MuseoSansReg, sans-serif;
+
     .switch {
         position: relative;
         display: inline-block;
@@ -21,7 +22,6 @@ const SliderDiv = styled.div`
     /* The slider */
     .slider {
         position: absolute;
-        cursor: pointer;
         top: 0;
         left: 0;
         right: 0;
@@ -44,11 +44,11 @@ const SliderDiv = styled.div`
     }
 
     input:checked + .slider {
-        background-color: ${props => theme.products[props.product || 'default'].primary};
+        background-color: ${props => props.theme.products[props.product || 'default'].primary};
     }
 
     input:focus + .slider {
-        box-shadow: 0 0 1px ${props => theme.products[props.product || 'default'].primary};
+        box-shadow: 0 0 1px ${props => props.theme.products[props.product || 'default'].primary};
     }
 
     input:checked + .slider:before {
@@ -73,39 +73,26 @@ const PaddedLabel = styled(Label)`
     justify-content: flex-start;
     align-items: center;
     position: relative;
+    cursor: pointer;
 `;
 const SpanLabel = styled.span`
     font-size: 1.1em;
     margin-left: 0.75rem;
 `;
 
-class Slider extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.onChange = this.onChange.bind(this);
-    }
-
-    onChange(e) {
-        if (typeof this.props.onChange === 'function' && this.props.onChange !== undefined) {
-            this.props.onChange(e);
-        }
-    }
-
-    render() {
-        const { name, id, checked, value, label, product, className = null } = this.props;
-        return (
-            <SliderDiv product={product} className={className}>
-                <PaddedLabel htmlFor={name}>
-                    <div><div htmlFor={name} className="switch">
-                        <input onChange={this.onChange} id={id} value={value} checked={checked} type="checkbox" />
-                        <span className="slider round"></span>
-                    </div>
-                    </div>
-                    <SpanLabel className="spanLabel">{label}</SpanLabel>
-                </PaddedLabel>
-            </SliderDiv>
-        );
-    }
+const Switch = ({name, id, checked, value, label, product, className = null}) => {
+    
+    return (
+        <Wrap product={product} className={className}>
+            <PaddedLabel htmlFor={name}>
+                <div className="switch">
+                    <input id={id} name={name} value={value} defaultChecked={checked} type="checkbox" />
+                    <span className="slider round"></span>
+                </div>
+                <SpanLabel className="spanLabel">{label}</SpanLabel>
+            </PaddedLabel>
+        </Wrap>
+    );
 }
 
-export default Slider;
+export default Switch;

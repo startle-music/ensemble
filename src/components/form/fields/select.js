@@ -1,66 +1,98 @@
 import React, { PureComponent } from 'react';
 import styled, { css } from 'styled-components';
-import Label from '../labels';
+import theme from '../../../style/theme';
 
-const SelectBase = css`
+const Text = styled.label`
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    color: ${({theme}) => theme.mainColors.paintItBlack};
+    text-align: left;
+`;
+
+const Wrapper = styled.div`
     display: flex;
-    flex-direction: row;
-    margin-bottom: 15px;
+    flex-direction: column;
 `;
 
-const Select = styled.div`
-    ${SelectBase}
-`;
+const Dropdown = styled.select`
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    display: block;
+    width: 100%;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    padding: 0.875rem 0.6rem;
 
-class SelectComponent extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.onChange = this.onChange.bind(this);
-        const { value } = this.props;
-        this.state = {
-            selectValue: value
-        };
+    &:focus {
+        outline: none;
     }
 
-    onChange(e) {
-        const { selectValue } = this.state;
-        if (typeof this.props.onChange === 'function' && this.props.onChange !== undefined) {
-            this.props.onChange(e);
+    option {
+        background: ${props => theme.text.input.background};
+        padding: 0.875rem 0.6rem;
+        font-family: MuseoSans, sans-serif;
+        color: ${props => theme.generalColors.lightBlueGrey};
+    }
+`;
+
+
+const StyledSelect = styled.div`
+    margin: 0;
+    min-width: 10rem;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    background: ${props => theme.text.input.background};
+    border-radius: 0.45rem;
+    box-shadow: none;
+    &:first-child {
+        margin-left: 0;
+    }
+    &:last-child {
+        margin-right: 0;
+    }
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 37%;
+        z-index: 100;
+        box-sizing: border-box;
+        height: 0.5rem;
+        width: 0.5rem;
+        border-style: solid;
+        border-color: #787e89;
+        border-width: 0px 2px 2px 0px;
+        transform: rotate(45deg);
+        transition: border-width 150ms ease-in-out;
+        pointer-events: none;
+
+    }
+    @supports (-moz-appearance: none) {
+        select {
+            -moz-appearance: none;
+            text-indent: 0.01px;
+            text-overflow: '';
         }
-        this.setState({
-            selectValue: e.target.value
-        });
     }
+`;
 
-    render() {
-        const { name, type, label, required, options } = this.props;
-        const { selectValue } = this.state;
-        return (
-            <Select>
-                {label ? (
-                    <Label htmlFor={name} block>
-                        {label}
-                    </Label>
-                ) : null}
+const Label = ({ children }) => <Text>{children}</Text>;
 
-                <div className="styled-select">
-                    <select
-                        value={selectValue}
-                        name={name}
-                        data-type={type}
-                        required={required}
-                        onChange={e => {
-                            this.onChange(e);
-                        }}
-                    >
-                        {options.map(({ value, label }) => (
-                            <option value={value}>{label}</option>
-                        ))}
-                    </select>
-                </div>
-            </Select>
-        );
-    }
-}
+const SelectInput = ({ value, name, children, label, onChange = () => {} }) => (
+    <Wrapper>
+        <Label htmlFor={name}>{label}</Label>
+        <StyledSelect>
+            <Dropdown value={value} name={name} onChange={onChange}>
+                {children}
+            </Dropdown>
+        </StyledSelect>
+    </Wrapper>
+);
 
-export default SelectComponent;
+export default SelectInput;

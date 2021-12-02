@@ -1,100 +1,127 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
-import Label from '../labels';
+import { darken, lighten } from 'polished';
+import Field from '../labels';
 import theme from '../../../style/theme';
 
-const FieldBase = css`
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
+const LabelWrap = styled.div`
+    font-size: 1rem;
+    font-family: MuseoSansReg, sans-serif;
+    padding-bottom: 0.5rem;
+`
 
-    input {
-        //border: 1px solid #ccc;
-        border-radius: ${props => theme.main.borderRadius};
-        font-size: 1rem;
-        padding: 0.875rem 0.6rem;
+const StyledRequired = styled.span`
+    display: inline-block;
+    margin-left: 0.3rem;
+`;
+
+const Wrap = styled.div`
+    background: ${({inputBackground}) => inputBackground};
+    color: ${({inputColour}) => inputColour};
+    border-radius: 0.4rem;
+    padding: 0 0.4rem;
+    opacity: ${({disabled = false}) => disabled ? '0.4' : '1'};
+
+    &:focus-within {
+        background: ${props => lighten(0.1, theme.colors.mrBlueSky)};
+        color: ${props => theme.colors.paintItBlack};
     }
-`;
 
-const Field = styled.div`
-    ${FieldBase}
-`;
+    
+`
 
-const FieldComponent = ({id, name, label= false, type='text', required=false, placeholder=false, defaultValue = null}) => {
+const Input = styled.input`
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    font-size: 1rem;
+    padding: 0.8rem 0.4rem;
+    color: inherit;
+
+    &:focus {
+        outline: none;
+    }
+`
+
+const Label = ({children, required = false}) => {
+    let Required = () => null;
+    if(required) {
+        Required = () => <StyledRequired>*</StyledRequired>;
+    }
     return (
-        <Field>
-            {label ? <Label htmlFor={name}>{label}</Label> : null}
-
-            <input
-                type={type}
-                name={name}
-                required={required}
-                //pattern={pattern}
-                //minLength={minlength}
-                //maxLength={maxlength}
-                //onChange={this.onChange}
-                placeholder={placeholder}
-                defaultValue={defaultValue}
-                id={id}
-            />
-        </Field>
+        <LabelWrap>{children}<Required /></LabelWrap>
     );
 }
 
+const CaptionWrap = styled.p`
+    color: ${({inputColour}) => inputColour};
+    font-family: MuseoSansReg, sans-serif;
+    font-size: 0.75rem;
+    margin: 0.6rem 0;
+`;
 
-/*class FieldComponent extends Component {
-    constructor(props) {
-        super(props);
-        const { value } = props;
+const Caption = ({children, inputColour}) => {
+    if(children === null) {
+        return null;
+    }
+    return (
+        <CaptionWrap inputColour={inputColour}>{children}</CaptionWrap>
+    )
+};
 
-        this.state = {
-            value
-        };
-        this.onChange = this.onChange.bind(this);
+const getColours = (status) => {
+    const colourObject = {
+        inputBackground: theme.text.input.background,
+        inputColour: theme.generalColors.darkGrey
     }
 
-    onChange(e) {
-        const { onChange } = this.props;
-        if (typeof onChange === 'function' && onChange !== undefined) {
-            onChange(e);
-        }
+    if(theme.statusColours[status]) {
+        colourObject.inputBackground = theme.statusColours[status].backgroundColor;
+        colourObject.inputColour = theme.statusColours[status].textColor;
     }
 
-    render() {
-        const {
-            name,
-            type,
-            label,
-            required,
-            pattern = undefined,
-            minlength = 3,
-            maxlength = 999,
-            placeholder,
-            id = null,
-            style = null,
-            ref = null
-        } = this.props;
-        const { value } = this.state;
+    return colourObject;
+}
+
+const FieldComponent = ({id, name, prepend=null, append=null, label=null, type='text', caption=null, required=false, placeholder=false, defaultValue = null, status = null, ...rest}) => {
+
+    let Prepend = () => null;
+    if(prepend !== null) {
+        Prepend = () => <>{prepend}</>
+    }
+
+    let Append = () => null;
+    if(append !== null) {
+        Append = () => <>{append}</>
+    }
+
+    const colours = getColours(status);
+
+    if (label !== null) {
+       
         return (
-            <Field style={style}>
-                {label ? <Label htmlFor={name}>{label}</Label> : null}
-
-                <input
-                    ref={ref}
-                    type={type}
-                    name={name}
-                    required={required}
-                    pattern={pattern}
-                    minLength={minlength}
-                    maxLength={maxlength}
-                    onChange={this.onChange}
-                    placeholder={placeholder || label}
-                    defaultValue={value}
-                    id={id}
-                />
+            <Field htmlFor={name}>
+                <Label required={required}>{label}</Label>
+                <Wrap {...{...rest, ...colours}}>
+                    <Prepend />     
+                    <Input
+                        type={type}
+                        name={name}
+                        required={required}
+                        placeholder={placeholder}
+                        defaultValue={defaultValue}
+                        id={id}
+                        {...colours}
+                        {...rest}
+                    />
+                    <Append />
+                </Wrap>
+                <Caption {...colours}>{caption}</Caption>
             </Field>
-        );
+        ); 
     }
-}*/
+    return null;
+}
 
 export default FieldComponent;
