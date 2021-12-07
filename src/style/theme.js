@@ -14,26 +14,31 @@ const brandColors = {
     purpleRain: '#6033b9'
 };
 
-const responseBox = {
+const statusColours = {
     default: {
         backgroundColor: '#E8E9EB',
-        borderColor: '#9397A2'
+        borderColor: '#9397A2',
+        textColor: '#1C2229'
     },
     success: {
         backgroundColor: '#EBF6E0',
-        borderColor: '#9ED464'
+        borderColor: '#9ED464',
+        textColor: '#7CC530'
     },
     danger: {
         backgroundColor: '#FBE1E3',
-        borderColor: '#ED6C76'
+        borderColor: '#ED6C76',
+        textColor: '#E83948'
     },
     warning: {
         backgroundColor: '#FEF4E2',
-        borderColor: '#FACD74'
+        borderColor: '#FACD74',
+        textColor: '#F7823B'
     },
     info: {
         backgroundColor: '#DFF1F6',
-        borderColor: '#7BC5DA'
+        borderColor: '#7BC5DA',
+        textColor: '#30A4C5'
     }
 };
 
@@ -166,7 +171,7 @@ const theme = {
     },
     mainColors: brandColors,
     generalColors,
-    boxColors: responseBox,
+    statusColours,
     layout: {
         spacing: 1.6
     },
@@ -228,6 +233,7 @@ const theme = {
             }
         },
         input: {
+            background: generalColors.lightGrey,
             color: appColors.color,
             placeholder: darken(0.12, generalColors.midGrey),
             fontSize: '1rem',

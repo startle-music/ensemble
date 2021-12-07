@@ -1,21 +1,23 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import Label from '../labels';
+import theme from '../../../style/theme';
 
-const CheckboxBase = css`
-    flex-direction: row;
-    display: ${props => (props.inline ? 'inline-flex' : 'flex')};
-    margin-bottom: 15px;
-`;
 
 const Checkbox = styled.div`
-    ${CheckboxBase}
+    flex-direction: row;
+    display: ${props => (props.inline ? 'inline-flex' : 'flex')};
+    margin-right: ${props => (props.inline ? '0.8rem' : 0)};
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    font-family: MuseoSansReg, sans-serif;
 `;
 
 const PaddedLabel = styled(Label)`
-    padding-left: 30px;
-    padding-top: 0.25em;
+    padding: 0.25rem 0 0.25rem 2.25rem;
+    line-height: 1.5rem;
     position: relative;
+    opacity: ${({disabled}) => disabled ? '0.4' : '1'};
 `;
 
 const CheckboxInput = styled.input`
@@ -31,6 +33,7 @@ const CheckboxInput = styled.input`
     height: 1.5rem;
     align-items: center;
     margin-right: 5px;
+    background: ${props => theme.text.input.background};
 
     &:active,
     &:checked:active {
@@ -49,51 +52,41 @@ const CheckboxInput = styled.input`
         content: '\\2714';
         font-family: 'MuseoSansReg', sans-serif;
         color: #ffffff;
+        font-size: 1.1rem;
     }
 `;
 
-class CheckboxComponent extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.onChange = this.onChange.bind(this);
-    }
+const CheckboxComponent = ({
+    name,
+    id,
+    label,
+    required,
+    checked,
+    value,
+    inline = false,
+    disabled = false,
+    className = null,
+    ...rest
+}) => {
 
-    onChange(e) {
-        if (typeof this.props.onChange === 'function' && this.props.onChange !== undefined) {
-            this.props.onChange(e);
-        }
-    }
-
-    render() {
-        const {
-            name,
-            id,
-            label,
-            required,
-            checked,
-            value,
-            inline = false,
-            disabled = false,
-            className = null
-        } = this.props;
-        return (
-            <Checkbox inline={inline} className={className}>
-                <PaddedLabel htmlFor={id}>
-                    <CheckboxInput
-                        type="checkbox"
-                        name={name}
-                        id={id}
-                        required={required}
-                        value={value}
-                        onChange={this.onChange}
-                        checked={checked}
-                        disabled={disabled}
-                    />
-                    {label}
-                </PaddedLabel>
-            </Checkbox>
-        );
-    }
+    return (
+        <Checkbox inline={inline} className={className}>
+            <PaddedLabel htmlFor={id}
+                    disabled={disabled}>
+                <CheckboxInput
+                    type="checkbox"
+                    name={name}
+                    id={id}
+                    required={required}
+                    value={value}
+                    checked={checked}
+                    disabled={disabled}
+                    {...rest}
+                />
+                {label}
+            </PaddedLabel>
+        </Checkbox>
+    );
 }
 
 export default CheckboxComponent;
