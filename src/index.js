@@ -6,7 +6,7 @@ import Chip from './components/chip'
 import { Pod, PositionContainer, Header, Content, ColumnContainer, GridContainer } from './components/containers'
 // import Empty from './components/EmptyDisplay'
 import Form from './components/form'
-import { Select, CheckBox, Radio, Hidden, Field, Chip as ChipInput, ChipSelect, TimeSelect } from './components/form/fields'
+import { Select, CheckBox, Radio, Hidden, Input, Chip as ChipInput, ChipSelect, TimeSelect, MoodSelect, SelectionPanel, Switch } from './components/form/fields'
 import Label from './components/form/labels'
 import LoaderBar from './components/loader/bar'
 import LoaderSpinner from './components/loader/spinner'
@@ -20,7 +20,6 @@ import Table from './components/table'
 import Tr from './components/table/tr'
 import Td from './components/table/td'
 import Th from './components/table/th'
-import Slider from './components/form/fields/sliderInput';
 import ProgressBar from './components/progressBar'
 import ProgressBarReducer from './components/progressBar/reducer'
 import * as ProgressBarActions from './components/progressBar/actions'
@@ -30,6 +29,12 @@ import TooltipReducer from './components/tooltip/reducer'
 import Hr from './components/hr'
 import Mood from './components/MoodSelector';
 // import Toast from './components/toast'
+// flextable
+import Flextable from './components/flextable';
+import FlextableHead from './components/flextable/head';
+import FlextableHeader from './components/flextable/header';
+import FlextableRow from './components/flextable/row';
+import FlextableCell from './components/flextable/cell';
 
 
 export { 
@@ -41,7 +46,7 @@ export {
     /* Containers */ Pod, PositionContainer, Header, Content, ColumnContainer, GridContainer,
     // Empty,
     Form,
-    /* Form Fields */ Select, CheckBox, Radio, Hidden, Field, ChipInput, ChipSelect, TimeSelect, Mood,
+    /* Form Fields */ Select, CheckBox, Radio, Hidden, Input, ChipInput, ChipSelect, TimeSelect, MoodSelect, SelectionPanel, Switch,
     Label,
     LoaderBar,
     LoaderSpinner,
@@ -59,6 +64,7 @@ export {
     ToolTip, TooltipReducer,
     ProgressBarActions,
     Hr,
-    Slider
-    // Toast
+    // Toast,
+    // flextable
+    Flextable, FlextableHead, FlextableHeader, FlextableRow, FlextableCell
 }
