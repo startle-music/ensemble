@@ -1359,6 +1359,50 @@ function lighten(amount, color) {
 var curriedLighten = /*#__PURE__*/curry
 /* ::<number | string, string, string> */
 (lighten);
+/**
+ * Decreases the opacity of a color. Its range for the amount is between 0 to 1.
+ *
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: transparentize(0.1, '#fff');
+ *   background: transparentize(0.2, 'hsl(0, 0%, 100%)'),
+ *   background: transparentize('0.5', 'rgba(255, 0, 0, 0.8)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${transparentize(0.1, '#fff')};
+ *   background: ${transparentize(0.2, 'hsl(0, 0%, 100%)')},
+ *   background: ${transparentize('0.5', 'rgba(255, 0, 0, 0.8)')},
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "rgba(255,255,255,0.9)";
+ *   background: "rgba(255,255,255,0.8)";
+ *   background: "rgba(255,0,0,0.3)";
+ * }
+ */
+
+function transparentize(amount, color) {
+  if (color === 'transparent') return color;
+  var parsedColor = parseToRgb(color);
+  var alpha = typeof parsedColor.alpha === 'number' ? parsedColor.alpha : 1;
+
+  var colorWithAlpha = _extends$1({}, parsedColor, {
+    alpha: guard(0, 1, +(alpha * 100 - parseFloat(amount) * 100).toFixed(2) / 100)
+  });
+
+  return rgba(colorWithAlpha);
+} // prettier-ignore
+
+
+var curriedTransparentize = /*#__PURE__*/curry
+/* ::<number | string, string, string> */
+(transparentize);
 
 var brandColors = {
   simplyRed: '#e83948',
@@ -1371,26 +1415,31 @@ var brandColors = {
   greenDay: '#7cc530',
   purpleRain: '#6033b9'
 };
-var responseBox = {
+var statusColours = {
   "default": {
     backgroundColor: '#E8E9EB',
-    borderColor: '#9397A2'
+    borderColor: '#9397A2',
+    textColor: '#1C2229'
   },
   success: {
     backgroundColor: '#EBF6E0',
-    borderColor: '#9ED464'
+    borderColor: '#9ED464',
+    textColor: '#7CC530'
   },
   danger: {
     backgroundColor: '#FBE1E3',
-    borderColor: '#ED6C76'
+    borderColor: '#ED6C76',
+    textColor: '#E83948'
   },
   warning: {
     backgroundColor: '#FEF4E2',
-    borderColor: '#FACD74'
+    borderColor: '#FACD74',
+    textColor: '#F7823B'
   },
   info: {
     backgroundColor: '#DFF1F6',
-    borderColor: '#7BC5DA'
+    borderColor: '#7BC5DA',
+    textColor: '#30A4C5'
   }
 };
 var generalColors = {
@@ -1521,7 +1570,7 @@ var theme = {
   },
   mainColors: brandColors,
   generalColors: generalColors,
-  boxColors: responseBox,
+  statusColours: statusColours,
   layout: {
     spacing: 1.6
   },
@@ -1583,6 +1632,7 @@ var theme = {
       }
     },
     input: {
+      background: generalColors.lightGrey,
       color: appColors.color,
       placeholder: curriedDarken(0.12, generalColors.midGrey),
       fontSize: '1rem',
@@ -2278,129 +2328,8 @@ var Form = /*#__PURE__*/function (_Component) {
   return Form;
 }(React$1.Component);
 
-function _templateObject2$9() {
-  var data = _taggedTemplateLiteral(["\n    ", "\n    margin-bottom: ", ";\n    display: ", "\n"]);
-
-  _templateObject2$9 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject$a() {
-  var data = _taggedTemplateLiteral(["\n    //margin-bottom:5px;\n    //font-size: 0.9rem;\n    color: ", ";\n"]);
-
-  _templateObject$a = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var labelBase = styled.css(_templateObject$a(), function (p) {
-  return theme.main.color;
-});
-var Label = styled__default['default'].label(_templateObject2$9(), labelBase, function (props) {
-  return props.margin || 0;
-}, function (_ref) {
-  var block = _ref.block;
-  return block ? 'block' : 'inline-block';
-});
-
-function _templateObject2$a() {
-  var data = _taggedTemplateLiteral(["\n    ", "\n"]);
-
-  _templateObject2$a = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject$b() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: row;\n    margin-bottom: 15px;\n"]);
-
-  _templateObject$b = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var SelectBase = styled.css(_templateObject$b());
-var Select = styled__default['default'].div(_templateObject2$a(), SelectBase);
-
-var SelectComponent = /*#__PURE__*/function (_PureComponent) {
-  _inherits(SelectComponent, _PureComponent);
-
-  var _super = _createSuper(SelectComponent);
-
-  function SelectComponent(props) {
-    var _this;
-
-    _classCallCheck(this, SelectComponent);
-
-    _this = _super.call(this, props);
-    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
-    var value = _this.props.value;
-    _this.state = {
-      selectValue: value
-    };
-    return _this;
-  }
-
-  _createClass(SelectComponent, [{
-    key: "onChange",
-    value: function onChange(e) {
-      var selectValue = this.state.selectValue;
-
-      if (typeof this.props.onChange === 'function' && this.props.onChange !== undefined) {
-        this.props.onChange(e);
-      }
-
-      this.setState({
-        selectValue: e.target.value
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var _this$props = this.props,
-          name = _this$props.name,
-          type = _this$props.type,
-          label = _this$props.label,
-          required = _this$props.required,
-          options = _this$props.options;
-      var selectValue = this.state.selectValue;
-      return /*#__PURE__*/React__default['default'].createElement(Select, null, label ? /*#__PURE__*/React__default['default'].createElement(Label, {
-        htmlFor: name,
-        block: true
-      }, label) : null, /*#__PURE__*/React__default['default'].createElement("div", {
-        className: "styled-select"
-      }, /*#__PURE__*/React__default['default'].createElement("select", {
-        value: selectValue,
-        name: name,
-        "data-type": type,
-        required: required,
-        onChange: function onChange(e) {
-          _this2.onChange(e);
-        }
-      }, options.map(function (_ref) {
-        var value = _ref.value,
-            label = _ref.label;
-        return /*#__PURE__*/React__default['default'].createElement("option", {
-          value: value
-        }, label);
-      }))));
-    }
-  }]);
-
-  return SelectComponent;
-}(React$1.PureComponent);
-
 function _templateObject4$1() {
-  var data = _taggedTemplateLiteral(["\n    -webkit-appearance: none;\n    padding: 0;\n    border-radius: 3px;\n    display: inline-flex;\n    position: absolute;\n    left: 0;\n    top: 0;\n    justify-content: center;\n    width: 1.5rem;\n    height: 1.5rem;\n    align-items: center;\n    margin-right: 5px;\n\n    &:active,\n    &:checked:active {\n        box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);\n    }\n    &:disabled {\n        box-shadow: none;\n    }\n\n    &:checked {\n        background-color: #e83948;\n        color: #ffffff;\n    }\n\n    &:checked:after {\n        content: '\\2714';\n        font-family: 'MuseoSansReg', sans-serif;\n        color: #ffffff;\n    }\n"], ["\n    -webkit-appearance: none;\n    padding: 0;\n    border-radius: 3px;\n    display: inline-flex;\n    position: absolute;\n    left: 0;\n    top: 0;\n    justify-content: center;\n    width: 1.5rem;\n    height: 1.5rem;\n    align-items: center;\n    margin-right: 5px;\n\n    &:active,\n    &:checked:active {\n        box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);\n    }\n    &:disabled {\n        box-shadow: none;\n    }\n\n    &:checked {\n        background-color: #e83948;\n        color: #ffffff;\n    }\n\n    &:checked:after {\n        content: '\\\\2714';\n        font-family: 'MuseoSansReg', sans-serif;\n        color: #ffffff;\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    margin: 0;\n    min-width: 10rem;\n    display: inline-block;\n    vertical-align: middle;\n    position: relative;\n    background: ", ";\n    border-radius: 0.45rem;\n    box-shadow: none;\n    &:first-child {\n        margin-left: 0;\n    }\n    &:last-child {\n        margin-right: 0;\n    }\n    &:after {\n        content: '';\n        display: block;\n        position: absolute;\n        right: 10px;\n        top: 37%;\n        z-index: 100;\n        box-sizing: border-box;\n        height: 0.5rem;\n        width: 0.5rem;\n        border-style: solid;\n        border-color: #787e89;\n        border-width: 0px 2px 2px 0px;\n        transform: rotate(45deg);\n        transition: border-width 150ms ease-in-out;\n        pointer-events: none;\n\n    }\n    @supports (-moz-appearance: none) {\n        select {\n            -moz-appearance: none;\n            text-indent: 0.01px;\n            text-overflow: '';\n        }\n    }\n"]);
 
   _templateObject4$1 = function _templateObject4() {
     return data;
@@ -2410,7 +2339,7 @@ function _templateObject4$1() {
 }
 
 function _templateObject3$2() {
-  var data = _taggedTemplateLiteral(["\n    padding-left: 30px;\n    padding-top: 0.25em;\n    position: relative;\n"]);
+  var data = _taggedTemplateLiteral(["\n    appearance: none;\n    -webkit-appearance: none;\n    background: transparent;\n    display: block;\n    width: 100%;\n    box-shadow: none;\n    appearance: none;\n    -webkit-appearance: none;\n    background: transparent;\n    border: none;\n    padding: 0.875rem 0.6rem;\n\n    &:focus {\n        outline: none;\n    }\n\n    option {\n        background: ", ";\n        padding: 0.875rem 0.6rem;\n        font-family: MuseoSans, sans-serif;\n        color: ", ";\n    }\n"]);
 
   _templateObject3$2 = function _templateObject3() {
     return data;
@@ -2419,8 +2348,101 @@ function _templateObject3$2() {
   return data;
 }
 
+function _templateObject2$9() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n"]);
+
+  _templateObject2$9 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$a() {
+  var data = _taggedTemplateLiteral(["\n    font-weight: bold;\n    margin-bottom: 0.75rem;\n    color: ", ";\n    text-align: left;\n"]);
+
+  _templateObject$a = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Text = styled__default['default'].label(_templateObject$a(), function (_ref) {
+  var theme = _ref.theme;
+  return theme.mainColors.paintItBlack;
+});
+var Wrapper = styled__default['default'].div(_templateObject2$9());
+var Dropdown = styled__default['default'].select(_templateObject3$2(), function (props) {
+  return theme.text.input.background;
+}, function (props) {
+  return theme.generalColors.lightBlueGrey;
+});
+var StyledSelect = styled__default['default'].div(_templateObject4$1(), function (props) {
+  return theme.text.input.background;
+});
+
+var Label = function Label(_ref2) {
+  var children = _ref2.children;
+  return /*#__PURE__*/React__default['default'].createElement(Text, null, children);
+};
+
+var SelectInput = function SelectInput(_ref3) {
+  var value = _ref3.value,
+      name = _ref3.name,
+      children = _ref3.children,
+      label = _ref3.label,
+      _ref3$onChange = _ref3.onChange,
+      onChange = _ref3$onChange === void 0 ? function () {} : _ref3$onChange;
+  return /*#__PURE__*/React__default['default'].createElement(Wrapper, null, /*#__PURE__*/React__default['default'].createElement(Label, {
+    htmlFor: name
+  }, label), /*#__PURE__*/React__default['default'].createElement(StyledSelect, null, /*#__PURE__*/React__default['default'].createElement(Dropdown, {
+    value: value,
+    name: name,
+    onChange: onChange
+  }, children)));
+};
+
+function _templateObject2$a() {
+  var data = _taggedTemplateLiteral(["\n    ", "\n    margin-bottom: ", ";\n    display: ", "\n"]);
+
+  _templateObject2$a = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$b() {
+  var data = _taggedTemplateLiteral(["\n    //margin-bottom:5px;\n    //font-size: 0.9rem;\n    color: ", ";\n"]);
+
+  _templateObject$b = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var labelBase = styled.css(_templateObject$b(), function (p) {
+  return theme.main.color;
+});
+var Label$1 = styled__default['default'].label(_templateObject2$a(), labelBase, function (props) {
+  return props.margin || 0;
+}, function (_ref) {
+  var block = _ref.block;
+  return block ? 'block' : 'inline-block';
+});
+
+function _templateObject3$3() {
+  var data = _taggedTemplateLiteral(["\n    position: absolute;\n    -webkit-appearance: none;\n    padding: 0;\n    border-radius: 10rem;\n    display: inline-flex;\n    position: relative;\n    justify-content: center;\n    width: 1.5rem;\n    height: 1.5rem;\n    align-items: center;\n    margin: 0;\n    margin-right: 5px;\n    background: ", ";\n\n    &:active,\n    &:checked:active {\n        box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);\n    }\n\n    &:checked {\n        background-color: #ffffff;\n        color: #ffffff;\n        box-shadow: inset 0 0 0 0.4rem #e83948;\n    }\n"]);
+
+  _templateObject3$3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject2$b() {
-  var data = _taggedTemplateLiteral(["\n    ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n    padding: 0;\n    line-height: 1.5rem;\n    display: inline-flex;\n    align-items: center;\n    opacity: ", ";\n"]);
 
   _templateObject2$b = function _templateObject2() {
     return data;
@@ -2430,7 +2452,7 @@ function _templateObject2$b() {
 }
 
 function _templateObject$c() {
-  var data = _taggedTemplateLiteral(["\n    flex-direction: row;\n    display: ", ";\n    margin-bottom: 15px;\n"]);
+  var data = _taggedTemplateLiteral(["\n    flex-direction: row;\n    display: ", ";\n    margin-right: ", ";\n    margin-bottom: 0.8rem;\n    align-items: center;\n    font-family: MuseoSansReg, sans-serif;\n"]);
 
   _templateObject$c = function _templateObject() {
     return data;
@@ -2438,74 +2460,68 @@ function _templateObject$c() {
 
   return data;
 }
-var CheckboxBase = styled.css(_templateObject$c(), function (props) {
+var Radio = styled__default['default'].div(_templateObject$c(), function (props) {
   return props.inline ? 'inline-flex' : 'flex';
+}, function (props) {
+  return props.inline ? '0.8rem' : 0;
 });
-var Checkbox = styled__default['default'].div(_templateObject2$b(), CheckboxBase);
-var PaddedLabel = styled__default['default'](Label)(_templateObject3$2());
-var CheckboxInput = styled__default['default'].input(_templateObject4$1());
+var PaddedLabel = styled__default['default'](Label$1)(_templateObject2$b(), function (_ref) {
+  var disabled = _ref.disabled;
+  return disabled ? '0.4' : '1';
+});
+var RadioInput = styled__default['default'].input(_templateObject3$3(), function (props) {
+  return theme.text.input.background;
+});
 
-var CheckboxComponent = /*#__PURE__*/function (_PureComponent) {
-  _inherits(CheckboxComponent, _PureComponent);
+var RadioComponent = function RadioComponent(_ref2) {
+  var name = _ref2.name,
+      label = _ref2.label,
+      required = _ref2.required,
+      checked = _ref2.checked,
+      _ref2$inline = _ref2.inline,
+      inline = _ref2$inline === void 0 ? false : _ref2$inline,
+      _ref2$disabled = _ref2.disabled,
+      disabled = _ref2$disabled === void 0 ? false : _ref2$disabled,
+      value = _ref2.value,
+      _ref2$margin = _ref2.margin,
+      _ref2$className = _ref2.className,
+      className = _ref2$className === void 0 ? '' : _ref2$className,
+      _ref2$defaultChecked = _ref2.defaultChecked,
+      _ref2$id = _ref2.id,
+      id = _ref2$id === void 0 ? false : _ref2$id,
+      rest = _objectWithoutProperties(_ref2, ["name", "label", "required", "checked", "inline", "disabled", "value", "margin", "className", "defaultChecked", "id"]);
 
-  var _super = _createSuper(CheckboxComponent);
+  return /*#__PURE__*/React__default['default'].createElement(Radio, {
+    inline: inline,
+    className: className
+  }, /*#__PURE__*/React__default['default'].createElement(PaddedLabel, {
+    margin: true,
+    htmlFor: id,
+    disabled: disabled
+  }, /*#__PURE__*/React__default['default'].createElement(RadioInput, _extends({
+    type: "radio",
+    checked: checked,
+    disabled: disabled,
+    value: value,
+    name: name,
+    id: id || name,
+    required: required,
+    defaultChecked: checked
+  }, rest)), label));
+};
 
-  function CheckboxComponent(props) {
-    var _this;
+function _templateObject3$4() {
+  var data = _taggedTemplateLiteral(["\n    -webkit-appearance: none;\n    padding: 0;\n    border-radius: 3px;\n    display: inline-flex;\n    position: absolute;\n    left: 0;\n    top: 0;\n    justify-content: center;\n    width: 1.5rem;\n    height: 1.5rem;\n    align-items: center;\n    margin-right: 5px;\n    background: ", ";\n\n    &:active,\n    &:checked:active {\n        box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);\n    }\n    &:disabled {\n        box-shadow: none;\n    }\n\n    &:checked {\n        background-color: #e83948;\n        color: #ffffff;\n    }\n\n    &:checked:after {\n        content: '\\2714';\n        font-family: 'MuseoSansReg', sans-serif;\n        color: #ffffff;\n        font-size: 1.1rem;\n    }\n"], ["\n    -webkit-appearance: none;\n    padding: 0;\n    border-radius: 3px;\n    display: inline-flex;\n    position: absolute;\n    left: 0;\n    top: 0;\n    justify-content: center;\n    width: 1.5rem;\n    height: 1.5rem;\n    align-items: center;\n    margin-right: 5px;\n    background: ", ";\n\n    &:active,\n    &:checked:active {\n        box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);\n    }\n    &:disabled {\n        box-shadow: none;\n    }\n\n    &:checked {\n        background-color: #e83948;\n        color: #ffffff;\n    }\n\n    &:checked:after {\n        content: '\\\\2714';\n        font-family: 'MuseoSansReg', sans-serif;\n        color: #ffffff;\n        font-size: 1.1rem;\n    }\n"]);
 
-    _classCallCheck(this, CheckboxComponent);
+  _templateObject3$4 = function _templateObject3() {
+    return data;
+  };
 
-    _this = _super.call(this, props);
-    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(CheckboxComponent, [{
-    key: "onChange",
-    value: function onChange(e) {
-      if (typeof this.props.onChange === 'function' && this.props.onChange !== undefined) {
-        this.props.onChange(e);
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          name = _this$props.name,
-          id = _this$props.id,
-          label = _this$props.label,
-          required = _this$props.required,
-          checked = _this$props.checked,
-          value = _this$props.value,
-          _this$props$inline = _this$props.inline,
-          inline = _this$props$inline === void 0 ? false : _this$props$inline,
-          _this$props$disabled = _this$props.disabled,
-          disabled = _this$props$disabled === void 0 ? false : _this$props$disabled,
-          _this$props$className = _this$props.className,
-          className = _this$props$className === void 0 ? null : _this$props$className;
-      return /*#__PURE__*/React__default['default'].createElement(Checkbox, {
-        inline: inline,
-        className: className
-      }, /*#__PURE__*/React__default['default'].createElement(PaddedLabel, {
-        htmlFor: id
-      }, /*#__PURE__*/React__default['default'].createElement(CheckboxInput, {
-        type: "checkbox",
-        name: name,
-        id: id,
-        required: required,
-        value: value,
-        onChange: this.onChange,
-        checked: checked,
-        disabled: disabled
-      }), label));
-    }
-  }]);
-
-  return CheckboxComponent;
-}(React$1.PureComponent);
+  return data;
+}
 
 function _templateObject2$c() {
-  var data = _taggedTemplateLiteral(["\n    ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n    padding: 0.25rem 0 0.25rem 2.25rem;\n    line-height: 1.5rem;\n    position: relative;\n    opacity: ", ";\n"]);
 
   _templateObject2$c = function _templateObject2() {
     return data;
@@ -2515,7 +2531,7 @@ function _templateObject2$c() {
 }
 
 function _templateObject$d() {
-  var data = _taggedTemplateLiteral(["\n    display: none;\n\n    input {\n        border: 1px solid #ccc;\n        border-radius: ", ";\n        font-size: 1rem;\n        padding: 0.5rem;\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    flex-direction: row;\n    display: ", ";\n    margin-right: ", ";\n    margin-bottom: 0.8rem;\n    font-size: 1rem;\n    font-family: MuseoSansReg, sans-serif;\n"]);
 
   _templateObject$d = function _templateObject() {
     return data;
@@ -2523,10 +2539,74 @@ function _templateObject$d() {
 
   return data;
 }
-var FieldBase = styled.css(_templateObject$d(), function (props) {
+var Checkbox = styled__default['default'].div(_templateObject$d(), function (props) {
+  return props.inline ? 'inline-flex' : 'flex';
+}, function (props) {
+  return props.inline ? '0.8rem' : 0;
+});
+var PaddedLabel$1 = styled__default['default'](Label$1)(_templateObject2$c(), function (_ref) {
+  var disabled = _ref.disabled;
+  return disabled ? '0.4' : '1';
+});
+var CheckboxInput = styled__default['default'].input(_templateObject3$4(), function (props) {
+  return theme.text.input.background;
+});
+
+var CheckboxComponent = function CheckboxComponent(_ref2) {
+  var name = _ref2.name,
+      id = _ref2.id,
+      label = _ref2.label,
+      required = _ref2.required,
+      checked = _ref2.checked,
+      value = _ref2.value,
+      _ref2$inline = _ref2.inline,
+      inline = _ref2$inline === void 0 ? false : _ref2$inline,
+      _ref2$disabled = _ref2.disabled,
+      disabled = _ref2$disabled === void 0 ? false : _ref2$disabled,
+      _ref2$className = _ref2.className,
+      className = _ref2$className === void 0 ? null : _ref2$className,
+      rest = _objectWithoutProperties(_ref2, ["name", "id", "label", "required", "checked", "value", "inline", "disabled", "className"]);
+
+  return /*#__PURE__*/React__default['default'].createElement(Checkbox, {
+    inline: inline,
+    className: className
+  }, /*#__PURE__*/React__default['default'].createElement(PaddedLabel$1, {
+    htmlFor: id,
+    disabled: disabled
+  }, /*#__PURE__*/React__default['default'].createElement(CheckboxInput, _extends({
+    type: "checkbox",
+    name: name,
+    id: id,
+    required: required,
+    value: value,
+    checked: checked,
+    disabled: disabled
+  }, rest)), label));
+};
+
+function _templateObject2$d() {
+  var data = _taggedTemplateLiteral(["\n    ", "\n"]);
+
+  _templateObject2$d = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$e() {
+  var data = _taggedTemplateLiteral(["\n    display: none;\n\n    input {\n        border: 1px solid #ccc;\n        border-radius: ", ";\n        font-size: 1rem;\n        padding: 0.5rem;\n    }\n"]);
+
+  _templateObject$e = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var FieldBase = styled.css(_templateObject$e(), function (props) {
   return props.theme.main.borderRadius;
 });
-var Field = styled__default['default'].div(_templateObject2$c(), FieldBase);
+var Field = styled__default['default'].div(_templateObject2$d(), FieldBase);
 
 var FieldComponent = /*#__PURE__*/function (_PureComponent) {
   _inherits(FieldComponent, _PureComponent);
@@ -2571,7 +2651,7 @@ var FieldComponent = /*#__PURE__*/function (_PureComponent) {
           maxlength = _this$props$maxlength === void 0 ? 999 : _this$props$maxlength,
           placeholder = _this$props.placeholder;
       var value = this.state.value;
-      return /*#__PURE__*/React__default['default'].createElement(Field, null, /*#__PURE__*/React__default['default'].createElement(Label, {
+      return /*#__PURE__*/React__default['default'].createElement(Field, null, /*#__PURE__*/React__default['default'].createElement(Label$1, {
         htmlFor: name
       }, label), /*#__PURE__*/React__default['default'].createElement("input", {
         type: "hidden",
@@ -2590,61 +2670,8 @@ var FieldComponent = /*#__PURE__*/function (_PureComponent) {
   return FieldComponent;
 }(React$1.PureComponent);
 
-function _templateObject2$d() {
-  var data = _taggedTemplateLiteral(["\n    ", "\n"]);
-
-  _templateObject2$d = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject$e() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n    margin-bottom: 15px;\n\n    input {\n        //border: 1px solid #ccc;\n        border-radius: ", ";\n        font-size: 1rem;\n        padding: 0.875rem 0.6rem;\n    }\n"]);
-
-  _templateObject$e = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var FieldBase$1 = styled.css(_templateObject$e(), function (props) {
-  return theme.main.borderRadius;
-});
-var Field$1 = styled__default['default'].div(_templateObject2$d(), FieldBase$1);
-
-var FieldComponent$1 = function FieldComponent(_ref) {
-  var id = _ref.id,
-      name = _ref.name,
-      _ref$label = _ref.label,
-      label = _ref$label === void 0 ? false : _ref$label,
-      _ref$type = _ref.type,
-      type = _ref$type === void 0 ? 'text' : _ref$type,
-      _ref$required = _ref.required,
-      required = _ref$required === void 0 ? false : _ref$required,
-      _ref$placeholder = _ref.placeholder,
-      placeholder = _ref$placeholder === void 0 ? false : _ref$placeholder,
-      _ref$defaultValue = _ref.defaultValue,
-      defaultValue = _ref$defaultValue === void 0 ? null : _ref$defaultValue;
-  return /*#__PURE__*/React__default['default'].createElement(Field$1, null, label ? /*#__PURE__*/React__default['default'].createElement(Label, {
-    htmlFor: name
-  }, label) : null, /*#__PURE__*/React__default['default'].createElement("input", {
-    type: type,
-    name: name,
-    required: required //pattern={pattern}
-    //minLength={minlength}
-    //maxLength={maxlength}
-    //onChange={this.onChange}
-    ,
-    placeholder: placeholder,
-    defaultValue: defaultValue,
-    id: id
-  }));
-};
-
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n    position: relative;\n    flex-direction: column;\n    margin-bottom: 15px;\n    width: 100%;\n    max-width: 26rem;\n\n    input {\n        //border: 1px solid #ccc;\n        border-radius: ", ";\n        font-size: 1rem;\n        padding: 0.875rem 0.6rem;\n        width: 100%;\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    color: ", ";\n    font-family: MuseoSansReg, sans-serif;\n    font-size: 0.75rem;\n    margin: 0.6rem 0;\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -2654,7 +2681,7 @@ function _templateObject5() {
 }
 
 function _templateObject4$2() {
-  var data = _taggedTemplateLiteral(["\n    display: block;\n    width: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n    border: 0;\n    padding: 0;\n    margin: 0;\n    background: transparent;\n    font-size: 1rem;\n    padding: 0.8rem 0.4rem;\n    color: inherit;\n\n    &:focus {\n        outline: none;\n    }\n"]);
 
   _templateObject4$2 = function _templateObject4() {
     return data;
@@ -2663,10 +2690,10 @@ function _templateObject4$2() {
   return data;
 }
 
-function _templateObject3$3() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n    padding: 0.75rem 0;\n"]);
+function _templateObject3$5() {
+  var data = _taggedTemplateLiteral(["\n    background: ", ";\n    color: ", ";\n    border-radius: 0.4rem;\n    padding: 0 0.4rem;\n    opacity: ", ";\n\n    &:focus-within {\n        background: ", ";\n        color: ", ";\n    }\n\n    \n"]);
 
-  _templateObject3$3 = function _templateObject3() {
+  _templateObject3$5 = function _templateObject3() {
     return data;
   };
 
@@ -2674,7 +2701,7 @@ function _templateObject3$3() {
 }
 
 function _templateObject2$e() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n"]);
+  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    margin-left: 0.3rem;\n"]);
 
   _templateObject2$e = function _templateObject2() {
     return data;
@@ -2684,7 +2711,7 @@ function _templateObject2$e() {
 }
 
 function _templateObject$f() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n"]);
+  var data = _taggedTemplateLiteral(["\n    font-size: 1rem;\n    font-family: MuseoSansReg, sans-serif;\n    padding-bottom: 0.5rem;\n"]);
 
   _templateObject$f = function _templateObject() {
     return data;
@@ -2692,11 +2719,192 @@ function _templateObject$f() {
 
   return data;
 }
-var Wrap$3 = styled__default['default'].div(_templateObject$f());
-var ChipWrap = styled__default['default'].div(_templateObject2$e());
-var InputWrap = styled__default['default'].div(_templateObject3$3());
-var Form$1 = styled__default['default'].form(_templateObject4$2());
-var FieldWrap = styled__default['default'].div(_templateObject5(), function (props) {
+var LabelWrap = styled__default['default'].div(_templateObject$f());
+var StyledRequired = styled__default['default'].span(_templateObject2$e());
+var Wrap$3 = styled__default['default'].div(_templateObject3$5(), function (_ref) {
+  var inputBackground = _ref.inputBackground;
+  return inputBackground;
+}, function (_ref2) {
+  var inputColour = _ref2.inputColour;
+  return inputColour;
+}, function (_ref3) {
+  var _ref3$disabled = _ref3.disabled,
+      disabled = _ref3$disabled === void 0 ? false : _ref3$disabled;
+  return disabled ? '0.4' : '1';
+}, function (props) {
+  return curriedLighten(0.1, theme.colors.mrBlueSky);
+}, function (props) {
+  return theme.colors.paintItBlack;
+});
+var Input = styled__default['default'].input(_templateObject4$2());
+
+var Label$2 = function Label(_ref4) {
+  var children = _ref4.children,
+      _ref4$required = _ref4.required,
+      required = _ref4$required === void 0 ? false : _ref4$required;
+
+  var Required = function Required() {
+    return null;
+  };
+
+  if (required) {
+    Required = function Required() {
+      return /*#__PURE__*/React__default['default'].createElement(StyledRequired, null, "*");
+    };
+  }
+
+  return /*#__PURE__*/React__default['default'].createElement(LabelWrap, null, children, /*#__PURE__*/React__default['default'].createElement(Required, null));
+};
+
+var CaptionWrap = styled__default['default'].p(_templateObject5(), function (_ref5) {
+  var inputColour = _ref5.inputColour;
+  return inputColour;
+});
+
+var Caption = function Caption(_ref6) {
+  var children = _ref6.children,
+      inputColour = _ref6.inputColour;
+
+  if (children === null) {
+    return null;
+  }
+
+  return /*#__PURE__*/React__default['default'].createElement(CaptionWrap, {
+    inputColour: inputColour
+  }, children);
+};
+
+var getColours = function getColours(status) {
+  var colourObject = {
+    inputBackground: theme.text.input.background,
+    inputColour: theme.generalColors.darkGrey
+  };
+
+  if (theme.statusColours[status]) {
+    colourObject.inputBackground = theme.statusColours[status].backgroundColor;
+    colourObject.inputColour = theme.statusColours[status].textColor;
+  }
+
+  return colourObject;
+};
+
+var FieldComponent$1 = function FieldComponent(_ref7) {
+  var id = _ref7.id,
+      name = _ref7.name,
+      _ref7$prepend = _ref7.prepend,
+      prepend = _ref7$prepend === void 0 ? null : _ref7$prepend,
+      _ref7$append = _ref7.append,
+      append = _ref7$append === void 0 ? null : _ref7$append,
+      _ref7$label = _ref7.label,
+      label = _ref7$label === void 0 ? null : _ref7$label,
+      _ref7$type = _ref7.type,
+      type = _ref7$type === void 0 ? 'text' : _ref7$type,
+      _ref7$caption = _ref7.caption,
+      caption = _ref7$caption === void 0 ? null : _ref7$caption,
+      _ref7$required = _ref7.required,
+      required = _ref7$required === void 0 ? false : _ref7$required,
+      _ref7$placeholder = _ref7.placeholder,
+      placeholder = _ref7$placeholder === void 0 ? false : _ref7$placeholder,
+      _ref7$defaultValue = _ref7.defaultValue,
+      defaultValue = _ref7$defaultValue === void 0 ? null : _ref7$defaultValue,
+      _ref7$status = _ref7.status,
+      status = _ref7$status === void 0 ? null : _ref7$status,
+      rest = _objectWithoutProperties(_ref7, ["id", "name", "prepend", "append", "label", "type", "caption", "required", "placeholder", "defaultValue", "status"]);
+
+  var Prepend = function Prepend() {
+    return null;
+  };
+
+  if (prepend !== null) {
+    Prepend = function Prepend() {
+      return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, prepend);
+    };
+  }
+
+  var Append = function Append() {
+    return null;
+  };
+
+  if (append !== null) {
+    Append = function Append() {
+      return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, append);
+    };
+  }
+
+  var colours = getColours(status);
+
+  if (label !== null) {
+    return /*#__PURE__*/React__default['default'].createElement(Label$1, {
+      htmlFor: name
+    }, /*#__PURE__*/React__default['default'].createElement(Label$2, {
+      required: required
+    }, label), /*#__PURE__*/React__default['default'].createElement(Wrap$3, _objectSpread2(_objectSpread2({}, rest), colours), /*#__PURE__*/React__default['default'].createElement(Prepend, null), /*#__PURE__*/React__default['default'].createElement(Input, _extends({
+      type: type,
+      name: name,
+      required: required,
+      placeholder: placeholder,
+      defaultValue: defaultValue,
+      id: id
+    }, colours, rest)), /*#__PURE__*/React__default['default'].createElement(Append, null)), /*#__PURE__*/React__default['default'].createElement(Caption, colours, caption));
+  }
+
+  return null;
+};
+
+function _templateObject5$1() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    position: relative;\n    flex-direction: column;\n    margin-bottom: 15px;\n    width: 100%;\n    max-width: 26rem;\n\n    input {\n        //border: 1px solid #ccc;\n        border-radius: ", ";\n        font-size: 1rem;\n        padding: 0.875rem 0.6rem;\n        width: 100%;\n    }\n"]);
+
+  _templateObject5$1 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4$3() {
+  var data = _taggedTemplateLiteral(["\n    display: block;\n    width: 100%;\n"]);
+
+  _templateObject4$3 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3$6() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    padding: 0.75rem 0;\n"]);
+
+  _templateObject3$6 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$f() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n"]);
+
+  _templateObject2$f = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$g() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n"]);
+
+  _templateObject$g = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Wrap$4 = styled__default['default'].div(_templateObject$g());
+var ChipWrap = styled__default['default'].div(_templateObject2$f());
+var InputWrap = styled__default['default'].div(_templateObject3$6());
+var Form$1 = styled__default['default'].form(_templateObject4$3());
+var FieldWrap = styled__default['default'].div(_templateObject5$1(), function (props) {
   return props.theme.main.borderRadius;
 });
 
@@ -2835,10 +3043,10 @@ var ChipInput = /*#__PURE__*/function (_Component) {
       var chipValues = chips.map(function (chip) {
         return chip.value;
       });
-      return /*#__PURE__*/React__default['default'].createElement(Wrap$3, {
+      return /*#__PURE__*/React__default['default'].createElement(Wrap$4, {
         inline: inline,
         id: id
-      }, /*#__PURE__*/React__default['default'].createElement(Label, {
+      }, /*#__PURE__*/React__default['default'].createElement(Label$1, {
         htmlFor: name
       }, label, /*#__PURE__*/React__default['default'].createElement(InputWrap, null, /*#__PURE__*/React__default['default'].createElement(Form$1, {
         onSubmit: addChipFunction
@@ -2860,60 +3068,60 @@ var ChipInput = /*#__PURE__*/function (_Component) {
   return ChipInput;
 }(React$1.Component);
 
-function _templateObject5$1() {
+function _templateObject5$2() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    position: relative;\n    flex-direction: column;\n    max-width: 26rem;\n    margin: 0 0.325rem 0 0;\n\n    input {\n        //border: 1px solid #ccc;\n        border-radius: ", ";\n        font-size: 1rem;\n        padding: 0.875rem 0.6rem;\n        width: 100%;\n    }\n"]);
 
-  _templateObject5$1 = function _templateObject5() {
+  _templateObject5$2 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$3() {
+function _templateObject4$4() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n"]);
 
-  _templateObject4$3 = function _templateObject4() {
+  _templateObject4$4 = function _templateObject4() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject3$4() {
+function _templateObject3$7() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n"]);
 
-  _templateObject3$4 = function _templateObject3() {
+  _templateObject3$7 = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$f() {
+function _templateObject2$g() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: wrap;\n    margin-top: 1em;\n    justify-content: center;\n"]);
 
-  _templateObject2$f = function _templateObject2() {
+  _templateObject2$g = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$g() {
+function _templateObject$h() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n"]);
 
-  _templateObject$g = function _templateObject() {
+  _templateObject$h = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Wrap$4 = styled__default['default'].div(_templateObject$g());
-var ChipWrap$1 = styled__default['default'].div(_templateObject2$f());
-var ChipSelectWrap = styled__default['default'].div(_templateObject3$4());
-var InputWrap$1 = styled__default['default'].div(_templateObject4$3());
-var FieldWrap$1 = styled__default['default'].div(_templateObject5$1(), function (props) {
+var Wrap$5 = styled__default['default'].div(_templateObject$h());
+var ChipWrap$1 = styled__default['default'].div(_templateObject2$g());
+var ChipSelectWrap = styled__default['default'].div(_templateObject3$7());
+var InputWrap$1 = styled__default['default'].div(_templateObject4$4());
+var FieldWrap$1 = styled__default['default'].div(_templateObject5$2(), function (props) {
   return props.theme.main.borderRadius;
 });
 
@@ -3070,10 +3278,10 @@ var ChipInput$1 = /*#__PURE__*/function (_Component) {
 
         return false;
       });
-      return /*#__PURE__*/React__default['default'].createElement(Wrap$4, {
+      return /*#__PURE__*/React__default['default'].createElement(Wrap$5, {
         inline: inline,
         id: id
-      }, /*#__PURE__*/React__default['default'].createElement(ChipSelectWrap, null, /*#__PURE__*/React__default['default'].createElement(InputWrap$1, null, /*#__PURE__*/React__default['default'].createElement(Label, {
+      }, /*#__PURE__*/React__default['default'].createElement(ChipSelectWrap, null, /*#__PURE__*/React__default['default'].createElement(InputWrap$1, null, /*#__PURE__*/React__default['default'].createElement(Label$1, {
         htmlFor: "new_chip"
       }, label), /*#__PURE__*/React__default['default'].createElement(FieldWrap$1, null, this.renderOptions(filteredOptions))), /*#__PURE__*/React__default['default'].createElement("input", {
         name: "chip-values-".concat(name),
@@ -3088,30 +3296,30 @@ var ChipInput$1 = /*#__PURE__*/function (_Component) {
   return ChipInput;
 }(React$1.Component);
 
-function _templateObject3$5() {
+function _templateObject3$8() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    position: relative;\n    max-width: 26rem;\n    margin: 0 0.325rem 0 0;\n    align-items: center;\n    span {\n        color: #000;\n        padding: 0.25em;\n    }\n    input {\n        //border: 1px solid #ccc;\n        border-radius: ", ";\n        font-size: 1rem;\n        padding: 0.875rem 0.6rem;\n        width: 100%;\n    }\n\n    & > .styled-select {\n        display: flex;\n        color: #000;\n        align-items: center;\n        margin: 0;\n        width: 6em;\n    }\n"]);
 
-  _templateObject3$5 = function _templateObject3() {
+  _templateObject3$8 = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$g() {
+function _templateObject2$h() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n"]);
 
-  _templateObject2$g = function _templateObject2() {
+  _templateObject2$h = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$h() {
+function _templateObject$i() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n"]);
 
-  _templateObject$h = function _templateObject() {
+  _templateObject$i = function _templateObject() {
     return data;
   };
 
@@ -3124,9 +3332,9 @@ var pad = function pad(n, width, z) {
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 };
 
-var Wrap$5 = styled__default['default'].div(_templateObject$h());
-var InputWrap$2 = styled__default['default'].div(_templateObject2$g());
-var FieldWrap$2 = styled__default['default'].div(_templateObject3$5(), function (props) {
+var Wrap$6 = styled__default['default'].div(_templateObject$i());
+var InputWrap$2 = styled__default['default'].div(_templateObject2$h());
+var FieldWrap$2 = styled__default['default'].div(_templateObject3$8(), function (props) {
   return props.theme.main.borderRadius;
 });
 
@@ -3272,10 +3480,10 @@ var TimeSelectInput = /*#__PURE__*/function (_Component) {
           _this$props$inline = _this$props.inline,
           inline = _this$props$inline === void 0 ? false : _this$props$inline;
       var date = this.state.date;
-      return /*#__PURE__*/React__default['default'].createElement(Wrap$5, {
+      return /*#__PURE__*/React__default['default'].createElement(Wrap$6, {
         inline: inline,
         id: id
-      }, /*#__PURE__*/React__default['default'].createElement(InputWrap$2, null, /*#__PURE__*/React__default['default'].createElement(Label, null, label), /*#__PURE__*/React__default['default'].createElement(FieldWrap$2, null, /*#__PURE__*/React__default['default'].createElement("input", {
+      }, /*#__PURE__*/React__default['default'].createElement(InputWrap$2, null, /*#__PURE__*/React__default['default'].createElement(Label$1, null, label), /*#__PURE__*/React__default['default'].createElement(FieldWrap$2, null, /*#__PURE__*/React__default['default'].createElement("input", {
         id: "datepicker",
         name: name,
         type: "date",
@@ -3296,49 +3504,646 @@ var TimeSelectInput = /*#__PURE__*/function (_Component) {
   return TimeSelectInput;
 }(React$1.Component);
 
-var Select$1 = SelectComponent;
-var CheckBox = CheckboxComponent;
-var Radio = CheckboxComponent;
+function _templateObject2$i() {
+  var data = _taggedTemplateLiteral(["\n    display:none;\n"]);
+
+  _templateObject2$i = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$j() {
+  var data = _taggedTemplateLiteral(["\n    font-family: MuseoSansReg, sans-serif;\n    user-select: none;\n\n    g {\n        cursor: ", ";\n    }\n\n    text {\n        \n        font-family: MuseoSansReg, sans-serif;\n    }\n\n"]);
+
+  _templateObject$j = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var THUNDERSTRUCK = 'thunderstruck';
+var INVIGORATED = 'invigorated';
+var DAZZLED = 'dazzled';
+var ANTICIPATORY = 'anticipatory';
+var CONTEMPLATIVE = 'contemplative';
+var SOOTHING = 'soothing';
+var SLEEPY = 'sleepy';
+var SERENE = 'serene';
+var RELAXED = 'relaxed';
+var SATISFIED = 'satisfied';
+var MERRY = 'merry';
+var DELIGHTED = 'delighted';
+var moods = [THUNDERSTRUCK, INVIGORATED, DAZZLED, ANTICIPATORY, CONTEMPLATIVE, SOOTHING, SLEEPY, SERENE, RELAXED, SATISFIED, MERRY, DELIGHTED];
+var Wrap$7 = styled__default['default'].div(_templateObject$j(), function (_ref) {
+  var readonly = _ref.readonly;
+  return readonly ? 'default' : 'pointer';
+});
+var Radio$1 = styled__default['default'].input(_templateObject2$i());
+
+var handleClick = function handleClick(className, setSelected, parentOnClick) {
+  var mood = moods.find(function (obj) {
+    return className.includes(obj);
+  });
+  parentOnClick(mood);
+  setSelected(mood);
+};
+
+var MoodPath = function MoodPath(_ref2) {
+  var d = _ref2.d,
+      className = _ref2.className,
+      fill = _ref2.fill,
+      transform = _ref2.transform,
+      _ref2$opacity = _ref2.opacity,
+      opacity = _ref2$opacity === void 0 ? 1 : _ref2$opacity,
+      selected = _ref2.selected,
+      _ref2$adjacent = _ref2.adjacent,
+      adjacent = _ref2$adjacent === void 0 ? [] : _ref2$adjacent,
+      setSelected = _ref2.setSelected,
+      parentOnClick = _ref2.parentOnClick;
+  var pathProps = {
+    onClick: function onClick() {
+      return handleClick(className, setSelected, parentOnClick);
+    },
+    d: d,
+    className: className,
+    fill: fill,
+    transform: transform,
+    opacity: opacity
+  };
+
+  if (className.includes('selected')) {
+    if (className.includes(selected)) {
+      return /*#__PURE__*/React__default['default'].createElement("path", pathProps);
+    }
+
+    return null;
+  }
+
+  if (className.includes('adjacent')) {
+    if (adjacent.includes(selected)) {
+      return /*#__PURE__*/React__default['default'].createElement("path", pathProps);
+    }
+
+    return null;
+  }
+
+  return /*#__PURE__*/React__default['default'].createElement("path", pathProps);
+};
+
+var MoodSelector = function MoodSelector(_ref3) {
+  var _ref3$readonly = _ref3.readonly,
+      readonly = _ref3$readonly === void 0 ? false : _ref3$readonly,
+      _ref3$defaultValue = _ref3.defaultValue,
+      defaultValue = _ref3$defaultValue === void 0 ? null : _ref3$defaultValue,
+      _ref3$onMoodClick = _ref3.onMoodClick,
+      onMoodClick = _ref3$onMoodClick === void 0 ? function () {} : _ref3$onMoodClick;
+
+  var _useState = React$1.useState(defaultValue),
+      _useState2 = _slicedToArray(_useState, 2),
+      selected = _useState2[0],
+      setSelected = _useState2[1];
+
+  var passToAll = {
+    setSelected: setSelected,
+    selected: selected,
+    parentOnClick: onMoodClick
+  };
+
+  if (readonly === true) {
+    passToAll.parentOnClick = function () {};
+
+    passToAll.setSelected = function () {};
+  }
+
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$7, {
+    readonly: readonly
+  }, /*#__PURE__*/React__default['default'].createElement("svg", {
+    width: "342px",
+    height: "241px",
+    viewBox: "0 0 342 241",
+    version: "1.1",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/React__default['default'].createElement("title", null, "mood-selector"), /*#__PURE__*/React__default['default'].createElement("g", {
+    className: "mood-selector",
+    stroke: "none",
+    strokeWidth: "1",
+    fill: "none",
+    fillRule: "evenodd"
+  }, /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M143.868238,16.0795885 C162.206084,16.0795885 179.391072,21.0155573 194.167073,29.6313653 L179.077662,55.5659719 C168.734407,49.53482 156.704829,46.0795885 143.868238,46.0795885 L143.868238,16.0795885 L143.868238,16.0795885 Z",
+    className: "thunderstruck-adjacent",
+    fill: "#E83948",
+    transform: "translate(169.017656, 35.822780) rotate(330.000000) translate(-169.017656, -35.822780) ",
+    adjacent: [INVIGORATED, DAZZLED]
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M142.449798,10.7858995 C161.704354,10.7858995 179.748433,15.9685687 195.263136,25.0150088 L177.659223,55.2722829 C167.315968,49.2411309 155.286389,45.7858995 142.449798,45.7858995 L142.449798,10.7858995 L142.449798,10.7858995 Z",
+    className: "thunderstruck-selected",
+    fill: "#E83948",
+    transform: "translate(168.856467, 33.029091) rotate(330.000000) translate(-168.856467, -33.029091) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M143.868238,16.0795885 C162.206084,16.0795885 179.391072,21.0155573 194.167073,29.6313653 L179.077662,55.5659719 C168.734407,49.53482 156.704829,46.0795885 143.868238,46.0795885 L143.868238,16.0795885 L143.868238,16.0795885 Z",
+    className: "thunderstruck-inactive",
+    fill: "#E83948",
+    opacity: "0.302818",
+    transform: "translate(169.017656, 35.822780) rotate(330.000000) translate(-169.017656, -35.822780) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    adjacent: [THUNDERSTRUCK, ANTICIPATORY],
+    d: "M103.82278,36.9823443 C122.160626,36.9823443 139.345614,41.918313 154.121615,50.5341211 L139.032204,76.4687277 C128.688949,70.4375758 116.659371,66.9823443 103.82278,66.9823443 L103.82278,36.9823443 L103.82278,36.9823443 Z",
+    className: "dazzled-adjacent",
+    fill: "#C5037E",
+    transform: "translate(128.972198, 56.725536) rotate(300.000000) translate(-128.972198, -56.725536) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M101.029091,32.1435329 C120.283647,32.1435329 138.327726,37.3262022 153.842428,46.3726422 L136.238515,76.6299163 C125.89526,70.5987644 113.865682,67.1435329 101.029091,67.1435329 L101.029091,32.1435329 L101.029091,32.1435329 Z",
+    className: "dazzled-selected",
+    fill: "#C5037E",
+    transform: "translate(127.435760, 54.386725) rotate(300.000000) translate(-127.435760, -54.386725) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M103.82278,36.9823443 C122.160626,36.9823443 139.345614,41.918313 154.121615,50.5341211 L139.032204,76.4687277 C128.688949,70.4375758 116.659371,66.9823443 103.82278,66.9823443 L103.82278,36.9823443 L103.82278,36.9823443 Z",
+    className: "dazzled-inactive",
+    fill: "#C5037E",
+    opacity: "0.302818",
+    transform: "translate(128.972198, 56.725536) rotate(300.000000) translate(-128.972198, -56.725536) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    adjacent: [CONTEMPLATIVE, DAZZLED],
+    d: "M79.5937742,75.1073908 C97.9316196,75.1073908 115.116608,80.0433595 129.892609,88.6591676 L114.803198,114.593774 C104.459943,108.562622 92.4303651,105.107391 79.5937742,105.107391 L79.5937742,75.1073908 L79.5937742,75.1073908 Z",
+    className: "anticipatory-adjacent",
+    fill: "#6D398B",
+    transform: "translate(104.743192, 94.850583) rotate(270.000000) translate(-104.743192, -94.850583) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M75.8365231,71.3501397 C95.091079,71.3501397 113.135158,76.532809 128.64986,85.579249 L111.045947,115.836523 C100.702692,109.805371 88.673114,106.35014 75.8365231,106.35014 L75.8365231,71.3501397 L75.8365231,71.3501397 Z",
+    className: "anticipatory-selected",
+    fill: "#6D398B",
+    transform: "translate(102.243192, 93.593331) rotate(270.000000) translate(-102.243192, -93.593331) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M79.5937742,75.1073908 C97.9316196,75.1073908 115.116608,80.0433595 129.892609,88.6591676 L114.803198,114.593774 C104.459943,108.562622 92.4303651,105.107391 79.5937742,105.107391 L79.5937742,75.1073908 L79.5937742,75.1073908 Z",
+    className: "anticipatory-inactive",
+    fill: "#6D398B",
+    opacity: "0.302818",
+    transform: "translate(104.743192, 94.850583) rotate(270.000000) translate(-104.743192, -94.850583) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    adjacent: [ANTICIPATORY, SOOTHING],
+    d: "M77.6733627,120.239153 C96.0112082,120.239153 113.196196,125.175121 127.972198,133.790929 L112.882787,159.725536 C102.539532,153.694384 90.5099536,150.239153 77.6733627,150.239153 L77.6733627,120.239153 L77.6733627,120.239153 Z",
+    className: "contemplative-adjacent",
+    fill: "#454E98",
+    transform: "translate(102.822780, 139.982344) rotate(240.000000) translate(-102.822780, -139.982344) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M73.6231751,117.900776 C92.8773159,117.900776 110.921032,123.083222 126.435509,132.1293 L108.832599,162.387159 C98.4893444,156.356007 86.459766,152.900776 73.6231751,152.900776 L73.6231751,117.900776 L73.6231751,117.900776 Z",
+    className: "contemplative-selected",
+    fill: "#454E98",
+    transform: "translate(100.029342, 140.143967) rotate(240.000000) translate(-100.029342, -140.143967) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M77.6733627,120.239153 C96.0112082,120.239153 113.196196,125.175121 127.972198,133.790929 L112.882787,159.725536 C102.539532,153.694384 90.5099536,150.239153 77.6733627,150.239153 L77.6733627,120.239153 L77.6733627,120.239153 Z",
+    className: "contemplative-inactive",
+    fill: "#454E98",
+    opacity: "0.302818",
+    transform: "translate(102.822780, 139.982344) rotate(240.000000) translate(-102.822780, -139.982344) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    adjacent: [CONTEMPLATIVE, SLEEPY],
+    d: "M98.5761185,160.284611 C116.913964,160.284611 134.098952,165.220579 148.874954,173.836387 L133.785543,199.770994 C123.442288,193.739842 111.412709,190.284611 98.5761185,190.284611 L98.5761185,160.284611 L98.5761185,160.284611 Z",
+    className: "soothing-adjacent",
+    fill: "#2B70B1",
+    transform: "translate(123.725536, 180.027802) rotate(210.000000) translate(-123.725536, -180.027802) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M94.980056,159.321049 C114.234612,159.321049 132.27869,164.503718 147.793393,173.550158 L130.18948,203.807432 C119.846225,197.77628 107.816647,194.321049 94.980056,194.321049 L94.980056,159.321049 L94.980056,159.321049 Z",
+    className: "soothing-selected",
+    fill: "#2B70B1",
+    transform: "translate(121.386725, 181.564240) rotate(210.000000) translate(-121.386725, -181.564240) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M98.5761185,160.284611 C116.913964,160.284611 134.098952,165.220579 148.874954,173.836387 L133.785543,199.770994 C123.442288,193.739842 111.412709,190.284611 98.5761185,190.284611 L98.5761185,160.284611 L98.5761185,160.284611 Z",
+    className: "soothing-inactive",
+    fill: "#2B70B1",
+    opacity: "0.302818",
+    transform: "translate(123.725536, 180.027802) rotate(210.000000) translate(-123.725536, -180.027802) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    adjacent: [SERENE, SOOTHING],
+    d: "M136.701165,184.513617 C155.03901,184.513617 172.223999,189.449585 187,198.065393 L171.910589,224 C161.567334,217.968848 149.537756,214.513617 136.701165,214.513617 L136.701165,184.513617 L136.701165,184.513617 Z",
+    className: "sleepy-adjacent",
+    fill: "#30A4C5",
+    transform: "translate(161.850583, 204.256808) rotate(180.000000) translate(-161.850583, -204.256808) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M134.187666,184.514201 C153.441807,184.514201 171.485523,189.696647 187,198.742725 L169.396088,229 C159.053058,222.969209 147.023842,219.514201 134.187666,219.514201 L134.187666,184.514201 L134.187666,184.514201 Z",
+    className: "sleepy-selected",
+    fill: "#30A4C5",
+    transform: "translate(160.593833, 206.757101) rotate(180.000000) translate(-160.593833, -206.757101) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M136.701165,184.513617 C155.03901,184.513617 172.223999,189.449585 187,198.065393 L171.910589,224 C161.567334,217.968848 149.537756,214.513617 136.701165,214.513617 L136.701165,184.513617 L136.701165,184.513617 Z",
+    className: "sleepy-inactive",
+    fill: "#30A4C5",
+    opacity: "0.302818",
+    transform: "translate(161.850583, 204.256808) rotate(180.000000) translate(-161.850583, -204.256808) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    adjacent: [RELAXED, SLEEPY],
+    d: "M181.832927,186.434028 C200.170772,186.434028 217.35576,191.369997 232.131762,199.985805 L217.042351,225.920411 C206.699096,219.88926 194.669518,216.434028 181.832927,216.434028 L181.832927,186.434028 L181.832927,186.434028 Z",
+    className: "serene-adjacent",
+    fill: "#2C8D5A",
+    transform: "translate(206.982344, 206.177220) rotate(150.000000) translate(-206.982344, -206.177220) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M180.736864,186.727717 C199.99142,186.727717 218.035499,191.910386 233.550202,200.956826 L215.946288,231.214101 C205.603034,225.182949 193.573455,221.727717 180.736864,221.727717 L180.736864,186.727717 L180.736864,186.727717 Z",
+    className: "serene-selected",
+    fill: "#2C8D5A",
+    transform: "translate(207.143533, 208.970909) rotate(150.000000) translate(-207.143533, -208.970909) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M181.832927,186.434028 C200.170772,186.434028 217.35576,191.369997 232.131762,199.985805 L217.042351,225.920411 C206.699096,219.88926 194.669518,216.434028 181.832927,216.434028 L181.832927,186.434028 L181.832927,186.434028 Z",
+    className: "serene-inactive",
+    fill: "#2C8D5A",
+    opacity: "0.302818",
+    transform: "translate(206.982344, 206.177220) rotate(150.000000) translate(-206.982344, -206.177220) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    adjacent: [SERENE, SATISFIED],
+    d: "M221.878385,165.531272 C240.21623,165.531272 257.401218,170.467241 272.17722,179.083049 L257.087809,205.017656 C246.744554,198.986504 234.714976,195.531272 221.878385,195.531272 L221.878385,165.531272 L221.878385,165.531272 Z",
+    className: "relaxed-adjacent",
+    fill: "#7CC530",
+    transform: "translate(247.027802, 185.274464) rotate(120.000000) translate(-247.027802, -185.274464) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M222.157572,165.370084 C241.412127,165.370084 259.456206,170.552753 274.970909,179.599193 L257.366996,209.856467 C247.023741,203.825315 234.994163,200.370084 222.157572,200.370084 L222.157572,165.370084 L222.157572,165.370084 Z",
+    className: "relaxed-selected",
+    fill: "#7CC530",
+    transform: "translate(248.564240, 187.613275) rotate(120.000000) translate(-248.564240, -187.613275) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M221.878385,165.531272 C240.21623,165.531272 257.401218,170.467241 272.17722,179.083049 L257.087809,205.017656 C246.744554,198.986504 234.714976,195.531272 221.878385,195.531272 L221.878385,165.531272 L221.878385,165.531272 Z",
+    className: "relaxed-inactive",
+    fill: "#7CC530",
+    opacity: "0.302818",
+    transform: "translate(247.027802, 185.274464) rotate(120.000000) translate(-247.027802, -185.274464) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    adjacent: [RELAXED, MERRY],
+    d: "M246.107391,127.406226 C264.445236,127.406226 281.630224,132.342195 296.406226,140.958003 L281.316815,166.892609 C270.97356,160.861457 258.943982,157.406226 246.107391,157.406226 L246.107391,127.406226 L246.107391,127.406226 Z",
+    className: "satisfied-adjacent",
+    fill: "#FFCE01",
+    transform: "translate(271.256808, 147.149417) rotate(90.000000) translate(-271.256808, -147.149417) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M247.35014,126.163477 C266.604696,126.163477 284.648774,131.346146 300.163477,140.392586 L282.559564,170.64986 C272.216309,164.618708 260.186731,161.163477 247.35014,161.163477 L247.35014,126.163477 L247.35014,126.163477 Z",
+    className: "satisfied-selected",
+    fill: "#FFCE01",
+    transform: "translate(273.756808, 148.406669) rotate(90.000000) translate(-273.756808, -148.406669) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M246.107391,127.406226 C264.445236,127.406226 281.630224,132.342195 296.406226,140.958003 L281.316815,166.892609 C270.97356,160.861457 258.943982,157.406226 246.107391,157.406226 L246.107391,127.406226 L246.107391,127.406226 Z",
+    className: "satisfied-inactive",
+    fill: "#FFCE01",
+    opacity: "0.302818",
+    transform: "translate(271.256808, 147.149417) rotate(90.000000) translate(-271.256808, -147.149417) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    adjacent: [DELIGHTED, SATISFIED],
+    d: "M248.027802,82.274464 C266.365648,82.274464 283.550636,87.2104327 298.326637,95.8262407 L283.237226,121.760847 C272.893972,115.729695 260.864393,112.274464 248.027802,112.274464 L248.027802,82.274464 L248.027802,82.274464 Z",
+    className: "merry-adjacent",
+    fill: "#F9BD45",
+    transform: "translate(273.177220, 102.017656) rotate(60.000000) translate(-273.177220, -102.017656) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M249.564744,79.6129871 C268.818885,79.6129871 286.862601,84.7954329 302.377078,93.8415113 L284.773166,124.098786 C274.430136,118.067995 262.40092,114.612987 249.564744,114.612987 L249.564744,79.6129871 L249.564744,79.6129871 Z",
+    className: "merry-selected",
+    fill: "#F9BD45",
+    transform: "translate(275.970911, 101.855886) rotate(60.000000) translate(-275.970911, -101.855886) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M248.027802,82.274464 C266.365648,82.274464 283.550636,87.2104327 298.326637,95.8262407 L283.237226,121.760847 C272.893972,115.729695 260.864393,112.274464 248.027802,112.274464 L248.027802,82.274464 L248.027802,82.274464 Z",
+    className: "merry-inactive",
+    fill: "#F9BD45",
+    opacity: "0.302818",
+    transform: "translate(273.177220, 102.017656) rotate(60.000000) translate(-273.177220, -102.017656) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    adjacent: [MERRY, INVIGORATED],
+    d: "M227.125046,42.229006 C245.462892,42.229006 262.64788,47.1649747 277.423881,55.7807828 L262.334471,81.7153894 C251.991216,75.6842375 239.961637,72.229006 227.125046,72.229006 L227.125046,42.229006 L227.125046,42.229006 Z",
+    className: "delighted-adjacent",
+    fill: "#F7823B",
+    transform: "translate(252.274464, 61.972198) rotate(30.000000) translate(-252.274464, -61.972198) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M228.206607,38.1925681 C247.461163,38.1925681 265.505241,43.3752373 281.019944,52.4216774 L263.416031,82.6789515 C253.072776,76.6477995 241.043198,73.1925681 228.206607,73.1925681 L228.206607,38.1925681 L228.206607,38.1925681 Z",
+    className: "delighted-selected",
+    fill: "#F7823B",
+    transform: "translate(254.613275, 60.435760) rotate(30.000000) translate(-254.613275, -60.435760) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M227.125046,42.229006 C245.462892,42.229006 262.64788,47.1649747 277.423881,55.7807828 L262.334471,81.7153894 C251.991216,75.6842375 239.961637,72.229006 227.125046,72.229006 L227.125046,42.229006 L227.125046,42.229006 Z",
+    className: "delighted-inactive",
+    fill: "#F7823B",
+    opacity: "0.302818",
+    transform: "translate(252.274464, 61.972198) rotate(30.000000) translate(-252.274464, -61.972198) "
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    adjacent: [DELIGHTED, THUNDERSTRUCK],
+    d: "M189,18 C207.337845,18 224.522834,22.9359687 239.298835,31.5517767 L224.209424,57.4863834 C213.866169,51.4552315 201.836591,48 189,48 L189,18 L189,18 Z",
+    className: "invigorated-adjacent",
+    fill: "#EC611D"
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M189,13 C208.254556,13 226.298634,18.1826693 241.813337,27.2291093 L224.209424,57.4863834 C213.866169,51.4552315 201.836591,48 189,48 L189,13 L189,13 Z",
+    className: "invigorated-selected",
+    fill: "#EC611D"
+  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
+    d: "M189,18 C207.337845,18 224.522834,22.9359687 239.298835,31.5517767 L224.209424,57.4863834 C213.866169,51.4552315 201.836591,48 189,48 L189,18 L189,18 Z",
+    className: "invigorated-inactive",
+    fill: "#EC611D",
+    opacity: "0.302818"
+  })), /*#__PURE__*/React__default['default'].createElement("g", {
+    className: "labels",
+    fontFamily: "MuseoSans-500, Museo Sans",
+    fontSize: "12",
+    fontWeight: "normal"
+  }, /*#__PURE__*/React__default['default'].createElement("text", {
+    className: "thunderstruck-label",
+    fill: "#E83948"
+  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
+    x: "88.64",
+    y: "11"
+  }, "Thunderstruck")), /*#__PURE__*/React__default['default'].createElement("text", {
+    className: "dazzled-label",
+    fill: "#C5037E"
+  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
+    x: "57.324",
+    y: "42"
+  }, "Dazzled")), /*#__PURE__*/React__default['default'].createElement("text", {
+    className: "anticipatory-label",
+    fill: "#6D398B"
+  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
+    x: "14.404",
+    y: "91"
+  }, "Anticipatory")), /*#__PURE__*/React__default['default'].createElement("text", {
+    className: "contemplative-label",
+    fill: "#454E98"
+  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
+    x: "0.04",
+    y: "148"
+  }, "Contemplative")), /*#__PURE__*/React__default['default'].createElement("text", {
+    className: "soothing-label",
+    fill: "#2B70B1"
+  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
+    x: "51.6",
+    y: "200"
+  }, "Soothing")), /*#__PURE__*/React__default['default'].createElement("text", {
+    className: "sleepy-label",
+    fill: "#30A4C5"
+  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
+    x: "133.628",
+    y: "238"
+  }, "Sleepy")), /*#__PURE__*/React__default['default'].createElement("text", {
+    className: "serene-label",
+    fill: "#2C8D5A"
+  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
+    x: "214",
+    y: "238"
+  }, "Serene")), /*#__PURE__*/React__default['default'].createElement("text", {
+    className: "relaxed-label",
+    fill: "#7CC530"
+  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
+    x: "270",
+    y: "200"
+  }, "Relaxed")), /*#__PURE__*/React__default['default'].createElement("text", {
+    className: "satisfied-label",
+    fill: "#FFCE01"
+  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
+    x: "295",
+    y: "148"
+  }, "Satisfied")), /*#__PURE__*/React__default['default'].createElement("text", {
+    className: "merry-label",
+    fill: "#F9BD45"
+  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
+    x: "296",
+    y: "91"
+  }, "Merry")), /*#__PURE__*/React__default['default'].createElement("text", {
+    className: "delighted-label",
+    fill: "#F7823B"
+  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
+    x: "270",
+    y: "42"
+  }, "Delighted")), /*#__PURE__*/React__default['default'].createElement("text", {
+    className: "invigorated-label",
+    fill: "#EC611D"
+  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
+    x: "215",
+    y: "11"
+  }, "Invigorated"))))), moods.map(function (obj) {
+    return /*#__PURE__*/React__default['default'].createElement(Radio$1, {
+      checked: selected === obj,
+      type: "radio",
+      id: "html",
+      name: "mood",
+      value: obj
+    });
+  }));
+};
+
+function _templateObject2$j() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: ", ";\n    align-items: center;\n    align-self: center;\n\n    svg {\n        margin-bottom: ", ";\n        margin-right: ", ";\n        font-size: 2rem;\n    }\n"]);
+
+  _templateObject2$j = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$k() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    font-family: MuseoSansReg, sans-serif;\n    flex-wrap: ", ";\n    justify-content: ", ";\n    background: ", ";\n    color: ", ";\n    padding: ", ";\n    width: 100%;\n    border-radius: ", ";\n    box-shadow: 0px 1px 1px ", ";\n    transition: all 0.2s linear;\n    user-select: none;\n    cursor: pointer;\n\n    &:hover {\n        box-shadow: 0px 2px 5px ", ";\n    }\n\n    &:active {\n        background: ", ";\n        color: ", ";\n    }\n\n"]);
+
+  _templateObject$k = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Wrap$8 = styled__default['default'].div(_templateObject$k(), function (props) {
+  return props.small ? "nowrap" : "wrap";
+}, function (props) {
+  return props.small ? "space-between" : "center";
+}, function (props) {
+  return props.backgroundColour;
+}, function (props) {
+  return props.textColour;
+}, function (props) {
+  return props.small ? "1rem" : "1rem";
+}, function (props) {
+  return props.theme.main.borderRadius;
+}, curriedTransparentize(0.8, '#000'), curriedTransparentize(0.8, '#000'), function (props) {
+  return props.theme.selectionPanel.active.background;
+}, function (props) {
+  return props.theme.selectionPanel.active.color;
+});
+var Content$2 = styled__default['default'].div(_templateObject2$j(), function (_ref) {
+  var small = _ref.small;
+  return small ? "row" : "column";
+}, function (_ref2) {
+  var small = _ref2.small;
+  return small ? "0" : "1rem";
+}, function (_ref3) {
+  var small = _ref3.small;
+  return small ? "1rem" : "0";
+});
+
+var getColours$1 = function getColours(colour, active) {
+  var textColour = theme.selectionPanel.color;
+  var backgroundColour = theme.selectionPanel.background;
+
+  if (active) {
+    textColour = theme.generalColors.white;
+    backgroundColour = theme.colors.simplyRed;
+  }
+
+  if (theme.colors[colour]) {
+    textColour = theme.colors[colour];
+    backgroundColour = theme.selectionPanel.background;
+
+    if (active) {
+      textColour = theme.generalColors.white;
+      backgroundColour = theme.colors[colour];
+    }
+  }
+
+  return {
+    textColour: textColour,
+    backgroundColour: backgroundColour
+  };
+};
+
+var SelectionPanel = function SelectionPanel(_ref4) {
+  var children = _ref4.children,
+      _ref4$active = _ref4.active,
+      active = _ref4$active === void 0 ? false : _ref4$active,
+      _ref4$small = _ref4.small,
+      small = _ref4$small === void 0 ? false : _ref4$small,
+      _ref4$colour = _ref4.colour,
+      colour = _ref4$colour === void 0 ? 'simplyRed' : _ref4$colour,
+      rest = _objectWithoutProperties(_ref4, ["children", "active", "small", "colour"]);
+
+  var attributes = _objectSpread2(_objectSpread2({}, rest), getColours$1(colour, active));
+
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$8, _extends({
+    active: active,
+    small: small
+  }, attributes), /*#__PURE__*/React__default['default'].createElement(Content$2, _extends({
+    small: small
+  }, rest), children));
+};
+
+function _templateObject3$9() {
+  var data = _taggedTemplateLiteral(["\n    font-size: 1.1em;\n    margin-left: 0.75rem;\n"]);
+
+  _templateObject3$9 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$k() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: row;\n    flex-wrap: nowrap;\n    justify-content: flex-start;\n    align-items: center;\n    position: relative;\n    cursor: pointer;\n"]);
+
+  _templateObject2$k = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$l() {
+  var data = _taggedTemplateLiteral(["\n    font-family: MuseoSansReg, sans-serif;\n\n    .switch {\n        position: relative;\n        display: inline-block;\n        width: 40px;\n        height: 23px;\n    }\n\n    /* Hide default HTML checkbox */\n    .switch input {\n        opacity: 0;\n        width: 0;\n        height: 0;\n    }\n\n    /* The slider */\n    .slider {\n        position: absolute;\n        top: 0;\n        left: 0;\n        right: 0;\n        bottom: 0;\n        background-color: #ccc;\n        -webkit-transition: 0.4s;\n        transition: 0.4s;\n    }\n\n    .slider:before {\n        position: absolute;\n        content: '';\n        height: 19px;\n        width: 19px;\n        left: 1px;\n        bottom: 2px;\n        background-color: white;\n        -webkit-transition: 0.4s;\n        transition: 0.4s;\n    }\n\n    input:checked + .slider {\n        background-color: ", ";\n    }\n\n    input:focus + .slider {\n        box-shadow: 0 0 1px  ", ";\n    }\n\n    input:checked + .slider:before {\n        -webkit-transform: translateX(19px);\n        -ms-transform: translateX(19px);\n        transform: translateX(19px);\n    }\n\n    /* Rounded sliders */\n    .slider.round {\n        border-radius: 34px;\n    }\n\n    .slider.round:before {\n        border-radius: 50%;\n    }\n"]);
+
+  _templateObject$l = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Wrap$9 = styled__default['default'].div(_templateObject$l(), function (props) {
+  return props.primaryColour;
+}, function (props) {
+  return props.primaryColour;
+});
+var PaddedLabel$2 = styled__default['default'](Label$1)(_templateObject2$k());
+var SpanLabel = styled__default['default'].span(_templateObject3$9());
+
+var getColours$2 = function getColours(colour) {
+  var altColour = theme.selectionPanel.color;
+  var primaryColour = theme.selectionPanel.background;
+
+  if (theme.colors[colour]) {
+    altColour = theme.generalColors.white;
+    primaryColour = theme.colors[colour];
+  }
+
+  return {
+    altColour: altColour,
+    primaryColour: primaryColour
+  };
+};
+
+var Switch = function Switch(_ref) {
+  var name = _ref.name,
+      id = _ref.id,
+      checked = _ref.checked,
+      value = _ref.value,
+      label = _ref.label,
+      _ref$colour = _ref.colour,
+      colour = _ref$colour === void 0 ? 'simplyRed' : _ref$colour,
+      _ref$className = _ref.className,
+      className = _ref$className === void 0 ? null : _ref$className,
+      rest = _objectWithoutProperties(_ref, ["name", "id", "checked", "value", "label", "colour", "className"]);
+
+  var attributes = _objectSpread2(_objectSpread2({}, rest), getColours$2(colour));
+
+  console.log('switch attributes', attributes);
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$9, _extends({
+    className: className
+  }, attributes), /*#__PURE__*/React__default['default'].createElement(PaddedLabel$2, _extends({
+    htmlFor: name
+  }, attributes), /*#__PURE__*/React__default['default'].createElement("div", {
+    className: "switch"
+  }, /*#__PURE__*/React__default['default'].createElement("input", _extends({
+    id: id,
+    name: name,
+    value: value,
+    defaultChecked: checked,
+    type: "checkbox"
+  }, attributes)), /*#__PURE__*/React__default['default'].createElement("span", _extends({
+    className: "slider round"
+  }, attributes))), /*#__PURE__*/React__default['default'].createElement(SpanLabel, {
+    className: "spanLabel"
+  }, label)));
+};
+
+var Select = SelectInput;
+var Checkbox$1 = CheckboxComponent;
+var Radio$2 = RadioComponent;
 var Hidden = FieldComponent;
-var Field$2 = FieldComponent$1;
+var Input$1 = FieldComponent$1;
 var Chip$1 = ChipInput;
 var ChipSelect = ChipInput$1;
-var TimeSelect = TimeSelectInput; //  export const ColorPicker = ColorPickerInput;
+var TimeSelect = TimeSelectInput;
+var MoodSelect = MoodSelector;
+var SelectionPanel$1 = SelectionPanel;
+var Switch$1 = Switch; //  export const ColorPicker = ColorPickerInput;
 
-function _templateObject3$6() {
+function _templateObject3$a() {
   var data = _taggedTemplateLiteral(["\n    display: block;\n    height: auto;\n    overflow: hidden;\n    transform: scaleY(0);\n    transform-origin: top;\n    color: transparent;\n    transition: color 0.2s linear;\n    background: rgb(18, 148, 231);\n\n    &.active {\n        padding: 0.7rem 1.4rem;\n        padding-top: calc(0.7rem + 4px);\n        margin-top: -4px;\n        color: inherit;\n        transform: scale(1);\n\n        .status-success & {\n            color: rgb(255, 255, 255);\n            background: rgb(0, 212, 1);\n        }\n        .status-error & {\n            color: rgb(255, 255, 255);\n            background: rgb(255, 0, 58);\n        }\n        .status-notice & {\n            color: rgb(255, 255, 255);\n            background: rgb(245, 166, 35);\n        }\n    }\n"]);
 
-  _templateObject3$6 = function _templateObject3() {
+  _templateObject3$a = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$h() {
+function _templateObject2$l() {
   var data = _taggedTemplateLiteral(["\n    display: block;\n    position: relative;\n    width: ", ";\n    height: 100%;\n    background: rgb(0, 212, 1);\n    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);\n    transition: width 0.5s ease-in-out;\n"]);
 
-  _templateObject2$h = function _templateObject2() {
+  _templateObject2$l = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$i() {
+function _templateObject$m() {
   var data = _taggedTemplateLiteral(["\n    position: relative;\n    display: none;\n    z-index: 10;\n    width: 100%;\n\n    &.active {\n        display: block;\n    }\n\n    .loader {\n        display: block;\n        position: relative;\n        margin: 0;\n        padding: 0;\n        width: 100%;\n        height: 4px;\n        z-index: 12;\n        background: rgba(0, 0, 0, 0.1);\n\n        &.fade {\n            display: block;\n            -webkit-animation: fadeOut 1s;\n            animation: fadeOut 1s;\n            animation-fill-mode: forwards;\n        }\n    }\n\n    @-webkit-keyframes fadeOut {\n        0% {\n            opacity: 1;\n        }\n        99% {\n            opacity: 0.01;\n            width: 100%;\n            height: 100%;\n        }\n        100% {\n            opacity: 0;\n            width: 0;\n            height: 0;\n        }\n    }\n    @keyframes fadeOut {\n        0% {\n            opacity: 1;\n        }\n        99% {\n            opacity: 0.01;\n            width: 100%;\n            height: 100%;\n        }\n        100% {\n            opacity: 0;\n            width: 0;\n            height: 0;\n        }\n    }\n"]);
 
-  _templateObject$i = function _templateObject() {
+  _templateObject$m = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Loader$1 = styled__default['default'].div(_templateObject$i());
-var Bar = styled__default['default'].div(_templateObject2$h(), function (props) {
+var Loader$1 = styled__default['default'].div(_templateObject$m());
+var Bar = styled__default['default'].div(_templateObject2$l(), function (props) {
   return "".concat(props.percent, "%") || '0%';
 });
-var Message = styled__default['default'].div(_templateObject3$6());
+var Message = styled__default['default'].div(_templateObject3$a());
 
 var LoaderBar = /*#__PURE__*/function (_React$Component) {
   _inherits(LoaderBar, _React$Component);
@@ -3474,50 +4279,50 @@ function _templateObject6() {
   return data;
 }
 
-function _templateObject5$2() {
+function _templateObject5$3() {
   var data = _taggedTemplateLiteral(["\n    padding-left: 15px;\n"]);
 
-  _templateObject5$2 = function _templateObject5() {
+  _templateObject5$3 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$4() {
+function _templateObject4$5() {
   var data = _taggedTemplateLiteral([""]);
 
-  _templateObject4$4 = function _templateObject4() {
+  _templateObject4$5 = function _templateObject4() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject3$7() {
+function _templateObject3$b() {
   var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    text-indent: 0;\n    animation: ", " ", " linear infinite;\n    animation-play-state: ", ";\n\n    /* &:hover {\n        animation-play-state: ", ";\n    } */\n"]);
 
-  _templateObject3$7 = function _templateObject3() {
+  _templateObject3$b = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$i() {
+function _templateObject2$m() {
   var data = _taggedTemplateLiteral(["\n    display: block;\n    width: 100%;\n    margin: 0 auto;\n    white-space: nowrap;\n    overflow: hidden;\n    box-sizing: border-box;\n"]);
 
-  _templateObject2$i = function _templateObject2() {
+  _templateObject2$m = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$j() {
+function _templateObject$n() {
   var data = _taggedTemplateLiteral(["\n    0%   { \n        transform: translate(0, 0); \n    }\n    100% { \n        transform: translate(-50%, 0); \n    }\n"]);
 
-  _templateObject$j = function _templateObject() {
+  _templateObject$n = function _templateObject() {
     return data;
   };
 
@@ -3556,17 +4361,17 @@ var defaults = {
   shouldScroll: false,
   isAnimating: false
 };
-var scroll = styled.keyframes(_templateObject$j());
-var Wrap$6 = styled__default['default'].div(_templateObject2$i());
-var Marquee = styled__default['default'].span(_templateObject3$7(), scroll, function (props) {
+var scroll = styled.keyframes(_templateObject$n());
+var Wrap$a = styled__default['default'].div(_templateObject2$m());
+var Marquee = styled__default['default'].span(_templateObject3$b(), scroll, function (props) {
   return "".concat(props.time, "s");
 }, function (props) {
   return props.animate;
 }, function (props) {
   return props.hoverPlaystate;
 });
-var MainContent = styled__default['default'].span(_templateObject4$4());
-var Dupe = styled__default['default'].span(_templateObject5$2());
+var MainContent = styled__default['default'].span(_templateObject4$5());
+var Dupe = styled__default['default'].span(_templateObject5$3());
 var Temp = styled__default['default'].div(_templateObject6());
 
 var Marquess = /*#__PURE__*/function (_Component) {
@@ -3673,7 +4478,7 @@ var Marquess = /*#__PURE__*/function (_Component) {
        */
 
 
-      return /*#__PURE__*/React__default['default'].createElement(Wrap$6, {
+      return /*#__PURE__*/React__default['default'].createElement(Wrap$a, {
         ref: function ref(wrap) {
           return _this2.wrap = wrap;
         },
@@ -3685,84 +4490,84 @@ var Marquess = /*#__PURE__*/function (_Component) {
   return Marquess;
 }(React$1.Component);
 
-function _templateObject2$j() {
+function _templateObject2$n() {
   var data = _taggedTemplateLiteral(["\n    ", "\n"]);
 
-  _templateObject2$j = function _templateObject2() {
+  _templateObject2$n = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$k() {
+function _templateObject$o() {
   var data = _taggedTemplateLiteral(["\n    display:flex;\n    position:fixed;\n    align-items: center;\n    box-sizing: content-box;\n    background: ", ";\n    z-index:9;\n    ", "\n    ", "\n"]);
 
-  _templateObject$k = function _templateObject() {
+  _templateObject$o = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var mastBase = styled.css(_templateObject$k(), function (props) {
+var mastBase = styled.css(_templateObject$o(), function (props) {
   return props.theme.mast.background;
 }, function (props) {
   return props.position === "top" ? "\n            top:0;\n            width:100%;\n            flex-direction: row;\n        " : "";
 }, function (props) {
   return props.theme.mast.shadow ? "\n            box-shadow: 1px 0 3px rgba(0,0,0,0.3);\n        " : "";
 });
-var Mast = styled__default['default'].div(_templateObject2$j(), mastBase);
+var Mast = styled__default['default'].div(_templateObject2$n(), mastBase);
 var index = (function (props) {
   return /*#__PURE__*/React.createElement(Mast, {
     position: props.position
   }, props.children);
 });
 
-function _templateObject4$5() {
+function _templateObject4$6() {
   var data = _taggedTemplateLiteral(["\n    width: 30rem;\n    min-height: 4rem;\n    max-width: 90%;\n    max-height: 90%;\n    background: ", ";\n    color: ", ";\n    border-radius: ", ";\n    box-shadow: 0 5px 10px ", ";\n    overflow: auto;\n    padding: 2rem;\n    text-align: center;\n"]);
 
-  _templateObject4$5 = function _templateObject4() {
+  _templateObject4$6 = function _templateObject4() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject3$8() {
+function _templateObject3$c() {
   var data = _taggedTemplateLiteral(["\n    display: block;\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n    overflow: hidden;\n    background: rgba(0, 0, 0, 0.7);\n    z-index: -1;\n"]);
 
-  _templateObject3$8 = function _templateObject3() {
+  _templateObject3$c = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$k() {
+function _templateObject2$o() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n    overflow: hidden;\n    z-index: 8888;\n    justify-content: center;\n    align-items: center;\n"]);
 
-  _templateObject2$k = function _templateObject2() {
+  _templateObject2$o = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$l() {
+function _templateObject$p() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    justify-content: center;\n    color: ", ";\n"]);
 
-  _templateObject$l = function _templateObject() {
+  _templateObject$p = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var ModalHeader = styled__default['default'].h2(_templateObject$l(), function (props) {
+var ModalHeader = styled__default['default'].h2(_templateObject$p(), function (props) {
   return props.theme.main.color;
 });
-var Wrap$7 = styled__default['default'].div(_templateObject2$k());
-var Background$1 = styled__default['default'].div(_templateObject3$8());
-var ModalWrap = styled__default['default'].div(_templateObject4$5(), function (props) {
+var Wrap$b = styled__default['default'].div(_templateObject2$o());
+var Background$1 = styled__default['default'].div(_templateObject3$c());
+var ModalWrap = styled__default['default'].div(_templateObject4$6(), function (props) {
   return props.type === 'asset' ? 'transparent' : props.theme.main.boxBackground;
 }, function (props) {
   return props.theme.menu.color;
@@ -3858,7 +4663,7 @@ var Modal = /*#__PURE__*/function (_Component) {
         return null;
       }
 
-      return /*#__PURE__*/React__default['default'].createElement(Wrap$7, null, /*#__PURE__*/React__default['default'].createElement(Background$1, {
+      return /*#__PURE__*/React__default['default'].createElement(Wrap$b, null, /*#__PURE__*/React__default['default'].createElement(Background$1, {
         onClick: function onClick() {
           return onClose(null);
         }
@@ -3970,29 +4775,29 @@ var Icon$1 = function Icon() {
   })));
 };
 
-function _templateObject2$l() {
+function _templateObject2$p() {
   var data = _taggedTemplateLiteral(["\n    align-self: flex-end;\n    width: 0.9em;\n\n    svg {\n        width: 100%;\n        height: 100%;\n        fill: ", ";\n    }\n\n    .active & {\n        svg {\n            fill: red;\n        }\n    }\n"]);
 
-  _templateObject2$l = function _templateObject2() {
+  _templateObject2$p = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$m() {
+function _templateObject$q() {
   var data = _taggedTemplateLiteral(["\n    display: block;\n    text-align: right;\n\n    > * {\n        &.number &.arrow &.inactivearrow {\n            display: inline-block;\n            border: none;\n        }\n        &.number {\n            padding: 0.7em 0.5em;\n            width: 2.5em;\n            margin: 0.5em 0.1em;\n            background: #fff;\n            color: ", ";\n            border: none;\n        }\n\n        &.arrow {\n            padding: 0.8em 0.8em 0.6em 0.8em;\n            margin: 0.5em 0.1em;\n            background: #fff;\n            border: none;\n        }\n        &.inactivearrow {\n            padding: 0.8em 0.8em 0.6em 0.8em;\n            margin: 0.5em 0.1em;\n            background: #f0f0f0;\n            pointer-events: none;\n            border: none;\n        }\n\n        &.active {\n            background: #e83948;\n            border-radius: 4px 0em;\n            margin: 0.5em 0.1em;\n            padding: 0.7em 0.5em;\n            width: 2.5em;\n            outline: none;\n            color: #fff;\n            border: none;\n            border-radius: 10px;\n        }\n    }\n"]);
 
-  _templateObject$m = function _templateObject() {
+  _templateObject$q = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Wrap$8 = styled__default['default'].div(_templateObject$m(), function (props) {
+var Wrap$c = styled__default['default'].div(_templateObject$q(), function (props) {
   return props.theme.pagination.color;
 });
-var SvgWrap = styled__default['default'].div(_templateObject2$l(), function (props) {
+var SvgWrap = styled__default['default'].div(_templateObject2$p(), function (props) {
   return props.color;
 });
 var _pageSize = 20;
@@ -4024,7 +4829,7 @@ var Pagination = /*#__PURE__*/function (_Component) {
         paginate(pg);
       };
 
-      return /*#__PURE__*/React__default['default'].createElement(Wrap$8, null, /*#__PURE__*/React__default['default'].createElement(Button, {
+      return /*#__PURE__*/React__default['default'].createElement(Wrap$c, null, /*#__PURE__*/React__default['default'].createElement(Button, {
         onClick: handlePaginate(page)
       }, "Load More"));
     }
@@ -4131,7 +4936,7 @@ var Pagination = /*#__PURE__*/function (_Component) {
           totalRecords = _this$props5.totalRecords;
       var current = paginate(totalRecords, page, _pageSize, _totalPages);
       var pages = current.pages;
-      return /*#__PURE__*/React__default['default'].createElement(Wrap$8, null, pages && pages.length > 1 ? /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, this.renderBackPageButton(current), pages.map(this.renderPageButton), this.renderNextPageButton(current)) : null);
+      return /*#__PURE__*/React__default['default'].createElement(Wrap$c, null, pages && pages.length > 1 ? /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, this.renderBackPageButton(current), pages.map(this.renderPageButton), this.renderNextPageButton(current)) : null);
     }
   }, {
     key: "render",
@@ -4155,27 +4960,27 @@ var Pagination = /*#__PURE__*/function (_Component) {
   return Pagination;
 }(React$1.Component);
 
-function _templateObject2$m() {
+function _templateObject2$q() {
   var data = _taggedTemplateLiteral(["\n    ", "\n"]);
 
-  _templateObject2$m = function _templateObject2() {
+  _templateObject2$q = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$n() {
+function _templateObject$r() {
   var data = _taggedTemplateLiteral(["\n    margin: 1rem 0;\n    color: #666;\n    line-height:170%;\n"]);
 
-  _templateObject$n = function _templateObject() {
+  _templateObject$r = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var paragraphBase = styled.css(_templateObject$n());
-var paragraph = styled__default['default'].p(_templateObject2$m(), paragraphBase);
+var paragraphBase = styled.css(_templateObject$r());
+var paragraph = styled__default['default'].p(_templateObject2$q(), paragraphBase);
 
 var CheckCircleLight = function CheckCircleLight() {
   return /*#__PURE__*/React__default['default'].createElement("svg", {
@@ -4259,68 +5064,68 @@ function _templateObject6$1() {
   return data;
 }
 
-function _templateObject5$3() {
+function _templateObject5$4() {
   var data = _taggedTemplateLiteral(["\n    width: 1rem;\n    height: 1rem;\n    justify-self: flex-start;\n    margin-right: 15px;\n\n    svg {\n        width: 100%;\n        height: 100%;\n    }\n"]);
 
-  _templateObject5$3 = function _templateObject5() {
+  _templateObject5$4 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$6() {
+function _templateObject4$7() {
   var data = _taggedTemplateLiteral(["\n    width: 0.8rem;\n    height: 0.8rem;\n\n    svg {\n        width: 100%;\n        height: 100%;\n    }\n    &:hover {\n        opacity: 0.8;\n    }\n"]);
 
-  _templateObject4$6 = function _templateObject4() {
+  _templateObject4$7 = function _templateObject4() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject3$9() {
+function _templateObject3$d() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n"]);
 
-  _templateObject3$9 = function _templateObject3() {
+  _templateObject3$d = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$n() {
+function _templateObject2$r() {
   var data = _taggedTemplateLiteral(["\n    font-size: 0.9em;\n    color: ", ";\n    text-align: left;\n    flex-grow: 1;\n"]);
 
-  _templateObject2$n = function _templateObject2() {
+  _templateObject2$r = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$o() {
+function _templateObject$s() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: nowrap;\n    padding: 15px 30px 15px 15px;\n    margin-bottom: 30px;\n    font-size: 1rem;\n    color: ", ";\n    border-radius: 0.45em;\n    width: 100%;\n    background-color: ", ";\n    border: 0.15rem solid ", ";\n    justify-content: space-between;\n    align-items: center;\n"]);
 
-  _templateObject$o = function _templateObject() {
+  _templateObject$s = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var ResponseBoxText = styled__default['default'].div(_templateObject$o(), function (props) {
+var ResponseBoxText = styled__default['default'].div(_templateObject$s(), function (props) {
   return darken(0.25, props.borderColor);
 }, function (props) {
   return props.backgroundColor;
 }, function (props) {
   return props.borderColor;
 });
-var TextWrap = styled__default['default'].p(_templateObject2$n(), function (props) {
+var TextWrap = styled__default['default'].p(_templateObject2$r(), function (props) {
   return darken(0.25, props.color);
 });
-var LeftDiv = styled__default['default'].div(_templateObject3$9());
-var XWrap = styled__default['default'].button(_templateObject4$6());
-var IconWrap = styled__default['default'].div(_templateObject5$3());
+var LeftDiv = styled__default['default'].div(_templateObject3$d());
+var XWrap = styled__default['default'].button(_templateObject4$7());
+var IconWrap = styled__default['default'].div(_templateObject5$4());
 var ResponseBoxStyled = styled__default['default'].div(_templateObject6$1(), function (props) {
   return props.align;
 });
@@ -4413,50 +5218,50 @@ var ResponseBox = function ResponseBox(props) {
   }, children)), /*#__PURE__*/React__default['default'].createElement(XButton, null)));
 };
 
-function _templateObject5$4() {
+function _templateObject5$5() {
   var data = _taggedTemplateLiteral(["\n    overflow: auto;\n    margin-bottom: 15px;\n\n    td,\n    th {\n        white-space: nowrap;\n    }\n"]);
 
-  _templateObject5$4 = function _templateObject5() {
+  _templateObject5$5 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$7() {
+function _templateObject4$8() {
   var data = _taggedTemplateLiteral(["\n    ", "\n\n    .iconWrap {\n        box-shadow: ", ";\n    }\n"]);
 
-  _templateObject4$7 = function _templateObject4() {
+  _templateObject4$8 = function _templateObject4() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject3$a() {
+function _templateObject3$e() {
   var data = _taggedTemplateLiteral(["\n    opacity: ", ";\n    border-radius: ", ";\n    min-height: 50px;\n\n    td:first-child,\n    th:first-child {\n        border-radius: ", " 0 0 ", ";\n    }\n\n    td:last-child,\n    th:last-child {\n        border-radius: 0 ", " ", " 0;\n        text-align: right;\n        position: sticky;\n        right: 0px;\n        border-left: 1px;\n        padding: 10px 15px;\n    }\n"]);
 
-  _templateObject3$a = function _templateObject3() {
+  _templateObject3$e = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$o() {
+function _templateObject2$s() {
   var data = _taggedTemplateLiteral(["\n    text-align: left;\n    width: 100%;\n    margin-bottom: 30px;\n    color: ", ";\n    border-collapse: separate;\n    border-spacing: 0 0.3rem;\n\n    &:last-child {\n        margin-bottom: 0;\n    }\n"]);
 
-  _templateObject2$o = function _templateObject2() {
+  _templateObject2$s = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$p() {
+function _templateObject$t() {
   var data = _taggedTemplateLiteral(["\n    padding: 10px 15px;\n    background: ", ";\n"]);
 
-  _templateObject$p = function _templateObject() {
+  _templateObject$t = function _templateObject() {
     return data;
   };
 
@@ -4484,13 +5289,13 @@ var debounce = function debounce(func, wait, immediate) {
   };
 };
 
-var TableElementBase = styled.css(_templateObject$p(), function (props) {
+var TableElementBase = styled.css(_templateObject$t(), function (props) {
   return props.background ? props.background : props.theme.main.boxBackground;
 });
-var TableBase = styled.css(_templateObject2$o(), function (props) {
+var TableBase = styled.css(_templateObject2$s(), function (props) {
   return props.theme.main.color;
 });
-var TrBase = styled.css(_templateObject3$a(), function (props) {
+var TrBase = styled.css(_templateObject3$e(), function (props) {
   return props.opacity ? props.opacity : 1;
 }, function (props) {
   return props.theme.main.borderRadius;
@@ -4503,10 +5308,10 @@ var TrBase = styled.css(_templateObject3$a(), function (props) {
 }, function (props) {
   return props.theme.main.borderRadius;
 });
-var TableStyled = styled__default['default'].table(_templateObject4$7(), TableBase, function (p) {
+var TableStyled = styled__default['default'].table(_templateObject4$8(), TableBase, function (p) {
   return p.overflowed ? "-5px 0 8px -5px ".concat(p.theme.rowComponent.actionShadow) : 'none';
 });
-var ResponsiveTable = styled__default['default'].div(_templateObject5$4());
+var ResponsiveTable = styled__default['default'].div(_templateObject5$5());
 
 var Table = /*#__PURE__*/function (_React$Component) {
   _inherits(Table, _React$Component);
@@ -4587,16 +5392,16 @@ var Table = /*#__PURE__*/function (_React$Component) {
   return Table;
 }(React__default['default'].Component);
 
-function _templateObject$q() {
+function _templateObject$u() {
   var data = _taggedTemplateLiteral(["\n    ", "\n"]);
 
-  _templateObject$q = function _templateObject() {
+  _templateObject$u = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var TrStyled = styled__default['default'].tr(_templateObject$q(), TrBase);
+var TrStyled = styled__default['default'].tr(_templateObject$u(), TrBase);
 
 var Tr = function Tr(_ref) {
   var children = _ref.children,
@@ -4618,16 +5423,16 @@ var Tr = function Tr(_ref) {
   }, rest), children);
 };
 
-function _templateObject$r() {
+function _templateObject$v() {
   var data = _taggedTemplateLiteral(["\n    ", "\n    text-align: ", ";\n"]);
 
-  _templateObject$r = function _templateObject() {
+  _templateObject$v = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var TdStyled = styled__default['default'].td(_templateObject$r(), TableElementBase, function (props) {
+var TdStyled = styled__default['default'].td(_templateObject$v(), TableElementBase, function (props) {
   return props.align ? props.align : null;
 });
 
@@ -4641,16 +5446,16 @@ var Td = function Td(_ref) {
   }, children);
 };
 
-function _templateObject$s() {
+function _templateObject$w() {
   var data = _taggedTemplateLiteral(["\n    ", "\n    padding: 15px 15px;\n"]);
 
-  _templateObject$s = function _templateObject() {
+  _templateObject$w = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var ThStyled = styled__default['default'].th(_templateObject$s(), TableElementBase);
+var ThStyled = styled__default['default'].th(_templateObject$w(), TableElementBase);
 
 var Th = function Th(_ref) {
   var children = _ref.children,
@@ -4660,154 +5465,58 @@ var Th = function Th(_ref) {
   }, children);
 };
 
-function _templateObject3$b() {
-  var data = _taggedTemplateLiteral(["\n    font-size: 1.1em;\n    margin-left: 0.75rem;\n"]);
-
-  _templateObject3$b = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2$p() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: row;\n    flex-wrap: nowrap;\n    justify-content: flex-start;\n    align-items: center;\n    position: relative;\n"]);
-
-  _templateObject2$p = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject$t() {
-  var data = _taggedTemplateLiteral(["\n    .switch {\n        position: relative;\n        display: inline-block;\n        width: 40px;\n        height: 23px;\n    }\n\n    /* Hide default HTML checkbox */\n    .switch input {\n        opacity: 0;\n        width: 0;\n        height: 0;\n    }\n\n    /* The slider */\n    .slider {\n        position: absolute;\n        cursor: pointer;\n        top: 0;\n        left: 0;\n        right: 0;\n        bottom: 0;\n        background-color: #ccc;\n        -webkit-transition: 0.4s;\n        transition: 0.4s;\n    }\n\n    .slider:before {\n        position: absolute;\n        content: '';\n        height: 19px;\n        width: 19px;\n        left: 1px;\n        bottom: 2px;\n        background-color: white;\n        -webkit-transition: 0.4s;\n        transition: 0.4s;\n    }\n\n    input:checked + .slider {\n        background-color: ", ";\n    }\n\n    input:focus + .slider {\n        box-shadow: 0 0 1px ", ";\n    }\n\n    input:checked + .slider:before {\n        -webkit-transform: translateX(19px);\n        -ms-transform: translateX(19px);\n        transform: translateX(19px);\n    }\n\n    /* Rounded sliders */\n    .slider.round {\n        border-radius: 34px;\n    }\n\n    .slider.round:before {\n        border-radius: 50%;\n    }\n"]);
-
-  _templateObject$t = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var SliderDiv = styled__default['default'].div(_templateObject$t(), function (props) {
-  return theme.products[props.product || 'default'].primary;
-}, function (props) {
-  return theme.products[props.product || 'default'].primary;
-});
-var PaddedLabel$1 = styled__default['default'](Label)(_templateObject2$p());
-var SpanLabel = styled__default['default'].span(_templateObject3$b());
-
-var Slider = /*#__PURE__*/function (_PureComponent) {
-  _inherits(Slider, _PureComponent);
-
-  var _super = _createSuper(Slider);
-
-  function Slider(props) {
-    var _this;
-
-    _classCallCheck(this, Slider);
-
-    _this = _super.call(this, props);
-    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(Slider, [{
-    key: "onChange",
-    value: function onChange(e) {
-      if (typeof this.props.onChange === 'function' && this.props.onChange !== undefined) {
-        this.props.onChange(e);
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          name = _this$props.name,
-          id = _this$props.id,
-          checked = _this$props.checked,
-          value = _this$props.value,
-          label = _this$props.label,
-          product = _this$props.product,
-          _this$props$className = _this$props.className,
-          className = _this$props$className === void 0 ? null : _this$props$className;
-      return /*#__PURE__*/React__default['default'].createElement(SliderDiv, {
-        product: product,
-        className: className
-      }, /*#__PURE__*/React__default['default'].createElement(PaddedLabel$1, {
-        htmlFor: name
-      }, /*#__PURE__*/React__default['default'].createElement("div", null, /*#__PURE__*/React__default['default'].createElement("div", {
-        htmlFor: name,
-        className: "switch"
-      }, /*#__PURE__*/React__default['default'].createElement("input", {
-        onChange: this.onChange,
-        id: id,
-        value: value,
-        checked: checked,
-        type: "checkbox"
-      }), /*#__PURE__*/React__default['default'].createElement("span", {
-        className: "slider round"
-      }))), /*#__PURE__*/React__default['default'].createElement(SpanLabel, {
-        className: "spanLabel"
-      }, label)));
-    }
-  }]);
-
-  return Slider;
-}(React$1.PureComponent);
-
-function _templateObject4$8() {
+function _templateObject4$9() {
   var data = _taggedTemplateLiteral(["\n    height: 100%;\n    width: 100%;\n    overflow: hidden;\n    background-color: ", ";\n    border-radius: 1rem;\n"]);
 
-  _templateObject4$8 = function _templateObject4() {
+  _templateObject4$9 = function _templateObject4() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject3$c() {
+function _templateObject3$f() {
   var data = _taggedTemplateLiteral(["\n    height: 100%;\n    width: ", ";\n    transition: width 0.25s ease-in;\n    background-color: ", ";\n    border-radius: 1rem;\n    text-align: right;\n    &:after {\n        content: '.';\n        visibility: hidden;\n    }\n"]);
 
-  _templateObject3$c = function _templateObject3() {
+  _templateObject3$f = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$q() {
+function _templateObject2$t() {
   var data = _taggedTemplateLiteral(["\n    color: ", ";\n    padding: 0 1rem;\n"]);
 
-  _templateObject2$q = function _templateObject2() {
+  _templateObject2$t = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$u() {
+function _templateObject$x() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    width: 100%;\n    height: 100%;\n"]);
 
-  _templateObject$u = function _templateObject() {
+  _templateObject$x = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var ProgressBarContainer = styled__default['default'].div(_templateObject$u());
-var Text = styled__default['default'].span(_templateObject2$q(), function (_ref) {
+var ProgressBarContainer = styled__default['default'].div(_templateObject$x());
+var Text$1 = styled__default['default'].span(_templateObject2$t(), function (_ref) {
   var color = _ref.color;
   return color;
 });
-var ProgressBarFiller = styled__default['default'].div(_templateObject3$c(), function (_ref2) {
+var ProgressBarFiller = styled__default['default'].div(_templateObject3$f(), function (_ref2) {
   var progress = _ref2.progress;
   return "".concat(progress, "%");
 }, function (_ref3) {
   var color = _ref3.color;
   return color;
 });
-var ProgressBarTotal = styled__default['default'].div(_templateObject4$8(), theme.colors.fadeToGrey);
+var ProgressBarTotal = styled__default['default'].div(_templateObject4$9(), theme.colors.fadeToGrey);
 
 var getBarColor = function getBarColor(progress) {
   if (progress === 100) {
@@ -4826,7 +5535,7 @@ var ProgressBar = function ProgressBar(_ref4) {
   }, /*#__PURE__*/React__default['default'].createElement(ProgressBarTotal, null, /*#__PURE__*/React__default['default'].createElement(ProgressBarFiller, {
     progress: progress,
     color: color
-  })), /*#__PURE__*/React__default['default'].createElement(Text, null, "".concat(progress, "%")));
+  })), /*#__PURE__*/React__default['default'].createElement(Text$1, null, "".concat(progress, "%")));
 };
 
 var initialState = {};
@@ -14572,16 +15281,16 @@ var Icon$2 = function Icon() {
   }));
 };
 
-function _templateObject$v() {
+function _templateObject$y() {
   var data = _taggedTemplateLiteral([""]);
 
-  _templateObject$v = function _templateObject() {
+  _templateObject$y = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Wrap$9 = styled__default['default'](motion.div)(_templateObject$v());
+var Wrap$d = styled__default['default'](motion.div)(_templateObject$y());
 
 function isTouchDevice() {
   return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
@@ -14618,7 +15327,7 @@ var HoverIcon = function HoverIcon(_ref) {
       text = _ref.text;
   var dispatch = reactRedux.useDispatch();
   var wrapRef = React$1.useRef(null);
-  return /*#__PURE__*/React__default['default'].createElement(Wrap$9, {
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$d, {
     ref: wrapRef,
     onMouseOver: function onMouseOver() {
       return debounce$1(onHoverStart(wrapRef, dispatch, width, height, text), 500);
@@ -14629,44 +15338,44 @@ var HoverIcon = function HoverIcon(_ref) {
   }, /*#__PURE__*/React__default['default'].createElement(Icon$2, null));
 };
 
-function _templateObject3$d() {
+function _templateObject3$g() {
   var data = _taggedTemplateLiteral(["\n    display: block;\n    position: relative;\n    background: #ffffff;\n    color: #222222;\n    width: 100vw;\n    height: 100vh;\n    min-width: 5rem;\n    min-height: 2rem;\n    max-width: ", ";\n    max-height: ", ";\n    padding: 0.3rem 0.6rem;\n    box-sizing: border-box;\n    border-radius: 3px;\n    border: 1px solid grey;\n    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);\n\n    &:before,\n    &:after {\n        content: '';\n        display: block;\n        width: 0;\n        height: 0;\n        position: absolute;\n    }\n    &:before {\n        border-left: 10px solid transparent;\n        border-top: 10px solid grey;\n        border-right: 10px solid transparent;\n        left: calc(50% - 10px);\n        bottom: -9px;\n        z-index: -1;\n    }\n    &:after {\n        border-left: 8px solid transparent;\n        border-top: 8px solid #ffffff;\n        border-right: 8px solid transparent;\n        left: calc(50% - 8px);\n        bottom: -8px;\n    }\n"]);
 
-  _templateObject3$d = function _templateObject3() {
+  _templateObject3$g = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$r() {
+function _templateObject2$u() {
   var data = _taggedTemplateLiteral(["\n    position: absolute;\n    top: ", ";\n    left: ", ";\n"]);
 
-  _templateObject2$r = function _templateObject2() {
+  _templateObject2$u = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$w() {
+function _templateObject$z() {
   var data = _taggedTemplateLiteral(["\n    display: block;\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 0px;\n    height: 0px;\n    overflow: visible;\n    z-index: 100;\n"]);
 
-  _templateObject$w = function _templateObject() {
+  _templateObject$z = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Wrap$a = styled__default['default'](motion.div)(_templateObject$w());
-var ToolTipWrap = styled__default['default'](motion.div)(_templateObject2$r(), function (_ref) {
+var Wrap$e = styled__default['default'](motion.div)(_templateObject$z());
+var ToolTipWrap = styled__default['default'](motion.div)(_templateObject2$u(), function (_ref) {
   var y = _ref.y;
   return "".concat(y);
 }, function (_ref2) {
   var x = _ref2.x;
   return "".concat(x);
 });
-var ToolTip = styled__default['default'](motion.div)(_templateObject3$d(), function (_ref3) {
+var ToolTip = styled__default['default'](motion.div)(_templateObject3$g(), function (_ref3) {
   var maxWidth = _ref3.maxWidth;
   return "".concat(maxWidth);
 }, function (_ref4) {
@@ -14725,7 +15434,7 @@ var ToolTipContainer = function ToolTipContainer(_ref7) {
       maxWidth = _useSelector.maxWidth,
       maxHeight = _useSelector.maxHeight;
 
-  return /*#__PURE__*/React__default['default'].createElement(Wrap$a, null, /*#__PURE__*/React__default['default'].createElement(ToolTipContents, {
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$e, null, /*#__PURE__*/React__default['default'].createElement(ToolTipContents, {
     isOpen: isOpen,
     content: content,
     x: x,
@@ -14766,16 +15475,16 @@ function scheduleTooltip() {
   }
 }
 
-function _templateObject$x() {
+function _templateObject$A() {
   var data = _taggedTemplateLiteral(["\n    width: ", ";\n    margin: 0 auto;\n    border-bottom: 1px solid ", ";\n"]);
 
-  _templateObject$x = function _templateObject() {
+  _templateObject$A = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledHr = styled__default['default'].hr(_templateObject$x(), function (_ref) {
+var StyledHr = styled__default['default'].hr(_templateObject$A(), function (_ref) {
   var width = _ref.width;
   return width;
 }, function (_ref2) {
@@ -14794,417 +15503,132 @@ var Hr = function Hr(_ref3) {
   });
 };
 
-function _templateObject$y() {
-  var data = _taggedTemplateLiteral(["\n    display:none;\n"]);
+function _templateObject$B() {
+  var data = _taggedTemplateLiteral(["\n    display: block;\n    \n    > * {\n        display: flex;\n\n        ", "\n\n        ", "\n\n        \n\n    }\n    //grid-template-rows: ", ";\n"]);
 
-  _templateObject$y = function _templateObject() {
+  _templateObject$B = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var THUNDERSTRUCK = 'thunderstruck';
-var INVIGORATED = 'invigorated';
-var DAZZLED = 'dazzled';
-var ANTICIPATORY = 'anticipatory';
-var CONTEMPLATIVE = 'contemplative';
-var SOOTHING = 'soothing';
-var SLEEPY = 'sleepy';
-var SERENE = 'serene';
-var RELAXED = 'relaxed';
-var SATISFIED = 'satisfied';
-var MERRY = 'merry';
-var DELIGHTED = 'delighted';
-var moods = [THUNDERSTRUCK, INVIGORATED, DAZZLED, ANTICIPATORY, CONTEMPLATIVE, SOOTHING, SLEEPY, SERENE, RELAXED, SATISFIED, MERRY, DELIGHTED];
-var Radio$1 = styled__default['default'].input(_templateObject$y());
 
-var handleClick = function handleClick(className, setSelected, parentOnClick) {
-  var mood = moods.find(function (obj) {
-    return className.includes(obj);
-  });
-  parentOnClick(mood);
-  setSelected(mood);
+var Wrap$f = styled__default['default'].div(_templateObject$B(), function (_ref) {
+  var columnString = _ref.columnString;
+  return columnString !== null ? "> * { width:" + columnString + "; }" : null;
+}, function (_ref2) {
+  var columnArray = _ref2.columnArray;
+  return columnArray !== null ? columnArray.map(function (columnString, indx) {
+    return "> *:nth-child(" + (indx + 1) + ") { width:" + columnString + "; }";
+  }) : null;
+}, function (_ref3) {
+  var rows = _ref3.rows;
+  return rows;
+}); //grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+
+var Header$2 = function Header(_ref4) {
+  var children = _ref4.children,
+      _ref4$columns = _ref4.columns,
+      columns = _ref4$columns === void 0 ? '12rem' : _ref4$columns;
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$f, {
+    columnString: typeof columns === 'string' ? columns : null,
+    columnArray: typeof columns !== 'string' ? columns : null
+  }, children);
 };
 
-var MoodPath = function MoodPath(_ref) {
-  var d = _ref.d,
-      className = _ref.className,
-      fill = _ref.fill,
-      transform = _ref.transform,
-      _ref$opacity = _ref.opacity,
-      opacity = _ref$opacity === void 0 ? 1 : _ref$opacity,
-      selected = _ref.selected,
-      _ref$adjacent = _ref.adjacent,
-      adjacent = _ref$adjacent === void 0 ? [] : _ref$adjacent,
-      setSelected = _ref.setSelected,
-      parentOnClick = _ref.parentOnClick;
-  var pathProps = {
-    onClick: function onClick() {
-      return handleClick(className, setSelected, parentOnClick);
-    },
-    d: d,
-    className: className,
-    fill: fill,
-    transform: transform,
-    opacity: opacity
+function _templateObject$C() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: nowrap;\n    border-bottom: 1px solid ", ";\n\n    > * {\n        font-weight: 700;\n    }\n"]);
+
+  _templateObject$C = function _templateObject() {
+    return data;
   };
 
-  if (className.includes('selected')) {
-    if (className.includes(selected)) {
-      return /*#__PURE__*/React__default['default'].createElement("path", pathProps);
-    }
+  return data;
+}
+var Wrap$g = styled__default['default'].div(_templateObject$C(), theme.generalColors.midGrey);
 
-    return null;
-  }
-
-  if (className.includes('adjacent')) {
-    if (adjacent.includes(selected)) {
-      return /*#__PURE__*/React__default['default'].createElement("path", pathProps);
-    }
-
-    return null;
-  }
-
-  return /*#__PURE__*/React__default['default'].createElement("path", pathProps);
+var Header$3 = function Header(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$g, null, children);
 };
 
-var MoodSelector = function MoodSelector(_ref2) {
-  var _ref2$onMoodClick = _ref2.onMoodClick,
-      onMoodClick = _ref2$onMoodClick === void 0 ? function () {} : _ref2$onMoodClick;
+function _templateObject$D() {
+  var data = _taggedTemplateLiteral(["\n    padding: 0.6rem 0.4rem;\n"]);
 
-  var _useState = React$1.useState('thunderstruck-adjacent'),
-      _useState2 = _slicedToArray(_useState, 2),
-      selected = _useState2[0],
-      setSelected = _useState2[1];
-
-  var passToAll = {
-    setSelected: setSelected,
-    selected: selected,
-    parentOnClick: onMoodClick
+  _templateObject$D = function _templateObject() {
+    return data;
   };
-  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement("svg", {
-    width: "342px",
-    height: "241px",
-    viewBox: "0 0 342 241",
-    version: "1.1",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/React__default['default'].createElement("title", null, "mood-selector"), /*#__PURE__*/React__default['default'].createElement("g", {
-    className: "mood-selector",
-    stroke: "none",
-    strokeWidth: "1",
-    fill: "none",
-    fillRule: "evenodd"
-  }, /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M143.868238,16.0795885 C162.206084,16.0795885 179.391072,21.0155573 194.167073,29.6313653 L179.077662,55.5659719 C168.734407,49.53482 156.704829,46.0795885 143.868238,46.0795885 L143.868238,16.0795885 L143.868238,16.0795885 Z",
-    className: "thunderstruck-adjacent",
-    fill: "#E83948",
-    transform: "translate(169.017656, 35.822780) rotate(330.000000) translate(-169.017656, -35.822780) ",
-    adjacent: [INVIGORATED, DAZZLED]
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M142.449798,10.7858995 C161.704354,10.7858995 179.748433,15.9685687 195.263136,25.0150088 L177.659223,55.2722829 C167.315968,49.2411309 155.286389,45.7858995 142.449798,45.7858995 L142.449798,10.7858995 L142.449798,10.7858995 Z",
-    className: "thunderstruck-selected",
-    fill: "#E83948",
-    transform: "translate(168.856467, 33.029091) rotate(330.000000) translate(-168.856467, -33.029091) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M143.868238,16.0795885 C162.206084,16.0795885 179.391072,21.0155573 194.167073,29.6313653 L179.077662,55.5659719 C168.734407,49.53482 156.704829,46.0795885 143.868238,46.0795885 L143.868238,16.0795885 L143.868238,16.0795885 Z",
-    className: "thunderstruck-inactive",
-    fill: "#E83948",
-    opacity: "0.302818",
-    transform: "translate(169.017656, 35.822780) rotate(330.000000) translate(-169.017656, -35.822780) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    adjacent: [THUNDERSTRUCK, ANTICIPATORY],
-    d: "M103.82278,36.9823443 C122.160626,36.9823443 139.345614,41.918313 154.121615,50.5341211 L139.032204,76.4687277 C128.688949,70.4375758 116.659371,66.9823443 103.82278,66.9823443 L103.82278,36.9823443 L103.82278,36.9823443 Z",
-    className: "dazzled-adjacent",
-    fill: "#C5037E",
-    transform: "translate(128.972198, 56.725536) rotate(300.000000) translate(-128.972198, -56.725536) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M101.029091,32.1435329 C120.283647,32.1435329 138.327726,37.3262022 153.842428,46.3726422 L136.238515,76.6299163 C125.89526,70.5987644 113.865682,67.1435329 101.029091,67.1435329 L101.029091,32.1435329 L101.029091,32.1435329 Z",
-    className: "dazzled-selected",
-    fill: "#C5037E",
-    transform: "translate(127.435760, 54.386725) rotate(300.000000) translate(-127.435760, -54.386725) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M103.82278,36.9823443 C122.160626,36.9823443 139.345614,41.918313 154.121615,50.5341211 L139.032204,76.4687277 C128.688949,70.4375758 116.659371,66.9823443 103.82278,66.9823443 L103.82278,36.9823443 L103.82278,36.9823443 Z",
-    className: "dazzled-inactive",
-    fill: "#C5037E",
-    opacity: "0.302818",
-    transform: "translate(128.972198, 56.725536) rotate(300.000000) translate(-128.972198, -56.725536) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    adjacent: [CONTEMPLATIVE, DAZZLED],
-    d: "M79.5937742,75.1073908 C97.9316196,75.1073908 115.116608,80.0433595 129.892609,88.6591676 L114.803198,114.593774 C104.459943,108.562622 92.4303651,105.107391 79.5937742,105.107391 L79.5937742,75.1073908 L79.5937742,75.1073908 Z",
-    className: "anticipatory-adjacent",
-    fill: "#6D398B",
-    transform: "translate(104.743192, 94.850583) rotate(270.000000) translate(-104.743192, -94.850583) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M75.8365231,71.3501397 C95.091079,71.3501397 113.135158,76.532809 128.64986,85.579249 L111.045947,115.836523 C100.702692,109.805371 88.673114,106.35014 75.8365231,106.35014 L75.8365231,71.3501397 L75.8365231,71.3501397 Z",
-    className: "anticipatory-selected",
-    fill: "#6D398B",
-    transform: "translate(102.243192, 93.593331) rotate(270.000000) translate(-102.243192, -93.593331) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M79.5937742,75.1073908 C97.9316196,75.1073908 115.116608,80.0433595 129.892609,88.6591676 L114.803198,114.593774 C104.459943,108.562622 92.4303651,105.107391 79.5937742,105.107391 L79.5937742,75.1073908 L79.5937742,75.1073908 Z",
-    className: "anticipatory-inactive",
-    fill: "#6D398B",
-    opacity: "0.302818",
-    transform: "translate(104.743192, 94.850583) rotate(270.000000) translate(-104.743192, -94.850583) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    adjacent: [ANTICIPATORY, SOOTHING],
-    d: "M77.6733627,120.239153 C96.0112082,120.239153 113.196196,125.175121 127.972198,133.790929 L112.882787,159.725536 C102.539532,153.694384 90.5099536,150.239153 77.6733627,150.239153 L77.6733627,120.239153 L77.6733627,120.239153 Z",
-    className: "contemplative-adjacent",
-    fill: "#454E98",
-    transform: "translate(102.822780, 139.982344) rotate(240.000000) translate(-102.822780, -139.982344) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M73.6231751,117.900776 C92.8773159,117.900776 110.921032,123.083222 126.435509,132.1293 L108.832599,162.387159 C98.4893444,156.356007 86.459766,152.900776 73.6231751,152.900776 L73.6231751,117.900776 L73.6231751,117.900776 Z",
-    className: "contemplative-selected",
-    fill: "#454E98",
-    transform: "translate(100.029342, 140.143967) rotate(240.000000) translate(-100.029342, -140.143967) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M77.6733627,120.239153 C96.0112082,120.239153 113.196196,125.175121 127.972198,133.790929 L112.882787,159.725536 C102.539532,153.694384 90.5099536,150.239153 77.6733627,150.239153 L77.6733627,120.239153 L77.6733627,120.239153 Z",
-    className: "contemplative-inactive",
-    fill: "#454E98",
-    opacity: "0.302818",
-    transform: "translate(102.822780, 139.982344) rotate(240.000000) translate(-102.822780, -139.982344) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    adjacent: [CONTEMPLATIVE, SLEEPY],
-    d: "M98.5761185,160.284611 C116.913964,160.284611 134.098952,165.220579 148.874954,173.836387 L133.785543,199.770994 C123.442288,193.739842 111.412709,190.284611 98.5761185,190.284611 L98.5761185,160.284611 L98.5761185,160.284611 Z",
-    className: "soothing-adjacent",
-    fill: "#2B70B1",
-    transform: "translate(123.725536, 180.027802) rotate(210.000000) translate(-123.725536, -180.027802) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M94.980056,159.321049 C114.234612,159.321049 132.27869,164.503718 147.793393,173.550158 L130.18948,203.807432 C119.846225,197.77628 107.816647,194.321049 94.980056,194.321049 L94.980056,159.321049 L94.980056,159.321049 Z",
-    className: "soothing-selected",
-    fill: "#2B70B1",
-    transform: "translate(121.386725, 181.564240) rotate(210.000000) translate(-121.386725, -181.564240) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M98.5761185,160.284611 C116.913964,160.284611 134.098952,165.220579 148.874954,173.836387 L133.785543,199.770994 C123.442288,193.739842 111.412709,190.284611 98.5761185,190.284611 L98.5761185,160.284611 L98.5761185,160.284611 Z",
-    className: "soothing-inactive",
-    fill: "#2B70B1",
-    opacity: "0.302818",
-    transform: "translate(123.725536, 180.027802) rotate(210.000000) translate(-123.725536, -180.027802) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    adjacent: [SERENE, SOOTHING],
-    d: "M136.701165,184.513617 C155.03901,184.513617 172.223999,189.449585 187,198.065393 L171.910589,224 C161.567334,217.968848 149.537756,214.513617 136.701165,214.513617 L136.701165,184.513617 L136.701165,184.513617 Z",
-    className: "sleepy-adjacent",
-    fill: "#30A4C5",
-    transform: "translate(161.850583, 204.256808) rotate(180.000000) translate(-161.850583, -204.256808) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M134.187666,184.514201 C153.441807,184.514201 171.485523,189.696647 187,198.742725 L169.396088,229 C159.053058,222.969209 147.023842,219.514201 134.187666,219.514201 L134.187666,184.514201 L134.187666,184.514201 Z",
-    className: "sleepy-selected",
-    fill: "#30A4C5",
-    transform: "translate(160.593833, 206.757101) rotate(180.000000) translate(-160.593833, -206.757101) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M136.701165,184.513617 C155.03901,184.513617 172.223999,189.449585 187,198.065393 L171.910589,224 C161.567334,217.968848 149.537756,214.513617 136.701165,214.513617 L136.701165,184.513617 L136.701165,184.513617 Z",
-    className: "sleepy-inactive",
-    fill: "#30A4C5",
-    opacity: "0.302818",
-    transform: "translate(161.850583, 204.256808) rotate(180.000000) translate(-161.850583, -204.256808) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    adjacent: [RELAXED, SLEEPY],
-    d: "M181.832927,186.434028 C200.170772,186.434028 217.35576,191.369997 232.131762,199.985805 L217.042351,225.920411 C206.699096,219.88926 194.669518,216.434028 181.832927,216.434028 L181.832927,186.434028 L181.832927,186.434028 Z",
-    className: "serene-adjacent",
-    fill: "#2C8D5A",
-    transform: "translate(206.982344, 206.177220) rotate(150.000000) translate(-206.982344, -206.177220) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M180.736864,186.727717 C199.99142,186.727717 218.035499,191.910386 233.550202,200.956826 L215.946288,231.214101 C205.603034,225.182949 193.573455,221.727717 180.736864,221.727717 L180.736864,186.727717 L180.736864,186.727717 Z",
-    className: "serene-selected",
-    fill: "#2C8D5A",
-    transform: "translate(207.143533, 208.970909) rotate(150.000000) translate(-207.143533, -208.970909) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M181.832927,186.434028 C200.170772,186.434028 217.35576,191.369997 232.131762,199.985805 L217.042351,225.920411 C206.699096,219.88926 194.669518,216.434028 181.832927,216.434028 L181.832927,186.434028 L181.832927,186.434028 Z",
-    className: "serene-inactive",
-    fill: "#2C8D5A",
-    opacity: "0.302818",
-    transform: "translate(206.982344, 206.177220) rotate(150.000000) translate(-206.982344, -206.177220) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    adjacent: [SERENE, SATISFIED],
-    d: "M221.878385,165.531272 C240.21623,165.531272 257.401218,170.467241 272.17722,179.083049 L257.087809,205.017656 C246.744554,198.986504 234.714976,195.531272 221.878385,195.531272 L221.878385,165.531272 L221.878385,165.531272 Z",
-    className: "relaxed-adjacent",
-    fill: "#7CC530",
-    transform: "translate(247.027802, 185.274464) rotate(120.000000) translate(-247.027802, -185.274464) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M222.157572,165.370084 C241.412127,165.370084 259.456206,170.552753 274.970909,179.599193 L257.366996,209.856467 C247.023741,203.825315 234.994163,200.370084 222.157572,200.370084 L222.157572,165.370084 L222.157572,165.370084 Z",
-    className: "relaxed-selected",
-    fill: "#7CC530",
-    transform: "translate(248.564240, 187.613275) rotate(120.000000) translate(-248.564240, -187.613275) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M221.878385,165.531272 C240.21623,165.531272 257.401218,170.467241 272.17722,179.083049 L257.087809,205.017656 C246.744554,198.986504 234.714976,195.531272 221.878385,195.531272 L221.878385,165.531272 L221.878385,165.531272 Z",
-    className: "relaxed-inactive",
-    fill: "#7CC530",
-    opacity: "0.302818",
-    transform: "translate(247.027802, 185.274464) rotate(120.000000) translate(-247.027802, -185.274464) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    adjacent: [RELAXED, MERRY],
-    d: "M246.107391,127.406226 C264.445236,127.406226 281.630224,132.342195 296.406226,140.958003 L281.316815,166.892609 C270.97356,160.861457 258.943982,157.406226 246.107391,157.406226 L246.107391,127.406226 L246.107391,127.406226 Z",
-    className: "satisfied-adjacent",
-    fill: "#FFCE01",
-    transform: "translate(271.256808, 147.149417) rotate(90.000000) translate(-271.256808, -147.149417) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M247.35014,126.163477 C266.604696,126.163477 284.648774,131.346146 300.163477,140.392586 L282.559564,170.64986 C272.216309,164.618708 260.186731,161.163477 247.35014,161.163477 L247.35014,126.163477 L247.35014,126.163477 Z",
-    className: "satisfied-selected",
-    fill: "#FFCE01",
-    transform: "translate(273.756808, 148.406669) rotate(90.000000) translate(-273.756808, -148.406669) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M246.107391,127.406226 C264.445236,127.406226 281.630224,132.342195 296.406226,140.958003 L281.316815,166.892609 C270.97356,160.861457 258.943982,157.406226 246.107391,157.406226 L246.107391,127.406226 L246.107391,127.406226 Z",
-    className: "satisfied-inactive",
-    fill: "#FFCE01",
-    opacity: "0.302818",
-    transform: "translate(271.256808, 147.149417) rotate(90.000000) translate(-271.256808, -147.149417) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    adjacent: [DELIGHTED, SATISFIED],
-    d: "M248.027802,82.274464 C266.365648,82.274464 283.550636,87.2104327 298.326637,95.8262407 L283.237226,121.760847 C272.893972,115.729695 260.864393,112.274464 248.027802,112.274464 L248.027802,82.274464 L248.027802,82.274464 Z",
-    className: "merry-adjacent",
-    fill: "#F9BD45",
-    transform: "translate(273.177220, 102.017656) rotate(60.000000) translate(-273.177220, -102.017656) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M249.564744,79.6129871 C268.818885,79.6129871 286.862601,84.7954329 302.377078,93.8415113 L284.773166,124.098786 C274.430136,118.067995 262.40092,114.612987 249.564744,114.612987 L249.564744,79.6129871 L249.564744,79.6129871 Z",
-    className: "merry-selected",
-    fill: "#F9BD45",
-    transform: "translate(275.970911, 101.855886) rotate(60.000000) translate(-275.970911, -101.855886) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M248.027802,82.274464 C266.365648,82.274464 283.550636,87.2104327 298.326637,95.8262407 L283.237226,121.760847 C272.893972,115.729695 260.864393,112.274464 248.027802,112.274464 L248.027802,82.274464 L248.027802,82.274464 Z",
-    className: "merry-inactive",
-    fill: "#F9BD45",
-    opacity: "0.302818",
-    transform: "translate(273.177220, 102.017656) rotate(60.000000) translate(-273.177220, -102.017656) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    adjacent: [MERRY, INVIGORATED],
-    d: "M227.125046,42.229006 C245.462892,42.229006 262.64788,47.1649747 277.423881,55.7807828 L262.334471,81.7153894 C251.991216,75.6842375 239.961637,72.229006 227.125046,72.229006 L227.125046,42.229006 L227.125046,42.229006 Z",
-    className: "delighted-adjacent",
-    fill: "#F7823B",
-    transform: "translate(252.274464, 61.972198) rotate(30.000000) translate(-252.274464, -61.972198) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M228.206607,38.1925681 C247.461163,38.1925681 265.505241,43.3752373 281.019944,52.4216774 L263.416031,82.6789515 C253.072776,76.6477995 241.043198,73.1925681 228.206607,73.1925681 L228.206607,38.1925681 L228.206607,38.1925681 Z",
-    className: "delighted-selected",
-    fill: "#F7823B",
-    transform: "translate(254.613275, 60.435760) rotate(30.000000) translate(-254.613275, -60.435760) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M227.125046,42.229006 C245.462892,42.229006 262.64788,47.1649747 277.423881,55.7807828 L262.334471,81.7153894 C251.991216,75.6842375 239.961637,72.229006 227.125046,72.229006 L227.125046,42.229006 L227.125046,42.229006 Z",
-    className: "delighted-inactive",
-    fill: "#F7823B",
-    opacity: "0.302818",
-    transform: "translate(252.274464, 61.972198) rotate(30.000000) translate(-252.274464, -61.972198) "
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    adjacent: [DELIGHTED, THUNDERSTRUCK],
-    d: "M189,18 C207.337845,18 224.522834,22.9359687 239.298835,31.5517767 L224.209424,57.4863834 C213.866169,51.4552315 201.836591,48 189,48 L189,18 L189,18 Z",
-    className: "invigorated-adjacent",
-    fill: "#EC611D"
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M189,13 C208.254556,13 226.298634,18.1826693 241.813337,27.2291093 L224.209424,57.4863834 C213.866169,51.4552315 201.836591,48 189,48 L189,13 L189,13 Z",
-    className: "invigorated-selected",
-    fill: "#EC611D"
-  })), /*#__PURE__*/React__default['default'].createElement(MoodPath, _extends({}, passToAll, {
-    d: "M189,18 C207.337845,18 224.522834,22.9359687 239.298835,31.5517767 L224.209424,57.4863834 C213.866169,51.4552315 201.836591,48 189,48 L189,18 L189,18 Z",
-    className: "invigorated-inactive",
-    fill: "#EC611D",
-    opacity: "0.302818"
-  })), /*#__PURE__*/React__default['default'].createElement("g", {
-    className: "labels",
-    fontFamily: "MuseoSans-500, Museo Sans",
-    fontSize: "12",
-    fontWeight: "normal"
-  }, /*#__PURE__*/React__default['default'].createElement("text", {
-    className: "thunderstruck-label",
-    fill: "#E83948"
-  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
-    x: "88.64",
-    y: "11"
-  }, "Thunderstruck")), /*#__PURE__*/React__default['default'].createElement("text", {
-    className: "dazzled-label",
-    fill: "#C5037E"
-  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
-    x: "57.324",
-    y: "42"
-  }, "Dazzled")), /*#__PURE__*/React__default['default'].createElement("text", {
-    className: "anticipatory-label",
-    fill: "#6D398B"
-  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
-    x: "14.404",
-    y: "91"
-  }, "Anticipatory")), /*#__PURE__*/React__default['default'].createElement("text", {
-    className: "contemplative-label",
-    fill: "#454E98"
-  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
-    x: "0.04",
-    y: "148"
-  }, "Contemplative")), /*#__PURE__*/React__default['default'].createElement("text", {
-    className: "soothing-label",
-    fill: "#2B70B1"
-  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
-    x: "51.6",
-    y: "200"
-  }, "Soothing")), /*#__PURE__*/React__default['default'].createElement("text", {
-    className: "sleepy-label",
-    fill: "#30A4C5"
-  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
-    x: "133.628",
-    y: "238"
-  }, "Sleepy")), /*#__PURE__*/React__default['default'].createElement("text", {
-    className: "serene-label",
-    fill: "#2C8D5A"
-  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
-    x: "214",
-    y: "238"
-  }, "Serene")), /*#__PURE__*/React__default['default'].createElement("text", {
-    className: "relaxed-label",
-    fill: "#7CC530"
-  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
-    x: "270",
-    y: "200"
-  }, "Relaxed")), /*#__PURE__*/React__default['default'].createElement("text", {
-    className: "satisfied-label",
-    fill: "#FFCE01"
-  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
-    x: "295",
-    y: "148"
-  }, "Satisfied")), /*#__PURE__*/React__default['default'].createElement("text", {
-    className: "merry-label",
-    fill: "#F9BD45"
-  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
-    x: "296",
-    y: "91"
-  }, "Merry")), /*#__PURE__*/React__default['default'].createElement("text", {
-    className: "delighted-label",
-    fill: "#F7823B"
-  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
-    x: "270",
-    y: "42"
-  }, "Delighted")), /*#__PURE__*/React__default['default'].createElement("text", {
-    className: "invigorated-label",
-    fill: "#EC611D"
-  }, /*#__PURE__*/React__default['default'].createElement("tspan", {
-    x: "215",
-    y: "11"
-  }, "Invigorated"))))), moods.map(function (obj) {
-    return /*#__PURE__*/React__default['default'].createElement(Radio$1, {
-      checked: selected === obj,
-      type: "radio",
-      id: "html",
-      name: "mood",
-      value: obj
-    });
-  }));
+
+  return data;
+}
+
+var Wrap$h = styled__default['default'].div(_templateObject$D());
+
+var Header$4 = function Header(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$h, null, children);
+};
+
+function _templateObject$E() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: nowrap;\n    border-bottom: 1px solid ", ";\n"]);
+
+  _templateObject$E = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Wrap$i = styled__default['default'].div(_templateObject$E(), theme.generalColors.midGrey);
+
+var Header$5 = function Header(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$i, null, children);
+};
+
+function _templateObject$F() {
+  var data = _taggedTemplateLiteral(["\n    padding: 0.6rem 0.4rem;\n"]);
+
+  _templateObject$F = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var Wrap$j = styled__default['default'].div(_templateObject$F());
+
+var Header$6 = function Header(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$j, null, children);
 };
 
 exports.Background = Background;
 exports.Button = Button;
-exports.CheckBox = CheckBox;
+exports.Checkbox = Checkbox$1;
 exports.Chip = Chip;
 exports.ChipInput = Chip$1;
 exports.ChipSelect = ChipSelect;
 exports.ColumnContainer = ColumnContainer$1;
 exports.Content = Content$1;
-exports.Field = Field$2;
+exports.Flextable = Header$2;
+exports.FlextableCell = Header$6;
+exports.FlextableHead = Header$3;
+exports.FlextableHeader = Header$4;
+exports.FlextableRow = Header$5;
 exports.Form = Form;
 exports.GridContainer = GridContainer$1;
 exports.Header = Header$1;
 exports.Hidden = Hidden;
 exports.HoverIcon = HoverIcon;
 exports.Hr = Hr;
-exports.Label = Label;
+exports.Input = Input$1;
+exports.Label = Label$1;
 exports.LoaderBar = LoaderBar;
 exports.LoaderSpinner = Loader;
 exports.Marquee = Marquess;
 exports.Mast = index;
 exports.Modal = ModalContainer;
-exports.MoodSelector = MoodSelector;
+exports.MoodSelect = MoodSelect;
 exports.Pagination = Pagination;
 exports.Paragraph = paragraph;
 exports.Pod = Pod$1;
@@ -15212,10 +15636,11 @@ exports.PositionContainer = PositionContainer$1;
 exports.ProgressBar = ProgressBar;
 exports.ProgressBarActions = actions;
 exports.ProgressBarReducer = progressBars;
-exports.Radio = Radio;
+exports.Radio = Radio$2;
 exports.ResponseBox = ResponseBox;
-exports.Select = Select$1;
-exports.Slider = Slider;
+exports.Select = Select;
+exports.SelectionPanel = SelectionPanel$1;
+exports.Switch = Switch$1;
 exports.Table = Table;
 exports.Td = Td;
 exports.Th = Th;
