@@ -1,5 +1,5 @@
 import SelectBase from './select';
-import Radio from './radio';
+import RadioInput from './radio';
 import CheckInput from './checkInput';
 import HiddenInput from './hiddenInput';
 import RegularInput from './regularInput';
@@ -13,7 +13,7 @@ import SwitchInput from './switch';
 
 export const Select = SelectBase;
 export const Checkbox = CheckInput;
-export const Radio = CheckInput;
+export const Radio = RadioInput;
 export const Hidden = HiddenInput;
 export const Input = RegularInput;
 export const Chip = ChipInput;
