@@ -29,6 +29,21 @@ const moods = [
     DELIGHTED,
 ];
 
+const Wrap = styled.div`
+    font-family: MuseoSansReg, sans-serif;
+    user-select: none;
+
+    g {
+        cursor: ${({readonly}) => readonly ? 'default' : 'pointer'};
+    }
+
+    text {
+        
+        font-family: MuseoSansReg, sans-serif;
+    }
+
+`;
+
 const Radio = styled.input`
     display:none;
 `;
@@ -69,15 +84,19 @@ const MoodPath = ({ d, className, fill, transform, opacity = 1, selected, adjace
     );
 };
 
-const MoodSelector = ({onMoodClick = ()=>{}}) => {
-    const [selected, setSelected] = useState('thunderstruck-adjacent');
+const MoodSelector = ({readonly = false, defaultValue = null, onMoodClick = ()=>{}}) => {
+    const [selected, setSelected] = useState(defaultValue);
     const passToAll = {
         setSelected:setSelected,
         selected:selected,
         parentOnClick:onMoodClick
     }
+    if(readonly===true) {
+        passToAll.parentOnClick = () => {};
+        passToAll.setSelected = () => {};
+    }
     return (
-        <>
+        <Wrap readonly={readonly}>
             <svg width="342px" height="241px" viewBox="0 0 342 241" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <title>mood-selector</title>
                 <g className="mood-selector" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -422,7 +441,7 @@ const MoodSelector = ({onMoodClick = ()=>{}}) => {
             {moods.map(obj=>{
                 return(<Radio checked={selected===obj} type="radio" id="html" name={"mood"} value={obj}></Radio>)
             })}
-            </>
+            </Wrap>
     );
 };
 

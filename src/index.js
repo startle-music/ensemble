@@ -28,7 +28,7 @@ import HoverIcon from './components/hovericon'
 import ToolTip from './components/tooltip'
 import TooltipReducer from './components/tooltip/reducer'
 import Hr from './components/hr'
-import MoodSelector from './components/MoodSelector';
+import Mood from './components/MoodSelector';
 // import Toast from './components/toast'
 
 
@@ -41,7 +41,7 @@ export {
     /* Containers */ Pod, PositionContainer, Header, Content, ColumnContainer, GridContainer,
     // Empty,
     Form,
-    /* Form Fields */ Select, CheckBox, Radio, Hidden, Field, ChipInput, ChipSelect, TimeSelect,
+    /* Form Fields */ Select, CheckBox, Radio, Hidden, Field, ChipInput, ChipSelect, TimeSelect, Mood,
     Label,
     LoaderBar,
     LoaderSpinner,
@@ -59,7 +59,6 @@ export {
     ToolTip, TooltipReducer,
     ProgressBarActions,
     Hr,
-    Slider,
-    MoodSelector
+    Slider
     // Toast
 }
