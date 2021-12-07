@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import theme from '../../style/theme';
+//import theme from '../../style/theme';
 import { darken, lighten } from 'polished';
 import Loading from '../loader/spinner'
 
@@ -102,7 +102,6 @@ const LoadingWrap = styled.div`
 
 const calculateColours = (colour, outline) => {
 
-    console.log('colourObject', colour);
     const { mainColors, generalColors} = theme;
     let mainColour = mainColors.simplyRed;
     let activeMainColour = mainColors.simplyRed;
@@ -121,8 +120,6 @@ const calculateColours = (colour, outline) => {
             activeMainColour = generalColors.white;
         }
     }
-
-    console.log('colourObject', mainColour);
 
     switch(mainColour) {
         case 'transparent':
@@ -159,7 +156,7 @@ const calculateColours = (colour, outline) => {
 }
 
 const Button = props => {
-    const { children, type, loading = false, message = null, colour = 'default', outline = false } = props;
+    const { children, type, loading = false, message = null, colour = 'default', outline = false, to = false, href = false } = props;
     let content = children;
     
     const attributes = {
@@ -168,11 +165,11 @@ const Button = props => {
     }
     
     // 
-    if(props.to) {
+    if(props.to !== false) {
         return <RouteLinkButton {...attributes}>{content}</RouteLinkButton>;
     }
 
-    if(props.href) {
+    if(props.href !== false) {
         return <LinkButton {...attributes}>{content}</LinkButton>;
     }
 
