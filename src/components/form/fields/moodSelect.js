@@ -37,6 +37,10 @@ const Wrap = styled.div`
         cursor: ${({readonly}) => readonly ? 'default' : 'pointer'};
     }
 
+    path {
+        transition: opacity 0.2s linear;
+    }
+
     text {
         
         font-family: MuseoSansReg, sans-serif;
@@ -69,7 +73,10 @@ const MoodPath = ({ d, className, fill, transform, opacity = 1, selected, adjace
                 <path {...pathProps}/>
             );
         }
-        return null;
+        return (
+            <path {...{...pathProps, ...{opacity: 0}}}/>
+        );
+        //return null;
     }
     if (className.includes('adjacent')) {
         if (adjacent.includes(selected)) {
@@ -77,7 +84,10 @@ const MoodPath = ({ d, className, fill, transform, opacity = 1, selected, adjace
                 <path {...pathProps}/>
             );
         }
-        return null;
+        return (
+            <path {...{...pathProps, ...{opacity: 0}}}/>
+        );
+        //return null;
     }
     return (
         <path {...pathProps}/>
