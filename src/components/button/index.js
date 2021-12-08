@@ -1,12 +1,12 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-//import theme from '../../style/theme';
+import theme from '../../style/theme';
 import { darken, lighten } from 'polished';
 import Loading from '../loader/spinner'
 
 
 const btnBase = css`
-    font-family: ${({theme}) => theme.main.font};
+    font-family: ${theme.main.font};
     padding: ${({small}) => (small === true ? `0.6rem 0.9rem` : `0.7rem 1rem`)};
     font-size: ${({small}) => (small === true ? `0.785rem` : `1rem`)};
     text-decoration: none;
@@ -165,11 +165,11 @@ const Button = props => {
     }
     
     // 
-    if(props.to !== false) {
+    if(to !== false) {
         return <RouteLinkButton {...attributes}>{content}</RouteLinkButton>;
     }
 
-    if(props.href !== false) {
+    if(href !== false) {
         return <LinkButton {...attributes}>{content}</LinkButton>;
     }
 

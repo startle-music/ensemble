@@ -5,7 +5,7 @@ import theme from '../../../style/theme';
 const Text = styled.label`
     font-weight: bold;
     margin-bottom: 0.75rem;
-    color: ${({theme}) => theme.mainColors.paintItBlack};
+    color: ${theme.mainColors.paintItBlack};
     text-align: left;
 `;
 
