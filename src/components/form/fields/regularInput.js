@@ -84,6 +84,11 @@ const getColours = (status) => {
     return colourObject;
 }
 
+/**
+ * 
+ * @prop {label} string
+ * @returns 
+ */
 const FieldComponent = ({id, name, prepend=null, append=null, label=null, type='text', caption=null, required=false, placeholder=false, defaultValue = null, status = null, ...rest}) => {
 
     let Prepend = () => null;

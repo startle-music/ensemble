@@ -8,6 +8,10 @@ import { Pod, PositionContainer, Header, Content, ColumnContainer, GridContainer
 import Form from './components/form'
 import { Select, Checkbox, Radio, Hidden, Input, Chip as ChipInput, ChipSelect, TimeSelect, MoodSelect, SelectionPanel, Switch } from './components/form/fields'
 import Label from './components/form/labels'
+// text
+import Headings from './components/headings';
+import Text from './components/text';
+//
 import LoaderBar from './components/loader/bar'
 import LoaderSpinner from './components/loader/spinner'
 import Marquee from './components/marquee'
@@ -50,6 +54,11 @@ export {
     Select, Checkbox, Radio, Hidden, Input, ChipInput, ChipSelect, TimeSelect, MoodSelect, SelectionPanel, Switch,
     Label,
     
+    /* Text Types */
+    Headings,
+    Text,
+
+    //
     LoaderBar,
     LoaderSpinner,
     Marquee,
