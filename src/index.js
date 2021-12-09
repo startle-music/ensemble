@@ -9,7 +9,7 @@ import Form from './components/form'
 import { Select, Checkbox, Radio, Hidden, Input, Chip as ChipInput, ChipSelect, TimeSelect, MoodSelect, SelectionPanel, Switch } from './components/form/fields'
 import Label from './components/form/labels'
 // text
-import Headings from './components/headings';
+import Heading from './components/headings';
 import Text from './components/text';
 //
 import LoaderBar from './components/loader/bar'
@@ -55,7 +55,7 @@ export {
     Label,
     
     /* Text Types */
-    Headings,
+    Heading,
     Text,
 
     //

@@ -2,8 +2,8 @@ import styled, {css} from 'styled-components'
 import theme from '../../style/theme';
 
 export const headingBase = css`
-    color: ${props => theme.main.color};
-    font-family: ${props => theme.main.font};
+    color: ${theme.main.color};
+    font-family: ${theme.main.font};
     margin: 0;
 `
 

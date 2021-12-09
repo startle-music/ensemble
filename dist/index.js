@@ -4164,11 +4164,7 @@ function _templateObject$m() {
 
   return data;
 }
-var headingBase = styled.css(_templateObject$m(), function (props) {
-  return theme.main.color;
-}, function (props) {
-  return theme.main.font;
-});
+var headingBase = styled.css(_templateObject$m(), theme.main.color, theme.main.font);
 var Hero = styled__default['default'].h3(_templateObject2$l(), headingBase);
 var Title = styled__default['default'].h1(_templateObject3$a(), headingBase);
 var Subtitle = styled__default['default'].h2(_templateObject4$5(), headingBase);
@@ -15769,7 +15765,7 @@ exports.FlextableRow = Header$5;
 exports.Form = Form;
 exports.GridContainer = GridContainer$1;
 exports.Header = Header$1;
-exports.Headings = Heading;
+exports.Heading = Heading;
 exports.Hidden = Hidden;
 exports.HoverIcon = HoverIcon;
 exports.Hr = Hr;
