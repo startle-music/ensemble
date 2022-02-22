@@ -83,3 +83,16 @@ Disabled.args = {
     //className: null
 };
 
+
+export const Labelless = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Labelless.args = {
+    id:'field-7',
+    name: 'field7',
+    required: false,
+    value: 1,
+    //inline: false,
+    //disabled: false,
+    //className: null
+};
+
