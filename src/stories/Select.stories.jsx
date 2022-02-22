@@ -38,3 +38,13 @@ Primary.args = {
     children: <Options />
 };
 
+
+export const NoLabel = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+NoLabel.args = {
+    id:'field-1',
+    name: 'field1',
+    value: '1',
+    children: <Options />
+};
+

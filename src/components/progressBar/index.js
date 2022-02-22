@@ -43,14 +43,14 @@ const getBarColor = (progress) => {
     return theme.colors.simplyRed;
 };
 
-const ProgressBar = ({ progress }) => {
+const ProgressBar = ({ progress, text = true }) => {
     const color = getBarColor(progress);
     return (
         <ProgressBarContainer progress={progress} color={color}>
             <ProgressBarTotal>
                 <ProgressBarFiller progress={progress} color={color}/>
             </ProgressBarTotal>
-            <Text>{`${progress}%`}</Text>
+            { text ? <Text>{`${progress}%`}</Text> : null }
         </ProgressBarContainer>
     );
 };

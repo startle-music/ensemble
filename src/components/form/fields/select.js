@@ -82,7 +82,7 @@ const StyledSelect = styled.div`
     }
 `;
 
-const Label = ({ children }) => <Text>{children}</Text>;
+const Label = ({ children }) => children ? <Text>{children}</Text> : null;
 
 const SelectInput = ({ value, name, children, label, onChange = () => {} }) => (
     <Wrapper>

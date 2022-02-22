@@ -59,7 +59,7 @@ const CheckboxInput = styled.input`
 const CheckboxComponent = ({
     name,
     id,
-    label,
+    label = null,
     required,
     checked,
     value,
