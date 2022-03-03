@@ -2,7 +2,6 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import theme from '../../style/theme';
 import { darken, lighten } from 'polished';
-import Loading from '../loader/spinner'
 
 
 const btnBase = css`
@@ -58,6 +57,10 @@ const BaseButton = styled.button`
 `;
 
 const RouteLinkBase = styled.a`
+    ${btnBase}
+`;
+
+const InputButtonBase = styled.input`
     ${btnBase}
 `;
 
@@ -156,7 +159,7 @@ const calculateColours = (colour, outline) => {
 }
 
 const Button = props => {
-    const { children, type, loading = false, message = null, colour = 'default', outline = false, to = false, href = false } = props;
+    const { children, loading = false, message = null, colour = 'default', outline = false, to = false, href = false } = props;
     let content = children;
     
     const attributes = {
