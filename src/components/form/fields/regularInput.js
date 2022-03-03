@@ -38,6 +38,7 @@ const Input = styled.input`
     font-size: 1rem;
     padding: 0.8rem 0.4rem;
     color: inherit;
+    width: 100%;
 
     &:focus {
         outline: none;
