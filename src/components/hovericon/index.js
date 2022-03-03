@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { updateToolTip } from '../tooltip/actions';
@@ -39,13 +38,12 @@ const onHoverEnd = (dispatch) => {
 };
 
 const HoverIcon = ({ width = 13, height = 4.2, text }) => {
-    const dispatch = useDispatch();
     const wrapRef = useRef(null);
     return (
         <Wrap
             ref={wrapRef}
-            onMouseOver={() => debounce(onHoverStart(wrapRef, dispatch, width, height, text), 500)}
-            onMouseOut={() => debounce(onHoverEnd(dispatch), 500)}
+            onMouseOver={() => ()}
+            onMouseOut={() => ()}
         >
             <QuestionMark/>
         </Wrap>

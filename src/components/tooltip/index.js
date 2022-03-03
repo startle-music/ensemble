@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
@@ -89,7 +88,14 @@ const ToolTipContents = ({ isOpen, content, x, y, maxWidth, maxHeight }) => {
 };
 
 const ToolTipContainer = ({ reducer = 'tooltip' }) => {
-    const { isOpen, content, x, y, maxWidth, maxHeight } = useSelector((state) => state[reducer]);
+    const { isOpen, content, x, y, maxWidth, maxHeight } = {
+        isOpen: false,
+        content: '',
+        x: 0,
+        y: 0,
+        maxWidth: 999,
+        maxHeight: 999
+    };
 
     return (
         <Wrap>
