@@ -42,8 +42,8 @@ const HoverIcon = ({ width = 13, height = 4.2, text }) => {
     return (
         <Wrap
             ref={wrapRef}
-            onMouseOver={() => ()}
-            onMouseOut={() => ()}
+            onMouseOver={() => {}}
+            onMouseOut={() => {}}
         >
             <QuestionMark/>
         </Wrap>
