@@ -154,7 +154,6 @@ const calculateColours = (colour, outline) => {
         colourObject.borderColour = mainColour
     }
 
-    console.log('colourObject', colourObject);
     return colourObject;
 }
 
