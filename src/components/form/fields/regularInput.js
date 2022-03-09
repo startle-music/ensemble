@@ -103,31 +103,27 @@ const FieldComponent = ({id, name, prepend=null, append=null, label=null, type='
     }
 
     const colours = getColours(status);
-
-    if (label !== null) {
        
-        return (
-            <Field htmlFor={name}>
-                <Label required={required}>{label}</Label>
-                <Wrap {...{...rest, ...colours}}>
-                    <Prepend />     
-                    <Input
-                        type={type}
-                        name={name}
-                        required={required}
-                        placeholder={placeholder}
-                        defaultValue={defaultValue}
-                        id={id}
-                        {...colours}
-                        {...rest}
-                    />
-                    <Append />
-                </Wrap>
-                <Caption {...colours}>{caption}</Caption>
-            </Field>
-        ); 
-    }
-    return null;
+    return (
+        <Field htmlFor={name}>
+            { label !== null ? <Label required={required}>{label}</Label> : null }
+            <Wrap {...{...rest, ...colours}}>
+                <Prepend />     
+                <Input
+                    type={type}
+                    name={name}
+                    required={required}
+                    placeholder={placeholder}
+                    defaultValue={defaultValue}
+                    id={id}
+                    {...colours}
+                    {...rest}
+                />
+                <Append />
+            </Wrap>
+            <Caption {...colours}>{caption}</Caption>
+        </Field>
+    );
 }
 
 export default FieldComponent;

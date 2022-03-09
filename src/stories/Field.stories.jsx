@@ -121,3 +121,11 @@ Caption.args = {
     status: 'danger',
     caption: 'This is incorrect or something.'
 };
+export const NoLabel = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+NoLabel.args = {
+    id:'field-2',
+    name: 'field1',
+    required: true,
+    caption: 'This has No Label!'
+};
