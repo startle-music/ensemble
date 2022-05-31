@@ -8,4 +8,7 @@ module.exports = {
     "@storybook/addon-essentials"
   ],
   staticDirs: ['../public'],
+  core: {
+    disableTelemetry: true, // 👈 Disables telemetry
+  },
 }
