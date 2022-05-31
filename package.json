@@ -50,7 +50,10 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "rollup": "^2.22.0",
-    "shallowequal": "^1.1.0"
+    "shallowequal": "^1.1.0",
+    "trim-newlines": ">=3.0.1",
+    "glob-parent": ">=5.1.2",
+    "trim": ">=0.0.3"
   },
   "files": [
     "dist"
