@@ -1,11 +1,11 @@
 
-import Flextable from '../../components/flextable';
-import Head from '../../components/flextable/head';
-import Header from '../../components/flextable/header';
-import Row from '../../components/flextable/row';
-import Cell from '../../components/flextable/cell';
-import TextPairs from '../../components/databoxes/textpairs';
-import Text from '../../components/text';
+import Flextable from '../components/flextable';
+import Head from '../components/flextable/head';
+import Header from '../components/flextable/header';
+import Row from '../components/flextable/row';
+import Cell from '../components/flextable/cell';
+import TextPairs from '../components/databoxes/textpairs';
+import Text from '../components/text';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
