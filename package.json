@@ -18,17 +18,19 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "framer-motion": "^5.3.0",
-    "polished": "^4.1.3",
-    "styled-components": "^5.3.3",
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/fontawesome-pro": "^6.1.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/free-regular-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "@fortawesome/react-fontawesome": "^0.1.5",
-    "trim-newlines": ">=3.0.1",
+    "@fortawesome/pro-regular-svg-icons": "^6.1.2",
+    "@fortawesome/react-fontawesome": "^0.1.19",
+    "framer-motion": "^5.3.0",
     "glob-parent": ">=5.1.2",
-    "trim": ">=0.0.3"
+    "polished": "^4.1.3",
+    "styled-components": "^5.3.3",
+    "trim": ">=0.0.3",
+    "trim-newlines": ">=3.0.1"
   },
   "peerDependencies": {
     "react": "^16.12.0",

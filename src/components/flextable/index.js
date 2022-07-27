@@ -4,6 +4,8 @@ import styled, {css} from 'styled-components';
 
 const Wrap = styled.div`
     display: block;
+
+    border-radius:10px;
     
     > * {
         display: flex;

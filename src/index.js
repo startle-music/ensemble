@@ -38,6 +38,7 @@ import FlextableHead from './components/flextable/head'
 import FlextableHeader from './components/flextable/header'
 import FlextableRow from './components/flextable/row'
 import FlextableCell from './components/flextable/cell'
+import DataBox from './components/databoxes/icondata'
 
 
 export { 
@@ -77,5 +78,5 @@ export {
     Hr,
     // Toast,
     // flextable
-    Flextable, FlextableHead, FlextableHeader, FlextableRow, FlextableCell
+    Flextable, FlextableHead, FlextableHeader, FlextableRow, FlextableCell,DataBox
 }

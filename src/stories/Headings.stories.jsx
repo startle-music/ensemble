@@ -46,4 +46,3 @@ Hero.args = {
     value: 'Test Hero',
     type: 'hero'
 };
-
