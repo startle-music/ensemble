@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import HDMI from '../../icons/HDMI'; 
-import theme from '../../../style/theme';
 import TextPairs from '../textpairs';
 
 const Wrap = styled.div`
