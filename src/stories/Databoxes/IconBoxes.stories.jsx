@@ -1,7 +1,6 @@
 import React from 'react';
 
 import DataBox from '../../components/databoxes/iconboxes';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HDMI from '../../components/icons/HDMI'; 
 import HeadphoneJack from '../../components/icons/HeadphoneJack';
 import StartlePlayer from '../../components/icons/StartlePlayer'; 

@@ -2,8 +2,7 @@ import React from 'react';
 
 import Rectangle from '../../components/databoxes/rectangle';
 import DataBox from '../../components/databoxes/iconboxes';
-import HDMI from '../../components/icons/HDMI'; 
-import Text from '../../components/text';
+import HDMI from '../../components/icons/HDMI';
 
 export default {
   component: Rectangle,
