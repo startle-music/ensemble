@@ -1909,7 +1909,7 @@ var Times = function Times() {
 };
 
 function _templateObject$2() {
-  var data = _taggedTemplateLiteral(["\n    display: inline-flex;\n    border-radius: 10.325em;\n    margin: 0 0.325em 0 0;\n    overflow: hidden;\n    background: red;\n    color: white;\n\n    input,\n    input:checked {\n        display: none;\n    }\n\n    label {\n        padding: 0.5em 0.75em;\n        color: white;\n        cursor: pointer;\n\n        &:focus {\n            background: rgba(0, 0, 0, 0.175);\n        }\n    }\n\n    button {\n        padding: 0.5em 0.6em 0.5em 0.5em;\n        width: 1.7em;\n        height: 100%;\n        box-sizing: border-box;\n        background: rgba(40, 40, 40, 0.075);\n        cursor: pointer;\n\n        svg {\n            width: 100%;\n            height: 100%;\n            color: white;\n            fill: white;\n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    font-family: ", ";\n    display: inline-flex;\n    border-radius: 10.325em;\n    margin: 0 0.325em 0 0;\n    overflow: hidden;\n    background: ", ";\n    color: ", ";\n    align-items: center;\n\n    input,\n    input:checked {\n        display: none;\n    }\n\n    label {\n        padding: 0.5em 0.75em;\n        color: inherit;\n        cursor: pointer;\n\n        &:focus {\n            background: rgba(0, 0, 0, 0.175);\n        }\n    }\n\n    button {\n        display: inline-block;\n        padding: 1em 0.6em 0.3em 0.5em;\n        width: 1.7em;\n        box-sizing: border-box;\n        background: rgba(40, 40, 40, 0.075);\n        cursor: pointer;\n        border: 0px;\n\n        svg {\n            width: 100%;\n            height: 100%;\n            color: white;\n            fill: white;\n        }\n    }\n"]);
 
   _templateObject$2 = function _templateObject() {
     return data;
@@ -1917,17 +1917,24 @@ function _templateObject$2() {
 
   return data;
 }
-var Wrap$1 = styled__default['default'].div(_templateObject$2());
+var Wrap$1 = styled__default['default'].div(_templateObject$2(), theme.main.font, function (_ref) {
+  var backgroundColor = _ref.backgroundColor;
+  return backgroundColor;
+}, function (_ref2) {
+  var color = _ref2.color;
+  return color;
+});
 
 var renderClose = function renderClose(onRemove, data) {
-  var label = data.label,
-      name = data.name,
-      value = data.value;
+  console.log('onRemove', onRemove);
 
   if (onRemove === null) {
     return null;
   }
 
+  var label = data.label,
+      name = data.name,
+      value = data.value;
   return /*#__PURE__*/React__default['default'].createElement("button", {
     type: "button",
     onClick: onRemove,
@@ -1941,17 +1948,29 @@ var defaultOnClick = function defaultOnClick() {
   return null;
 };
 
-var Chip = function Chip(_ref) {
-  var label = _ref.label,
-      value = _ref.value,
-      _ref$name = _ref.name,
-      name = _ref$name === void 0 ? null : _ref$name,
-      _ref$product = _ref.product,
-      product = _ref$product === void 0 ? 'default' : _ref$product,
-      _ref$onClick = _ref.onClick,
-      onClick = _ref$onClick === void 0 ? null : _ref$onClick,
-      _ref$onRemove = _ref.onRemove,
-      onRemove = _ref$onRemove === void 0 ? null : _ref$onRemove;
+function calculateTextColour(textColor) {
+  var color = 'white';
+
+  if (textColor !== null) {
+    color = textColor;
+  }
+
+  return color;
+}
+
+var Chip = function Chip(_ref3) {
+  var label = _ref3.label,
+      value = _ref3.value,
+      _ref3$name = _ref3.name,
+      name = _ref3$name === void 0 ? null : _ref3$name,
+      _ref3$color = _ref3.color,
+      color = _ref3$color === void 0 ? 'red' : _ref3$color,
+      _ref3$textColor = _ref3.textColor,
+      textColor = _ref3$textColor === void 0 ? null : _ref3$textColor,
+      _ref3$onClick = _ref3.onClick,
+      onClick = _ref3$onClick === void 0 ? null : _ref3$onClick,
+      _ref3$onRemove = _ref3.onRemove,
+      onRemove = _ref3$onRemove === void 0 ? null : _ref3$onRemove;
   var chipName = name;
 
   if (name === null) {
@@ -1964,15 +1983,11 @@ var Chip = function Chip(_ref) {
     onClickFunction = onClick;
   }
 
+  var textColour = calculateTextColour(textColor);
   return /*#__PURE__*/React__default['default'].createElement(Wrap$1, {
-    product: product
+    backgroundColor: color,
+    color: textColour
   }, /*#__PURE__*/React__default['default'].createElement("label", {
-    style: {
-      padding: '0.5em 0.75em',
-      color: '#FFF',
-      width: 'auto',
-      margin: '0'
-    },
     htmlFor: chipName,
     onClick: onClickFunction
   }, /*#__PURE__*/React__default['default'].createElement("input", {

@@ -31,6 +31,9 @@ import HoverIcon from './components/hovericon'
 import ToolTip from './components/tooltip'
 import TooltipReducer from './components/tooltip/reducer'
 import Hr from './components/hr'
+import Rectangle from './components/databoxes/rectangle'
+import TextPairs from './components/databoxes/textpairs'
+import IconBoxes from './components/databoxes/iconboxes'
 // import Toast from './components/toast'
 // flextable
 import Flextable from './components/flextable'
@@ -77,5 +80,6 @@ export {
     Hr,
     // Toast,
     // flextable
-    Flextable, FlextableHead, FlextableHeader, FlextableRow, FlextableCell
+    Flextable, FlextableHead, FlextableHeader, FlextableRow, FlextableCell,
+    Rectangle, TextPairs, IconBoxes
 }

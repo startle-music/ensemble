@@ -4,6 +4,8 @@ import Head from '../components/flextable/head';
 import Header from '../components/flextable/header';
 import Row from '../components/flextable/row';
 import Cell from '../components/flextable/cell';
+import TextPairs from '../components/databoxes/textpairs';
+import Text from '../components/text';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -51,14 +53,60 @@ const Children = () => {
     )
 }
 
+const DevicesReportTable = () => {
+    return (
+        <>
+            <Head>
+                <Header type="smalltableheader">Header 1</Header>
+                <Header type="smalltableheader">Header 2</Header>
+                <Header type="smalltableheader">Header 3</Header>
+            </Head>
+            <Row>
+                <Cell><Text type="small">1 day</Text></Cell>
+                <Cell><TextPairs leftText="223,234" rightText="(45/344)"/></Cell>
+                <Cell><TextPairs leftText="223,234" rightText="(45/344)"/></Cell>
+            </Row>
+            <Row>
+                <Cell><Text type="small">1 day</Text></Cell>
+                <Cell><TextPairs leftText="223,234" rightText="(45/344)"/></Cell>
+                <Cell><TextPairs leftText="223,234" rightText="(45/344)"/></Cell>
+            </Row>
+            <Row>
+                <Cell><Text type="small">1 day</Text></Cell>
+                <Cell><TextPairs leftText="223,234" rightText="(45/344)"/></Cell>
+                <Cell><TextPairs leftText="223,234" rightText="(45/344)"/></Cell>
+            </Row>
+            <Row>
+                <Cell><Text type="small">1 day</Text></Cell>
+                <Cell><TextPairs leftText="223,234" rightText="(45/344)"/></Cell>
+                <Cell><TextPairs leftText="223,234" rightText="(45/344)"/></Cell>
+            </Row>
+        </>
+    )
+}
+
+
 export const Table = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Table.args = {
     id:'field-1',
     children: <Children />,
     columns: ["12rem", "calc(100% - 24rem)", "12rem"]
+    //inline: false,,
+
+    //disabled: false,
+    //className: null
+};
+
+export const DevicesReport = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+DevicesReport.args = {
+    id:'field-2',
+    children: <DevicesReportTable />,
+    columns: ["12rem", "calc(100% - 24rem)", "12rem"]
     //inline: false,
     //disabled: false,
     //className: null
 };
+
 

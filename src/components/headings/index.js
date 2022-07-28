@@ -41,7 +41,6 @@ const Heading = ({type='heading', children, ...rest}) => {
         case 'subtitle': 
             return <Subtitle {...rest}>{children}</Subtitle>
 
-        case 'heading':
         default:
             return <Standard {...rest}>{children}</Standard>
 

@@ -18,7 +18,9 @@ const Small = styled.p`
     ${TextBase}
     font-weight: lighter;
     font-size: 0.95rem;
+    color:${()=>theme.colors.paintItBlack};
 `;
+
 const Paragraph = styled.p`
     ${TextBase}
     font-size: 1rem;
@@ -34,7 +36,6 @@ const Text = ({type='heading', children, ...rest}) => {
         case 'small': 
             return <Small {...rest}>{children}</Small>
 
-        case 'paragraph':
         default:
             return <Paragraph {...rest}>{children}</Paragraph>
 
