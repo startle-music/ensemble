@@ -41,6 +41,12 @@ import FlextableHead from './components/flextable/head'
 import FlextableHeader from './components/flextable/header'
 import FlextableRow from './components/flextable/row'
 import FlextableCell from './components/flextable/cell'
+// tabs
+import Tab from './components/tab'
+import TabContent from './components/tab/content'
+import TabGroup from './components/tab/group'
+import TabPane from './components/tab/pane'
+import TabWrap from './components/tab/wrap'
 
 
 export { 
@@ -60,7 +66,7 @@ export {
     /* Text Types */
     Heading,
     Text,
-
+    
     //
     LoaderBar,
     LoaderSpinner,
@@ -81,5 +87,7 @@ export {
     // Toast,
     // flextable
     Flextable, FlextableHead, FlextableHeader, FlextableRow, FlextableCell,
-    Rectangle, TextPairs, IconBoxes
+    Rectangle, TextPairs, IconBoxes,
+    // tabs
+    Tab, TabContent, TabGroup, TabPane, TabWrap
 }
