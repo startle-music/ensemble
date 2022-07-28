@@ -4088,7 +4088,6 @@ var Heading = function Heading(_ref) {
     case 'subtitle':
       return /*#__PURE__*/React__default['default'].createElement(Subtitle, rest, children);
 
-    case 'heading':
     default:
       return /*#__PURE__*/React__default['default'].createElement(Standard, rest, children);
   }
@@ -4105,7 +4104,7 @@ function _templateObject4$6() {
 }
 
 function _templateObject3$b() {
-  var data = _taggedTemplateLiteral(["\n    ", "\n    font-weight: lighter;\n    font-size: 0.95rem;\n"]);
+  var data = _taggedTemplateLiteral(["\n    ", "\n    font-weight: lighter;\n    font-size: 0.95rem;\n    color:", ";\n"]);
 
   _templateObject3$b = function _templateObject3() {
     return data;
@@ -4137,7 +4136,9 @@ var TextBase = styled.css(_templateObject$m(), function (props) {
   return theme.main.font;
 });
 var Help = styled__default['default'].p(_templateObject2$l(), TextBase);
-var Small = styled__default['default'].p(_templateObject3$b(), TextBase);
+var Small = styled__default['default'].p(_templateObject3$b(), TextBase, function () {
+  return theme.colors.paintItBlack;
+});
 var Paragraph = styled__default['default'].p(_templateObject4$6(), TextBase);
 
 var Text$1 = function Text(_ref) {
@@ -4153,7 +4154,6 @@ var Text$1 = function Text(_ref) {
     case 'small':
       return /*#__PURE__*/React__default['default'].createElement(Small, rest, children);
 
-    case 'paragraph':
     default:
       return /*#__PURE__*/React__default['default'].createElement(Paragraph, rest, children);
   }
@@ -15611,8 +15611,18 @@ var Hr = function Hr(_ref3) {
   });
 };
 
+function _templateObject2$x() {
+  var data = _taggedTemplateLiteral(["\n    margin-top:.25rem;\n"]);
+
+  _templateObject2$x = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject$D() {
-  var data = _taggedTemplateLiteral(["\n    display: block;\n    \n    > * {\n        display: flex;\n\n        ", "\n\n        ", "\n\n        \n\n    }\n    //grid-template-rows: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n    padding:.75rem;\n    border-radius:10px;\n"]);
 
   _templateObject$D = function _templateObject() {
     return data;
@@ -15620,8 +15630,128 @@ function _templateObject$D() {
 
   return data;
 }
+var Wrap$f = styled__default['default'].div(_templateObject$D());
+var Children = styled__default['default'].div(_templateObject2$x());
 
-var Wrap$f = styled__default['default'].div(_templateObject$D(), function (_ref) {
+var Rectangle = function Rectangle(_ref) {
+  var _ref$text = _ref.text,
+      text = _ref$text === void 0 ? "" : _ref$text,
+      children = _ref.children;
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$f, null, /*#__PURE__*/React__default['default'].createElement(Text$1, {
+    type: "small"
+  }, text), /*#__PURE__*/React__default['default'].createElement(Children, null, children));
+};
+
+function _templateObject4$c() {
+  var data = _taggedTemplateLiteral(["\n    font-size:15px;\n    font-weight:500;\n    min-width:2rem;\n    color:", "\n"]);
+
+  _templateObject4$c = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3$j() {
+  var data = _taggedTemplateLiteral(["\n    font-size:18px;\n    color:", ";\n    font-weight:700;\n    padding:0 .5rem 0 0;\n"]);
+
+  _templateObject3$j = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$y() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    align-items: center;\n"]);
+
+  _templateObject2$y = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$E() {
+  var data = _taggedTemplateLiteral(["\n    display:flex;\n    font-family:'museo-sans';\n    width:100%;\n"]);
+
+  _templateObject$E = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Wrap$g = styled__default['default'].div(_templateObject$E());
+var TextWrap$1 = styled__default['default'].span(_templateObject2$y());
+var LeftText = styled__default['default'](TextWrap$1)(_templateObject3$j(), function (_ref) {
+  var fill = _ref.fill;
+  return fill ? fill : theme.colors.paintItBlack;
+});
+var RightText = styled__default['default'](TextWrap$1)(_templateObject4$c(), function () {
+  return theme.generalColors.darkGrey;
+});
+
+var TextPairs = function TextPairs(_ref2) {
+  var fill = _ref2.fill,
+      _ref2$leftText = _ref2.leftText,
+      leftText = _ref2$leftText === void 0 ? '' : _ref2$leftText,
+      _ref2$rightText = _ref2.rightText,
+      rightText = _ref2$rightText === void 0 ? '' : _ref2$rightText,
+      Icon = _ref2.Icon;
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$g, null, /*#__PURE__*/React__default['default'].createElement(LeftText, {
+    fill: fill
+  }, leftText), /*#__PURE__*/React__default['default'].createElement(RightText, null, rightText));
+};
+
+function _templateObject2$z() {
+  var data = _taggedTemplateLiteral(["\n    width:1.5rem;\n    margin-right:.5rem;\n"]);
+
+  _templateObject2$z = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$F() {
+  var data = _taggedTemplateLiteral(["\n    display:flex;\n    font-family:'museo-sans';\n    width:100%;\n"]);
+
+  _templateObject$F = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Wrap$h = styled__default['default'].div(_templateObject$F());
+var IconWrap$1 = styled__default['default'].div(_templateObject2$z());
+
+var IconBoxes = function IconBoxes(_ref) {
+  var fill = _ref.fill,
+      _ref$leftText = _ref.leftText,
+      leftText = _ref$leftText === void 0 ? '' : _ref$leftText,
+      _ref$rightText = _ref.rightText,
+      rightText = _ref$rightText === void 0 ? '' : _ref$rightText,
+      Icon = _ref.Icon;
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$h, null, /*#__PURE__*/React__default['default'].createElement(IconWrap$1, null, /*#__PURE__*/React__default['default'].createElement(Icon, {
+    fill: fill
+  })), /*#__PURE__*/React__default['default'].createElement(TextPairs, {
+    fill: fill,
+    leftText: leftText,
+    rightText: rightText
+  }));
+};
+
+function _templateObject$G() {
+  var data = _taggedTemplateLiteral(["\n    display: block;\n\n    border-radius:10px;\n    \n    > * {\n        display: flex;\n\n        ", "\n\n        ", "\n\n        \n\n    }\n    //grid-template-rows: ", ";\n"]);
+
+  _templateObject$G = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var Wrap$i = styled__default['default'].div(_templateObject$G(), function (_ref) {
   var columnString = _ref.columnString;
   return columnString !== null ? "> * { width:" + columnString + "; }" : null;
 }, function (_ref2) {
@@ -15638,63 +15768,14 @@ var Header$2 = function Header(_ref4) {
   var children = _ref4.children,
       _ref4$columns = _ref4.columns,
       columns = _ref4$columns === void 0 ? '12rem' : _ref4$columns;
-  return /*#__PURE__*/React__default['default'].createElement(Wrap$f, {
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$i, {
     columnString: typeof columns === 'string' ? columns : null,
     columnArray: typeof columns !== 'string' ? columns : null
   }, children);
 };
 
-function _templateObject$E() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: nowrap;\n    border-bottom: 1px solid ", ";\n\n    > * {\n        font-weight: 700;\n    }\n"]);
-
-  _templateObject$E = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var Wrap$g = styled__default['default'].div(_templateObject$E(), theme.generalColors.midGrey);
-
-var Header$3 = function Header(_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/React__default['default'].createElement(Wrap$g, null, children);
-};
-
-function _templateObject$F() {
-  var data = _taggedTemplateLiteral(["\n    padding: 0.6rem 0.4rem;\n"]);
-
-  _templateObject$F = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-var Wrap$h = styled__default['default'].div(_templateObject$F());
-
-var Header$4 = function Header(_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/React__default['default'].createElement(Wrap$h, null, children);
-};
-
-function _templateObject$G() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: nowrap;\n    border-bottom: 1px solid ", ";\n"]);
-
-  _templateObject$G = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var Wrap$i = styled__default['default'].div(_templateObject$G(), theme.generalColors.midGrey);
-
-var Header$5 = function Header(_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/React__default['default'].createElement(Wrap$i, null, children);
-};
-
 function _templateObject$H() {
-  var data = _taggedTemplateLiteral(["\n    padding: 0.6rem 0.4rem;\n"]);
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: nowrap;\n    border-bottom: 1px solid ", ";\n\n    > * {\n        font-weight: 700;\n    }\n"]);
 
   _templateObject$H = function _templateObject() {
     return data;
@@ -15702,12 +15783,243 @@ function _templateObject$H() {
 
   return data;
 }
+var Wrap$j = styled__default['default'].div(_templateObject$H(), theme.generalColors.midGrey);
 
-var Wrap$j = styled__default['default'].div(_templateObject$H());
+var Header$3 = function Header(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$j, null, children);
+};
+
+function _templateObject3$k() {
+  var data = _taggedTemplateLiteral(["\n    ", "\n    font-weight: 700;\n    font-size: 0.95rem;\n    color:", "\n"]);
+
+  _templateObject3$k = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$A() {
+  var data = _taggedTemplateLiteral(["\n    color: ", ";\n    font-family: ", ";\n    margin: 0;\n"]);
+
+  _templateObject2$A = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$I() {
+  var data = _taggedTemplateLiteral(["\n    padding: 0.6rem 0.4rem;\n"]);
+
+  _templateObject$I = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Wrap$k = styled__default['default'].div(_templateObject$I());
+var headingBase$1 = styled.css(_templateObject2$A(), theme.main.color, theme.main.font);
+var SmallTableHeader = styled__default['default'].h4(_templateObject3$k(), headingBase$1, function () {
+  return theme.generalColors.darkGrey;
+});
+
+var Header$4 = function Header(_ref) {
+  var type = _ref.type,
+      children = _ref.children;
+
+  switch (type) {
+    case "smalltableheader":
+      return /*#__PURE__*/React__default['default'].createElement(Wrap$k, null, /*#__PURE__*/React__default['default'].createElement(SmallTableHeader, null, children));
+
+    default:
+      return /*#__PURE__*/React__default['default'].createElement(Wrap$k, null, children);
+  }
+};
+
+function _templateObject$J() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: nowrap;\n    border-bottom: 1px solid ", ";\n"]);
+
+  _templateObject$J = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Wrap$l = styled__default['default'].div(_templateObject$J(), theme.generalColors.midGrey);
+
+var Header$5 = function Header(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$l, null, children);
+};
+
+function _templateObject$K() {
+  var data = _taggedTemplateLiteral(["\n    padding: 0.6rem 0.4rem;\n"]);
+
+  _templateObject$K = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var Wrap$m = styled__default['default'].div(_templateObject$K());
 
 var Header$6 = function Header(_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React__default['default'].createElement(Wrap$j, null, children);
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$m, null, children);
+};
+
+function _templateObject$L() {
+  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    color: ", ";\n    padding: 0.3rem 0.6rem;\n    font-size: 1rem;\n    font-family: MuseoSansReg, sans-serif;\n    border-bottom: 3px solid transparent;\n    cursor: pointer;\n    white-space: nowrap;\n    user-select: none;\n\n    &.active {\n        color: ", ";\n        border-bottom: 3px solid ", ";\n    }\n"]);
+
+  _templateObject$L = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Wrap$n = styled__default['default'].a(_templateObject$L(), theme.mainColors.paintItBlack, theme.mainColors.simplyRed, theme.mainColors.simplyRed);
+
+var Tab = function Tab(_ref) {
+  var id = _ref.id,
+      _ref$checked = _ref.checked,
+      checked = _ref$checked === void 0 ? false : _ref$checked,
+      children = _ref.children,
+      rest = _objectWithoutProperties(_ref, ["id", "checked", "children"]);
+
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$n, _extends({
+    id: id,
+    key: 'tab-' + id,
+    className: checked ? 'active' : ''
+  }, rest), children);
+};
+
+function _templateObject$M() {
+  var data = _taggedTemplateLiteral(["\n    display: block;\n    position: relative;\n"]);
+
+  _templateObject$M = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Wrap$o = styled__default['default'].div(_templateObject$M());
+
+var TabContent = function TabContent(_ref) {
+  var children = _ref.children,
+      rest = _objectWithoutProperties(_ref, ["children"]);
+
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$o, rest, children);
+};
+
+function _templateObject2$B() {
+  var data = _taggedTemplateLiteral(["\n    border-bottom: 1px solid ", ";\n    padding: 0;    \n    margin: 0 auto;\n    display: flex;\n    flex-wrap: nowrap;\n    height: 2rem;\n    overflow-y: none;\n    overflow-x: auto;\n    overscroll-behavior-x: contain;\n    scroll-snap-type: x mandatory;\n    -ms-overflow-style: none;\n    scrollbar-width: none;\n\n    &::-webkit-scrollbar {\n        display: none;\n    }\n\n    > a {\n        scroll-snap-align: start;\n    }\n"]);
+
+  _templateObject2$B = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$N() {
+  var data = _taggedTemplateLiteral(["\n\n"]);
+
+  _templateObject$N = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Wrap$p = styled__default['default'].div(_templateObject$N());
+var Tabs = styled__default['default'].div(_templateObject2$B(), theme.colors.fadeToGrey);
+
+var TabGroup = function TabGroup(_ref) {
+  var children = _ref.children,
+      rest = _objectWithoutProperties(_ref, ["children"]);
+
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$p, rest, /*#__PURE__*/React__default['default'].createElement(Tabs, null, children));
+};
+
+function _templateObject$O() {
+  var data = _taggedTemplateLiteral(["\n    display: none;\n    position: relative;\n    opacity: 0;\n    transition: opacity 0.2s linear;\n\n    &.active {\n        display: block;\n        opacity: 1;\n        \n    }\n\n"]);
+
+  _templateObject$O = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Wrap$q = styled__default['default'].div(_templateObject$O());
+
+var TabPane = function TabPane(_ref) {
+  var _ref$checked = _ref.checked,
+      checked = _ref$checked === void 0 ? false : _ref$checked,
+      children = _ref.children,
+      rest = _objectWithoutProperties(_ref, ["checked", "children"]);
+
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$q, _extends({
+    className: checked ? 'active' : ''
+  }, rest), children);
+};
+
+function _templateObject$P() {
+  var data = _taggedTemplateLiteral(["\n    display: block;\n    position: relative;\n"]);
+
+  _templateObject$P = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Wrap$r = styled__default['default'].div(_templateObject$P());
+
+var TabWrap = function TabWrap(_ref) {
+  var children = _ref.children,
+      rest = _objectWithoutProperties(_ref, ["children"]);
+
+  var childrenA = children.props;
+  var childrenB = childrenA.children;
+
+  if (childrenB.length !== 2 || !childrenB[0] || !childrenB[1]) {
+    return /*#__PURE__*/React__default['default'].createElement(Wrap$r, null, /*#__PURE__*/React__default['default'].createElement("p", null, "There are issues with your children"));
+  }
+
+  function switchContent(evnt) {
+    var target = evnt.target.closest('a[id]');
+
+    if (target) {
+      var getSiblings = function getSiblings(n) {
+        return _toConsumableArray(n.parentElement.children).filter(function (c) {
+          return c != n;
+        });
+      };
+
+      var targetSiblings = getSiblings(target);
+      targetSiblings.forEach(function (sibling) {
+        return sibling.classList.remove('active');
+      });
+      target.classList.add('active');
+      var matches = evnt.target.closest('.tabbed-content').querySelectorAll('div#' + target.id);
+
+      if (matches && matches[0]) {
+        var content = matches[0];
+        var contentSiblings = getSiblings(content);
+        contentSiblings.forEach(function (sibling) {
+          return sibling.classList.remove('active');
+        });
+        content.classList.add('active');
+      }
+    }
+  }
+
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$r, _extends({
+    className: 'tabbed-content'
+  }, rest, {
+    onClick: switchContent
+  }), children);
 };
 
 exports.Background = Background;
@@ -15730,6 +16042,7 @@ exports.Heading = Heading;
 exports.Hidden = Hidden;
 exports.HoverIcon = HoverIcon;
 exports.Hr = Hr;
+exports.IconBoxes = IconBoxes;
 exports.Input = Input$1;
 exports.Label = Label$1;
 exports.LoaderBar = LoaderBar;
@@ -15746,13 +16059,20 @@ exports.ProgressBar = ProgressBar;
 exports.ProgressBarActions = actions;
 exports.ProgressBarReducer = progressBars;
 exports.Radio = Radio$2;
+exports.Rectangle = Rectangle;
 exports.ResponseBox = ResponseBox;
 exports.Select = Select;
 exports.SelectionPanel = SelectionPanel$1;
 exports.Switch = Switch$1;
+exports.Tab = Tab;
+exports.TabContent = TabContent;
+exports.TabGroup = TabGroup;
+exports.TabPane = TabPane;
+exports.TabWrap = TabWrap;
 exports.Table = Table;
 exports.Td = Td;
 exports.Text = Text$1;
+exports.TextPairs = TextPairs;
 exports.Th = Th;
 exports.TimeSelect = TimeSelect;
 exports.ToolTip = ToolTipContainer;
