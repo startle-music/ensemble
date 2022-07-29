@@ -5,6 +5,7 @@ import Text from '../../text';
 const Wrap = styled.div`
     padding:.75rem;
     border-radius:10px;
+    background-color:#fff;
 `
 
 const Children = styled.div`
