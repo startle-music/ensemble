@@ -6,6 +6,7 @@ const Wrap = styled.div`
     display: block;
 
     border-radius:10px;
+    background-color:#fff;
     
     > * {
         display: flex;
