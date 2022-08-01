@@ -4,6 +4,8 @@ import DataBox from '../../components/databoxes/iconboxes';
 import HDMI from '../../components/icons/HDMI'; 
 import HeadphoneJack from '../../components/icons/HeadphoneJack';
 import StartlePlayer from '../../components/icons/StartlePlayer'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWaveSquare } from '@fortawesome/free-solid-svg-icons';
 
 export default {
   component: DataBox,
@@ -28,7 +30,7 @@ HeadPhoneJack.args = {
     leftText: 'asdf',
     rightText: '(40%)',
     fill: '#293',
-    Icon: HeadphoneJack,
+    Icon: () => <FontAwesomeIcon icon={faWaveSquare}/>,
     title: 'Components/Databoxes/iconboxes/HeadphoneJack'
 };
 

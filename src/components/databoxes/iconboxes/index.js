@@ -10,15 +10,13 @@ const Wrap = styled.div`
 const IconWrap = styled.div`
     width:1.5rem;
     margin-right:.5rem;
-    .icon {
-        color: ${props => props.fill};
-    }
+    color: ${props => props.fill};
 `;
 
 const IconBoxes = ({fill,leftText='', rightText='', Icon}) => {
     return <Wrap>
-        <IconWrap>
-            <Icon className="icon" fill={fill}/>
+        <IconWrap fill={fill}>
+            <Icon fill={fill}/>
         </IconWrap>
         <TextPairs fill={fill} leftText={leftText} rightText={rightText}/>
     </Wrap>;
