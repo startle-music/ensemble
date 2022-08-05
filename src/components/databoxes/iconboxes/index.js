@@ -4,8 +4,8 @@ import TextPairs from '../textpairs';
 
 const Wrap = styled.div`
     display:flex;
-    font-family:'museo-sans';
     width:100%;
+    font-family: ${theme.main.font};
 `;
 const IconWrap = styled.div`
     width:1.5rem;

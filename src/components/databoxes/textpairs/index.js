@@ -4,8 +4,9 @@ import theme from '../../../style/theme';
 
 const Wrap = styled.div`
     display:flex;
-    font-family:'museo-sans';
     width:100%;
+    font-family: ${theme.main.font};
+    
 `;
 const TextWrap = styled.span`
     display: flex;
