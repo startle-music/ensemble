@@ -38,10 +38,10 @@ const getColumnString = (columns) => {
     }
 }
 
-const Header = ({children, columns = '12rem'}) => {
+const Header = ({children, columns = '12rem', ...rest}) => {
 
     return (
-        <Wrap columnString={typeof(columns) === 'string' ? columns : null} columnArray={typeof(columns) !== 'string' ? columns : null}>
+        <Wrap {...rest} columnString={typeof(columns) === 'string' ? columns : null} columnArray={typeof(columns) !== 'string' ? columns : null}>
             { children }
         </Wrap>
     );
