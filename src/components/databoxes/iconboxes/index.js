@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import TextPairs from '../textpairs';
+import theme from '../../../style/theme';
 
 const Wrap = styled.div`
     display:flex;
