@@ -6,9 +6,9 @@ const Wrap = styled.div`
     padding: 0.6rem 0.4rem;
 `;
 
-const Header = ({children}) => {
+const Header = ({children, ...rest}) => {
     return (
-        <Wrap>{children}</Wrap>
+        <Wrap {...rest}>{children}</Wrap>
     );
 }
 
