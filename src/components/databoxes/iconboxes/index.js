@@ -7,6 +7,7 @@ const Wrap = styled.div`
     display:flex;
     width:100%;
     font-family: ${theme.main.font};
+    align-items:center;
 `;
 const IconWrap = styled.div`
     width:1.5rem;
