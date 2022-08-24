@@ -15622,7 +15622,7 @@ function _templateObject2$x() {
 }
 
 function _templateObject$D() {
-  var data = _taggedTemplateLiteral(["\n    padding:.75rem;\n    border-radius:10px;\n"]);
+  var data = _taggedTemplateLiteral(["\n    padding:.75rem;\n    border-radius:10px;\n    background-color:#fff;\n"]);
 
   _templateObject$D = function _templateObject() {
     return data;
@@ -15636,8 +15636,10 @@ var Children = styled__default['default'].div(_templateObject2$x());
 var Rectangle = function Rectangle(_ref) {
   var _ref$text = _ref.text,
       text = _ref$text === void 0 ? "" : _ref$text,
-      children = _ref.children;
-  return /*#__PURE__*/React__default['default'].createElement(Wrap$f, null, /*#__PURE__*/React__default['default'].createElement(Text$1, {
+      children = _ref.children,
+      rest = _objectWithoutProperties(_ref, ["text", "children"]);
+
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$f, rest, /*#__PURE__*/React__default['default'].createElement(Text$1, {
     type: "small"
   }, text), /*#__PURE__*/React__default['default'].createElement(Children, null, children));
 };
@@ -15673,7 +15675,7 @@ function _templateObject2$y() {
 }
 
 function _templateObject$E() {
-  var data = _taggedTemplateLiteral(["\n    display:flex;\n    font-family:'museo-sans';\n    width:100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n    display:flex;\n    width:100%;\n    font-family: ", ";\n    \n"]);
 
   _templateObject$E = function _templateObject() {
     return data;
@@ -15681,7 +15683,7 @@ function _templateObject$E() {
 
   return data;
 }
-var Wrap$g = styled__default['default'].div(_templateObject$E());
+var Wrap$g = styled__default['default'].div(_templateObject$E(), theme.main.font);
 var TextWrap$1 = styled__default['default'].span(_templateObject2$y());
 var LeftText = styled__default['default'](TextWrap$1)(_templateObject3$j(), function (_ref) {
   var fill = _ref.fill;
@@ -15704,7 +15706,7 @@ var TextPairs = function TextPairs(_ref2) {
 };
 
 function _templateObject2$z() {
-  var data = _taggedTemplateLiteral(["\n    width:1.5rem;\n    margin-right:.5rem;\n"]);
+  var data = _taggedTemplateLiteral(["\n    width:1.5rem;\n    margin-right:.5rem;\n    color: ", ";\n"]);
 
   _templateObject2$z = function _templateObject2() {
     return data;
@@ -15714,7 +15716,7 @@ function _templateObject2$z() {
 }
 
 function _templateObject$F() {
-  var data = _taggedTemplateLiteral(["\n    display:flex;\n    font-family:'museo-sans';\n    width:100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n    display:flex;\n    width:100%;\n    font-family: ", ";\n    align-items:center;\n"]);
 
   _templateObject$F = function _templateObject() {
     return data;
@@ -15722,8 +15724,10 @@ function _templateObject$F() {
 
   return data;
 }
-var Wrap$h = styled__default['default'].div(_templateObject$F());
-var IconWrap$1 = styled__default['default'].div(_templateObject2$z());
+var Wrap$h = styled__default['default'].div(_templateObject$F(), theme.main.font);
+var IconWrap$1 = styled__default['default'].div(_templateObject2$z(), function (props) {
+  return props.fill;
+});
 
 var IconBoxes = function IconBoxes(_ref) {
   var fill = _ref.fill,
@@ -15732,7 +15736,9 @@ var IconBoxes = function IconBoxes(_ref) {
       _ref$rightText = _ref.rightText,
       rightText = _ref$rightText === void 0 ? '' : _ref$rightText,
       Icon = _ref.Icon;
-  return /*#__PURE__*/React__default['default'].createElement(Wrap$h, null, /*#__PURE__*/React__default['default'].createElement(IconWrap$1, null, /*#__PURE__*/React__default['default'].createElement(Icon, {
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$h, null, /*#__PURE__*/React__default['default'].createElement(IconWrap$1, {
+    fill: fill
+  }, /*#__PURE__*/React__default['default'].createElement(Icon, {
     fill: fill
   })), /*#__PURE__*/React__default['default'].createElement(TextPairs, {
     fill: fill,
@@ -15742,7 +15748,7 @@ var IconBoxes = function IconBoxes(_ref) {
 };
 
 function _templateObject$G() {
-  var data = _taggedTemplateLiteral(["\n    display: block;\n\n    border-radius:10px;\n    \n    > * {\n        display: flex;\n\n        ", "\n\n        ", "\n\n        \n\n    }\n    //grid-template-rows: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n    display: block;\n\n    border-radius:10px;\n    background-color:#fff;\n    \n    > * {\n        display: flex;\n\n        ", "\n\n        ", "\n\n        \n\n    }\n    //grid-template-rows: ", ";\n"]);
 
   _templateObject$G = function _templateObject() {
     return data;
@@ -15767,11 +15773,13 @@ var Wrap$i = styled__default['default'].div(_templateObject$G(), function (_ref)
 var Header$2 = function Header(_ref4) {
   var children = _ref4.children,
       _ref4$columns = _ref4.columns,
-      columns = _ref4$columns === void 0 ? '12rem' : _ref4$columns;
-  return /*#__PURE__*/React__default['default'].createElement(Wrap$i, {
+      columns = _ref4$columns === void 0 ? '12rem' : _ref4$columns,
+      rest = _objectWithoutProperties(_ref4, ["children", "columns"]);
+
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$i, _extends({}, rest, {
     columnString: typeof columns === 'string' ? columns : null,
     columnArray: typeof columns !== 'string' ? columns : null
-  }, children);
+  }), children);
 };
 
 function _templateObject$H() {
@@ -15867,8 +15875,10 @@ function _templateObject$K() {
 var Wrap$m = styled__default['default'].div(_templateObject$K());
 
 var Header$6 = function Header(_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/React__default['default'].createElement(Wrap$m, null, children);
+  var children = _ref.children,
+      rest = _objectWithoutProperties(_ref, ["children"]);
+
+  return /*#__PURE__*/React__default['default'].createElement(Wrap$m, rest, children);
 };
 
 function _templateObject$L() {
