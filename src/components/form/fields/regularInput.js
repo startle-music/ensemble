@@ -16,6 +16,8 @@ const StyledRequired = styled.span`
 `;
 
 const Wrap = styled.div`
+    display: flex;
+    align-items: center;
     background: ${({inputBackground}) => inputBackground};
     color: ${({inputColour}) => inputColour};
     border-radius: 0.4rem;
