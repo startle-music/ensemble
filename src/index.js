@@ -81,7 +81,7 @@ export {
     ProgressBar, 
     ProgressBarReducer,
     HoverIcon,
-    ToolTip, TooltipReducer,
+    //ToolTip, TooltipReducer,
     ProgressBarActions,
     Hr,
     // Toast,
