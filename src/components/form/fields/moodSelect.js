@@ -451,7 +451,7 @@ const MoodSelector = ({readonly = false, defaultValue = null, onMoodClick = ()=>
             {moods.map(obj=>{
                 return(<Radio checked={selected===obj} type="radio" id="html" name={"mood"} value={obj}></Radio>)
             })}
-            </Wrap>
+        </Wrap>
     );
 };
 
