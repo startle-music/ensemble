@@ -97,11 +97,11 @@ const MoodPath = ({ d, className, fill, transform, opacity = 1, selected, adjace
 const MoodSelector = ({readonly = false, defaultValue = null, onMoodClick = ()=>{}}) => {
     const [selected, setSelected] = useState(defaultValue);
     const passToAll = {
-        setSelected:setSelected,
-        selected:selected,
-        parentOnClick:onMoodClick
+        setSelected: setSelected,
+        selected: selected,
+        parentOnClick: onMoodClick
     }
-    if(readonly===true) {
+    if (readonly === true) {
         passToAll.parentOnClick = () => {};
         passToAll.setSelected = () => {};
     }
