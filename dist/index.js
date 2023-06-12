@@ -1,114 +1,67 @@
 var React$1 = require('react');
 var styled = require('styled-components');
 var _extends$1 = require('@babel/runtime/helpers/esm/extends');
-var _assertThisInitialized$1 = require('@babel/runtime/helpers/esm/assertThisInitialized');
+var _assertThisInitialized = require('@babel/runtime/helpers/esm/assertThisInitialized');
 var _inheritsLoose = require('@babel/runtime/helpers/esm/inheritsLoose');
 var _wrapNativeSuper = require('@babel/runtime/helpers/esm/wrapNativeSuper');
 require('@babel/runtime/helpers/esm/taggedTemplateLiteralLoose');
 
 function _interopNamespaceDefault(e) {
-  var n = Object.create(null);
-  if (e) {
-    Object.keys(e).forEach(function (k) {
-      if (k !== 'default') {
-        var d = Object.getOwnPropertyDescriptor(e, k);
-        Object.defineProperty(n, k, d.get ? d : {
-          enumerable: true,
-          get: function () { return e[k]; }
+    var n = Object.create(null);
+    if (e) {
+        Object.keys(e).forEach(function (k) {
+            if (k !== 'default') {
+                var d = Object.getOwnPropertyDescriptor(e, k);
+                Object.defineProperty(n, k, d.get ? d : {
+                    enumerable: true,
+                    get: function () { return e[k]; }
+                });
+            }
         });
-      }
-    });
-  }
-  n.default = e;
-  return Object.freeze(n);
+    }
+    n.default = e;
+    return Object.freeze(n);
 }
 
 var React__namespace = /*#__PURE__*/_interopNamespaceDefault(React$1);
 
-function _iterableToArrayLimit(arr, i) {
-  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
-  if (null != _i) {
-    var _s,
-      _e,
-      _x,
-      _r,
-      _arr = [],
-      _n = !0,
-      _d = !1;
-    try {
-      if (_x = (_i = _i.call(arr)).next, 0 === i) {
-        if (Object(_i) !== _i) return;
-        _n = !1;
-      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0);
-    } catch (err) {
-      _d = !0, _e = err;
-    } finally {
-      try {
-        if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return;
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-    return _arr;
-  }
-}
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly && (symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    })), keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2 ? ownKeys(Object(source), !0).forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) {
-      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-    });
-  }
-  return target;
-}
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
-  }
-}
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, "prototype", {
-    writable: false
-  });
-  return Constructor;
-}
-function _defineProperty(obj, key, value) {
-  key = _toPropertyKey(key);
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
+const Wrap$q = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2e364c;
+    z-index: 1;
+`;
+const fadeIn = styled.keyframes`
+    0% { opacity: 0; }
+    33% { opacity: 0; }
+    99%   { opacity: 0.5; }
+`;
+const Inner = styled.div`
+    position: absolute;
+    background-image: url(${props => props.src});
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    filter: blur(0px);
+    transform: scale(1.2);
+    animation: ${fadeIn} 3s;
+`;
+const Background$1 = ({
+  src = null
+}) => /*#__PURE__*/React$1.createElement(Wrap$q, {
+  className: "background"
+}, /*#__PURE__*/React$1.createElement(Inner, {
+  className: "background__inner",
+  src: src
+}));
+
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -123,176 +76,6 @@ function _extends() {
   };
   return _extends.apply(this, arguments);
 }
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  Object.defineProperty(subClass, "prototype", {
-    writable: false
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-  return _setPrototypeOf(o, p);
-}
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-  return target;
-}
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-  var key, i;
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-  return target;
-}
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-function _possibleConstructorReturn(self, call) {
-  if (call && (typeof call === "object" || typeof call === "function")) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError("Derived constructors may only return object or undefined");
-  }
-  return _assertThisInitialized(self);
-}
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-      result;
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-    return _possibleConstructorReturn(this, result);
-  };
-}
-function _taggedTemplateLiteral(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-  return Object.freeze(Object.defineProperties(strings, {
-    raw: {
-      value: Object.freeze(raw)
-    }
-  }));
-}
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-}
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
-}
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-  return arr2;
-}
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _toPrimitive(input, hint) {
-  if (typeof input !== "object" || input === null) return input;
-  var prim = input[Symbol.toPrimitive];
-  if (prim !== undefined) {
-    var res = prim.call(input, hint || "default");
-    if (typeof res !== "object") return res;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (hint === "string" ? String : Number)(input);
-}
-function _toPropertyKey(arg) {
-  var key = _toPrimitive(arg, "string");
-  return typeof key === "symbol" ? key : String(key);
-}
-
-var _templateObject$P, _templateObject2$B, _templateObject3$k;
-var Wrap$q = styled.div(_templateObject$P || (_templateObject$P = _taggedTemplateLiteral(["\n    position: fixed;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-color: #2e364c;\n    z-index: 1;\n"])));
-var fadeIn = styled.keyframes(_templateObject2$B || (_templateObject2$B = _taggedTemplateLiteral(["\n    0% { opacity: 0; }\n    33% { opacity: 0; }\n    99%   { opacity: 0.5; }\n"])));
-var Inner = styled.div(_templateObject3$k || (_templateObject3$k = _taggedTemplateLiteral(["\n    position: absolute;\n    background-image: url(", ");\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-size: cover;\n    opacity: 0.5;\n    mix-blend-mode: multiply;\n    filter: blur(0px);\n    transform: scale(1.2);\n    animation: ", " 3s;\n"])), function (props) {
-  return props.src;
-}, fadeIn);
-var Background$1 = function Background(_ref) {
-  var _ref$src = _ref.src,
-    src = _ref$src === void 0 ? null : _ref$src;
-  return /*#__PURE__*/React$1.createElement(Wrap$q, {
-    className: "background"
-  }, /*#__PURE__*/React$1.createElement(Inner, {
-    className: "background__inner",
-    src: src
-  }));
-};
 
 // based on https://github.com/styled-components/styled-components/blob/fcf6f3804c57a14dd7984dfab7bc06ee2edca044/src/utils/error.js
 
@@ -418,7 +201,7 @@ var PolishedError = /*#__PURE__*/function (_Error) {
       }
       _this = _Error.call(this, format.apply(void 0, [ERRORS[code]].concat(args))) || this;
     }
-    return _assertThisInitialized$1(_this);
+    return _assertThisInitialized(_this);
   }
   return PolishedError;
 }( /*#__PURE__*/_wrapNativeSuper(Error));
@@ -1165,7 +948,9 @@ var curriedTransparentize = /*#__PURE__*/curry
 /* ::<number | string, string, string> */(transparentize);
 var curriedTransparentize$1 = curriedTransparentize;
 
-var brandColors = {
+// import { lighten, opacify, darken } from 'polished';
+
+const brandColors = {
   simplyRed: '#e83948',
   orangeCrush: '#f7823b',
   yellowSubmarine: '#f9bd45',
@@ -1176,8 +961,8 @@ var brandColors = {
   greenDay: '#7cc530',
   purpleRain: '#6033b9'
 };
-var statusColours = {
-  "default": {
+const statusColours = {
+  default: {
     backgroundColor: '#E8E9EB',
     borderColor: '#9397A2',
     textColor: '#1C2229'
@@ -1203,7 +988,7 @@ var statusColours = {
     textColor: '#30A4C5'
   }
 };
-var generalColors = {
+const generalColors = {
   lightGrey: '#eef0f4',
   lightBlueGrey: '#787e89',
   midGrey: '#e7e7e7',
@@ -1214,7 +999,7 @@ var generalColors = {
   sliverColor: 'rgb(199,55,71)',
   sliverGradient: 'linear-gradient(90deg, rgba(199,55,71,1) 0%, rgba(223,172,51,1) 20%, rgba(142,182,59,1) 40%, rgba(251,253,254,1) 60%, rgba(102,175,208,1) 80%, rgba(63,83,158,1) 100%)'
 };
-var appColors = {
+const appColors = {
   background: generalColors.midGrey,
   color: brandColors.paintItBlack,
   boxBackground: generalColors.white,
@@ -1294,14 +1079,14 @@ var appColors = {
       button: generalColors.white,
       buttonColor: brandColors.simplyRed
     },
-    "default": {
+    default: {
       primary: brandColors.paintItBlack,
       contrast: generalColors.white,
       button: brandColors.blueMonday,
       buttonColor: generalColors.white
     },
-    get: function get() {
-      return appColors.products["default"];
+    get() {
+      return appColors.products.default;
     }
   }
 };
@@ -1315,7 +1100,7 @@ var appColors = {
  * the theme working with all existing components.
  * To alter the theme in a minor way, try updating above this section only.
  */
-var theme = {
+const theme = {
   colors: {
     simplyRed: '#e83948',
     orangeCrush: '#f7823b',
@@ -1328,8 +1113,8 @@ var theme = {
     purpleRain: '#6033b9'
   },
   mainColors: brandColors,
-  generalColors: generalColors,
-  statusColours: statusColours,
+  generalColors,
+  statusColours,
   layout: {
     spacing: 1.6
   },
@@ -1343,7 +1128,9 @@ var theme = {
     fontSize: '16px',
     boxBackground: appColors.boxBackground
   },
-  menu: _objectSpread2({}, appColors.menu),
+  menu: {
+    ...appColors.menu
+  },
   text: {
     h1: {
       color: generalColors.white,
@@ -1419,15 +1206,17 @@ var theme = {
   },
   products: appColors.products,
   feedback: appColors.feedback,
-  buttons: _objectSpread2({}, appColors.buttons),
+  buttons: {
+    ...appColors.buttons
+  },
   containers: {},
   mast: {},
   primaryNav: {},
   selectionPanel: {
     background: generalColors.lightGrey,
-    color: appColors.products["default"].primary,
+    color: appColors.products.default.primary,
     active: {
-      background: appColors.products["default"].primary,
+      background: appColors.products.default.primary,
       color: generalColors.white
     }
   },
@@ -1450,7 +1239,7 @@ var theme = {
       success: brandColors.greenDay,
       danger: brandColors.simplyRed,
       warning: brandColors.yellowSubmarine,
-      "default": generalColors.lightBlueGrey,
+      default: generalColors.lightBlueGrey,
       information: brandColors.blueMonday
     }
   },
@@ -1461,67 +1250,121 @@ var theme = {
   }
 };
 
-var _templateObject$O, _templateObject2$A, _templateObject3$j, _templateObject4$c, _templateObject5$7;
-var btnBase = styled.css(_templateObject$O || (_templateObject$O = _taggedTemplateLiteral(["\n    font-family: ", ";\n    padding: ", ";\n    font-size: ", ";\n    text-decoration: none;\n    position: relative;\n    display: ", ";\n    text-align: center;\n    box-sizing: border-box;\n    font-weight: 600;\n    border-radius: ", ";\n    cursor: pointer;\n    box-shadow: none;\n    \n    background: ", ";\n    border: 2px solid ", ";\n    color: ", ";\n\n    &:disabled, &:disabled:hover, &:disabled:active  {\n        opacity: 0.4;\n        cursor: default;\n        user-select: none;\n        pointer-events: none;\n    }\n\n    &:hover {\n        background: ", ";\n        border: 2px solid ", ";\n        color: ", ";\n    }\n    &:active {\n        background: ", ";\n        border: 2px solid ", ";\n        color: ", ";\n    }\n\n    /* if a button is followed by a button add left margin to the trailing button */\n    &+button, &+a {\n        margin-left: 0.4rem;\n    }\n\n    svg {\n        fill: currentColor;\n        height: 1.1rem;\n        width: 1em;\n    }\n"])), theme.main.font, function (_ref) {
-  var small = _ref.small;
-  return small === true ? "0.6rem 0.9rem" : "0.7rem 1rem";
-}, function (_ref2) {
-  var small = _ref2.small;
-  return small === true ? "0.785rem" : "1rem";
-}, function (_ref3) {
-  var block = _ref3.block;
-  return block === true ? "block" : "inline-block";
-}, function (_ref4) {
-  var rounded = _ref4.rounded;
-  return rounded === true ? '2rem' : '0.5rem';
-}, function (_ref5) {
-  var backgroundColour = _ref5.backgroundColour;
-  return backgroundColour;
-}, function (_ref6) {
-  var borderColour = _ref6.borderColour;
-  return borderColour;
-}, function (_ref7) {
-  var buttonColour = _ref7.buttonColour;
-  return buttonColour;
-}, function (props) {
-  return curriedLighten$1(0.15, props.backgroundColour);
-}, function (props) {
-  return curriedLighten$1(0.15, props.borderColour);
-}, function (props) {
-  return curriedLighten$1(0.15, props.buttonColour);
-}, function (props) {
-  return curriedDarken$1(0.05, props.activeBackgroundColour);
-}, function (props) {
-  return curriedDarken$1(0.05, props.borderColour);
-}, function (props) {
-  return curriedDarken$1(0.05, props.buttonColour);
-});
-var BaseButton = styled.button(_templateObject2$A || (_templateObject2$A = _taggedTemplateLiteral(["\n    ", "\n"])), btnBase);
-var RouteLinkBase = styled.a(_templateObject3$j || (_templateObject3$j = _taggedTemplateLiteral(["\n    ", "\n"])), btnBase);
-styled.input(_templateObject4$c || (_templateObject4$c = _taggedTemplateLiteral(["\n    ", "\n"])), btnBase);
-var RouteLinkButton = function RouteLinkButton(props) {
-  var children = props.children,
-    to = props.to;
+const btnBase = styled.css`
+    font-family: ${theme.main.font};
+    padding: ${({
+  small
+}) => small === true ? `0.6rem 0.9rem` : `0.7rem 1rem`};
+    font-size: ${({
+  small
+}) => small === true ? `0.785rem` : `1rem`};
+    text-decoration: none;
+    position: relative;
+    display: ${({
+  block
+}) => block === true ? `block` : `inline-block`};
+    text-align: center;
+    box-sizing: border-box;
+    font-weight: 600;
+    border-radius: ${({
+  rounded
+}) => rounded === true ? '2rem' : '0.5rem'};
+    cursor: pointer;
+    box-shadow: none;
+    
+    background: ${({
+  backgroundColour
+}) => backgroundColour};
+    border: 2px solid ${({
+  borderColour
+}) => borderColour};
+    color: ${({
+  buttonColour
+}) => buttonColour};
+
+    &:disabled, &:disabled:hover, &:disabled:active  {
+        opacity: 0.4;
+        cursor: default;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    &:hover {
+        background: ${props => curriedLighten$1(0.15, props.backgroundColour)};
+        border: 2px solid ${props => curriedLighten$1(0.15, props.borderColour)};
+        color: ${props => curriedLighten$1(0.15, props.buttonColour)};
+    }
+    &:active {
+        background: ${props => curriedDarken$1(0.05, props.activeBackgroundColour)};
+        border: 2px solid ${props => curriedDarken$1(0.05, props.borderColour)};
+        color: ${props => curriedDarken$1(0.05, props.buttonColour)};
+    }
+
+    /* if a button is followed by a button add left margin to the trailing button */
+    &+button, &+a {
+        margin-left: 0.4rem;
+    }
+
+    svg {
+        fill: currentColor;
+        height: 1.1rem;
+        width: 1em;
+    }
+`;
+const BaseButton = styled.button`
+    ${btnBase}
+`;
+const RouteLinkBase = styled.a`
+    ${btnBase}
+`;
+styled.input`
+    ${btnBase}
+`;
+const RouteLinkButton = props => {
+  const {
+    children,
+    to
+  } = props;
   // should href be to and import nextjs route link component?
   return /*#__PURE__*/React$1.createElement(RouteLinkBase, _extends({
     href: to
   }, props), children);
 };
-var LinkButton = function LinkButton(props) {
-  var children = props.children,
-    href = props.href;
+const LinkButton = props => {
+  const {
+    children,
+    href
+  } = props;
   // should href be to and import nextjs route link component?
   return /*#__PURE__*/React$1.createElement(RouteLinkBase, _extends({
     href: href
   }, props), children);
 };
-styled.div(_templateObject5$7 || (_templateObject5$7 = _taggedTemplateLiteral(["\n    position: relative;\n    user-select: none;\n\n    > *:first-child {\n        display: block;\n        position: absolute;\n        width: 100%;\n        height: 100%;\n        top: 0;\n        left: 0;\n    }\n\n    > *:not(:first-child) {\n        opacity: 0;\n    }\n"])));
-var calculateColours = function calculateColours(colour, outline) {
-  var mainColors = theme.mainColors,
-    generalColors = theme.generalColors;
-  var mainColour = mainColors.simplyRed;
-  var activeMainColour = mainColors.simplyRed;
-  var altColour = generalColors.white;
+styled.div`
+    position: relative;
+    user-select: none;
+
+    > *:first-child {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    > *:not(:first-child) {
+        opacity: 0;
+    }
+`;
+const calculateColours = (colour, outline) => {
+  const {
+    mainColors,
+    generalColors
+  } = theme;
+  let mainColour = mainColors.simplyRed;
+  let activeMainColour = mainColors.simplyRed;
+  let altColour = generalColors.white;
 
   // check main colours for this colour name
   if (mainColors[colour]) {
@@ -1548,7 +1391,7 @@ var calculateColours = function calculateColours(colour, outline) {
       altColour = generalColors.white;
       break;
   }
-  var colourObject = {
+  const colourObject = {
     buttonColour: altColour,
     backgroundColour: mainColour,
     activeBackgroundColour: activeMainColour,
@@ -1562,20 +1405,21 @@ var calculateColours = function calculateColours(colour, outline) {
   }
   return colourObject;
 };
-var Button = function Button(props) {
-  var children = props.children;
-    props.loading;
-    props.message;
-    var _props$colour = props.colour,
-    colour = _props$colour === void 0 ? 'default' : _props$colour,
-    _props$outline = props.outline,
-    outline = _props$outline === void 0 ? false : _props$outline,
-    _props$to = props.to,
-    to = _props$to === void 0 ? false : _props$to,
-    _props$href = props.href,
-    href = _props$href === void 0 ? false : _props$href;
-  var content = children;
-  var attributes = _objectSpread2(_objectSpread2({}, props), calculateColours(colour, outline));
+const Button = props => {
+  const {
+    children,
+    loading = false,
+    message = null,
+    colour = 'default',
+    outline = false,
+    to = false,
+    href = false
+  } = props;
+  let content = children;
+  const attributes = {
+    ...props,
+    ...calculateColours(colour, outline)
+  };
 
   // 
   if (to !== false) {
@@ -1587,40 +1431,78 @@ var Button = function Button(props) {
   return /*#__PURE__*/React$1.createElement(BaseButton, attributes, content);
 };
 
-var Times = function Times() {
-  return /*#__PURE__*/React$1.createElement("svg", {
-    width: "64px",
-    height: "64px",
-    viewBox: "0 0 64 64",
-    version: "1.1",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/React$1.createElement("g", {
-    id: "Icon/Times",
-    stroke: "none",
-    strokeWidth: "1",
-    fillRule: "evenodd"
-  }, /*#__PURE__*/React$1.createElement("path", {
-    d: "M44.1308425,32 L62.3254196,50.194577 C64.5581935,52.4291265 64.5581935,56.0489723 62.3254196,58.2817462 L58.2817462,62.3254196 C56.0489723,64.5581935 52.4271734,64.5581935 50.194577,62.3254196 L32,44.1308425 L13.805423,62.3254196 C11.5728266,64.5581935 7.95102768,64.5581935 5.71825379,62.3254196 L1.67458042,58.2817462 C-0.558193473,56.0471968 -0.558193473,52.4271734 1.67458042,50.194577 L19.8691575,32 L1.67458042,13.805423 C-0.558193473,11.5708735 -0.558193473,7.95102768 1.67458042,5.71825379 L5.71825379,1.67458042 C7.95280324,-0.558193473 11.5728266,-0.558193473 13.805423,1.67458042 L32,19.8691575 L50.194577,1.67458042 C52.4291265,-0.558193473 56.0489723,-0.558193473 58.2817462,1.67458042 L62.3254196,5.71825379 C64.5581935,7.95280324 64.5581935,11.5728266 62.3254196,13.805423 L44.1308425,32 Z",
-    id: "\uD83C\uDFA8-Icon-Fill"
-  })));
-};
+const Times = () => /*#__PURE__*/React$1.createElement("svg", {
+  width: "64px",
+  height: "64px",
+  viewBox: "0 0 64 64",
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg"
+}, /*#__PURE__*/React$1.createElement("g", {
+  id: "Icon/Times",
+  stroke: "none",
+  strokeWidth: "1",
+  fillRule: "evenodd"
+}, /*#__PURE__*/React$1.createElement("path", {
+  d: "M44.1308425,32 L62.3254196,50.194577 C64.5581935,52.4291265 64.5581935,56.0489723 62.3254196,58.2817462 L58.2817462,62.3254196 C56.0489723,64.5581935 52.4271734,64.5581935 50.194577,62.3254196 L32,44.1308425 L13.805423,62.3254196 C11.5728266,64.5581935 7.95102768,64.5581935 5.71825379,62.3254196 L1.67458042,58.2817462 C-0.558193473,56.0471968 -0.558193473,52.4271734 1.67458042,50.194577 L19.8691575,32 L1.67458042,13.805423 C-0.558193473,11.5708735 -0.558193473,7.95102768 1.67458042,5.71825379 L5.71825379,1.67458042 C7.95280324,-0.558193473 11.5728266,-0.558193473 13.805423,1.67458042 L32,19.8691575 L50.194577,1.67458042 C52.4291265,-0.558193473 56.0489723,-0.558193473 58.2817462,1.67458042 L62.3254196,5.71825379 C64.5581935,7.95280324 64.5581935,11.5728266 62.3254196,13.805423 L44.1308425,32 Z",
+  id: "\uD83C\uDFA8-Icon-Fill"
+})));
 
-var _templateObject$N;
-var Wrap$p = styled.div(_templateObject$N || (_templateObject$N = _taggedTemplateLiteral(["\n    font-family: ", ";\n    display: inline-flex;\n    border-radius: 10.325em;\n    margin: 0 0.325em 0 0;\n    overflow: hidden;\n    background: ", ";\n    color: ", ";\n    align-items: center;\n\n    input,\n    input:checked {\n        display: none;\n    }\n\n    label {\n        padding: 0.5em 0.75em;\n        color: inherit;\n        cursor: pointer;\n\n        &:focus {\n            background: rgba(0, 0, 0, 0.175);\n        }\n    }\n\n    button {\n        display: inline-block;\n        padding: 1em 0.6em 0.3em 0.5em;\n        width: 1.7em;\n        box-sizing: border-box;\n        background: rgba(40, 40, 40, 0.075);\n        cursor: pointer;\n        border: 0px;\n\n        svg {\n            width: 100%;\n            height: 100%;\n            color: white;\n            fill: white;\n        }\n    }\n"])), theme.main.font, function (_ref) {
-  var backgroundColor = _ref.backgroundColor;
-  return backgroundColor;
-}, function (_ref2) {
-  var color = _ref2.color;
-  return color;
-});
-var renderClose = function renderClose(onRemove, data) {
+const Wrap$p = styled.div`
+    font-family: ${theme.main.font};
+    display: inline-flex;
+    border-radius: 10.325em;
+    margin: 0 0.325em 0 0;
+    overflow: hidden;
+    background: ${({
+  backgroundColor
+}) => backgroundColor};
+    color: ${({
+  color
+}) => color};
+    align-items: center;
+
+    input,
+    input:checked {
+        display: none;
+    }
+
+    label {
+        padding: 0.5em 0.75em;
+        color: inherit;
+        cursor: pointer;
+
+        &:focus {
+            background: rgba(0, 0, 0, 0.175);
+        }
+    }
+
+    button {
+        display: inline-block;
+        padding: 1em 0.6em 0.3em 0.5em;
+        width: 1.7em;
+        box-sizing: border-box;
+        background: rgba(40, 40, 40, 0.075);
+        cursor: pointer;
+        border: 0px;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            color: white;
+            fill: white;
+        }
+    }
+`;
+const renderClose = (onRemove, data) => {
   console.log('onRemove', onRemove);
   if (onRemove === null) {
     return null;
   }
-  var label = data.label,
-    name = data.name,
-    value = data.value;
+  const {
+    label,
+    name,
+    value
+  } = data;
   return /*#__PURE__*/React$1.createElement("button", {
     type: "button",
     onClick: onRemove,
@@ -1629,38 +1511,32 @@ var renderClose = function renderClose(onRemove, data) {
     value: value
   }, /*#__PURE__*/React$1.createElement(Times, null));
 };
-var defaultOnClick = function defaultOnClick() {
-  return null;
-};
+const defaultOnClick = () => null;
 function calculateTextColour(textColor) {
-  var color = 'white';
+  let color = 'white';
   if (textColor !== null) {
     color = textColor;
   }
   return color;
 }
-var Chip$1 = function Chip(_ref3) {
-  var label = _ref3.label,
-    value = _ref3.value,
-    _ref3$name = _ref3.name,
-    name = _ref3$name === void 0 ? null : _ref3$name,
-    _ref3$color = _ref3.color,
-    color = _ref3$color === void 0 ? 'red' : _ref3$color,
-    _ref3$textColor = _ref3.textColor,
-    textColor = _ref3$textColor === void 0 ? null : _ref3$textColor,
-    _ref3$onClick = _ref3.onClick,
-    onClick = _ref3$onClick === void 0 ? null : _ref3$onClick,
-    _ref3$onRemove = _ref3.onRemove,
-    onRemove = _ref3$onRemove === void 0 ? null : _ref3$onRemove;
-  var chipName = name;
+const Chip$1 = ({
+  label,
+  value,
+  name = null,
+  color = 'red',
+  textColor = null,
+  onClick = null,
+  onRemove = null
+}) => {
+  let chipName = name;
   if (name === null) {
-    chipName = "chip-name-".concat(label);
+    chipName = `chip-name-${label}`;
   }
-  var onClickFunction = defaultOnClick;
+  let onClickFunction = defaultOnClick;
   if (onClick !== null) {
     onClickFunction = onClick;
   }
-  var textColour = calculateTextColour(textColor);
+  const textColour = calculateTextColour(textColor);
   return /*#__PURE__*/React$1.createElement(Wrap$p, {
     backgroundColor: color,
     color: textColour
@@ -1673,198 +1549,318 @@ var Chip$1 = function Chip(_ref3) {
     value: value,
     defaultChecked: true
   }), label), renderClose(onRemove, {
-    label: label,
-    name: name,
-    value: value
+    label,
+    name,
+    value
   }));
 };
 
-var _templateObject$M, _templateObject2$z;
-var podBase = styled.css(_templateObject$M || (_templateObject$M = _taggedTemplateLiteral(["\n    background: ", ";\n    border-radius: ", ";\n    border: ", ";\n    margin: ", ";\n    min-width:300px;\n    width: 100%;\n"])), function (props) {
-  return props.theme.containers.background || '';
-}, function (props) {
-  return props.theme.main.borderRadius || '';
-}, function (props) {
-  return props.theme.containers.border || '';
-}, function (props) {
-  return props.theme.containers.podSeperator || 0;
-});
-var Pod$1 = styled.article(_templateObject2$z || (_templateObject2$z = _taggedTemplateLiteral(["\n    ", "\n"])), podBase);
+const podBase = styled.css`
+    background: ${props => props.theme.containers.background || ''};
+    border-radius: ${props => props.theme.main.borderRadius || ''};
+    border: ${props => props.theme.containers.border || ''};
+    margin: ${props => props.theme.containers.podSeperator || 0};
+    min-width:300px;
+    width: 100%;
+`;
+const Pod$1 = styled.article`
+    ${podBase}
+`;
 
-var _templateObject$L, _templateObject2$y;
-var PositionContainerBase = styled.css(_templateObject$L || (_templateObject$L = _taggedTemplateLiteral(["\n    display:flex;\n    justify-content: ", ";\n    align-items: ", ";\n    flex-direction: ", ";\n    width: 100%;\n    overflow-x: auto;\n    ", "\n    \n"])), function (props) {
-  return props.align || 'center';
-}, function (props) {
-  return props.position || 'center';
-}, function (props) {
-  return props.column || 'column';
-}, function (props) {
-  return props.image ? "\n            background-image: url(".concat(props.image, ");\n            background-position: ").concat(props.imagePosition || 'left', "; \n            background-size: ").concat(props.imageSize || 'cover', ";\n            background-repeat: no-repeat; \n        ") : " ";
-});
-var PositionContainer$1 = styled.div(_templateObject2$y || (_templateObject2$y = _taggedTemplateLiteral(["\n    ", "\n"])), PositionContainerBase);
+const PositionContainerBase = styled.css`
+    display:flex;
+    justify-content: ${props => props.align || 'center'};
+    align-items: ${props => props.position || 'center'};
+    flex-direction: ${props => props.column || 'column'};
+    width: 100%;
+    overflow-x: auto;
+    ${props => props.image ? `
+            background-image: url(${props.image});
+            background-position: ${props.imagePosition || 'left'}; 
+            background-size: ${props.imageSize || 'cover'};
+            background-repeat: no-repeat; 
+        ` : ` `}
+    
+`;
+const PositionContainer$1 = styled.div`
+    ${PositionContainerBase}
+`;
 
-var _templateObject$K, _templateObject2$x;
-var HeaderBase = styled.css(_templateObject$K || (_templateObject$K = _taggedTemplateLiteral(["\n    width: 100%;\n    padding: ", ";\n    box-sizing: border-box;\n"])), function (props) {
-  return props.theme.containers.padding;
-});
-var Header$6 = styled.header(_templateObject2$x || (_templateObject2$x = _taggedTemplateLiteral(["\n    ", "\n"])), HeaderBase);
+const HeaderBase = styled.css`
+    width: 100%;
+    padding: ${props => props.theme.containers.padding};
+    box-sizing: border-box;
+`;
+const Header$6 = styled.header`
+    ${HeaderBase}
+`;
 
-var _templateObject$J, _templateObject2$w;
-var ContentBase = styled.css(_templateObject$J || (_templateObject$J = _taggedTemplateLiteral(["\n    width: 100%;\n    padding: ", ";\n    box-sizing: border-box;\n"])), function (props) {
-  return props.theme.containers.padding;
-});
-var Content$2 = styled.div(_templateObject2$w || (_templateObject2$w = _taggedTemplateLiteral(["\n    ", "\n"])), ContentBase);
+const ContentBase = styled.css`
+    width: 100%;
+    padding: ${props => props.theme.containers.padding};
+    box-sizing: border-box;
+`;
+const Content$2 = styled.div`
+    ${ContentBase}
+`;
 
-var _templateObject$I, _templateObject2$v;
-var ColumnContainerBase = styled.css(_templateObject$I || (_templateObject$I = _taggedTemplateLiteral(["\n    display:flex;\n    width: 100%;\n    background: ", ";\n    flex-direction: column;\n    flex: ", ";\n    justify-content: center;\n    ", "\n    \n    @media(max-width:500px){\n        flex-direction: column;    \n        ", "\n    }\n"])), function (props) {
-  return props.theme.containers.background;
-}, function (props) {
-  return props.size || 1;
-}, function (props) {
-  return props.image ? "\n            height: 100%;\n            background-image: url(".concat(props.image, ");\n            background-size: ").concat(props.imageSize || "cover", ";\n            background-repeat: no-repeat; \n            background-position: ").concat(props.imagePos || "center center", " ;\n        ") : " ";
-}, function (props) {
-  return props.mobile === false ? "\n                display:none;\n            " : "";
-});
-var ColumnContainer$1 = styled.div(_templateObject2$v || (_templateObject2$v = _taggedTemplateLiteral(["\n    ", "\n"])), ColumnContainerBase);
+const ColumnContainerBase = styled.css`
+    display:flex;
+    width: 100%;
+    background: ${props => props.theme.containers.background};
+    flex-direction: column;
+    flex: ${props => props.size || 1};
+    justify-content: center;
+    ${props => props.image ? `
+            height: 100%;
+            background-image: url(${props.image});
+            background-size: ${props.imageSize || "cover"};
+            background-repeat: no-repeat; 
+            background-position: ${props.imagePos || "center center"} ;
+        ` : ` `}
+    
+    @media(max-width:500px){
+        flex-direction: column;    
+        ${props => props.mobile === false ? `
+                display:none;
+            ` : ``}
+    }
+`;
+const ColumnContainer$1 = styled.div`
+    ${ColumnContainerBase}
+`;
 
-var _templateObject$H, _templateObject2$u;
-var GridContainerBase = styled.css(_templateObject$H || (_templateObject$H = _taggedTemplateLiteral(["\n    display: flex;\n    width: 100%;\n    position: relative;\n    padding: 5.5rem 0;\n    ", "\n\n    @media(max-width:500px){\n        flex-direction: column;\n    }\n    "])), function (props) {
-  return props.image ? "\n            \n            background-image: url(".concat(props.image, ");\n            background-size: ").concat(props.imageSize || 'cover', ";\n            background-repeat: no-repeat; \n            background-position:  ").concat(props.imagePos || 'cover', ";\n        ") : " ";
-});
-var GridContainer$1 = styled.div(_templateObject2$u || (_templateObject2$u = _taggedTemplateLiteral(["\n    ", "\n"])), GridContainerBase);
+const GridContainerBase = styled.css`
+    display: flex;
+    width: 100%;
+    position: relative;
+    padding: 5.5rem 0;
+    ${props => props.image ? `
+            
+            background-image: url(${props.image});
+            background-size: ${props.imageSize || 'cover'};
+            background-repeat: no-repeat; 
+            background-position:  ${props.imagePos || 'cover'};
+        ` : ` `}
 
-var Pod = Pod$1;
-var PositionContainer = PositionContainer$1;
-var Header$5 = Header$6;
-var Content$1 = Content$2;
-var ColumnContainer = ColumnContainer$1;
-var GridContainer = GridContainer$1;
+    @media(max-width:500px){
+        flex-direction: column;
+    }
+    `;
+const GridContainer$1 = styled.div`
+    ${GridContainerBase}
+`;
 
-var Form$1 = /*#__PURE__*/function (_Component) {
-  _inherits(Form, _Component);
-  var _super = _createSuper(Form);
-  function Form(props) {
-    var _this;
-    _classCallCheck(this, Form);
-    _this = _super.call(this, props);
-    _this.submit = _this.submit.bind(_assertThisInitialized(_this));
+const Pod = Pod$1;
+const PositionContainer = PositionContainer$1;
+const Header$5 = Header$6;
+const Content$1 = Content$2;
+const ColumnContainer = ColumnContainer$1;
+const GridContainer = GridContainer$1;
+
+let Form$1 = class Form extends React$1.Component {
+  constructor(props) {
+    super(props);
+    this.submit = this.submit.bind(this);
     console.log('item form', props);
-    return _this;
   }
-  _createClass(Form, [{
-    key: "submit",
-    value: function submit(e) {
-      var form = this.refs.form;
-      var onSubmit = this.props.onSubmit;
-      e.preventDefault();
-      var tForm = _toConsumableArray(form).filter(function (item) {
-        return item.name.length > 0 && !item.validity.valid;
-      });
-      if (tForm.length === 0 && typeof onSubmit === 'function') {
-        var formData = _toConsumableArray(form).filter(function (item) {
-          return item.name.length > 0;
-        }).reduce(function (total, current) {
-          total[current.name] = current.value;
-          return total;
-        }, {});
-        console.log(formData);
-        onSubmit(formData);
-      } else {
-        alert('@Devs. no no no no. Pass edit function pls');
-      }
+  submit(e) {
+    const {
+      form
+    } = this.refs;
+    const {
+      onSubmit
+    } = this.props;
+    e.preventDefault();
+    const tForm = [...form].filter(item => item.name.length > 0 && !item.validity.valid);
+    if (tForm.length === 0 && typeof onSubmit === 'function') {
+      const formData = [...form].filter(item => item.name.length > 0).reduce((total, current) => {
+        total[current.name] = current.value;
+        return total;
+      }, {});
+      console.log(formData);
+      onSubmit(formData);
+    } else {
+      alert('@Devs. no no no no. Pass edit function pls');
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-        children = _this$props.children,
-        _this$props$buttonTex = _this$props.buttonText,
-        buttonText = _this$props$buttonTex === void 0 ? 'Submit' : _this$props$buttonTex;
-      return /*#__PURE__*/React$1.createElement("form", {
-        ref: "form",
-        onSubmit: this.submit
-      }, children, /*#__PURE__*/React$1.createElement("div", null, /*#__PURE__*/React$1.createElement(Button, {
-        product: "positive",
-        type: "submit-modal"
-      }, buttonText)));
-    }
-  }]);
-  return Form;
-}(React$1.Component);
-
-var _templateObject$G, _templateObject2$t, _templateObject3$i, _templateObject4$b;
-var Text$2 = styled.label(_templateObject$G || (_templateObject$G = _taggedTemplateLiteral(["\n    font-weight: bold;\n    margin-bottom: 0.75rem;\n    color: ", ";\n    text-align: left;\n"])), theme.mainColors.paintItBlack);
-var Wrapper = styled.div(_templateObject2$t || (_templateObject2$t = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n"])));
-var Dropdown = styled.select(_templateObject3$i || (_templateObject3$i = _taggedTemplateLiteral(["\n    appearance: none;\n    -webkit-appearance: none;\n    background: transparent;\n    display: block;\n    width: 100%;\n    box-shadow: none;\n    appearance: none;\n    -webkit-appearance: none;\n    background: transparent;\n    border: none;\n    padding: 0.875rem 0.6rem;\n\n    &:focus {\n        outline: none;\n    }\n\n    option {\n        background: ", ";\n        padding: 0.875rem 0.6rem;\n        font-family: MuseoSans, sans-serif;\n        color: ", ";\n    }\n"])), function (props) {
-  return theme.text.input.background;
-}, function (props) {
-  return theme.generalColors.lightBlueGrey;
-});
-var StyledSelect = styled.div(_templateObject4$b || (_templateObject4$b = _taggedTemplateLiteral(["\n    margin: 0;\n    min-width: 10rem;\n    display: inline-block;\n    vertical-align: middle;\n    position: relative;\n    background: ", ";\n    border-radius: 0.45rem;\n    box-shadow: none;\n    &:first-child {\n        margin-left: 0;\n    }\n    &:last-child {\n        margin-right: 0;\n    }\n    &:after {\n        content: '';\n        display: block;\n        position: absolute;\n        right: 10px;\n        top: 37%;\n        z-index: 100;\n        box-sizing: border-box;\n        height: 0.5rem;\n        width: 0.5rem;\n        border-style: solid;\n        border-color: #787e89;\n        border-width: 0px 2px 2px 0px;\n        transform: rotate(45deg);\n        transition: border-width 150ms ease-in-out;\n        pointer-events: none;\n\n    }\n    @supports (-moz-appearance: none) {\n        select {\n            -moz-appearance: none;\n            text-indent: 0.01px;\n            text-overflow: '';\n        }\n    }\n"])), function (props) {
-  return theme.text.input.background;
-});
-var Label$2 = function Label(_ref) {
-  var children = _ref.children;
-  return children ? /*#__PURE__*/React$1.createElement(Text$2, null, children) : null;
-};
-var SelectInput = function SelectInput(_ref2) {
-  var value = _ref2.value,
-    name = _ref2.name,
-    children = _ref2.children,
-    label = _ref2.label,
-    _ref2$onChange = _ref2.onChange,
-    onChange = _ref2$onChange === void 0 ? function () {} : _ref2$onChange;
-  return /*#__PURE__*/React$1.createElement(Wrapper, null, /*#__PURE__*/React$1.createElement(Label$2, {
-    htmlFor: name
-  }, label), /*#__PURE__*/React$1.createElement(StyledSelect, null, /*#__PURE__*/React$1.createElement(Dropdown, {
-    value: value,
-    name: name,
-    onChange: onChange
-  }, children)));
+  }
+  render() {
+    const {
+      children,
+      buttonText = 'Submit'
+    } = this.props;
+    return /*#__PURE__*/React$1.createElement("form", {
+      ref: "form",
+      onSubmit: this.submit
+    }, children, /*#__PURE__*/React$1.createElement("div", null, /*#__PURE__*/React$1.createElement(Button, {
+      product: "positive",
+      type: "submit-modal"
+    }, buttonText)));
+  }
 };
 
-var _templateObject$F, _templateObject2$s;
-var labelBase = styled.css(_templateObject$F || (_templateObject$F = _taggedTemplateLiteral(["\n    //margin-bottom:5px;\n    //font-size: 0.9rem;\n    color: ", ";\n"])), function (p) {
-  return theme.main.color;
-});
-var Label$1 = styled.label(_templateObject2$s || (_templateObject2$s = _taggedTemplateLiteral(["\n    ", "\n    margin-bottom: ", ";\n    display: ", "\n"])), labelBase, function (props) {
-  return props.margin || 0;
-}, function (_ref) {
-  var block = _ref.block;
-  return block ? 'block' : 'inline-block';
-});
+const Text$2 = styled.label`
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    color: ${theme.mainColors.paintItBlack};
+    text-align: left;
+`;
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+const Dropdown = styled.select`
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    display: block;
+    width: 100%;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    padding: 0.875rem 0.6rem;
 
-var _excluded$f = ["name", "label", "required", "checked", "inline", "disabled", "value", "margin", "className", "defaultChecked", "id"];
-var _templateObject$E, _templateObject2$r, _templateObject3$h;
-var Radio$2 = styled.div(_templateObject$E || (_templateObject$E = _taggedTemplateLiteral(["\n    flex-direction: row;\n    display: ", ";\n    margin-right: ", ";\n    margin-bottom: 0.8rem;\n    align-items: center;\n    font-family: MuseoSansReg, sans-serif;\n"])), function (props) {
-  return props.inline ? 'inline-flex' : 'flex';
-}, function (props) {
-  return props.inline ? '0.8rem' : 0;
-});
-var PaddedLabel$2 = styled(Label$1)(_templateObject2$r || (_templateObject2$r = _taggedTemplateLiteral(["\n    padding: 0;\n    line-height: 1.5rem;\n    display: inline-flex;\n    align-items: center;\n    opacity: ", ";\n"])), function (_ref) {
-  var disabled = _ref.disabled;
-  return disabled ? '0.4' : '1';
-});
-var RadioInput = styled.input(_templateObject3$h || (_templateObject3$h = _taggedTemplateLiteral(["\n    position: absolute;\n    -webkit-appearance: none;\n    padding: 0;\n    border-radius: 10rem;\n    display: inline-flex;\n    position: relative;\n    justify-content: center;\n    width: 1.5rem;\n    height: 1.5rem;\n    align-items: center;\n    margin: 0;\n    margin-right: 5px;\n    background: ", ";\n\n    &:active,\n    &:checked:active {\n        box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);\n    }\n\n    &:checked {\n        background-color: #ffffff;\n        color: #ffffff;\n        box-shadow: inset 0 0 0 0.4rem #e83948;\n    }\n"])), function (props) {
-  return theme.text.input.background;
-});
-var RadioComponent = function RadioComponent(_ref2) {
-  var name = _ref2.name,
-    label = _ref2.label,
-    required = _ref2.required,
-    checked = _ref2.checked,
-    _ref2$inline = _ref2.inline,
-    inline = _ref2$inline === void 0 ? false : _ref2$inline,
-    _ref2$disabled = _ref2.disabled,
-    disabled = _ref2$disabled === void 0 ? false : _ref2$disabled,
-    value = _ref2.value;
-    _ref2.margin;
-    var _ref2$className = _ref2.className,
-    className = _ref2$className === void 0 ? '' : _ref2$className;
-    _ref2.defaultChecked;
-    var _ref2$id = _ref2.id,
-    id = _ref2$id === void 0 ? false : _ref2$id,
-    rest = _objectWithoutProperties(_ref2, _excluded$f);
+    &:focus {
+        outline: none;
+    }
+
+    option {
+        background: ${props => theme.text.input.background};
+        padding: 0.875rem 0.6rem;
+        font-family: MuseoSans, sans-serif;
+        color: ${props => theme.generalColors.lightBlueGrey};
+    }
+`;
+const StyledSelect = styled.div`
+    margin: 0;
+    min-width: 10rem;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    background: ${props => theme.text.input.background};
+    border-radius: 0.45rem;
+    box-shadow: none;
+    &:first-child {
+        margin-left: 0;
+    }
+    &:last-child {
+        margin-right: 0;
+    }
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 37%;
+        z-index: 100;
+        box-sizing: border-box;
+        height: 0.5rem;
+        width: 0.5rem;
+        border-style: solid;
+        border-color: #787e89;
+        border-width: 0px 2px 2px 0px;
+        transform: rotate(45deg);
+        transition: border-width 150ms ease-in-out;
+        pointer-events: none;
+
+    }
+    @supports (-moz-appearance: none) {
+        select {
+            -moz-appearance: none;
+            text-indent: 0.01px;
+            text-overflow: '';
+        }
+    }
+`;
+const Label$2 = ({
+  children
+}) => children ? /*#__PURE__*/React$1.createElement(Text$2, null, children) : null;
+const SelectInput = ({
+  value,
+  name,
+  children,
+  label,
+  onChange = () => {}
+}) => /*#__PURE__*/React$1.createElement(Wrapper, null, /*#__PURE__*/React$1.createElement(Label$2, {
+  htmlFor: name
+}, label), /*#__PURE__*/React$1.createElement(StyledSelect, null, /*#__PURE__*/React$1.createElement(Dropdown, {
+  value: value,
+  name: name,
+  onChange: onChange
+}, children)));
+
+const labelBase = styled.css`
+    //margin-bottom:5px;
+    //font-size: 0.9rem;
+    color: ${p => theme.main.color};
+`;
+const Label$1 = styled.label`
+    ${labelBase}
+    margin-bottom: ${props => props.margin || 0};
+    display: ${({
+  block
+}) => block ? 'block' : 'inline-block'}
+`;
+
+const Radio$2 = styled.div`
+    flex-direction: row;
+    display: ${props => props.inline ? 'inline-flex' : 'flex'};
+    margin-right: ${props => props.inline ? '0.8rem' : 0};
+    margin-bottom: 0.8rem;
+    align-items: center;
+    font-family: MuseoSansReg, sans-serif;
+`;
+const PaddedLabel$2 = styled(Label$1)`
+    padding: 0;
+    line-height: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    opacity: ${({
+  disabled
+}) => disabled ? '0.4' : '1'};
+`;
+const RadioInput = styled.input`
+    position: absolute;
+    -webkit-appearance: none;
+    padding: 0;
+    border-radius: 10rem;
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    align-items: center;
+    margin: 0;
+    margin-right: 5px;
+    background: ${props => theme.text.input.background};
+
+    &:active,
+    &:checked:active {
+        box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    &:checked {
+        background-color: #ffffff;
+        color: #ffffff;
+        box-shadow: inset 0 0 0 0.4rem #e83948;
+    }
+`;
+const RadioComponent = ({
+  name,
+  label,
+  required,
+  checked,
+  inline = false,
+  disabled = false,
+  value,
+  margin = 0,
+  className = '',
+  defaultChecked = false,
+  id = false,
+  ...rest
+}) => {
   return /*#__PURE__*/React$1.createElement(Radio$2, {
     inline: inline,
     className: className
@@ -1884,35 +1880,69 @@ var RadioComponent = function RadioComponent(_ref2) {
   }, rest)), label));
 };
 
-var _excluded$e = ["name", "id", "label", "required", "checked", "value", "inline", "disabled", "className"];
-var _templateObject$D, _templateObject2$q, _templateObject3$g;
-var Checkbox$1 = styled.div(_templateObject$D || (_templateObject$D = _taggedTemplateLiteral(["\n    flex-direction: row;\n    display: ", ";\n    margin-right: ", ";\n    margin-bottom: 0.8rem;\n    font-size: 1rem;\n    font-family: MuseoSansReg, sans-serif;\n"])), function (props) {
-  return props.inline ? 'inline-flex' : 'flex';
-}, function (props) {
-  return props.inline ? '0.8rem' : 0;
-});
-var PaddedLabel$1 = styled(Label$1)(_templateObject2$q || (_templateObject2$q = _taggedTemplateLiteral(["\n    padding: 0.25rem 0 0.25rem 2.25rem;\n    line-height: 1.5rem;\n    position: relative;\n    opacity: ", ";\n"])), function (_ref) {
-  var disabled = _ref.disabled;
-  return disabled ? '0.4' : '1';
-});
-var CheckboxInput = styled.input(_templateObject3$g || (_templateObject3$g = _taggedTemplateLiteral(["\n    -webkit-appearance: none;\n    padding: 0;\n    border-radius: 3px;\n    display: inline-flex;\n    position: absolute;\n    left: 0;\n    top: 0;\n    justify-content: center;\n    width: 1.5rem;\n    height: 1.5rem;\n    align-items: center;\n    margin-right: 5px;\n    background: ", ";\n\n    &:active,\n    &:checked:active {\n        box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);\n    }\n    &:disabled {\n        box-shadow: none;\n    }\n\n    &:checked {\n        background-color: #e83948;\n        color: #ffffff;\n    }\n\n    &:checked:after {\n        content: '\\2714';\n        font-family: 'MuseoSansReg', sans-serif;\n        color: #ffffff;\n        font-size: 1.1rem;\n    }\n"], ["\n    -webkit-appearance: none;\n    padding: 0;\n    border-radius: 3px;\n    display: inline-flex;\n    position: absolute;\n    left: 0;\n    top: 0;\n    justify-content: center;\n    width: 1.5rem;\n    height: 1.5rem;\n    align-items: center;\n    margin-right: 5px;\n    background: ", ";\n\n    &:active,\n    &:checked:active {\n        box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);\n    }\n    &:disabled {\n        box-shadow: none;\n    }\n\n    &:checked {\n        background-color: #e83948;\n        color: #ffffff;\n    }\n\n    &:checked:after {\n        content: '\\\\2714';\n        font-family: 'MuseoSansReg', sans-serif;\n        color: #ffffff;\n        font-size: 1.1rem;\n    }\n"])), function (props) {
-  return theme.text.input.background;
-});
-var CheckboxComponent = function CheckboxComponent(_ref2) {
-  var name = _ref2.name,
-    id = _ref2.id,
-    _ref2$label = _ref2.label,
-    label = _ref2$label === void 0 ? null : _ref2$label,
-    required = _ref2.required,
-    checked = _ref2.checked,
-    value = _ref2.value,
-    _ref2$inline = _ref2.inline,
-    inline = _ref2$inline === void 0 ? false : _ref2$inline,
-    _ref2$disabled = _ref2.disabled,
-    disabled = _ref2$disabled === void 0 ? false : _ref2$disabled,
-    _ref2$className = _ref2.className,
-    className = _ref2$className === void 0 ? null : _ref2$className,
-    rest = _objectWithoutProperties(_ref2, _excluded$e);
+const Checkbox$1 = styled.div`
+    flex-direction: row;
+    display: ${props => props.inline ? 'inline-flex' : 'flex'};
+    margin-right: ${props => props.inline ? '0.8rem' : 0};
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    font-family: MuseoSansReg, sans-serif;
+`;
+const PaddedLabel$1 = styled(Label$1)`
+    padding: 0.25rem 0 0.25rem 2.25rem;
+    line-height: 1.5rem;
+    position: relative;
+    opacity: ${({
+  disabled
+}) => disabled ? '0.4' : '1'};
+`;
+const CheckboxInput = styled.input`
+    -webkit-appearance: none;
+    padding: 0;
+    border-radius: 3px;
+    display: inline-flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    align-items: center;
+    margin-right: 5px;
+    background: ${props => theme.text.input.background};
+
+    &:active,
+    &:checked:active {
+        box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    &:disabled {
+        box-shadow: none;
+    }
+
+    &:checked {
+        background-color: #e83948;
+        color: #ffffff;
+    }
+
+    &:checked:after {
+        content: '\\2714';
+        font-family: 'MuseoSansReg', sans-serif;
+        color: #ffffff;
+        font-size: 1.1rem;
+    }
+`;
+const CheckboxComponent = ({
+  name,
+  id,
+  label = null,
+  required,
+  checked,
+  value,
+  inline = false,
+  disabled = false,
+  className = null,
+  ...rest
+}) => {
   return /*#__PURE__*/React$1.createElement(Checkbox$1, {
     inline: inline,
     className: className
@@ -1930,107 +1960,134 @@ var CheckboxComponent = function CheckboxComponent(_ref2) {
   }, rest)), label));
 };
 
-var _templateObject$C, _templateObject2$p;
-var FieldBase = styled.css(_templateObject$C || (_templateObject$C = _taggedTemplateLiteral(["\n    display: none;\n\n    input {\n        border: 1px solid #ccc;\n        border-radius: ", ";\n        font-size: 1rem;\n        padding: 0.5rem;\n    }\n"])), function (props) {
-  return props.theme.main.borderRadius;
-});
-var Field = styled.div(_templateObject2$p || (_templateObject2$p = _taggedTemplateLiteral(["\n    ", "\n"])), FieldBase);
-var FieldComponent$1 = /*#__PURE__*/function (_PureComponent) {
-  _inherits(FieldComponent, _PureComponent);
-  var _super = _createSuper(FieldComponent);
-  function FieldComponent(props) {
-    var _this;
-    _classCallCheck(this, FieldComponent);
-    _this = _super.call(this, props);
-    var value = props.value;
-    _this.state = {
-      value: value
-    };
-    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-  _createClass(FieldComponent, [{
-    key: "onChange",
-    value: function onChange(e) {
-      var onChange = this.props.onChange;
-      if (typeof onChange === 'function' && onChange !== undefined) {
-        onChange(e);
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-        name = _this$props.name,
-        label = _this$props.label,
-        required = _this$props.required,
-        _this$props$pattern = _this$props.pattern,
-        pattern = _this$props$pattern === void 0 ? undefined : _this$props$pattern,
-        _this$props$minlength = _this$props.minlength,
-        minlength = _this$props$minlength === void 0 ? 3 : _this$props$minlength,
-        _this$props$maxlength = _this$props.maxlength,
-        maxlength = _this$props$maxlength === void 0 ? 999 : _this$props$maxlength,
-        placeholder = _this$props.placeholder;
-      var value = this.state.value;
-      return /*#__PURE__*/React$1.createElement(Field, null, /*#__PURE__*/React$1.createElement(Label$1, {
-        htmlFor: name
-      }, label), /*#__PURE__*/React$1.createElement("input", {
-        type: "hidden",
-        name: name,
-        required: required,
-        pattern: pattern,
-        minLength: minlength,
-        maxLength: maxlength,
-        onChange: this.onChange,
-        placeholder: placeholder || label,
-        defaultValue: value
-      }));
-    }
-  }]);
-  return FieldComponent;
-}(React$1.PureComponent);
+const FieldBase = styled.css`
+    display: none;
 
-var _excluded$d = ["id", "name", "prepend", "append", "label", "type", "caption", "required", "placeholder", "defaultValue", "status"];
-var _templateObject$B, _templateObject2$o, _templateObject3$f, _templateObject4$a, _templateObject5$6;
-var LabelWrap = styled.div(_templateObject$B || (_templateObject$B = _taggedTemplateLiteral(["\n    font-size: 1rem;\n    font-family: MuseoSansReg, sans-serif;\n    padding-bottom: 0.5rem;\n"])));
-var StyledRequired = styled.span(_templateObject2$o || (_templateObject2$o = _taggedTemplateLiteral(["\n    display: inline-block;\n    margin-left: 0.3rem;\n"])));
-var Wrap$o = styled.div(_templateObject3$f || (_templateObject3$f = _taggedTemplateLiteral(["\n    display: flex;\n    align-items: center;\n    background: ", ";\n    color: ", ";\n    border-radius: 0.4rem;\n    padding: 0 0.4rem;\n    opacity: ", ";\n\n    &:focus-within {\n        background: ", ";\n        color: ", ";\n    }\n\n    \n"])), function (_ref) {
-  var inputBackground = _ref.inputBackground;
-  return inputBackground;
-}, function (_ref2) {
-  var inputColour = _ref2.inputColour;
-  return inputColour;
-}, function (_ref3) {
-  var _ref3$disabled = _ref3.disabled,
-    disabled = _ref3$disabled === void 0 ? false : _ref3$disabled;
-  return disabled ? '0.4' : '1';
-}, function (props) {
-  return curriedLighten$1(0.1, theme.colors.mrBlueSky);
-}, function (props) {
-  return theme.colors.paintItBlack;
-});
-var Input$1 = styled.input(_templateObject4$a || (_templateObject4$a = _taggedTemplateLiteral(["\n    border: 0;\n    padding: 0;\n    margin: 0;\n    background: transparent;\n    font-size: 1rem;\n    padding: 0.8rem 0.4rem;\n    color: inherit;\n    width: 100%;\n\n    &:focus {\n        outline: none;\n    }\n"])));
-var Label = function Label(_ref4) {
-  var children = _ref4.children,
-    _ref4$required = _ref4.required,
-    required = _ref4$required === void 0 ? false : _ref4$required;
-  var Required = function Required() {
-    return null;
-  };
-  if (required) {
-    Required = function Required() {
-      return /*#__PURE__*/React$1.createElement(StyledRequired, null, "*");
+    input {
+        border: 1px solid #ccc;
+        border-radius: ${props => props.theme.main.borderRadius};
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+`;
+const Field = styled.div`
+    ${FieldBase}
+`;
+let FieldComponent$1 = class FieldComponent extends React$1.PureComponent {
+  constructor(props) {
+    super(props);
+    const {
+      value
+    } = props;
+    this.state = {
+      value
     };
+    this.onChange = this.onChange.bind(this);
+  }
+  onChange(e) {
+    const {
+      onChange
+    } = this.props;
+    if (typeof onChange === 'function' && onChange !== undefined) {
+      onChange(e);
+    }
+  }
+  render() {
+    const {
+      name,
+      label,
+      required,
+      pattern = undefined,
+      minlength = 3,
+      maxlength = 999,
+      placeholder
+    } = this.props;
+    const {
+      value
+    } = this.state;
+    return /*#__PURE__*/React$1.createElement(Field, null, /*#__PURE__*/React$1.createElement(Label$1, {
+      htmlFor: name
+    }, label), /*#__PURE__*/React$1.createElement("input", {
+      type: "hidden",
+      name: name,
+      required: required,
+      pattern: pattern,
+      minLength: minlength,
+      maxLength: maxlength,
+      onChange: this.onChange,
+      placeholder: placeholder || label,
+      defaultValue: value
+    }));
+  }
+};
+
+const LabelWrap = styled.div`
+    font-size: 1rem;
+    font-family: MuseoSansReg, sans-serif;
+    padding-bottom: 0.5rem;
+`;
+const StyledRequired = styled.span`
+    display: inline-block;
+    margin-left: 0.3rem;
+`;
+const Wrap$o = styled.div`
+    display: flex;
+    align-items: center;
+    background: ${({
+  inputBackground
+}) => inputBackground};
+    color: ${({
+  inputColour
+}) => inputColour};
+    border-radius: 0.4rem;
+    padding: 0 0.4rem;
+    opacity: ${({
+  disabled = false
+}) => disabled ? '0.4' : '1'};
+
+    &:focus-within {
+        background: ${props => curriedLighten$1(0.1, theme.colors.mrBlueSky)};
+        color: ${props => theme.colors.paintItBlack};
+    }
+
+    
+`;
+const Input$1 = styled.input`
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    font-size: 1rem;
+    padding: 0.8rem 0.4rem;
+    color: inherit;
+    width: 100%;
+
+    &:focus {
+        outline: none;
+    }
+`;
+const Label = ({
+  children,
+  required = false
+}) => {
+  let Required = () => null;
+  if (required) {
+    Required = () => /*#__PURE__*/React$1.createElement(StyledRequired, null, "*");
   }
   return /*#__PURE__*/React$1.createElement(LabelWrap, null, children, /*#__PURE__*/React$1.createElement(Required, null));
 };
-var CaptionWrap = styled.p(_templateObject5$6 || (_templateObject5$6 = _taggedTemplateLiteral(["\n    color: ", ";\n    font-family: MuseoSansReg, sans-serif;\n    font-size: 0.75rem;\n    margin: 0.6rem 0;\n"])), function (_ref5) {
-  var inputColour = _ref5.inputColour;
-  return inputColour;
-});
-var Caption = function Caption(_ref6) {
-  var children = _ref6.children,
-    inputColour = _ref6.inputColour;
+const CaptionWrap = styled.p`
+    color: ${({
+  inputColour
+}) => inputColour};
+    font-family: MuseoSansReg, sans-serif;
+    font-size: 0.75rem;
+    margin: 0.6rem 0;
+`;
+const Caption = ({
+  children,
+  inputColour
+}) => {
   if (children === null) {
     return null;
   }
@@ -2038,8 +2095,8 @@ var Caption = function Caption(_ref6) {
     inputColour: inputColour
   }, children);
 };
-var getColours$2 = function getColours(status) {
-  var colourObject = {
+const getColours$2 = status => {
+  const colourObject = {
     inputBackground: theme.text.input.background,
     inputColour: theme.generalColors.darkGrey
   };
@@ -2055,50 +2112,34 @@ var getColours$2 = function getColours(status) {
  * @prop {label} string
  * @returns 
  */
-var FieldComponent = function FieldComponent(_ref7) {
-  var id = _ref7.id,
-    name = _ref7.name,
-    _ref7$prepend = _ref7.prepend,
-    prepend = _ref7$prepend === void 0 ? null : _ref7$prepend,
-    _ref7$append = _ref7.append,
-    append = _ref7$append === void 0 ? null : _ref7$append,
-    _ref7$label = _ref7.label,
-    label = _ref7$label === void 0 ? null : _ref7$label,
-    _ref7$type = _ref7.type,
-    type = _ref7$type === void 0 ? 'text' : _ref7$type,
-    _ref7$caption = _ref7.caption,
-    caption = _ref7$caption === void 0 ? null : _ref7$caption,
-    _ref7$required = _ref7.required,
-    required = _ref7$required === void 0 ? false : _ref7$required,
-    _ref7$placeholder = _ref7.placeholder,
-    placeholder = _ref7$placeholder === void 0 ? false : _ref7$placeholder,
-    _ref7$defaultValue = _ref7.defaultValue,
-    defaultValue = _ref7$defaultValue === void 0 ? null : _ref7$defaultValue,
-    _ref7$status = _ref7.status,
-    status = _ref7$status === void 0 ? null : _ref7$status,
-    rest = _objectWithoutProperties(_ref7, _excluded$d);
-  var Prepend = function Prepend() {
-    return null;
-  };
+const FieldComponent = ({
+  id,
+  name,
+  prepend = null,
+  append = null,
+  label = null,
+  type = 'text',
+  caption = null,
+  required = false,
+  placeholder = false,
+  defaultValue = null,
+  status = null,
+  ...rest
+}) => {
+  let Prepend = () => null;
   if (prepend !== null) {
-    Prepend = function Prepend() {
-      return /*#__PURE__*/React$1.createElement(React$1.Fragment, null, prepend);
-    };
+    Prepend = () => /*#__PURE__*/React$1.createElement(React$1.Fragment, null, prepend);
   }
-  var Append = function Append() {
-    return null;
-  };
+  let Append = () => null;
   if (append !== null) {
-    Append = function Append() {
-      return /*#__PURE__*/React$1.createElement(React$1.Fragment, null, append);
-    };
+    Append = () => /*#__PURE__*/React$1.createElement(React$1.Fragment, null, append);
   }
-  var colours = getColours$2(status);
+  const colours = getColours$2(status);
   return /*#__PURE__*/React$1.createElement(Label$1, {
     htmlFor: name
   }, label !== null ? /*#__PURE__*/React$1.createElement(Label, {
     required: required
-  }, label) : null, /*#__PURE__*/React$1.createElement(Wrap$o, _objectSpread2(_objectSpread2({}, rest), colours), /*#__PURE__*/React$1.createElement(Prepend, null), /*#__PURE__*/React$1.createElement(Input$1, _extends({
+  }, label) : null, /*#__PURE__*/React$1.createElement(Wrap$o, _extends({}, rest, colours), /*#__PURE__*/React$1.createElement(Prepend, null), /*#__PURE__*/React$1.createElement(Input$1, _extends({
     type: type,
     name: name,
     required: required,
@@ -2108,525 +2149,546 @@ var FieldComponent = function FieldComponent(_ref7) {
   }, colours, rest)), /*#__PURE__*/React$1.createElement(Append, null)), /*#__PURE__*/React$1.createElement(Caption, colours, caption));
 };
 
-var _templateObject$A, _templateObject2$n, _templateObject3$e, _templateObject4$9, _templateObject5$5;
-var Wrap$n = styled.div(_templateObject$A || (_templateObject$A = _taggedTemplateLiteral(["\n    display: flex;\n"])));
-var ChipWrap$1 = styled.div(_templateObject2$n || (_templateObject2$n = _taggedTemplateLiteral(["\n    display: flex;\n"])));
-var InputWrap$2 = styled.div(_templateObject3$e || (_templateObject3$e = _taggedTemplateLiteral(["\n    display: flex;\n    padding: 0.75rem 0;\n"])));
-var Form = styled.form(_templateObject4$9 || (_templateObject4$9 = _taggedTemplateLiteral(["\n    display: block;\n    width: 100%;\n"])));
-var FieldWrap$2 = styled.div(_templateObject5$5 || (_templateObject5$5 = _taggedTemplateLiteral(["\n    display: flex;\n    position: relative;\n    flex-direction: column;\n    margin-bottom: 15px;\n    width: 100%;\n    max-width: 26rem;\n\n    input {\n        //border: 1px solid #ccc;\n        border-radius: ", ";\n        font-size: 1rem;\n        padding: 0.875rem 0.6rem;\n        width: 100%;\n    }\n"])), function (props) {
-  return props.theme.main.borderRadius;
-});
-var ChipInput$1 = /*#__PURE__*/function (_Component) {
-  _inherits(ChipInput, _Component);
-  var _super = _createSuper(ChipInput);
-  function ChipInput(props) {
-    var _this;
-    _classCallCheck(this, ChipInput);
-    _this = _super.call(this, props);
-    _this.state = {
+const Wrap$n = styled.div`
+    display: flex;
+`;
+const ChipWrap$1 = styled.div`
+    display: flex;
+`;
+const InputWrap$2 = styled.div`
+    display: flex;
+    padding: 0.75rem 0;
+`;
+const Form = styled.form`
+    display: block;
+    width: 100%;
+`;
+const FieldWrap$2 = styled.div`
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 26rem;
+
+    input {
+        //border: 1px solid #ccc;
+        border-radius: ${props => props.theme.main.borderRadius};
+        font-size: 1rem;
+        padding: 0.875rem 0.6rem;
+        width: 100%;
+    }
+`;
+let ChipInput$1 = class ChipInput extends React$1.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       current: '',
       chips: props.chips
     };
-    _this.addChip = _this.addChip.bind(_assertThisInitialized(_this));
-    _this.chipOnClick = _this.chipOnClick.bind(_assertThisInitialized(_this));
-    _this.chipOnRemove = _this.chipOnRemove.bind(_assertThisInitialized(_this));
-    _this.onHandleChange = _this.onHandleChange.bind(_assertThisInitialized(_this));
-    return _this;
+    this.addChip = this.addChip.bind(this);
+    this.chipOnClick = this.chipOnClick.bind(this);
+    this.chipOnRemove = this.chipOnRemove.bind(this);
+    this.onHandleChange = this.onHandleChange.bind(this);
   }
-  _createClass(ChipInput, [{
-    key: "chipOnClick",
-    value: function chipOnClick() {
-      console.log(this);
-      return null;
+  chipOnClick() {
+    console.log(this);
+    return null;
+  }
+  chipOnRemove(value) {
+    const {
+      chips
+    } = this.state;
+    const chipList = chips.filter(chip => chip.value !== value);
+    this.setState({
+      chips: chipList
+    });
+  }
+  renderChip(chip, key) {
+    const {
+      name,
+      id
+    } = this.props;
+    const {
+      onClick = null,
+      onRemove = null,
+      label,
+      value,
+      product = 'default'
+    } = chip;
+    let onClickFunction = this.chipOnClick;
+    let onRemoveFunction = () => this.chipOnRemove(value);
+    if (onClick !== null) {
+      onClickFunction = onClick;
     }
-  }, {
-    key: "chipOnRemove",
-    value: function chipOnRemove(value) {
-      var chips = this.state.chips;
-      var chipList = chips.filter(function (chip) {
-        return chip.value !== value;
-      });
-      this.setState({
+    if (onRemove !== null) {
+      onRemoveFunction = () => onRemove(value);
+    }
+    return /*#__PURE__*/React$1.createElement(Chip$1, {
+      white: true,
+      name: name,
+      key: key,
+      id: `chip-${id}-${value}`,
+      onClick: onClickFunction,
+      onRemove: onRemoveFunction,
+      checked: true,
+      value: value,
+      label: label,
+      product: product
+    });
+  }
+  addChip(evnt) {
+    evnt.preventDefault();
+    if (evnt.target && evnt.target.new_chip) {
+      const {
         chips: chipList
-      });
-    }
-  }, {
-    key: "renderChip",
-    value: function renderChip(chip, key) {
-      var _this2 = this;
-      var _this$props = this.props,
-        name = _this$props.name,
-        id = _this$props.id;
-      var _chip$onClick = chip.onClick,
-        onClick = _chip$onClick === void 0 ? null : _chip$onClick,
-        _chip$onRemove = chip.onRemove,
-        onRemove = _chip$onRemove === void 0 ? null : _chip$onRemove,
-        label = chip.label,
-        value = chip.value,
-        _chip$product = chip.product,
-        product = _chip$product === void 0 ? 'default' : _chip$product;
-      var onClickFunction = this.chipOnClick;
-      var onRemoveFunction = function onRemoveFunction() {
-        return _this2.chipOnRemove(value);
+      } = this.state;
+      let newChip = {
+        label: evnt.target.new_chip.value,
+        value: evnt.target.new_chip.value.toLowerCase().replace(/ _:;,\./g, '-')
       };
-      if (onClick !== null) {
-        onClickFunction = onClick;
-      }
-      if (onRemove !== null) {
-        onRemoveFunction = function onRemoveFunction() {
-          return onRemove(value);
-        };
-      }
-      return /*#__PURE__*/React$1.createElement(Chip$1, {
-        white: true,
-        name: name,
-        key: key,
-        id: "chip-".concat(id, "-").concat(value),
-        onClick: onClickFunction,
-        onRemove: onRemoveFunction,
-        checked: true,
-        value: value,
-        label: label,
-        product: product
-      });
-    }
-  }, {
-    key: "addChip",
-    value: function addChip(evnt) {
-      evnt.preventDefault();
-      if (evnt.target && evnt.target.new_chip) {
-        var chipList = this.state.chips;
-        var newChip = {
+      if (chipList.length >= 1) {
+        newChip = {
+          ...chipList[0],
           label: evnt.target.new_chip.value,
           value: evnt.target.new_chip.value.toLowerCase().replace(/ _:;,\./g, '-')
         };
-        if (chipList.length >= 1) {
-          newChip = _objectSpread2(_objectSpread2({}, chipList[0]), {}, {
-            label: evnt.target.new_chip.value,
-            value: evnt.target.new_chip.value.toLowerCase().replace(/ _:;,\./g, '-')
-          });
-        }
-        chipList.push(newChip);
-        this.setState({
-          current: '',
-          chips: chipList
-        });
       }
-    }
-  }, {
-    key: "onHandleChange",
-    value: function onHandleChange(evnt) {
+      chipList.push(newChip);
       this.setState({
-        current: evnt.target.value
+        current: '',
+        chips: chipList
       });
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-      var _this$props2 = this.props,
-        name = _this$props2.name,
-        id = _this$props2.id,
-        label = _this$props2.label,
-        _this$props2$inline = _this$props2.inline,
-        inline = _this$props2$inline === void 0 ? false : _this$props2$inline;
-      var _this$state = this.state,
-        chips = _this$state.chips,
-        current = _this$state.current;
-      var addChipFunction = this.addChip;
-      var chipValues = chips.map(function (chip) {
-        return chip.value;
-      });
-      return /*#__PURE__*/React$1.createElement(Wrap$n, {
-        inline: inline,
-        id: id
-      }, /*#__PURE__*/React$1.createElement(Label$1, {
-        htmlFor: name
-      }, label, /*#__PURE__*/React$1.createElement(InputWrap$2, null, /*#__PURE__*/React$1.createElement(Form, {
-        onSubmit: addChipFunction
-      }, /*#__PURE__*/React$1.createElement(FieldWrap$2, null, /*#__PURE__*/React$1.createElement("input", {
-        type: "text",
-        name: "new_chip",
-        value: current,
-        onChange: this.onHandleChange
-      }))), /*#__PURE__*/React$1.createElement("input", {
-        name: "chip-values-".concat(name),
-        type: "hidden",
-        value: chipValues.join(',')
-      })), /*#__PURE__*/React$1.createElement(ChipWrap$1, null, chips.map(function (chip, key) {
-        return _this3.renderChip(chip, key);
-      }))));
-    }
-  }]);
-  return ChipInput;
-}(React$1.Component);
+  }
+  onHandleChange(evnt) {
+    this.setState({
+      current: evnt.target.value
+    });
+  }
+  render() {
+    const {
+      name,
+      id,
+      label,
+      inline = false
+    } = this.props;
+    const {
+      chips,
+      current
+    } = this.state;
+    const addChipFunction = this.addChip;
+    const chipValues = chips.map(function (chip) {
+      return chip.value;
+    });
+    return /*#__PURE__*/React$1.createElement(Wrap$n, {
+      inline: inline,
+      id: id
+    }, /*#__PURE__*/React$1.createElement(Label$1, {
+      htmlFor: name
+    }, label, /*#__PURE__*/React$1.createElement(InputWrap$2, null, /*#__PURE__*/React$1.createElement(Form, {
+      onSubmit: addChipFunction
+    }, /*#__PURE__*/React$1.createElement(FieldWrap$2, null, /*#__PURE__*/React$1.createElement("input", {
+      type: "text",
+      name: "new_chip",
+      value: current,
+      onChange: this.onHandleChange
+    }))), /*#__PURE__*/React$1.createElement("input", {
+      name: `chip-values-${name}`,
+      type: "hidden",
+      value: chipValues.join(',')
+    })), /*#__PURE__*/React$1.createElement(ChipWrap$1, null, chips.map((chip, key) => this.renderChip(chip, key)))));
+  }
+};
 
-var _templateObject$z, _templateObject2$m, _templateObject3$d, _templateObject4$8, _templateObject5$4;
-var Wrap$m = styled.div(_templateObject$z || (_templateObject$z = _taggedTemplateLiteral(["\n    display: flex;\n"])));
-var ChipWrap = styled.div(_templateObject2$m || (_templateObject2$m = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: wrap;\n    margin-top: 1em;\n    justify-content: center;\n"])));
-var ChipSelectWrap = styled.div(_templateObject3$d || (_templateObject3$d = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n"])));
-var InputWrap$1 = styled.div(_templateObject4$8 || (_templateObject4$8 = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n"])));
-var FieldWrap$1 = styled.div(_templateObject5$4 || (_templateObject5$4 = _taggedTemplateLiteral(["\n    display: flex;\n    position: relative;\n    flex-direction: column;\n    max-width: 26rem;\n    margin: 0 0.325rem 0 0;\n\n    input {\n        //border: 1px solid #ccc;\n        border-radius: ", ";\n        font-size: 1rem;\n        padding: 0.875rem 0.6rem;\n        width: 100%;\n    }\n"])), function (props) {
-  return props.theme.main.borderRadius;
-});
-var ChipInput = /*#__PURE__*/function (_Component) {
-  _inherits(ChipInput, _Component);
-  var _super = _createSuper(ChipInput);
-  function ChipInput(props) {
-    var _this;
-    _classCallCheck(this, ChipInput);
-    _this = _super.call(this, props);
-    _this.state = {
+const Wrap$m = styled.div`
+    display: flex;
+`;
+const ChipWrap = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1em;
+    justify-content: center;
+`;
+const ChipSelectWrap = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+const InputWrap$1 = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+const FieldWrap$1 = styled.div`
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    max-width: 26rem;
+    margin: 0 0.325rem 0 0;
+
+    input {
+        //border: 1px solid #ccc;
+        border-radius: ${props => props.theme.main.borderRadius};
+        font-size: 1rem;
+        padding: 0.875rem 0.6rem;
+        width: 100%;
+    }
+`;
+class ChipInput extends React$1.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       options: props.options,
       selected: props.chips,
       current: ''
     };
-    _this.addChip = _this.addChip.bind(_assertThisInitialized(_this));
-    _this.chipOnClick = _this.chipOnClick.bind(_assertThisInitialized(_this));
-    _this.chipOnRemove = _this.chipOnRemove.bind(_assertThisInitialized(_this));
-    return _this;
+    this.addChip = this.addChip.bind(this);
+    this.chipOnClick = this.chipOnClick.bind(this);
+    this.chipOnRemove = this.chipOnRemove.bind(this);
   }
-  _createClass(ChipInput, [{
-    key: "chipOnClick",
-    value: function chipOnClick() {
-      console.log(this);
-      return null;
+  chipOnClick() {
+    console.log(this);
+    return null;
+  }
+  chipOnRemove(value) {
+    const {
+      selected
+    } = this.state;
+    const chipList = selected.filter(chip => chip !== value);
+    this.setState({
+      selected: chipList
+    });
+  }
+  renderChip(chip, key) {
+    const {
+      name,
+      id
+    } = this.props;
+    const {
+      onClick = null,
+      onRemove = null,
+      label,
+      value,
+      product = 'default'
+    } = chip;
+    let onClickFunction = this.chipOnClick;
+    let onRemoveFunction = () => this.chipOnRemove(value);
+    if (onClick !== null) {
+      onClickFunction = onClick;
     }
-  }, {
-    key: "chipOnRemove",
-    value: function chipOnRemove(value) {
-      var selected = this.state.selected;
-      var chipList = selected.filter(function (chip) {
-        return chip !== value;
-      });
+    if (onRemove !== null) {
+      onRemoveFunction = () => onRemove(value);
+    }
+    return /*#__PURE__*/React$1.createElement(Chip$1, {
+      name: name,
+      key: key,
+      id: `chip-${id}-${value}`,
+      onClick: onClickFunction,
+      onRemove: onRemoveFunction,
+      checked: true,
+      value: value,
+      label: label,
+      product: product
+    });
+  }
+  addChip(evnt) {
+    evnt.preventDefault();
+    if (evnt.target && evnt.target.value !== '') {
+      const selectbox = evnt.target;
+      const {
+        selected
+      } = this.state;
+      const _selected = selected;
+      _selected.push(selectbox.value);
       this.setState({
-        selected: chipList
+        selected: _selected,
+        current: ''
       });
     }
-  }, {
-    key: "renderChip",
-    value: function renderChip(chip, key) {
-      var _this2 = this;
-      var _this$props = this.props,
-        name = _this$props.name,
-        id = _this$props.id;
-      var _chip$onClick = chip.onClick,
-        onClick = _chip$onClick === void 0 ? null : _chip$onClick,
-        _chip$onRemove = chip.onRemove,
-        onRemove = _chip$onRemove === void 0 ? null : _chip$onRemove,
-        label = chip.label,
-        value = chip.value,
-        _chip$product = chip.product,
-        product = _chip$product === void 0 ? 'default' : _chip$product;
-      var onClickFunction = this.chipOnClick;
-      var onRemoveFunction = function onRemoveFunction() {
-        return _this2.chipOnRemove(value);
-      };
-      if (onClick !== null) {
-        onClickFunction = onClick;
+  }
+  renderOptions(options) {
+    console.log('renderOption,', options, this);
+    const {
+      current
+    } = this.state;
+    return /*#__PURE__*/React$1.createElement("div", {
+      className: "styled-select"
+    }, /*#__PURE__*/React$1.createElement("select", {
+      name: "new_chip",
+      onChange: this.addChip,
+      value: current
+    }, /*#__PURE__*/React$1.createElement("option", {
+      value: ""
+    }, "Select Another Option"), options.map(option => /*#__PURE__*/React$1.createElement("option", {
+      value: option.value
+    }, option.label))));
+  }
+  render() {
+    const {
+      name,
+      id,
+      label,
+      inline = false
+    } = this.props;
+    console.log(this);
+    const {
+      selected,
+      options
+    } = this.state;
+    const chips = selected.map(chip => {
+      const matches = options.filter(option => chip === option.value);
+      if (matches.length > 0) {
+        return matches[0];
       }
-      if (onRemove !== null) {
-        onRemoveFunction = function onRemoveFunction() {
-          return onRemove(value);
-        };
+      return null;
+    });
+    const filteredOptions = options.filter(option => {
+      if (selected.indexOf(option.value) === -1) {
+        return true;
       }
-      return /*#__PURE__*/React$1.createElement(Chip$1, {
-        name: name,
-        key: key,
-        id: "chip-".concat(id, "-").concat(value),
-        onClick: onClickFunction,
-        onRemove: onRemoveFunction,
-        checked: true,
-        value: value,
-        label: label,
-        product: product
-      });
-    }
-  }, {
-    key: "addChip",
-    value: function addChip(evnt) {
-      evnt.preventDefault();
-      if (evnt.target && evnt.target.value !== '') {
-        var selectbox = evnt.target;
-        var selected = this.state.selected;
-        var _selected = selected;
-        _selected.push(selectbox.value);
-        this.setState({
-          selected: _selected,
-          current: ''
-        });
-      }
-    }
-  }, {
-    key: "renderOptions",
-    value: function renderOptions(options) {
-      console.log('renderOption,', options, this);
-      var current = this.state.current;
-      return /*#__PURE__*/React$1.createElement("div", {
-        className: "styled-select"
-      }, /*#__PURE__*/React$1.createElement("select", {
-        name: "new_chip",
-        onChange: this.addChip,
-        value: current
-      }, /*#__PURE__*/React$1.createElement("option", {
-        value: ""
-      }, "Select Another Option"), options.map(function (option) {
-        return /*#__PURE__*/React$1.createElement("option", {
-          value: option.value
-        }, option.label);
-      })));
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-      var _this$props2 = this.props,
-        name = _this$props2.name,
-        id = _this$props2.id,
-        label = _this$props2.label,
-        _this$props2$inline = _this$props2.inline,
-        inline = _this$props2$inline === void 0 ? false : _this$props2$inline;
-      console.log(this);
-      var _this$state = this.state,
-        selected = _this$state.selected,
-        options = _this$state.options;
-      var chips = selected.map(function (chip) {
-        var matches = options.filter(function (option) {
-          return chip === option.value;
-        });
-        if (matches.length > 0) {
-          return matches[0];
-        }
-        return null;
-      });
-      var filteredOptions = options.filter(function (option) {
-        if (selected.indexOf(option.value) === -1) {
-          return true;
-        }
-        return false;
-      });
-      return /*#__PURE__*/React$1.createElement(Wrap$m, {
-        inline: inline,
-        id: id
-      }, /*#__PURE__*/React$1.createElement(ChipSelectWrap, null, /*#__PURE__*/React$1.createElement(InputWrap$1, null, /*#__PURE__*/React$1.createElement(Label$1, {
-        htmlFor: "new_chip"
-      }, label), /*#__PURE__*/React$1.createElement(FieldWrap$1, null, this.renderOptions(filteredOptions))), /*#__PURE__*/React$1.createElement("input", {
-        name: "chip-values-".concat(name),
-        type: "hidden",
-        value: selected.join(',')
-      }), /*#__PURE__*/React$1.createElement(ChipWrap, null, chips.map(function (chip, key) {
-        return chip !== null ? _this3.renderChip(chip, key) : '';
-      }))));
-    }
-  }]);
-  return ChipInput;
-}(React$1.Component);
+      return false;
+    });
+    return /*#__PURE__*/React$1.createElement(Wrap$m, {
+      inline: inline,
+      id: id
+    }, /*#__PURE__*/React$1.createElement(ChipSelectWrap, null, /*#__PURE__*/React$1.createElement(InputWrap$1, null, /*#__PURE__*/React$1.createElement(Label$1, {
+      htmlFor: "new_chip"
+    }, label), /*#__PURE__*/React$1.createElement(FieldWrap$1, null, this.renderOptions(filteredOptions))), /*#__PURE__*/React$1.createElement("input", {
+      name: `chip-values-${name}`,
+      type: "hidden",
+      value: selected.join(',')
+    }), /*#__PURE__*/React$1.createElement(ChipWrap, null, chips.map((chip, key) => chip !== null ? this.renderChip(chip, key) : ''))));
+  }
+}
 
-var _templateObject$y, _templateObject2$l, _templateObject3$c;
-var pad = function pad(n, width, z) {
+const pad = (n, width, z) => {
   z = z || '0';
   n += '';
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 };
-var Wrap$l = styled.div(_templateObject$y || (_templateObject$y = _taggedTemplateLiteral(["\n    display: flex;\n"])));
-var InputWrap = styled.div(_templateObject2$l || (_templateObject2$l = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n"])));
-var FieldWrap = styled.div(_templateObject3$c || (_templateObject3$c = _taggedTemplateLiteral(["\n    display: flex;\n    position: relative;\n    max-width: 26rem;\n    margin: 0 0.325rem 0 0;\n    align-items: center;\n    span {\n        color: #000;\n        padding: 0.25em;\n    }\n    input {\n        //border: 1px solid #ccc;\n        border-radius: ", ";\n        font-size: 1rem;\n        padding: 0.875rem 0.6rem;\n        width: 100%;\n    }\n\n    & > .styled-select {\n        display: flex;\n        color: #000;\n        align-items: center;\n        margin: 0;\n        width: 6em;\n    }\n"])), function (props) {
-  return props.theme.main.borderRadius;
-});
-var TimeSelectInput = /*#__PURE__*/function (_Component) {
-  _inherits(TimeSelectInput, _Component);
-  var _super = _createSuper(TimeSelectInput);
-  function TimeSelectInput(props) {
-    var _this;
-    _classCallCheck(this, TimeSelectInput);
-    _this = _super.call(this, props);
-    _this.renderMinutes = _this.renderMinutes.bind(_assertThisInitialized(_this));
-    _this.renderHours = _this.renderHours.bind(_assertThisInitialized(_this));
-    _this.state = {
+const Wrap$l = styled.div`
+    display: flex;
+`;
+const InputWrap = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+const FieldWrap = styled.div`
+    display: flex;
+    position: relative;
+    max-width: 26rem;
+    margin: 0 0.325rem 0 0;
+    align-items: center;
+    span {
+        color: #000;
+        padding: 0.25em;
+    }
+    input {
+        //border: 1px solid #ccc;
+        border-radius: ${props => props.theme.main.borderRadius};
+        font-size: 1rem;
+        padding: 0.875rem 0.6rem;
+        width: 100%;
+    }
+
+    & > .styled-select {
+        display: flex;
+        color: #000;
+        align-items: center;
+        margin: 0;
+        width: 6em;
+    }
+`;
+class TimeSelectInput extends React$1.Component {
+  constructor(props) {
+    super(props);
+    this.renderMinutes = this.renderMinutes.bind(this);
+    this.renderHours = this.renderHours.bind(this);
+    this.state = {
       hours: '00',
       minutes: '00',
       date: ''
     };
-    return _this;
   }
-  _createClass(TimeSelectInput, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      var dd = tomorrow.getDate();
-      var mm = tomorrow.getMonth() + 1; // January is 0!
-      var yyyy = tomorrow.getFullYear();
-      if (dd < 10) {
-        dd = "0".concat(dd);
-      }
-      if (mm < 10) {
-        mm = "0".concat(mm);
-      }
-      tomorrow = "".concat(yyyy, "-").concat(mm, "-").concat(dd);
-      document.getElementById('datepicker').setAttribute('min', tomorrow);
+  componentDidMount() {
+    let tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    let dd = tomorrow.getDate();
+    let mm = tomorrow.getMonth() + 1; // January is 0!
+    const yyyy = tomorrow.getFullYear();
+    if (dd < 10) {
+      dd = `0${dd}`;
     }
-  }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      var value = this.props.value;
-      if (value !== 'Never') {
-        var time = value.substr(value.indexOf(' ') + 1).split(':');
-        this.setState({
-          hours: time[0],
-          minutes: time[1],
-          date: value.substr(0, value.indexOf(' '))
-        });
-      }
+    if (mm < 10) {
+      mm = `0${mm}`;
     }
-  }, {
-    key: "renderMinutes",
-    value: function renderMinutes() {
-      var _this2 = this;
-      var name = this.props.name;
-      var minutes = this.state.minutes;
-      return /*#__PURE__*/React$1.createElement("select", {
-        name: "".concat(name, "-minutes"),
-        value: minutes,
-        onChange: function onChange(e) {
-          _this2.changeMinutes(e);
-        }
-      }, _toConsumableArray(Array(60).keys()).map(function (x) {
-        return /*#__PURE__*/React$1.createElement("option", {
-          value: pad(x, 2)
-        }, pad(x, 2));
-      }));
-    }
-  }, {
-    key: "renderHours",
-    value: function renderHours() {
-      var _this3 = this;
-      var name = this.props.name;
-      var hours = this.state.hours;
-      return /*#__PURE__*/React$1.createElement("select", {
-        name: "".concat(name, "-hours"),
-        value: hours,
-        onChange: function onChange(e) {
-          _this3.changeHours(e);
-        }
-      }, _toConsumableArray(Array(24).keys()).map(function (x) {
-        return /*#__PURE__*/React$1.createElement("option", {
-          value: pad(x, 2)
-        }, pad(x, 2));
-      }));
-    }
-  }, {
-    key: "changeHours",
-    value: function changeHours(e) {
-      var _this$state = this.state,
-        minutes = _this$state.minutes,
-        date = _this$state.date;
+    tomorrow = `${yyyy}-${mm}-${dd}`;
+    document.getElementById('datepicker').setAttribute('min', tomorrow);
+  }
+  componentWillMount() {
+    const {
+      value
+    } = this.props;
+    if (value !== 'Never') {
+      const time = value.substr(value.indexOf(' ') + 1).split(':');
       this.setState({
-        hours: e.target.value,
-        minutes: minutes,
-        date: date
+        hours: time[0],
+        minutes: time[1],
+        date: value.substr(0, value.indexOf(' '))
       });
     }
-  }, {
-    key: "changeMinutes",
-    value: function changeMinutes(e) {
-      var _this$state2 = this.state,
-        hours = _this$state2.hours,
-        date = _this$state2.date;
-      this.setState({
-        hours: hours,
-        minutes: e.target.value,
-        date: date
-      });
-    }
-  }, {
-    key: "changeDate",
-    value: function changeDate(e) {
-      var _this$state3 = this.state,
-        hours = _this$state3.hours,
-        minutes = _this$state3.minutes;
-      this.setState({
-        hours: hours,
-        minutes: minutes,
-        date: e.target.value
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this4 = this;
-      var _this$props = this.props,
-        name = _this$props.name,
-        id = _this$props.id,
-        label = _this$props.label,
-        _this$props$inline = _this$props.inline,
-        inline = _this$props$inline === void 0 ? false : _this$props$inline;
-      var date = this.state.date;
-      return /*#__PURE__*/React$1.createElement(Wrap$l, {
-        inline: inline,
-        id: id
-      }, /*#__PURE__*/React$1.createElement(InputWrap, null, /*#__PURE__*/React$1.createElement(Label$1, null, label), /*#__PURE__*/React$1.createElement(FieldWrap, null, /*#__PURE__*/React$1.createElement("input", {
-        id: "datepicker",
-        name: name,
-        type: "date",
-        value: date,
-        onChange: function onChange(e) {
-          _this4.changeDate(e);
-        }
-      }), /*#__PURE__*/React$1.createElement("span", null, "at"), /*#__PURE__*/React$1.createElement("div", {
-        id: "hourpicker",
-        className: "styled-select"
-      }, this.renderHours()), /*#__PURE__*/React$1.createElement("span", null, ":"), /*#__PURE__*/React$1.createElement("div", {
-        id: "minutepicker",
-        className: "styled-select"
-      }, this.renderMinutes()))));
-    }
-  }]);
-  return TimeSelectInput;
-}(React$1.Component);
+  }
+  renderMinutes() {
+    const {
+      name
+    } = this.props;
+    const {
+      minutes
+    } = this.state;
+    return /*#__PURE__*/React$1.createElement("select", {
+      name: `${name}-minutes`,
+      value: minutes,
+      onChange: e => {
+        this.changeMinutes(e);
+      }
+    }, [...Array(60).keys()].map(x => /*#__PURE__*/React$1.createElement("option", {
+      value: pad(x, 2)
+    }, pad(x, 2))));
+  }
+  renderHours() {
+    const {
+      name
+    } = this.props;
+    const {
+      hours
+    } = this.state;
+    return /*#__PURE__*/React$1.createElement("select", {
+      name: `${name}-hours`,
+      value: hours,
+      onChange: e => {
+        this.changeHours(e);
+      }
+    }, [...Array(24).keys()].map(x => /*#__PURE__*/React$1.createElement("option", {
+      value: pad(x, 2)
+    }, pad(x, 2))));
+  }
+  changeHours(e) {
+    const {
+      minutes,
+      date
+    } = this.state;
+    this.setState({
+      hours: e.target.value,
+      minutes,
+      date
+    });
+  }
+  changeMinutes(e) {
+    const {
+      hours,
+      date
+    } = this.state;
+    this.setState({
+      hours,
+      minutes: e.target.value,
+      date
+    });
+  }
+  changeDate(e) {
+    const {
+      hours,
+      minutes
+    } = this.state;
+    this.setState({
+      hours,
+      minutes,
+      date: e.target.value
+    });
+  }
+  render() {
+    const {
+      name,
+      id,
+      label,
+      inline = false
+    } = this.props;
+    const {
+      date
+    } = this.state;
+    return /*#__PURE__*/React$1.createElement(Wrap$l, {
+      inline: inline,
+      id: id
+    }, /*#__PURE__*/React$1.createElement(InputWrap, null, /*#__PURE__*/React$1.createElement(Label$1, null, label), /*#__PURE__*/React$1.createElement(FieldWrap, null, /*#__PURE__*/React$1.createElement("input", {
+      id: "datepicker",
+      name: name,
+      type: "date",
+      value: date,
+      onChange: e => {
+        this.changeDate(e);
+      }
+    }), /*#__PURE__*/React$1.createElement("span", null, "at"), /*#__PURE__*/React$1.createElement("div", {
+      id: "hourpicker",
+      className: "styled-select"
+    }, this.renderHours()), /*#__PURE__*/React$1.createElement("span", null, ":"), /*#__PURE__*/React$1.createElement("div", {
+      id: "minutepicker",
+      className: "styled-select"
+    }, this.renderMinutes()))));
+  }
+}
 
-var _templateObject$x, _templateObject2$k;
-var THUNDERSTRUCK = 'thunderstruck';
-var INVIGORATED = 'invigorated';
-var DAZZLED = 'dazzled';
-var ANTICIPATORY = 'anticipatory';
-var CONTEMPLATIVE = 'contemplative';
-var SOOTHING = 'soothing';
-var SLEEPY = 'sleepy';
-var SERENE = 'serene';
-var RELAXED = 'relaxed';
-var SATISFIED = 'satisfied';
-var MERRY = 'merry';
-var DELIGHTED = 'delighted';
-var moods = [THUNDERSTRUCK, INVIGORATED, DAZZLED, ANTICIPATORY, CONTEMPLATIVE, SOOTHING, SLEEPY, SERENE, RELAXED, SATISFIED, MERRY, DELIGHTED];
-var Wrap$k = styled.div(_templateObject$x || (_templateObject$x = _taggedTemplateLiteral(["\n    font-family: MuseoSansReg, sans-serif;\n    user-select: none;\n\n    g {\n        cursor: ", ";\n    }\n\n    path {\n        transition: opacity 0.2s linear;\n    }\n\n    text {\n        \n        font-family: MuseoSansReg, sans-serif;\n    }\n\n"])), function (_ref) {
-  var readonly = _ref.readonly;
-  return readonly ? 'default' : 'pointer';
-});
-var Radio$1 = styled.input(_templateObject2$k || (_templateObject2$k = _taggedTemplateLiteral(["\n    display:none;\n"])));
-var handleClick = function handleClick(className, setSelected, parentOnClick) {
-  var mood = moods.find(function (obj) {
-    return className.includes(obj);
-  });
+const THUNDERSTRUCK = 'thunderstruck';
+const INVIGORATED = 'invigorated';
+const DAZZLED = 'dazzled';
+const ANTICIPATORY = 'anticipatory';
+const CONTEMPLATIVE = 'contemplative';
+const SOOTHING = 'soothing';
+const SLEEPY = 'sleepy';
+const SERENE = 'serene';
+const RELAXED = 'relaxed';
+const SATISFIED = 'satisfied';
+const MERRY = 'merry';
+const DELIGHTED = 'delighted';
+const moods = [THUNDERSTRUCK, INVIGORATED, DAZZLED, ANTICIPATORY, CONTEMPLATIVE, SOOTHING, SLEEPY, SERENE, RELAXED, SATISFIED, MERRY, DELIGHTED];
+const Wrap$k = styled.div`
+    font-family: MuseoSansReg, sans-serif;
+    user-select: none;
+
+    g {
+        cursor: ${({
+  readonly
+}) => readonly ? 'default' : 'pointer'};
+    }
+
+    path {
+        transition: opacity 0.2s linear;
+    }
+
+    text {
+        
+        font-family: MuseoSansReg, sans-serif;
+    }
+
+`;
+const Radio$1 = styled.input`
+    display:none;
+`;
+const handleClick = (className, setSelected, parentOnClick) => {
+  const mood = moods.find(obj => className.includes(obj));
   parentOnClick(mood);
   setSelected(mood);
 };
-var MoodPath = function MoodPath(_ref2) {
-  var d = _ref2.d,
-    className = _ref2.className,
-    fill = _ref2.fill,
-    transform = _ref2.transform,
-    _ref2$opacity = _ref2.opacity,
-    opacity = _ref2$opacity === void 0 ? 1 : _ref2$opacity,
-    selected = _ref2.selected,
-    _ref2$adjacent = _ref2.adjacent,
-    adjacent = _ref2$adjacent === void 0 ? [] : _ref2$adjacent,
-    setSelected = _ref2.setSelected,
-    parentOnClick = _ref2.parentOnClick;
-  var pathProps = {
-    onClick: function onClick() {
-      return handleClick(className, setSelected, parentOnClick);
-    },
+const MoodPath = ({
+  d,
+  className,
+  fill,
+  transform,
+  opacity = 1,
+  selected,
+  adjacent = [],
+  setSelected,
+  parentOnClick
+}) => {
+  const pathProps = {
+    onClick: () => handleClick(className, setSelected, parentOnClick),
     d: d,
     className: className,
     fill: fill,
@@ -2637,7 +2699,7 @@ var MoodPath = function MoodPath(_ref2) {
     if (className.includes(selected)) {
       return /*#__PURE__*/React$1.createElement("path", pathProps);
     }
-    return /*#__PURE__*/React$1.createElement("path", _objectSpread2(_objectSpread2({}, pathProps), {
+    return /*#__PURE__*/React$1.createElement("path", _extends({}, pathProps, {
       opacity: 0
     }));
     //return null;
@@ -2647,7 +2709,7 @@ var MoodPath = function MoodPath(_ref2) {
     if (adjacent.includes(selected)) {
       return /*#__PURE__*/React$1.createElement("path", pathProps);
     }
-    return /*#__PURE__*/React$1.createElement("path", _objectSpread2(_objectSpread2({}, pathProps), {
+    return /*#__PURE__*/React$1.createElement("path", _extends({}, pathProps, {
       opacity: 0
     }));
     //return null;
@@ -2655,25 +2717,20 @@ var MoodPath = function MoodPath(_ref2) {
 
   return /*#__PURE__*/React$1.createElement("path", pathProps);
 };
-var MoodSelector = function MoodSelector(_ref3) {
-  var _ref3$readonly = _ref3.readonly,
-    readonly = _ref3$readonly === void 0 ? false : _ref3$readonly,
-    _ref3$defaultValue = _ref3.defaultValue,
-    defaultValue = _ref3$defaultValue === void 0 ? null : _ref3$defaultValue,
-    _ref3$onMoodClick = _ref3.onMoodClick,
-    onMoodClick = _ref3$onMoodClick === void 0 ? function () {} : _ref3$onMoodClick;
-  var _useState = React$1.useState(defaultValue),
-    _useState2 = _slicedToArray(_useState, 2),
-    selected = _useState2[0],
-    setSelected = _useState2[1];
-  var passToAll = {
+const MoodSelector = ({
+  readonly = false,
+  defaultValue = null,
+  onMoodClick = () => {}
+}) => {
+  const [selected, setSelected] = React$1.useState(defaultValue);
+  const passToAll = {
     setSelected: setSelected,
     selected: selected,
     parentOnClick: onMoodClick
   };
   if (readonly === true) {
-    passToAll.parentOnClick = function () {};
-    passToAll.setSelected = function () {};
+    passToAll.parentOnClick = () => {};
+    passToAll.setSelected = () => {};
   }
   return /*#__PURE__*/React$1.createElement(Wrap$k, {
     readonly: readonly
@@ -2967,7 +3024,7 @@ var MoodSelector = function MoodSelector(_ref3) {
   }, /*#__PURE__*/React$1.createElement("tspan", {
     x: "215",
     y: "11"
-  }, "Invigorated"))))), moods.map(function (obj) {
+  }, "Invigorated"))))), moods.map(obj => {
     return /*#__PURE__*/React$1.createElement(Radio$1, {
       checked: selected === obj,
       type: "radio",
@@ -2978,38 +3035,52 @@ var MoodSelector = function MoodSelector(_ref3) {
   }));
 };
 
-var _excluded$c = ["children", "active", "small", "colour"];
-var _templateObject$w, _templateObject2$j;
-var Wrap$j = styled.div(_templateObject$w || (_templateObject$w = _taggedTemplateLiteral(["\n    display: flex;\n    font-family: MuseoSansReg, sans-serif;\n    flex-wrap: ", ";\n    justify-content: ", ";\n    background: ", ";\n    color: ", ";\n    padding: ", ";\n    width: 100%;\n    border-radius: ", ";\n    box-shadow: 0px 1px 1px ", ";\n    transition: all 0.2s linear;\n    user-select: none;\n    cursor: pointer;\n\n    &:hover {\n        box-shadow: 0px 2px 5px ", ";\n    }\n\n    &:active {\n        background: ", ";\n        color: ", ";\n    }\n\n"])), function (props) {
-  return props.small ? "nowrap" : "wrap";
-}, function (props) {
-  return props.small ? "space-between" : "center";
-}, function (props) {
-  return props.backgroundColour;
-}, function (props) {
-  return props.textColour;
-}, function (props) {
-  return props.small ? "1rem" : "1rem";
-}, function (props) {
-  return props.theme.main.borderRadius;
-}, curriedTransparentize$1(0.8, '#000'), curriedTransparentize$1(0.8, '#000'), function (props) {
-  return props.theme.selectionPanel.active.background;
-}, function (props) {
-  return props.theme.selectionPanel.active.color;
-});
-var Content = styled.div(_templateObject2$j || (_templateObject2$j = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: ", ";\n    align-items: center;\n    align-self: center;\n\n    svg {\n        margin-bottom: ", ";\n        margin-right: ", ";\n        font-size: 2rem;\n    }\n"])), function (_ref) {
-  var small = _ref.small;
-  return small ? "row" : "column";
-}, function (_ref2) {
-  var small = _ref2.small;
-  return small ? "0" : "1rem";
-}, function (_ref3) {
-  var small = _ref3.small;
-  return small ? "1rem" : "0";
-});
-var getColours$1 = function getColours(colour, active) {
-  var textColour = theme.selectionPanel.color;
-  var backgroundColour = theme.selectionPanel.background;
+const Wrap$j = styled.div`
+    display: flex;
+    font-family: MuseoSansReg, sans-serif;
+    flex-wrap: ${props => props.small ? `nowrap` : `wrap`};
+    justify-content: ${props => props.small ? `space-between` : `center`};
+    background: ${props => props.backgroundColour};
+    color: ${props => props.textColour};
+    padding: ${props => props.small ? `1rem` : `1rem`};
+    width: 100%;
+    border-radius: ${props => props.theme.main.borderRadius};
+    box-shadow: 0px 1px 1px ${curriedTransparentize$1(0.8, '#000')};
+    transition: all 0.2s linear;
+    user-select: none;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0px 2px 5px ${curriedTransparentize$1(0.8, '#000')};
+    }
+
+    &:active {
+        background: ${props => props.theme.selectionPanel.active.background};
+        color: ${props => props.theme.selectionPanel.active.color};
+    }
+
+`;
+const Content = styled.div`
+    display: flex;
+    flex-direction: ${({
+  small
+}) => small ? `row` : `column`};
+    align-items: center;
+    align-self: center;
+
+    svg {
+        margin-bottom: ${({
+  small
+}) => small ? `0` : `1rem`};
+        margin-right: ${({
+  small
+}) => small ? `1rem` : `0`};
+        font-size: 2rem;
+    }
+`;
+const getColours$1 = (colour, active) => {
+  let textColour = theme.selectionPanel.color;
+  let backgroundColour = theme.selectionPanel.background;
   if (active) {
     textColour = theme.generalColors.white;
     backgroundColour = theme.colors.simplyRed;
@@ -3023,20 +3094,21 @@ var getColours$1 = function getColours(colour, active) {
     }
   }
   return {
-    textColour: textColour,
-    backgroundColour: backgroundColour
+    textColour,
+    backgroundColour
   };
 };
-var SelectionPanel$1 = function SelectionPanel(_ref4) {
-  var children = _ref4.children,
-    _ref4$active = _ref4.active,
-    active = _ref4$active === void 0 ? false : _ref4$active,
-    _ref4$small = _ref4.small,
-    small = _ref4$small === void 0 ? false : _ref4$small,
-    _ref4$colour = _ref4.colour,
-    colour = _ref4$colour === void 0 ? 'simplyRed' : _ref4$colour,
-    rest = _objectWithoutProperties(_ref4, _excluded$c);
-  var attributes = _objectSpread2(_objectSpread2({}, rest), getColours$1(colour, active));
+const SelectionPanel$1 = ({
+  children,
+  active = false,
+  small = false,
+  colour = 'simplyRed',
+  ...rest
+}) => {
+  const attributes = {
+    ...rest,
+    ...getColours$1(colour, active)
+  };
   return /*#__PURE__*/React$1.createElement(Wrap$j, _extends({
     active: active,
     small: small
@@ -3045,39 +3117,109 @@ var SelectionPanel$1 = function SelectionPanel(_ref4) {
   }, rest), children));
 };
 
-var _excluded$b = ["name", "id", "checked", "value", "label", "colour", "className"];
-var _templateObject$v, _templateObject2$i, _templateObject3$b;
-var Wrap$i = styled.div(_templateObject$v || (_templateObject$v = _taggedTemplateLiteral(["\n    font-family: MuseoSansReg, sans-serif;\n\n    .switch {\n        position: relative;\n        display: inline-block;\n        width: 40px;\n        height: 23px;\n    }\n\n    /* Hide default HTML checkbox */\n    .switch input {\n        opacity: 0;\n        width: 0;\n        height: 0;\n    }\n\n    /* The slider */\n    .slider {\n        position: absolute;\n        top: 0;\n        left: 0;\n        right: 0;\n        bottom: 0;\n        background-color: #ccc;\n        -webkit-transition: 0.4s;\n        transition: 0.4s;\n    }\n\n    .slider:before {\n        position: absolute;\n        content: '';\n        height: 19px;\n        width: 19px;\n        left: 1px;\n        bottom: 2px;\n        background-color: white;\n        -webkit-transition: 0.4s;\n        transition: 0.4s;\n    }\n\n    input:checked + .slider {\n        background-color: ", ";\n    }\n\n    input:focus + .slider {\n        box-shadow: 0 0 1px  ", ";\n    }\n\n    input:checked + .slider:before {\n        -webkit-transform: translateX(19px);\n        -ms-transform: translateX(19px);\n        transform: translateX(19px);\n    }\n\n    /* Rounded sliders */\n    .slider.round {\n        border-radius: 34px;\n    }\n\n    .slider.round:before {\n        border-radius: 50%;\n    }\n"])), function (props) {
-  return props.primaryColour;
-}, function (props) {
-  return props.primaryColour;
-});
-var PaddedLabel = styled(Label$1)(_templateObject2$i || (_templateObject2$i = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: row;\n    flex-wrap: nowrap;\n    justify-content: flex-start;\n    align-items: center;\n    position: relative;\n    cursor: pointer;\n"])));
-var SpanLabel = styled.span(_templateObject3$b || (_templateObject3$b = _taggedTemplateLiteral(["\n    font-size: 1.1em;\n    margin-left: 0.75rem;\n"])));
-var getColours = function getColours(colour) {
-  var altColour = theme.selectionPanel.color;
-  var primaryColour = theme.selectionPanel.background;
+const Wrap$i = styled.div`
+    font-family: MuseoSansReg, sans-serif;
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 23px;
+    }
+
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* The slider */
+    .slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: '';
+        height: 19px;
+        width: 19px;
+        left: 1px;
+        bottom: 2px;
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+    }
+
+    input:checked + .slider {
+        background-color: ${props => props.primaryColour};
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px  ${props => props.primaryColour};
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(19px);
+        -ms-transform: translateX(19px);
+        transform: translateX(19px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+`;
+const PaddedLabel = styled(Label$1)`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+`;
+const SpanLabel = styled.span`
+    font-size: 1.1em;
+    margin-left: 0.75rem;
+`;
+const getColours = colour => {
+  let altColour = theme.selectionPanel.color;
+  let primaryColour = theme.selectionPanel.background;
   if (theme.colors[colour]) {
     altColour = theme.generalColors.white;
     primaryColour = theme.colors[colour];
   }
   return {
-    altColour: altColour,
-    primaryColour: primaryColour
+    altColour,
+    primaryColour
   };
 };
-var Switch$1 = function Switch(_ref) {
-  var name = _ref.name,
-    id = _ref.id,
-    checked = _ref.checked,
-    value = _ref.value,
-    label = _ref.label,
-    _ref$colour = _ref.colour,
-    colour = _ref$colour === void 0 ? 'simplyRed' : _ref$colour,
-    _ref$className = _ref.className,
-    className = _ref$className === void 0 ? null : _ref$className,
-    rest = _objectWithoutProperties(_ref, _excluded$b);
-  var attributes = _objectSpread2(_objectSpread2({}, rest), getColours(colour));
+const Switch$1 = ({
+  name,
+  id,
+  checked,
+  value,
+  label,
+  colour = 'simplyRed',
+  className = null,
+  ...rest
+}) => {
+  const attributes = {
+    ...rest,
+    ...getColours(colour)
+  };
   console.log('switch attributes', attributes);
   return /*#__PURE__*/React$1.createElement(Wrap$i, _extends({
     className: className
@@ -3100,32 +3242,47 @@ var Switch$1 = function Switch(_ref) {
 
 // import ColorPickerInput from './colorPickerInput';
 
-var Select = SelectInput;
-var Checkbox = CheckboxComponent;
-var Radio = RadioComponent;
-var Hidden = FieldComponent$1;
-var Input = FieldComponent;
-var Chip = ChipInput$1;
-var ChipSelect = ChipInput;
-var TimeSelect = TimeSelectInput;
-var MoodSelect = MoodSelector;
-var SelectionPanel = SelectionPanel$1;
-var Switch = Switch$1;
+const Select = SelectInput;
+const Checkbox = CheckboxComponent;
+const Radio = RadioComponent;
+const Hidden = FieldComponent$1;
+const Input = FieldComponent;
+const Chip = ChipInput$1;
+const ChipSelect = ChipInput;
+const TimeSelect = TimeSelectInput;
+const MoodSelect = MoodSelector;
+const SelectionPanel = SelectionPanel$1;
+const Switch = Switch$1;
 
 //  export const ColorPicker = ColorPickerInput;
 
-var _excluded$a = ["type", "children"];
-var _templateObject$u, _templateObject2$h, _templateObject3$a, _templateObject4$7, _templateObject5$3;
-var headingBase$1 = styled.css(_templateObject$u || (_templateObject$u = _taggedTemplateLiteral(["\n    color: ", ";\n    font-family: ", ";\n    margin: 0;\n"])), theme.main.color, theme.main.font);
-var Hero = styled.h3(_templateObject2$h || (_templateObject2$h = _taggedTemplateLiteral(["\n    ", "\n    font-size: 2.2rem;\n"])), headingBase$1);
-var Title = styled.h1(_templateObject3$a || (_templateObject3$a = _taggedTemplateLiteral(["\n    ", "\n    font-size: 1.6rem;\n"])), headingBase$1);
-var Subtitle = styled.h2(_templateObject4$7 || (_templateObject4$7 = _taggedTemplateLiteral(["\n    ", "\n    font-weight: lighter;\n    font-size: 1.4rem;\n"])), headingBase$1);
-var Standard = styled.h4(_templateObject5$3 || (_templateObject5$3 = _taggedTemplateLiteral(["\n    ", "\n    font-size: 1.2rem;\n"])), headingBase$1);
-var Heading = function Heading(_ref) {
-  var _ref$type = _ref.type,
-    type = _ref$type === void 0 ? 'heading' : _ref$type,
-    children = _ref.children,
-    rest = _objectWithoutProperties(_ref, _excluded$a);
+const headingBase$1 = styled.css`
+    color: ${theme.main.color};
+    font-family: ${theme.main.font};
+    margin: 0;
+`;
+const Hero = styled.h3`
+    ${headingBase$1}
+    font-size: 2.2rem;
+`;
+const Title = styled.h1`
+    ${headingBase$1}
+    font-size: 1.6rem;
+`;
+const Subtitle = styled.h2`
+    ${headingBase$1}
+    font-weight: lighter;
+    font-size: 1.4rem;
+`;
+const Standard = styled.h4`
+    ${headingBase$1}
+    font-size: 1.2rem;
+`;
+const Heading = ({
+  type = 'heading',
+  children,
+  ...rest
+}) => {
   switch (type.toLowerCase()) {
     case 'hero':
       return /*#__PURE__*/React$1.createElement(Hero, rest, children);
@@ -3138,21 +3295,30 @@ var Heading = function Heading(_ref) {
   }
 };
 
-var _excluded$9 = ["type", "children"];
-var _templateObject$t, _templateObject2$g, _templateObject3$9, _templateObject4$6;
-var TextBase = styled.css(_templateObject$t || (_templateObject$t = _taggedTemplateLiteral(["\n    font-family: ", ";\n    font-weight: lighter;\n    margin: 0;\n"])), function (props) {
-  return theme.main.font;
-});
-var Help = styled.p(_templateObject2$g || (_templateObject2$g = _taggedTemplateLiteral(["\n    ", "\n    font-size: 0.8rem;\n"])), TextBase);
-var Small = styled.p(_templateObject3$9 || (_templateObject3$9 = _taggedTemplateLiteral(["\n    ", "\n    font-weight: lighter;\n    font-size: 0.95rem;\n    color:", ";\n"])), TextBase, function () {
-  return theme.colors.paintItBlack;
-});
-var Paragraph = styled.p(_templateObject4$6 || (_templateObject4$6 = _taggedTemplateLiteral(["\n    ", "\n    font-size: 1rem;\n"])), TextBase);
-var Text$1 = function Text(_ref) {
-  var _ref$type = _ref.type,
-    type = _ref$type === void 0 ? 'heading' : _ref$type,
-    children = _ref.children,
-    rest = _objectWithoutProperties(_ref, _excluded$9);
+const TextBase = styled.css`
+    font-family: ${props => theme.main.font};
+    font-weight: lighter;
+    margin: 0;
+`;
+const Help = styled.p`
+    ${TextBase}
+    font-size: 0.8rem;
+`;
+const Small = styled.p`
+    ${TextBase}
+    font-weight: lighter;
+    font-size: 0.95rem;
+    color:${() => theme.colors.paintItBlack};
+`;
+const Paragraph = styled.p`
+    ${TextBase}
+    font-size: 1rem;
+`;
+const Text$1 = ({
+  type = 'heading',
+  children,
+  ...rest
+}) => {
   switch (type.toLowerCase()) {
     case 'help':
       return /*#__PURE__*/React$1.createElement(Help, rest, children);
@@ -3163,190 +3329,276 @@ var Text$1 = function Text(_ref) {
   }
 };
 
-var _templateObject$s, _templateObject2$f, _templateObject3$8;
-var Loader$1 = styled.div(_templateObject$s || (_templateObject$s = _taggedTemplateLiteral(["\n    position: relative;\n    display: none;\n    z-index: 10;\n    width: 100%;\n\n    &.active {\n        display: block;\n    }\n\n    .loader {\n        display: block;\n        position: relative;\n        margin: 0;\n        padding: 0;\n        width: 100%;\n        height: 4px;\n        z-index: 12;\n        background: rgba(0, 0, 0, 0.1);\n\n        &.fade {\n            display: block;\n            -webkit-animation: fadeOut 1s;\n            animation: fadeOut 1s;\n            animation-fill-mode: forwards;\n        }\n    }\n\n    @-webkit-keyframes fadeOut {\n        0% {\n            opacity: 1;\n        }\n        99% {\n            opacity: 0.01;\n            width: 100%;\n            height: 100%;\n        }\n        100% {\n            opacity: 0;\n            width: 0;\n            height: 0;\n        }\n    }\n    @keyframes fadeOut {\n        0% {\n            opacity: 1;\n        }\n        99% {\n            opacity: 0.01;\n            width: 100%;\n            height: 100%;\n        }\n        100% {\n            opacity: 0;\n            width: 0;\n            height: 0;\n        }\n    }\n"])));
-var Bar = styled.div(_templateObject2$f || (_templateObject2$f = _taggedTemplateLiteral(["\n    display: block;\n    position: relative;\n    width: ", ";\n    height: 100%;\n    background: rgb(0, 212, 1);\n    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);\n    transition: width 0.5s ease-in-out;\n"])), function (props) {
-  return "".concat(props.percent, "%") || '0%';
-});
-var Message = styled.div(_templateObject3$8 || (_templateObject3$8 = _taggedTemplateLiteral(["\n    display: block;\n    height: auto;\n    overflow: hidden;\n    transform: scaleY(0);\n    transform-origin: top;\n    color: transparent;\n    transition: color 0.2s linear;\n    background: rgb(18, 148, 231);\n\n    &.active {\n        padding: 0.7rem 1.4rem;\n        padding-top: calc(0.7rem + 4px);\n        margin-top: -4px;\n        color: inherit;\n        transform: scale(1);\n\n        .status-success & {\n            color: rgb(255, 255, 255);\n            background: rgb(0, 212, 1);\n        }\n        .status-error & {\n            color: rgb(255, 255, 255);\n            background: rgb(255, 0, 58);\n        }\n        .status-notice & {\n            color: rgb(255, 255, 255);\n            background: rgb(245, 166, 35);\n        }\n    }\n"])));
-var LoaderBar = /*#__PURE__*/function (_React$Component) {
-  _inherits(LoaderBar, _React$Component);
-  var _super = _createSuper(LoaderBar);
-  function LoaderBar(props) {
-    var _this;
-    _classCallCheck(this, LoaderBar);
-    _this = _super.call(this, props);
-    _this.state = {
+const Loader$1 = styled.div`
+    position: relative;
+    display: none;
+    z-index: 10;
+    width: 100%;
+
+    &.active {
+        display: block;
+    }
+
+    .loader {
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 4px;
+        z-index: 12;
+        background: rgba(0, 0, 0, 0.1);
+
+        &.fade {
+            display: block;
+            -webkit-animation: fadeOut 1s;
+            animation: fadeOut 1s;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    @-webkit-keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        99% {
+            opacity: 0.01;
+            width: 100%;
+            height: 100%;
+        }
+        100% {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+    }
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        99% {
+            opacity: 0.01;
+            width: 100%;
+            height: 100%;
+        }
+        100% {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+    }
+`;
+const Bar = styled.div`
+    display: block;
+    position: relative;
+    width: ${props => `${props.percent}%` || '0%'};
+    height: 100%;
+    background: rgb(0, 212, 1);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+    transition: width 0.5s ease-in-out;
+`;
+const Message = styled.div`
+    display: block;
+    height: auto;
+    overflow: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    color: transparent;
+    transition: color 0.2s linear;
+    background: rgb(18, 148, 231);
+
+    &.active {
+        padding: 0.7rem 1.4rem;
+        padding-top: calc(0.7rem + 4px);
+        margin-top: -4px;
+        color: inherit;
+        transform: scale(1);
+
+        .status-success & {
+            color: rgb(255, 255, 255);
+            background: rgb(0, 212, 1);
+        }
+        .status-error & {
+            color: rgb(255, 255, 255);
+            background: rgb(255, 0, 58);
+        }
+        .status-notice & {
+            color: rgb(255, 255, 255);
+            background: rgb(245, 166, 35);
+        }
+    }
+`;
+class LoaderBar extends React$1.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       progress: props.progress || 0
     };
-    return _this;
   }
-  _createClass(LoaderBar, [{
-    key: "setTimeout",
-    value: function setTimeout() {
-      var _this2 = this;
-      var _this$props = this.props,
-        message = _this$props.message,
-        active = _this$props.active;
-      this.timer = setInterval(function () {
-        if (message === '' && active === true) {
-          var progress = _this2.state.progress;
-          if (progress < 94) {
-            var update = Math.random() * 3;
-            _this2.setState({
-              progress: Math.round(progress + update)
-            });
-          }
+  setTimeout() {
+    const {
+      message,
+      active
+    } = this.props;
+    this.timer = setInterval(() => {
+      if (message === '' && active === true) {
+        const {
+          progress
+        } = this.state;
+        if (progress < 94) {
+          const update = Math.random() * 3;
+          this.setState({
+            progress: Math.round(progress + update)
+          });
         }
-      }, 477);
-    }
-  }, {
-    key: "clearTimeout",
-    value: function clearTimeout() {
-      if (this.timer) {
-        clearInterval(this.timer);
-        this.timer = 0;
       }
+    }, 477);
+  }
+  clearTimeout() {
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = 0;
     }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.setTimeout();
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.clearTimeout();
-    }
+  }
+  componentDidMount() {
+    this.setTimeout();
+  }
+  componentWillUnmount() {
+    this.clearTimeout();
+  }
 
-    /** React would like us to be "Lifting State Up" here
-     *     -  https://reactjs.org/docs/lifting-state-up.html
-     *  For now, they can suck it
-     * */
-  }, {
-    key: "componentWillReceiveProps",
-    value: function componentWillReceiveProps(newProps) {
-      var progress = this.props.progress;
-      if (newProps.progress && newProps.progress !== progress) {
-        this.setState({
-          progress: newProps.progress
-        });
-      }
+  /** React would like us to be "Lifting State Up" here
+   *     -  https://reactjs.org/docs/lifting-state-up.html
+   *  For now, they can suck it
+   * */
+  componentWillReceiveProps(newProps) {
+    const {
+      progress
+    } = this.props;
+    if (newProps.progress && newProps.progress !== progress) {
+      this.setState({
+        progress: newProps.progress
+      });
     }
-  }, {
-    key: "renderBar",
-    value: function renderBar() {
-      var className = 'loader';
-      var message = this.props.message;
-      var progress = this.state.progress;
-      if (message !== '') {
-        className += ' fade';
-      }
-      return /*#__PURE__*/React$1.createElement("div", {
-        className: className
-      }, /*#__PURE__*/React$1.createElement(Bar, {
-        percent: progress
-      }));
+  }
+  renderBar() {
+    let className = 'loader';
+    const {
+      message
+    } = this.props;
+    const {
+      progress
+    } = this.state;
+    if (message !== '') {
+      className += ' fade';
     }
-  }, {
-    key: "renderMessage",
-    value: function renderMessage() {
-      var message = this.props.message;
-      if (message === '') {
-        return /*#__PURE__*/React$1.createElement(Message, null);
-      }
-      return /*#__PURE__*/React$1.createElement(Message, {
-        className: "active"
-      }, message);
+    return /*#__PURE__*/React$1.createElement("div", {
+      className: className
+    }, /*#__PURE__*/React$1.createElement(Bar, {
+      percent: progress
+    }));
+  }
+  renderMessage() {
+    const {
+      message
+    } = this.props;
+    if (message === '') {
+      return /*#__PURE__*/React$1.createElement(Message, null);
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props2 = this.props,
-        visible = _this$props2.visible,
-        status = _this$props2.status;
-      var className = "status-".concat(status);
-      if (visible === true) {
-        className += ' active';
-      }
-      return /*#__PURE__*/React$1.createElement(Loader$1, {
-        className: className
-      }, this.renderBar(), this.renderMessage());
+    return /*#__PURE__*/React$1.createElement(Message, {
+      className: "active"
+    }, message);
+  }
+  render() {
+    const {
+      visible,
+      status
+    } = this.props;
+    let className = `status-${status}`;
+    if (visible === true) {
+      className += ' active';
     }
-  }]);
-  return LoaderBar;
-}(React$1.Component);
+    return /*#__PURE__*/React$1.createElement(Loader$1, {
+      className: className
+    }, this.renderBar(), this.renderMessage());
+  }
+}
 
-var _templateObject$r, _templateObject2$e;
-var Wrap$h = styled.div(_templateObject$r || (_templateObject$r = _taggedTemplateLiteral(["\n    display: ", ";\n    position: relative;\n    z-index: 2;\n    justify-content: center;\n    align-items: center;\n"])), function (props) {
-  return props.inline ? "inline-block" : "flex";
-});
-var WrapAbsolute = styled.div(_templateObject2$e || (_templateObject2$e = _taggedTemplateLiteral(["\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n"])));
-var Spinner = function Spinner(_ref) {
-  var _ref$height = _ref.height,
-    height = _ref$height === void 0 ? '120px' : _ref$height,
-    _ref$width = _ref.width,
-    width = _ref$width === void 0 ? '120px' : _ref$width,
-    _ref$fill = _ref.fill,
-    fill = _ref$fill === void 0 ? '#fff' : _ref$fill;
-  return /*#__PURE__*/React$1.createElement("svg", {
-    width: width,
-    height: height,
-    viewBox: "0 0 38 38",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/React$1.createElement("defs", null, /*#__PURE__*/React$1.createElement("linearGradient", {
-    x1: "8.042%",
-    y1: "0%",
-    x2: "65.682%",
-    y2: "23.865%",
-    id: "a"
-  }, /*#__PURE__*/React$1.createElement("stop", {
-    stopColor: fill,
-    stopOpacity: "0",
-    offset: "0%"
-  }), /*#__PURE__*/React$1.createElement("stop", {
-    stopColor: fill,
-    stopOpacity: ".631",
-    offset: "63.146%"
-  }), /*#__PURE__*/React$1.createElement("stop", {
-    stopColor: fill,
-    offset: "100%"
-  }))), /*#__PURE__*/React$1.createElement("g", {
-    fill: "none",
-    fillRule: "evenodd"
-  }, /*#__PURE__*/React$1.createElement("g", {
-    transform: "translate(1 1)"
-  }, /*#__PURE__*/React$1.createElement("path", {
-    d: "M36 18c0-9.94-8.06-18-18-18",
-    id: "Oval-2",
-    stroke: "url(#a)",
-    strokeWidth: "2"
-  }, /*#__PURE__*/React$1.createElement("animateTransform", {
-    attributeName: "transform",
-    type: "rotate",
-    from: "0 18 18",
-    to: "360 18 18",
-    dur: "0.9s",
-    repeatCount: "indefinite"
-  })), /*#__PURE__*/React$1.createElement("circle", {
-    fill: fill,
-    cx: "36",
-    cy: "18",
-    r: "1"
-  }, /*#__PURE__*/React$1.createElement("animateTransform", {
-    attributeName: "transform",
-    type: "rotate",
-    from: "0 18 18",
-    to: "360 18 18",
-    dur: "0.9s",
-    repeatCount: "indefinite"
-  })))));
-};
-var Loader = function Loader(_ref2) {
-  var width = _ref2.width,
-    height = _ref2.height,
-    type = _ref2.type,
-    fill = _ref2.fill;
+const Wrap$h = styled.div`
+    display: ${props => props.inline ? `inline-block` : `flex`};
+    position: relative;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+`;
+const WrapAbsolute = styled.div`
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+`;
+const Spinner = ({
+  height = '120px',
+  width = '120px',
+  fill = '#fff'
+}) => /*#__PURE__*/React$1.createElement("svg", {
+  width: width,
+  height: height,
+  viewBox: "0 0 38 38",
+  xmlns: "http://www.w3.org/2000/svg"
+}, /*#__PURE__*/React$1.createElement("defs", null, /*#__PURE__*/React$1.createElement("linearGradient", {
+  x1: "8.042%",
+  y1: "0%",
+  x2: "65.682%",
+  y2: "23.865%",
+  id: "a"
+}, /*#__PURE__*/React$1.createElement("stop", {
+  stopColor: fill,
+  stopOpacity: "0",
+  offset: "0%"
+}), /*#__PURE__*/React$1.createElement("stop", {
+  stopColor: fill,
+  stopOpacity: ".631",
+  offset: "63.146%"
+}), /*#__PURE__*/React$1.createElement("stop", {
+  stopColor: fill,
+  offset: "100%"
+}))), /*#__PURE__*/React$1.createElement("g", {
+  fill: "none",
+  fillRule: "evenodd"
+}, /*#__PURE__*/React$1.createElement("g", {
+  transform: "translate(1 1)"
+}, /*#__PURE__*/React$1.createElement("path", {
+  d: "M36 18c0-9.94-8.06-18-18-18",
+  id: "Oval-2",
+  stroke: "url(#a)",
+  strokeWidth: "2"
+}, /*#__PURE__*/React$1.createElement("animateTransform", {
+  attributeName: "transform",
+  type: "rotate",
+  from: "0 18 18",
+  to: "360 18 18",
+  dur: "0.9s",
+  repeatCount: "indefinite"
+})), /*#__PURE__*/React$1.createElement("circle", {
+  fill: fill,
+  cx: "36",
+  cy: "18",
+  r: "1"
+}, /*#__PURE__*/React$1.createElement("animateTransform", {
+  attributeName: "transform",
+  type: "rotate",
+  from: "0 18 18",
+  to: "360 18 18",
+  dur: "0.9s",
+  repeatCount: "indefinite"
+})))));
+const Loader = ({
+  width,
+  height,
+  type,
+  fill
+}) => {
   switch (type) {
     case 'inline':
       return /*#__PURE__*/React$1.createElement(Wrap$h, {
@@ -3370,8 +3622,6 @@ var Loader = function Loader(_ref2) {
       }));
   }
 };
-
-var _templateObject$q, _templateObject2$d, _templateObject3$7, _templateObject4$5, _templateObject5$2, _templateObject6$1;
 
 /**
  *  Usage Example
@@ -3397,7 +3647,7 @@ var _templateObject$q, _templateObject2$d, _templateObject3$7, _templateObject4$
  *
  */
 
-var defaults = {
+const defaults = {
   content: '',
   onHover: true,
   hoverEffect: 'paused',
@@ -3406,251 +3656,264 @@ var defaults = {
   shouldScroll: false,
   isAnimating: false
 };
-var scroll = styled.keyframes(_templateObject$q || (_templateObject$q = _taggedTemplateLiteral(["\n    0%   { \n        transform: translate(0, 0); \n    }\n    100% { \n        transform: translate(-50%, 0); \n    }\n"])));
-var Wrap$g = styled.div(_templateObject2$d || (_templateObject2$d = _taggedTemplateLiteral(["\n    display: block;\n    width: 100%;\n    margin: 0 auto;\n    white-space: nowrap;\n    overflow: hidden;\n    box-sizing: border-box;\n"])));
-styled.span(_templateObject3$7 || (_templateObject3$7 = _taggedTemplateLiteral(["\n    display: inline-block;\n    text-indent: 0;\n    animation: ", " ", " linear infinite;\n    animation-play-state: ", ";\n\n    /* &:hover {\n        animation-play-state: ", ";\n    } */\n"])), scroll, function (props) {
-  return "".concat(props.time, "s");
-}, function (props) {
-  return props.animate;
-}, function (props) {
-  return props.hoverPlaystate;
-});
-var MainContent = styled.span(_templateObject4$5 || (_templateObject4$5 = _taggedTemplateLiteral([""])));
-styled.span(_templateObject5$2 || (_templateObject5$2 = _taggedTemplateLiteral(["\n    padding-left: 15px;\n"])));
-var Temp = styled.div(_templateObject6$1 || (_templateObject6$1 = _taggedTemplateLiteral(["\n    display: block;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n"])));
-var Marquess = /*#__PURE__*/function (_Component) {
-  _inherits(Marquess, _Component);
-  var _super = _createSuper(Marquess);
-  function Marquess(props) {
-    var _this;
-    _classCallCheck(this, Marquess);
-    _this = _super.call(this, props);
-    _this.state = _objectSpread2(_objectSpread2({}, defaults), props);
-    _this.handleHover = _this.handleHover.bind(_assertThisInitialized(_this));
-    _this.handleAnimationEnd = _this.handleAnimationEnd.bind(_assertThisInitialized(_this));
-    _this.needsToScroll = _this.needsToScroll.bind(_assertThisInitialized(_this));
-    return _this;
+const scroll = styled.keyframes`
+    0%   { 
+        transform: translate(0, 0); 
+    }
+    100% { 
+        transform: translate(-50%, 0); 
+    }
+`;
+const Wrap$g = styled.div`
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+`;
+styled.span`
+    display: inline-block;
+    text-indent: 0;
+    animation: ${scroll} ${props => `${props.time}s`} linear infinite;
+    animation-play-state: ${props => props.animate};
+
+    /* &:hover {
+        animation-play-state: ${props => props.hoverPlaystate};
+    } */
+`;
+const MainContent = styled.span``;
+styled.span`
+    padding-left: 15px;
+`;
+const Temp = styled.div`
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+`;
+class Marquess extends React$1.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...defaults,
+      ...props
+    };
+    this.handleHover = this.handleHover.bind(this);
+    this.handleAnimationEnd = this.handleAnimationEnd.bind(this);
+    this.needsToScroll = this.needsToScroll.bind(this);
   }
-  _createClass(Marquess, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      // window.addEventListener('resize', this.needsToScroll);
-      // this.needsToScroll();
+  componentDidMount() {
+    // window.addEventListener('resize', this.needsToScroll);
+    // this.needsToScroll();
+  }
+  componentWillUnmount() {
+    // window.removeEventListener('resize', this.needsToScroll);
+  }
+
+  /**
+   * Checks refs to see if inner element is bigger than parent
+   */
+  needsToScroll() {
+    const {
+      wrap,
+      marquee
+    } = this;
+    const {
+      isAnimating
+    } = this.state;
+    let shouldScroll = false;
+    let animate = true;
+    if (wrap && marquee) {
+      const wWidth = wrap.getBoundingClientRect().width;
+      const mWidth = marquee.getBoundingClientRect().width;
+      if (mWidth > wWidth) {
+        shouldScroll = true;
+      }
     }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      // window.removeEventListener('resize', this.needsToScroll);
+    console.log(`is anim ${isAnimating}`);
+    if (!shouldScroll) {
+      animate = false;
     }
+    this.setState(() => ({
+      shouldScroll,
+      isAnimating: animate
+    }));
+  }
+  handleHover() {
+    this.needsToScroll(true);
+  }
+  handleAnimationEnd() {
+    // console.log('end');
+    this.setState(() => ({
+      isAnimating: false
+    }));
+  }
+  render() {
+    this.state;
+    const {
+      content,
+      className
+    } = this.props;
+
+    // console.log(animate);
+
+    /* if (!shouldScroll) {
+        playstate = 'paused';
+        hoverPlaystate = 'paused';
+        animate = 'paused';
+    } */
 
     /**
-     * Checks refs to see if inner element is bigger than parent
+     * Temporary Launch change
      */
-  }, {
-    key: "needsToScroll",
-    value: function needsToScroll() {
-      var wrap = this.wrap,
-        marquee = this.marquee;
-      var isAnimating = this.state.isAnimating;
-      var shouldScroll = false;
-      var animate = true;
-      if (wrap && marquee) {
-        var wWidth = wrap.getBoundingClientRect().width;
-        var mWidth = marquee.getBoundingClientRect().width;
-        if (mWidth > wWidth) {
-          shouldScroll = true;
-        }
-      }
-      console.log("is anim ".concat(isAnimating));
-      if (!shouldScroll) {
-        animate = false;
-      }
-      this.setState(function () {
-        return {
-          shouldScroll: shouldScroll,
-          isAnimating: animate
-        };
-      });
-    }
-  }, {
-    key: "handleHover",
-    value: function handleHover() {
-      this.needsToScroll(true);
-    }
-  }, {
-    key: "handleAnimationEnd",
-    value: function handleAnimationEnd() {
-      // console.log('end');
-      this.setState(function () {
-        return {
-          isAnimating: false
-        };
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-      var _this$state = this.state;
-        _this$state.speed;
-        _this$state.hoverEffect;
-        _this$state.onHover;
-        _this$state.loop;
-        _this$state.isAnimating;
-        _this$state.shouldScroll;
-      var _this$props = this.props,
-        content = _this$props.content,
-        className = _this$props.className;
 
-      // console.log(animate);
-
-      /* if (!shouldScroll) {
-          playstate = 'paused';
-          hoverPlaystate = 'paused';
-          animate = 'paused';
-      } */
-
-      /**
-       * Temporary Launch change
-       */
-
-      return /*#__PURE__*/React$1.createElement(Wrap$g, {
-        ref: function ref(wrap) {
-          return _this2.wrap = wrap;
-        },
-        className: className
-      }, /*#__PURE__*/React$1.createElement(Temp, null, /*#__PURE__*/React$1.createElement(MainContent, null, content)));
-    }
-  }]);
-  return Marquess;
-}(React$1.Component);
-
-var _templateObject$p, _templateObject2$c;
-var mastBase = styled.css(_templateObject$p || (_templateObject$p = _taggedTemplateLiteral(["\n    display:flex;\n    position:fixed;\n    align-items: center;\n    box-sizing: content-box;\n    background: ", ";\n    z-index:9;\n    ", "\n    ", "\n"])), function (props) {
-  return props.theme.mast.background;
-}, function (props) {
-  return props.position === "top" ? "\n            top:0;\n            width:100%;\n            flex-direction: row;\n        " : "";
-}, function (props) {
-  return props.theme.mast.shadow ? "\n            box-shadow: 1px 0 3px rgba(0,0,0,0.3);\n        " : "";
-});
-var Mast = styled.div(_templateObject2$c || (_templateObject2$c = _taggedTemplateLiteral(["\n    ", "\n"])), mastBase);
-var index = (function (props) {
-  return /*#__PURE__*/React.createElement(Mast, {
-    position: props.position
-  }, props.children);
-});
-
-var _templateObject$o, _templateObject2$b, _templateObject3$6, _templateObject4$4;
-var ModalHeader = styled.h2(_templateObject$o || (_templateObject$o = _taggedTemplateLiteral(["\n    display: flex;\n    justify-content: center;\n    color: ", ";\n"])), function (props) {
-  return props.theme.main.color;
-});
-var Wrap$f = styled.div(_templateObject2$b || (_templateObject2$b = _taggedTemplateLiteral(["\n    display: flex;\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n    overflow: hidden;\n    z-index: 8888;\n    justify-content: center;\n    align-items: center;\n"])));
-var Background = styled.div(_templateObject3$6 || (_templateObject3$6 = _taggedTemplateLiteral(["\n    display: block;\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n    overflow: hidden;\n    background: rgba(0, 0, 0, 0.7);\n    z-index: -1;\n"])));
-var ModalWrap = styled.div(_templateObject4$4 || (_templateObject4$4 = _taggedTemplateLiteral(["\n    width: 30rem;\n    min-height: 4rem;\n    max-width: 90%;\n    max-height: 90%;\n    background: ", ";\n    color: ", ";\n    border-radius: ", ";\n    box-shadow: 0 5px 10px ", ";\n    overflow: auto;\n    padding: 2rem;\n    text-align: center;\n"])), function (props) {
-  return props.type === 'asset' ? 'transparent' : props.theme.main.boxBackground;
-}, function (props) {
-  return props.theme.menu.color;
-}, function (props) {
-  return props.theme.main.borderRadius;
-}, function (props) {
-  return props.type === 'asset' ? 'transparent' : 'rgba(0, 0, 0, 0.3)';
-});
-var Modal = /*#__PURE__*/function (_Component) {
-  _inherits(Modal, _Component);
-  var _super = _createSuper(Modal);
-  function Modal(props) {
-    var _this;
-    _classCallCheck(this, Modal);
-    _this = _super.call(this, props);
-    _this.open = _this.open.bind(_assertThisInitialized(_this));
-    _this.close = _this.close.bind(_assertThisInitialized(_this));
-    return _this;
+    return /*#__PURE__*/React$1.createElement(Wrap$g, {
+      ref: wrap => this.wrap = wrap,
+      className: className
+    }, /*#__PURE__*/React$1.createElement(Temp, null, /*#__PURE__*/React$1.createElement(MainContent, null, content)));
   }
-  _createClass(Modal, [{
-    key: "open",
-    value: function open() {
-      this.setState({
-        isOpen: true
-      });
+}
+
+const mastBase = styled.css`
+    display:flex;
+    position:fixed;
+    align-items: center;
+    box-sizing: content-box;
+    background: ${props => props.theme.mast.background};
+    z-index:9;
+    ${props => props.position === "top" ? `
+            top:0;
+            width:100%;
+            flex-direction: row;
+        ` : ``}
+    ${props => props.theme.mast.shadow ? `
+            box-shadow: 1px 0 3px rgba(0,0,0,0.3);
+        ` : ``}
+`;
+const Mast = styled.div`
+    ${mastBase}
+`;
+var index = (props => /*#__PURE__*/React.createElement(Mast, {
+  position: props.position
+}, props.children));
+
+const ModalHeader = styled.h2`
+    display: flex;
+    justify-content: center;
+    color: ${props => props.theme.main.color};
+`;
+const Wrap$f = styled.div`
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 8888;
+    justify-content: center;
+    align-items: center;
+`;
+const Background = styled.div`
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+`;
+const ModalWrap = styled.div`
+    width: 30rem;
+    min-height: 4rem;
+    max-width: 90%;
+    max-height: 90%;
+    background: ${props => props.type === 'asset' ? 'transparent' : props.theme.main.boxBackground};
+    color: ${props => props.theme.menu.color};
+    border-radius: ${props => props.theme.main.borderRadius};
+    box-shadow: 0 5px 10px ${props => props.type === 'asset' ? 'transparent' : 'rgba(0, 0, 0, 0.3)'};
+    overflow: auto;
+    padding: 2rem;
+    text-align: center;
+`;
+class Modal extends React$1.Component {
+  constructor(props) {
+    super(props);
+    this.open = this.open.bind(this);
+    this.close = this.close.bind(this);
+  }
+  open() {
+    this.setState({
+      isOpen: true
+    });
+  }
+  close() {
+    this.setState({
+      isOpen: false
+    });
+  }
+  renderClose() {
+    const {
+      modal
+    } = this.props;
+    const {
+      close = true,
+      onClose = null,
+      closeText = 'Cancel'
+    } = modal;
+    if (close) {
+      return /*#__PURE__*/React$1.createElement("button", {
+        style: {
+          margin: '0 auto 1em auto',
+          display: 'block'
+        },
+        onClick: () => onClose(null),
+        type: "button"
+      }, closeText);
     }
-  }, {
-    key: "close",
-    value: function close() {
-      this.setState({
-        isOpen: false
-      });
-    }
-  }, {
-    key: "renderClose",
-    value: function renderClose() {
-      var modal = this.props.modal;
-      var _modal$close = modal.close,
-        close = _modal$close === void 0 ? true : _modal$close,
-        _modal$onClose = modal.onClose,
-        onClose = _modal$onClose === void 0 ? null : _modal$onClose,
-        _modal$closeText = modal.closeText,
-        closeText = _modal$closeText === void 0 ? 'Cancel' : _modal$closeText;
-      if (close) {
-        return /*#__PURE__*/React$1.createElement("button", {
-          style: {
-            margin: '0 auto 1em auto',
-            display: 'block'
-          },
-          onClick: function onClick() {
-            return onClose(null);
-          },
-          type: "button"
-        }, closeText);
-      }
+    return null;
+  }
+  renderHeader(header, type) {
+    if (type === 'asset') {
       return null;
     }
-  }, {
-    key: "renderHeader",
-    value: function renderHeader(header, type) {
-      if (type === 'asset') {
-        return null;
-      }
-      return /*#__PURE__*/React$1.createElement(ModalHeader, null, header);
+    return /*#__PURE__*/React$1.createElement(ModalHeader, null, header);
+  }
+  render() {
+    const {
+      modal
+    } = this.props;
+    const {
+      content = 'test',
+      header = 'Modal Header',
+      onClose = null,
+      isOpen = false,
+      type = 'default',
+      className = null
+    } = modal;
+    console.log('Modal: Render', this.props);
+    if (!isOpen) {
+      return null;
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var modal = this.props.modal;
-      var _modal$content = modal.content,
-        content = _modal$content === void 0 ? 'test' : _modal$content,
-        _modal$header = modal.header,
-        header = _modal$header === void 0 ? 'Modal Header' : _modal$header,
-        _modal$onClose2 = modal.onClose,
-        onClose = _modal$onClose2 === void 0 ? null : _modal$onClose2,
-        _modal$isOpen = modal.isOpen,
-        isOpen = _modal$isOpen === void 0 ? false : _modal$isOpen,
-        _modal$type = modal.type,
-        type = _modal$type === void 0 ? 'default' : _modal$type;
-        modal.className;
-      console.log('Modal: Render', this.props);
-      if (!isOpen) {
-        return null;
-      }
-      return /*#__PURE__*/React$1.createElement(Wrap$f, null, /*#__PURE__*/React$1.createElement(Background, {
-        onClick: function onClick() {
-          return onClose(null);
-        }
-      }), /*#__PURE__*/React$1.createElement(ModalWrap, {
-        id: "mainModal",
-        type: type
-      }, this.renderHeader(header, type), content, this.renderClose()));
-    }
-  }]);
-  return Modal;
-}(React$1.Component); // Map state to props of container component
+    return /*#__PURE__*/React$1.createElement(Wrap$f, null, /*#__PURE__*/React$1.createElement(Background, {
+      onClick: () => onClose(null)
+    }), /*#__PURE__*/React$1.createElement(ModalWrap, {
+      id: "mainModal",
+      type: type
+    }, this.renderHeader(header, type), content, this.renderClose()));
+  }
+}
 
 // Connect container component to store
-var ModalContainer = Modal;
+const ModalContainer = Modal;
 
 function paginate(totalItems, currentPage, pageSize, maxPages) {
   // calculate total pages
-  var totalPages = Math.ceil(totalItems / pageSize);
-  var thisPage = currentPage;
+  const totalPages = Math.ceil(totalItems / pageSize);
+  let thisPage = currentPage;
 
   // ensure current page isn't out of range
   if (currentPage <= 1) {
@@ -3658,16 +3921,16 @@ function paginate(totalItems, currentPage, pageSize, maxPages) {
   } else if (currentPage > totalPages) {
     thisPage = totalPages;
   }
-  var startPage = 0;
-  var endPage = 0;
+  let startPage = 0;
+  let endPage = 0;
   if (totalPages <= maxPages) {
     // total pages less than max so show all pages
     startPage = 1;
     endPage = totalPages;
   } else {
     // total pages more than max so calculate start and end pages
-    var maxPagesBeforeCurrentPage = Math.floor(maxPages / 2);
-    var maxPagesAfterCurrentPage = Math.ceil(maxPages / 2) - 1;
+    const maxPagesBeforeCurrentPage = Math.floor(maxPages / 2);
+    const maxPagesAfterCurrentPage = Math.ceil(maxPages / 2) - 1;
     if (thisPage <= maxPagesBeforeCurrentPage) {
       // current page near the start
       startPage = 1;
@@ -3684,311 +3947,381 @@ function paginate(totalItems, currentPage, pageSize, maxPages) {
   }
 
   // calculate start and end item indexes
-  var startIndex = (thisPage - 1) * pageSize;
-  var endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
+  const startIndex = (thisPage - 1) * pageSize;
+  const endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
 
   // create an array of pages to ng-repeat in the pager control
-  var pages = Array.from(Array(endPage + 1 - startPage).keys()).map(function (i) {
-    return startPage + i;
-  });
+  const pages = Array.from(Array(endPage + 1 - startPage).keys()).map(i => startPage + i);
 
   // return object with all pager properties required by the view
   return {
-    totalItems: totalItems,
-    thisPage: thisPage,
-    pageSize: pageSize,
-    totalPages: totalPages,
-    startPage: startPage,
-    endPage: endPage,
-    startIndex: startIndex,
-    endIndex: endIndex,
-    pages: pages
+    totalItems,
+    thisPage,
+    pageSize,
+    totalPages,
+    startPage,
+    endPage,
+    startIndex,
+    endIndex,
+    pages
   };
 }
 
-var Icon$2 = function Icon() {
-  return /*#__PURE__*/React$1.createElement("svg", {
-    width: "64px",
-    height: "64px",
-    viewBox: "0 0 64 64",
-    version: "1.1",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/React$1.createElement("g", {
-    id: "Icon/Arrow-Right",
-    stroke: "none",
-    strokeWidth: "1",
-    fillRule: "evenodd"
-  }, /*#__PURE__*/React$1.createElement("path", {
-    d: "M27.211231,59.2005673 C25.8400121,57.8435768 25.8684687,55.6295397 27.2684232,54.3011453 L44.4807766,37.903014 L3.42818658,37.903014 C1.52842775,37.903014 0,36.3745863 0,34.4748275 L0,29.903912 C0,28.0041532 1.52842775,26.4757254 3.42818658,26.4757254 L44.4807766,26.4757254 L27.2684232,10.0775942 C25.8828366,8.74919982 25.8542404,6.53516266 27.211231,5.17817214 L30.3823314,2.00707165 C31.7107258,0.664309448 33.8819386,0.664309448 35.2245613,2.00707165 L62.9929283,29.7752992 C64.3356906,31.1038331 64.3356906,33.2749064 62.9929283,34.6176686 L35.2245613,62.3716678 C33.8961669,63.71443 31.7249541,63.71443 30.3823314,62.3716678 L27.211231,59.2005673 Z",
-    id: "\uD83C\uDFA8-Icon-Fill"
-  })));
-};
+const Icon$2 = () => /*#__PURE__*/React$1.createElement("svg", {
+  width: "64px",
+  height: "64px",
+  viewBox: "0 0 64 64",
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg"
+}, /*#__PURE__*/React$1.createElement("g", {
+  id: "Icon/Arrow-Right",
+  stroke: "none",
+  strokeWidth: "1",
+  fillRule: "evenodd"
+}, /*#__PURE__*/React$1.createElement("path", {
+  d: "M27.211231,59.2005673 C25.8400121,57.8435768 25.8684687,55.6295397 27.2684232,54.3011453 L44.4807766,37.903014 L3.42818658,37.903014 C1.52842775,37.903014 0,36.3745863 0,34.4748275 L0,29.903912 C0,28.0041532 1.52842775,26.4757254 3.42818658,26.4757254 L44.4807766,26.4757254 L27.2684232,10.0775942 C25.8828366,8.74919982 25.8542404,6.53516266 27.211231,5.17817214 L30.3823314,2.00707165 C31.7107258,0.664309448 33.8819386,0.664309448 35.2245613,2.00707165 L62.9929283,29.7752992 C64.3356906,31.1038331 64.3356906,33.2749064 62.9929283,34.6176686 L35.2245613,62.3716678 C33.8961669,63.71443 31.7249541,63.71443 30.3823314,62.3716678 L27.211231,59.2005673 Z",
+  id: "\uD83C\uDFA8-Icon-Fill"
+})));
 
-var Icon$1 = function Icon() {
-  return /*#__PURE__*/React$1.createElement("svg", {
-    width: "64px",
-    height: "64px",
-    viewBox: "0 0 64 64",
-    version: "1.1",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/React$1.createElement("g", {
-    id: "Icon/Arrow-Left",
-    stroke: "none",
-    strokeWidth: "1",
-    fillRule: "evenodd"
-  }, /*#__PURE__*/React$1.createElement("path", {
-    d: "M36.788769,59.2005673 L33.6176686,62.3716678 C32.2750459,63.71443 30.1038331,63.71443 28.7754387,62.3716678 L1.00707165,34.6176686 C-0.335690552,33.2749064 -0.335690552,31.1038331 1.00707165,29.7752992 L28.7754387,2.00707165 C30.1180614,0.664309448 32.2892742,0.664309448 33.6176686,2.00707165 L36.788769,5.17817214 C38.1457596,6.53516266 38.1171634,8.74919982 36.7315768,10.0775942 L19.5192234,26.4757254 L60.5718134,26.4757254 C62.4715723,26.4757254 64,28.0041532 64,29.903912 L64,34.4748275 C64,36.3745863 62.4715723,37.903014 60.5718134,37.903014 L19.5192234,37.903014 L36.7315768,54.3011453 C38.1315313,55.6295397 38.1599879,57.8435768 36.788769,59.2005673 Z",
-    id: "\uD83C\uDFA8-Icon-Fill"
-  })));
-};
+const Icon$1 = () => /*#__PURE__*/React$1.createElement("svg", {
+  width: "64px",
+  height: "64px",
+  viewBox: "0 0 64 64",
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg"
+}, /*#__PURE__*/React$1.createElement("g", {
+  id: "Icon/Arrow-Left",
+  stroke: "none",
+  strokeWidth: "1",
+  fillRule: "evenodd"
+}, /*#__PURE__*/React$1.createElement("path", {
+  d: "M36.788769,59.2005673 L33.6176686,62.3716678 C32.2750459,63.71443 30.1038331,63.71443 28.7754387,62.3716678 L1.00707165,34.6176686 C-0.335690552,33.2749064 -0.335690552,31.1038331 1.00707165,29.7752992 L28.7754387,2.00707165 C30.1180614,0.664309448 32.2892742,0.664309448 33.6176686,2.00707165 L36.788769,5.17817214 C38.1457596,6.53516266 38.1171634,8.74919982 36.7315768,10.0775942 L19.5192234,26.4757254 L60.5718134,26.4757254 C62.4715723,26.4757254 64,28.0041532 64,29.903912 L64,34.4748275 C64,36.3745863 62.4715723,37.903014 60.5718134,37.903014 L19.5192234,37.903014 L36.7315768,54.3011453 C38.1315313,55.6295397 38.1599879,57.8435768 36.788769,59.2005673 Z",
+  id: "\uD83C\uDFA8-Icon-Fill"
+})));
 
-var _templateObject$n, _templateObject2$a;
-var Wrap$e = styled.div(_templateObject$n || (_templateObject$n = _taggedTemplateLiteral(["\n    display: block;\n    text-align: right;\n\n    > * {\n        &.number &.arrow &.inactivearrow {\n            display: inline-block;\n            border: none;\n        }\n        &.number {\n            padding: 0.7em 0.5em;\n            width: 2.5em;\n            margin: 0.5em 0.1em;\n            background: #fff;\n            color: ", ";\n            border: none;\n        }\n\n        &.arrow {\n            padding: 0.8em 0.8em 0.6em 0.8em;\n            margin: 0.5em 0.1em;\n            background: #fff;\n            border: none;\n        }\n        &.inactivearrow {\n            padding: 0.8em 0.8em 0.6em 0.8em;\n            margin: 0.5em 0.1em;\n            background: #f0f0f0;\n            pointer-events: none;\n            border: none;\n        }\n\n        &.active {\n            background: #e83948;\n            border-radius: 4px 0em;\n            margin: 0.5em 0.1em;\n            padding: 0.7em 0.5em;\n            width: 2.5em;\n            outline: none;\n            color: #fff;\n            border: none;\n            border-radius: 10px;\n        }\n    }\n"])), function (props) {
-  return props.theme.pagination.color;
-});
-var SvgWrap = styled.div(_templateObject2$a || (_templateObject2$a = _taggedTemplateLiteral(["\n    align-self: flex-end;\n    width: 0.9em;\n\n    svg {\n        width: 100%;\n        height: 100%;\n        fill: ", ";\n    }\n\n    .active & {\n        svg {\n            fill: red;\n        }\n    }\n"])), function (props) {
-  return props.color;
-});
-var _pageSize = 20;
-var _totalPages = 5;
-var Pagination = /*#__PURE__*/function (_Component) {
-  _inherits(Pagination, _Component);
-  var _super = _createSuper(Pagination);
-  function Pagination(props) {
-    var _this;
-    _classCallCheck(this, Pagination);
-    _this = _super.call(this, props);
-    _this.renderPageButton = _this.renderPageButton.bind(_assertThisInitialized(_this));
-    return _this;
+const Wrap$e = styled.div`
+    display: block;
+    text-align: right;
+
+    > * {
+        &.number &.arrow &.inactivearrow {
+            display: inline-block;
+            border: none;
+        }
+        &.number {
+            padding: 0.7em 0.5em;
+            width: 2.5em;
+            margin: 0.5em 0.1em;
+            background: #fff;
+            color: ${props => props.theme.pagination.color};
+            border: none;
+        }
+
+        &.arrow {
+            padding: 0.8em 0.8em 0.6em 0.8em;
+            margin: 0.5em 0.1em;
+            background: #fff;
+            border: none;
+        }
+        &.inactivearrow {
+            padding: 0.8em 0.8em 0.6em 0.8em;
+            margin: 0.5em 0.1em;
+            background: #f0f0f0;
+            pointer-events: none;
+            border: none;
+        }
+
+        &.active {
+            background: #e83948;
+            border-radius: 4px 0em;
+            margin: 0.5em 0.1em;
+            padding: 0.7em 0.5em;
+            width: 2.5em;
+            outline: none;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+        }
+    }
+`;
+const SvgWrap = styled.div`
+    align-self: flex-end;
+    width: 0.9em;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        fill: ${props => props.color};
+    }
+
+    .active & {
+        svg {
+            fill: red;
+        }
+    }
+`;
+const _pageSize = 20;
+const _totalPages = 5;
+class Pagination extends React$1.Component {
+  constructor(props) {
+    super(props);
+    this.renderPageButton = this.renderPageButton.bind(this);
   }
-  _createClass(Pagination, [{
-    key: "renderMore",
-    value: function renderMore() {
-      var _this$props = this.props,
-        page = _this$props.page,
-        paginate = _this$props.paginate;
-      // handlePaginate(page, filters, column, direction) {
-      var handlePaginate = function handlePaginate(pg) {
-        paginate(pg);
-      };
-      return /*#__PURE__*/React$1.createElement(Wrap$e, null, /*#__PURE__*/React$1.createElement(Button, {
-        onClick: handlePaginate(page)
-      }, "Load More"));
-    }
-  }, {
-    key: "renderPageButton",
-    value: function renderPageButton(pageNumber) {
-      var _this$props2 = this.props,
-        paginate = _this$props2.paginate,
-        page = _this$props2.page;
+  renderMore() {
+    const {
+      page,
+      paginate
+    } = this.props;
+    // handlePaginate(page, filters, column, direction) {
+    const handlePaginate = pg => {
+      paginate(pg);
+    };
+    return /*#__PURE__*/React$1.createElement(Wrap$e, null, /*#__PURE__*/React$1.createElement(Button, {
+      onClick: handlePaginate(page)
+    }, "Load More"));
+  }
+  renderPageButton(pageNumber) {
+    const {
+      paginate,
+      page
+    } = this.props;
 
-      // handlePaginate(page, filters, column, direction) {
-      var handlePaginate = function handlePaginate(pg) {
-        paginate(pg);
-      };
-      var className = '';
-      if (page === pageNumber || page <= 0 && pageNumber === 1) {
-        className = 'active';
-      } else {
-        className = 'number';
+    // handlePaginate(page, filters, column, direction) {
+    const handlePaginate = pg => {
+      paginate(pg);
+    };
+    let className = '';
+    if (page === pageNumber || page <= 0 && pageNumber === 1) {
+      className = 'active';
+    } else {
+      className = 'number';
+    }
+    return /*#__PURE__*/React$1.createElement(Button, {
+      key: `pagination-page-${pageNumber}`,
+      value: "Test Button",
+      type: "button",
+      outline: "true",
+      className: className,
+      onClick: () => {
+        handlePaginate(pageNumber);
       }
-      return /*#__PURE__*/React$1.createElement(Button, {
-        key: "pagination-page-".concat(pageNumber),
-        value: "Test Button",
-        type: "button",
-        outline: "true",
-        className: className,
-        onClick: function onClick() {
-          handlePaginate(pageNumber);
-        }
-      }, pageNumber);
+    }, pageNumber);
+  }
+  renderBackPageButton(current) {
+    const {
+      paginate,
+      page
+    } = this.props;
+    const handlePaginate = pg => {
+      paginate(pg);
+    };
+    let className = '';
+    let color = '';
+    let disabled = false;
+    if (page > 1 && current.pages.length > 0) {
+      className = 'arrow';
+      color = '#e83948';
+    } else {
+      className = 'inactivearrow';
+      color = '#B4B7BC';
+      disabled = true;
     }
-  }, {
-    key: "renderBackPageButton",
-    value: function renderBackPageButton(current) {
-      var _this$props3 = this.props,
-        paginate = _this$props3.paginate,
-        page = _this$props3.page;
-      var handlePaginate = function handlePaginate(pg) {
-        paginate(pg);
-      };
-      var className = '';
-      var color = '';
-      var disabled = false;
-      if (page > 1 && current.pages.length > 0) {
-        className = 'arrow';
-        color = '#e83948';
-      } else {
-        className = 'inactivearrow';
-        color = '#B4B7BC';
-        disabled = true;
+    return /*#__PURE__*/React$1.createElement(Button, {
+      disabled: disabled,
+      className: className,
+      onClick: () => {
+        handlePaginate(page - 1);
       }
-      return /*#__PURE__*/React$1.createElement(Button, {
-        disabled: disabled,
-        className: className,
-        onClick: function onClick() {
-          handlePaginate(page - 1);
-        }
-      }, /*#__PURE__*/React$1.createElement(SvgWrap, {
-        color: color
-      }, /*#__PURE__*/React$1.createElement(Icon$1, null)));
+    }, /*#__PURE__*/React$1.createElement(SvgWrap, {
+      color: color
+    }, /*#__PURE__*/React$1.createElement(Icon$1, null)));
+  }
+  renderNextPageButton(current) {
+    const {
+      paginate,
+      page
+    } = this.props;
+    const handlePaginate = pg => {
+      paginate(pg);
+    };
+    let className = '';
+    let color = '';
+    if (page < current.totalPages) {
+      className = 'arrow';
+      color = '#e83948';
+    } else {
+      className = 'inactivearrow';
+      color = '#B4B7BC';
     }
-  }, {
-    key: "renderNextPageButton",
-    value: function renderNextPageButton(current) {
-      var _this$props4 = this.props,
-        paginate = _this$props4.paginate,
-        page = _this$props4.page;
-      var handlePaginate = function handlePaginate(pg) {
-        paginate(pg);
-      };
-      var className = '';
-      var color = '';
-      if (page < current.totalPages) {
-        className = 'arrow';
-        color = '#e83948';
-      } else {
-        className = 'inactivearrow';
-        color = '#B4B7BC';
+    return /*#__PURE__*/React$1.createElement(Button, {
+      className: className,
+      onClick: () => {
+        handlePaginate(page + 1);
       }
-      return /*#__PURE__*/React$1.createElement(Button, {
-        className: className,
-        onClick: function onClick() {
-          handlePaginate(page + 1);
-        }
-      }, /*#__PURE__*/React$1.createElement(SvgWrap, {
-        color: color
-      }, /*#__PURE__*/React$1.createElement(Icon$2, null)));
+    }, /*#__PURE__*/React$1.createElement(SvgWrap, {
+      color: color
+    }, /*#__PURE__*/React$1.createElement(Icon$2, null)));
+  }
+  renderPages() {
+    const {
+      page,
+      totalRecords
+    } = this.props;
+    const current = paginate(totalRecords, page, _pageSize, _totalPages);
+    const {
+      pages
+    } = current;
+    return /*#__PURE__*/React$1.createElement(Wrap$e, null, pages && pages.length > 1 ? /*#__PURE__*/React$1.createElement(React$1.Fragment, null, this.renderBackPageButton(current), pages.map(this.renderPageButton), this.renderNextPageButton(current)) : null);
+  }
+  render() {
+    const {
+      type
+    } = this.props;
+    switch (type) {
+      case 'paginate':
+        return this.renderPages(type);
+      case 'more':
+        return this.renderMore(type);
+      case 'none':
+      default:
+        return null;
     }
-  }, {
-    key: "renderPages",
-    value: function renderPages() {
-      var _this$props5 = this.props,
-        page = _this$props5.page,
-        totalRecords = _this$props5.totalRecords;
-      var current = paginate(totalRecords, page, _pageSize, _totalPages);
-      var pages = current.pages;
-      return /*#__PURE__*/React$1.createElement(Wrap$e, null, pages && pages.length > 1 ? /*#__PURE__*/React$1.createElement(React$1.Fragment, null, this.renderBackPageButton(current), pages.map(this.renderPageButton), this.renderNextPageButton(current)) : null);
+  }
+}
+
+const paragraphBase = styled.css`
+    margin: 1rem 0;
+    color: #666;
+    line-height:170%;
+`;
+const paragraph = styled.p`
+    ${paragraphBase}
+`;
+
+const CheckCircleLight = () => /*#__PURE__*/React$1.createElement("svg", {
+  width: "64px",
+  height: "64px",
+  viewBox: "0 0 64 64",
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg"
+}, /*#__PURE__*/React$1.createElement("g", {
+  id: "Icon/Check-Circle-Light",
+  stroke: "none",
+  strokeWidth: "1",
+  fillRule: "evenodd"
+}, /*#__PURE__*/React$1.createElement("path", {
+  d: "M32,0 C49.6731351,0 64,14.3268649 64,32 C64,49.6731351 49.6731351,64 32,64 C14.3268649,64 0,49.6731351 0,32 C0,14.3268649 14.3268649,0 32,0 Z M32,59.8709677 C47.4768145,59.8709677 59.8709677,47.3113659 59.8709677,32 C59.8709677,16.5231855 47.3114919,4.12903226 32,4.12903226 C16.5231855,4.12903226 4.12903226,16.6886341 4.12903226,32 C4.12903226,47.4768145 16.6885081,59.8709677 32,59.8709677 Z M50.2748236,24.3921371 L26.9871472,47.4930696 C26.3800403,48.0952621 25.3995716,48.0913558 24.797379,47.484249 L13.7163558,36.3136341 C13.1141633,35.7065272 13.1180696,34.7261845 13.7251764,34.1239919 L14.8244708,33.0335181 C15.4315776,32.4313256 16.4120464,32.4352319 17.0142389,33.0423387 L25.9143145,42.0143649 L47.0035282,21.09438 C47.6106351,20.4921875 48.5909778,20.4959677 49.1931704,21.1030746 L50.2836442,22.202495 C50.8859627,22.8096018 50.8819304,23.7899446 50.2748236,24.3921371 Z",
+  id: "\uD83C\uDFA8-Icon-Fill"
+})));
+
+const ExclamationCircleLight = () => /*#__PURE__*/React$1.createElement("svg", {
+  width: "64px",
+  height: "64px",
+  viewBox: "0 0 64 64",
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg"
+}, /*#__PURE__*/React$1.createElement("g", {
+  id: "Icon/Exclamation-Circle-Light",
+  stroke: "none",
+  strokeWidth: "1",
+  fillRule: "evenodd"
+}, /*#__PURE__*/React$1.createElement("path", {
+  d: "M32,4.12903226 C16.59375,4.12903226 4.12903226,16.6189516 4.12903226,32 C4.12903226,47.4114163 16.6136593,59.8709677 32,59.8709677 C47.4051159,59.8709677 59.8709677,47.3923891 59.8709677,32 C59.8709677,16.5258317 47.3059476,4.12903226 32,4.12903226 Z M32,0 C49.671875,0 64,14.3332913 64,32 C64,49.6770413 49.671875,64 32,64 C14.328125,64 0,49.6770413 0,32 C0,14.3332913 14.328125,0 32,0 Z M30.5173891,15.483871 L33.4824849,15.483871 C34.3627772,15.483871 35.0661542,16.2169859 35.0294859,17.0967742 L34.1262601,38.7741935 C34.0917339,39.6035786 33.4094002,40.2580645 32.5792591,40.2580645 L31.4206149,40.2580645 C30.5905998,40.2580645 29.9081401,39.6034526 29.8734879,38.7741935 L28.9702621,17.0967742 C28.9338458,16.2169859 29.6369708,15.483871 30.5173891,15.483871 Z M32,42.8387097 C33.9953377,42.8387097 35.6129032,44.4562752 35.6129032,46.4516129 C35.6129032,48.4469506 33.9953377,50.0645161 32,50.0645161 C30.0046623,50.0645161 28.3870968,48.4469506 28.3870968,46.4516129 C28.3870968,44.4562752 30.0046623,42.8387097 32,42.8387097 Z",
+  id: "\uD83C\uDFA8-Icon-Fill"
+})));
+
+const TimesCircleLight = () => /*#__PURE__*/React$1.createElement("svg", {
+  width: "64px",
+  height: "64px",
+  viewBox: "0 0 64 64",
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg"
+}, /*#__PURE__*/React$1.createElement("g", {
+  id: "Icon/Times-Circle-Light",
+  stroke: "none",
+  strokeWidth: "1",
+  fillRule: "evenodd"
+}, /*#__PURE__*/React$1.createElement("path", {
+  d: "M32,0 C49.6774194,0 64,14.3225806 64,32 C64,49.6774194 49.6774194,64 32,64 C14.3225806,64 0,49.6774194 0,32 C0,14.3225806 14.3225806,0 32,0 Z M32,59.8709677 C47.4710181,59.8709677 59.8709677,47.3161542 59.8709677,32 C59.8709677,16.5289819 47.3161542,4.12903226 32,4.12903226 C16.5289819,4.12903226 4.12903226,16.6838458 4.12903226,32 C4.12903226,47.4710181 16.6838458,59.8709677 32,59.8709677 Z M44.2322329,23.0580897 L35.2903226,32 L44.2322329,40.9419103 C44.8387097,41.5483871 44.8387097,42.5289819 44.2322329,43.1354587 L43.1354587,44.2322329 C42.5289819,44.8387097 41.5483871,44.8387097 40.9419103,44.2322329 L32,35.2903226 L23.0580897,44.2322329 C22.4516129,44.8387097 21.4710181,44.8387097 20.8645413,44.2322329 L19.7677671,43.1354587 C19.1612903,42.5289819 19.1612903,41.5483871 19.7677671,40.9419103 L28.7096774,32 L19.7677671,23.0580897 C19.1612903,22.4516129 19.1612903,21.4710181 19.7677671,20.8645413 L20.8645413,19.7677671 C21.4710181,19.1612903 22.4516129,19.1612903 23.0580897,19.7677671 L32,28.7096774 L40.9419103,19.7677671 C41.5483871,19.1612903 42.5289819,19.1612903 43.1354587,19.7677671 L44.2322329,20.8645413 C44.8258569,21.4710181 44.8258569,22.4516129 44.2322329,23.0580897 Z",
+  id: "\uD83C\uDFA8-Icon-Fill"
+})));
+
+const InfoCircleLight = () => /*#__PURE__*/React$1.createElement("svg", {
+  width: "64px",
+  height: "64px",
+  viewBox: "0 0 64 64",
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg"
+}, /*#__PURE__*/React$1.createElement("g", {
+  id: "Icon/Info-Circle-Light",
+  stroke: "none",
+  strokeWidth: "1",
+  fillRule: "evenodd"
+}, /*#__PURE__*/React$1.createElement("path", {
+  d: "M32,4.12903226 C16.59375,4.12903226 4.12903226,16.6189516 4.12903226,32 C4.12903226,47.4114163 16.6136593,59.8709677 32,59.8709677 C47.4051159,59.8709677 59.8709677,47.3923891 59.8709677,32 C59.8709677,16.5258317 47.3059476,4.12903226 32,4.12903226 Z M32,0 C49.671875,0 64,14.3332913 64,32 C64,49.6770413 49.671875,64 32,64 C14.328125,64 0,49.6770413 0,32 C0,14.3332913 14.328125,0 32,0 Z M27.3548387,44.3870968 L28.9032258,44.3870968 L28.9032258,28.9032357 L27.3548387,28.9032357 C26.499748,28.9032357 25.8064516,28.2099294 25.8064516,27.3548387 L25.8064516,26.3225806 C25.8064516,25.4674899 26.499748,24.7741935 27.3548387,24.7741935 L33.5483871,24.7741935 C34.4034778,24.7741935 35.0967742,25.4674899 35.0967742,26.3225806 L35.0967742,44.3870968 L36.6451613,44.3870968 C37.500252,44.3870968 38.1935484,45.0803931 38.1935484,45.9354839 L38.1935484,46.9677419 C38.1935484,47.8228327 37.500252,48.516129 36.6451613,48.516129 L27.3548387,48.516129 C26.499748,48.516129 25.8064516,47.8228327 25.8064516,46.9677419 L25.8064516,45.9354839 C25.8064516,45.0803931 26.499748,44.3870968 27.3548387,44.3870968 Z M32.0000098,13.4193548 C34.2803679,13.4193548 36.1290519,15.2680192 36.1290519,17.5483969 C36.1290519,19.828755 34.2803679,21.677439 32.0000098,21.677439 C29.7196321,21.677439 27.8709677,19.828755 27.8709677,17.5483969 C27.8709677,15.2680192 29.7196321,13.4193548 32.0000098,13.4193548 Z",
+  id: "\uD83C\uDFA8-Icon-Fill"
+})));
+
+const ResponseBoxText = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 15px 30px 15px 15px;
+    margin-bottom: 30px;
+    font-size: 1rem;
+    color: ${props => darken(0.25, props.borderColor)};
+    border-radius: 0.45em;
+    width: 100%;
+    background-color: ${props => props.backgroundColor};
+    border: 0.15rem solid ${props => props.borderColor};
+    justify-content: space-between;
+    align-items: center;
+`;
+const TextWrap$1 = styled.p`
+    font-size: 0.9em;
+    color: ${props => darken(0.25, props.color)};
+    text-align: left;
+    flex-grow: 1;
+`;
+const LeftDiv = styled.div`
+    display: flex;
+`;
+const XWrap = styled.button`
+    width: 0.8rem;
+    height: 0.8rem;
+
+    svg {
+        width: 100%;
+        height: 100%;
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var type = this.props.type;
-      switch (type) {
-        case 'paginate':
-          return this.renderPages(type);
-        case 'more':
-          return this.renderMore(type);
-        case 'none':
-        default:
-          return null;
-      }
+    &:hover {
+        opacity: 0.8;
     }
-  }]);
-  return Pagination;
-}(React$1.Component);
+`;
+const IconWrap$1 = styled.div`
+    width: 1rem;
+    height: 1rem;
+    justify-self: flex-start;
+    margin-right: 15px;
 
-var _templateObject$m, _templateObject2$9;
-var paragraphBase = styled.css(_templateObject$m || (_templateObject$m = _taggedTemplateLiteral(["\n    margin: 1rem 0;\n    color: #666;\n    line-height:170%;\n"])));
-var paragraph = styled.p(_templateObject2$9 || (_templateObject2$9 = _taggedTemplateLiteral(["\n    ", "\n"])), paragraphBase);
-
-var CheckCircleLight = function CheckCircleLight() {
-  return /*#__PURE__*/React$1.createElement("svg", {
-    width: "64px",
-    height: "64px",
-    viewBox: "0 0 64 64",
-    version: "1.1",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/React$1.createElement("g", {
-    id: "Icon/Check-Circle-Light",
-    stroke: "none",
-    strokeWidth: "1",
-    fillRule: "evenodd"
-  }, /*#__PURE__*/React$1.createElement("path", {
-    d: "M32,0 C49.6731351,0 64,14.3268649 64,32 C64,49.6731351 49.6731351,64 32,64 C14.3268649,64 0,49.6731351 0,32 C0,14.3268649 14.3268649,0 32,0 Z M32,59.8709677 C47.4768145,59.8709677 59.8709677,47.3113659 59.8709677,32 C59.8709677,16.5231855 47.3114919,4.12903226 32,4.12903226 C16.5231855,4.12903226 4.12903226,16.6886341 4.12903226,32 C4.12903226,47.4768145 16.6885081,59.8709677 32,59.8709677 Z M50.2748236,24.3921371 L26.9871472,47.4930696 C26.3800403,48.0952621 25.3995716,48.0913558 24.797379,47.484249 L13.7163558,36.3136341 C13.1141633,35.7065272 13.1180696,34.7261845 13.7251764,34.1239919 L14.8244708,33.0335181 C15.4315776,32.4313256 16.4120464,32.4352319 17.0142389,33.0423387 L25.9143145,42.0143649 L47.0035282,21.09438 C47.6106351,20.4921875 48.5909778,20.4959677 49.1931704,21.1030746 L50.2836442,22.202495 C50.8859627,22.8096018 50.8819304,23.7899446 50.2748236,24.3921371 Z",
-    id: "\uD83C\uDFA8-Icon-Fill"
-  })));
-};
-
-var ExclamationCircleLight = function ExclamationCircleLight() {
-  return /*#__PURE__*/React$1.createElement("svg", {
-    width: "64px",
-    height: "64px",
-    viewBox: "0 0 64 64",
-    version: "1.1",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/React$1.createElement("g", {
-    id: "Icon/Exclamation-Circle-Light",
-    stroke: "none",
-    strokeWidth: "1",
-    fillRule: "evenodd"
-  }, /*#__PURE__*/React$1.createElement("path", {
-    d: "M32,4.12903226 C16.59375,4.12903226 4.12903226,16.6189516 4.12903226,32 C4.12903226,47.4114163 16.6136593,59.8709677 32,59.8709677 C47.4051159,59.8709677 59.8709677,47.3923891 59.8709677,32 C59.8709677,16.5258317 47.3059476,4.12903226 32,4.12903226 Z M32,0 C49.671875,0 64,14.3332913 64,32 C64,49.6770413 49.671875,64 32,64 C14.328125,64 0,49.6770413 0,32 C0,14.3332913 14.328125,0 32,0 Z M30.5173891,15.483871 L33.4824849,15.483871 C34.3627772,15.483871 35.0661542,16.2169859 35.0294859,17.0967742 L34.1262601,38.7741935 C34.0917339,39.6035786 33.4094002,40.2580645 32.5792591,40.2580645 L31.4206149,40.2580645 C30.5905998,40.2580645 29.9081401,39.6034526 29.8734879,38.7741935 L28.9702621,17.0967742 C28.9338458,16.2169859 29.6369708,15.483871 30.5173891,15.483871 Z M32,42.8387097 C33.9953377,42.8387097 35.6129032,44.4562752 35.6129032,46.4516129 C35.6129032,48.4469506 33.9953377,50.0645161 32,50.0645161 C30.0046623,50.0645161 28.3870968,48.4469506 28.3870968,46.4516129 C28.3870968,44.4562752 30.0046623,42.8387097 32,42.8387097 Z",
-    id: "\uD83C\uDFA8-Icon-Fill"
-  })));
-};
-
-var TimesCircleLight = function TimesCircleLight() {
-  return /*#__PURE__*/React$1.createElement("svg", {
-    width: "64px",
-    height: "64px",
-    viewBox: "0 0 64 64",
-    version: "1.1",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/React$1.createElement("g", {
-    id: "Icon/Times-Circle-Light",
-    stroke: "none",
-    strokeWidth: "1",
-    fillRule: "evenodd"
-  }, /*#__PURE__*/React$1.createElement("path", {
-    d: "M32,0 C49.6774194,0 64,14.3225806 64,32 C64,49.6774194 49.6774194,64 32,64 C14.3225806,64 0,49.6774194 0,32 C0,14.3225806 14.3225806,0 32,0 Z M32,59.8709677 C47.4710181,59.8709677 59.8709677,47.3161542 59.8709677,32 C59.8709677,16.5289819 47.3161542,4.12903226 32,4.12903226 C16.5289819,4.12903226 4.12903226,16.6838458 4.12903226,32 C4.12903226,47.4710181 16.6838458,59.8709677 32,59.8709677 Z M44.2322329,23.0580897 L35.2903226,32 L44.2322329,40.9419103 C44.8387097,41.5483871 44.8387097,42.5289819 44.2322329,43.1354587 L43.1354587,44.2322329 C42.5289819,44.8387097 41.5483871,44.8387097 40.9419103,44.2322329 L32,35.2903226 L23.0580897,44.2322329 C22.4516129,44.8387097 21.4710181,44.8387097 20.8645413,44.2322329 L19.7677671,43.1354587 C19.1612903,42.5289819 19.1612903,41.5483871 19.7677671,40.9419103 L28.7096774,32 L19.7677671,23.0580897 C19.1612903,22.4516129 19.1612903,21.4710181 19.7677671,20.8645413 L20.8645413,19.7677671 C21.4710181,19.1612903 22.4516129,19.1612903 23.0580897,19.7677671 L32,28.7096774 L40.9419103,19.7677671 C41.5483871,19.1612903 42.5289819,19.1612903 43.1354587,19.7677671 L44.2322329,20.8645413 C44.8258569,21.4710181 44.8258569,22.4516129 44.2322329,23.0580897 Z",
-    id: "\uD83C\uDFA8-Icon-Fill"
-  })));
-};
-
-var InfoCircleLight = function InfoCircleLight() {
-  return /*#__PURE__*/React$1.createElement("svg", {
-    width: "64px",
-    height: "64px",
-    viewBox: "0 0 64 64",
-    version: "1.1",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/React$1.createElement("g", {
-    id: "Icon/Info-Circle-Light",
-    stroke: "none",
-    strokeWidth: "1",
-    fillRule: "evenodd"
-  }, /*#__PURE__*/React$1.createElement("path", {
-    d: "M32,4.12903226 C16.59375,4.12903226 4.12903226,16.6189516 4.12903226,32 C4.12903226,47.4114163 16.6136593,59.8709677 32,59.8709677 C47.4051159,59.8709677 59.8709677,47.3923891 59.8709677,32 C59.8709677,16.5258317 47.3059476,4.12903226 32,4.12903226 Z M32,0 C49.671875,0 64,14.3332913 64,32 C64,49.6770413 49.671875,64 32,64 C14.328125,64 0,49.6770413 0,32 C0,14.3332913 14.328125,0 32,0 Z M27.3548387,44.3870968 L28.9032258,44.3870968 L28.9032258,28.9032357 L27.3548387,28.9032357 C26.499748,28.9032357 25.8064516,28.2099294 25.8064516,27.3548387 L25.8064516,26.3225806 C25.8064516,25.4674899 26.499748,24.7741935 27.3548387,24.7741935 L33.5483871,24.7741935 C34.4034778,24.7741935 35.0967742,25.4674899 35.0967742,26.3225806 L35.0967742,44.3870968 L36.6451613,44.3870968 C37.500252,44.3870968 38.1935484,45.0803931 38.1935484,45.9354839 L38.1935484,46.9677419 C38.1935484,47.8228327 37.500252,48.516129 36.6451613,48.516129 L27.3548387,48.516129 C26.499748,48.516129 25.8064516,47.8228327 25.8064516,46.9677419 L25.8064516,45.9354839 C25.8064516,45.0803931 26.499748,44.3870968 27.3548387,44.3870968 Z M32.0000098,13.4193548 C34.2803679,13.4193548 36.1290519,15.2680192 36.1290519,17.5483969 C36.1290519,19.828755 34.2803679,21.677439 32.0000098,21.677439 C29.7196321,21.677439 27.8709677,19.828755 27.8709677,17.5483969 C27.8709677,15.2680192 29.7196321,13.4193548 32.0000098,13.4193548 Z",
-    id: "\uD83C\uDFA8-Icon-Fill"
-  })));
-};
-
-var _templateObject$l, _templateObject2$8, _templateObject3$5, _templateObject4$3, _templateObject5$1, _templateObject6;
-var ResponseBoxText = styled.div(_templateObject$l || (_templateObject$l = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: nowrap;\n    padding: 15px 30px 15px 15px;\n    margin-bottom: 30px;\n    font-size: 1rem;\n    color: ", ";\n    border-radius: 0.45em;\n    width: 100%;\n    background-color: ", ";\n    border: 0.15rem solid ", ";\n    justify-content: space-between;\n    align-items: center;\n"])), function (props) {
-  return darken(0.25, props.borderColor);
-}, function (props) {
-  return props.backgroundColor;
-}, function (props) {
-  return props.borderColor;
-});
-var TextWrap$1 = styled.p(_templateObject2$8 || (_templateObject2$8 = _taggedTemplateLiteral(["\n    font-size: 0.9em;\n    color: ", ";\n    text-align: left;\n    flex-grow: 1;\n"])), function (props) {
-  return darken(0.25, props.color);
-});
-var LeftDiv = styled.div(_templateObject3$5 || (_templateObject3$5 = _taggedTemplateLiteral(["\n    display: flex;\n"])));
-var XWrap = styled.button(_templateObject4$3 || (_templateObject4$3 = _taggedTemplateLiteral(["\n    width: 0.8rem;\n    height: 0.8rem;\n\n    svg {\n        width: 100%;\n        height: 100%;\n    }\n    &:hover {\n        opacity: 0.8;\n    }\n"])));
-var IconWrap$1 = styled.div(_templateObject5$1 || (_templateObject5$1 = _taggedTemplateLiteral(["\n    width: 1rem;\n    height: 1rem;\n    justify-self: flex-start;\n    margin-right: 15px;\n\n    svg {\n        width: 100%;\n        height: 100%;\n    }\n"])));
-var ResponseBoxStyled = styled.div(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n    text-align: ", ";\n    margin: 0.5em 0 0.5em 0;\n"])), function (props) {
-  return props.align;
-});
-var ResponseBox = function ResponseBox(props) {
-  var type = props.type,
-    children = props.children,
-    clearResponseBox = props.clearResponseBox,
-    data = props.data,
-    className = props.className;
-  var colorDictionary = {
-    "default": {
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+`;
+const ResponseBoxStyled = styled.div`
+    text-align: ${props => props.align};
+    margin: 0.5em 0 0.5em 0;
+`;
+const ResponseBox = props => {
+  const {
+    type,
+    children,
+    clearResponseBox,
+    data,
+    className
+  } = props;
+  const colorDictionary = {
+    default: {
       backgroundColor: '#E8E9EB',
       borderColor: '#9397A2'
     },
@@ -4016,39 +4349,23 @@ var ResponseBox = function ResponseBox(props) {
       clearResponseBox(customData);
     }
   }
-  var color = colorDictionary[type] || colorDictionary["default"];
-  var Icon = function Icon() {
-    return /*#__PURE__*/React$1.createElement(InfoCircleLight, null);
-  };
+  const color = colorDictionary[type] || colorDictionary.default;
+  let Icon = () => /*#__PURE__*/React$1.createElement(InfoCircleLight, null);
   if (type === 'success') {
-    Icon = function Icon() {
-      return /*#__PURE__*/React$1.createElement(CheckCircleLight, null);
-    };
+    Icon = () => /*#__PURE__*/React$1.createElement(CheckCircleLight, null);
   } else if (type === 'danger') {
-    Icon = function Icon() {
-      return /*#__PURE__*/React$1.createElement(TimesCircleLight, null);
-    };
+    Icon = () => /*#__PURE__*/React$1.createElement(TimesCircleLight, null);
   } else if (type === 'warning') {
-    Icon = function Icon() {
-      return /*#__PURE__*/React$1.createElement(ExclamationCircleLight, null);
-    };
+    Icon = () => /*#__PURE__*/React$1.createElement(ExclamationCircleLight, null);
   } else if (type === 'default' || type === 'info') {
-    Icon = function Icon() {
-      return /*#__PURE__*/React$1.createElement(InfoCircleLight, null);
-    };
+    Icon = () => /*#__PURE__*/React$1.createElement(InfoCircleLight, null);
   }
-  var XButton = function XButton() {
-    return null;
-  };
+  let XButton = () => null;
   if (clearResponseBox !== undefined) {
-    XButton = function XButton() {
-      return /*#__PURE__*/React$1.createElement(XWrap, {
-        color: color.borderColor,
-        onClick: function onClick() {
-          return onXClick(data);
-        }
-      }, /*#__PURE__*/React$1.createElement(Times, null));
-    };
+    XButton = () => /*#__PURE__*/React$1.createElement(XWrap, {
+      color: color.borderColor,
+      onClick: () => onXClick(data)
+    }, /*#__PURE__*/React$1.createElement(Times, null));
   }
   return /*#__PURE__*/React$1.createElement(ResponseBoxStyled, {
     className: className
@@ -4062,231 +4379,268 @@ var ResponseBox = function ResponseBox(props) {
   }, children)), /*#__PURE__*/React$1.createElement(XButton, null)));
 };
 
-var _templateObject$k, _templateObject2$7, _templateObject3$4, _templateObject4$2, _templateObject5;
-var debounce = function debounce(func, wait, immediate) {
-  var timeout;
-  return function () {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    var context = this;
-    var later = function later() {
+const debounce = (func, wait, immediate) => {
+  let timeout;
+  return function (...args) {
+    const context = this;
+    const later = function () {
       timeout = null;
       if (!immediate) func.apply(context, args);
     };
-    var callNow = immediate && !timeout;
+    const callNow = immediate && !timeout;
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
 };
-var TableElementBase = styled.css(_templateObject$k || (_templateObject$k = _taggedTemplateLiteral(["\n    padding: 10px 15px;\n    background: ", ";\n"])), function (props) {
-  return props.background ? props.background : props.theme.main.boxBackground;
-});
-var TableBase = styled.css(_templateObject2$7 || (_templateObject2$7 = _taggedTemplateLiteral(["\n    text-align: left;\n    width: 100%;\n    margin-bottom: 30px;\n    color: ", ";\n    border-collapse: separate;\n    border-spacing: 0 0.3rem;\n\n    &:last-child {\n        margin-bottom: 0;\n    }\n"])), function (props) {
-  return props.theme.main.color;
-});
-var TrBase = styled.css(_templateObject3$4 || (_templateObject3$4 = _taggedTemplateLiteral(["\n    opacity: ", ";\n    border-radius: ", ";\n    min-height: 50px;\n\n    td:first-child,\n    th:first-child {\n        border-radius: ", " 0 0 ", ";\n    }\n\n    td:last-child,\n    th:last-child {\n        border-radius: 0 ", " ", " 0;\n        text-align: right;\n        position: sticky;\n        right: 0px;\n        border-left: 1px;\n        padding: 10px 15px;\n    }\n"])), function (props) {
-  return props.opacity ? props.opacity : 1;
-}, function (props) {
-  return props.theme.main.borderRadius;
-}, function (props) {
-  return props.theme.main.borderRadius;
-}, function (props) {
-  return props.theme.main.borderRadius;
-}, function (props) {
-  return props.theme.main.borderRadius;
-}, function (props) {
-  return props.theme.main.borderRadius;
-});
-var TableStyled = styled.table(_templateObject4$2 || (_templateObject4$2 = _taggedTemplateLiteral(["\n    ", "\n\n    .iconWrap {\n        box-shadow: ", ";\n    }\n"])), TableBase, function (p) {
-  return p.overflowed ? "-5px 0 8px -5px ".concat(p.theme.rowComponent.actionShadow) : 'none';
-});
-var ResponsiveTable = styled.div(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n    overflow: auto;\n    margin-bottom: 15px;\n\n    td,\n    th {\n        white-space: nowrap;\n    }\n"])));
-var Table = /*#__PURE__*/function (_React$Component) {
-  _inherits(Table, _React$Component);
-  var _super = _createSuper(Table);
-  function Table(props) {
-    var _this;
-    _classCallCheck(this, Table);
-    _this = _super.call(this, props);
-    _this.state = {
+const TableElementBase = styled.css`
+    padding: 10px 15px;
+    background: ${props => props.background ? props.background : props.theme.main.boxBackground};
+`;
+const TableBase = styled.css`
+    text-align: left;
+    width: 100%;
+    margin-bottom: 30px;
+    color: ${props => props.theme.main.color};
+    border-collapse: separate;
+    border-spacing: 0 0.3rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+`;
+const TrBase = styled.css`
+    opacity: ${props => props.opacity ? props.opacity : 1};
+    border-radius: ${props => props.theme.main.borderRadius};
+    min-height: 50px;
+
+    td:first-child,
+    th:first-child {
+        border-radius: ${props => props.theme.main.borderRadius} 0 0 ${props => props.theme.main.borderRadius};
+    }
+
+    td:last-child,
+    th:last-child {
+        border-radius: 0 ${props => props.theme.main.borderRadius} ${props => props.theme.main.borderRadius} 0;
+        text-align: right;
+        position: sticky;
+        right: 0px;
+        border-left: 1px;
+        padding: 10px 15px;
+    }
+`;
+const TableStyled = styled.table`
+    ${TableBase}
+
+    .iconWrap {
+        box-shadow: ${p => p.overflowed ? `-5px 0 8px -5px ${p.theme.rowComponent.actionShadow}` : 'none'};
+    }
+`;
+const ResponsiveTable = styled.div`
+    overflow: auto;
+    margin-bottom: 15px;
+
+    td,
+    th {
+        white-space: nowrap;
+    }
+`;
+class Table extends React$1.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       overflowed: false
     };
-    _this.responsiveTable = /*#__PURE__*/React$1.createRef();
-    _this.handleScroll = _this.handleScroll.bind(_assertThisInitialized(_this));
-    return _this;
+    this.responsiveTable = /*#__PURE__*/React$1.createRef();
+    this.handleScroll = this.handleScroll.bind(this);
   }
-  _createClass(Table, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-      setTimeout(function () {
-        _this2.handleScroll();
-      }, 200);
-      window.addEventListener('resize', debounce(this.handleScroll));
+  componentDidMount() {
+    setTimeout(() => {
+      this.handleScroll();
+    }, 200);
+    window.addEventListener('resize', debounce(this.handleScroll));
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleScroll);
+  }
+  handleScroll() {
+    // console.log(e);
+    let overflowed = false;
+    const elem = this.responsiveTable.current;
+    console.log(elem.offsetWidth, elem.scrollWidth, elem.scrollLeft);
+    if (elem.offsetWidth < elem.scrollWidth && elem.offsetWidth + elem.scrollLeft < elem.scrollWidth) {
+      overflowed = true;
     }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      window.removeEventListener('resize', this.handleScroll);
+    this.setState(() => ({
+      overflowed
+    }));
+  }
+  render() {
+    const {
+      children,
+      paginate,
+      totalRecords,
+      page,
+      type
+    } = this.props;
+    const {
+      overflowed
+    } = this.state;
+    return /*#__PURE__*/React$1.createElement(React$1.Fragment, null, /*#__PURE__*/React$1.createElement(ResponsiveTable, {
+      onScroll: this.handleScroll,
+      ref: this.responsiveTable
+    }, /*#__PURE__*/React$1.createElement(TableStyled, {
+      overflowed: overflowed
+    }, children)), /*#__PURE__*/React$1.createElement(Pagination, {
+      paginate: paginate,
+      page: page,
+      totalRecords: totalRecords,
+      type: type
+    }));
+  }
+}
+
+const TrStyled = styled.tr`
+    ${TrBase}
+`;
+const Tr = ({
+  children,
+  background = null,
+  opacity = 1,
+  stickyActions = true,
+  className = null,
+  ...rest
+}) => /*#__PURE__*/React$1.createElement(TrStyled, _extends({
+  className: className,
+  background: background,
+  opacity: opacity,
+  stickyActions: stickyActions
+}, rest), children);
+
+const TdStyled = styled.td`
+    ${TableElementBase}
+    text-align: ${props => props.align ? props.align : null};
+`;
+const Td = ({
+  children,
+  align,
+  className
+}) => /*#__PURE__*/React$1.createElement(TdStyled, {
+  className: className,
+  align: align
+}, children);
+
+const ThStyled = styled.th`
+    ${TableElementBase}
+    padding: 15px 15px;
+`;
+const Th = ({
+  children,
+  className
+}) => /*#__PURE__*/React$1.createElement(ThStyled, {
+  className: className
+}, children);
+
+const ProgressBarContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+`;
+const Text = styled.span`
+    color: ${({
+  color
+}) => color};
+    padding: 0 1rem;
+`;
+const ProgressBarFiller = styled.div`
+    height: 100%;
+    width: ${({
+  progress
+}) => `${progress}%`};
+    transition: width 0.25s ease-in;
+    background-color: ${({
+  color
+}) => color};
+    border-radius: 1rem;
+    text-align: right;
+    &:after {
+        content: '.';
+        visibility: hidden;
     }
-  }, {
-    key: "handleScroll",
-    value: function handleScroll() {
-      // console.log(e);
-      var overflowed = false;
-      var elem = this.responsiveTable.current;
-      console.log(elem.offsetWidth, elem.scrollWidth, elem.scrollLeft);
-      if (elem.offsetWidth < elem.scrollWidth && elem.offsetWidth + elem.scrollLeft < elem.scrollWidth) {
-        overflowed = true;
-      }
-      this.setState(function () {
-        return {
-          overflowed: overflowed
-        };
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-        children = _this$props.children,
-        paginate = _this$props.paginate,
-        totalRecords = _this$props.totalRecords,
-        page = _this$props.page,
-        type = _this$props.type;
-      var overflowed = this.state.overflowed;
-      return /*#__PURE__*/React$1.createElement(React$1.Fragment, null, /*#__PURE__*/React$1.createElement(ResponsiveTable, {
-        onScroll: this.handleScroll,
-        ref: this.responsiveTable
-      }, /*#__PURE__*/React$1.createElement(TableStyled, {
-        overflowed: overflowed
-      }, children)), /*#__PURE__*/React$1.createElement(Pagination, {
-        paginate: paginate,
-        page: page,
-        totalRecords: totalRecords,
-        type: type
-      }));
-    }
-  }]);
-  return Table;
-}(React$1.Component);
-
-var _excluded$8 = ["children", "background", "opacity", "stickyActions", "className"];
-var _templateObject$j;
-var TrStyled = styled.tr(_templateObject$j || (_templateObject$j = _taggedTemplateLiteral(["\n    ", "\n"])), TrBase);
-var Tr = function Tr(_ref) {
-  var children = _ref.children,
-    _ref$background = _ref.background,
-    background = _ref$background === void 0 ? null : _ref$background,
-    _ref$opacity = _ref.opacity,
-    opacity = _ref$opacity === void 0 ? 1 : _ref$opacity,
-    _ref$stickyActions = _ref.stickyActions,
-    stickyActions = _ref$stickyActions === void 0 ? true : _ref$stickyActions,
-    _ref$className = _ref.className,
-    className = _ref$className === void 0 ? null : _ref$className,
-    rest = _objectWithoutProperties(_ref, _excluded$8);
-  return /*#__PURE__*/React$1.createElement(TrStyled, _extends({
-    className: className,
-    background: background,
-    opacity: opacity,
-    stickyActions: stickyActions
-  }, rest), children);
-};
-
-var _templateObject$i;
-var TdStyled = styled.td(_templateObject$i || (_templateObject$i = _taggedTemplateLiteral(["\n    ", "\n    text-align: ", ";\n"])), TableElementBase, function (props) {
-  return props.align ? props.align : null;
-});
-var Td = function Td(_ref) {
-  var children = _ref.children,
-    align = _ref.align,
-    className = _ref.className;
-  return /*#__PURE__*/React$1.createElement(TdStyled, {
-    className: className,
-    align: align
-  }, children);
-};
-
-var _templateObject$h;
-var ThStyled = styled.th(_templateObject$h || (_templateObject$h = _taggedTemplateLiteral(["\n    ", "\n    padding: 15px 15px;\n"])), TableElementBase);
-var Th = function Th(_ref) {
-  var children = _ref.children,
-    className = _ref.className;
-  return /*#__PURE__*/React$1.createElement(ThStyled, {
-    className: className
-  }, children);
-};
-
-var _templateObject$g, _templateObject2$6, _templateObject3$3, _templateObject4$1;
-var ProgressBarContainer = styled.div(_templateObject$g || (_templateObject$g = _taggedTemplateLiteral(["\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    width: 100%;\n    height: 100%;\n"])));
-var Text = styled.span(_templateObject2$6 || (_templateObject2$6 = _taggedTemplateLiteral(["\n    color: ", ";\n    padding: 0 1rem;\n"])), function (_ref) {
-  var color = _ref.color;
-  return color;
-});
-var ProgressBarFiller = styled.div(_templateObject3$3 || (_templateObject3$3 = _taggedTemplateLiteral(["\n    height: 100%;\n    width: ", ";\n    transition: width 0.25s ease-in;\n    background-color: ", ";\n    border-radius: 1rem;\n    text-align: right;\n    &:after {\n        content: '.';\n        visibility: hidden;\n    }\n"])), function (_ref2) {
-  var progress = _ref2.progress;
-  return "".concat(progress, "%");
-}, function (_ref3) {
-  var color = _ref3.color;
-  return color;
-});
-var ProgressBarTotal = styled.div(_templateObject4$1 || (_templateObject4$1 = _taggedTemplateLiteral(["\n    height: 100%;\n    width: 100%;\n    overflow: hidden;\n    background-color: ", ";\n    border-radius: 1rem;\n"])), theme.colors.fadeToGrey);
-var getBarColor = function getBarColor(progress) {
+`;
+const ProgressBarTotal = styled.div`
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: ${theme.colors.fadeToGrey};
+    border-radius: 1rem;
+`;
+const getBarColor = progress => {
   if (progress === 100) {
     return theme.colors.greenDay;
   }
   return theme.colors.simplyRed;
 };
-var ProgressBar = function ProgressBar(_ref4) {
-  var progress = _ref4.progress,
-    _ref4$text = _ref4.text,
-    text = _ref4$text === void 0 ? true : _ref4$text;
-  var color = getBarColor(progress);
+const ProgressBar = ({
+  progress,
+  text = true
+}) => {
+  const color = getBarColor(progress);
   return /*#__PURE__*/React$1.createElement(ProgressBarContainer, {
     progress: progress,
     color: color
   }, /*#__PURE__*/React$1.createElement(ProgressBarTotal, null, /*#__PURE__*/React$1.createElement(ProgressBarFiller, {
     progress: progress,
     color: color
-  })), text ? /*#__PURE__*/React$1.createElement(Text, null, "".concat(progress, "%")) : null);
+  })), text ? /*#__PURE__*/React$1.createElement(Text, null, `${progress}%`) : null);
 };
 
-var initialState = {};
-var progressBars = function progressBars() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
+const initialState = {};
+const progressBars = (state = initialState, action) => {
   switch (action.type) {
     case 'CREATE_PROGRESS_BAR':
-      return _objectSpread2(_objectSpread2({}, state), {}, _defineProperty({}, action.key, 0));
+      return {
+        ...state,
+        [action.key]: 0
+      };
     case 'UPDATE_PROGRESS_BAR':
-      return _objectSpread2(_objectSpread2({}, state), action.data);
+      return {
+        ...state,
+        ...action.data
+      };
     case 'DELETE_PROGRESS_BAR':
-      var copyState = _objectSpread2({}, state);
+      const copyState = {
+        ...state
+      };
       delete copyState[action.key];
-      return _objectSpread2({}, copyState);
+      return {
+        ...copyState
+      };
     default:
-      return _objectSpread2({}, state);
+      return {
+        ...state
+      };
   }
 };
 
 function createProgressBar(key) {
   return {
     type: 'CREATE_PROGRESS_BAR',
-    key: key
+    key
   };
 }
 function updateProgressBar(data) {
   return {
     type: 'UPDATE_PROGRESS_BAR',
-    data: data
+    data
   };
 }
 function readProgressBar(key) {
   return {
     type: 'READ_PROGRESS_BAR',
-    key: key
+    key
   };
 }
 function readAllProgressBars() {
@@ -4297,17 +4651,17 @@ function readAllProgressBars() {
 function deleteProgressBar(key) {
   return {
     type: 'DELETE_PROGRESS_BAR',
-    key: key
+    key
   };
 }
 
 var actions = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  createProgressBar: createProgressBar,
-  deleteProgressBar: deleteProgressBar,
-  readAllProgressBars: readAllProgressBars,
-  readProgressBar: readProgressBar,
-  updateProgressBar: updateProgressBar
+    __proto__: null,
+    createProgressBar: createProgressBar,
+    deleteProgressBar: deleteProgressBar,
+    readAllProgressBars: readAllProgressBars,
+    readProgressBar: readProgressBar,
+    updateProgressBar: updateProgressBar
 });
 
 /**
@@ -13118,121 +13472,187 @@ const preloadedFeatures = {
  */
 const motion = /*@__PURE__*/createMotionProxy((Component, config) => createDomMotionConfig(Component, config, preloadedFeatures, createDomVisualElement));
 
-var Icon = function Icon() {
-  return /*#__PURE__*/React$1.createElement("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "question-circle",
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 512 512",
-    className: "svg-inline--fa fa-question-circle fa-w-16 fa-2x"
-  }, /*#__PURE__*/React$1.createElement("path", {
-    fill: "currentColor",
-    d: "M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z",
-    className: ""
-  }));
-};
+const Icon = () => /*#__PURE__*/React$1.createElement("svg", {
+  "aria-hidden": "true",
+  focusable: "false",
+  "data-prefix": "fas",
+  "data-icon": "question-circle",
+  role: "img",
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 512 512",
+  className: "svg-inline--fa fa-question-circle fa-w-16 fa-2x"
+}, /*#__PURE__*/React$1.createElement("path", {
+  fill: "currentColor",
+  d: "M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z",
+  className: ""
+}));
 
-var _templateObject$f;
-var Wrap$d = styled(motion.div)(_templateObject$f || (_templateObject$f = _taggedTemplateLiteral([""])));
-var HoverIcon = function HoverIcon(_ref) {
-  _ref.width;
-    _ref.height;
-    _ref.text;
-  var wrapRef = React$1.useRef(null);
+const Wrap$d = styled(motion.div)``;
+const HoverIcon = ({
+  width = 13,
+  height = 4.2,
+  text
+}) => {
+  const wrapRef = React$1.useRef(null);
   return /*#__PURE__*/React$1.createElement(Wrap$d, {
     ref: wrapRef,
-    onMouseOver: function onMouseOver() {},
-    onMouseOut: function onMouseOut() {}
+    onMouseOver: () => {},
+    onMouseOut: () => {}
   }, /*#__PURE__*/React$1.createElement(Icon, null));
 };
 
-var _templateObject$e, _templateObject2$5, _templateObject3$2;
-styled(motion.div)(_templateObject$e || (_templateObject$e = _taggedTemplateLiteral(["\n    display: block;\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 0px;\n    height: 0px;\n    overflow: visible;\n    z-index: 100;\n"])));
-styled(motion.div)(_templateObject2$5 || (_templateObject2$5 = _taggedTemplateLiteral(["\n    position: absolute;\n    top: ", ";\n    left: ", ";\n"])), function (_ref) {
-  var y = _ref.y;
-  return "".concat(y);
-}, function (_ref2) {
-  var x = _ref2.x;
-  return "".concat(x);
-});
-styled(motion.div)(_templateObject3$2 || (_templateObject3$2 = _taggedTemplateLiteral(["\n    display: block;\n    position: relative;\n    background: #ffffff;\n    color: #222222;\n    width: 100vw;\n    height: 100vh;\n    min-width: 5rem;\n    min-height: 2rem;\n    max-width: ", ";\n    max-height: ", ";\n    padding: 0.3rem 0.6rem;\n    box-sizing: border-box;\n    border-radius: 3px;\n    border: 1px solid grey;\n    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);\n\n    &:before,\n    &:after {\n        content: '';\n        display: block;\n        width: 0;\n        height: 0;\n        position: absolute;\n    }\n    &:before {\n        border-left: 10px solid transparent;\n        border-top: 10px solid grey;\n        border-right: 10px solid transparent;\n        left: calc(50% - 10px);\n        bottom: -9px;\n        z-index: -1;\n    }\n    &:after {\n        border-left: 8px solid transparent;\n        border-top: 8px solid #ffffff;\n        border-right: 8px solid transparent;\n        left: calc(50% - 8px);\n        bottom: -8px;\n    }\n"])), function (_ref3) {
-  var maxWidth = _ref3.maxWidth;
-  return "".concat(maxWidth);
-}, function (_ref4) {
-  var maxHeight = _ref4.maxHeight;
-  return "".concat(maxHeight);
+styled(motion.div)`
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0px;
+    height: 0px;
+    overflow: visible;
+    z-index: 100;
+`;
+styled(motion.div)`
+    position: absolute;
+    top: ${({
+  y
+}) => `${y}`};
+    left: ${({
+  x
+}) => `${x}`};
+`;
+styled(motion.div)`
+    display: block;
+    position: relative;
+    background: #ffffff;
+    color: #222222;
+    width: 100vw;
+    height: 100vh;
+    min-width: 5rem;
+    min-height: 2rem;
+    max-width: ${({
+  maxWidth
+}) => `${maxWidth}`};
+    max-height: ${({
+  maxHeight
+}) => `${maxHeight}`};
+    padding: 0.3rem 0.6rem;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: 1px solid grey;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+    }
+    &:before {
+        border-left: 10px solid transparent;
+        border-top: 10px solid grey;
+        border-right: 10px solid transparent;
+        left: calc(50% - 10px);
+        bottom: -9px;
+        z-index: -1;
+    }
+    &:after {
+        border-left: 8px solid transparent;
+        border-top: 8px solid #ffffff;
+        border-right: 8px solid transparent;
+        left: calc(50% - 8px);
+        bottom: -8px;
+    }
+`;
+
+const StyledHr = styled.hr`
+    width: ${({
+  width
+}) => width};
+    margin: 0 auto;
+    border-bottom: 1px solid ${({
+  color
+}) => color !== null ? color : theme.generalColors.midGrey};
+`;
+const Hr = ({
+  width = '100%',
+  color = null
+}) => /*#__PURE__*/React$1.createElement(StyledHr, {
+  width: width,
+  color: color
 });
 
-var _templateObject$d;
-var StyledHr = styled.hr(_templateObject$d || (_templateObject$d = _taggedTemplateLiteral(["\n    width: ", ";\n    margin: 0 auto;\n    border-bottom: 1px solid ", ";\n"])), function (_ref) {
-  var width = _ref.width;
-  return width;
-}, function (_ref2) {
-  var color = _ref2.color;
-  return color !== null ? color : theme.generalColors.midGrey;
-});
-var Hr = function Hr(_ref3) {
-  var _ref3$width = _ref3.width,
-    width = _ref3$width === void 0 ? '100%' : _ref3$width,
-    _ref3$color = _ref3.color,
-    color = _ref3$color === void 0 ? null : _ref3$color;
-  return /*#__PURE__*/React$1.createElement(StyledHr, {
-    width: width,
-    color: color
-  });
-};
-
-var _excluded$7 = ["text", "children"];
-var _templateObject$c, _templateObject2$4;
-var Wrap$c = styled.div(_templateObject$c || (_templateObject$c = _taggedTemplateLiteral(["\n    padding:.75rem;\n    border-radius:10px;\n    background-color:#fff;\n"])));
-var Children = styled.div(_templateObject2$4 || (_templateObject2$4 = _taggedTemplateLiteral(["\n    margin-top:.25rem;\n"])));
-var Rectangle = function Rectangle(_ref) {
-  var _ref$text = _ref.text,
-    text = _ref$text === void 0 ? "" : _ref$text,
-    children = _ref.children,
-    rest = _objectWithoutProperties(_ref, _excluded$7);
+const Wrap$c = styled.div`
+    padding:.75rem;
+    border-radius:10px;
+    background-color:#fff;
+`;
+const Children = styled.div`
+    margin-top:.25rem;
+`;
+const Rectangle = ({
+  text = "",
+  children,
+  ...rest
+}) => {
   return /*#__PURE__*/React$1.createElement(Wrap$c, rest, /*#__PURE__*/React$1.createElement(Text$1, {
     type: "small"
   }, text), /*#__PURE__*/React$1.createElement(Children, null, children));
 };
 
-var _templateObject$b, _templateObject2$3, _templateObject3$1, _templateObject4;
-var Wrap$b = styled.div(_templateObject$b || (_templateObject$b = _taggedTemplateLiteral(["\n    display:flex;\n    width:100%;\n    font-family: ", ";\n    \n"])), theme.main.font);
-var TextWrap = styled.span(_templateObject2$3 || (_templateObject2$3 = _taggedTemplateLiteral(["\n    display: flex;\n    align-items: center;\n"])));
-var LeftText = styled(TextWrap)(_templateObject3$1 || (_templateObject3$1 = _taggedTemplateLiteral(["\n    font-size:18px;\n    color:", ";\n    font-weight:700;\n    padding:0 .5rem 0 0;\n"])), function (_ref) {
-  var fill = _ref.fill;
-  return fill ? fill : theme.colors.paintItBlack;
-});
-var RightText = styled(TextWrap)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n    font-size:15px;\n    font-weight:500;\n    min-width:2rem;\n    color:", "\n"])), function () {
-  return theme.generalColors.darkGrey;
-});
-var TextPairs = function TextPairs(_ref2) {
-  var fill = _ref2.fill,
-    _ref2$leftText = _ref2.leftText,
-    leftText = _ref2$leftText === void 0 ? '' : _ref2$leftText,
-    _ref2$rightText = _ref2.rightText,
-    rightText = _ref2$rightText === void 0 ? '' : _ref2$rightText;
-    _ref2.Icon;
+const Wrap$b = styled.div`
+    display:flex;
+    width:100%;
+    font-family: ${theme.main.font};
+    
+`;
+const TextWrap = styled.span`
+    display: flex;
+    align-items: center;
+`;
+const LeftText = styled(TextWrap)`
+    font-size:18px;
+    color:${({
+  fill
+}) => fill ? fill : theme.colors.paintItBlack};
+    font-weight:700;
+    padding:0 .5rem 0 0;
+`;
+const RightText = styled(TextWrap)`
+    font-size:15px;
+    font-weight:500;
+    min-width:2rem;
+    color:${() => theme.generalColors.darkGrey}
+`;
+const TextPairs = ({
+  fill,
+  leftText = '',
+  rightText = '',
+  Icon
+}) => {
   return /*#__PURE__*/React$1.createElement(Wrap$b, null, /*#__PURE__*/React$1.createElement(LeftText, {
     fill: fill
   }, leftText), /*#__PURE__*/React$1.createElement(RightText, null, rightText));
 };
 
-var _templateObject$a, _templateObject2$2;
-var Wrap$a = styled.div(_templateObject$a || (_templateObject$a = _taggedTemplateLiteral(["\n    display:flex;\n    width:100%;\n    font-family: ", ";\n    align-items:center;\n"])), theme.main.font);
-var IconWrap = styled.div(_templateObject2$2 || (_templateObject2$2 = _taggedTemplateLiteral(["\n    width:1.5rem;\n    margin-right:.5rem;\n    color: ", ";\n"])), function (props) {
-  return props.fill;
-});
-var IconBoxes = function IconBoxes(_ref) {
-  var fill = _ref.fill,
-    _ref$leftText = _ref.leftText,
-    leftText = _ref$leftText === void 0 ? '' : _ref$leftText,
-    _ref$rightText = _ref.rightText,
-    rightText = _ref$rightText === void 0 ? '' : _ref$rightText,
-    Icon = _ref.Icon;
+const Wrap$a = styled.div`
+    display:flex;
+    width:100%;
+    font-family: ${theme.main.font};
+    align-items:center;
+`;
+const IconWrap = styled.div`
+    width:1.5rem;
+    margin-right:.5rem;
+    color: ${props => props.fill};
+`;
+const IconBoxes = ({
+  fill,
+  leftText = '',
+  rightText = '',
+  Icon
+}) => {
   return /*#__PURE__*/React$1.createElement(Wrap$a, null, /*#__PURE__*/React$1.createElement(IconWrap, {
     fill: fill
   }, /*#__PURE__*/React$1.createElement(Icon, {
@@ -13244,49 +13664,76 @@ var IconBoxes = function IconBoxes(_ref) {
   }));
 };
 
-var _excluded$6 = ["children", "columns"];
-var _templateObject$9;
 //import theme from '../../style/theme';
 
-var Wrap$9 = styled.div(_templateObject$9 || (_templateObject$9 = _taggedTemplateLiteral(["\n    display: block;\n\n    border-radius:10px;\n    background-color:#fff;\n    \n    > * {\n        display: flex;\n\n        ", "\n\n        ", "\n\n        \n\n    }\n    //grid-template-rows: ", ";\n"])), function (_ref) {
-  var columnString = _ref.columnString;
-  return columnString !== null ? "> * { width:" + columnString + "; }" : null;
-}, function (_ref2) {
-  var columnArray = _ref2.columnArray;
-  return columnArray !== null ? columnArray.map(function (columnString, indx) {
-    return "> *:nth-child(" + (indx + 1) + ") { width:" + columnString + "; }";
-  }) : null;
-}, function (_ref3) {
-  var rows = _ref3.rows;
-  return rows;
-});
-var Header$4 = function Header(_ref4) {
-  var children = _ref4.children,
-    _ref4$columns = _ref4.columns,
-    columns = _ref4$columns === void 0 ? '12rem' : _ref4$columns,
-    rest = _objectWithoutProperties(_ref4, _excluded$6);
+const Wrap$9 = styled.div`
+    display: block;
+
+    border-radius:10px;
+    background-color:#fff;
+    
+    > * {
+        display: flex;
+
+        ${({
+  columnString
+}) => columnString !== null ? "> * { width:" + columnString + "; }" : null}
+
+        ${({
+  columnArray
+}) => columnArray !== null ? columnArray.map((columnString, indx) => "> *:nth-child(" + (indx + 1) + ") { width:" + columnString + "; }") : null}
+
+        
+
+    }
+    //grid-template-rows: ${({
+  rows
+}) => rows};
+`;
+const Header$4 = ({
+  children,
+  columns = '12rem',
+  ...rest
+}) => {
   return /*#__PURE__*/React$1.createElement(Wrap$9, _extends({}, rest, {
     columnString: typeof columns === 'string' ? columns : null,
     columnArray: typeof columns !== 'string' ? columns : null
   }), children);
 };
 
-var _templateObject$8;
-var Wrap$8 = styled.div(_templateObject$8 || (_templateObject$8 = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: nowrap;\n    border-bottom: 1px solid ", ";\n\n    > * {\n        font-weight: 700;\n    }\n"])), theme.generalColors.midGrey);
-var Header$3 = function Header(_ref) {
-  var children = _ref.children;
+const Wrap$8 = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid ${theme.generalColors.midGrey};
+
+    > * {
+        font-weight: 700;
+    }
+`;
+const Header$3 = ({
+  children
+}) => {
   return /*#__PURE__*/React$1.createElement(Wrap$8, null, children);
 };
 
-var _templateObject$7, _templateObject2$1, _templateObject3;
-var Wrap$7 = styled.div(_templateObject$7 || (_templateObject$7 = _taggedTemplateLiteral(["\n    padding: 0.6rem 0.4rem;\n"])));
-var headingBase = styled.css(_templateObject2$1 || (_templateObject2$1 = _taggedTemplateLiteral(["\n    color: ", ";\n    font-family: ", ";\n    margin: 0;\n"])), theme.main.color, theme.main.font);
-var SmallTableHeader = styled.h4(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n    ", "\n    font-weight: 700;\n    font-size: 0.95rem;\n    color:", "\n"])), headingBase, function () {
-  return theme.generalColors.darkGrey;
-});
-var Header$2 = function Header(_ref) {
-  var type = _ref.type,
-    children = _ref.children;
+const Wrap$7 = styled.div`
+    padding: 0.6rem 0.4rem;
+`;
+const headingBase = styled.css`
+    color: ${theme.main.color};
+    font-family: ${theme.main.font};
+    margin: 0;
+`;
+const SmallTableHeader = styled.h4`
+    ${headingBase}
+    font-weight: 700;
+    font-size: 0.95rem;
+    color:${() => theme.generalColors.darkGrey}
+`;
+const Header$2 = ({
+  type,
+  children
+}) => {
   switch (type) {
     case "smalltableheader":
       return /*#__PURE__*/React$1.createElement(Wrap$7, null, /*#__PURE__*/React$1.createElement(SmallTableHeader, null, children));
@@ -13295,33 +13742,51 @@ var Header$2 = function Header(_ref) {
   }
 };
 
-var _templateObject$6;
-var Wrap$6 = styled.div(_templateObject$6 || (_templateObject$6 = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: nowrap;\n    border-bottom: 1px solid ", ";\n"])), theme.generalColors.midGrey);
-var Header$1 = function Header(_ref) {
-  var children = _ref.children;
+const Wrap$6 = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid ${theme.generalColors.midGrey};
+`;
+const Header$1 = ({
+  children
+}) => {
   return /*#__PURE__*/React$1.createElement(Wrap$6, null, children);
 };
 
-var _excluded$5 = ["children"];
-var _templateObject$5;
 //import theme from '../../style/theme';
 
-var Wrap$5 = styled.div(_templateObject$5 || (_templateObject$5 = _taggedTemplateLiteral(["\n    padding: 0.6rem 0.4rem;\n"])));
-var Header = function Header(_ref) {
-  var children = _ref.children,
-    rest = _objectWithoutProperties(_ref, _excluded$5);
+const Wrap$5 = styled.div`
+    padding: 0.6rem 0.4rem;
+`;
+const Header = ({
+  children,
+  ...rest
+}) => {
   return /*#__PURE__*/React$1.createElement(Wrap$5, rest, children);
 };
 
-var _excluded$4 = ["id", "checked", "children"];
-var _templateObject$4;
-var Wrap$4 = styled.a(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteral(["\n    display: inline-block;\n    color: ", ";\n    padding: 0.3rem 0.6rem;\n    font-size: 1rem;\n    font-family: MuseoSansReg, sans-serif;\n    border-bottom: 3px solid transparent;\n    cursor: pointer;\n    white-space: nowrap;\n    user-select: none;\n\n    &.active {\n        color: ", ";\n        border-bottom: 3px solid ", ";\n    }\n"])), theme.mainColors.paintItBlack, theme.mainColors.simplyRed, theme.mainColors.simplyRed);
-var Tab = function Tab(_ref) {
-  var id = _ref.id,
-    _ref$checked = _ref.checked,
-    checked = _ref$checked === void 0 ? false : _ref$checked,
-    children = _ref.children,
-    rest = _objectWithoutProperties(_ref, _excluded$4);
+const Wrap$4 = styled.a`
+    display: inline-block;
+    color: ${theme.mainColors.paintItBlack};
+    padding: 0.3rem 0.6rem;
+    font-size: 1rem;
+    font-family: MuseoSansReg, sans-serif;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+
+    &.active {
+        color: ${theme.mainColors.simplyRed};
+        border-bottom: 3px solid ${theme.mainColors.simplyRed};
+    }
+`;
+const Tab = ({
+  id,
+  checked = false,
+  children,
+  ...rest
+}) => {
   return /*#__PURE__*/React$1.createElement(Wrap$4, _extends({
     id: id,
     key: 'tab-' + id,
@@ -13329,69 +13794,101 @@ var Tab = function Tab(_ref) {
   }, rest), children);
 };
 
-var _excluded$3 = ["children"];
-var _templateObject$3;
-var Wrap$3 = styled.div(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n    display: block;\n    position: relative;\n"])));
-var TabContent = function TabContent(_ref) {
-  var children = _ref.children,
-    rest = _objectWithoutProperties(_ref, _excluded$3);
+const Wrap$3 = styled.div`
+    display: block;
+    position: relative;
+`;
+const TabContent = ({
+  children,
+  ...rest
+}) => {
   return /*#__PURE__*/React$1.createElement(Wrap$3, rest, children);
 };
 
-var _excluded$2 = ["children"];
-var _templateObject$2, _templateObject2;
-var Wrap$2 = styled.div(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n\n"])));
-var Tabs = styled.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n    border-bottom: 1px solid ", ";\n    padding: 0;    \n    margin: 0 auto;\n    display: flex;\n    flex-wrap: nowrap;\n    height: 2rem;\n    overflow-y: none;\n    overflow-x: auto;\n    overscroll-behavior-x: contain;\n    scroll-snap-type: x mandatory;\n    -ms-overflow-style: none;\n    scrollbar-width: none;\n\n    &::-webkit-scrollbar {\n        display: none;\n    }\n\n    > a {\n        scroll-snap-align: start;\n    }\n"])), theme.colors.fadeToGrey);
-var TabGroup = function TabGroup(_ref) {
-  var children = _ref.children,
-    rest = _objectWithoutProperties(_ref, _excluded$2);
+const Wrap$2 = styled.div`
+
+`;
+const Tabs = styled.div`
+    border-bottom: 1px solid ${theme.colors.fadeToGrey};
+    padding: 0;    
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    height: 2rem;
+    overflow-y: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    > a {
+        scroll-snap-align: start;
+    }
+`;
+const TabGroup = ({
+  children,
+  ...rest
+}) => {
   return /*#__PURE__*/React$1.createElement(Wrap$2, rest, /*#__PURE__*/React$1.createElement(Tabs, null, children));
 };
 
-var _excluded$1 = ["checked", "children"];
-var _templateObject$1;
-var Wrap$1 = styled.div(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n    display: none;\n    position: relative;\n    opacity: 0;\n    transition: opacity 0.2s linear;\n\n    &.active {\n        display: block;\n        opacity: 1;\n        \n    }\n\n"])));
-var TabPane = function TabPane(_ref) {
-  var _ref$checked = _ref.checked,
-    checked = _ref$checked === void 0 ? false : _ref$checked,
-    children = _ref.children,
-    rest = _objectWithoutProperties(_ref, _excluded$1);
+const Wrap$1 = styled.div`
+    display: none;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+
+    &.active {
+        display: block;
+        opacity: 1;
+        
+    }
+
+`;
+const TabPane = ({
+  checked = false,
+  children,
+  ...rest
+}) => {
   return /*#__PURE__*/React$1.createElement(Wrap$1, _extends({
     className: checked ? 'active' : ''
   }, rest), children);
 };
 
-var _excluded = ["children"];
-var _templateObject;
-var Wrap = styled.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    display: block;\n    position: relative;\n"])));
-var TabWrap = function TabWrap(_ref) {
-  var children = _ref.children,
-    rest = _objectWithoutProperties(_ref, _excluded);
-  var childrenA = children.props;
-  var childrenB = childrenA.children;
+const Wrap = styled.div`
+    display: block;
+    position: relative;
+`;
+const TabWrap = ({
+  children,
+  ...rest
+}) => {
+  const {
+    props: childrenA
+  } = children;
+  const {
+    children: childrenB
+  } = childrenA;
   if (childrenB.length !== 2 || !childrenB[0] || !childrenB[1]) {
     return /*#__PURE__*/React$1.createElement(Wrap, null, /*#__PURE__*/React$1.createElement("p", null, "There are issues with your children"));
   }
   function switchContent(evnt) {
-    var target = evnt.target.closest('a[id]');
+    const target = evnt.target.closest('a[id]');
     if (target) {
-      var getSiblings = function getSiblings(n) {
-        return _toConsumableArray(n.parentElement.children).filter(function (c) {
-          return c != n;
-        });
-      };
-      var targetSiblings = getSiblings(target);
-      targetSiblings.forEach(function (sibling) {
-        return sibling.classList.remove('active');
-      });
+      const getSiblings = n => [...n.parentElement.children].filter(c => c != n);
+      const targetSiblings = getSiblings(target);
+      targetSiblings.forEach(sibling => sibling.classList.remove('active'));
       target.classList.add('active');
-      var matches = evnt.target.closest('.tabbed-content').querySelectorAll('div#' + target.id);
+      const matches = evnt.target.closest('.tabbed-content').querySelectorAll('div#' + target.id);
       if (matches && matches[0]) {
-        var content = matches[0];
-        var contentSiblings = getSiblings(content);
-        contentSiblings.forEach(function (sibling) {
-          return sibling.classList.remove('active');
-        });
+        const content = matches[0];
+        const contentSiblings = getSiblings(content);
+        contentSiblings.forEach(sibling => sibling.classList.remove('active'));
         content.classList.add('active');
       }
     }
