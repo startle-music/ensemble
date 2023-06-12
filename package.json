@@ -1,6 +1,6 @@
 {
   "name": "ensemble",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A full orchestra of React UI components",
   "author": "novocast",
   "license": "Apache-2.0",
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.22.5",
+    "@babel/runtime-corejs3": "^7.22.5",
     "framer-motion": "^10.12.16",
     "polished": "^4.1.3"
   },

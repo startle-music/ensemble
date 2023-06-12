@@ -20,13 +20,12 @@ export default {
     babel({
         babelHelpers: 'runtime',
         plugins: [
-            [
-                '@babel/plugin-transform-runtime', 
-                { 
-                    useESModules: false
-                }]
+          ['@babel/plugin-transform-runtime', {
+            useESModules: false,
+            corejs: 3
+          }]
         ]
-    }),
+      }),
     commonjs() 
   ],
   external: [
