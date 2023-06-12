@@ -15,6 +15,25 @@ export default {
       strict: false
     }
   ],
-  plugins: [nodeResolve(), babel({ /*babelHelpers: 'runtime'*/ }), commonjs() ],
-  external: ['react', 'react-dom', 'styled-components', /@babel\/runtime/]
+  plugins: [
+    nodeResolve(), 
+    babel({
+        babelHelpers: 'runtime',
+        plugins: [
+            [
+                '@babel/plugin-transform-runtime', 
+                { 
+                    useESModules: false
+                }]
+        ]
+    }),
+    commonjs() 
+  ],
+  external: [
+    'react',
+    'react-dom',
+    'styled-components',
+    /@babel\/runtime/
+  ]
+
 }
