@@ -1,11 +1,55 @@
 var React$1 = require('react');
 var styled = require('styled-components');
-var _extends$1 = require('@babel/runtime/helpers/extends');
+var _extends$1 = require('@babel/runtime-corejs3/helpers/extends');
+var _startsWithInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/starts-with');
+require('@babel/runtime-corejs3/core-js-stable/array/of');
+var _forEachInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/for-each');
+var _concatInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/concat');
+var _spliceInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/splice');
+var _mapInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/map');
+var _sortInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/sort');
+var _Object$keys = require('@babel/runtime-corejs3/core-js-stable/object/keys');
+var _reverseInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/reverse');
+var _everyInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/every');
+var _trimInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/trim');
+var _sliceInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/slice');
+var _reduceInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/reduce');
+var _parseFloat = require('@babel/runtime-corejs3/core-js-stable/parse-float');
+var _indexOfInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/index-of');
+require('@babel/runtime-corejs3/core-js-stable/symbol');
+require('@babel/runtime-corejs3/core-js/get-iterator-method');
+var _bindInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/bind');
+var _Array$isArray = require('@babel/runtime-corejs3/core-js-stable/array/is-array');
+var _Array$from = require('@babel/runtime-corejs3/core-js-stable/array/from');
+var _JSON$stringify = require('@babel/runtime-corejs3/core-js-stable/json/stringify');
+var _filterInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/filter');
+var _parseInt = require('@babel/runtime-corejs3/core-js-stable/parse-int');
 var _extends = require('@babel/runtime/helpers/esm/extends');
 var _assertThisInitialized = require('@babel/runtime/helpers/esm/assertThisInitialized');
 var _inheritsLoose = require('@babel/runtime/helpers/esm/inheritsLoose');
 var _wrapNativeSuper = require('@babel/runtime/helpers/esm/wrapNativeSuper');
 require('@babel/runtime/helpers/esm/taggedTemplateLiteralLoose');
+var _keysInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/keys');
+var _findInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/find');
+var _includesInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/includes');
+var _setInterval = require('@babel/runtime-corejs3/core-js-stable/set-interval');
+var _setTimeout = require('@babel/runtime-corejs3/core-js-stable/set-timeout');
+var _Map = require('@babel/runtime-corejs3/core-js-stable/map');
+var _someInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/some');
+var _Symbol$for = require('@babel/runtime-corejs3/core-js-stable/symbol/for');
+var _Object$assign = require('@babel/runtime-corejs3/core-js-stable/object/assign');
+var _Set = require('@babel/runtime-corejs3/core-js-stable/set');
+var _endsWithInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/ends-with');
+var _valuesInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/values');
+var _WeakSet = require('@babel/runtime-corejs3/core-js-stable/weak-set');
+var _WeakMap = require('@babel/runtime-corejs3/core-js-stable/weak-map');
+var _Promise = require('@babel/runtime-corejs3/core-js-stable/promise');
+var _Math$sinh = require('@babel/runtime-corejs3/core-js-stable/math/sinh');
+var _Math$cosh = require('@babel/runtime-corejs3/core-js-stable/math/cosh');
+var _Number$isInteger = require('@babel/runtime-corejs3/core-js-stable/number/is-integer');
+var _queueMicrotask = require('@babel/runtime-corejs3/core-js-stable/queue-microtask');
+var _findIndexInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/find-index');
+var _fillInstanceProperty = require('@babel/runtime-corejs3/core-js-stable/instance/fill');
 
 function _interopNamespaceDefault(e) {
     var n = Object.create(null);
@@ -164,7 +208,7 @@ function format() {
   for (c = 1; c < args.length; c += 1) {
     b.push(args[c]);
   }
-  b.forEach(function (d) {
+  _forEachInstanceProperty(b).call(b, function (d) {
     a = a.replace(/%[a-z]/, d);
   });
   return a;
@@ -182,10 +226,11 @@ var PolishedError = /*#__PURE__*/function (_Error) {
     if (process.env.NODE_ENV === 'production') {
       _this = _Error.call(this, "An error occurred. See https://github.com/styled-components/polished/blob/main/src/internalHelpers/errors.md#" + code + " for more information.") || this;
     } else {
+      var _context;
       for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
         args[_key2 - 1] = arguments[_key2];
       }
-      _this = _Error.call(this, format.apply(void 0, [ERRORS[code]].concat(args))) || this;
+      _this = _Error.call(this, format.apply(void 0, _concatInstanceProperty(_context = [ERRORS[code]]).call(_context, args))) || this;
     }
     return _assertThisInitialized(_this);
   }
@@ -424,84 +469,84 @@ function parseToRgb(color) {
   var normalizedColor = nameToHex(color);
   if (normalizedColor.match(hexRegex)) {
     return {
-      red: parseInt("" + normalizedColor[1] + normalizedColor[2], 16),
-      green: parseInt("" + normalizedColor[3] + normalizedColor[4], 16),
-      blue: parseInt("" + normalizedColor[5] + normalizedColor[6], 16)
+      red: _parseInt("" + normalizedColor[1] + normalizedColor[2], 16),
+      green: _parseInt("" + normalizedColor[3] + normalizedColor[4], 16),
+      blue: _parseInt("" + normalizedColor[5] + normalizedColor[6], 16)
     };
   }
   if (normalizedColor.match(hexRgbaRegex)) {
-    var alpha = parseFloat((parseInt("" + normalizedColor[7] + normalizedColor[8], 16) / 255).toFixed(2));
+    var alpha = _parseFloat((_parseInt("" + normalizedColor[7] + normalizedColor[8], 16) / 255).toFixed(2));
     return {
-      red: parseInt("" + normalizedColor[1] + normalizedColor[2], 16),
-      green: parseInt("" + normalizedColor[3] + normalizedColor[4], 16),
-      blue: parseInt("" + normalizedColor[5] + normalizedColor[6], 16),
+      red: _parseInt("" + normalizedColor[1] + normalizedColor[2], 16),
+      green: _parseInt("" + normalizedColor[3] + normalizedColor[4], 16),
+      blue: _parseInt("" + normalizedColor[5] + normalizedColor[6], 16),
       alpha: alpha
     };
   }
   if (normalizedColor.match(reducedHexRegex)) {
     return {
-      red: parseInt("" + normalizedColor[1] + normalizedColor[1], 16),
-      green: parseInt("" + normalizedColor[2] + normalizedColor[2], 16),
-      blue: parseInt("" + normalizedColor[3] + normalizedColor[3], 16)
+      red: _parseInt("" + normalizedColor[1] + normalizedColor[1], 16),
+      green: _parseInt("" + normalizedColor[2] + normalizedColor[2], 16),
+      blue: _parseInt("" + normalizedColor[3] + normalizedColor[3], 16)
     };
   }
   if (normalizedColor.match(reducedRgbaHexRegex)) {
-    var _alpha = parseFloat((parseInt("" + normalizedColor[4] + normalizedColor[4], 16) / 255).toFixed(2));
+    var _alpha = _parseFloat((_parseInt("" + normalizedColor[4] + normalizedColor[4], 16) / 255).toFixed(2));
     return {
-      red: parseInt("" + normalizedColor[1] + normalizedColor[1], 16),
-      green: parseInt("" + normalizedColor[2] + normalizedColor[2], 16),
-      blue: parseInt("" + normalizedColor[3] + normalizedColor[3], 16),
+      red: _parseInt("" + normalizedColor[1] + normalizedColor[1], 16),
+      green: _parseInt("" + normalizedColor[2] + normalizedColor[2], 16),
+      blue: _parseInt("" + normalizedColor[3] + normalizedColor[3], 16),
       alpha: _alpha
     };
   }
   var rgbMatched = rgbRegex.exec(normalizedColor);
   if (rgbMatched) {
     return {
-      red: parseInt("" + rgbMatched[1], 10),
-      green: parseInt("" + rgbMatched[2], 10),
-      blue: parseInt("" + rgbMatched[3], 10)
+      red: _parseInt("" + rgbMatched[1], 10),
+      green: _parseInt("" + rgbMatched[2], 10),
+      blue: _parseInt("" + rgbMatched[3], 10)
     };
   }
   var rgbaMatched = rgbaRegex.exec(normalizedColor.substring(0, 50));
   if (rgbaMatched) {
     return {
-      red: parseInt("" + rgbaMatched[1], 10),
-      green: parseInt("" + rgbaMatched[2], 10),
-      blue: parseInt("" + rgbaMatched[3], 10),
-      alpha: parseFloat("" + rgbaMatched[4]) > 1 ? parseFloat("" + rgbaMatched[4]) / 100 : parseFloat("" + rgbaMatched[4])
+      red: _parseInt("" + rgbaMatched[1], 10),
+      green: _parseInt("" + rgbaMatched[2], 10),
+      blue: _parseInt("" + rgbaMatched[3], 10),
+      alpha: _parseFloat("" + rgbaMatched[4]) > 1 ? _parseFloat("" + rgbaMatched[4]) / 100 : _parseFloat("" + rgbaMatched[4])
     };
   }
   var hslMatched = hslRegex.exec(normalizedColor);
   if (hslMatched) {
-    var hue = parseInt("" + hslMatched[1], 10);
-    var saturation = parseInt("" + hslMatched[2], 10) / 100;
-    var lightness = parseInt("" + hslMatched[3], 10) / 100;
+    var hue = _parseInt("" + hslMatched[1], 10);
+    var saturation = _parseInt("" + hslMatched[2], 10) / 100;
+    var lightness = _parseInt("" + hslMatched[3], 10) / 100;
     var rgbColorString = "rgb(" + hslToRgb(hue, saturation, lightness) + ")";
     var hslRgbMatched = rgbRegex.exec(rgbColorString);
     if (!hslRgbMatched) {
       throw new PolishedError(4, normalizedColor, rgbColorString);
     }
     return {
-      red: parseInt("" + hslRgbMatched[1], 10),
-      green: parseInt("" + hslRgbMatched[2], 10),
-      blue: parseInt("" + hslRgbMatched[3], 10)
+      red: _parseInt("" + hslRgbMatched[1], 10),
+      green: _parseInt("" + hslRgbMatched[2], 10),
+      blue: _parseInt("" + hslRgbMatched[3], 10)
     };
   }
   var hslaMatched = hslaRegex.exec(normalizedColor.substring(0, 50));
   if (hslaMatched) {
-    var _hue = parseInt("" + hslaMatched[1], 10);
-    var _saturation = parseInt("" + hslaMatched[2], 10) / 100;
-    var _lightness = parseInt("" + hslaMatched[3], 10) / 100;
+    var _hue = _parseInt("" + hslaMatched[1], 10);
+    var _saturation = _parseInt("" + hslaMatched[2], 10) / 100;
+    var _lightness = _parseInt("" + hslaMatched[3], 10) / 100;
     var _rgbColorString = "rgb(" + hslToRgb(_hue, _saturation, _lightness) + ")";
     var _hslRgbMatched = rgbRegex.exec(_rgbColorString);
     if (!_hslRgbMatched) {
       throw new PolishedError(4, normalizedColor, _rgbColorString);
     }
     return {
-      red: parseInt("" + _hslRgbMatched[1], 10),
-      green: parseInt("" + _hslRgbMatched[2], 10),
-      blue: parseInt("" + _hslRgbMatched[3], 10),
-      alpha: parseFloat("" + hslaMatched[4]) > 1 ? parseFloat("" + hslaMatched[4]) / 100 : parseFloat("" + hslaMatched[4])
+      red: _parseInt("" + _hslRgbMatched[1], 10),
+      green: _parseInt("" + _hslRgbMatched[2], 10),
+      blue: _parseInt("" + _hslRgbMatched[3], 10),
+      alpha: _parseFloat("" + hslaMatched[4]) > 1 ? _parseFloat("" + hslaMatched[4]) / 100 : _parseFloat("" + hslaMatched[4])
     };
   }
   throw new PolishedError(5);
@@ -807,7 +852,7 @@ function toColorString(color) {
 function curried(f, length, acc) {
   return function fn() {
     // eslint-disable-next-line prefer-rest-params
-    var combined = acc.concat(Array.prototype.slice.call(arguments));
+    var combined = _concatInstanceProperty(acc).call(acc, _sliceInstanceProperty(Array.prototype).call(arguments));
     return combined.length >= length ? f.apply(this, combined) : curried(f, length, combined);
   };
 } // eslint-disable-next-line no-redeclare
@@ -848,7 +893,7 @@ function darken$1(amount, color) {
   if (color === 'transparent') return color;
   var hslColor = parseToHsl(color);
   return toColorString(_extends({}, hslColor, {
-    lightness: guard(0, 1, hslColor.lightness - parseFloat(amount))
+    lightness: guard(0, 1, hslColor.lightness - _parseFloat(amount))
   }));
 } // prettier-ignore
 
@@ -884,7 +929,7 @@ function lighten(amount, color) {
   if (color === 'transparent') return color;
   var hslColor = parseToHsl(color);
   return toColorString(_extends({}, hslColor, {
-    lightness: guard(0, 1, hslColor.lightness + parseFloat(amount))
+    lightness: guard(0, 1, hslColor.lightness + _parseFloat(amount))
   }));
 } // prettier-ignore
 
@@ -925,7 +970,7 @@ function transparentize(amount, color) {
   var parsedColor = parseToRgb(color);
   var alpha = typeof parsedColor.alpha === 'number' ? parsedColor.alpha : 1;
   var colorWithAlpha = _extends({}, parsedColor, {
-    alpha: guard(0, 1, +(alpha * 100 - parseFloat(amount) * 100).toFixed(2) / 100)
+    alpha: guard(0, 1, +(alpha * 100 - _parseFloat(amount) * 100).toFixed(2) / 100)
   });
   return rgba$1(colorWithAlpha);
 } // prettier-ignore
@@ -1357,7 +1402,7 @@ const calculateColours = (colour, outline) => {
     mainColour = mainColors[colour];
     activeMainColour = mainColors[colour];
   }
-  if (colour === 'transparent' || colour.startsWith('#') || colour.startsWith('rgb')) {
+  if (colour === 'transparent' || _startsWithInstanceProperty(colour).call(colour, '#') || _startsWithInstanceProperty(colour).call(colour, 'rgb')) {
     mainColour = colour;
     activeMainColour = colour;
     if (colour === 'transparent') {
@@ -1646,11 +1691,13 @@ const GridContainer = GridContainer$1;
 
 let Form$1 = class Form extends React$1.Component {
   constructor(props) {
+    var _context;
     super(props);
-    this.submit = this.submit.bind(this);
+    this.submit = _bindInstanceProperty(_context = this.submit).call(_context, this);
     console.log('item form', props);
   }
   submit(e) {
+    var _context2;
     const {
       form
     } = this.refs;
@@ -1658,9 +1705,10 @@ let Form$1 = class Form extends React$1.Component {
       onSubmit
     } = this.props;
     e.preventDefault();
-    const tForm = [...form].filter(item => item.name.length > 0 && !item.validity.valid);
+    const tForm = _filterInstanceProperty(_context2 = [...form]).call(_context2, item => item.name.length > 0 && !item.validity.valid);
     if (tForm.length === 0 && typeof onSubmit === 'function') {
-      const formData = [...form].filter(item => item.name.length > 0).reduce((total, current) => {
+      var _context3, _context4;
+      const formData = _reduceInstanceProperty(_context3 = _filterInstanceProperty(_context4 = [...form]).call(_context4, item => item.name.length > 0)).call(_context3, (total, current) => {
         total[current.name] = current.value;
         return total;
       }, {});
@@ -1961,6 +2009,7 @@ const Field = styled.div`
 `;
 let FieldComponent$1 = class FieldComponent extends React$1.PureComponent {
   constructor(props) {
+    var _context;
     super(props);
     const {
       value
@@ -1968,7 +2017,7 @@ let FieldComponent$1 = class FieldComponent extends React$1.PureComponent {
     this.state = {
       value
     };
-    this.onChange = this.onChange.bind(this);
+    this.onChange = _bindInstanceProperty(_context = this.onChange).call(_context, this);
   }
   onChange(e) {
     const {
@@ -2167,15 +2216,16 @@ const FieldWrap$2 = styled.div`
 `;
 let ChipInput$1 = class ChipInput extends React$1.Component {
   constructor(props) {
+    var _context, _context2, _context3, _context4;
     super(props);
     this.state = {
       current: '',
       chips: props.chips
     };
-    this.addChip = this.addChip.bind(this);
-    this.chipOnClick = this.chipOnClick.bind(this);
-    this.chipOnRemove = this.chipOnRemove.bind(this);
-    this.onHandleChange = this.onHandleChange.bind(this);
+    this.addChip = _bindInstanceProperty(_context = this.addChip).call(_context, this);
+    this.chipOnClick = _bindInstanceProperty(_context2 = this.chipOnClick).call(_context2, this);
+    this.chipOnRemove = _bindInstanceProperty(_context3 = this.chipOnRemove).call(_context3, this);
+    this.onHandleChange = _bindInstanceProperty(_context4 = this.onHandleChange).call(_context4, this);
   }
   chipOnClick() {
     console.log(this);
@@ -2185,7 +2235,7 @@ let ChipInput$1 = class ChipInput extends React$1.Component {
     const {
       chips
     } = this.state;
-    const chipList = chips.filter(chip => chip.value !== value);
+    const chipList = _filterInstanceProperty(chips).call(chips, chip => chip.value !== value);
     this.setState({
       chips: chipList
     });
@@ -2264,7 +2314,7 @@ let ChipInput$1 = class ChipInput extends React$1.Component {
       current
     } = this.state;
     const addChipFunction = this.addChip;
-    const chipValues = chips.map(function (chip) {
+    const chipValues = _mapInstanceProperty(chips).call(chips, function (chip) {
       return chip.value;
     });
     return /*#__PURE__*/React$1.createElement(Wrap$n, {
@@ -2283,7 +2333,7 @@ let ChipInput$1 = class ChipInput extends React$1.Component {
       name: `chip-values-${name}`,
       type: "hidden",
       value: chipValues.join(',')
-    })), /*#__PURE__*/React$1.createElement(ChipWrap$1, null, chips.map((chip, key) => this.renderChip(chip, key)))));
+    })), /*#__PURE__*/React$1.createElement(ChipWrap$1, null, _mapInstanceProperty(chips).call(chips, (chip, key) => this.renderChip(chip, key)))));
   }
 };
 
@@ -2321,15 +2371,16 @@ const FieldWrap$1 = styled.div`
 `;
 class ChipInput extends React$1.Component {
   constructor(props) {
+    var _context, _context2, _context3;
     super(props);
     this.state = {
       options: props.options,
       selected: props.chips,
       current: ''
     };
-    this.addChip = this.addChip.bind(this);
-    this.chipOnClick = this.chipOnClick.bind(this);
-    this.chipOnRemove = this.chipOnRemove.bind(this);
+    this.addChip = _bindInstanceProperty(_context = this.addChip).call(_context, this);
+    this.chipOnClick = _bindInstanceProperty(_context2 = this.chipOnClick).call(_context2, this);
+    this.chipOnRemove = _bindInstanceProperty(_context3 = this.chipOnRemove).call(_context3, this);
   }
   chipOnClick() {
     console.log(this);
@@ -2339,7 +2390,7 @@ class ChipInput extends React$1.Component {
     const {
       selected
     } = this.state;
-    const chipList = selected.filter(chip => chip !== value);
+    const chipList = _filterInstanceProperty(selected).call(selected, chip => chip !== value);
     this.setState({
       selected: chipList
     });
@@ -2404,7 +2455,7 @@ class ChipInput extends React$1.Component {
       value: current
     }, /*#__PURE__*/React$1.createElement("option", {
       value: ""
-    }, "Select Another Option"), options.map(option => /*#__PURE__*/React$1.createElement("option", {
+    }, "Select Another Option"), _mapInstanceProperty(options).call(options, option => /*#__PURE__*/React$1.createElement("option", {
       value: option.value
     }, option.label))));
   }
@@ -2420,15 +2471,15 @@ class ChipInput extends React$1.Component {
       selected,
       options
     } = this.state;
-    const chips = selected.map(chip => {
-      const matches = options.filter(option => chip === option.value);
+    const chips = _mapInstanceProperty(selected).call(selected, chip => {
+      const matches = _filterInstanceProperty(options).call(options, option => chip === option.value);
       if (matches.length > 0) {
         return matches[0];
       }
       return null;
     });
-    const filteredOptions = options.filter(option => {
-      if (selected.indexOf(option.value) === -1) {
+    const filteredOptions = _filterInstanceProperty(options).call(options, option => {
+      if (_indexOfInstanceProperty(selected).call(selected, option.value) === -1) {
         return true;
       }
       return false;
@@ -2442,7 +2493,7 @@ class ChipInput extends React$1.Component {
       name: `chip-values-${name}`,
       type: "hidden",
       value: selected.join(',')
-    }), /*#__PURE__*/React$1.createElement(ChipWrap, null, chips.map((chip, key) => chip !== null ? this.renderChip(chip, key) : ''))));
+    }), /*#__PURE__*/React$1.createElement(ChipWrap, null, _mapInstanceProperty(chips).call(chips, (chip, key) => chip !== null ? this.renderChip(chip, key) : ''))));
   }
 }
 
@@ -2486,9 +2537,10 @@ const FieldWrap = styled.div`
 `;
 class TimeSelectInput extends React$1.Component {
   constructor(props) {
+    var _context, _context2;
     super(props);
-    this.renderMinutes = this.renderMinutes.bind(this);
-    this.renderHours = this.renderHours.bind(this);
+    this.renderMinutes = _bindInstanceProperty(_context = this.renderMinutes).call(_context, this);
+    this.renderHours = _bindInstanceProperty(_context2 = this.renderHours).call(_context2, this);
     this.state = {
       hours: '00',
       minutes: '00',
@@ -2515,15 +2567,16 @@ class TimeSelectInput extends React$1.Component {
       value
     } = this.props;
     if (value !== 'Never') {
-      const time = value.substr(value.indexOf(' ') + 1).split(':');
+      const time = value.substr(_indexOfInstanceProperty(value).call(value, ' ') + 1).split(':');
       this.setState({
         hours: time[0],
         minutes: time[1],
-        date: value.substr(0, value.indexOf(' '))
+        date: value.substr(0, _indexOfInstanceProperty(value).call(value, ' '))
       });
     }
   }
   renderMinutes() {
+    var _context3, _context4;
     const {
       name
     } = this.props;
@@ -2536,11 +2589,12 @@ class TimeSelectInput extends React$1.Component {
       onChange: e => {
         this.changeMinutes(e);
       }
-    }, [...Array(60).keys()].map(x => /*#__PURE__*/React$1.createElement("option", {
+    }, _mapInstanceProperty(_context3 = [..._keysInstanceProperty(_context4 = Array(60)).call(_context4)]).call(_context3, x => /*#__PURE__*/React$1.createElement("option", {
       value: pad(x, 2)
     }, pad(x, 2))));
   }
   renderHours() {
+    var _context5, _context6;
     const {
       name
     } = this.props;
@@ -2553,7 +2607,7 @@ class TimeSelectInput extends React$1.Component {
       onChange: e => {
         this.changeHours(e);
       }
-    }, [...Array(24).keys()].map(x => /*#__PURE__*/React$1.createElement("option", {
+    }, _mapInstanceProperty(_context5 = [..._keysInstanceProperty(_context6 = Array(24)).call(_context6)]).call(_context5, x => /*#__PURE__*/React$1.createElement("option", {
       value: pad(x, 2)
     }, pad(x, 2))));
   }
@@ -2658,7 +2712,7 @@ const Radio$1 = styled.input`
     display:none;
 `;
 const handleClick = (className, setSelected, parentOnClick) => {
-  const mood = moods.find(obj => className.includes(obj));
+  const mood = _findInstanceProperty(moods).call(moods, obj => _includesInstanceProperty(className).call(className, obj));
   parentOnClick(mood);
   setSelected(mood);
 };
@@ -2681,8 +2735,8 @@ const MoodPath = ({
     transform: transform,
     opacity: opacity
   };
-  if (className.includes('selected')) {
-    if (className.includes(selected)) {
+  if (_includesInstanceProperty(className).call(className, 'selected')) {
+    if (_includesInstanceProperty(className).call(className, selected)) {
       return /*#__PURE__*/React$1.createElement("path", pathProps);
     }
     return /*#__PURE__*/React$1.createElement("path", _extends$1({}, pathProps, {
@@ -2691,8 +2745,8 @@ const MoodPath = ({
     //return null;
   }
 
-  if (className.includes('adjacent')) {
-    if (adjacent.includes(selected)) {
+  if (_includesInstanceProperty(className).call(className, 'adjacent')) {
+    if (_includesInstanceProperty(adjacent).call(adjacent, selected)) {
       return /*#__PURE__*/React$1.createElement("path", pathProps);
     }
     return /*#__PURE__*/React$1.createElement("path", _extends$1({}, pathProps, {
@@ -3010,7 +3064,7 @@ const MoodSelector = ({
   }, /*#__PURE__*/React$1.createElement("tspan", {
     x: "215",
     y: "11"
-  }, "Invigorated"))))), moods.map(obj => {
+  }, "Invigorated"))))), _mapInstanceProperty(moods).call(moods, obj => {
     return /*#__PURE__*/React$1.createElement(Radio$1, {
       checked: selected === obj,
       type: "radio",
@@ -3426,7 +3480,7 @@ class LoaderBar extends React$1.Component {
       message,
       active
     } = this.props;
-    this.timer = setInterval(() => {
+    this.timer = _setInterval(() => {
       if (message === '' && active === true) {
         const {
           progress
@@ -3680,14 +3734,15 @@ const Temp = styled.div`
 `;
 class Marquess extends React$1.Component {
   constructor(props) {
+    var _context, _context2, _context3;
     super(props);
     this.state = {
       ...defaults,
       ...props
     };
-    this.handleHover = this.handleHover.bind(this);
-    this.handleAnimationEnd = this.handleAnimationEnd.bind(this);
-    this.needsToScroll = this.needsToScroll.bind(this);
+    this.handleHover = _bindInstanceProperty(_context = this.handleHover).call(_context, this);
+    this.handleAnimationEnd = _bindInstanceProperty(_context2 = this.handleAnimationEnd).call(_context2, this);
+    this.needsToScroll = _bindInstanceProperty(_context3 = this.needsToScroll).call(_context3, this);
   }
   componentDidMount() {
     // window.addEventListener('resize', this.needsToScroll);
@@ -3827,9 +3882,10 @@ const ModalWrap = styled.div`
 `;
 class Modal extends React$1.Component {
   constructor(props) {
+    var _context, _context2;
     super(props);
-    this.open = this.open.bind(this);
-    this.close = this.close.bind(this);
+    this.open = _bindInstanceProperty(_context = this.open).call(_context, this);
+    this.close = _bindInstanceProperty(_context2 = this.close).call(_context2, this);
   }
   open() {
     this.setState({
@@ -3897,6 +3953,7 @@ class Modal extends React$1.Component {
 const ModalContainer = Modal;
 
 function paginate(totalItems, currentPage, pageSize, maxPages) {
+  var _context, _context2;
   // calculate total pages
   const totalPages = Math.ceil(totalItems / pageSize);
   let thisPage = currentPage;
@@ -3937,7 +3994,7 @@ function paginate(totalItems, currentPage, pageSize, maxPages) {
   const endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
 
   // create an array of pages to ng-repeat in the pager control
-  const pages = Array.from(Array(endPage + 1 - startPage).keys()).map(i => startPage + i);
+  const pages = _mapInstanceProperty(_context = _Array$from(_keysInstanceProperty(_context2 = Array(endPage + 1 - startPage)).call(_context2))).call(_context, i => startPage + i);
 
   // return object with all pager properties required by the view
   return {
@@ -4050,8 +4107,9 @@ const _pageSize = 20;
 const _totalPages = 5;
 class Pagination extends React$1.Component {
   constructor(props) {
+    var _context;
     super(props);
-    this.renderPageButton = this.renderPageButton.bind(this);
+    this.renderPageButton = _bindInstanceProperty(_context = this.renderPageButton).call(_context, this);
   }
   renderMore() {
     const {
@@ -4157,7 +4215,7 @@ class Pagination extends React$1.Component {
     const {
       pages
     } = current;
-    return /*#__PURE__*/React$1.createElement(Wrap$e, null, pages && pages.length > 1 ? /*#__PURE__*/React$1.createElement(React$1.Fragment, null, this.renderBackPageButton(current), pages.map(this.renderPageButton), this.renderNextPageButton(current)) : null);
+    return /*#__PURE__*/React$1.createElement(Wrap$e, null, pages && pages.length > 1 ? /*#__PURE__*/React$1.createElement(React$1.Fragment, null, this.renderBackPageButton(current), _mapInstanceProperty(pages).call(pages, this.renderPageButton), this.renderNextPageButton(current)) : null);
   }
   render() {
     const {
@@ -4375,7 +4433,7 @@ const debounce = (func, wait, immediate) => {
     };
     const callNow = immediate && !timeout;
     clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
+    timeout = _setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
 };
@@ -4433,15 +4491,16 @@ const ResponsiveTable = styled.div`
 `;
 class Table extends React$1.Component {
   constructor(props) {
+    var _context;
     super(props);
     this.state = {
       overflowed: false
     };
     this.responsiveTable = /*#__PURE__*/React$1.createRef();
-    this.handleScroll = this.handleScroll.bind(this);
+    this.handleScroll = _bindInstanceProperty(_context = this.handleScroll).call(_context, this);
   }
   componentDidMount() {
-    setTimeout(() => {
+    _setTimeout(() => {
       this.handleScroll();
     }, 200);
     window.addEventListener('resize', debounce(this.handleScroll));
@@ -4759,7 +4818,7 @@ function useMotionRef(visualState, visualElement, externalRef) {
  * Decides if the supplied variable is variant label
  */
 function isVariantLabel(v) {
-  return typeof v === "string" || Array.isArray(v);
+  return typeof v === "string" || _Array$isArray(v);
 }
 
 function isAnimationControls(v) {
@@ -4770,7 +4829,7 @@ const variantPriorityOrder = ["animate", "whileInView", "whileFocus", "whileHove
 const variantProps = ["initial", ...variantPriorityOrder];
 
 function isControllingVariants(props) {
-  return isAnimationControls(props.animate) || variantProps.some(name => isVariantLabel(props[name]));
+  return isAnimationControls(props.animate) || _someInstanceProperty(variantProps).call(variantProps, name => isVariantLabel(props[name]));
 }
 function isVariantNode(props) {
   return Boolean(isControllingVariants(props) || props.variants);
@@ -4801,7 +4860,7 @@ function useCreateMotionContext(props) {
   }), [variantLabelsAsDependency(initial), variantLabelsAsDependency(animate)]);
 }
 function variantLabelsAsDependency(prop) {
-  return Array.isArray(prop) ? prop.join(" ") : prop;
+  return _Array$isArray(prop) ? prop.join(" ") : prop;
 }
 
 const featureProps = {
@@ -4818,7 +4877,10 @@ const featureProps = {
 const featureDefinitions = {};
 for (const key in featureProps) {
   featureDefinitions[key] = {
-    isEnabled: props => featureProps[key].some(name => !!props[name])
+    isEnabled: props => {
+      var _context;
+      return _someInstanceProperty(_context = featureProps[key]).call(_context, name => !!props[name]);
+    }
   };
 }
 
@@ -4838,7 +4900,7 @@ const LayoutGroupContext = React$1.createContext({});
  */
 const SwitchLayoutGroupContext = React$1.createContext({});
 
-const motionComponentSymbol = Symbol.for("motionComponentSymbol");
+const motionComponentSymbol = _Symbol$for("motionComponentSymbol");
 
 /**
  * Create a `motion` component.
@@ -4940,7 +5002,7 @@ function createMotionProxy(createConfig) {
    * A cache of generated `motion` components, e.g `motion.div`, `motion.input` etc.
    * Rather than generating them anew every render.
    */
-  const componentCache = new Map();
+  const componentCache = new _Map();
   return new Proxy(custom, {
     /**
      * Called when `motion` is referenced with a prop: `motion.div`, `motion.input` etc.
@@ -4975,13 +5037,13 @@ function isSVGComponent(Component) {
   /**
    * If it contains a dash, the element is a custom HTML webcomponent.
    */
-  Component.includes("-")) {
+  _includesInstanceProperty(Component).call(Component, "-")) {
     return false;
   } else if (
   /**
    * If it's in our list of lowercase SVG tags, it's an SVG component
    */
-  lowercaseSVGElements.indexOf(Component) > -1 ||
+  _indexOfInstanceProperty(lowercaseSVGElements).call(lowercaseSVGElements, Component) > -1 ||
   /**
    * If it contains a capital letter, it's an SVG component
    */
@@ -4993,7 +5055,7 @@ function isSVGComponent(Component) {
 
 const scaleCorrectors = {};
 function addScaleCorrector(correctors) {
-  Object.assign(scaleCorrectors, correctors);
+  _Object$assign(scaleCorrectors, correctors);
 }
 
 /**
@@ -5003,13 +5065,13 @@ const transformPropOrder = ["transformPerspective", "x", "y", "z", "translateX",
 /**
  * A quick lookup for transform props.
  */
-const transformProps = new Set(transformPropOrder);
+const transformProps = new _Set(transformPropOrder);
 
 function isForcedMotionValue(key, {
   layout,
   layoutId
 }) {
-  return transformProps.has(key) || key.startsWith("origin") || (layout || layoutId !== undefined) && (!!scaleCorrectors[key] || key === "opacity");
+  return transformProps.has(key) || _startsWithInstanceProperty(key).call(key, "origin") || (layout || layoutId !== undefined) && (!!scaleCorrectors[key] || key === "opacity");
 }
 
 const isMotionValue = value => Boolean(value && value.getVelocity);
@@ -5047,7 +5109,7 @@ function buildTransform(transform, {
   if (enableHardwareAcceleration && !transform.z) {
     transformString += "translateZ(0)";
   }
-  transformString = transformString.trim();
+  transformString = _trimInstanceProperty(transformString).call(transformString);
   // If we have a custom `transform` template, pass our transform values and
   // generated transformString to that before returning
   if (transformTemplate) {
@@ -5058,7 +5120,7 @@ function buildTransform(transform, {
   return transformString;
 }
 
-const checkStringStartsWith = token => key => typeof key === "string" && key.startsWith(token);
+const checkStringStartsWith = token => key => typeof key === "string" && _startsWithInstanceProperty(key).call(key, token);
 const isCSSVariableName = checkStringStartsWith("--");
 const isCSSVariableToken = checkStringStartsWith("var(--");
 const cssVariableRegex = /var\s*\(\s*--[\w-]+(\s*,\s*(?:(?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)+)?\s*\)/g;
@@ -5074,7 +5136,7 @@ const clamp = (min, max, v) => Math.min(Math.max(v, min), max);
 
 const number = {
   test: v => typeof v === "number",
-  parse: parseFloat,
+  parse: _parseFloat,
   transform: v => v
 };
 const alpha = {
@@ -5101,8 +5163,8 @@ function isString(v) {
 }
 
 const createUnitType = unit => ({
-  test: v => isString(v) && v.endsWith(unit) && v.split(" ").length === 1,
-  parse: parseFloat,
+  test: v => isString(v) && _endsWithInstanceProperty(v).call(v, unit) && v.split(" ").length === 1,
+  parse: _parseFloat,
   transform: v => `${v}${unit}`
 });
 const degrees = createUnitType("deg");
@@ -5226,7 +5288,7 @@ function buildHTMLStyles(state, latestValues, options, transformTemplate) {
       if (!transformIsNone) continue;
       // Otherwise check to see if this is a default transform
       if (value !== (valueType.default || 0)) transformIsNone = false;
-    } else if (key.startsWith("origin")) {
+    } else if (_startsWithInstanceProperty(key).call(key, "origin")) {
       // If this is a transform origin, flag and enable further transform-origin processing
       hasTransformOrigin = true;
       transformOrigin[key] = valueAsType;
@@ -5281,7 +5343,7 @@ function useInitialMotionValues({
     buildHTMLStyles(state, visualState, {
       enableHardwareAcceleration: !isStatic
     }, transformTemplate);
-    return Object.assign({}, state.vars, state.style);
+    return _Object$assign({}, state.vars, state.style);
   }, [visualState]);
 }
 function useStyle(props, visualState, isStatic) {
@@ -5291,7 +5353,7 @@ function useStyle(props, visualState, isStatic) {
    * Copy non-Motion Values straight into style
    */
   copyRawValuesOnly(style, styleProp, props);
-  Object.assign(style, useInitialMotionValues(props, visualState, isStatic));
+  _Object$assign(style, useInitialMotionValues(props, visualState, isStatic));
   return props.transformValues ? props.transformValues(style) : style;
 }
 function useHTMLProps(props, visualState, isStatic) {
@@ -5319,7 +5381,7 @@ function useHTMLProps(props, visualState, isStatic) {
  * @privateRemarks
  * This doesn't throw if a `MotionProp` name is missing - it should.
  */
-const validMotionProps = new Set(["animate", "exit", "variants", "initial", "style", "values", "variants", "transition", "transformTemplate", "transformValues", "custom", "inherit", "onLayoutAnimationStart", "onLayoutAnimationComplete", "onLayoutMeasure", "onBeforeLayoutMeasure", "onAnimationStart", "onAnimationComplete", "onUpdate", "onDragStart", "onDrag", "onDragEnd", "onMeasureDragConstraints", "onDirectionLock", "onDragTransitionEnd", "_dragX", "_dragY", "onHoverStart", "onHoverEnd", "onViewportEnter", "onViewportLeave", "ignoreStrict", "viewport"]);
+const validMotionProps = new _Set(["animate", "exit", "variants", "initial", "style", "values", "variants", "transition", "transformTemplate", "transformValues", "custom", "inherit", "onLayoutAnimationStart", "onLayoutAnimationComplete", "onLayoutMeasure", "onBeforeLayoutMeasure", "onAnimationStart", "onAnimationComplete", "onUpdate", "onDragStart", "onDrag", "onDragEnd", "onMeasureDragConstraints", "onDirectionLock", "onDragTransitionEnd", "_dragX", "_dragY", "onHoverStart", "onHoverEnd", "onViewportEnter", "onViewportLeave", "ignoreStrict", "viewport"]);
 /**
  * Check whether a prop name is a valid `MotionProp` key.
  *
@@ -5329,14 +5391,14 @@ const validMotionProps = new Set(["animate", "exit", "variants", "initial", "sty
  * @public
  */
 function isValidMotionProp(key) {
-  return key.startsWith("while") || key.startsWith("drag") && key !== "draggable" || key.startsWith("layout") || key.startsWith("onTap") || key.startsWith("onPan") || validMotionProps.has(key);
+  return _startsWithInstanceProperty(key).call(key, "while") || _startsWithInstanceProperty(key).call(key, "drag") && key !== "draggable" || _startsWithInstanceProperty(key).call(key, "layout") || _startsWithInstanceProperty(key).call(key, "onTap") || _startsWithInstanceProperty(key).call(key, "onPan") || validMotionProps.has(key);
 }
 
 let shouldForward = key => !isValidMotionProp(key);
 function loadExternalIsValidProp(isValidProp) {
   if (!isValidProp) return;
   // Explicitly filter our events
-  shouldForward = key => key.startsWith("on") ? !isValidMotionProp(key) : isValidProp(key);
+  shouldForward = key => _startsWithInstanceProperty(key).call(key, "on") ? !isValidMotionProp(key) : isValidProp(key);
 }
 /**
  * Emotion and Styled Components both allow users to pass through arbitrary props to their components
@@ -5371,10 +5433,10 @@ function filterProps(props, isDom, forwardMotionProps) {
      * We check the type as it could be used with the `feColorMatrix`
      * element, which we support.
      */
-    if (key === "values" && typeof props.values === "object") continue;
+    if (key === "values" && typeof _valuesInstanceProperty(props) === "object") continue;
     if (shouldForward(key) || forwardMotionProps === true && isValidMotionProp(key) || !isDom && !isValidMotionProp(key) ||
     // If trying to use native HTML drag events, forward drag listeners
-    props["draggable"] && key.startsWith("onDrag")) {
+    props["draggable"] && _startsWithInstanceProperty(key).call(key, "onDrag")) {
       filteredProps[key] = props[key];
     }
   }
@@ -5547,7 +5609,7 @@ function renderHTML(element, {
   style,
   vars
 }, styleProp, projection) {
-  Object.assign(element.style, style, projection && projection.getProjectionStyles(styleProp));
+  _Object$assign(element.style, style, projection && projection.getProjectionStyles(styleProp));
   // Loop over any CSS variables and assign those.
   for (const key in vars) {
     element.style.setProperty(key, vars[key]);
@@ -5557,7 +5619,7 @@ function renderHTML(element, {
 /**
  * A set of attribute names that are always read/written as camel case.
  */
-const camelCaseAttributes = new Set(["baseFrequency", "diffuseConstant", "kernelMatrix", "kernelUnitLength", "keySplines", "keyTimes", "limitingConeAngle", "markerHeight", "markerWidth", "numOctaves", "targetX", "targetY", "surfaceScale", "specularConstant", "specularExponent", "stdDeviation", "tableValues", "viewBox", "gradientTransform", "pathLength", "startOffset", "textLength", "lengthAdjust"]);
+const camelCaseAttributes = new _Set(["baseFrequency", "diffuseConstant", "kernelMatrix", "kernelUnitLength", "keySplines", "keyTimes", "limitingConeAngle", "markerHeight", "markerWidth", "numOctaves", "targetX", "targetY", "surfaceScale", "specularConstant", "specularExponent", "stdDeviation", "tableValues", "viewBox", "gradientTransform", "pathLength", "startOffset", "textLength", "lengthAdjust"]);
 
 function renderSVG(element, renderState, _styleProp, projection) {
   renderHTML(element, renderState, undefined, projection);
@@ -5583,7 +5645,7 @@ function scrapeMotionValuesFromProps(props, prevProps) {
   const newValues = scrapeMotionValuesFromProps$1(props, prevProps);
   for (const key in props) {
     if (isMotionValue(props[key]) || isMotionValue(prevProps[key])) {
-      const targetKey = transformPropOrder.indexOf(key) !== -1 ? "attr" + key.charAt(0).toUpperCase() + key.substring(1) : key;
+      const targetKey = _indexOfInstanceProperty(transformPropOrder).call(transformPropOrder, key) !== -1 ? "attr" + key.charAt(0).toUpperCase() + key.substring(1) : key;
       newValues[targetKey] = props[key];
     }
   }
@@ -5631,7 +5693,7 @@ function useConstant(init) {
 }
 
 const isKeyframesTarget = v => {
-  return Array.isArray(v);
+  return _Array$isArray(v);
 };
 
 const isCustomValue = v => {
@@ -5692,8 +5754,8 @@ function makeLatestValues(props, context, presenceContext, scrapeMotionValues) {
   isInitialAnimationBlocked = isInitialAnimationBlocked || initial === false;
   const variantToSet = isInitialAnimationBlocked ? animate : initial;
   if (variantToSet && typeof variantToSet !== "boolean" && !isAnimationControls(variantToSet)) {
-    const list = Array.isArray(variantToSet) ? variantToSet : [variantToSet];
-    list.forEach(definition => {
+    const list = _Array$isArray(variantToSet) ? variantToSet : [variantToSet];
+    _forEachInstanceProperty(list).call(list, definition => {
       const resolved = resolveVariantFromProps(props, definition);
       if (!resolved) return;
       const {
@@ -5703,7 +5765,7 @@ function makeLatestValues(props, context, presenceContext, scrapeMotionValues) {
       } = resolved;
       for (const key in target) {
         let valueTarget = target[key];
-        if (Array.isArray(valueTarget)) {
+        if (_Array$isArray(valueTarget)) {
           /**
            * Take final keyframe if the initial animation is blocked because
            * we want to initialise at the end of that blocked animation.
@@ -5815,7 +5877,7 @@ function addPointerEvent(target, eventName, handler, options) {
  * @return {function}
  */
 const combineFunctions = (a, b) => v => b(a(v));
-const pipe = (...transformers) => transformers.reduce(combineFunctions);
+const pipe = (...transformers) => _reduceInstanceProperty(transformers).call(transformers, combineFunctions);
 
 function createLock(name) {
   let lock = null;
@@ -5891,7 +5953,7 @@ function createRenderStep(runNextFrame) {
   /**
    * A set of processes which were marked keepAlive when scheduled.
    */
-  const toKeepAlive = new WeakSet();
+  const toKeepAlive = new _WeakSet();
   const step = {
     /**
      * Schedule a process to run on the next frame.
@@ -5901,7 +5963,7 @@ function createRenderStep(runNextFrame) {
       const buffer = addToCurrentFrame ? toRun : toRunNextFrame;
       if (keepAlive) toKeepAlive.add(callback);
       // If the buffer doesn't already contain this callback, add it
-      if (buffer.indexOf(callback) === -1) {
+      if (_indexOfInstanceProperty(buffer).call(buffer, callback) === -1) {
         buffer.push(callback);
         // If we're adding it to the currently running buffer, update its measured size
         if (addToCurrentFrame && isProcessing) numToRun = toRun.length;
@@ -5912,8 +5974,8 @@ function createRenderStep(runNextFrame) {
      * Cancel the provided callback from running on the next frame.
      */
     cancel: callback => {
-      const index = toRunNextFrame.indexOf(callback);
-      if (index !== -1) toRunNextFrame.splice(index, 1);
+      const index = _indexOfInstanceProperty(toRunNextFrame).call(toRunNextFrame, callback);
+      if (index !== -1) _spliceInstanceProperty(toRunNextFrame).call(toRunNextFrame, index, 1);
       toKeepAlive.delete(callback);
     },
     /**
@@ -5965,7 +6027,7 @@ const maxElapsed = 40;
 let useDefaultElapsed = true;
 let runNextFrame = false;
 const stepsOrder = ["read", "update", "preRender", "render", "postRender"];
-const steps = stepsOrder.reduce((acc, key) => {
+const steps = _reduceInstanceProperty(stepsOrder).call(stepsOrder, (acc, key) => {
   acc[key] = createRenderStep(() => runNextFrame = true);
   return acc;
 }, {});
@@ -5975,7 +6037,7 @@ const processFrame = timestamp => {
   frameData.delta = useDefaultElapsed ? 1000 / 60 : Math.max(Math.min(timestamp - frameData.timestamp, maxElapsed), 1);
   frameData.timestamp = timestamp;
   frameData.isProcessing = true;
-  stepsOrder.forEach(processStep);
+  _forEachInstanceProperty(stepsOrder).call(stepsOrder, processStep);
   frameData.isProcessing = false;
   if (runNextFrame) {
     useDefaultElapsed = false;
@@ -5987,7 +6049,7 @@ const startLoop = () => {
   useDefaultElapsed = true;
   if (!frameData.isProcessing) requestAnimationFrame(processFrame);
 };
-const frame = stepsOrder.reduce((acc, key) => {
+const frame = _reduceInstanceProperty(stepsOrder).call(stepsOrder, (acc, key) => {
   const step = steps[key];
   acc[key] = (process, keepAlive = false, immediate = false) => {
     if (!runNextFrame) startLoop();
@@ -5996,7 +6058,7 @@ const frame = stepsOrder.reduce((acc, key) => {
   return acc;
 }, {});
 function cancelFrame(process) {
-  stepsOrder.forEach(key => steps[key].cancel(process));
+  _forEachInstanceProperty(stepsOrder).call(stepsOrder, key => steps[key].cancel(process));
 }
 
 function addHoverEvent(node, isActive) {
@@ -6196,19 +6258,19 @@ class PressGesture extends Feature {
  * element, so even though these handlers might all be triggered by different
  * observers, we can keep them in the same map.
  */
-const observerCallbacks = new WeakMap();
+const observerCallbacks = new _WeakMap();
 /**
  * Multiple observers can be created for multiple element/document roots. Each with
  * different settings. So here we store dictionaries of observers to each root,
  * using serialised settings (threshold/margin) as lookup keys.
  */
-const observers = new WeakMap();
+const observers = new _WeakMap();
 const fireObserverCallback = entry => {
   const callback = observerCallbacks.get(entry.target);
   callback && callback(entry);
 };
 const fireAllObserverCallbacks = entries => {
-  entries.forEach(fireObserverCallback);
+  _forEachInstanceProperty(entries).call(entries, fireObserverCallback);
 };
 function initIntersectionObserver({
   root,
@@ -6222,7 +6284,7 @@ function initIntersectionObserver({
     observers.set(lookupRoot, {});
   }
   const rootObservers = observers.get(lookupRoot);
-  const key = JSON.stringify(options);
+  const key = _JSON$stringify(options);
   /**
    * If we don't have an observer for this combination of root and settings,
    * create one.
@@ -6309,12 +6371,13 @@ class InViewFeature extends Feature {
     this.startObserver();
   }
   update() {
+    var _context;
     if (typeof IntersectionObserver === "undefined") return;
     const {
       props,
       prevProps
     } = this.node;
-    const hasOptionsChanged = ["amount", "margin", "root"].some(hasViewportOptionChanged(props, prevProps));
+    const hasOptionsChanged = _someInstanceProperty(_context = ["amount", "margin", "root"]).call(_context, hasViewportOptionChanged(props, prevProps));
     if (hasOptionsChanged) {
       this.startObserver();
     }
@@ -6345,7 +6408,7 @@ const gestureAnimations = {
 };
 
 function shallowCompare(next, prev) {
-  if (!Array.isArray(prev)) return false;
+  if (!_Array$isArray(prev)) return false;
   const prevLength = prev.length;
   if (prevLength !== next.length) return false;
   for (let i = 0; i < prevLength; i++) {
@@ -6358,16 +6421,18 @@ function shallowCompare(next, prev) {
  * Creates an object containing the latest state of every MotionValue on a VisualElement
  */
 function getCurrent(visualElement) {
+  var _context;
   const current = {};
-  visualElement.values.forEach((value, key) => current[key] = value.get());
+  _forEachInstanceProperty(_context = _valuesInstanceProperty(visualElement)).call(_context, (value, key) => current[key] = value.get());
   return current;
 }
 /**
  * Creates an object containing the latest velocity of every MotionValue on a VisualElement
  */
 function getVelocity$1(visualElement) {
+  var _context2;
   const velocity = {};
-  visualElement.values.forEach((value, key) => velocity[key] = value.getVelocity());
+  _forEachInstanceProperty(_context2 = _valuesInstanceProperty(visualElement)).call(_context2, (value, key) => velocity[key] = value.getVelocity());
   return velocity;
 }
 function resolveVariant(visualElement, definition, custom) {
@@ -6406,10 +6471,10 @@ const instantAnimationState = {
   current: false
 };
 
-const isBezierDefinition = easing => Array.isArray(easing) && typeof easing[0] === "number";
+const isBezierDefinition = easing => _Array$isArray(easing) && typeof easing[0] === "number";
 
 function isWaapiSupportedEasing(easing) {
-  return Boolean(!easing || typeof easing === "string" && supportedWaapiEasing[easing] || isBezierDefinition(easing) || Array.isArray(easing) && easing.every(isWaapiSupportedEasing));
+  return Boolean(!easing || typeof easing === "string" && supportedWaapiEasing[easing] || isBezierDefinition(easing) || _Array$isArray(easing) && _everyInstanceProperty(easing).call(easing, isWaapiSupportedEasing));
 }
 const cubicBezierAsString = ([a, b, c, d]) => `cubic-bezier(${a}, ${b}, ${c}, ${d})`;
 const supportedWaapiEasing = {
@@ -6425,7 +6490,7 @@ const supportedWaapiEasing = {
 };
 function mapEasingToNativeEasing(easing) {
   if (!easing) return undefined;
-  return isBezierDefinition(easing) ? cubicBezierAsString(easing) : Array.isArray(easing) ? easing.map(mapEasingToNativeEasing) : supportedWaapiEasing[easing];
+  return isBezierDefinition(easing) ? cubicBezierAsString(easing) : _Array$isArray(easing) ? _mapInstanceProperty(easing).call(easing, mapEasingToNativeEasing) : supportedWaapiEasing[easing];
 }
 
 function animateStyle(element, valueName, keyframes, {
@@ -6444,11 +6509,11 @@ function animateStyle(element, valueName, keyframes, {
   /**
    * If this is an easing array, apply to keyframes, not animation as a whole
    */
-  if (Array.isArray(easing)) keyframeOptions.easing = easing;
+  if (_Array$isArray(easing)) keyframeOptions.easing = easing;
   return element.animate(keyframeOptions, {
     delay,
     duration,
-    easing: !Array.isArray(easing) ? easing : "linear",
+    easing: !_Array$isArray(easing) ? easing : "linear",
     fill: "both",
     iterations: repeat + 1,
     direction: repeatType === "reverse" ? "alternate" : "normal"
@@ -6527,7 +6592,7 @@ const easeOut = cubicBezier(0, 0, 0.58, 1);
 const easeInOut = cubicBezier(0.42, 0, 0.58, 1);
 
 const isEasingArray = ease => {
-  return Array.isArray(ease) && typeof ease[0] !== "number";
+  return _Array$isArray(ease) && typeof ease[0] !== "number";
 };
 
 // Accepts an easing function and returns a new one that outputs mirrored values for
@@ -6562,7 +6627,7 @@ const easingLookup = {
   anticipate
 };
 const easingDefinitionToFunction = definition => {
-  if (Array.isArray(definition)) {
+  if (_Array$isArray(definition)) {
     // If cubic bezier definition, create bezier curve
     invariant(definition.length === 4, `Cubic bezier arrays must contain four numerical values.`);
     const [x1, y1, x2, y2] = definition;
@@ -6580,16 +6645,16 @@ const easingDefinitionToFunction = definition => {
  * but false if a number or multiple colors
  */
 const isColorString = (type, testProp) => v => {
-  return Boolean(isString(v) && singleColorRegex.test(v) && v.startsWith(type) || testProp && Object.prototype.hasOwnProperty.call(v, testProp));
+  return Boolean(isString(v) && singleColorRegex.test(v) && _startsWithInstanceProperty(v).call(v, type) || testProp && Object.prototype.hasOwnProperty.call(v, testProp));
 };
 const splitColor = (aName, bName, cName) => v => {
   if (!isString(v)) return v;
   const [a, b, c, alpha] = v.match(floatRegex);
   return {
-    [aName]: parseFloat(a),
-    [bName]: parseFloat(b),
-    [cName]: parseFloat(c),
-    alpha: alpha !== undefined ? parseFloat(alpha) : 1
+    [aName]: _parseFloat(a),
+    [bName]: _parseFloat(b),
+    [cName]: _parseFloat(c),
+    alpha: alpha !== undefined ? _parseFloat(alpha) : 1
   };
 };
 
@@ -6632,10 +6697,10 @@ function parseHex(v) {
     a += a;
   }
   return {
-    red: parseInt(r, 16),
-    green: parseInt(g, 16),
-    blue: parseInt(b, 16),
-    alpha: a ? parseInt(a, 16) / 255 : 1
+    red: _parseInt(r, 16),
+    green: _parseInt(g, 16),
+    blue: _parseInt(b, 16),
+    alpha: a ? _parseInt(a, 16) / 255 : 1
   };
 }
 const hex = {
@@ -6742,7 +6807,7 @@ const mixLinearColor = (from, to, v) => {
   return Math.sqrt(Math.max(0, v * (to * to - fromExpo) + fromExpo));
 };
 const colorTypes = [hex, rgba, hsla];
-const getColorType = v => colorTypes.find(type => type.test(v));
+const getColorType = v => _findInstanceProperty(colorTypes).call(colorTypes, type => type.test(v));
 function asRGBA(color) {
   const type = getColorType(color);
   invariant(Boolean(type), `'${color}' is not an animatable color. Use the equivalent color code instead.`);
@@ -6800,9 +6865,10 @@ function tokenise(info, {
   if (!matches) return;
   info["num" + countKey] = matches.length;
   info.tokenised = info.tokenised.replace(regex, token);
-  info.values.push(...matches.map(parse));
+  _valuesInstanceProperty(info).push(..._mapInstanceProperty(matches).call(matches, parse));
 }
 function analyseComplexValue(value) {
+  var _context;
   const originalValue = value.toString();
   const info = {
     value: originalValue,
@@ -6812,13 +6878,13 @@ function analyseComplexValue(value) {
     numColors: 0,
     numNumbers: 0
   };
-  if (info.value.includes("var(--")) tokenise(info, cssVarTokeniser);
+  if (_includesInstanceProperty(_context = info.value).call(_context, "var(--")) tokenise(info, cssVarTokeniser);
   tokenise(info, colorTokeniser);
   tokenise(info, numberTokeniser);
   return info;
 }
 function parseComplexValue(v) {
-  return analyseComplexValue(v).values;
+  return _valuesInstanceProperty(analyseComplexValue(v));
 }
 function createTransformer(source) {
   const {
@@ -6846,7 +6912,7 @@ const convertNumbersToZero = v => typeof v === "number" ? 0 : v;
 function getAnimatableNone$1(v) {
   const parsed = parseComplexValue(v);
   const transformer = createTransformer(v);
-  return transformer(parsed.map(convertNumbersToZero));
+  return transformer(_mapInstanceProperty(parsed).call(parsed, convertNumbersToZero));
 }
 const complex = {
   test,
@@ -6862,13 +6928,13 @@ function getMixer(origin, target) {
   } else if (color.test(origin)) {
     return mixColor(origin, target);
   } else {
-    return origin.startsWith("var(") ? mixImmediate(origin, target) : mixComplex(origin, target);
+    return _startsWithInstanceProperty(origin).call(origin, "var(") ? mixImmediate(origin, target) : mixComplex(origin, target);
   }
 }
 const mixArray = (from, to) => {
   const output = [...from];
   const numValues = output.length;
-  const blendValue = from.map((fromThis, i) => getMixer(fromThis, to[i]));
+  const blendValue = _mapInstanceProperty(from).call(from, (fromThis, i) => getMixer(fromThis, to[i]));
   return v => {
     for (let i = 0; i < numValues; i++) {
       output[i] = blendValue[i](v);
@@ -6900,7 +6966,7 @@ const mixComplex = (origin, target) => {
   const targetStats = analyseComplexValue(target);
   const canInterpolate = originStats.numVars === targetStats.numVars && originStats.numColors === targetStats.numColors && originStats.numNumbers >= targetStats.numNumbers;
   if (canInterpolate) {
-    return pipe(mixArray(originStats.values, targetStats.values), template);
+    return pipe(mixArray(_valuesInstanceProperty(originStats), _valuesInstanceProperty(targetStats)), template);
   } else {
     warning(true, `Complex values '${origin}' and '${target}' too different to mix. Ensure all colors are of the same type, and that each contains the same quantity of number and color values. Falling back to instant transition.`);
     return mixImmediate(origin, target);
@@ -6930,7 +6996,7 @@ function detectMixerFactory(v) {
     return mixNumber;
   } else if (typeof v === "string") {
     return color.test(v) ? mixColor : mixComplex;
-  } else if (Array.isArray(v)) {
+  } else if (_Array$isArray(v)) {
     return mixArray;
   } else if (typeof v === "object") {
     return mixObject;
@@ -6944,7 +7010,7 @@ function createMixers(output, ease, customMixer) {
   for (let i = 0; i < numMixers; i++) {
     let mixer = mixerFactory(output[i], output[i + 1]);
     if (ease) {
-      const easingFunction = Array.isArray(ease) ? ease[i] || noop : ease;
+      const easingFunction = _Array$isArray(ease) ? ease[i] || noop : ease;
       mixer = pipe(easingFunction, mixer);
     }
     mixers.push(mixer);
@@ -6984,8 +7050,9 @@ function interpolate(input, output, {
   if (inputLength === 1) return () => output[0];
   // If input runs highest -> lowest, reverse both arrays
   if (input[0] > input[inputLength - 1]) {
-    input = [...input].reverse();
-    output = [...output].reverse();
+    var _context, _context2;
+    input = _reverseInstanceProperty(_context = [...input]).call(_context);
+    output = _reverseInstanceProperty(_context2 = [...output]).call(_context2);
   }
   const mixers = createMixers(output, ease, mixer);
   const numMixers = mixers.length;
@@ -7017,11 +7084,12 @@ function defaultOffset(arr) {
 }
 
 function convertOffsetToTimes(offset, duration) {
-  return offset.map(o => o * duration);
+  return _mapInstanceProperty(offset).call(offset, o => o * duration);
 }
 
 function defaultEasing(values, easing) {
-  return values.map(() => easing || easeInOut).splice(0, values.length - 1);
+  var _context;
+  return _spliceInstanceProperty(_context = _mapInstanceProperty(values).call(values, () => easing || easeInOut)).call(_context, 0, values.length - 1);
 }
 function keyframes({
   duration = 300,
@@ -7033,7 +7101,7 @@ function keyframes({
    * Easing functions can be externally defined as strings. Here we convert them
    * into actual functions.
    */
-  const easingFunctions = isEasingArray(ease) ? ease.map(easingDefinitionToFunction) : easingDefinitionToFunction(ease);
+  const easingFunctions = isEasingArray(ease) ? _mapInstanceProperty(ease).call(ease, easingDefinitionToFunction) : easingDefinitionToFunction(ease);
   /**
    * This is the Iterator-spec return value. We ensure it's mutable rather than using a generator
    * to reduce GC during animation.
@@ -7050,7 +7118,7 @@ function keyframes({
   // TODO Maybe we should warn here if there's a length mismatch
   times && times.length === keyframeValues.length ? times : defaultOffset(keyframeValues), duration);
   const mapTimeToKeyframe = interpolate(absoluteTimes, keyframeValues, {
-    ease: Array.isArray(easingFunctions) ? easingFunctions : defaultEasing(keyframeValues, easingFunctions)
+    ease: _Array$isArray(easingFunctions) ? easingFunctions : defaultEasing(keyframeValues, easingFunctions)
   });
   return {
     calculatedDuration: duration,
@@ -7168,7 +7236,7 @@ function calcAngularFreq(undampedFreq, dampingRatio) {
 const durationKeys = ["duration", "bounce"];
 const physicsKeys = ["stiffness", "damping", "mass"];
 function isSpringType(options, keys) {
-  return keys.some(key => options[key] !== undefined);
+  return _someInstanceProperty(keys).call(keys, key => options[key] !== undefined);
 }
 function getSpringOptions(options) {
   let springOptions = {
@@ -7248,7 +7316,7 @@ function spring({
       const envelope = Math.exp(-dampingRatio * undampedAngularFreq * t);
       // When performing sinh or cosh values can hit Infinity so we cap them here
       const freqForT = Math.min(dampedAngularFreq * t, 300);
-      return target - envelope * ((initialVelocity + dampingRatio * undampedAngularFreq * initialDelta) * Math.sinh(freqForT) + dampedAngularFreq * initialDelta * Math.cosh(freqForT)) / dampedAngularFreq;
+      return target - envelope * ((initialVelocity + dampingRatio * undampedAngularFreq * initialDelta) * _Math$sinh(freqForT) + dampedAngularFreq * initialDelta * _Math$cosh(freqForT)) / dampedAngularFreq;
     };
   }
   return {
@@ -7442,7 +7510,7 @@ function animateValue({
    */
   const updateFinishedPromise = () => {
     resolveFinishedPromise && resolveFinishedPromise();
-    currentFinishedPromise = new Promise(resolve => {
+    currentFinishedPromise = new _Promise(resolve => {
       resolveFinishedPromise = resolve;
     });
   };
@@ -7468,9 +7536,10 @@ function animateValue({
   });
   let mirroredGenerator;
   if (repeatType === "mirror") {
+    var _context;
     mirroredGenerator = generatorFactory({
       ...options,
-      keyframes: [...keyframes$1].reverse(),
+      keyframes: _reverseInstanceProperty(_context = [...keyframes$1]).call(_context),
       velocity: -(options.velocity || 0)
     });
   }
@@ -7698,7 +7767,7 @@ function animateValue({
 /**
  * A list of values that can be hardware-accelerated.
  */
-const acceleratedValues = new Set(["opacity", "clipPath", "filter", "transform", "backgroundColor"]);
+const acceleratedValues = new _Set(["opacity", "clipPath", "filter", "transform", "backgroundColor"]);
 /**
  * 10ms is chosen here as it strikes a balance between smooth
  * results (more than one keyframe per frame at 60fps) and
@@ -7730,7 +7799,7 @@ function createAcceleratedAnimation(value, valueName, {
    * WAAPI-compatible behaviour.
    */
   const updateFinishedPromise = () => {
-    currentFinishedPromise = new Promise(resolve => {
+    currentFinishedPromise = new _Promise(resolve => {
       resolveFinishedPromise = resolve;
     });
   };
@@ -7888,7 +7957,7 @@ function createInstantAnimation({
       stop: noop,
       then: resolve => {
         resolve();
-        return Promise.resolve();
+        return _Promise.resolve();
       },
       cancel: noop,
       complete: noop
@@ -7933,7 +8002,7 @@ const getDefaultTransition = (valueKey, {
   if (keyframes.length > 2) {
     return keyframesTransition;
   } else if (transformProps.has(valueKey)) {
-    return valueKey.startsWith("scale") ? criticallyDampedSpring(keyframes[1]) : underDampedSpring;
+    return _startsWithInstanceProperty(valueKey).call(valueKey, "scale") ? criticallyDampedSpring(keyframes[1]) : underDampedSpring;
   }
   return ease;
 };
@@ -7953,12 +8022,12 @@ const isAnimatable = (key, value) => {
   // If it's a number or a keyframes array, we can animate it. We might at some point
   // need to do a deep isAnimatable check of keyframes, or let Popmotion handle this,
   // but for now lets leave it like this for performance reasons
-  if (typeof value === "number" || Array.isArray(value)) return true;
+  if (typeof value === "number" || _Array$isArray(value)) return true;
   if (typeof value === "string" && (
   // It's animatable if we have a string
   complex.test(value) || value === "0") &&
   // And it contains numbers and/or colors
-  !value.startsWith("url(") // Unless it starts with "url("
+  !_startsWithInstanceProperty(value).call(value, "url(") // Unless it starts with "url("
   ) {
     return true;
   }
@@ -7968,9 +8037,9 @@ const isAnimatable = (key, value) => {
 /**
  * Properties that should default to 1 or 100%
  */
-const maxDefaults = new Set(["brightness", "contrast", "saturate", "opacity"]);
+const maxDefaults = new _Set(["brightness", "contrast", "saturate", "opacity"]);
 function applyDefaultFilter(v) {
-  const [name, value] = v.slice(0, -1).split("(");
+  const [name, value] = _sliceInstanceProperty(v).call(v, 0, -1).split("(");
   if (name === "drop-shadow") return v;
   const [number] = value.match(floatRegex) || [];
   if (!number) return v;
@@ -7984,7 +8053,7 @@ const filter = {
   ...complex,
   getAnimatableNone: v => {
     const functions = v.match(functionRegex);
-    return functions ? functions.map(applyDefaultFilter).join(" ") : v;
+    return functions ? _mapInstanceProperty(functions).call(functions, applyDefaultFilter).join(" ") : v;
   }
 };
 
@@ -8036,7 +8105,7 @@ function isNone(value) {
 function getKeyframes(value, valueName, target, transition) {
   const isTargetAnimatable = isAnimatable(valueName, target);
   let keyframes;
-  if (Array.isArray(target)) {
+  if (_Array$isArray(target)) {
     keyframes = [...target];
   } else {
     keyframes = [null, target];
@@ -8086,7 +8155,7 @@ function isTransitionDefined({
   elapsed,
   ...transition
 }) {
-  return !!Object.keys(transition).length;
+  return !!_Object$keys(transition).length;
 }
 function getValueTransition(transition, key) {
   return transition[key] || transition["default"] || transition;
@@ -8187,11 +8256,11 @@ function isWillChangeMotionValue(value) {
 const isNumericalString = v => /^\-?\d*\.?\d+$/.test(v);
 
 function addUniqueItem(arr, item) {
-  if (arr.indexOf(item) === -1) arr.push(item);
+  if (_indexOfInstanceProperty(arr).call(arr, item) === -1) arr.push(item);
 }
 function removeItem(arr, item) {
-  const index = arr.indexOf(item);
-  if (index > -1) arr.splice(index, 1);
+  const index = _indexOfInstanceProperty(arr).call(arr, item);
+  if (index > -1) _spliceInstanceProperty(arr).call(arr, index, 1);
 }
 
 class SubscriptionManager {
@@ -8229,7 +8298,7 @@ class SubscriptionManager {
   }
 }
 
-const warned = new Set();
+const warned = new _Set();
 function warnOnce(condition, message, element) {
   if (condition || warned.has(message)) return;
   console.warn(message);
@@ -8238,7 +8307,7 @@ function warnOnce(condition, message, element) {
 }
 
 const isFloat = value => {
-  return !isNaN(parseFloat(value));
+  return !isNaN(_parseFloat(value));
 };
 /**
  * `MotionValue` is used to track the state and velocity of motion values.
@@ -8488,7 +8557,7 @@ class MotionValue {
     // This could be isFloat(this.prev) && isFloat(this.current), but that would be wasteful
     return this.canTrackVelocity ?
     // These casts could be avoided if parseFloat would be typed better
-    velocityPerSecond(parseFloat(this.current) - parseFloat(this.prev), this.timeDelta) : 0;
+    velocityPerSecond(_parseFloat(this.current) - _parseFloat(this.prev), this.timeDelta) : 0;
   }
   /**
    * Registers a new animation to control this `MotionValue`. Only one
@@ -8504,7 +8573,7 @@ class MotionValue {
    */
   start(startAnimation) {
     this.stop();
-    return new Promise(resolve => {
+    return new _Promise(resolve => {
       this.hasAnimated = true;
       this.animation = startAnimation(resolve);
       if (this.events.animationStart) {
@@ -8583,7 +8652,7 @@ const dimensionValueTypes = [number, px, percent, degrees, vw, vh, auto];
 /**
  * Tests a dimensional value against the list of dimension ValueTypes
  */
-const findDimensionValueType = v => dimensionValueTypes.find(testValueType(v));
+const findDimensionValueType = v => _findInstanceProperty(dimensionValueTypes).call(dimensionValueTypes, testValueType(v));
 
 /**
  * A list of all ValueTypes
@@ -8592,7 +8661,7 @@ const valueTypes = [...dimensionValueTypes, color, complex];
 /**
  * Tests a value against the list of ValueTypes
  */
-const findValueType = v => valueTypes.find(testValueType(v));
+const findValueType = v => _findInstanceProperty(valueTypes).call(valueTypes, testValueType(v));
 
 /**
  * Set VisualElement's MotionValue, creating a new MotionValue for it if
@@ -8622,8 +8691,9 @@ function setTarget(visualElement, definition) {
   }
 }
 function checkTargetForNewValues(visualElement, target, origin) {
+  var _context3;
   var _a, _b;
-  const newValueKeys = Object.keys(target).filter(key => !visualElement.hasValue(key));
+  const newValueKeys = _filterInstanceProperty(_context3 = _Object$keys(target)).call(_context3, key => !visualElement.hasValue(key));
   const numNewValues = newValueKeys.length;
   if (!numNewValues) return;
   for (let i = 0; i < numNewValues; i++) {
@@ -8634,7 +8704,7 @@ function checkTargetForNewValues(visualElement, target, origin) {
      * If the target is a series of keyframes, we can use the first value
      * in the array. If this first value is null, we'll still need to read from the DOM.
      */
-    if (Array.isArray(targetValue)) {
+    if (_Array$isArray(targetValue)) {
       value = targetValue[0];
     }
     /**
@@ -8652,7 +8722,7 @@ function checkTargetForNewValues(visualElement, target, origin) {
     if (value === undefined || value === null) continue;
     if (typeof value === "string" && (isNumericalString(value) || isZeroValueString(value))) {
       // If this is a number read as a string, ie "0" or "200", convert it to a number
-      value = parseFloat(value);
+      value = _parseFloat(value);
     } else if (!findValueType(value) && complex.test(targetValue)) {
       value = getAnimatableNone(key, targetValue);
     }
@@ -8746,7 +8816,7 @@ function animateTarget(visualElement, definition, {
     animations.push(animation);
   }
   if (transitionEnd) {
-    Promise.all(animations).then(() => {
+    _Promise.all(animations).then(() => {
       transitionEnd && setTarget(visualElement, transitionEnd);
     });
   }
@@ -8765,7 +8835,7 @@ function animateVariant(visualElement, variant, options = {}) {
    * If we have a variant, create a callback that runs it as an animation.
    * Otherwise, we resolve a Promise immediately for a composable no-op.
    */
-  const getAnimation = resolved ? () => Promise.all(animateTarget(visualElement, resolved, options)) : () => Promise.resolve();
+  const getAnimation = resolved ? () => _Promise.all(animateTarget(visualElement, resolved, options)) : () => _Promise.resolve();
   /**
    * If we have children, create a callback that runs all their animations.
    * Otherwise, we resolve a Promise immediately for a composable no-op.
@@ -8777,7 +8847,7 @@ function animateVariant(visualElement, variant, options = {}) {
       staggerDirection
     } = transition;
     return animateChildren(visualElement, variant, delayChildren + forwardDelay, staggerChildren, staggerDirection, options);
-  } : () => Promise.resolve();
+  } : () => _Promise.resolve();
   /**
    * If the transition explicitly defines a "when" option, we need to resolve either
    * this animation or all children animations before playing the other.
@@ -8789,21 +8859,22 @@ function animateVariant(visualElement, variant, options = {}) {
     const [first, last] = when === "beforeChildren" ? [getAnimation, getChildAnimations] : [getChildAnimations, getAnimation];
     return first().then(() => last());
   } else {
-    return Promise.all([getAnimation(), getChildAnimations(options.delay)]);
+    return _Promise.all([getAnimation(), getChildAnimations(options.delay)]);
   }
 }
 function animateChildren(visualElement, variant, delayChildren = 0, staggerChildren = 0, staggerDirection = 1, options) {
+  var _context, _context2;
   const animations = [];
   const maxStaggerDuration = (visualElement.variantChildren.size - 1) * staggerChildren;
   const generateStaggerDuration = staggerDirection === 1 ? (i = 0) => i * staggerChildren : (i = 0) => maxStaggerDuration - i * staggerChildren;
-  Array.from(visualElement.variantChildren).sort(sortByTreeOrder).forEach((child, i) => {
+  _forEachInstanceProperty(_context = _sortInstanceProperty(_context2 = _Array$from(visualElement.variantChildren)).call(_context2, sortByTreeOrder)).call(_context, (child, i) => {
     child.notify("AnimationStart", variant);
     animations.push(animateVariant(child, variant, {
       ...options,
       delay: delayChildren + generateStaggerDuration(i)
     }).then(() => child.notify("AnimationComplete", variant)));
   });
-  return Promise.all(animations);
+  return _Promise.all(animations);
 }
 function sortByTreeOrder(a, b) {
   return a.sortNodePosition(b);
@@ -8812,22 +8883,23 @@ function sortByTreeOrder(a, b) {
 function animateVisualElement(visualElement, definition, options = {}) {
   visualElement.notify("AnimationStart", definition);
   let animation;
-  if (Array.isArray(definition)) {
-    const animations = definition.map(variant => animateVariant(visualElement, variant, options));
-    animation = Promise.all(animations);
+  if (_Array$isArray(definition)) {
+    const animations = _mapInstanceProperty(definition).call(definition, variant => animateVariant(visualElement, variant, options));
+    animation = _Promise.all(animations);
   } else if (typeof definition === "string") {
     animation = animateVariant(visualElement, definition, options);
   } else {
     const resolvedDefinition = typeof definition === "function" ? resolveVariant(visualElement, definition, options.custom) : definition;
-    animation = Promise.all(animateTarget(visualElement, resolvedDefinition, options));
+    animation = _Promise.all(animateTarget(visualElement, resolvedDefinition, options));
   }
   return animation.then(() => visualElement.notify("AnimationComplete", definition));
 }
 
-const reversePriorityOrder = [...variantPriorityOrder].reverse();
+var _context;
+const reversePriorityOrder = _reverseInstanceProperty(_context = [...variantPriorityOrder]).call(_context);
 const numAnimationTypes = variantPriorityOrder.length;
 function animateList(visualElement) {
-  return animations => Promise.all(animations.map(({
+  return animations => _Promise.all(_mapInstanceProperty(animations).call(animations, ({
     animation,
     options
   }) => animateVisualElement(visualElement, animation, options)));
@@ -8885,7 +8957,7 @@ function createAnimationState(visualElement) {
      * Keep track of which values have been removed. Then, as we hit lower priority
      * animation types, we can check if they contain removed values and animate to that.
      */
-    const removedKeys = new Set();
+    const removedKeys = new _Set();
     /**
      * A dictionary of all encountered keys. This is an object to let us build into and
      * copy it without iteration. Each time we hit an animation type we set its protected
@@ -8959,12 +9031,12 @@ function createAnimationState(visualElement) {
        * As animations can be set as variant lists, variants or target objects, we
        * coerce everything to an array if it isn't one already
        */
-      const definitionList = Array.isArray(prop) ? prop : [prop];
+      const definitionList = _Array$isArray(prop) ? prop : [prop];
       /**
        * Build an object of all the resolved values. We'll use this in the subsequent
        * animateChanges calls to determine whether a value has changed.
        */
-      let resolvedValues = definitionList.reduce(buildResolvedTypeValues, {});
+      let resolvedValues = _reduceInstanceProperty(definitionList).call(definitionList, buildResolvedTypeValues, {});
       if (activeDelta === false) resolvedValues = {};
       /**
        * Now we need to loop through all the keys in the prev prop and this prop,
@@ -9055,7 +9127,7 @@ function createAnimationState(visualElement) {
        * by removed values?
        */
       if (shouldAnimateType && !isInherited) {
-        animations.push(...definitionList.map(animation => ({
+        animations.push(..._mapInstanceProperty(definitionList).call(definitionList, animation => ({
           animation: animation,
           options: {
             type,
@@ -9071,7 +9143,7 @@ function createAnimationState(visualElement) {
      */
     if (removedKeys.size) {
       const fallbackAnimation = {};
-      removedKeys.forEach(key => {
+      _forEachInstanceProperty(removedKeys).call(removedKeys, key => {
         const fallbackTarget = visualElement.getBaseTarget(key);
         if (fallbackTarget !== undefined) {
           fallbackAnimation[key] = fallbackTarget;
@@ -9086,7 +9158,7 @@ function createAnimationState(visualElement) {
       shouldAnimate = false;
     }
     isInitialRender = false;
-    return shouldAnimate ? animate(animations) : Promise.resolve();
+    return shouldAnimate ? animate(animations) : _Promise.resolve();
   }
   /**
    * Change whether a certain animation type is active.
@@ -9094,9 +9166,9 @@ function createAnimationState(visualElement) {
   function setActive(type, isActive, options) {
     var _a;
     // If the active state hasn't changed, we can safely do nothing here
-    if (state[type].isActive === isActive) return Promise.resolve();
+    if (state[type].isActive === isActive) return _Promise.resolve();
     // Propagate active change to children
-    (_a = visualElement.variantChildren) === null || _a === void 0 ? void 0 : _a.forEach(child => {
+    (_a = visualElement.variantChildren) === null || _a === void 0 ? void 0 : _forEachInstanceProperty(_a).call(_a, child => {
       var _a;
       return (_a = child.animationState) === null || _a === void 0 ? void 0 : _a.setActive(type, isActive);
     });
@@ -9117,7 +9189,7 @@ function createAnimationState(visualElement) {
 function checkVariantsDidChange(prev, next) {
   if (typeof next === "string") {
     return next !== prev;
-  } else if (Array.isArray(next)) {
+  } else if (_Array$isArray(next)) {
     return !shallowCompare(next, prev);
   }
   return false;
@@ -9748,7 +9820,7 @@ function applyTreeDeltas(box, treeScale, treePath, isSharedTransition = false) {
   treeScale.y = snapToDefault(treeScale.y);
 }
 function snapToDefault(scale) {
-  if (Number.isInteger(scale)) return scale;
+  if (_Number$isInteger(scale)) return scale;
   return scale > 1.0000000000001 || scale < 0.999999999999 ? scale : 1;
 }
 function translateAxis(axis, distance) {
@@ -9794,7 +9866,7 @@ function measurePageBox(element, rootProjectionNode, transformPagePoint) {
   return viewportBox;
 }
 
-const elementDragControls = new WeakMap();
+const elementDragControls = new _WeakMap();
 /**
  *
  */
@@ -9876,7 +9948,7 @@ class VisualElementDragControls {
             const measuredAxis = projection.layout.layoutBox[axis];
             if (measuredAxis) {
               const length = calcLength(measuredAxis);
-              current = length * (parseFloat(current) / 100);
+              current = length * (_parseFloat(current) / 100);
             }
           }
         }
@@ -10093,7 +10165,7 @@ class VisualElementDragControls {
       return this.startAxisValueAnimation(axis, inertia);
     });
     // Run all animations and then resolve the new drag constraints.
-    return Promise.all(momentumAnimations).then(onDragTransitionEnd);
+    return _Promise.all(momentumAnimations).then(onDragTransitionEnd);
   }
   startAxisValueAnimation(axis, transition) {
     const axisValue = this.getAxisMotionValue(axis);
@@ -10448,7 +10520,7 @@ const correctBorderRadius = {
      */
     if (typeof latest === "string") {
       if (px.test(latest)) {
-        latest = parseFloat(latest);
+        latest = _parseFloat(latest);
       } else {
         return latest;
       }
@@ -10574,7 +10646,7 @@ class MeasureLayoutWithContext extends React$1.Component {
     } = this.props.visualElement;
     if (projection) {
       projection.root.didUpdate();
-      queueMicrotask(() => {
+      _queueMicrotask(() => {
         if (!projection.currentAnimation && projection.isLead()) {
           this.safeToRemove();
         }
@@ -10631,7 +10703,7 @@ const defaultScaleCorrectors = {
 
 const borders = ["TopLeft", "TopRight", "BottomLeft", "BottomRight"];
 const numBorders = borders.length;
-const asNumber = value => typeof value === "string" ? parseFloat(value) : value;
+const asNumber = value => typeof value === "string" ? _parseFloat(value) : value;
 const isPx = value => typeof value === "number" || px.test(value);
 function mixValues(target, follow, lead, progress, shouldCrossfadeOpacity, isOnlyMember) {
   if (shouldCrossfadeOpacity) {
@@ -10741,7 +10813,7 @@ function removePointDelta(point, translate, scale, originPoint, boxScale) {
  */
 function removeAxisDelta(axis, translate = 0, scale = 1, origin = 0.5, boxScale, originAxis = axis, sourceAxis = axis) {
   if (percent.test(translate)) {
-    translate = parseFloat(translate);
+    translate = _parseFloat(translate);
     const relativeProgress = mix(sourceAxis.min, sourceAxis.max, translate / 100);
     translate = relativeProgress - sourceAxis.min;
   }
@@ -10806,7 +10878,8 @@ class NodeStack {
     }
   }
   relegate(node) {
-    const indexOfNode = this.members.findIndex(member => node === member);
+    var _context;
+    const indexOfNode = _findIndexInstanceProperty(_context = this.members).call(_context, member => node === member);
     if (indexOfNode === 0) return false;
     /**
      * Find the next projection node that is present
@@ -10868,7 +10941,8 @@ class NodeStack {
   }
 
   exitAnimationComplete() {
-    this.members.forEach(node => {
+    var _context2;
+    _forEachInstanceProperty(_context2 = this.members).call(_context2, node => {
       const {
         options,
         resumingFrom
@@ -10880,7 +10954,8 @@ class NodeStack {
     });
   }
   scheduleRender() {
-    this.members.forEach(node => {
+    var _context3;
+    _forEachInstanceProperty(_context3 = this.members).call(_context3, node => {
       node.instance && node.scheduleRender(false);
     });
   }
@@ -10953,9 +11028,10 @@ class FlatTree {
     this.isDirty = true;
   }
   forEach(callback) {
-    this.isDirty && this.children.sort(compareByDepth);
+    var _context, _context2;
+    this.isDirty && _sortInstanceProperty(_context = this.children).call(_context, compareByDepth);
     this.isDirty = false;
-    this.children.forEach(callback);
+    _forEachInstanceProperty(_context2 = this.children).call(_context2, callback);
   }
 }
 
@@ -11033,7 +11109,7 @@ function createProjectionNode({
        *
        * TODO: This could be faster to iterate as a flat array stored on the root node.
        */
-      this.children = new Set();
+      this.children = new _Set();
       /**
        * Options for the node. We use this to configure what kind of layout animations
        * we should perform (if any).
@@ -11106,7 +11182,7 @@ function createProjectionNode({
       /**
        *
        */
-      this.eventHandlers = new Map();
+      this.eventHandlers = new _Map();
       this.hasTreeAnimated = false;
       // Note: Currently only running on root node
       this.updateScheduled = false;
@@ -11122,15 +11198,16 @@ function createProjectionNode({
        * the next step.
        */
       this.updateProjection = () => {
+        var _context, _context2, _context3, _context4;
         /**
          * Reset debug counts. Manually resetting rather than creating a new
          * object each frame.
          */
         projectionFrameData.totalNodes = projectionFrameData.resolvedTargetDeltas = projectionFrameData.recalculatedProjection = 0;
-        this.nodes.forEach(propagateDirtyNodes);
-        this.nodes.forEach(resolveTargetDelta);
-        this.nodes.forEach(calcProjection);
-        this.nodes.forEach(cleanDirtyNodes);
+        _forEachInstanceProperty(_context = this.nodes).call(_context, propagateDirtyNodes);
+        _forEachInstanceProperty(_context2 = this.nodes).call(_context2, resolveTargetDelta);
+        _forEachInstanceProperty(_context3 = this.nodes).call(_context3, calcProjection);
+        _forEachInstanceProperty(_context4 = this.nodes).call(_context4, cleanDirtyNodes);
         record(projectionFrameData);
       };
       this.hasProjected = false;
@@ -11140,7 +11217,7 @@ function createProjectionNode({
        * Shared layout
        */
       // TODO Only running on root node
-      this.sharedNodes = new Map();
+      this.sharedNodes = new _Map();
       this.latestValues = latestValues;
       this.root = parent ? parent.root || parent : this;
       this.path = parent ? [...parent.path, parent] : [];
@@ -11192,8 +11269,9 @@ function createProjectionNode({
           cancelDelay && cancelDelay();
           cancelDelay = delay(resizeUnblockUpdate, 250);
           if (globalProjectionState.hasAnimatedSinceResize) {
+            var _context5;
             globalProjectionState.hasAnimatedSinceResize = false;
-            this.nodes.forEach(finishAnimation);
+            _forEachInstanceProperty(_context5 = this.nodes).call(_context5, finishAnimation);
           }
         });
       }
@@ -11287,9 +11365,10 @@ function createProjectionNode({
     }
     // Note: currently only running on root node
     startUpdate() {
+      var _context6;
       if (this.isUpdateBlocked()) return;
       this.isUpdating = true;
-      this.nodes && this.nodes.forEach(resetRotation);
+      this.nodes && _forEachInstanceProperty(_context6 = this.nodes).call(_context6, resetRotation);
       this.animationId++;
     }
     getTransformTemplate() {
@@ -11326,35 +11405,38 @@ function createProjectionNode({
       shouldNotifyListeners && this.notifyListeners("willUpdate");
     }
     update() {
+      var _context9, _context10, _context11;
       this.updateScheduled = false;
       const updateWasBlocked = this.isUpdateBlocked();
       // When doing an instant transition, we skip the layout update,
       // but should still clean up the measurements so that the next
       // snapshot could be taken correctly.
       if (updateWasBlocked) {
+        var _context7;
         this.unblockUpdate();
         this.clearAllSnapshots();
-        this.nodes.forEach(clearMeasurements);
+        _forEachInstanceProperty(_context7 = this.nodes).call(_context7, clearMeasurements);
         return;
       }
       if (!this.isUpdating) {
-        this.nodes.forEach(clearIsLayoutDirty);
+        var _context8;
+        _forEachInstanceProperty(_context8 = this.nodes).call(_context8, clearIsLayoutDirty);
       }
       this.isUpdating = false;
       /**
        * Write
        */
-      this.nodes.forEach(resetTransformStyle);
+      _forEachInstanceProperty(_context9 = this.nodes).call(_context9, resetTransformStyle);
       /**
        * Read ==================
        */
       // Update layout measurements of updated children
-      this.nodes.forEach(updateLayout);
+      _forEachInstanceProperty(_context10 = this.nodes).call(_context10, updateLayout);
       /**
        * Write
        */
       // Notify listeners that the layout is updated
-      this.nodes.forEach(notifyLayoutUpdate);
+      _forEachInstanceProperty(_context11 = this.nodes).call(_context11, notifyLayoutUpdate);
       this.clearAllSnapshots();
       /**
        * Manually flush any pending updates. Ideally
@@ -11373,12 +11455,13 @@ function createProjectionNode({
     didUpdate() {
       if (!this.updateScheduled) {
         this.updateScheduled = true;
-        queueMicrotask(() => this.update());
+        _queueMicrotask(() => this.update());
       }
     }
     clearAllSnapshots() {
-      this.nodes.forEach(clearSnapshot);
-      this.sharedNodes.forEach(removeLeadSnapshots);
+      var _context12, _context13;
+      _forEachInstanceProperty(_context12 = this.nodes).call(_context12, clearSnapshot);
+      _forEachInstanceProperty(_context13 = this.sharedNodes).call(_context13, removeLeadSnapshots);
     }
     scheduleUpdateProjection() {
       frame.preRender(this.updateProjection, false, true);
@@ -11848,6 +11931,7 @@ function createProjectionNode({
       }
     }
     setAnimationOrigin(delta, hasOnlyRelativeTargetChanged = false) {
+      var _context14;
       const snapshot = this.snapshot;
       const snapshotLatestValues = snapshot ? snapshot.latestValues : {};
       const mixedValues = {
@@ -11864,7 +11948,7 @@ function createProjectionNode({
       const isSharedLayoutAnimation = snapshotSource !== layoutSource;
       const stack = this.getStack();
       const isOnlyMember = !stack || stack.members.length <= 1;
-      const shouldCrossfadeOpacity = Boolean(isSharedLayoutAnimation && !isOnlyMember && this.options.crossfade === true && !this.path.some(hasOpacityCrossfade));
+      const shouldCrossfadeOpacity = Boolean(isSharedLayoutAnimation && !isOnlyMember && this.options.crossfade === true && !_someInstanceProperty(_context14 = this.path).call(_context14, hasOpacityCrossfade));
       this.animationProgress = 0;
       let prevRelativeTarget;
       this.mixTargetDelta = latest => {
@@ -12180,11 +12264,12 @@ function createProjectionNode({
     }
     // Only run on root
     resetTree() {
-      this.root.nodes.forEach(node => {
+      var _context15, _context16;
+      _forEachInstanceProperty(_context15 = this.root.nodes).call(_context15, node => {
         var _a;
         return (_a = node.currentAnimation) === null || _a === void 0 ? void 0 : _a.stop();
       });
-      this.root.nodes.forEach(clearMeasurements);
+      _forEachInstanceProperty(_context16 = this.root.nodes).call(_context16, clearMeasurements);
       this.root.sharedNodes.clear();
     }
   };
@@ -12449,7 +12534,7 @@ function getVariableValue(current, element, depth = 1) {
   // Attempt to read this CSS variable off the element
   const resolved = window.getComputedStyle(element).getPropertyValue(token);
   if (resolved) {
-    return resolved.trim();
+    return _trimInstanceProperty(resolved).call(resolved);
   } else if (isCSSVariableToken(fallback)) {
     // The fallback might itself be a CSS variable, in which case we attempt to resolve it too.
     return getVariableValue(fallback, element, depth + 1);
@@ -12465,6 +12550,7 @@ function getVariableValue(current, element, depth = 1) {
 function resolveCSSVariables(visualElement, {
   ...target
 }, transitionEnd) {
+  var _context;
   const element = visualElement.current;
   if (!(element instanceof Element)) return {
     target,
@@ -12478,7 +12564,7 @@ function resolveCSSVariables(visualElement, {
     };
   }
   // Go through existing `MotionValue`s and ensure any existing CSS variables are resolved
-  visualElement.values.forEach(value => {
+  _forEachInstanceProperty(_context = _valuesInstanceProperty(visualElement)).call(_context, value => {
     const current = value.get();
     if (!isCSSVariableToken(current)) return;
     const resolved = getVariableValue(current, element);
@@ -12507,13 +12593,14 @@ function resolveCSSVariables(visualElement, {
   };
 }
 
-const positionalKeys = new Set(["width", "height", "top", "left", "right", "bottom", "x", "y", "translateX", "translateY"]);
+const positionalKeys = new _Set(["width", "height", "top", "left", "right", "bottom", "x", "y", "translateX", "translateY"]);
 const isPositionalKey = key => positionalKeys.has(key);
 const hasPositionalKey = target => {
-  return Object.keys(target).some(isPositionalKey);
+  var _context;
+  return _someInstanceProperty(_context = _Object$keys(target)).call(_context, isPositionalKey);
 };
 const isNumOrPxType = v => v === number || v === px;
-const getPosFromMatrix = (matrix, pos) => parseFloat(matrix.split(", ")[pos]);
+const getPosFromMatrix = (matrix, pos) => _parseFloat(matrix.split(", ")[pos]);
 const getTranslateFromMatrix = (pos2, pos3) => (_bbox, {
   transform
 }) => {
@@ -12530,15 +12617,15 @@ const getTranslateFromMatrix = (pos2, pos3) => (_bbox, {
     }
   }
 };
-const transformKeys = new Set(["x", "y", "z"]);
-const nonTranslationalTransformKeys = transformPropOrder.filter(key => !transformKeys.has(key));
+const transformKeys = new _Set(["x", "y", "z"]);
+const nonTranslationalTransformKeys = _filterInstanceProperty(transformPropOrder).call(transformPropOrder, key => !transformKeys.has(key));
 function removeNonTranslationalTransform(visualElement) {
   const removedTransforms = [];
-  nonTranslationalTransformKeys.forEach(key => {
+  _forEachInstanceProperty(nonTranslationalTransformKeys).call(nonTranslationalTransformKeys, key => {
     const value = visualElement.getValue(key);
     if (value !== undefined) {
       removedTransforms.push([key, value.get()]);
-      value.set(key.startsWith("scale") ? 1 : 0);
+      value.set(_startsWithInstanceProperty(key).call(key, "scale") ? 1 : 0);
     }
   });
   // Apply changes to element before measurement
@@ -12552,29 +12639,29 @@ const positionalValues = {
   }, {
     paddingLeft = "0",
     paddingRight = "0"
-  }) => x.max - x.min - parseFloat(paddingLeft) - parseFloat(paddingRight),
+  }) => x.max - x.min - _parseFloat(paddingLeft) - _parseFloat(paddingRight),
   height: ({
     y
   }, {
     paddingTop = "0",
     paddingBottom = "0"
-  }) => y.max - y.min - parseFloat(paddingTop) - parseFloat(paddingBottom),
+  }) => y.max - y.min - _parseFloat(paddingTop) - _parseFloat(paddingBottom),
   top: (_bbox, {
     top
-  }) => parseFloat(top),
+  }) => _parseFloat(top),
   left: (_bbox, {
     left
-  }) => parseFloat(left),
+  }) => _parseFloat(left),
   bottom: ({
     y
   }, {
     top
-  }) => parseFloat(top) + (y.max - y.min),
+  }) => _parseFloat(top) + (y.max - y.min),
   right: ({
     x
   }, {
     left
-  }) => parseFloat(left) + (x.max - x.min),
+  }) => _parseFloat(left) + (x.max - x.min),
   // Transform
   x: getTranslateFromMatrix(4, 13),
   y: getTranslateFromMatrix(5, 14)
@@ -12595,13 +12682,13 @@ const convertChangedValueTypes = (target, visualElement, changedKeys) => {
   /**
    * Record origins before we render and update styles
    */
-  changedKeys.forEach(key => {
+  _forEachInstanceProperty(changedKeys).call(changedKeys, key => {
     origin[key] = positionalValues[key](originBbox, elementComputedStyle);
   });
   // Apply the latest values (as set in checkAndConvertChangedValueTypes)
   visualElement.render();
   const targetBbox = visualElement.measureViewportBox();
-  changedKeys.forEach(key => {
+  _forEachInstanceProperty(changedKeys).call(changedKeys, key => {
     // Restore styles to their **calculated computed style**, not their actual
     // originally set style. This allows us to animate between equivalent pixel units.
     const value = visualElement.getValue(key);
@@ -12611,19 +12698,20 @@ const convertChangedValueTypes = (target, visualElement, changedKeys) => {
   return target;
 };
 const checkAndConvertChangedValueTypes = (visualElement, target, origin = {}, transitionEnd = {}) => {
+  var _context2;
   target = {
     ...target
   };
   transitionEnd = {
     ...transitionEnd
   };
-  const targetPositionalKeys = Object.keys(target).filter(isPositionalKey);
+  const targetPositionalKeys = _filterInstanceProperty(_context2 = _Object$keys(target)).call(_context2, isPositionalKey);
   // We want to remove any transform values that could affect the element's bounding box before
   // it's measured. We'll reapply these later.
   let removedTransformValues = [];
   let hasAttemptedToRemoveTransformValues = false;
   const changedValueTypeKeys = [];
-  targetPositionalKeys.forEach(key => {
+  _forEachInstanceProperty(targetPositionalKeys).call(targetPositionalKeys, key => {
     const value = visualElement.getValue(key);
     if (!visualElement.hasValue(key)) return;
     let from = origin[key];
@@ -12661,12 +12749,12 @@ const checkAndConvertChangedValueTypes = (visualElement, target, origin = {}, tr
       if (isNumOrPxType(fromType) && isNumOrPxType(toType)) {
         const current = value.get();
         if (typeof current === "string") {
-          value.set(parseFloat(current));
+          value.set(_parseFloat(current));
         }
         if (typeof to === "string") {
-          target[key] = parseFloat(to);
-        } else if (Array.isArray(to) && toType === px) {
-          target[key] = to.map(parseFloat);
+          target[key] = _parseFloat(to);
+        } else if (_Array$isArray(to) && toType === px) {
+          target[key] = _mapInstanceProperty(to).call(to, _parseFloat);
         }
       } else if ((fromType === null || fromType === void 0 ? void 0 : fromType.transform) && (toType === null || toType === void 0 ? void 0 : toType.transform) && (from === 0 || to === 0)) {
         // If one or the other value is 0, it's safe to coerce it to the
@@ -12690,11 +12778,11 @@ const checkAndConvertChangedValueTypes = (visualElement, target, origin = {}, tr
     }
   });
   if (changedValueTypeKeys.length) {
-    const scrollY = changedValueTypeKeys.indexOf("height") >= 0 ? window.pageYOffset : null;
+    const scrollY = _indexOfInstanceProperty(changedValueTypeKeys).call(changedValueTypeKeys, "height") >= 0 ? window.pageYOffset : null;
     const convertedTarget = convertChangedValueTypes(target, visualElement, changedValueTypeKeys);
     // If we removed transform values, reapply them before the next render
     if (removedTransformValues.length) {
-      removedTransformValues.forEach(([key, value]) => {
+      _forEachInstanceProperty(removedTransformValues).call(removedTransformValues, ([key, value]) => {
         visualElement.getValue(key).set(value);
       });
     }
@@ -12822,9 +12910,9 @@ function updateMotionValuesFromProps(element, next, prev) {
   return next;
 }
 
-const visualElementStore = new WeakMap();
+const visualElementStore = new _WeakMap();
 
-const featureNames = Object.keys(featureDefinitions);
+const featureNames = _Object$keys(featureDefinitions);
 const numFeatures = featureNames.length;
 const propEventHandlers = ["AnimationStart", "AnimationComplete", "Update", "BeforeLayoutMeasure", "LayoutMeasure", "LayoutAnimationStart", "LayoutAnimationComplete"];
 const numVariantProps = variantProps.length;
@@ -12848,7 +12936,7 @@ class VisualElement {
     /**
      * A set containing references to this VisualElement's children.
      */
-    this.children = new Set();
+    this.children = new _Set();
     /**
      * Determine what role this visual element should take in the variant tree.
      */
@@ -12867,7 +12955,7 @@ class VisualElement {
      * values are source of truth for any given animated value. A motion
      * value might be provided externally by the component via props.
      */
-    this.values = new Map();
+    this.values = new _Map();
     /**
      * Cleanup functions for active features (hover/tap/exit etc)
      */
@@ -12876,7 +12964,7 @@ class VisualElement {
      * A map of every subscription that binds the provided or generated
      * motion values onChange listeners to this visual element.
      */
-    this.valueSubscriptions = new Map();
+    this.valueSubscriptions = new _Map();
     /**
      * A reference to the previously-provided motion values as returned
      * from scrapeMotionValuesFromProps. We use the keys in here to determine
@@ -12921,7 +13009,7 @@ class VisualElement {
     this.isControllingVariants = isControllingVariants(props);
     this.isVariantNode = isVariantNode(props);
     if (this.isVariantNode) {
-      this.variantChildren = new Set();
+      this.variantChildren = new _Set();
     }
     this.manuallyAnimateOnMount = Boolean(parent && parent.current);
     /**
@@ -12959,6 +13047,7 @@ class VisualElement {
     return {};
   }
   mount(instance) {
+    var _context;
     this.current = instance;
     visualElementStore.set(instance, this);
     if (this.projection && !this.projection.instance) {
@@ -12967,7 +13056,7 @@ class VisualElement {
     if (this.parent && this.isVariantNode && !this.isControllingVariants) {
       this.removeFromVariantTree = this.parent.addVariantChild(this);
     }
-    this.values.forEach((value, key) => this.bindToMotionValue(key, value));
+    _forEachInstanceProperty(_context = _valuesInstanceProperty(this)).call(_context, (value, key) => this.bindToMotionValue(key, value));
     if (!hasReducedMotionListener.current) {
       initPrefersReducedMotion();
     }
@@ -12979,11 +13068,12 @@ class VisualElement {
     this.update(this.props, this.presenceContext);
   }
   unmount() {
+    var _context2;
     visualElementStore.delete(this.current);
     this.projection && this.projection.unmount();
     cancelFrame(this.notifyUpdate);
     cancelFrame(this.render);
-    this.valueSubscriptions.forEach(remove => remove());
+    _forEachInstanceProperty(_context2 = this.valueSubscriptions).call(_context2, remove => remove());
     this.removeFromVariantTree && this.removeFromVariantTree();
     this.parent && this.parent.children.delete(this);
     for (const key in this.events) {
@@ -13207,18 +13297,18 @@ class VisualElement {
    */
   addValue(key, value) {
     // Remove existing value if it exists
-    if (value !== this.values.get(key)) {
+    if (value !== _valuesInstanceProperty(this).get(key)) {
       this.removeValue(key);
       this.bindToMotionValue(key, value);
     }
-    this.values.set(key, value);
+    _valuesInstanceProperty(this).set(key, value);
     this.latestValues[key] = value.get();
   }
   /**
    * Remove a motion value and unbind any active subscriptions.
    */
   removeValue(key) {
-    this.values.delete(key);
+    _valuesInstanceProperty(this).delete(key);
     const unsubscribe = this.valueSubscriptions.get(key);
     if (unsubscribe) {
       unsubscribe();
@@ -13231,13 +13321,13 @@ class VisualElement {
    * Check whether we have a motion value for this key
    */
   hasValue(key) {
-    return this.values.has(key);
+    return _valuesInstanceProperty(this).has(key);
   }
   getValue(key, defaultValue) {
-    if (this.props.values && this.props.values[key]) {
-      return this.props.values[key];
+    if (_valuesInstanceProperty(this.props) && _valuesInstanceProperty(this.props)[key]) {
+      return _valuesInstanceProperty(this.props)[key];
     }
-    let value = this.values.get(key);
+    let value = _valuesInstanceProperty(this).get(key);
     if (value === undefined && defaultValue !== undefined) {
       value = motionValue(defaultValue, {
         owner: this
@@ -13362,7 +13452,7 @@ class HTMLVisualElement extends DOMVisualElement {
     } else {
       const computedStyle = getComputedStyle$1(instance);
       const value = (isCSSVariableName(key) ? computedStyle.getPropertyValue(key) : computedStyle[key]) || 0;
-      return typeof value === "string" ? value.trim() : value;
+      return typeof value === "string" ? _trimInstanceProperty(value).call(value) : value;
     }
   }
   measureInstanceViewportBox(instance, {
@@ -13631,7 +13721,7 @@ const Wrap$a = styled.div`
 const IconWrap = styled.div`
     width:1.5rem;
     margin-right:.5rem;
-    color: ${props => props.fill};
+    color: ${props => _fillInstanceProperty(props)};
 `;
 const IconBoxes = ({
   fill,
@@ -13667,7 +13757,7 @@ const Wrap$9 = styled.div`
 
         ${({
   columnArray
-}) => columnArray !== null ? columnArray.map((columnString, indx) => "> *:nth-child(" + (indx + 1) + ") { width:" + columnString + "; }") : null}
+}) => columnArray !== null ? _mapInstanceProperty(columnArray).call(columnArray, (columnString, indx) => "> *:nth-child(" + (indx + 1) + ") { width:" + columnString + "; }") : null}
 
         
 
@@ -13866,15 +13956,18 @@ const TabWrap = ({
   function switchContent(evnt) {
     const target = evnt.target.closest('a[id]');
     if (target) {
-      const getSiblings = n => [...n.parentElement.children].filter(c => c != n);
+      const getSiblings = n => {
+        var _context;
+        return _filterInstanceProperty(_context = [...n.parentElement.children]).call(_context, c => c != n);
+      };
       const targetSiblings = getSiblings(target);
-      targetSiblings.forEach(sibling => sibling.classList.remove('active'));
+      _forEachInstanceProperty(targetSiblings).call(targetSiblings, sibling => sibling.classList.remove('active'));
       target.classList.add('active');
       const matches = evnt.target.closest('.tabbed-content').querySelectorAll('div#' + target.id);
       if (matches && matches[0]) {
         const content = matches[0];
         const contentSiblings = getSiblings(content);
-        contentSiblings.forEach(sibling => sibling.classList.remove('active'));
+        _forEachInstanceProperty(contentSiblings).call(contentSiblings, sibling => sibling.classList.remove('active'));
         content.classList.add('active');
       }
     }
