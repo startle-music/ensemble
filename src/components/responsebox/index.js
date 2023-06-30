@@ -12,7 +12,7 @@ const ResponseBoxText = styled.div`
     padding: 15px 30px 15px 15px;
     margin-bottom: 30px;
     font-size: 1rem;
-    color: ${props => darken(0.25, props.borderColor)};
+    color: ${props => props.borderColor};
     border-radius: 0.45em;
     width: 100%;
     background-color: ${props => props.backgroundColor};
@@ -23,7 +23,7 @@ const ResponseBoxText = styled.div`
 
 const TextWrap = styled.p`
     font-size: 0.9em;
-    color: ${props => darken(0.25, props.color)};
+    color: ${props => props.color};
     text-align: left;
     flex-grow: 1;
 `;
