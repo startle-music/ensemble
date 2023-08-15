@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import TextPairs from '../textpairs';
-import theme from '../../../style/theme';
 
 const Wrap = styled.div`
     display:flex;
     width:100%;
-    font-family: ${theme.main.font};
+    font-family: ${(props) => props.theme && props.theme.main.font ? props.theme.main.font : 'inherit'};
     align-items:center;
 `;
 const IconWrap = styled.div`

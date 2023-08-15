@@ -5,7 +5,6 @@ var $3d0s0$babelruntimecorejs3corejsstableobjectgetownpropertydescriptor = requi
 var $3d0s0$babelruntimecorejs3helpersinteropRequireDefault = require("@babel/runtime-corejs3/helpers/interopRequireDefault");
 var $3d0s0$react = require("react");
 var $3d0s0$styledcomponents = require("styled-components");
-var $3d0s0$babelruntimecorejs3corejsstableinstancestartswith = require("@babel/runtime-corejs3/core-js-stable/instance/starts-with");
 var $3d0s0$polished = require("polished");
 var $3d0s0$babelruntimecorejs3corejsstableinstancebind = require("@babel/runtime-corejs3/core-js-stable/instance/bind");
 var $3d0s0$babelruntimecorejs3corejsstableinstancefilter = require("@babel/runtime-corejs3/core-js-stable/instance/filter");
@@ -153,8 +152,6 @@ $3d0s0$babelruntimecorejs3corejsstableobjectdefineproperty(module.exports, "__es
 });
 module.exports.default = void 0;
 
-var $6daa5954f031661d$var$_startsWith = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault($3d0s0$babelruntimecorejs3corejsstableinstancestartswith);
-
 var $6daa5954f031661d$var$_react = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault($3d0s0$react);
 
 var $6daa5954f031661d$var$_styledComponents = $6daa5954f031661d$var$_interopRequireWildcard($3d0s0$styledcomponents);
@@ -186,7 +183,7 @@ function $6daa5954f031661d$var$_interopRequireWildcard(obj, nodeInterop) {
     return newObj;
 }
 const $6daa5954f031661d$var$btnBase = (0, $6daa5954f031661d$var$_styledComponents.css)`
-    font-family: ${theme.main.font};
+    font-family: ${({ font: font  })=>font ? font : "inherit"};
     padding: ${({ small: small  })=>small === true ? `0.6rem 0.9rem` : `0.7rem 1rem`};
     font-size: ${({ small: small  })=>small === true ? `0.785rem` : `1rem`};
     text-decoration: none;
@@ -211,14 +208,14 @@ const $6daa5954f031661d$var$btnBase = (0, $6daa5954f031661d$var$_styledComponent
     }
 
     &:hover {
-        background: ${(props)=>(0, $3d0s0$polished.lighten)(0.15, props.backgroundColour)};
-        border: 2px solid ${(props)=>(0, $3d0s0$polished.lighten)(0.15, props.borderColour)};
-        color: ${(props)=>(0, $3d0s0$polished.lighten)(0.15, props.buttonColour)};
+        background: ${(props)=>props.backgroundColourHover};
+        border: 2px solid ${(props)=>props.borderColourHover};
+        color: ${(props)=>props.buttonColourHover};
     }
     &:active {
-        background: ${(props)=>(0, $3d0s0$polished.darken)(0.05, props.activeBackgroundColour)};
-        border: 2px solid ${(props)=>(0, $3d0s0$polished.darken)(0.05, props.borderColour)};
-        color: ${(props)=>(0, $3d0s0$polished.darken)(0.05, props.buttonColour)};
+        background: ${(props)=>props.activeBackgroundColourHover};
+        border: 2px solid ${(props)=>props.borderColourHover};
+        color: ${(props)=>props.buttonColourHover};
     }
 
     /* if a button is followed by a button add left margin to the trailing button */
@@ -276,54 +273,11 @@ const $6daa5954f031661d$var$LoadingWrap = $6daa5954f031661d$var$_styledComponent
         opacity: 0;
     }
 `;
-const $6daa5954f031661d$var$calculateColours = (colour, outline)=>{
-    const { mainColors: mainColors , generalColors: generalColors  } = theme;
-    let mainColour = mainColors.simplyRed;
-    let activeMainColour = mainColors.simplyRed;
-    let altColour = generalColors.white;
-    // check main colours for this colour name
-    if (mainColors[colour]) {
-        mainColour = mainColors[colour];
-        activeMainColour = mainColors[colour];
-    }
-    if (colour === "transparent" || (0, $6daa5954f031661d$var$_startsWith.default)(colour).call(colour, "#") || (0, $6daa5954f031661d$var$_startsWith.default)(colour).call(colour, "rgb")) {
-        mainColour = colour;
-        activeMainColour = colour;
-        if (colour === "transparent") activeMainColour = generalColors.white;
-    }
-    switch(mainColour){
-        case "transparent":
-            altColour = mainColors.simplyRed;
-            break;
-        case mainColors.fadeToGrey:
-        case mainColors.mrBlueSky:
-            altColour = generalColors.white;
-            break;
-        case "default":
-            mainColour = mainColors.simplyRed;
-            altColour = generalColors.white;
-            break;
-    }
-    const colourObject = {
-        buttonColour: altColour,
-        backgroundColour: mainColour,
-        activeBackgroundColour: activeMainColour,
-        borderColour: mainColour
-    };
-    if (outline === true) {
-        colourObject.buttonColour = mainColour;
-        colourObject.backgroundColour = altColour;
-        colourObject.activeBackgroundColour = altColour;
-        colourObject.borderColour = mainColour;
-    }
-    return colourObject;
-};
 const $6daa5954f031661d$var$Button = (props)=>{
-    const { children: children , loading: loading = false , message: message = null , colour: colour = "default" , outline: outline = false , to: to = false , href: href = false  } = props;
+    const { children: children , loading: loading = false , message: message = null , font: font = null , buttonColour: buttonColour = "#fff" , backgroundColour: backgroundColour = "#faa" , activeBackgroundColour: activeBackgroundColour = "#fcc" , activeMainColour: activeMainColour = "#fff" , borderColour: borderColour = "#000" , buttonColourHover: buttonColourHover = "#fff" , backgroundColourHover: backgroundColourHover = "#faa" , activeBackgroundColourHover: activeBackgroundColourHover = "#fcc" , activeMainColourHover: activeMainColourHover = "#fff" , borderColourHover: borderColourHover = "#000" , outline: outline = false , to: to = false , href: href = false  } = props;
     let content = children;
     const attributes = {
-        ...props,
-        ...$6daa5954f031661d$var$calculateColours(colour, outline)
+        ...props
     };
     // 
     if (to !== false) return /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsx)($6daa5954f031661d$var$RouteLinkButton, {
@@ -6099,7 +6053,7 @@ function $f1b911a4f975dde2$var$_interopRequireWildcard(obj, nodeInterop) {
 const $f1b911a4f975dde2$var$Wrap = $f1b911a4f975dde2$var$_styledComponents.default.div`
     display:flex;
     width:100%;
-    font-family: ${theme.main.font};
+    font-family: inherit;
     
 `;
 const $f1b911a4f975dde2$var$TextWrap = $f1b911a4f975dde2$var$_styledComponents.default.span`
@@ -6108,7 +6062,7 @@ const $f1b911a4f975dde2$var$TextWrap = $f1b911a4f975dde2$var$_styledComponents.d
 `;
 const $f1b911a4f975dde2$var$LeftText = (0, $f1b911a4f975dde2$var$_styledComponents.default)($f1b911a4f975dde2$var$TextWrap)`
     font-size:18px;
-    color:${({ fill: fill , theme: theme1  })=>fill ? fill : theme1.colors.paintItBlack};
+    color:${({ fill: fill  })=>fill ? fill : "#000000"};
     font-weight:700;
     padding:0 .5rem 0 0;
 `;
@@ -6116,7 +6070,7 @@ const $f1b911a4f975dde2$var$RightText = (0, $f1b911a4f975dde2$var$_styledCompone
     font-size:15px;
     font-weight:500;
     min-width:2rem;
-    color:${({ theme: theme1  })=>theme1.generalColors.darkGrey}
+    color: '#333333';
 `;
 const $f1b911a4f975dde2$var$TextPairs = ({ fill: fill , leftText: leftText = "" , rightText: rightText = "" , Icon: Icon  })=>{
     return /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsxs)($f1b911a4f975dde2$var$Wrap, {
@@ -6155,8 +6109,6 @@ var $0de828bc4ca8adfe$var$_react = $0de828bc4ca8adfe$var$_interopRequireWildcard
 var $0de828bc4ca8adfe$var$_styledComponents = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault($3d0s0$styledcomponents);
 
 var $0de828bc4ca8adfe$var$_textpairs = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("kKGuU")));
-
-var $0de828bc4ca8adfe$var$_theme = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("5hhDw")));
 function $0de828bc4ca8adfe$var$_getRequireWildcardCache(nodeInterop) {
     if (typeof $3d0s0$babelruntimecorejs3corejsstableweakmap !== "function") return null;
     var cacheBabelInterop = new $3d0s0$babelruntimecorejs3corejsstableweakmap();
@@ -6186,7 +6138,7 @@ function $0de828bc4ca8adfe$var$_interopRequireWildcard(obj, nodeInterop) {
 const $0de828bc4ca8adfe$var$Wrap = $0de828bc4ca8adfe$var$_styledComponents.default.div`
     display:flex;
     width:100%;
-    font-family: ${$0de828bc4ca8adfe$var$_theme.default.main.font};
+    font-family: ${(props)=>props.theme && props.theme.main.font ? props.theme.main.font : "inherit"};
     align-items:center;
 `;
 const $0de828bc4ca8adfe$var$IconWrap = $0de828bc4ca8adfe$var$_styledComponents.default.div`
