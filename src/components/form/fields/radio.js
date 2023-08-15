@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Label from '../labels';
-import theme from '../../../style/theme';
 
 const Radio = styled.div`
     flex-direction: row;
@@ -33,7 +32,7 @@ const RadioInput = styled.input`
     align-items: center;
     margin: 0;
     margin-right: 5px;
-    background: ${props => theme.text.input.background};
+    background: ${(props) => props.theme.text.input.background};
 
     &:active,
     &:checked:active {

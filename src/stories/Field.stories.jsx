@@ -22,7 +22,8 @@ Primary.args = {
     name: 'field1',
     label: 'Field Label',
     defaultValue: 'A Default Value',
-    required: true
+    required: true,
+    rounded: false
 };
 
 export const Disabled = Template.bind({});
@@ -105,6 +106,7 @@ PreAppend.args = {
     defaultValue: 'A Default Value',
     required: true,
     status: 'success',
+    rounded: false,
     append: <Icon />,
     prepend: <Icon />
 };

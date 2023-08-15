@@ -1,6 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
-import theme from '../../style/theme';
+import styled, { css } from 'styled-components';
 import { darken, lighten } from 'polished';
 
 
@@ -124,6 +123,7 @@ const calculateColours = (colour, outline) => {
         }
     }
 
+    
     switch(mainColour) {
         case 'transparent':
             altColour = mainColors.simplyRed;
