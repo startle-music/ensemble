@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Label from '../labels';
-import theme from '../../../style/theme';
 
 
 const Checkbox = styled.div`
@@ -33,7 +32,7 @@ const CheckboxInput = styled.input`
     height: 1.5rem;
     align-items: center;
     margin-right: 5px;
-    background: ${props => theme.text.input.background};
+    background: ${(props) => props.theme.text.input.background};
 
     &:active,
     &:checked:active {

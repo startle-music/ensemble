@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import theme from '../../../style/theme';
 
 const Wrap = styled.div`
     display:flex;
     width:100%;
-    font-family: ${theme.main.font};
+    font-family: inherit;
     
 `;
 const TextWrap = styled.span`
@@ -15,7 +14,7 @@ const TextWrap = styled.span`
 
 const LeftText = styled(TextWrap)`
     font-size:18px;
-    color:${({ fill }) => fill ? fill : theme.colors.paintItBlack};
+    color:${({ fill }) => fill ? fill : '#000000'};
     font-weight:700;
     padding:0 .5rem 0 0;
 `
@@ -24,7 +23,7 @@ const RightText = styled(TextWrap)`
     font-size:15px;
     font-weight:500;
     min-width:2rem;
-    color:${()=>theme.generalColors.darkGrey}
+    color: '#333333';
 `
 
 const TextPairs = ({fill,leftText='', rightText='', Icon}) => {

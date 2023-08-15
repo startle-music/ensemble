@@ -5,7 +5,6 @@ var $3d0s0$babelruntimecorejs3corejsstableobjectgetownpropertydescriptor = requi
 var $3d0s0$babelruntimecorejs3helpersinteropRequireDefault = require("@babel/runtime-corejs3/helpers/interopRequireDefault");
 var $3d0s0$react = require("react");
 var $3d0s0$styledcomponents = require("styled-components");
-var $3d0s0$babelruntimecorejs3corejsstableinstancestartswith = require("@babel/runtime-corejs3/core-js-stable/instance/starts-with");
 var $3d0s0$polished = require("polished");
 var $3d0s0$babelruntimecorejs3corejsstableinstancebind = require("@babel/runtime-corejs3/core-js-stable/instance/bind");
 var $3d0s0$babelruntimecorejs3corejsstableinstancefilter = require("@babel/runtime-corejs3/core-js-stable/instance/filter");
@@ -153,13 +152,9 @@ $3d0s0$babelruntimecorejs3corejsstableobjectdefineproperty(module.exports, "__es
 });
 module.exports.default = void 0;
 
-var $6daa5954f031661d$var$_startsWith = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault($3d0s0$babelruntimecorejs3corejsstableinstancestartswith);
-
 var $6daa5954f031661d$var$_react = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault($3d0s0$react);
 
 var $6daa5954f031661d$var$_styledComponents = $6daa5954f031661d$var$_interopRequireWildcard($3d0s0$styledcomponents);
-
-var $6daa5954f031661d$var$_theme = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("5hhDw")));
 
 function $6daa5954f031661d$var$_getRequireWildcardCache(nodeInterop) {
     if (typeof $3d0s0$babelruntimecorejs3corejsstableweakmap !== "function") return null;
@@ -188,7 +183,7 @@ function $6daa5954f031661d$var$_interopRequireWildcard(obj, nodeInterop) {
     return newObj;
 }
 const $6daa5954f031661d$var$btnBase = (0, $6daa5954f031661d$var$_styledComponents.css)`
-    font-family: ${$6daa5954f031661d$var$_theme.default.main.font};
+    font-family: ${({ font: font  })=>font ? font : "inherit"};
     padding: ${({ small: small  })=>small === true ? `0.6rem 0.9rem` : `0.7rem 1rem`};
     font-size: ${({ small: small  })=>small === true ? `0.785rem` : `1rem`};
     text-decoration: none;
@@ -213,14 +208,14 @@ const $6daa5954f031661d$var$btnBase = (0, $6daa5954f031661d$var$_styledComponent
     }
 
     &:hover {
-        background: ${(props)=>(0, $3d0s0$polished.lighten)(0.15, props.backgroundColour)};
-        border: 2px solid ${(props)=>(0, $3d0s0$polished.lighten)(0.15, props.borderColour)};
-        color: ${(props)=>(0, $3d0s0$polished.lighten)(0.15, props.buttonColour)};
+        background: ${(props)=>props.backgroundColourHover};
+        border: 2px solid ${(props)=>props.borderColourHover};
+        color: ${(props)=>props.buttonColourHover};
     }
     &:active {
-        background: ${(props)=>(0, $3d0s0$polished.darken)(0.05, props.activeBackgroundColour)};
-        border: 2px solid ${(props)=>(0, $3d0s0$polished.darken)(0.05, props.borderColour)};
-        color: ${(props)=>(0, $3d0s0$polished.darken)(0.05, props.buttonColour)};
+        background: ${(props)=>props.activeBackgroundColourHover};
+        border: 2px solid ${(props)=>props.borderColourHover};
+        color: ${(props)=>props.buttonColourHover};
     }
 
     /* if a button is followed by a button add left margin to the trailing button */
@@ -278,54 +273,11 @@ const $6daa5954f031661d$var$LoadingWrap = $6daa5954f031661d$var$_styledComponent
         opacity: 0;
     }
 `;
-const $6daa5954f031661d$var$calculateColours = (colour, outline)=>{
-    const { mainColors: mainColors , generalColors: generalColors  } = $6daa5954f031661d$var$_theme.default;
-    let mainColour = mainColors.simplyRed;
-    let activeMainColour = mainColors.simplyRed;
-    let altColour = generalColors.white;
-    // check main colours for this colour name
-    if (mainColors[colour]) {
-        mainColour = mainColors[colour];
-        activeMainColour = mainColors[colour];
-    }
-    if (colour === "transparent" || (0, $6daa5954f031661d$var$_startsWith.default)(colour).call(colour, "#") || (0, $6daa5954f031661d$var$_startsWith.default)(colour).call(colour, "rgb")) {
-        mainColour = colour;
-        activeMainColour = colour;
-        if (colour === "transparent") activeMainColour = generalColors.white;
-    }
-    switch(mainColour){
-        case "transparent":
-            altColour = mainColors.simplyRed;
-            break;
-        case mainColors.fadeToGrey:
-        case mainColors.mrBlueSky:
-            altColour = generalColors.white;
-            break;
-        case "default":
-            mainColour = mainColors.simplyRed;
-            altColour = generalColors.white;
-            break;
-    }
-    const colourObject = {
-        buttonColour: altColour,
-        backgroundColour: mainColour,
-        activeBackgroundColour: activeMainColour,
-        borderColour: mainColour
-    };
-    if (outline === true) {
-        colourObject.buttonColour = mainColour;
-        colourObject.backgroundColour = altColour;
-        colourObject.activeBackgroundColour = altColour;
-        colourObject.borderColour = mainColour;
-    }
-    return colourObject;
-};
 const $6daa5954f031661d$var$Button = (props)=>{
-    const { children: children , loading: loading = false , message: message = null , colour: colour = "default" , outline: outline = false , to: to = false , href: href = false  } = props;
+    const { children: children , loading: loading = false , message: message = null , font: font = null , buttonColour: buttonColour = "#fff" , backgroundColour: backgroundColour = "#faa" , activeBackgroundColour: activeBackgroundColour = "#fcc" , activeMainColour: activeMainColour = "#fff" , borderColour: borderColour = "#000" , buttonColourHover: buttonColourHover = "#fff" , backgroundColourHover: backgroundColourHover = "#faa" , activeBackgroundColourHover: activeBackgroundColourHover = "#fcc" , activeMainColourHover: activeMainColourHover = "#fff" , borderColourHover: borderColourHover = "#000" , outline: outline = false , to: to = false , href: href = false  } = props;
     let content = children;
     const attributes = {
-        ...props,
-        ...$6daa5954f031661d$var$calculateColours(colour, outline)
+        ...props
     };
     // 
     if (to !== false) return /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsx)($6daa5954f031661d$var$RouteLinkButton, {
@@ -343,6 +295,149 @@ const $6daa5954f031661d$var$Button = (props)=>{
 };
 var $6daa5954f031661d$var$_default = $6daa5954f031661d$var$Button;
 module.exports.default = $6daa5954f031661d$var$_default;
+
+});
+
+parcelRequire.register("cBsx1", function(module, exports) {
+
+"use strict";
+
+
+
+
+$3d0s0$babelruntimecorejs3corejsstableobjectdefineproperty(module.exports, "__esModule", {
+    value: true
+});
+module.exports.default = void 0;
+
+var $92cf128381fda62f$var$_react = $92cf128381fda62f$var$_interopRequireWildcard($3d0s0$react);
+
+var $92cf128381fda62f$var$_styledComponents = $92cf128381fda62f$var$_interopRequireWildcard($3d0s0$styledcomponents);
+
+var $92cf128381fda62f$var$_theme = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("5hhDw")));
+
+
+var $92cf128381fda62f$var$_Times = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("fz7Fa")));
+function $92cf128381fda62f$var$_getRequireWildcardCache(nodeInterop) {
+    if (typeof $3d0s0$babelruntimecorejs3corejsstableweakmap !== "function") return null;
+    var cacheBabelInterop = new $3d0s0$babelruntimecorejs3corejsstableweakmap();
+    var cacheNodeInterop = new $3d0s0$babelruntimecorejs3corejsstableweakmap();
+    return ($92cf128381fda62f$var$_getRequireWildcardCache = function(nodeInterop) {
+        return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+    })(nodeInterop);
+}
+function $92cf128381fda62f$var$_interopRequireWildcard(obj, nodeInterop) {
+    if (!nodeInterop && obj && obj.__esModule) return obj;
+    if (obj === null || typeof obj !== "object" && typeof obj !== "function") return {
+        default: obj
+    };
+    var cache = $92cf128381fda62f$var$_getRequireWildcardCache(nodeInterop);
+    if (cache && cache.has(obj)) return cache.get(obj);
+    var newObj = {};
+    var hasPropertyDescriptor = $3d0s0$babelruntimecorejs3corejsstableobjectdefineproperty && $3d0s0$babelruntimecorejs3corejsstableobjectgetownpropertydescriptor;
+    for(var key in obj)if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+        var desc = hasPropertyDescriptor ? $3d0s0$babelruntimecorejs3corejsstableobjectgetownpropertydescriptor(obj, key) : null;
+        if (desc && (desc.get || desc.set)) $3d0s0$babelruntimecorejs3corejsstableobjectdefineproperty(newObj, key, desc);
+        else newObj[key] = obj[key];
+    }
+    newObj.default = obj;
+    if (cache) cache.set(obj, newObj);
+    return newObj;
+}
+const $92cf128381fda62f$var$Wrap = $92cf128381fda62f$var$_styledComponents.default.div`
+    font-family: ${({ theme: theme  })=>theme.main.font};
+    display: inline-flex;
+    border-radius: 10.325em;
+    margin: 0 0.325em 0 0;
+    overflow: hidden;
+    background: ${({ backgroundColor: backgroundColor  })=>backgroundColor};
+    color: ${({ color: color  })=>color};
+    align-items: center;
+
+    input,
+    input:checked {
+        display: none;
+    }
+
+    label {
+        padding: 0.5em 0.75em;
+        color: inherit;
+        cursor: pointer;
+
+        &:focus {
+            background: rgba(0, 0, 0, 0.175);
+        }
+    }
+
+    button {
+        display: inline-block;
+        padding: 1em 0.6em 0.3em 0.5em;
+        width: 1.7em;
+        box-sizing: border-box;
+        background: rgba(40, 40, 40, 0.075);
+        cursor: pointer;
+        border: 0px;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            color: white;
+            fill: white;
+        }
+    }
+`;
+const $92cf128381fda62f$var$renderClose = (onRemove, data)=>{
+    console.log("onRemove", onRemove);
+    if (onRemove === null) return null;
+    const { label: label , name: name , value: value  } = data;
+    return /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsx)("button", {
+        type: "button",
+        onClick: onRemove,
+        label: label,
+        name: name,
+        value: value,
+        children: /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsx)($92cf128381fda62f$var$_Times.default, {})
+    });
+};
+const $92cf128381fda62f$var$defaultOnClick = ()=>null;
+function $92cf128381fda62f$var$calculateTextColour(textColor) {
+    let color = "white";
+    if (textColor !== null) color = textColor;
+    return color;
+}
+const $92cf128381fda62f$var$Chip = ({ label: label , value: value , name: name = null , color: color = "red" , textColor: textColor = null , onClick: onClick = null , onRemove: onRemove = null  })=>{
+    let chipName = name;
+    if (name === null) chipName = `chip-name-${label}`;
+    let onClickFunction = $92cf128381fda62f$var$defaultOnClick;
+    if (onClick !== null) onClickFunction = onClick;
+    const textColour = $92cf128381fda62f$var$calculateTextColour(textColor);
+    return /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsxs)($92cf128381fda62f$var$Wrap, {
+        backgroundColor: color,
+        color: textColour,
+        children: [
+            /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsxs)("label", {
+                htmlFor: chipName,
+                onClick: onClickFunction,
+                children: [
+                    /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsx)("input", {
+                        type: "checkbox",
+                        name: chipName,
+                        value: value,
+                        defaultChecked: true
+                    }),
+                    label
+                ]
+            }),
+            $92cf128381fda62f$var$renderClose(onRemove, {
+                label: label,
+                name: name,
+                value: value
+            })
+        ]
+    });
+};
+var $92cf128381fda62f$var$_default = $92cf128381fda62f$var$Chip;
+module.exports.default = $92cf128381fda62f$var$_default;
 
 });
 parcelRequire.register("5hhDw", function(module, exports) {
@@ -663,149 +758,6 @@ module.exports.default = $3d7c3885ed0373f0$var$_default;
 
 });
 
-
-parcelRequire.register("cBsx1", function(module, exports) {
-
-"use strict";
-
-
-
-
-$3d0s0$babelruntimecorejs3corejsstableobjectdefineproperty(module.exports, "__esModule", {
-    value: true
-});
-module.exports.default = void 0;
-
-var $92cf128381fda62f$var$_react = $92cf128381fda62f$var$_interopRequireWildcard($3d0s0$react);
-
-var $92cf128381fda62f$var$_styledComponents = $92cf128381fda62f$var$_interopRequireWildcard($3d0s0$styledcomponents);
-
-var $92cf128381fda62f$var$_theme = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("5hhDw")));
-
-
-var $92cf128381fda62f$var$_Times = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("fz7Fa")));
-function $92cf128381fda62f$var$_getRequireWildcardCache(nodeInterop) {
-    if (typeof $3d0s0$babelruntimecorejs3corejsstableweakmap !== "function") return null;
-    var cacheBabelInterop = new $3d0s0$babelruntimecorejs3corejsstableweakmap();
-    var cacheNodeInterop = new $3d0s0$babelruntimecorejs3corejsstableweakmap();
-    return ($92cf128381fda62f$var$_getRequireWildcardCache = function(nodeInterop) {
-        return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-    })(nodeInterop);
-}
-function $92cf128381fda62f$var$_interopRequireWildcard(obj, nodeInterop) {
-    if (!nodeInterop && obj && obj.__esModule) return obj;
-    if (obj === null || typeof obj !== "object" && typeof obj !== "function") return {
-        default: obj
-    };
-    var cache = $92cf128381fda62f$var$_getRequireWildcardCache(nodeInterop);
-    if (cache && cache.has(obj)) return cache.get(obj);
-    var newObj = {};
-    var hasPropertyDescriptor = $3d0s0$babelruntimecorejs3corejsstableobjectdefineproperty && $3d0s0$babelruntimecorejs3corejsstableobjectgetownpropertydescriptor;
-    for(var key in obj)if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
-        var desc = hasPropertyDescriptor ? $3d0s0$babelruntimecorejs3corejsstableobjectgetownpropertydescriptor(obj, key) : null;
-        if (desc && (desc.get || desc.set)) $3d0s0$babelruntimecorejs3corejsstableobjectdefineproperty(newObj, key, desc);
-        else newObj[key] = obj[key];
-    }
-    newObj.default = obj;
-    if (cache) cache.set(obj, newObj);
-    return newObj;
-}
-const $92cf128381fda62f$var$Wrap = $92cf128381fda62f$var$_styledComponents.default.div`
-    font-family: ${$92cf128381fda62f$var$_theme.default.main.font};
-    display: inline-flex;
-    border-radius: 10.325em;
-    margin: 0 0.325em 0 0;
-    overflow: hidden;
-    background: ${({ backgroundColor: backgroundColor  })=>backgroundColor};
-    color: ${({ color: color  })=>color};
-    align-items: center;
-
-    input,
-    input:checked {
-        display: none;
-    }
-
-    label {
-        padding: 0.5em 0.75em;
-        color: inherit;
-        cursor: pointer;
-
-        &:focus {
-            background: rgba(0, 0, 0, 0.175);
-        }
-    }
-
-    button {
-        display: inline-block;
-        padding: 1em 0.6em 0.3em 0.5em;
-        width: 1.7em;
-        box-sizing: border-box;
-        background: rgba(40, 40, 40, 0.075);
-        cursor: pointer;
-        border: 0px;
-
-        svg {
-            width: 100%;
-            height: 100%;
-            color: white;
-            fill: white;
-        }
-    }
-`;
-const $92cf128381fda62f$var$renderClose = (onRemove, data)=>{
-    console.log("onRemove", onRemove);
-    if (onRemove === null) return null;
-    const { label: label , name: name , value: value  } = data;
-    return /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsx)("button", {
-        type: "button",
-        onClick: onRemove,
-        label: label,
-        name: name,
-        value: value,
-        children: /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsx)($92cf128381fda62f$var$_Times.default, {})
-    });
-};
-const $92cf128381fda62f$var$defaultOnClick = ()=>null;
-function $92cf128381fda62f$var$calculateTextColour(textColor) {
-    let color = "white";
-    if (textColor !== null) color = textColor;
-    return color;
-}
-const $92cf128381fda62f$var$Chip = ({ label: label , value: value , name: name = null , color: color = "red" , textColor: textColor = null , onClick: onClick = null , onRemove: onRemove = null  })=>{
-    let chipName = name;
-    if (name === null) chipName = `chip-name-${label}`;
-    let onClickFunction = $92cf128381fda62f$var$defaultOnClick;
-    if (onClick !== null) onClickFunction = onClick;
-    const textColour = $92cf128381fda62f$var$calculateTextColour(textColor);
-    return /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsxs)($92cf128381fda62f$var$Wrap, {
-        backgroundColor: color,
-        color: textColour,
-        children: [
-            /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsxs)("label", {
-                htmlFor: chipName,
-                onClick: onClickFunction,
-                children: [
-                    /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsx)("input", {
-                        type: "checkbox",
-                        name: chipName,
-                        value: value,
-                        defaultChecked: true
-                    }),
-                    label
-                ]
-            }),
-            $92cf128381fda62f$var$renderClose(onRemove, {
-                label: label,
-                name: name,
-                value: value
-            })
-        ]
-    });
-};
-var $92cf128381fda62f$var$_default = $92cf128381fda62f$var$Chip;
-module.exports.default = $92cf128381fda62f$var$_default;
-
-});
 parcelRequire.register("fz7Fa", function(module, exports) {
 
 "use strict";
@@ -1459,8 +1411,6 @@ var $15844593737337dc$var$_react = $3d0s0$babelruntimecorejs3helpersinteropRequi
 var $15844593737337dc$var$_styledComponents = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault($3d0s0$styledcomponents);
 
 var $15844593737337dc$var$_labels = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("eWtbb")));
-
-var $15844593737337dc$var$_theme = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("5hhDw")));
 const $15844593737337dc$var$Radio = $15844593737337dc$var$_styledComponents.default.div`
     flex-direction: row;
     display: ${(props)=>props.inline ? "inline-flex" : "flex"};
@@ -1489,7 +1439,7 @@ const $15844593737337dc$var$RadioInput = $15844593737337dc$var$_styledComponents
     align-items: center;
     margin: 0;
     margin-right: 5px;
-    background: ${(props)=>$15844593737337dc$var$_theme.default.text.input.background};
+    background: ${(props)=>props.theme.text.input.background};
 
     &:active,
     &:checked:active {
@@ -1606,8 +1556,6 @@ var $30750761e14c937c$var$_react = $3d0s0$babelruntimecorejs3helpersinteropRequi
 var $30750761e14c937c$var$_styledComponents = $30750761e14c937c$var$_interopRequireWildcard($3d0s0$styledcomponents);
 
 var $30750761e14c937c$var$_labels = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("eWtbb")));
-
-var $30750761e14c937c$var$_theme = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("5hhDw")));
 function $30750761e14c937c$var$_getRequireWildcardCache(nodeInterop) {
     if (typeof $3d0s0$babelruntimecorejs3corejsstableweakmap !== "function") return null;
     var cacheBabelInterop = new $3d0s0$babelruntimecorejs3corejsstableweakmap();
@@ -1661,7 +1609,7 @@ const $30750761e14c937c$var$CheckboxInput = $30750761e14c937c$var$_styledCompone
     height: 1.5rem;
     align-items: center;
     margin-right: 5px;
-    background: ${(props)=>$30750761e14c937c$var$_theme.default.text.input.background};
+    background: ${(props)=>props.theme.text.input.background};
 
     &:active,
     &:checked:active {
@@ -1872,13 +1820,13 @@ const $359f8fe9476b0e53$var$Wrap = $359f8fe9476b0e53$var$_styledComponents.defau
     align-items: center;
     background: ${({ inputBackground: inputBackground  })=>inputBackground};
     color: ${({ inputColour: inputColour  })=>inputColour};
-    border-radius: 0.4rem;
+    border-radius: ${({ rounded: rounded  })=>rounded === true ? "2.5rem" : "0.4rem"};
     padding: 0 0.4rem;
     opacity: ${({ disabled: disabled = false  })=>disabled ? "0.4" : "1"};
 
     &:focus-within {
-        background: ${(props)=>(0, $3d0s0$polished.lighten)(0.1, $359f8fe9476b0e53$var$_theme.default.colors.mrBlueSky)};
-        color: ${(props)=>$359f8fe9476b0e53$var$_theme.default.colors.paintItBlack};
+        //background: ${(props)=>(0, $3d0s0$polished.lighten)(0.1, props.inputBackground)};
+        //color: ${(props)=>props.inputColour};
     }
 
     
@@ -1937,7 +1885,7 @@ const $359f8fe9476b0e53$var$getColours = (status)=>{
  * 
  * @prop {label} string
  * @returns 
- */ const $359f8fe9476b0e53$var$FieldComponent = ({ id: id , name: name , prepend: prepend = null , append: append = null , label: label = null , type: type = "text" , caption: caption = null , required: required = false , placeholder: placeholder = false , defaultValue: defaultValue = null , status: status = null , ...rest })=>{
+ */ const $359f8fe9476b0e53$var$FieldComponent = ({ id: id , name: name , inputBackground: inputBackground = null , inputColour: inputColour = null , prepend: prepend = null , append: append = null , label: label = null , type: type = "text" , caption: caption = null , required: required = false , placeholder: placeholder = false , defaultValue: defaultValue = null , status: status = null , ...rest })=>{
     let Prepend = ()=>null;
     if (prepend !== null) Prepend = ()=>/*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsx)((0, $3d0s0$reactjsxruntime.Fragment), {
             children: prepend
@@ -1946,7 +1894,18 @@ const $359f8fe9476b0e53$var$getColours = (status)=>{
     if (append !== null) Append = ()=>/*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsx)((0, $3d0s0$reactjsxruntime.Fragment), {
             children: append
         });
-    const colours = $359f8fe9476b0e53$var$getColours(status);
+    let colours = {
+        inputBackground: $359f8fe9476b0e53$var$_theme.default.text.input.background,
+        inputColour: $359f8fe9476b0e53$var$_theme.default.generalColors.darkGrey
+    };
+    if (inputBackground !== null) colours = {
+        ...colours,
+        inputBackground: inputBackground
+    };
+    if (inputColour !== null) colours = {
+        ...colours,
+        inputColour: inputColour
+    };
     return /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsxs)($359f8fe9476b0e53$var$_labels.default, {
         htmlFor: name,
         children: [
@@ -6065,8 +6024,6 @@ module.exports.default = void 0;
 var $f1b911a4f975dde2$var$_react = $f1b911a4f975dde2$var$_interopRequireWildcard($3d0s0$react);
 
 var $f1b911a4f975dde2$var$_styledComponents = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault($3d0s0$styledcomponents);
-
-var $f1b911a4f975dde2$var$_theme = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("5hhDw")));
 function $f1b911a4f975dde2$var$_getRequireWildcardCache(nodeInterop) {
     if (typeof $3d0s0$babelruntimecorejs3corejsstableweakmap !== "function") return null;
     var cacheBabelInterop = new $3d0s0$babelruntimecorejs3corejsstableweakmap();
@@ -6096,7 +6053,7 @@ function $f1b911a4f975dde2$var$_interopRequireWildcard(obj, nodeInterop) {
 const $f1b911a4f975dde2$var$Wrap = $f1b911a4f975dde2$var$_styledComponents.default.div`
     display:flex;
     width:100%;
-    font-family: ${$f1b911a4f975dde2$var$_theme.default.main.font};
+    font-family: inherit;
     
 `;
 const $f1b911a4f975dde2$var$TextWrap = $f1b911a4f975dde2$var$_styledComponents.default.span`
@@ -6105,7 +6062,7 @@ const $f1b911a4f975dde2$var$TextWrap = $f1b911a4f975dde2$var$_styledComponents.d
 `;
 const $f1b911a4f975dde2$var$LeftText = (0, $f1b911a4f975dde2$var$_styledComponents.default)($f1b911a4f975dde2$var$TextWrap)`
     font-size:18px;
-    color:${({ fill: fill  })=>fill ? fill : $f1b911a4f975dde2$var$_theme.default.colors.paintItBlack};
+    color:${({ fill: fill  })=>fill ? fill : "#000000"};
     font-weight:700;
     padding:0 .5rem 0 0;
 `;
@@ -6113,7 +6070,7 @@ const $f1b911a4f975dde2$var$RightText = (0, $f1b911a4f975dde2$var$_styledCompone
     font-size:15px;
     font-weight:500;
     min-width:2rem;
-    color:${()=>$f1b911a4f975dde2$var$_theme.default.generalColors.darkGrey}
+    color: '#333333';
 `;
 const $f1b911a4f975dde2$var$TextPairs = ({ fill: fill , leftText: leftText = "" , rightText: rightText = "" , Icon: Icon  })=>{
     return /*#__PURE__*/ (0, $3d0s0$reactjsxruntime.jsxs)($f1b911a4f975dde2$var$Wrap, {
@@ -6152,8 +6109,6 @@ var $0de828bc4ca8adfe$var$_react = $0de828bc4ca8adfe$var$_interopRequireWildcard
 var $0de828bc4ca8adfe$var$_styledComponents = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault($3d0s0$styledcomponents);
 
 var $0de828bc4ca8adfe$var$_textpairs = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("kKGuU")));
-
-var $0de828bc4ca8adfe$var$_theme = $3d0s0$babelruntimecorejs3helpersinteropRequireDefault((parcelRequire("5hhDw")));
 function $0de828bc4ca8adfe$var$_getRequireWildcardCache(nodeInterop) {
     if (typeof $3d0s0$babelruntimecorejs3corejsstableweakmap !== "function") return null;
     var cacheBabelInterop = new $3d0s0$babelruntimecorejs3corejsstableweakmap();
@@ -6183,7 +6138,7 @@ function $0de828bc4ca8adfe$var$_interopRequireWildcard(obj, nodeInterop) {
 const $0de828bc4ca8adfe$var$Wrap = $0de828bc4ca8adfe$var$_styledComponents.default.div`
     display:flex;
     width:100%;
-    font-family: ${$0de828bc4ca8adfe$var$_theme.default.main.font};
+    font-family: ${(props)=>props.theme && props.theme.main.font ? props.theme.main.font : "inherit"};
     align-items:center;
 `;
 const $0de828bc4ca8adfe$var$IconWrap = $0de828bc4ca8adfe$var$_styledComponents.default.div`

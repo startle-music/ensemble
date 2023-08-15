@@ -1,11 +1,10 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
-import theme from '../../style/theme';
+import styled, { css } from 'styled-components';
 import { darken, lighten } from 'polished';
 
 
 const btnBase = css`
-    font-family: ${theme.main.font};
+    font-family: ${({font}) => font ? font : 'inherit'};
     padding: ${({small}) => (small === true ? `0.6rem 0.9rem` : `0.7rem 1rem`)};
     font-size: ${({small}) => (small === true ? `0.785rem` : `1rem`)};
     text-decoration: none;
@@ -30,14 +29,14 @@ const btnBase = css`
     }
 
     &:hover {
-        background: ${props => lighten(0.15, props.backgroundColour)};
-        border: 2px solid ${props => lighten(0.15, props.borderColour)};
-        color: ${props => lighten(0.15, props.buttonColour)};
+        background: ${props => props.backgroundColourHover};
+        border: 2px solid ${props => props.borderColourHover};
+        color: ${props => props.buttonColourHover};
     }
     &:active {
-        background: ${props => darken(0.05, props.activeBackgroundColour)};
-        border: 2px solid ${props => darken(0.05, props.borderColour)};
-        color: ${props => darken(0.05, props.buttonColour)};
+        background: ${props => props.activeBackgroundColourHover};
+        border: 2px solid ${props => props.borderColourHover};
+        color: ${props => props.buttonColourHover};
     }
 
     /* if a button is followed by a button add left margin to the trailing button */
@@ -103,67 +102,30 @@ const LoadingWrap = styled.div`
     }
 `;
 
-const calculateColours = (colour, outline) => {
-
-    const { mainColors, generalColors} = theme;
-    let mainColour = mainColors.simplyRed;
-    let activeMainColour = mainColors.simplyRed;
-    let altColour = generalColors.white;
-
-    // check main colours for this colour name
-    if(mainColors[colour]) {
-        mainColour = mainColors[colour];
-        activeMainColour = mainColors[colour];
-    }
-
-    if(colour === 'transparent' || colour.startsWith('#') || colour.startsWith('rgb')) {
-        mainColour = colour;
-        activeMainColour = colour;
-        if(colour === 'transparent') {
-            activeMainColour = generalColors.white;
-        }
-    }
-
-    switch(mainColour) {
-        case 'transparent':
-            altColour = mainColors.simplyRed;
-            break;
-
-        case mainColors.fadeToGrey:
-        case mainColors.mrBlueSky:
-            altColour = generalColors.white;
-            break;
-
-        case 'default':
-            mainColour = mainColors.simplyRed;
-            altColour = generalColors.white;
-            break;
-    }
-
-    const colourObject = {
-        buttonColour: altColour,
-        backgroundColour: mainColour,
-        activeBackgroundColour: activeMainColour,
-        borderColour: mainColour
-    };
-
-    if(outline === true) {
-        colourObject.buttonColour = mainColour
-        colourObject.backgroundColour = altColour
-        colourObject.activeBackgroundColour = altColour
-        colourObject.borderColour = mainColour
-    }
-
-    return colourObject;
-}
-
 const Button = props => {
-    const { children, loading = false, message = null, colour = 'default', outline = false, to = false, href = false } = props;
+    const { 
+        children, 
+        loading = false, 
+        message = null, 
+        font = null, 
+        buttonColour = '#fff', 
+        backgroundColour = '#faa',
+        activeBackgroundColour = '#fcc',
+        activeMainColour = '#fff',
+        borderColour = '#000',
+        buttonColourHover = '#fff', 
+        backgroundColourHover = '#faa',
+        activeBackgroundColourHover = '#fcc',
+        activeMainColourHover = '#fff',
+        borderColourHover = '#000',
+        outline = false, 
+        to = false, 
+        href = false 
+    } = props;
     let content = children;
     
     const attributes = {
-        ...props,
-        ...calculateColours(colour, outline)
+        ...props
     }
     
     // 

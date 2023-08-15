@@ -20,13 +20,13 @@ const Wrap = styled.div`
     align-items: center;
     background: ${({inputBackground}) => inputBackground};
     color: ${({inputColour}) => inputColour};
-    border-radius: 0.4rem;
+    border-radius: ${({rounded}) => (rounded === true ? '2.5rem' : '0.4rem')};
     padding: 0 0.4rem;
     opacity: ${({disabled = false}) => disabled ? '0.4' : '1'};
 
     &:focus-within {
-        background: ${props => lighten(0.1, theme.colors.mrBlueSky)};
-        color: ${props => theme.colors.paintItBlack};
+        //background: ${(props) => lighten(0.1, props.inputBackground)};
+        //color: ${(props) => props.inputColour};
     }
 
     
@@ -92,7 +92,7 @@ const getColours = (status) => {
  * @prop {label} string
  * @returns 
  */
-const FieldComponent = ({id, name, prepend=null, append=null, label=null, type='text', caption=null, required=false, placeholder=false, defaultValue = null, status = null, ...rest}) => {
+const FieldComponent = ({id, name, inputBackground = null, inputColour = null, prepend=null, append=null, label=null, type='text', caption=null, required=false, placeholder=false, defaultValue = null, status = null, ...rest}) => {
 
     let Prepend = () => null;
     if(prepend !== null) {
@@ -104,7 +104,22 @@ const FieldComponent = ({id, name, prepend=null, append=null, label=null, type='
         Append = () => <>{append}</>
     }
 
-    const colours = getColours(status);
+    let colours = {
+        inputBackground: theme.text.input.background,
+        inputColour: theme.generalColors.darkGrey
+    };
+
+    if(inputBackground !== null) {
+        colours = {...colours, ...{
+            inputBackground: inputBackground
+        }};
+    }
+    
+    if(inputColour !== null) {
+        colours = {...colours, ...{
+            inputColour: inputColour
+        }};
+    }
        
     return (
         <Field htmlFor={name}>

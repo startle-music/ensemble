@@ -71,8 +71,8 @@ const SubmitModalBtnBase = styled.button`
     border-radius: 2em;
     display: block;
     margin: 3em auto 0em auto;
-    background: ${props => (props.color ? props.color : theme.mainColors.greenDay)};
-    border: 1px solid ${props => (props.color ? props.color : theme.mainColors.greenDay)};
+    background: ${props => (props.color ? props.color : props.theme.mainColors.greenDay)};
+    border: 1px solid ${props => (props.color ? props.color : props.theme.mainColors.greenDay)};
     color: #fff;
 
     &:disabled {
