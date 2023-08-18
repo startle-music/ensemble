@@ -345,7 +345,6 @@ function $92cf128381fda62f$var$_interopRequireWildcard(obj, nodeInterop) {
     return newObj;
 }
 const $92cf128381fda62f$var$Wrap = $92cf128381fda62f$var$_styledComponents.default.div`
-    font-family: ${({ theme: theme  })=>theme.main.font};
     display: inline-flex;
     border-radius: 10.325em;
     margin: 0 0.325em 0 0;
