@@ -5,7 +5,7 @@ import { darken, lighten } from 'polished';
 import Close from '../icons/Times';
 
 const Wrap = styled.div`
-    font-family: ${({theme}) => theme.main.font};
+    font-family: ${({theme}) => theme.main && theme.main.font ? theme.main.font : 'inherit'};
     display: inline-flex;
     border-radius: 10.325em;
     margin: 0 0.325em 0 0;
