@@ -4,16 +4,16 @@ import { darken, lighten } from 'polished';
 
 
 const btnBase = css`
-    font-family: ${({font}) => font ? font : 'inherit'};
-    padding: ${({small}) => (small === true ? `0.6rem 0.9rem` : `0.7rem 1rem`)};
-    font-size: ${({small}) => (small === true ? `0.785rem` : `1rem`)};
     text-decoration: none;
     position: relative;
-    display: ${({block}) => (block === true ? `block` : `inline-block`)};
     text-align: center;
     box-sizing: border-box;
     font-weight: 600;
-    border-radius: ${({rounded}) => (rounded === true ? '2rem' : '0.5rem')};
+    display: ${({display}) => (display ? display : `block`)};
+    font-family: ${({font}) => font ? font : 'inherit'};
+    padding: ${({padding}) => (padding ? padding : `0.6rem 0.9rem`)};
+    font-size: ${({fontSize}) => (fontSize ? fontSize : `1rem`)};
+    border-radius: ${({borderRadius}) => (borderRadius ? borderRadius : '0.5rem')};
     cursor: pointer;
     box-shadow: none;
     

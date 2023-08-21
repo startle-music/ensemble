@@ -106,7 +106,7 @@ const $f5b063e200682b4d$var$Wrap = $f5b063e200682b4d$var$_styledComponents.defau
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #2e364c;
+    background-color: ${({ theme: theme  })=>theme.background.background};
     z-index: 1;
 `;
 const $f5b063e200682b4d$var$fadeIn = (0, $f5b063e200682b4d$var$_styledComponents.keyframes)`
@@ -183,16 +183,16 @@ function $6daa5954f031661d$var$_interopRequireWildcard(obj, nodeInterop) {
     return newObj;
 }
 const $6daa5954f031661d$var$btnBase = (0, $6daa5954f031661d$var$_styledComponents.css)`
-    font-family: ${({ font: font  })=>font ? font : "inherit"};
-    padding: ${({ small: small  })=>small === true ? `0.6rem 0.9rem` : `0.7rem 1rem`};
-    font-size: ${({ small: small  })=>small === true ? `0.785rem` : `1rem`};
     text-decoration: none;
     position: relative;
-    display: ${({ block: block  })=>block === true ? `block` : `inline-block`};
     text-align: center;
     box-sizing: border-box;
     font-weight: 600;
-    border-radius: ${({ rounded: rounded  })=>rounded === true ? "2rem" : "0.5rem"};
+    display: ${({ display: display  })=>display ? display : `block`};
+    font-family: ${({ font: font  })=>font ? font : "inherit"};
+    padding: ${({ padding: padding  })=>padding ? padding : `0.6rem 0.9rem`};
+    font-size: ${({ fontSize: fontSize  })=>fontSize ? fontSize : `1rem`};
+    border-radius: ${({ borderRadius: borderRadius  })=>borderRadius ? borderRadius : "0.5rem"};
     cursor: pointer;
     box-shadow: none;
     
@@ -597,24 +597,8 @@ const $3d7c3885ed0373f0$var$appColors = {
  * the theme working with all existing components.
  * To alter the theme in a minor way, try updating above this section only.
  */ const $3d7c3885ed0373f0$var$theme = {
-    colors: {
-        simplyRed: "#e83948",
-        orangeCrush: "#f7823b",
-        yellowSubmarine: "#f9bd45",
-        fadeToGrey: "#b7c9db",
-        mrBlueSky: "#b3d5e1",
-        paintItBlack: "#1C2229",
-        blueMonday: "#30a4c5",
-        greenDay: "#7cc530",
-        purpleRain: "#6033b9"
-    },
-    mainColors: $3d7c3885ed0373f0$var$brandColors,
-    generalColors: $3d7c3885ed0373f0$var$generalColors,
-    statusColours: $3d7c3885ed0373f0$var$statusColours,
-    layout: {
-        spacing: 1.6
-    },
     main: {
+        spacing: 1.6,
         background: $3d7c3885ed0373f0$var$appColors.background,
         font: "MuseoSansReg, sans-serif",
         borderRadius: "0.45rem",
@@ -624,8 +608,29 @@ const $3d7c3885ed0373f0$var$appColors = {
         fontSize: "16px",
         boxBackground: $3d7c3885ed0373f0$var$appColors.boxBackground
     },
-    menu: {
-        ...$3d7c3885ed0373f0$var$appColors.menu
+    // styling for each component
+    background: {
+        background: $3d7c3885ed0373f0$var$brandColors.paintItBlack
+    },
+    form: {
+        input: {
+            background: $3d7c3885ed0373f0$var$generalColors.lightGrey,
+            color: $3d7c3885ed0373f0$var$appColors.color,
+            placeholder: (0, $3d0s0$polished.darken)(0.12, $3d7c3885ed0373f0$var$generalColors.midGrey),
+            fontSize: "1rem",
+            small: {
+                color: $3d7c3885ed0373f0$var$appColors.color,
+                fontSize: "0.875rem"
+            }
+        },
+        label: {
+            color: $3d7c3885ed0373f0$var$appColors.color,
+            fontSize: "1rem",
+            small: {
+                color: $3d7c3885ed0373f0$var$appColors.color,
+                fontSize: "0.875rem"
+            }
+        }
     },
     text: {
         h1: {
@@ -672,42 +677,8 @@ const $3d7c3885ed0373f0$var$appColors = {
                 color: $3d7c3885ed0373f0$var$appColors.color,
                 fontSize: "0.875rem"
             }
-        },
-        input: {
-            background: $3d7c3885ed0373f0$var$generalColors.lightGrey,
-            color: $3d7c3885ed0373f0$var$appColors.color,
-            placeholder: (0, $3d0s0$polished.darken)(0.12, $3d7c3885ed0373f0$var$generalColors.midGrey),
-            fontSize: "1rem",
-            small: {
-                color: $3d7c3885ed0373f0$var$appColors.color,
-                fontSize: "0.875rem"
-            }
-        },
-        label: {
-            color: $3d7c3885ed0373f0$var$appColors.color,
-            fontSize: "1rem",
-            small: {
-                color: $3d7c3885ed0373f0$var$appColors.color,
-                fontSize: "0.875rem"
-            }
-        },
-        help: {
-            color: $3d7c3885ed0373f0$var$appColors.color,
-            fontSize: "1rem",
-            small: {
-                color: $3d7c3885ed0373f0$var$appColors.color,
-                fontSize: "0.75rem"
-            }
         }
     },
-    products: $3d7c3885ed0373f0$var$appColors.products,
-    feedback: $3d7c3885ed0373f0$var$appColors.feedback,
-    buttons: {
-        ...$3d7c3885ed0373f0$var$appColors.buttons
-    },
-    containers: {},
-    mast: {},
-    primaryNav: {},
     selectionPanel: {
         background: $3d7c3885ed0373f0$var$generalColors.lightGrey,
         color: $3d7c3885ed0373f0$var$appColors.products.default.primary,

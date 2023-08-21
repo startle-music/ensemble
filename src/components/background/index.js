@@ -7,7 +7,7 @@ const Wrap = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #2e364c;
+    background-color: ${({theme}) => theme.background.background};
     z-index: 1;
 `;
 

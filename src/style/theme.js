@@ -158,24 +158,8 @@ const appColors = {
  * To alter the theme in a minor way, try updating above this section only.
  */
 const theme = {
-    colors: {
-        simplyRed: '#e83948',
-        orangeCrush: '#f7823b',
-        yellowSubmarine: '#f9bd45',
-        fadeToGrey: '#b7c9db',
-        mrBlueSky: '#b3d5e1',
-        paintItBlack: '#1C2229',
-        blueMonday: '#30a4c5',
-        greenDay: '#7cc530',
-        purpleRain: '#6033b9',
-    },
-    mainColors: brandColors,
-    generalColors,
-    statusColours,
-    layout: {
-        spacing: 1.6
-    },
     main: {
+        spacing: 1.6,
         background: appColors.background,
         font: 'MuseoSansReg, sans-serif',
         borderRadius: '0.45rem',
@@ -185,7 +169,31 @@ const theme = {
         fontSize: '16px',
         boxBackground: appColors.boxBackground
     },
-    menu: { ...appColors.menu },
+
+    // styling for each component
+    background: {
+        background: brandColors.paintItBlack
+    },
+    form: {
+        input: {
+            background: generalColors.lightGrey,
+            color: appColors.color,
+            placeholder: darken(0.12, generalColors.midGrey),
+            fontSize: '1rem',
+            small: {
+                color: appColors.color,
+                fontSize: '0.875rem'
+            }
+        },
+        label: {
+            color: appColors.color,
+            fontSize: '1rem',
+            small: {
+                color: appColors.color,
+                fontSize: '0.875rem'
+            }
+        }
+    },
     text: {
         h1: {
             color: generalColors.white,
@@ -232,39 +240,7 @@ const theme = {
                 fontSize: '0.875rem'
             }
         },
-        input: {
-            background: generalColors.lightGrey,
-            color: appColors.color,
-            placeholder: darken(0.12, generalColors.midGrey),
-            fontSize: '1rem',
-            small: {
-                color: appColors.color,
-                fontSize: '0.875rem'
-            }
-        },
-        label: {
-            color: appColors.color,
-            fontSize: '1rem',
-            small: {
-                color: appColors.color,
-                fontSize: '0.875rem'
-            }
-        },
-        help: {
-            color: appColors.color,
-            fontSize: '1rem',
-            small: {
-                color: appColors.color,
-                fontSize: '0.75rem'
-            }
-        }
     },
-    products: appColors.products,
-    feedback: appColors.feedback,
-    buttons: { ...appColors.buttons },
-    containers: {},
-    mast: {},
-    primaryNav: {},
     selectionPanel: {
         background: generalColors.lightGrey,
         color: appColors.products.default.primary,
