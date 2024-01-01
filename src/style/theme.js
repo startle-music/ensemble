@@ -246,6 +246,12 @@ export const simplyRed = {...theme, ...{
             }
         }
     },
+    form: {
+        input: {
+            background: brandColors.simplyRed,
+            color: generalColors.white,
+        }
+    }
 }};
 
 export const mrBlueSky = {...theme, ...{

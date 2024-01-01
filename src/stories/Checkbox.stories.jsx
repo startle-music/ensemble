@@ -96,3 +96,19 @@ Labelless.args = {
     //className: null
 };
 
+export const CustomerColour = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+CustomerColour.args = {
+    id:'field-8',
+    name: 'field8',
+    label: 'Checkbox 8',
+    required: false,
+    value: 1,
+    color: 'red',
+    backgroundColor: 'blue',
+    checked: true,
+    //inline: false,
+    //disabled: false,
+    //className: null
+};
+

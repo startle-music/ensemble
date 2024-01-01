@@ -43,14 +43,14 @@ const CheckboxInput = styled.input`
     }
 
     &:checked {
-        background-color: #e83948;
-        color: #ffffff;
+        background-color: ${(props) => props.backgroundColor !== null ? props.backgroundColor : props.theme.form.input.background};
+        color: ${(props) => props.color !== null ? props.color : props.theme.form.input.color};
     }
 
     &:checked:after {
         content: '\\2714';
         font-family: 'MuseoSansReg', sans-serif;
-        color: #ffffff;
+        color: ${(props) => props.color !== null ? props.color : props.theme.form.input.color};
         font-size: 1.1rem;
     }
 `;
@@ -65,9 +65,10 @@ const CheckboxComponent = ({
     inline = false,
     disabled = false,
     className = null,
+    backgroundColor = null,
+    color = null,
     ...rest
 }) => {
-
     return (
         <Checkbox inline={inline} className={className}>
             <PaddedLabel htmlFor={id}
@@ -80,6 +81,8 @@ const CheckboxComponent = ({
                     value={value}
                     checked={checked}
                     disabled={disabled}
+                    backgroundColor={backgroundColor}
+                    color={color}
                     {...rest}
                 />
                 {label}

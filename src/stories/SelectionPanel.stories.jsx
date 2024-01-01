@@ -31,7 +31,6 @@ Primary.args = {
     id:'field-1',
     name: 'field1',
     active: true,
-    colour: "simplyRed",
     panel: "link",
     onClick: () => alert('selection panel: link'),
     children: <Contents />
@@ -43,7 +42,6 @@ NoSVG.args = {
     id:'field-3',
     name: 'field3',
     active: true,
-    colour: "simplyRed",
     panel: "link",
     onClick: () => alert('selection panel: link'),
     children: <div>Panel with no Icon</div>
@@ -56,7 +54,6 @@ Small.args = {
     name: 'field2',
     active: true,
     small: true,
-    colour: "paintItBlack",
     panel: "link",
     onClick: () => alert('selection panel: link'),
     children: <Contents />

@@ -7,8 +7,12 @@ const Wrap = styled.div`
     font-family: MuseoSansReg, sans-serif;
     flex-wrap: ${props => (props.small ? `nowrap` : `wrap`)};
     justify-content: ${props => (props.small ? `space-between` : `center`)};
-    background: ${props => props.backgroundColour};
-    color: ${props => props.textColour};
+    background-color: ${(props) => props.backgroundColor !== null ? 
+            props.backgroundColor : props.active === false ? 
+                props.theme.form.input.background : props.theme.form.input.color};
+        color: ${(props) => props.color !== null ? 
+            props.color : props.active === false ? 
+                props.theme.form.input.color : props.theme.form.input.background};
     padding: ${props => (props.small ? `1rem` : `1rem`)};
     width: 100%;
     border-radius: ${props => props.theme.main.borderRadius};
@@ -22,8 +26,12 @@ const Wrap = styled.div`
     }
 
     &:active {
-        background: ${props => props.theme.selectionPanel.active.background};
-        color: ${props => props.theme.selectionPanel.active.color};
+        background-color: ${(props) => props.backgroundColor !== null ? 
+            props.backgroundColor : props.active ? 
+                props.theme.form.input.background : props.theme.form.input.color};
+        color: ${(props) => props.color !== null ? 
+            props.color : props.active ? 
+                props.theme.form.input.color : props.theme.form.input.background};
     }
 
 `;
@@ -42,32 +50,21 @@ const Content = styled.div`
 `;
 
 
-const getColours = (colour, active) => {
+const SelectionPanel = ({ children, backgroundColor= null, color = null, active = false, small = false, ...rest }) => {
     
-    let textColour = 'black';
-    let backgroundColour = 'white';
+
+    const attributes = {
+        ...rest,
+        backgroundColor: backgroundColor,
+        color: color
+    };
     
     if(active) {
-        textColour = 'white';
-        backgroundColour = 'red';
+        attributes.backgroundColor = color;
+        attributes.color = backgroundColor;   
     }
-    
-    /*if(theme.colors[colour]) {
-        textColour = theme.colors[colour];
-        backgroundColour = theme.selectionPanel.background;
 
-        if(active) {
-            textColour = theme.generalColors.white;
-            backgroundColour = theme.colors[colour];
-        }
-    }*/
-
-    return { textColour, backgroundColour };
-}
-
-const SelectionPanel = ({ children, active = false, small = false, colour = 'simplyRed', ...rest }) => {
-    
-    const attributes = {...rest, ...getColours(colour, active)};
+    console.log('attributes', attributes);
     return (
         <Wrap active={active} small={small} {...attributes}>
             <Content small={small} {...rest}>{children}</Content>

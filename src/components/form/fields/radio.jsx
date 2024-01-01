@@ -32,7 +32,7 @@ const RadioInput = styled.input`
     align-items: center;
     margin: 0;
     margin-right: 5px;
-    background: ${(props) => props.theme.form.input.background};
+    background: ${(props) => props.theme.main.background};
 
     &:active,
     &:checked:active {
@@ -40,9 +40,9 @@ const RadioInput = styled.input`
     }
 
     &:checked {
-        background-color: #ffffff;
-        color: #ffffff;
-        box-shadow: inset 0 0 0 0.4rem #e83948;
+        background-color: ${(props) => props.color !== null ? props.color : props.theme.form.input.color};
+        color: ${(props) => props.color !== null ? props.color : props.theme.form.input.color};
+        box-shadow: inset 0 0 0 0.4rem ${(props) => props.backgroundColor !== null ? props.backgroundColor : props.theme.form.input.background};
     }
 `;
 
@@ -55,6 +55,8 @@ const RadioComponent = ({
     disabled = false,
     value,
     margin = 0,
+    backgroundColor = null,
+    color = null,
     className = '',
     defaultChecked = false,
     id = false,
@@ -73,6 +75,8 @@ const RadioComponent = ({
                     id={id || name}
                     required={required}
                     defaultChecked={checked}
+                    backgroundColor={backgroundColor}
+                    color={color}
                     {...rest}
                 />
                 {label}
