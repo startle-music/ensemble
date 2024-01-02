@@ -4,12 +4,12 @@
   "description": "UI Library for React. Thanks to chromaui for the storybook template project.",
   "author": "Anthony Totton <https//github.com/novocast>",
   "type": "module",
-  "main": "dist/my-library.umd.js",
-  "module": "dist/my-library.es.js",
+  "main": "dist/ensemble.umd.js",
+  "module": "dist/ensemble.es.js",
   "exports": {
     ".": {
-      "import": "./dist/my-library.es.js",
-      "require": "./dist/my-library.umd.js"
+      "import": "./dist/ensemble.es.js",
+      "require": "./dist/ensemble.umd.js"
     }
   },
   "repository": {
