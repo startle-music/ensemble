@@ -37,7 +37,7 @@ const getColumnString = (columns) => {
     }
 }
 
-const Header = ({children, columns = '12rem', ...rest}) => {
+const Flextable = ({children, columns = '12rem', ...rest}) => {
 
     return (
         <Wrap {...rest} columnString={typeof(columns) === 'string' ? columns : null} columnArray={typeof(columns) !== 'string' ? columns : null}>
@@ -46,4 +46,4 @@ const Header = ({children, columns = '12rem', ...rest}) => {
     );
 }
 
-export default Header;
+export default Flextable;
