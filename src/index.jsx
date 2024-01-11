@@ -11,6 +11,15 @@ export { default as ColorPicker } from './components/colorpicker';
 // containers
 export { Pod, PositionContainer, Header, Content, ColumnContainer, GridContainer } from './components/containers';
 
+// response box
+export { default as ResponseBox } from './components/responsebox';
+
+// tables
+export { default as Table } from './components/table';
+export { default as Tr } from './components/table/tr';
+export { default as Th } from './components/table/th';
+export { default as Td } from './components/table/td';
+
 // databoxes
 export { default as IconBoxes } from './components/databoxes/iconboxes';
 export { default as Rectangle } from './components/databoxes/rectangle';
