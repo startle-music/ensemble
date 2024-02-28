@@ -76,6 +76,33 @@ const theme = {
         fontSize: '16px',
         boxBackground: generalColors.white
     },
+    layout: {
+        borderRadius: {
+            lg: '0.667rem',
+            sm: '0.276rem',
+            md: '0.4rem'
+        }
+    },
+    container: {
+        maxWidth: {
+            lg: '1060px',
+            sm: '100%'
+        },
+        padding: {
+            horizontal: {
+                lg: '2.667rem',
+                sm: '1.333rem'
+            },
+            vertical: {
+                lg: '2rem',
+                sm: '1rem'
+            }
+        },
+        margin: {
+            lg: '0 auto 2rem',
+            sm: '0 auto 1rem'
+        }
+    },
 
     // styling for each component
     background: {
@@ -90,7 +117,8 @@ const theme = {
             small: {
                 color: brandColors.paintItBlack,
                 fontSize: '0.875rem'
-            }
+            },
+            border: generalColors.midGrey
         },
         label: {
             color: brandColors.paintItBlack,
@@ -146,7 +174,7 @@ const theme = {
                 color: brandColors.paintItBlack,
                 fontSize: '0.875rem'
             }
-        },
+        }
     },
     selectionPanel: {
         background: generalColors.lightGrey,
@@ -184,11 +212,11 @@ const theme = {
         offline: brandColors.simplyRed,
         fetching: generalColors.lightBlueGrey
     },
-    button: { 
+    button: {
         background: brandColors.paintItBlack,
         color: generalColors.white,
         border: `2px solid ${brandColors.paintItBlack}`,
-        hover: {    
+        hover: {
             background: brandColors.paintItBlack,
             color: generalColors.white,
             border: `2px solid ${brandColors.paintItBlack}`
@@ -224,18 +252,10 @@ export const absoluteFill = {
 
 export default theme;
 
-export const simplyRed = {...theme, ...{
-
-    button: { 
-        background: brandColors.simplyRed,
-        color: generalColors.white,
-        border: `2px solid ${brandColors.simplyRed}`,
-        hover: {    
-            background: brandColors.simplyRed,
-            color: generalColors.white,
-            border: `2px solid ${brandColors.simplyRed}`
-        },
-        active: {
+export const simplyRed = {
+    ...theme,
+    ...{
+        button: {
             background: brandColors.simplyRed,
             color: generalColors.white,
             border: `2px solid ${brandColors.simplyRed}`,
@@ -243,29 +263,31 @@ export const simplyRed = {...theme, ...{
                 background: brandColors.simplyRed,
                 color: generalColors.white,
                 border: `2px solid ${brandColors.simplyRed}`
+            },
+            active: {
+                background: brandColors.simplyRed,
+                color: generalColors.white,
+                border: `2px solid ${brandColors.simplyRed}`,
+                hover: {
+                    background: brandColors.simplyRed,
+                    color: generalColors.white,
+                    border: `2px solid ${brandColors.simplyRed}`
+                }
+            }
+        },
+        form: {
+            input: {
+                background: brandColors.simplyRed,
+                color: generalColors.white
             }
         }
-    },
-    form: {
-        input: {
-            background: brandColors.simplyRed,
-            color: generalColors.white,
-        }
     }
-}};
+};
 
-export const mrBlueSky = {...theme, ...{
-
-    button: { 
-        background: brandColors.mrBlueSky,
-        color: generalColors.white,
-        border: `2px solid ${brandColors.mrBlueSky}`,
-        hover: {    
-            background: brandColors.mrBlueSky,
-            color: generalColors.white,
-            border: `2px solid ${brandColors.mrBlueSky}`
-        },
-        active: {
+export const mrBlueSky = {
+    ...theme,
+    ...{
+        button: {
             background: brandColors.mrBlueSky,
             color: generalColors.white,
             border: `2px solid ${brandColors.mrBlueSky}`,
@@ -273,23 +295,25 @@ export const mrBlueSky = {...theme, ...{
                 background: brandColors.mrBlueSky,
                 color: generalColors.white,
                 border: `2px solid ${brandColors.mrBlueSky}`
+            },
+            active: {
+                background: brandColors.mrBlueSky,
+                color: generalColors.white,
+                border: `2px solid ${brandColors.mrBlueSky}`,
+                hover: {
+                    background: brandColors.mrBlueSky,
+                    color: generalColors.white,
+                    border: `2px solid ${brandColors.mrBlueSky}`
+                }
             }
         }
     }
-}};
+};
 
-export const greenDay = {...theme, ...{
-
-    button: { 
-        background: brandColors.greenDay,
-        color: generalColors.white,
-        border: `2px solid ${brandColors.greenDay}`,
-        hover: {    
-            background: brandColors.greenDay,
-            color: generalColors.white,
-            border: `2px solid ${brandColors.greenDay}`
-        },
-        active: {
+export const greenDay = {
+    ...theme,
+    ...{
+        button: {
             background: brandColors.greenDay,
             color: generalColors.white,
             border: `2px solid ${brandColors.greenDay}`,
@@ -297,8 +321,17 @@ export const greenDay = {...theme, ...{
                 background: brandColors.greenDay,
                 color: generalColors.white,
                 border: `2px solid ${brandColors.greenDay}`
+            },
+            active: {
+                background: brandColors.greenDay,
+                color: generalColors.white,
+                border: `2px solid ${brandColors.greenDay}`,
+                hover: {
+                    background: brandColors.greenDay,
+                    color: generalColors.white,
+                    border: `2px solid ${brandColors.greenDay}`
+                }
             }
         }
     }
-}};
-
+};
