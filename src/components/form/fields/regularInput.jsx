@@ -3,17 +3,7 @@ import styled, { css } from 'styled-components';
 import { darken, lighten } from 'polished';
 import Field from '../labels';
 import theme from '../../../style/theme';
-
-const LabelWrap = styled.div`
-    font-size: 1rem;
-    font-family: MuseoSansReg, sans-serif;
-    padding-bottom: 0.5rem;
-`;
-
-const StyledRequired = styled.span`
-    display: inline-block;
-    margin-left: 0.3rem;
-`;
+import Label from './label';
 
 const Wrap = styled.div`
     display: flex;
@@ -29,8 +19,6 @@ const Wrap = styled.div`
         //background: ${props => lighten(0.1, props.inputBackground)};
         //color: ${props => props.inputColour};
     }
-
-    
 `;
 
 const Input = styled.input`
@@ -42,6 +30,7 @@ const Input = styled.input`
     padding: 0.8rem 0.4rem;
     color: inherit;
     width: 100%;
+    font-family: ${props => props.theme.main.font};
 
     &::placeholder {
         color: ${({ inputColour }) => inputColour};
@@ -52,19 +41,6 @@ const Input = styled.input`
         outline: none;
     }
 `;
-
-const Label = ({ children, required = false }) => {
-    let Required = () => null;
-    if (required) {
-        Required = () => <StyledRequired>*</StyledRequired>;
-    }
-    return (
-        <LabelWrap>
-            {children}
-            <Required />
-        </LabelWrap>
-    );
-};
 
 const CaptionWrap = styled.p`
     color: ${({ inputColour }) => inputColour};
@@ -160,7 +136,7 @@ const FieldComponent = ({
     }
 
     return (
-        <Field htmlFor={name}>
+        <Field htmlFor={name} block>
             {label !== null ? <Label required={required}>{label}</Label> : null}
             <Wrap {...{ ...rest, ...colours }}>
                 <Prepend />

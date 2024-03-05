@@ -36,6 +36,10 @@ const GlobalStyle = createGlobalStyle`
         font-style: normal;
     }
 
+    * {
+        box-sizing: border-box;
+    }
+
 
     html, body {
         font-family: ${themeBase.main.font};

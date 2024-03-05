@@ -11,7 +11,8 @@ const labelBase = css`
 const Label = styled.label`
     ${labelBase}
     margin-bottom: ${props => props.margin || 0};
-    display: ${({ block }) => (block ? 'block' : 'inline-block')}
+    display: ${({ block }) => (block ? 'block' : 'inline-block')};
+    width: 100%;
 `;
 
 export default Label;

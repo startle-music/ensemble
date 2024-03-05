@@ -5,7 +5,7 @@ import Label from '../labels';
 const Radio = styled.div`
     flex-direction: row;
     display: ${props => (props.inline ? 'inline-flex' : 'flex')};
-    margin-right: ${props => (props.inline ? '0.8rem' : 0)};
+    margin-right: ${props => (props.inline ? '2rem' : 0)};
     margin-bottom: 0.8rem;
     align-items: center;
     font-family: MuseoSansReg, sans-serif;
@@ -16,7 +16,7 @@ const PaddedLabel = styled(Label)`
     line-height: 1.5rem;
     display: inline-flex;
     align-items: center;
-    opacity: ${({disabled}) => disabled ? '0.4' : '1'};
+    opacity: ${({ disabled }) => (disabled ? '0.4' : '1')};
 `;
 
 const RadioInput = styled.input`
@@ -32,7 +32,7 @@ const RadioInput = styled.input`
     align-items: center;
     margin: 0;
     margin-right: 5px;
-    background: ${(props) => props.theme.main.background};
+    background: ${props => props.theme.main.background};
 
     &:active,
     &:checked:active {
@@ -40,9 +40,10 @@ const RadioInput = styled.input`
     }
 
     &:checked {
-        background-color: ${(props) => props.color !== null ? props.color : props.theme.form.input.color};
-        color: ${(props) => props.color !== null ? props.color : props.theme.form.input.color};
-        box-shadow: inset 0 0 0 0.4rem ${(props) => props.backgroundColor !== null ? props.backgroundColor : props.theme.form.input.background};
+        background-color: ${props => (props.color !== null ? props.color : props.theme.form.input.color)};
+        color: ${props => (props.color !== null ? props.color : props.theme.form.input.color)};
+        box-shadow: inset 0 0 0 0.4rem
+            ${props => (props.backgroundColor !== null ? props.backgroundColor : props.theme.form.input.background)};
     }
 `;
 
@@ -61,28 +62,25 @@ const RadioComponent = ({
     defaultChecked = false,
     id = false,
     ...rest
-}) => {
-    return(
-        <Radio inline={inline} className={className}>
-            <PaddedLabel margin htmlFor={id} 
-                    disabled={disabled}>
-                <RadioInput
-                    type="radio"
-                    checked={checked}                    
-                    disabled={disabled}
-                    value={value}
-                    name={name}
-                    id={id || name}
-                    required={required}
-                    defaultChecked={checked}
-                    backgroundColor={backgroundColor}
-                    color={color}
-                    {...rest}
-                />
-                {label}
-            </PaddedLabel>
-        </Radio>
-    );
-}
+}) => (
+    <Radio inline={inline} className={className}>
+        <PaddedLabel margin htmlFor={id} disabled={disabled}>
+            <RadioInput
+                type="radio"
+                checked={checked}
+                disabled={disabled}
+                value={value}
+                name={name}
+                id={id || name}
+                required={required}
+                defaultChecked={checked}
+                backgroundColor={backgroundColor}
+                color={color}
+                {...rest}
+            />
+            {label}
+        </PaddedLabel>
+    </Radio>
+);
 
 export default RadioComponent;

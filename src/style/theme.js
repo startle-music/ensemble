@@ -74,13 +74,19 @@ const theme = {
         bodyColor: generalColors.lightBlueGrey,
         contrastColor: generalColors.white,
         fontSize: '16px',
-        boxBackground: generalColors.white
+        boxBackground: generalColors.white,
+        border: generalColors.midGrey
     },
     layout: {
         borderRadius: {
             lg: '0.667rem',
             sm: '0.276rem',
             md: '0.4rem'
+        },
+        margin: '2rem',
+        gap: {
+            lg: '2rem',
+            sm: '1rem'
         }
     },
     container: {
@@ -102,6 +108,25 @@ const theme = {
             lg: '0 auto 2rem',
             sm: '0 auto 1rem'
         }
+    },
+    table: {
+        header: {
+            background: generalColors.white,
+            color: brandColors.paintItBlack,
+            border: generalColors.midGrey
+        },
+        row: {
+            background: generalColors.white,
+            color: brandColors.paintItBlack,
+            hover: {
+                background: generalColors.lightGrey
+            }
+        }
+    },
+    actionPanel: {
+        background: brandColors.mrBlueSky,
+        color: brandColors.paintItBlack,
+        border: brandColors.blueMonday
     },
 
     // styling for each component
@@ -127,6 +152,10 @@ const theme = {
                 color: brandColors.paintItBlack,
                 fontSize: '0.875rem'
             }
+        },
+        select: {
+            background: generalColors.lightGrey,
+            border: generalColors.midGrey
         }
     },
     text: {

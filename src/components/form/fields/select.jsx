@@ -11,6 +11,7 @@ const Text = styled.label`
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
+    width: 100%;
 `;
 
 const Dropdown = styled.select`
@@ -25,6 +26,8 @@ const Dropdown = styled.select`
     background: transparent;
     border: none;
     padding: 0.875rem 0.6rem;
+    font-family: ${props => props.theme.main.font};
+    font-weight: 400;
 
     &:focus {
         outline: none;
@@ -38,16 +41,18 @@ const Dropdown = styled.select`
     }
 `;
 
-
 const StyledSelect = styled.div`
     margin: 0;
     min-width: 10rem;
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    background: 'white';
+    background: ${props => props.theme.form.select.background};
+    border: 1px solid ${props => props.theme.form.select.border};
     border-radius: 0.45rem;
     box-shadow: none;
+    font-family: ${props => props.theme.main.font};
+
     &:first-child {
         margin-left: 0;
     }
@@ -70,28 +75,27 @@ const StyledSelect = styled.div`
         transform: rotate(45deg);
         transition: border-width 150ms ease-in-out;
         pointer-events: none;
-
     }
     @supports (-moz-appearance: none) {
         select {
             -moz-appearance: none;
             text-indent: 0.01px;
             text-overflow: '';
+            font-family: ${props => props.theme.main.font};
         }
     }
 `;
 
-const Label = ({ children }) => children ? <Text>{children}</Text> : null;
+const Label = ({ children }) => (children ? <Text>{children}</Text> : null);
 
 const SelectInput = ({ value, name, children, label, onChange = () => {} }) => (
     <Wrapper>
-        <Label htmlFor={name}>{label}</Label>
+        {label ? <Label htmlFor={name}>{label}</Label> : null}
         <StyledSelect>
             <Dropdown value={value} name={name} onChange={onChange}>
                 {children}
             </Dropdown>
         </StyledSelect>
-
     </Wrapper>
 );
 

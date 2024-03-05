@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components';
 import theme from '../../style/theme';
 
 export const headingBase = css`
     color: ${theme.main.color};
     font-family: ${theme.main.font};
     margin: 0;
-`
+    margin-bottom: 1em;
+`;
 
 const Hero = styled.h3`
     ${headingBase}
@@ -28,25 +29,20 @@ const Standard = styled.h4`
     font-size: 1.2rem;
 `;
 
-const Heading = ({type='heading', children, ...rest}) => {
-    
-    switch(type.toLowerCase()) {
+const Heading = ({ type = 'heading', children, ...rest }) => {
+    switch (type.toLowerCase()) {
+        case 'hero':
+            return <Hero {...rest}>{children}</Hero>;
 
-        case 'hero': 
-            return <Hero {...rest}>{children}</Hero>
+        case 'title':
+            return <Title {...rest}>{children}</Title>;
 
-        case 'title': 
-            return <Title {...rest}>{children}</Title>
-
-        case 'subtitle': 
-            return <Subtitle {...rest}>{children}</Subtitle>
+        case 'subtitle':
+            return <Subtitle {...rest}>{children}</Subtitle>;
 
         default:
-            return <Standard {...rest}>{children}</Standard>
-
+            return <Standard {...rest}>{children}</Standard>;
     }
-    
-    
-}
+};
 
-export default Heading
+export default Heading;

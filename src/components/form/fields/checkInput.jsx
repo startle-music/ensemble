@@ -2,21 +2,24 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import Label from '../labels';
 
-
 const Checkbox = styled.div`
+    
     flex-direction: row;
     //display: ${props => (props.inline ? 'inline-flex' : 'flex')};
     //margin-right: ${props => (props.inline ? '0.8rem' : 0)};
-    margin-bottom: 0.8rem;
+    //margin-bottom: 0.8rem;
     font-size: 1rem;
     font-family: MuseoSansReg, sans-serif;
+    
 `;
 
 const PaddedLabel = styled(Label)`
-    padding: 0.25rem 0 0.25rem 2.25rem;
+   display: inline-flex;
+   align-items: center;
+    //padding: 0.25rem 0 0.25rem 2.25rem;
     line-height: 1.5rem;
     position: relative;
-    //opacity: ${({disabled}) => disabled ? '0.4' : '1'};
+    //opacity: ${({ disabled }) => (disabled ? '0.4' : '1')};
 `;
 
 const CheckboxInput = styled.input`
@@ -24,15 +27,15 @@ const CheckboxInput = styled.input`
     padding: 0;
     border-radius: 3px;
     display: inline-flex;
-    position: absolute;
+    /* position: absolute;
     left: 0;
-    top: 0;
+    top: 0; */
     justify-content: center;
     width: 1.5rem;
     height: 1.5rem;
     align-items: center;
     margin-right: 5px;
-    //background: ${(props) => props.theme.form.input.background};
+    background: ${props => props.theme.form.input.background};
 
     &:active,
     &:checked:active {
@@ -43,14 +46,15 @@ const CheckboxInput = styled.input`
     }
 
     &:checked {
-        background-color: ${(props) => props.backgroundColor !== null ? props.backgroundColor : props.theme.form.input.background};
-        color: ${(props) => props.color !== null ? props.color : props.theme.form.input.color};
+        background-color: ${props =>
+            props.backgroundColor !== null ? props.backgroundColor : props.theme.form.input.background};
+        color: ${props => (props.color !== null ? props.color : props.theme.form.input.color)};
     }
 
     &:checked:after {
         content: '\\2714';
         font-family: 'MuseoSansReg', sans-serif;
-        color: ${(props) => props.color !== null ? props.color : props.theme.form.input.color};
+        color: ${props => (props.color !== null ? props.color : props.theme.form.input.color)};
         font-size: 1.1rem;
     }
 `;
@@ -68,27 +72,24 @@ const CheckboxComponent = ({
     backgroundColor = null,
     color = null,
     ...rest
-}) => {
-    return (
-        <Checkbox inline={inline} className={className}>
-            <PaddedLabel htmlFor={id}
-                    disabled={disabled}>
-                <CheckboxInput
-                    type="checkbox"
-                    name={name}
-                    id={id}
-                    required={required}
-                    value={value}
-                    checked={checked}
-                    disabled={disabled}
-                    backgroundColor={backgroundColor}
-                    color={color}
-                    {...rest}
-                />
-                {label}
-            </PaddedLabel>
-        </Checkbox>
-    );
-}
+}) => (
+    <Checkbox inline={inline} className={className}>
+        <PaddedLabel htmlFor={id} disabled={disabled}>
+            <CheckboxInput
+                type="checkbox"
+                name={name}
+                id={id}
+                required={required}
+                value={value}
+                checked={checked}
+                disabled={disabled}
+                backgroundColor={backgroundColor}
+                color={color}
+                {...rest}
+            />
+            {label}
+        </PaddedLabel>
+    </Checkbox>
+);
 
 export default CheckboxComponent;

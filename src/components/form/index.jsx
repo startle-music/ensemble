@@ -1,5 +1,22 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import Button from '../button';
+
+const FormStyled = styled.form`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+`;
+
+const FormRowStyled = styled.div`
+    display: flex;
+    flex-direction: ${props => (props.inline ? 'row' : 'column')};
+    padding: 0 0 ${props => props.theme.container.padding.vertical.lg} 0;
+`;
+
+export function FormRow({ inline, nested, children }) {
+    return <FormRowStyled inline>{children}</FormRowStyled>;
+}
 
 class Form extends Component {
     constructor(props) {
@@ -30,14 +47,14 @@ class Form extends Component {
     render() {
         const { children, buttonText = 'Submit' } = this.props;
         return (
-            <form ref="form" onSubmit={this.submit}>
+            <FormStyled ref="form" onSubmit={this.submit}>
                 {children}
                 <div>
                     <Button product="positive" type="submit-modal">
                         {buttonText}
                     </Button>
                 </div>
-            </form>
+            </FormStyled>
         );
     }
 }
