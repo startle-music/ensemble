@@ -5,10 +5,9 @@ import Label from '../labels';
 const Radio = styled.div`
     flex-direction: row;
     display: ${props => (props.inline ? 'inline-flex' : 'flex')};
-    margin-right: ${props => (props.inline ? '2rem' : 0)};
-    margin-bottom: 0.8rem;
+    margin: ${props => (props.margin ? props.margin : '0 2rem 0.8rem 0')};
     align-items: center;
-    font-family: MuseoSansReg, sans-serif;
+    font-family: ${props => props.theme.main.font};
 `;
 
 const PaddedLabel = styled(Label)`
@@ -31,7 +30,7 @@ const RadioInput = styled.input`
     height: 1.5rem;
     align-items: center;
     margin: 0;
-    margin-right: 5px;
+    margin-right: ${props => (props.margin ? '5px' : 0)};
     background: ${props => props.theme.main.background};
 
     &:active,
@@ -49,13 +48,13 @@ const RadioInput = styled.input`
 
 const RadioComponent = ({
     name,
-    label,
+    label = '',
     required,
     checked,
     inline = false,
     disabled = false,
     value,
-    margin = 0,
+    margin = null,
     backgroundColor = null,
     color = null,
     className = '',
@@ -63,8 +62,8 @@ const RadioComponent = ({
     id = false,
     ...rest
 }) => (
-    <Radio inline={inline} className={className}>
-        <PaddedLabel margin htmlFor={id} disabled={disabled}>
+    <Radio inline={inline} className={className} margin={margin}>
+        <PaddedLabel htmlFor={id} disabled={disabled}>
             <RadioInput
                 type="radio"
                 checked={checked}
@@ -76,6 +75,7 @@ const RadioComponent = ({
                 defaultChecked={checked}
                 backgroundColor={backgroundColor}
                 color={color}
+                margin={label !== ''}
                 {...rest}
             />
             {label}

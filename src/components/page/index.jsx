@@ -5,7 +5,7 @@ const PageStyled = styled.div`
     background: ${props => props.theme.main.background};
     display: block;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     padding: 2rem;
 `;
 

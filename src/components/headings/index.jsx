@@ -6,7 +6,7 @@ export const headingBase = css`
     color: ${theme.main.color};
     font-family: ${theme.main.font};
     margin: 0;
-    margin-bottom: 1em;
+    margin-bottom: ${props => props.margin || '.75em'};
 `;
 
 const Hero = styled.h3`

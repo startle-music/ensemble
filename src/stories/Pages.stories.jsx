@@ -18,7 +18,11 @@ import Label from '../components/form/labels';
 import Heading from '../components/headings';
 import RadioComponent from '../components/form/fields/radio';
 import ToggleArea from '../components/toggleArea';
-import ScrollableList from '../components/scrollableList';
+import ScrollableList, { ListItem } from '../components/scrollableList';
+
+import Card, { CardHeader, CardBody, CardFooter } from '../components/card';
+
+import Text from '../components/text';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -164,6 +168,54 @@ TableExample.args = {
     children: <TableContents />
 };
 
+const ListData = [
+    {
+        title: 'Item 1',
+        description: 'Description 1',
+        action: <Button>Test</Button>
+    },
+    {
+        title: 'Item 2',
+        description: 'Description 2',
+        action: <Button>Test</Button>
+    },
+    {
+        title: 'Item 3',
+        description: 'Description 3',
+        action: <Button>Test</Button>
+    },
+    {
+        title: 'Item 4',
+        description: 'Description 4',
+        action: <Button>Test</Button>
+    },
+    {
+        title: 'Item 5',
+        description: 'Description 5',
+        action: <Button>Test</Button>
+    },
+    {
+        title: 'Item 6',
+        description: 'Description 6',
+        action: <Button>Test</Button>
+    },
+    {
+        title: 'Item 7',
+        description: 'Description 7',
+        action: <Button>Test</Button>
+    },
+    {
+        title: 'Item 8',
+        description: 'Description 8',
+        action: <Button>Test</Button>
+    },
+    {
+        title: 'Item 9',
+        description: 'Description 9',
+        action: <Button>Test</Button>
+    }
+];
+
 const FormContents = ({ radio }) => (
     <>
         <Container padded>
@@ -205,7 +257,25 @@ const FormContents = ({ radio }) => (
                     </FormRow>
                 </ToggleArea>
                 <ScrollableList>
-                    <li>Item 1</li>
+                    {ListData.map((item, index) => (
+                        <ListItem key={index}>
+                            <Card horizontal border={false} margin="0">
+                                <CardHeader>
+                                    <RadioComponent
+                                        name="radio"
+                                        value="radio1"
+                                        margin="0"
+                                        checked={radio === 'radio1'}
+                                    />
+                                </CardHeader>
+                                <CardBody>
+                                    <Heading margin="0">{item.title}</Heading>
+                                    <Text>{item.description}</Text>
+                                </CardBody>
+                                <CardFooter>{item.action}</CardFooter>
+                            </Card>
+                        </ListItem>
+                    ))}
                 </ScrollableList>
             </Form>
         </Container>
