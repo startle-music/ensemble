@@ -37,7 +37,9 @@ export { default as FlexTableHead } from './components/flextable/head';
 // form
 export { default as Form } from './components/form';
 export { default as Label } from './components/form/labels';
-export * from './components/form/fields';
+export { default as Input } from './components/form/fields/regularInput';
+export { default as Select } from './components/form/fields/select';
+export { default as Checkbox } from './components/form/fields/checkInput';
 
 // headings
 export { default as Heading } from './components/headings';
@@ -50,3 +52,5 @@ export { default as TabWrap } from './components/tab/wrap';
 export { default as TabPane } from './components/tab/pane';
 export { default as TabGroup } from './components/tab/group';
 export { default as TabContent } from './components/tab/content';
+
+export { default as Text } from './components/text';
