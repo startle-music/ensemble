@@ -10,6 +10,7 @@ export { default as ColorPicker } from './components/colorpicker';
 
 // containers
 export { Pod, PositionContainer, Header, Content, ColumnContainer, GridContainer } from './components/containers';
+export { default as Container } from './components/containers/container';
 export { default as Column, ColumnWrapper } from './components/columns';
 
 // response box
