@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import Checkbox from '../form/fields/checkInput';
 
 export const ResponsiveTableWrap = styled.div`
-    font-family: 'MuseoSansReg', sans-serif;
+    font-family: ${props => props.theme.main.fontFamily};
+    color: ${props => props.theme.main.color};
 `;
 
 export const Row = styled.div`

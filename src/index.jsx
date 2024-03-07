@@ -64,3 +64,8 @@ export {
     Heading as TableHeading,
     Row as TableRow
 } from './components/responsiveTable';
+
+export { default as Modal } from './components/modal';
+export { default as ScrollableList, ListItem } from './components/scrollableList';
+export { default as Card, CardHeader, CardBody, CardFooter } from './components/card';
+export { default as ToggleArea } from './components/toggleArea';

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-const ContainerStyled = styled.div`
+const ContainerStyled = styled.section`
     display: block;
     background: ${props => props.theme.main.contrastColor};
     border-radius: ${props => props.theme.layout.borderRadius.lg};

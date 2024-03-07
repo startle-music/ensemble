@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const ModalHeader = styled.h2`
@@ -37,88 +37,50 @@ const ModalWrap = styled.div`
     min-height: 4rem;
     max-width: 90%;
     max-height: 90%;
-    background: ${props => (props.type === 'asset' ? 'transparent' : props.theme.main.boxBackground)};
+    background: ${props => (props.transparent ? 'transparent' : props.theme.main.boxBackground)};
     color: ${props => props.theme.menu.color};
     border-radius: ${props => props.theme.main.borderRadius};
-    box-shadow: 0 5px 10px ${props => (props.type === 'asset' ? 'transparent' : 'rgba(0, 0, 0, 0.3)')};
+    box-shadow: 0 5px 10px ${props => (props.transparent ? 'transparent' : 'rgba(0, 0, 0, 0.3)')};
     overflow: auto;
     padding: 2rem;
     text-align: center;
 `;
 
-class Modal extends Component {
-    constructor(props) {
-        super(props);
+/**
+ *
+ * @param {*} param0
+ * @returns
+ * @description Top Level Modal Component needs to be used as close to your root as possible to allow for proper z-indexing
+ */
 
-        this.open = this.open.bind(this);
-        this.close = this.close.bind(this);
-    }
+function Modal({
+    content = null,
+    onClose = () => {},
+    onOpen = () => {},
+    isOpen = false,
+    transparent = false,
+    className = null
+}) {
+    useEffect(() => {
+        onOpen();
 
-    open() {
-        this.setState({ isOpen: true });
-    }
+        return () => {
+            onClose();
+        };
+    }, [onClose, onOpen]);
 
-    close() {
-        this.setState({ isOpen: false });
-    }
-
-    renderClose() {
-        const { modal } = this.props;
-        const { close = true, onClose = null, closeText = 'Cancel' } = modal;
-        if (close) {
-            return (
-                <button
-                    style={{ margin: '0 auto 1em auto', display: 'block' }}
-                    onClick={() => onClose(null)}
-                    type="button"
-                >
-                    {closeText}
-                </button>
-            );
-        }
+    if (!isOpen) {
         return null;
     }
 
-    renderHeader(header, type) {
-        if (type === 'asset') {
-            return null;
-        }
-        return <ModalHeader>{header}</ModalHeader>;
-    }
-
-    render() {
-        const { modal } = this.props;
-        const {
-            content = 'test',
-            header = 'Modal Header',
-            onClose = null,
-            isOpen = false,
-            type = 'default',
-            className = null
-        } = modal;
-        console.log('Modal: Render', this.props);
-        if (!isOpen) {
-            return null;
-        }
-        return (
-            <Wrap>
-                <Background onClick={() => onClose(null)} />
-                <ModalWrap id="mainModal" type={type}>
-                    {this.renderHeader(header, type)}
-                    {content}
-                    {this.renderClose()}
-                </ModalWrap>
-            </Wrap>
-        );
-    }
+    return (
+        <Wrap>
+            <Background onClick={() => onClose(null)} />
+            <ModalWrap id="mainModal" transparent={transparent}>
+                {content}
+            </ModalWrap>
+        </Wrap>
+    );
 }
 
-// Map state to props of container component
-const mapStateToProps = state => ({
-    modal: state.modal
-});
-
-// Connect container component to store
-const ModalContainer = Modal;
-
-export default ModalContainer;
+export default Modal;
