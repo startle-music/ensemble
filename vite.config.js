@@ -8,6 +8,16 @@ export default defineConfig({
             entry: 'src/index.jsx',
             name: 'Ensemble',
             fileName: format => `ensemble.${format}.js`
+        },
+
+        rollupOptions: {
+            external: ['react', 'react-dom'],
+            output: {
+                globals: {
+                    react: 'React',
+                    'react-dom': 'ReactDOM'
+                }
+            }
         }
     },
     plugins: [react()]
