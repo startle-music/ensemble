@@ -41,6 +41,7 @@ export { default as Label } from './components/form/labels';
 export { default as Input } from './components/form/fields/regularInput';
 export { default as Select } from './components/form/fields/select';
 export { default as Checkbox } from './components/form/fields/checkInput';
+export { default as Radio } from './components/form/fields/radio';
 
 // headings
 export { default as Heading } from './components/headings';
