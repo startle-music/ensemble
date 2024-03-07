@@ -14,8 +14,12 @@ const FormRowStyled = styled.div`
     padding: 0 0 ${props => props.theme.container.padding.vertical.lg} 0;
 `;
 
-export function FormRow({ inline, nested, children }) {
-    return <FormRowStyled inline>{children}</FormRowStyled>;
+export function FormRow({ inline = false, nested, children }) {
+    return (
+        <FormRowStyled inline={inline} nested={nested}>
+            {children}
+        </FormRowStyled>
+    );
 }
 
 class Form extends Component {
