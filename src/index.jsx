@@ -55,6 +55,12 @@ export { default as TabGroup } from './components/tab/group';
 export { default as TabContent } from './components/tab/content';
 
 export { default as Text } from './components/text';
-
 export { default as ActionPanel } from './components/actionPanel';
 export { default as DroppableActionPanel } from './components/droppableActionPanel';
+
+export {
+    default as ResponsiveTable,
+    Cell as TableCell,
+    Heading as TableHeading,
+    Row as TableRow
+} from './components/responsiveTable';
