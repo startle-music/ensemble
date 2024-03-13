@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const ScrollableListStyled = styled.ul`
     overflow-y: auto;
     height: 50vh;
-    padding: 0;
+    padding: ${props => (props.padding ? props.padding : props.theme.container.padding.horizontal.lg)};
     margin: 0;
     margin-bottom: ${props => props.theme.layout.margin};
     border: 1px solid ${props => props.theme.main.border};
@@ -19,11 +19,12 @@ export const ListItem = styled.li`
         content: '';
         width: 100%;
         height: 1px;
-        display: block;
+        display: ${props => (props.border ? 'block' : 'none')};
         border-bottom: 1px solid ${props => props.theme.main.border};
         //margin-right: 0;
         //margin-left: auto;
     }
+
     &:first-child {
         &::before {
             display: none;
@@ -31,6 +32,6 @@ export const ListItem = styled.li`
     }
 `;
 
-export default function ScrollableList({ children }) {
-    return <ScrollableListStyled>{children}</ScrollableListStyled>;
+export default function ScrollableList({ padding = null, children }) {
+    return <ScrollableListStyled padding={padding}>{children}</ScrollableListStyled>;
 }

@@ -16,6 +16,16 @@ const PaddedLabel = styled(Label)`
     display: inline-flex;
     align-items: center;
     opacity: ${({ disabled }) => (disabled ? '0.4' : '1')};
+
+    & > label {
+        display: inline;
+        width: auto;
+        margin: 0 0.5rem;
+
+        input {
+            width: 3rem;
+        }
+    }
 `;
 
 const RadioInput = styled.input`

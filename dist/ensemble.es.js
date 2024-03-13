@@ -2524,12 +2524,12 @@ const Uo = p.tr`
     flex-direction: column;
     width: 100%;
 `, ds = p.div`
-    display: flex;
+    display: ${(e) => e.grid ? "contents" : "flex"};
     flex-direction: ${(e) => e.inline ? "row" : "column"};
     padding: 0 0 ${(e) => e.theme.container.padding.vertical.lg} 0;
 `;
-function Rf({ inline: e = !1, nested: t, children: n }) {
-  return /* @__PURE__ */ d(ds, { inline: e, nested: t, children: n });
+function Rf({ inline: e = !1, grid: t = !1, nested: n, children: r }) {
+  return /* @__PURE__ */ d(ds, { inline: e, nested: n, grid: t, children: r });
 }
 class Af extends ra {
   constructor(t) {
@@ -2841,6 +2841,16 @@ const ms = ie`
     display: inline-flex;
     align-items: center;
     opacity: ${({ disabled: e }) => e ? "0.4" : "1"};
+
+    & > label {
+        display: inline;
+        width: auto;
+        margin: 0 0.5rem;
+
+        input {
+            width: 3rem;
+        }
+    }
 `, Rs = p.input`
     position: absolute;
     -webkit-appearance: none;
@@ -2909,25 +2919,33 @@ const ms = ie`
 `, Is = p.div`
     margin: 0 0.5rem;
 `;
-function Lf({ label: e, hourMin: t = 0, hourMax: n = 23, minuteMin: r = 0, minuteMax: a = 59 }) {
-  function i() {
-    const s = [];
-    for (let c = t; c <= n; c++)
-      s.push(c);
-    return s;
+function Lf({
+  label: e,
+  hourMin: t = 0,
+  hourMax: n = 23,
+  hourValue: r,
+  minuteMin: a = 0,
+  minuteMax: i = 59,
+  minuteValue: o
+}) {
+  function s() {
+    const u = [];
+    for (let f = t; f <= n; f++)
+      u.push(f);
+    return u;
   }
-  function o() {
-    const s = [];
-    for (let c = r; c <= a; c++)
-      s.push(c);
-    return s;
+  function c() {
+    const u = [];
+    for (let f = a; f <= i; f++)
+      u.push(f);
+    return u;
   }
   return /* @__PURE__ */ K(As, { children: [
     /* @__PURE__ */ d(ba, { children: e }),
     /* @__PURE__ */ K(_s, { children: [
-      /* @__PURE__ */ d(br, { children: i().map((s) => /* @__PURE__ */ d("option", { value: s, children: s }, s)) }),
+      /* @__PURE__ */ d(br, { value: r, children: s().map((u) => /* @__PURE__ */ d("option", { value: u, children: u }, u)) }),
       /* @__PURE__ */ d(Is, { children: ":" }),
-      /* @__PURE__ */ d(br, { children: o().map((s) => /* @__PURE__ */ d("option", { value: s, children: s }, s)) })
+      /* @__PURE__ */ d(br, { value: o, children: c().map((u) => /* @__PURE__ */ d("option", { value: u, children: u }, u)) })
     ] })
   ] });
 }
@@ -6643,7 +6661,7 @@ function Hf({
 const ef = p.ul`
     overflow-y: auto;
     height: 50vh;
-    padding: 0;
+    padding: ${(e) => e.padding ? e.padding : e.theme.container.padding.horizontal.lg};
     margin: 0;
     margin-bottom: ${(e) => e.theme.layout.margin};
     border: 1px solid ${(e) => e.theme.main.border};
@@ -6655,19 +6673,20 @@ const ef = p.ul`
         content: '';
         width: 100%;
         height: 1px;
-        display: block;
+        display: ${(e) => e.border ? "block" : "none"};
         border-bottom: 1px solid ${(e) => e.theme.main.border};
         //margin-right: 0;
         //margin-left: auto;
     }
+
     &:first-child {
         &::before {
             display: none;
         }
     }
 `;
-function Gf({ children: e }) {
-  return /* @__PURE__ */ d(ef, { children: e });
+function Gf({ padding: e = null, children: t }) {
+  return /* @__PURE__ */ d(ef, { padding: e, children: t });
 }
 const tf = p.div`
     padding: 1rem;

@@ -721,10 +721,10 @@ To pass a single animation please supply them in simple values, e.g. animation('
     flex-direction: column;
     width: 100%;
 `,ps=p.div`
-    display: flex;
+    display: ${e=>e.grid?"contents":"flex"};
     flex-direction: ${e=>e.inline?"row":"column"};
     padding: 0 0 ${e=>e.theme.container.padding.vertical.lg} 0;
-`;function bs({inline:e=!1,nested:n,children:t}){return d(ps,{inline:e,nested:n,children:t})}class gs extends fe.Component{constructor(n){super(n),this.submit=this.submit.bind(this),console.log("item form",n)}submit(n){const{form:t}=this.refs,{onSubmit:r}=this.props;if(n.preventDefault(),[...t].filter(i=>i.name.length>0&&!i.validity.valid).length===0&&typeof r=="function"){const i=[...t].filter(o=>o.name.length>0).reduce((o,s)=>(o[s.name]=s.value,o),{});console.log(i),r(i)}else alert("@Devs. no no no no. Pass edit function pls")}render(){const{children:n,buttonText:t="Submit"}=this.props;return K(ms,{ref:"form",onSubmit:this.submit,children:[n,d("div",{children:d(xe,{product:"positive",type:"submit-modal",children:t})})]})}}const hs=p.css`
+`;function bs({inline:e=!1,grid:n=!1,nested:t,children:r}){return d(ps,{inline:e,nested:t,grid:n,children:r})}class gs extends fe.Component{constructor(n){super(n),this.submit=this.submit.bind(this),console.log("item form",n)}submit(n){const{form:t}=this.refs,{onSubmit:r}=this.props;if(n.preventDefault(),[...t].filter(i=>i.name.length>0&&!i.validity.valid).length===0&&typeof r=="function"){const i=[...t].filter(o=>o.name.length>0).reduce((o,s)=>(o[s.name]=s.value,o),{});console.log(i),r(i)}else alert("@Devs. no no no no. Pass edit function pls")}render(){const{children:n,buttonText:t="Submit"}=this.props;return K(ms,{ref:"form",onSubmit:this.submit,children:[n,d("div",{children:d(xe,{product:"positive",type:"submit-modal",children:t})})]})}}const hs=p.css`
     //margin-bottom:5px;
     //font-size: 0.9rem;
     color: ${e=>je.main.color};
@@ -918,6 +918,16 @@ To pass a single animation please supply them in simple values, e.g. animation('
     display: inline-flex;
     align-items: center;
     opacity: ${({disabled:e})=>e?"0.4":"1"};
+
+    & > label {
+        display: inline;
+        width: auto;
+        margin: 0 0.5rem;
+
+        input {
+            width: 3rem;
+        }
+    }
 `,js=p.input`
     position: absolute;
     -webkit-appearance: none;
@@ -951,7 +961,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
     width: 100%;
 `,zs=p.div`
     margin: 0 0.5rem;
-`;function Ds({label:e,hourMin:n=0,hourMax:t=23,minuteMin:r=0,minuteMax:a=59}){function i(){const s=[];for(let c=n;c<=t;c++)s.push(c);return s}function o(){const s=[];for(let c=r;c<=a;c++)s.push(c);return s}return K(Ms,{children:[d(yr,{children:e}),K(Ns,{children:[d(it,{children:i().map(s=>d("option",{value:s,children:s},s))}),d(zs,{children:":"}),d(it,{children:o().map(s=>d("option",{value:s,children:s},s))})]})]})}const Sn=p.css`
+`;function Ds({label:e,hourMin:n=0,hourMax:t=23,hourValue:r,minuteMin:a=0,minuteMax:i=59,minuteValue:o}){function s(){const u=[];for(let f=n;f<=t;f++)u.push(f);return u}function c(){const u=[];for(let f=a;f<=i;f++)u.push(f);return u}return K(Ms,{children:[d(yr,{children:e}),K(Ns,{children:[d(it,{value:r,children:s().map(u=>d("option",{value:u,children:u},u))}),d(zs,{children:":"}),d(it,{value:o,children:c().map(u=>d("option",{value:u,children:u},u))})]})]})}const Sn=p.css`
     color: ${je.main.color};
     font-family: ${je.main.font};
     margin: 0;
@@ -1897,7 +1907,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `;function gf({content:e=null,onClose:n=()=>{},onOpen:t=()=>{},isOpen:r=!1,transparent:a=!1,className:i=null}){return fe.useEffect(()=>(t(),()=>{n()}),[n,t]),r?K(mf,{children:[d(pf,{onClick:()=>n(null)}),d(bf,{id:"mainModal",transparent:a,children:e})]}):null}const hf=p.ul`
     overflow-y: auto;
     height: 50vh;
-    padding: 0;
+    padding: ${e=>e.padding?e.padding:e.theme.container.padding.horizontal.lg};
     margin: 0;
     margin-bottom: ${e=>e.theme.layout.margin};
     border: 1px solid ${e=>e.theme.main.border};
@@ -1909,17 +1919,18 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         content: '';
         width: 100%;
         height: 1px;
-        display: block;
+        display: ${e=>e.border?"block":"none"};
         border-bottom: 1px solid ${e=>e.theme.main.border};
         //margin-right: 0;
         //margin-left: auto;
     }
+
     &:first-child {
         &::before {
             display: none;
         }
     }
-`;function yf({children:e}){return d(hf,{children:e})}const wf=p.div`
+`;function yf({padding:e=null,children:n}){return d(hf,{padding:e,children:n})}const wf=p.div`
     padding: 1rem;
     margin: ${e=>e.margin||"0 0 1em"};
     box-sizing: border-box;

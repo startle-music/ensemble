@@ -18,7 +18,15 @@ const Divider = styled.div`
     margin: 0 0.5rem;
 `;
 
-export default function TimeSelect({ label, hourMin = 0, hourMax = 23, minuteMin = 0, minuteMax = 59 }) {
+export default function TimeSelect({
+    label,
+    hourMin = 0,
+    hourMax = 23,
+    hourValue,
+    minuteMin = 0,
+    minuteMax = 59,
+    minuteValue
+}) {
     function calculateHours() {
         const hours = [];
         for (let i = hourMin; i <= hourMax; i++) {
@@ -39,7 +47,7 @@ export default function TimeSelect({ label, hourMin = 0, hourMax = 23, minuteMin
         <TimseSelectStyled>
             <Label>{label}</Label>
             <TimeSelectInput>
-                <SelectInput>
+                <SelectInput value={hourValue}>
                     {calculateHours().map(hour => (
                         <option key={hour} value={hour}>
                             {hour}
@@ -47,7 +55,7 @@ export default function TimeSelect({ label, hourMin = 0, hourMax = 23, minuteMin
                     ))}
                 </SelectInput>
                 <Divider>:</Divider>
-                <SelectInput>
+                <SelectInput value={minuteValue}>
                     {calculateMinutes().map(minute => (
                         <option key={minute} value={minute}>
                             {minute}

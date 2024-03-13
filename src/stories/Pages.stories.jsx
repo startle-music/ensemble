@@ -23,6 +23,8 @@ import ScrollableList, { ListItem } from '../components/scrollableList';
 import Card, { CardHeader, CardBody, CardFooter } from '../components/card';
 
 import Text from '../components/text';
+import DragDropList, { DraggableListItem, DraggableListItemHandle } from '../components/dragDropList';
+import TextArea from '../components/form/fields/textArea';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -229,7 +231,7 @@ const FormContents = ({ radio }) => (
                         inputColour={theme.form.input.placeholder}
                     />
                 </FormRow>
-                <FormRow>
+                <FormRow inline>
                     <RadioComponent label="Radio 1" name="radio" value="radio1" inline checked={radio === 'radio1'} />
                     <RadioComponent label="Radio 2" name="radio" value="radio2" inline checked={radio === 'radio2'} />
                     <RadioComponent label="Radio 3" name="radio" value="radio3" inline checked={radio === 'radio3'} />
@@ -256,9 +258,9 @@ const FormContents = ({ radio }) => (
                         </ColumnWrapper>
                     </FormRow>
                 </ToggleArea>
-                <ScrollableList>
+                <ScrollableList padding="0px">
                     {ListData.map((item, index) => (
-                        <ListItem key={index}>
+                        <ListItem key={index} border>
                             <Card horizontal border={false} margin="0">
                                 <CardHeader>
                                     <RadioComponent
@@ -277,6 +279,53 @@ const FormContents = ({ radio }) => (
                         </ListItem>
                     ))}
                 </ScrollableList>
+
+                <DragDropList>
+                    {ListData.map((item, index) => (
+                        <DraggableListItem key={index}>
+                            <Card horizontal border>
+                                <CardHeader order="none">
+                                    <DraggableListItemHandle />
+                                </CardHeader>
+                                <CardBody b>
+                                    <Heading margin="0">{item.title}</Heading>
+                                    <Text>{item.description}</Text>
+                                </CardBody>
+                                <CardFooter>{item.action}</CardFooter>
+                            </Card>
+                        </DraggableListItem>
+                    ))}
+                    <Button type="button">Add a playlist</Button>
+                </DragDropList>
+                <FormRow>
+                    <TextArea name="text" onChange={() => {}} placeholder="Please enter your text here" />
+                </FormRow>
+                <FormRow inline>
+                    <RadioComponent
+                        label={
+                            <>
+                                <RegularInput inline /> {` songs`}
+                            </>
+                        }
+                        name="songs"
+                        value="songs"
+                        inline
+                        checked
+                        onChange={() => {}}
+                    />
+                    <RadioComponent
+                        label={
+                            <>
+                                <RegularInput inline /> {` minutes`}
+                            </>
+                        }
+                        name="time"
+                        value="time"
+                        inline
+                        checked={false}
+                        onChange={() => {}}
+                    />
+                </FormRow>
             </Form>
         </Container>
     </>

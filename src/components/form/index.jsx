@@ -9,14 +9,14 @@ const FormStyled = styled.form`
 `;
 
 const FormRowStyled = styled.div`
-    display: flex;
+    display: ${props => (props.grid ? 'contents' : 'flex')};
     flex-direction: ${props => (props.inline ? 'row' : 'column')};
     padding: 0 0 ${props => props.theme.container.padding.vertical.lg} 0;
 `;
 
-export function FormRow({ inline = false, nested, children }) {
+export function FormRow({ inline = false, grid = false, nested, children }) {
     return (
-        <FormRowStyled inline={inline} nested={nested}>
+        <FormRowStyled inline={inline} nested={nested} grid={grid}>
             {children}
         </FormRowStyled>
     );
