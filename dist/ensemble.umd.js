@@ -728,7 +728,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
     //margin-bottom:5px;
     //font-size: 0.9rem;
     color: ${e=>je.main.color};
-`,Cn=p.label`
+`,Cn=p.div`
     ${ys}
     margin-bottom: ${e=>e.margin||0};
     display: ${({block:e})=>e?"block":"inline-block"};

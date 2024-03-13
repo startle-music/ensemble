@@ -2555,7 +2555,7 @@ const ms = ie`
     //margin-bottom:5px;
     //font-size: 0.9rem;
     color: ${(e) => De.main.color};
-`, Ln = p.label`
+`, Ln = p.div`
     ${ms}
     margin-bottom: ${(e) => e.margin || 0};
     display: ${({ block: e }) => e ? "block" : "inline-block"};
