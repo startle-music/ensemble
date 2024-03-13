@@ -6685,8 +6685,8 @@ const ef = p.ul`
         }
     }
 `;
-function nf({ padding: e = null, children: t }) {
-  return /* @__PURE__ */ d(ef, { padding: e, margin, children: t });
+function nf({ padding: e = null, margin: t, children: n }) {
+  return /* @__PURE__ */ d(ef, { padding: e, margin: t, children: n });
 }
 const rf = p.div`
     padding: 1rem;

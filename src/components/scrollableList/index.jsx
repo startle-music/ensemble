@@ -31,7 +31,7 @@ export const ListItem = styled.li`
     }
 `;
 
-export default function ScrollableList({ padding = null, children }) {
+export default function ScrollableList({ padding = null, margin, children }) {
     return (
         <ScrollableListStyled padding={padding} margin={margin}>
             {children}

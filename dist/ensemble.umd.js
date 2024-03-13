@@ -1930,7 +1930,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             display: none;
         }
     }
-`;function Ma({padding:e=null,children:n}){return d(yf,{padding:e,margin,children:n})}const wf=p.div`
+`;function Ma({padding:e=null,margin:n,children:t}){return d(yf,{padding:e,margin:n,children:t})}const wf=p.div`
     padding: 1rem;
     margin: ${e=>e.margin||"0 0 1em"};
     box-sizing: border-box;
