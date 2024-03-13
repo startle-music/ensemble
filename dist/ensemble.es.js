@@ -2555,12 +2555,12 @@ const ms = ie`
     //margin-bottom:5px;
     //font-size: 0.9rem;
     color: ${(e) => De.main.color};
-`, Ln = p.div`
+`, Ln = p.label`
     ${ms}
     margin-bottom: ${(e) => e.margin || 0};
     display: ${({ block: e }) => e ? "block" : "inline-block"};
     width: 100%;
-`, ps = p.Label`
+`, ps = p.label`
     font-size: 1rem;
     font-family: ${(e) => e.theme.main.font};
     padding-bottom: 0.5rem;

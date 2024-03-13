@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-const LabelWrap = styled.Label`
+const LabelWrap = styled.label`
     font-size: 1rem;
     font-family: ${props => props.theme.main.font};
     padding-bottom: 0.5rem;

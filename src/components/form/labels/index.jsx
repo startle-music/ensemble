@@ -8,7 +8,7 @@ const labelBase = css`
     color: ${p => theme.main.color};
 `;
 
-const Label = styled.div`
+const Label = styled.label`
     ${labelBase}
     margin-bottom: ${props => props.margin || 0};
     display: ${({ block }) => (block ? 'block' : 'inline-block')};

@@ -728,12 +728,12 @@ To pass a single animation please supply them in simple values, e.g. animation('
     //margin-bottom:5px;
     //font-size: 0.9rem;
     color: ${e=>je.main.color};
-`,Cn=p.div`
+`,Cn=p.label`
     ${ys}
     margin-bottom: ${e=>e.margin||0};
     display: ${({block:e})=>e?"block":"inline-block"};
     width: 100%;
-`,ws=p.Label`
+`,ws=p.label`
     font-size: 1rem;
     font-family: ${e=>e.theme.main.font};
     padding-bottom: 0.5rem;
