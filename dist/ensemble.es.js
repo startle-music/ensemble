@@ -2705,7 +2705,7 @@ const ms = ie`
     }
 `, Cs = p.div`
     margin: 0;
-    min-width: 10rem;
+    min-width: ${(e) => e.inline ? "0" : "10rem"};
     display: inline-block;
     vertical-align: middle;
     position: relative;
@@ -2746,10 +2746,10 @@ const ms = ie`
             font-family: ${(e) => e.theme.main.font};
         }
     }
-`, Ss = ({ children: e }) => e ? /* @__PURE__ */ d(xs, { children: e }) : null, br = ({ value: e, name: t, children: n, label: r, onChange: a = () => {
+`, Ss = ({ children: e }) => e ? /* @__PURE__ */ d(xs, { children: e }) : null, br = ({ value: e, name: t, children: n, label: r, inline: a = !1, onChange: i = () => {
 } }) => /* @__PURE__ */ K(ws, { children: [
   r ? /* @__PURE__ */ d(Ss, { htmlFor: t, children: r }) : null,
-  /* @__PURE__ */ d(Cs, { children: /* @__PURE__ */ d(ks, { value: e, name: t, onChange: a, children: n }) })
+  /* @__PURE__ */ d(Cs, { inline: a, children: /* @__PURE__ */ d(ks, { value: e, name: t, onChange: i, children: n }) })
 ] }), Es = p.div`
     
     flex-direction: row;

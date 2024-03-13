@@ -43,7 +43,7 @@ const Dropdown = styled.select`
 
 const StyledSelect = styled.div`
     margin: 0;
-    min-width: 10rem;
+    min-width: ${props => (props.inline ? '0' : '10rem')};
     display: inline-block;
     vertical-align: middle;
     position: relative;
@@ -88,10 +88,10 @@ const StyledSelect = styled.div`
 
 const Label = ({ children }) => (children ? <Text>{children}</Text> : null);
 
-const SelectInput = ({ value, name, children, label, onChange = () => {} }) => (
+const SelectInput = ({ value, name, children, label, inline = false, onChange = () => {} }) => (
     <Wrapper>
         {label ? <Label htmlFor={name}>{label}</Label> : null}
-        <StyledSelect>
+        <StyledSelect inline={inline}>
             <Dropdown value={value} name={name} onChange={onChange}>
                 {children}
             </Dropdown>

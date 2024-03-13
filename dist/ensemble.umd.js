@@ -816,7 +816,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
     }
 `,Rs=p.div`
     margin: 0;
-    min-width: 10rem;
+    min-width: ${e=>e.inline?"0":"10rem"};
     display: inline-block;
     vertical-align: middle;
     position: relative;
@@ -857,7 +857,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
             font-family: ${e=>e.theme.main.font};
         }
     }
-`,As=({children:e})=>e?d(Ps,{children:e}):null,it=({value:e,name:n,children:t,label:r,onChange:a=()=>{}})=>K($s,{children:[r?d(As,{htmlFor:n,children:r}):null,d(Rs,{children:d(Os,{value:e,name:n,onChange:a,children:t})})]}),Is=p.div`
+`,As=({children:e})=>e?d(Ps,{children:e}):null,it=({value:e,name:n,children:t,label:r,inline:a=!1,onChange:i=()=>{}})=>K($s,{children:[r?d(As,{htmlFor:n,children:r}):null,d(Rs,{inline:a,children:d(Os,{value:e,name:n,onChange:i,children:t})})]}),Is=p.div`
     
     flex-direction: row;
     //display: ${e=>e.inline?"inline-flex":"flex"};
