@@ -733,11 +733,12 @@ To pass a single animation please supply them in simple values, e.g. animation('
     margin-bottom: ${e=>e.margin||0};
     display: ${({block:e})=>e?"block":"inline-block"};
     width: 100%;
-`,ws=p.div`
+`,ws=p.Label`
     font-size: 1rem;
-    font-family: MuseoSansReg, sans-serif;
+    font-family: ${e=>e.theme.main.font};
     padding-bottom: 0.5rem;
     box-sizing: border-box;
+    color: ${e=>e.theme.main.color};
 `,xs=p.span`
     display: inline-block;
     margin-left: 0.3rem;
@@ -1908,8 +1909,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     overflow-y: auto;
     height: 50vh;
     padding: ${e=>e.padding?e.padding:e.theme.container.padding.horizontal.lg};
-    margin: 0;
-    margin-bottom: ${e=>e.theme.layout.margin};
+    margin: ${e=>e.margin?e.margin:`0 0 ${e.theme.layout.margin}`};
     border: 1px solid ${e=>e.theme.main.border};
     \list-style: none;
 `,Fa=p.li`
@@ -1930,7 +1930,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             display: none;
         }
     }
-`;function Ma({padding:e=null,children:n}){return d(yf,{padding:e,children:n})}const wf=p.div`
+`;function Ma({padding:e=null,children:n}){return d(yf,{padding:e,margin,children:n})}const wf=p.div`
     padding: 1rem;
     margin: ${e=>e.margin||"0 0 1em"};
     box-sizing: border-box;

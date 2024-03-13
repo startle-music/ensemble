@@ -2,11 +2,12 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-const LabelWrap = styled.div`
+const LabelWrap = styled.Label`
     font-size: 1rem;
-    font-family: MuseoSansReg, sans-serif;
+    font-family: ${props => props.theme.main.font};
     padding-bottom: 0.5rem;
     box-sizing: border-box;
+    color: ${props => props.theme.main.color};
 `;
 
 const StyledRequired = styled.span`

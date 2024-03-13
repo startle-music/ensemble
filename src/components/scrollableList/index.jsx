@@ -6,8 +6,7 @@ const ScrollableListStyled = styled.ul`
     overflow-y: auto;
     height: 50vh;
     padding: ${props => (props.padding ? props.padding : props.theme.container.padding.horizontal.lg)};
-    margin: 0;
-    margin-bottom: ${props => props.theme.layout.margin};
+    margin: ${props => (props.margin ? props.margin : `0 0 ${props.theme.layout.margin}`)};
     border: 1px solid ${props => props.theme.main.border};
     \list-style: none;
 `;
@@ -33,5 +32,9 @@ export const ListItem = styled.li`
 `;
 
 export default function ScrollableList({ padding = null, children }) {
-    return <ScrollableListStyled padding={padding}>{children}</ScrollableListStyled>;
+    return (
+        <ScrollableListStyled padding={padding} margin={margin}>
+            {children}
+        </ScrollableListStyled>
+    );
 }

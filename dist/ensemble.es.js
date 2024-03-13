@@ -2560,11 +2560,12 @@ const ms = ie`
     margin-bottom: ${(e) => e.margin || 0};
     display: ${({ block: e }) => e ? "block" : "inline-block"};
     width: 100%;
-`, ps = p.div`
+`, ps = p.Label`
     font-size: 1rem;
-    font-family: MuseoSansReg, sans-serif;
+    font-family: ${(e) => e.theme.main.font};
     padding-bottom: 0.5rem;
     box-sizing: border-box;
+    color: ${(e) => e.theme.main.color};
 `, bs = p.span`
     display: inline-block;
     margin-left: 0.3rem;
@@ -6662,8 +6663,7 @@ const ef = p.ul`
     overflow-y: auto;
     height: 50vh;
     padding: ${(e) => e.padding ? e.padding : e.theme.container.padding.horizontal.lg};
-    margin: 0;
-    margin-bottom: ${(e) => e.theme.layout.margin};
+    margin: ${(e) => e.margin ? e.margin : `0 0 ${e.theme.layout.margin}`};
     border: 1px solid ${(e) => e.theme.main.border};
     \list-style: none;
 `, tf = p.li`
@@ -6686,7 +6686,7 @@ const ef = p.ul`
     }
 `;
 function nf({ padding: e = null, children: t }) {
-  return /* @__PURE__ */ d(ef, { padding: e, children: t });
+  return /* @__PURE__ */ d(ef, { padding: e, margin, children: t });
 }
 const rf = p.div`
     padding: 1rem;
