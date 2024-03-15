@@ -496,7 +496,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
     max-width: ${e=>e.theme.container.maxWidth.lg};
     margin: ${e=>e.theme.container.margin.lg};
 `;function vo({padded:e,children:n}){return d(ho,{padded:e,children:n})}const yo=m.div`
-    display: ${e=>e.passthrough?"block":"none"};
+    display: ${e=>e.passthrough?"contents":"block"};
 `;function mr({check:e,value:n,passThrough:t,children:r}){return e===n?d(yo,{passthrough:t,children:r}):null}const wo=m.div`
     grid-column: ${e=>e.offset?`col-start ${e.offset} / span ${e.span}`:`span ${e.span}`};
     //grid-row: 1;

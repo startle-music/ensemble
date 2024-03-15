@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ToggleAreaStyled = styled.div`
-    display: ${props => (props.passthrough ? 'block' : 'none')};
+    display: ${props => (props.passthrough ? 'contents' : 'block')};
 `;
 
 export default function ToggleArea({ check, value, passThrough, children }) {

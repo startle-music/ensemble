@@ -2152,7 +2152,7 @@ function kf({ padded: e, children: t }) {
   return /* @__PURE__ */ d($o, { padded: e, children: t });
 }
 const Eo = p.div`
-    display: ${(e) => e.passthrough ? "block" : "none"};
+    display: ${(e) => e.passthrough ? "contents" : "block"};
 `;
 function To({ check: e, value: t, passThrough: n, children: r }) {
   return e === t ? /* @__PURE__ */ d(Eo, { passthrough: n, children: r }) : null;
