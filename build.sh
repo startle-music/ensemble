@@ -6,6 +6,12 @@ echo "Building the project"
 # Run yarm build
 yarn run build
 
+#if build fails, exit
+if [ $? -ne 0 ]; then
+  echo "Build failed"
+  exit 1
+fi
+
 # Add all files to git
 git add .
 
