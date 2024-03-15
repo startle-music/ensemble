@@ -55,7 +55,7 @@ const generalColors = {
         'linear-gradient(90deg, rgba(199,55,71,1) 0%, rgba(223,172,51,1) 20%, rgba(142,182,59,1) 40%, rgba(251,253,254,1) 60%, rgba(102,175,208,1) 80%, rgba(63,83,158,1) 100%)'
 };
 
-function extendDefaultTheme(defaultTheme, newTheme) {
+export function extendDefaultTheme(defaultTheme, newTheme) {
     // copy the default theme
     const defaultThemeCopy = { ...defaultTheme };
     // loop through the new theme and update the default theme

@@ -6755,7 +6755,7 @@ function Vf({ data: e }) {
     ] }, r.name))
   ] });
 }
-p.div`
+const Kf = p.div`
     color: ${(e) => e.theme.main.color};
     padding: ${(e) => e.theme.layout.padding.vertical} ${(e) => e.theme.layout.padding.horizontal};
     //remove margin on text and header
@@ -6768,18 +6768,15 @@ p.div`
     p {
         margin: 0;
     }
-`;
-p.div`
+`, Jf = p.div`
     color: ${(e) => e.theme.main.color};
-`;
-p.div`
+`, Qf = p.div`
     border-top: 1px solid ${(e) => e.theme.main.border};
     color: ${(e) => e.theme.main.color};
     display: flex;
     justify-content: space-between;
     padding: ${(e) => e.theme.layout.padding.vertical} ${(e) => e.theme.layout.padding.horizontal};
-`;
-const nf = p.div`
+`, nf = p.div`
     display: flex;
     position: fixed;
     top: 0;
@@ -6813,7 +6810,7 @@ const nf = p.div`
     //padding: 2rem;
     text-align: center;
 `;
-function Kf({
+function eu({
   content: e = null,
   onClose: t = () => {
   },
@@ -6869,31 +6866,31 @@ const cf = p.div`
     align-items: center;
     border-radius: ${(e) => e.theme.main.borderRadius};
     border: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
-`, Jf = p.div`
+`, tu = p.div`
     padding: 0 1rem;
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
-`, Qf = p.div`
+`, nu = p.div`
     padding: 0 1rem;
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
-`, eu = p.div`
+`, ru = p.div`
     padding: 0 1rem;
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
     margin-left: auto;
 `;
-function tu({ horizontal: e, margin: t, border: n = !0, children: r }) {
+function au({ horizontal: e, margin: t, border: n = !0, children: r }) {
   return /* @__PURE__ */ d(cf, { horizontal: e, margin: t, border: n, children: r });
 }
 const ff = p(lf)`
     & .placeholder {
         background-color: ${(e) => e.theme.main.background};
     }
-`, nu = p(sf)`
+`, iu = p(sf)`
     cursor: grab;
     user-select: none;
     &:active {
         cursor: grabbing;
     }
-`, ru = p.div`
+`, ou = p.div`
     cursor: grab;
     user-select: none;
     &:active {
@@ -6904,7 +6901,7 @@ const ff = p(lf)`
         content: '⋮⋮';
     }
 `;
-function au({ children: e }) {
+function su({ children: e }) {
   const t = (i) => {
     const { id: o } = i.currentTarget;
     i.dataTransfer.setData("text/plain", o);
@@ -6933,10 +6930,10 @@ export {
   Qc as ActionPanel,
   mf as Background,
   Re as Button,
-  tu as Card,
-  Qf as CardBody,
-  eu as CardFooter,
-  Jf as CardHeader,
+  au as Card,
+  nu as CardBody,
+  ru as CardFooter,
+  tu as CardHeader,
   hr as Checkbox,
   pf as Chip,
   bf as ColorPicker,
@@ -6945,9 +6942,9 @@ export {
   Cf as ColumnWrapper,
   kf as Container,
   yf as Content,
-  au as DragDropList,
-  nu as DraggableListItem,
-  ru as DraggableListItemHandle,
+  su as DragDropList,
+  iu as DraggableListItem,
+  ou as DraggableListItemHandle,
   Zf as DroppableActionPanel,
   If as FlexTable,
   Lf as FlexTableCell,
@@ -6964,7 +6961,10 @@ export {
   Df as Input,
   Fn as Label,
   sf as ListItem,
-  Kf as Modal,
+  eu as Modal,
+  Jf as ModalBody,
+  Qf as ModalFooter,
+  Kf as ModalHeader,
   gf as Pod,
   hf as PositionContainer,
   zf as Radio,
