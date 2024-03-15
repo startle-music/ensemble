@@ -2151,9 +2151,11 @@ const pf = ({ label: e, value: t, name: n = null, color: r = "red", textColor: a
 function kf({ padded: e, children: t }) {
   return /* @__PURE__ */ d($o, { padded: e, children: t });
 }
-const Eo = p.div``;
-function To({ check: e, value: t, children: n }) {
-  return e === t ? /* @__PURE__ */ d(Eo, { children: n }) : null;
+const Eo = p.div`
+    display: ${(e) => e.passthrough ? "block" : "none"};
+`;
+function To({ check: e, value: t, passThrough: n, children: r }) {
+  return e === t ? /* @__PURE__ */ d(Eo, { passthrough: n, children: r }) : null;
 }
 const Po = p.div`
     grid-column: ${(e) => e.offset ? `col-start ${e.offset} / span ${e.span}` : `span ${e.span}`};

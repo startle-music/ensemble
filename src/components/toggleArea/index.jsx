@@ -2,8 +2,10 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-const ToggleAreaStyled = styled.div``;
+const ToggleAreaStyled = styled.div`
+    display: ${props => (props.passthrough ? 'block' : 'none')};
+`;
 
-export default function ToggleArea({ check, value, children }) {
-    return check === value ? <ToggleAreaStyled>{children}</ToggleAreaStyled> : null;
+export default function ToggleArea({ check, value, passThrough, children }) {
+    return check === value ? <ToggleAreaStyled passthrough={passThrough}>{children}</ToggleAreaStyled> : null;
 }
