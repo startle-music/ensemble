@@ -25,6 +25,7 @@ import Card, { CardHeader, CardBody, CardFooter } from '../components/card';
 import Text from '../components/text';
 import DragDropList, { DraggableListItem, DraggableListItemHandle } from '../components/dragDropList';
 import TextArea from '../components/form/fields/textArea';
+import Modal, { ModalBody, ModalFooter, ModalHeader } from '../components/modal';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -45,13 +46,13 @@ const Icon = () => (
 
 const tableActions = (
     <>
-        <Button key="aaa" onClick={() => alert('yo')}>
+        <Button key="aaa" onClick={() => alert('yo')} inline>
             <FontAwesomeIcon icon={faTrash} />
         </Button>
-        <Button key="aaa">
+        <Button key="aaa" inline>
             <FontAwesomeIcon icon={faPencil} />
         </Button>
-        <Button key="aaa">
+        <Button key="aaa" inline>
             <FontAwesomeIcon icon={faPlay} />
         </Button>
     </>
@@ -218,8 +219,47 @@ const ListData = [
     }
 ];
 
-const FormContents = ({ radio }) => (
+function ScrollableListExample() {
+    return (
+        <ScrollableList padding="0px">
+            {ListData.map((item, index) => (
+                <ListItem key={index} border>
+                    <Card horizontal border={false} margin="0">
+                        <CardHeader>
+                            <RadioComponent name="radio" value="radio1" margin="0" />
+                        </CardHeader>
+                        <CardBody>
+                            <Heading margin="0">{item.title}</Heading>
+                            <Text>{item.description}</Text>
+                        </CardBody>
+                        <CardFooter>{item.action}</CardFooter>
+                    </Card>
+                </ListItem>
+            ))}
+        </ScrollableList>
+    );
+}
+
+function ModalContent() {
+    return (
+        <>
+            <ModalHeader>
+                <Heading type="title">Modal</Heading>
+            </ModalHeader>
+            <ModalBody>
+                <ScrollableListExample />
+            </ModalBody>
+            <ModalFooter>
+                <Button>Save</Button>
+                <Button>Cancel</Button>
+            </ModalFooter>
+        </>
+    );
+}
+
+const FormContents = ({ radio, modalOpen }) => (
     <>
+        <Modal isOpen={modalOpen} content={<ModalContent />} />
         <Container padded>
             <Heading type="title">Form</Heading>
             <Form>
@@ -258,28 +298,8 @@ const FormContents = ({ radio }) => (
                         </ColumnWrapper>
                     </FormRow>
                 </ToggleArea>
-                <ScrollableList padding="0px">
-                    {ListData.map((item, index) => (
-                        <ListItem key={index} border>
-                            <Card horizontal border={false} margin="0">
-                                <CardHeader>
-                                    <RadioComponent
-                                        name="radio"
-                                        value="radio1"
-                                        margin="0"
-                                        checked={radio === 'radio1'}
-                                    />
-                                </CardHeader>
-                                <CardBody>
-                                    <Heading margin="0">{item.title}</Heading>
-                                    <Text>{item.description}</Text>
-                                </CardBody>
-                                <CardFooter>{item.action}</CardFooter>
-                            </Card>
-                        </ListItem>
-                    ))}
-                </ScrollableList>
 
+                <ScrollableListExample />
                 <DragDropList>
                     {ListData.map((item, index) => (
                         <DraggableListItem key={index}>
@@ -326,6 +346,26 @@ const FormContents = ({ radio }) => (
                         onChange={() => {}}
                     />
                 </FormRow>
+                <FormRow>
+                    <ColumnWrapper>
+                        <Column span={3}>
+                            <TimeSelect
+                                value={10}
+                                label="Start Time"
+                                inputBorder={theme.form.input.border}
+                                inputColour={theme.form.input.placeholder}
+                            />
+                        </Column>
+                        <Column span={3}>
+                            <TimeSelect
+                                value={10}
+                                label="End Time"
+                                inputBorder={theme.form.input.border}
+                                inputColour={theme.form.input.placeholder}
+                            />
+                        </Column>
+                    </ColumnWrapper>
+                </FormRow>
             </Form>
         </Container>
     </>
@@ -334,7 +374,8 @@ const FormContents = ({ radio }) => (
 export const FormExample = {
     args: {
         id: 'Form Page',
-        radio: 'radio2'
+        radio: 'radio2',
+        modalOpen: false
     },
     render: args => (
         <Page>

@@ -55,6 +55,21 @@ const generalColors = {
         'linear-gradient(90deg, rgba(199,55,71,1) 0%, rgba(223,172,51,1) 20%, rgba(142,182,59,1) 40%, rgba(251,253,254,1) 60%, rgba(102,175,208,1) 80%, rgba(63,83,158,1) 100%)'
 };
 
+function extendDefaultTheme(defaultTheme, newTheme) {
+    // copy the default theme
+    const defaultThemeCopy = { ...defaultTheme };
+    // loop through the new theme and update the default theme
+    Object.keys(newTheme).forEach(key => {
+        if (typeof newTheme[key] === 'object') {
+            defaultThemeCopy[key] = { ...defaultThemeCopy[key], ...newTheme[key] };
+        } else {
+            defaultThemeCopy[key] = newTheme[key];
+        }
+    });
+
+    return defaultThemeCopy;
+}
+
 /**
  * App Theme
  * This default app theme takes the colour scheme and general settings above.
@@ -64,6 +79,7 @@ const generalColors = {
  * the theme working with all existing components.
  * To alter the theme in a minor way, try updating above this section only.
  */
+
 const theme = {
     main: {
         spacing: 1.6,
@@ -84,6 +100,10 @@ const theme = {
             md: '0.4rem'
         },
         margin: '2rem',
+        padding: {
+            vertical: '1rem',
+            horizontal: '2rem'
+        },
         gap: {
             lg: '2rem',
             sm: '1rem'
@@ -281,10 +301,17 @@ export const absoluteFill = {
 
 export default theme;
 
-export const simplyRed = {
-    ...theme,
-    ...{
-        button: {
+export const simplyRed = extendDefaultTheme(theme, {
+    button: {
+        background: brandColors.simplyRed,
+        color: generalColors.white,
+        border: `2px solid ${brandColors.simplyRed}`,
+        hover: {
+            background: brandColors.simplyRed,
+            color: generalColors.white,
+            border: `2px solid ${brandColors.simplyRed}`
+        },
+        active: {
             background: brandColors.simplyRed,
             color: generalColors.white,
             border: `2px solid ${brandColors.simplyRed}`,
@@ -292,31 +319,28 @@ export const simplyRed = {
                 background: brandColors.simplyRed,
                 color: generalColors.white,
                 border: `2px solid ${brandColors.simplyRed}`
-            },
-            active: {
-                background: brandColors.simplyRed,
-                color: generalColors.white,
-                border: `2px solid ${brandColors.simplyRed}`,
-                hover: {
-                    background: brandColors.simplyRed,
-                    color: generalColors.white,
-                    border: `2px solid ${brandColors.simplyRed}`
-                }
-            }
-        },
-        form: {
-            input: {
-                background: brandColors.simplyRed,
-                color: generalColors.white
             }
         }
+    },
+    form: {
+        input: {
+            background: brandColors.simplyRed,
+            color: generalColors.white
+        }
     }
-};
+});
 
-export const mrBlueSky = {
-    ...theme,
-    ...{
-        button: {
+export const mrBlueSky = extendDefaultTheme(theme, {
+    button: {
+        background: brandColors.mrBlueSky,
+        color: generalColors.white,
+        border: `2px solid ${brandColors.mrBlueSky}`,
+        hover: {
+            background: brandColors.mrBlueSky,
+            color: generalColors.white,
+            border: `2px solid ${brandColors.mrBlueSky}`
+        },
+        active: {
             background: brandColors.mrBlueSky,
             color: generalColors.white,
             border: `2px solid ${brandColors.mrBlueSky}`,
@@ -324,25 +348,22 @@ export const mrBlueSky = {
                 background: brandColors.mrBlueSky,
                 color: generalColors.white,
                 border: `2px solid ${brandColors.mrBlueSky}`
-            },
-            active: {
-                background: brandColors.mrBlueSky,
-                color: generalColors.white,
-                border: `2px solid ${brandColors.mrBlueSky}`,
-                hover: {
-                    background: brandColors.mrBlueSky,
-                    color: generalColors.white,
-                    border: `2px solid ${brandColors.mrBlueSky}`
-                }
             }
         }
     }
-};
+});
 
-export const greenDay = {
-    ...theme,
-    ...{
-        button: {
+export const greenDay = extendDefaultTheme(theme, {
+    button: {
+        background: brandColors.greenDay,
+        color: generalColors.white,
+        border: `2px solid ${brandColors.greenDay}`,
+        hover: {
+            background: brandColors.greenDay,
+            color: generalColors.white,
+            border: `2px solid ${brandColors.greenDay}`
+        },
+        active: {
             background: brandColors.greenDay,
             color: generalColors.white,
             border: `2px solid ${brandColors.greenDay}`,
@@ -350,17 +371,32 @@ export const greenDay = {
                 background: brandColors.greenDay,
                 color: generalColors.white,
                 border: `2px solid ${brandColors.greenDay}`
-            },
-            active: {
-                background: brandColors.greenDay,
-                color: generalColors.white,
-                border: `2px solid ${brandColors.greenDay}`,
-                hover: {
-                    background: brandColors.greenDay,
-                    color: generalColors.white,
-                    border: `2px solid ${brandColors.greenDay}`
-                }
             }
         }
+    },
+    form: {
+        input: {
+            background: generalColors.lightGrey,
+            color: brandColors.greenDay,
+            placeholder: darken(0.12, generalColors.midGrey),
+            fontSize: '1rem',
+            small: {
+                color: brandColors.greenDay,
+                fontSize: '0.875rem'
+            },
+            border: generalColors.midGrey
+        },
+        label: {
+            color: brandColors.greenDay,
+            fontSize: '1rem',
+            small: {
+                color: brandColors.greenDay,
+                fontSize: '0.875rem'
+            }
+        },
+        select: {
+            background: generalColors.lightGrey,
+            border: generalColors.midGrey
+        }
     }
-};
+});

@@ -5,14 +5,18 @@ import styled from 'styled-components';
 import SelectInput from './select';
 import Label from './label';
 
-const TimseSelectStyled = styled.div``;
+const TimseSelectStyled = styled.div`
+    width: 100%;
+`;
 
 const TimeSelectInput = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
+    //width: 100%;
 `;
+
+const SelectInputStyled = styled(SelectInput)``;
 
 const Divider = styled.div`
     margin: 0 0.5rem;
@@ -47,21 +51,21 @@ export default function TimeSelect({
         <TimseSelectStyled>
             <Label>{label}</Label>
             <TimeSelectInput>
-                <SelectInput value={hourValue}>
+                <SelectInputStyled value={hourValue} inline>
                     {calculateHours().map(hour => (
                         <option key={hour} value={hour}>
                             {hour}
                         </option>
                     ))}
-                </SelectInput>
+                </SelectInputStyled>
                 <Divider>:</Divider>
-                <SelectInput value={minuteValue}>
+                <SelectInputStyled value={minuteValue} inline>
                     {calculateMinutes().map(minute => (
                         <option key={minute} value={minute}>
                             {minute}
                         </option>
                     ))}
-                </SelectInput>
+                </SelectInputStyled>
             </TimeSelectInput>
         </TimseSelectStyled>
     );

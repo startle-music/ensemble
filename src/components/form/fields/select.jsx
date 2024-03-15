@@ -25,7 +25,7 @@ const Dropdown = styled.select`
     -webkit-appearance: none;
     background: transparent;
     border: none;
-    padding: 0.875rem 0.6rem;
+    padding: ${props => (props.inline ? '0.875rem 1.6rem 0.875rem 0.6rem' : '0.875rem 0.6rem')};
     font-family: ${props => props.theme.main.font};
     font-weight: 400;
 
@@ -43,7 +43,7 @@ const Dropdown = styled.select`
 
 const StyledSelect = styled.div`
     margin: 0;
-    min-width: ${props => (props.inline ? '0' : '10rem')};
+    min-width: ${props => (props.inline ? '4rem' : '10rem')};
     display: inline-block;
     vertical-align: middle;
     position: relative;
@@ -92,7 +92,7 @@ const SelectInput = ({ value, name, children, label, inline = false, onChange = 
     <Wrapper>
         {label ? <Label htmlFor={name}>{label}</Label> : null}
         <StyledSelect inline={inline}>
-            <Dropdown value={value} name={name} onChange={onChange}>
+            <Dropdown value={value} name={name} onChange={onChange} inline>
                 {children}
             </Dropdown>
         </StyledSelect>

@@ -2,6 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import ToggleArea from '../toggleArea';
+
 const ColumnStyled = styled.div`
     grid-column: ${props => (props.offset ? `col-start ${props.offset} / span ${props.span}` : `span ${props.span}`)};
     //grid-row: 1;
@@ -15,6 +17,10 @@ export const ColumnWrapper = styled.div`
     grid-template-columns: repeat(12, [col-start] 1fr);
     gap: ${props => props.theme.layout.gap.lg};
     grid-auto-flow: row;
+
+    ${ToggleArea} {
+        display: contents;
+    }
 `;
 
 export default function Column({ span = 4, offset = '', pull = 'left', children }) {
