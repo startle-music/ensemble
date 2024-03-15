@@ -73,3 +73,5 @@ export { default as Card, CardHeader, CardBody, CardFooter } from './components/
 export { default as ToggleArea } from './components/toggleArea';
 
 export { default as DragDropList, DraggableListItem, DraggableListItemHandle } from './components/dragDropList';
+
+export { default as extendDefaultTheme } from './style/theme';

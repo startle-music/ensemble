@@ -6988,5 +6988,6 @@ export {
   Pf as Th,
   Bf as TimeSelect,
   To as ToggleArea,
-  Tf as Tr
+  Tf as Tr,
+  xe as extendDefaultTheme
 };
