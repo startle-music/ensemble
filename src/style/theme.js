@@ -91,7 +91,8 @@ const theme = {
         contrastColor: generalColors.white,
         fontSize: '16px',
         boxBackground: generalColors.white,
-        border: generalColors.midGrey
+        border: generalColors.midGrey,
+        brand: brandColors.paintItBlack
     },
     layout: {
         borderRadius: {
@@ -354,6 +355,9 @@ export const mrBlueSky = extendDefaultTheme(theme, {
 });
 
 export const greenDay = extendDefaultTheme(theme, {
+    main: {
+        brand: brandColors.greenDay
+    },
     button: {
         background: brandColors.greenDay,
         color: generalColors.white,

@@ -22,10 +22,14 @@ import ScrollableList, { ListItem } from '../components/scrollableList';
 
 import Card, { CardHeader, CardBody, CardFooter } from '../components/card';
 
+import RadioPanel from '../components/form/fields/radioPanel';
+
 import Text from '../components/text';
 import DragDropList, { DraggableListItem, DraggableListItemHandle } from '../components/dragDropList';
 import TextArea from '../components/form/fields/textArea';
 import Modal, { ModalBody, ModalFooter, ModalHeader } from '../components/modal';
+
+import Steps, { Step } from '../components/steps';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -257,116 +261,168 @@ function ModalContent() {
     );
 }
 
-const FormContents = ({ radio, modalOpen }) => (
+const FormContents = ({ radio, modalOpen, step }) => (
     <>
         <Modal isOpen={modalOpen} content={<ModalContent />} />
         <Container padded>
             <Heading type="title">Form</Heading>
-            <Form>
-                <FormRow>
-                    <RegularInput
-                        label="Search"
-                        inputBorder={theme.form.input.border}
-                        placeholder="Search"
-                        inputColour={theme.form.input.placeholder}
-                    />
-                </FormRow>
-                <FormRow inline>
-                    <RadioComponent label="Radio 1" name="radio" value="radio1" inline checked={radio === 'radio1'} />
-                    <RadioComponent label="Radio 2" name="radio" value="radio2" inline checked={radio === 'radio2'} />
-                    <RadioComponent label="Radio 3" name="radio" value="radio3" inline checked={radio === 'radio3'} />
-                </FormRow>
-                <ToggleArea check="radio2" value={radio}>
-                    <FormRow>
-                        <ColumnWrapper>
-                            <Column span={6}>
-                                <RegularInput
-                                    label="Start Date"
-                                    inputBorder={theme.form.input.border}
-                                    type="date"
-                                    inputColour={theme.form.input.placeholder}
-                                />
-                            </Column>
-                            <Column span={6}>
-                                <TimeSelect
-                                    value={new Date()}
-                                    label="Start Time"
-                                    inputBorder={theme.form.input.border}
-                                    inputColour={theme.form.input.placeholder}
-                                />
-                            </Column>
-                        </ColumnWrapper>
-                    </FormRow>
-                </ToggleArea>
+            <Steps position={step}>
+                <Step title="Frequency and adverts">
+                    <Form>
+                        <FormRow>
+                            <RegularInput
+                                label="Search"
+                                inputBorder={theme.form.input.border}
+                                placeholder="Search"
+                                inputColour={theme.form.input.placeholder}
+                            />
+                        </FormRow>
+                        <FormRow inline>
+                            <RadioComponent
+                                label="Radio 1"
+                                name="radio"
+                                value="radio1"
+                                inline
+                                checked={radio === 'radio1'}
+                            />
+                            <RadioComponent
+                                label="Radio 2"
+                                name="radio"
+                                value="radio2"
+                                inline
+                                checked={radio === 'radio2'}
+                            />
+                            <RadioComponent
+                                label="Radio 3"
+                                name="radio"
+                                value="radio3"
+                                inline
+                                checked={radio === 'radio3'}
+                            />
+                        </FormRow>
+                        <ToggleArea check="radio2" value={radio}>
+                            <FormRow>
+                                <ColumnWrapper>
+                                    <Column span={6}>
+                                        <RegularInput
+                                            label="Start Date"
+                                            inputBorder={theme.form.input.border}
+                                            type="date"
+                                            inputColour={theme.form.input.placeholder}
+                                        />
+                                    </Column>
+                                    <Column span={6}>
+                                        <TimeSelect
+                                            value={new Date()}
+                                            label="Start Time"
+                                            inputBorder={theme.form.input.border}
+                                            inputColour={theme.form.input.placeholder}
+                                        />
+                                    </Column>
+                                </ColumnWrapper>
+                            </FormRow>
+                        </ToggleArea>
 
-                <ScrollableListExample />
-                <DragDropList>
-                    {ListData.map((item, index) => (
-                        <DraggableListItem key={index}>
-                            <Card horizontal border>
-                                <CardHeader order="none">
-                                    <DraggableListItemHandle />
-                                </CardHeader>
-                                <CardBody b>
-                                    <Heading margin="0">{item.title}</Heading>
-                                    <Text>{item.description}</Text>
-                                </CardBody>
-                                <CardFooter>{item.action}</CardFooter>
-                            </Card>
-                        </DraggableListItem>
-                    ))}
-                    <Button type="button">Add a playlist</Button>
-                </DragDropList>
-                <FormRow>
-                    <TextArea name="text" onChange={() => {}} placeholder="Please enter your text here" />
-                </FormRow>
-                <FormRow inline>
-                    <RadioComponent
-                        label={
-                            <>
-                                <RegularInput inline /> {` songs`}
-                            </>
-                        }
-                        name="songs"
-                        value="songs"
-                        inline
-                        checked
-                        onChange={() => {}}
-                    />
-                    <RadioComponent
-                        label={
-                            <>
-                                <RegularInput inline /> {` minutes`}
-                            </>
-                        }
-                        name="time"
-                        value="time"
-                        inline
-                        checked={false}
-                        onChange={() => {}}
-                    />
-                </FormRow>
-                <FormRow>
-                    <ColumnWrapper>
-                        <Column span={3}>
-                            <TimeSelect
-                                value={10}
-                                label="Start Time"
-                                inputBorder={theme.form.input.border}
-                                inputColour={theme.form.input.placeholder}
+                        <ScrollableListExample />
+                    </Form>
+                </Step>
+                <Step title="Step 2">
+                    <Form>
+                        <FormRow>
+                            <ColumnWrapper>
+                                <Column span={6}>
+                                    <RadioPanel
+                                        name="radio"
+                                        index="1"
+                                        checked={radio === 'radio1'}
+                                        setChecked={() => {}}
+                                        value="radio1"
+                                        label="Radio 1"
+                                        icon={faFileAudio}
+                                    />
+                                </Column>
+                                <Column span={6}>
+                                    <RadioPanel
+                                        name="radio"
+                                        index="2"
+                                        checked={radio === 'radio2'}
+                                        setChecked={() => {}}
+                                        value="radio2"
+                                        label="Radio 2"
+                                        icon={faFileAudio}
+                                    />
+                                </Column>
+                            </ColumnWrapper>
+                        </FormRow>
+                        <DragDropList>
+                            {ListData.map((item, index) => (
+                                <DraggableListItem key={index}>
+                                    <Card horizontal border>
+                                        <CardHeader order="none">
+                                            <DraggableListItemHandle />
+                                        </CardHeader>
+                                        <CardBody b>
+                                            <Heading margin="0">{item.title}</Heading>
+                                            <Text>{item.description}</Text>
+                                        </CardBody>
+                                        <CardFooter>{item.action}</CardFooter>
+                                    </Card>
+                                </DraggableListItem>
+                            ))}
+                            <Button type="button">Add a playlist</Button>
+                        </DragDropList>
+                        <FormRow>
+                            <TextArea name="text" onChange={() => {}} placeholder="Please enter your text here" />
+                        </FormRow>
+                        <FormRow inline>
+                            <RadioComponent
+                                label={
+                                    <>
+                                        <RegularInput inline /> {` songs`}
+                                    </>
+                                }
+                                name="songs"
+                                value="songs"
+                                inline
+                                checked
+                                onChange={() => {}}
                             />
-                        </Column>
-                        <Column span={3}>
-                            <TimeSelect
-                                value={10}
-                                label="End Time"
-                                inputBorder={theme.form.input.border}
-                                inputColour={theme.form.input.placeholder}
+                            <RadioComponent
+                                label={
+                                    <>
+                                        <RegularInput inline /> {` minutes`}
+                                    </>
+                                }
+                                name="time"
+                                value="time"
+                                inline
+                                checked={false}
+                                onChange={() => {}}
                             />
-                        </Column>
-                    </ColumnWrapper>
-                </FormRow>
-            </Form>
+                        </FormRow>
+                        <FormRow>
+                            <ColumnWrapper>
+                                <Column span={3}>
+                                    <TimeSelect
+                                        value={10}
+                                        label="Start Time"
+                                        inputBorder={theme.form.input.border}
+                                        inputColour={theme.form.input.placeholder}
+                                    />
+                                </Column>
+                                <Column span={3}>
+                                    <TimeSelect
+                                        value={10}
+                                        label="End Time"
+                                        inputBorder={theme.form.input.border}
+                                        inputColour={theme.form.input.placeholder}
+                                    />
+                                </Column>
+                            </ColumnWrapper>
+                        </FormRow>
+                    </Form>
+                </Step>
+            </Steps>
         </Container>
     </>
 );
@@ -375,7 +431,8 @@ export const FormExample = {
     args: {
         id: 'Form Page',
         radio: 'radio2',
-        modalOpen: false
+        modalOpen: false,
+        step: 0
     },
     render: args => (
         <Page>

@@ -43,6 +43,8 @@ export { default as Select } from './components/form/fields/select';
 export { default as Checkbox } from './components/form/fields/checkInput';
 export { default as Radio } from './components/form/fields/radio';
 export { default as TimeSelect } from './components/form/fields/timeSelect';
+export { default as TextArea } from './components/form/fields/textArea';
+export { default as RadioPanel } from './components/form/fields/radioPanel';
 
 // headings
 export { default as Heading } from './components/headings';
@@ -75,3 +77,5 @@ export { default as ToggleArea } from './components/toggleArea';
 export { default as DragDropList, DraggableListItem, DraggableListItemHandle } from './components/dragDropList';
 
 export { default as extendDefaultTheme } from './style/theme';
+
+export { default as Steps } from './components/steps';
