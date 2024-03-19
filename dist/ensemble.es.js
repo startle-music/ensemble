@@ -7058,9 +7058,8 @@ const xf = p.circle`
     margin-top: 1rem;
     border-top: 1px solid ${(e) => e.theme.main.border};
     padding-top: ${(e) => e.theme.layout.padding.vertical};
-`, Pf = p.div``;
-p.div``;
-function Eu({ children: e, position: t = 0, handleNext: n, handleBack: r }) {
+`, Pf = p.div``, Eu = p.div``;
+function Pu({ children: e, position: t = 0, handleNext: n, handleBack: r }) {
   let a = t;
   return t < 0 ? a = 0 : t > se.Children.count(e) - 1 && (a = se.Children.count(e) - 1), /* @__PURE__ */ Y(Sf, { children: [
     /* @__PURE__ */ Y($f, { children: [
@@ -7138,7 +7137,8 @@ export {
   pu as ResponsiveTable,
   hf as ScrollableList,
   Os as Select,
-  Eu as Steps,
+  Eu as Step,
+  Pu as Steps,
   lu as Tab,
   du as TabContent,
   uu as TabGroup,

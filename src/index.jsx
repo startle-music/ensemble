@@ -78,4 +78,4 @@ export { default as DragDropList, DraggableListItem, DraggableListItemHandle } f
 
 export { default as extendDefaultTheme } from './style/theme';
 
-export { default as Steps } from './components/steps';
+export { default as Steps, Step } from './components/steps';
