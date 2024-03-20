@@ -768,7 +768,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
     display: ${e=>e.grid?"contents":"flex"};
     flex-direction: ${e=>e.inline?"row":"column"};
     padding: 0 0 ${e=>e.theme.container.padding.vertical.lg} 0;
-`;function Cs({inline:e=!1,grid:n=!1,nested:t,children:r}){return d(ks,{inline:e,nested:t,grid:n,children:r})}function Ss({children:e,submitButton:n,onSubmit:t,ref:r}){return H(ws,{ref:r,onSubmit:t,children:[e,n]})}const $s=m.css`
+`;function Cs({inline:e=!1,grid:n=!1,nested:t,children:r}){return d(ks,{inline:e,nested:t,grid:n,children:r})}function Ss({children:e,submitButton:n,onSubmit:t,forwardRef:r=null}){return H(ws,{ref:r,onSubmit:t,children:[e,n]})}const $s=m.css`
     //margin-bottom:5px;
     //font-size: 0.9rem;
     color: ${e=>he.main.color};

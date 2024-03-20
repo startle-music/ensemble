@@ -2684,7 +2684,7 @@ const Zo = p.tr`
 function eu({ inline: e = !1, grid: t = !1, nested: n, children: r }) {
   return /* @__PURE__ */ d(gs, { inline: e, nested: n, grid: t, children: r });
 }
-function tu({ children: e, submitButton: t, onSubmit: n, ref: r }) {
+function tu({ children: e, submitButton: t, onSubmit: n, forwardRef: r = null }) {
   return /* @__PURE__ */ Y(bs, { ref: r, onSubmit: n, children: [
     e,
     t
