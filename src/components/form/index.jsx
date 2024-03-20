@@ -22,14 +22,8 @@ export function FormRow({ inline = false, grid = false, nested, children }) {
     );
 }
 
-class Form extends Component {
-    constructor(props) {
-        super(props);
-        this.submit = this.submit.bind(this);
-        console.log('item form', props);
-    }
-
-    submit(e) {
+function Form({ children, submitButton, onSubmit, ref }) {
+    /* submit(e) {
         const { form } = this.refs;
         const { onSubmit } = this.props;
         e.preventDefault();
@@ -46,21 +40,14 @@ class Form extends Component {
         } else {
             alert('@Devs. no no no no. Pass edit function pls');
         }
-    }
+    } */
 
-    render() {
-        const { children, buttonText = 'Submit' } = this.props;
-        return (
-            <FormStyled ref="form" onSubmit={this.submit}>
-                {children}
-                <div>
-                    <Button product="positive" type="submit-modal">
-                        {buttonText}
-                    </Button>
-                </div>
-            </FormStyled>
-        );
-    }
+    return (
+        <FormStyled ref={ref} onSubmit={onSubmit}>
+            {children}
+            {submitButton}
+        </FormStyled>
+    );
 }
 
 export default Form;
