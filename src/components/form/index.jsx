@@ -22,7 +22,7 @@ export function FormRow({ inline = false, grid = false, nested, children }) {
     );
 }
 
-function Form({ children, submitButton, onSubmit, forwardRef = null }) {
+function Form({ children, submitButton, onSubmit, forwardRef = null, ...rest }) {
     /* submit(e) {
         const { form } = this.refs;
         const { onSubmit } = this.props;
@@ -43,7 +43,7 @@ function Form({ children, submitButton, onSubmit, forwardRef = null }) {
     } */
 
     return (
-        <FormStyled ref={forwardRef} onSubmit={onSubmit}>
+        <FormStyled ref={forwardRef} onSubmit={onSubmit} {...rest}>
             {children}
             {submitButton}
         </FormStyled>

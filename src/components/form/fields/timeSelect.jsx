@@ -24,6 +24,7 @@ const Divider = styled.div`
 
 export default function TimeSelect({
     label,
+    name,
     hourMin = 0,
     hourMax = 23,
     hourValue,
@@ -51,7 +52,7 @@ export default function TimeSelect({
         <TimseSelectStyled>
             <Label>{label}</Label>
             <TimeSelectInput>
-                <SelectInputStyled value={hourValue} inline>
+                <SelectInputStyled value={hourValue} name={`${name}['start']`} inline>
                     {calculateHours().map(hour => (
                         <option key={hour} value={hour}>
                             {hour}
@@ -59,7 +60,7 @@ export default function TimeSelect({
                     ))}
                 </SelectInputStyled>
                 <Divider>:</Divider>
-                <SelectInputStyled value={minuteValue} inline>
+                <SelectInputStyled value={minuteValue} name={`${name}['end']`} inline>
                     {calculateMinutes().map(minute => (
                         <option key={minute} value={minute}>
                             {minute}
