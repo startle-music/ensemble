@@ -3087,9 +3087,9 @@ function au({
   return /* @__PURE__ */ Y(Fs, { children: [
     /* @__PURE__ */ u(ga, { children: e }),
     /* @__PURE__ */ Y(Ms, { children: [
-      /* @__PURE__ */ u(vr, { value: a, name: `${t}['start']`, inline: !0, children: c().map((f) => /* @__PURE__ */ u("option", { value: f, children: f }, f)) }),
+      /* @__PURE__ */ u(vr, { value: a, name: `${t}['hour']`, inline: !0, children: c().map((f) => /* @__PURE__ */ u("option", { value: f, children: f }, f)) }),
       /* @__PURE__ */ u(Ns, { children: ":" }),
-      /* @__PURE__ */ u(vr, { value: s, name: `${t}['end']`, inline: !0, children: d().map((f) => /* @__PURE__ */ u("option", { value: f, children: f }, f)) })
+      /* @__PURE__ */ u(vr, { value: s, name: `${t}['minute']`, inline: !0, children: d().map((f) => /* @__PURE__ */ u("option", { value: f, children: f }, f)) })
     ] })
   ] });
 }
