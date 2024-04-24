@@ -3087,9 +3087,9 @@ function lu({
   return /* @__PURE__ */ W(Fs, { children: [
     /* @__PURE__ */ u(ga, { children: e }),
     /* @__PURE__ */ W(Ms, { children: [
-      /* @__PURE__ */ u(vr, { value: a, name: `${t}['hour']`, inline: !0, children: c().map((f) => /* @__PURE__ */ u("option", { value: f, children: f }, f)) }),
+      /* @__PURE__ */ u(vr, { value: a, name: `${t}['hour']`, inline: !0, onChange: hourChange, children: c().map((f) => /* @__PURE__ */ u("option", { value: f, children: f }, f)) }),
       /* @__PURE__ */ u(Ns, { children: ":" }),
-      /* @__PURE__ */ u(vr, { value: s, name: `${t}['minute']`, inline: !0, children: d().map((f) => /* @__PURE__ */ u("option", { value: f, children: f }, f)) })
+      /* @__PURE__ */ u(vr, { value: s, name: `${t}['minute']`, inline: !0, onChange: minuteChange, children: d().map((f) => /* @__PURE__ */ u("option", { value: f, children: f }, f)) })
     ] })
   ] });
 }

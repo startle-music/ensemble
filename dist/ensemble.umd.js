@@ -1009,7 +1009,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
     //width: 100%;
 `,Cr=m(kr)``,qs=m.div`
     margin: 0 0.5rem;
-`;function Xs({label:e,name:n,hourMin:t=0,hourMax:r=23,hourValue:a,minuteMin:i=0,minuteMax:o=59,minuteValue:s}){function c(){const f=[];for(let p=t;p<=r;p++)f.push(p);return f}function d(){const f=[];for(let p=i;p<=o;p++)f.push(p);return f}return z(Gs,{children:[u(wr,{children:e}),z(Us,{children:[u(Cr,{value:a,name:`${n}['hour']`,inline:!0,children:c().map(f=>u("option",{value:f,children:f},f))}),u(qs,{children:":"}),u(Cr,{value:s,name:`${n}['minute']`,inline:!0,children:d().map(f=>u("option",{value:f,children:f},f))})]})]})}const Zs=m.textarea`
+`;function Xs({label:e,name:n,hourMin:t=0,hourMax:r=23,hourValue:a,minuteMin:i=0,minuteMax:o=59,minuteValue:s}){function c(){const f=[];for(let p=t;p<=r;p++)f.push(p);return f}function d(){const f=[];for(let p=i;p<=o;p++)f.push(p);return f}return z(Gs,{children:[u(wr,{children:e}),z(Us,{children:[u(Cr,{value:a,name:`${n}['hour']`,inline:!0,onChange:hourChange,children:c().map(f=>u("option",{value:f,children:f},f))}),u(qs,{children:":"}),u(Cr,{value:s,name:`${n}['minute']`,inline:!0,onChange:minuteChange,children:d().map(f=>u("option",{value:f,children:f},f))})]})]})}const Zs=m.textarea`
     width: 100%;
     height: 10rem;
     padding: 0.5rem;
