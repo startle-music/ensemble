@@ -30,7 +30,9 @@ export default function TimeSelect({
     hourValue,
     minuteMin = 0,
     minuteMax = 59,
-    minuteValue
+    minuteValue,
+    hourChange = () => {},
+    minuteChange = () => {}
 }) {
     function calculateHours() {
         const hours = [];
