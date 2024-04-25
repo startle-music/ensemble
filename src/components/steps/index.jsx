@@ -26,7 +26,7 @@ const HeaderBody = styled.div``;
 
 export const Step = styled.div``;
 
-export default function Steps({ children, position = 0, handleNext, handleBack }) {
+export default function Steps({ children, position = 0, handleNext, handleBack, handleEnd, endText = 'Submit' }) {
     let stepPosition = position;
     // lock position between 0 and children.length
     if (position < 0) {
@@ -67,9 +67,14 @@ export default function Steps({ children, position = 0, handleNext, handleBack }
                 <Button onClick={handleBack} disabled={stepPosition === 0}>
                     Previous
                 </Button>
-                <Button onClick={handleNext} disabled={stepPosition === React.Children.count(children) - 1}>
-                    Next Step
-                </Button>
+                {// if last step show submit button
+                stepPosition === React.Children.count(children) - 1 ? (
+                    <Button onClick={handleEnd}>{endText}</Button>
+                ) : (
+                    <Button onClick={handleNext} disabled={stepPosition === React.Children.count(children) - 1}>
+                        Next Step
+                    </Button>
+                )}
             </StepsFooter>
         </StyledSteps>
     );
