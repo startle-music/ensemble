@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 
@@ -20,6 +20,7 @@ const SelectInputStyled = styled(SelectInput)``;
 
 const Divider = styled.div`
     margin: 0 0.5rem;
+    color: ${({ theme }) => theme.main.color};
 `;
 
 export default function TimeSelect({
@@ -30,10 +31,17 @@ export default function TimeSelect({
     hourValue,
     minuteMin = 0,
     minuteMax = 59,
-    minuteValue,
-    hourChange = () => {},
-    minuteChange = () => {}
+    minuteValue
 }) {
+    const [hour, setHour] = useState(hourValue);
+    const [minute, setMinute] = useState(minuteValue);
+
+    useEffect(() => {
+        setHour(hourValue);
+        setMinute(minuteValue);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     function calculateHours() {
         const hours = [];
         for (let i = hourMin; i <= hourMax; i++) {
@@ -54,7 +62,12 @@ export default function TimeSelect({
         <TimseSelectStyled>
             <Label>{label}</Label>
             <TimeSelectInput>
-                <SelectInputStyled value={hourValue} name={`${name}['hour']`} inline onChange={hourChange}>
+                <SelectInputStyled
+                    value={hourValue}
+                    name={`${name}['hour']`}
+                    inline
+                    onChange={e => setHour(e.target.value)}
+                >
                     {calculateHours().map(hour => (
                         <option key={hour} value={hour}>
                             {hour}
@@ -62,7 +75,12 @@ export default function TimeSelect({
                     ))}
                 </SelectInputStyled>
                 <Divider>:</Divider>
-                <SelectInputStyled value={minuteValue} name={`${name}['minute']`} inline onChange={minuteChange}>
+                <SelectInputStyled
+                    value={minuteValue}
+                    name={`${name}['minute']`}
+                    inline
+                    onChange={e => setMinute(e.target.value)}
+                >
                     {calculateMinutes().map(minute => (
                         <option key={minute} value={minute}>
                             {minute}
