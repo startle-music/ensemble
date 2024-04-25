@@ -1010,7 +1010,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
 `,Cr=m(kr)``,qs=m.div`
     margin: 0 0.5rem;
     color: ${({theme:e})=>e.main.color};
-`;function Xs({label:e,name:n,hourMin:t=0,hourMax:r=23,hourValue:a,minuteMin:i=0,minuteMax:o=59,minuteValue:s}){const[c,d]=Q.useState(a),[f,p]=Q.useState(s);Q.useEffect(()=>{d(a),p(s)},[]);function g(){const E=[];for(let P=t;P<=r;P++)E.push(P);return E}function S(){const E=[];for(let P=i;P<=o;P++)E.push(P);return E}return z(Gs,{children:[u(wr,{children:e}),z(Us,{children:[u(Cr,{value:c,name:`${n}['hour']`,inline:!0,onChange:E=>d(E.target.value),children:g().map(E=>u("option",{value:E,children:E},E))}),u(qs,{children:":"}),u(Cr,{value:f,name:`${n}['minute']`,inline:!0,onChange:E=>p(E.target.value),children:S().map(E=>u("option",{value:E,children:E},E))})]})]})}const Zs=m.textarea`
+`;function Xs({label:e,name:n,hourMin:t=0,hourMax:r=23,hourValue:a,minuteMin:i=0,minuteMax:o=59,minuteValue:s}){const[c,d]=Q.useState(a),[f,p]=Q.useState(s);Q.useEffect(()=>{d(a),p(s)},[]);function g(){const E=[];for(let P=t;P<=r;P++)E.push(P);return E}function S(){const E=[];for(let P=i;P<=o;P++)E.push(P);return E}return z(Gs,{children:[u(wr,{children:e}),z(Us,{children:[u(Cr,{value:c,name:`${n}[hour]`,inline:!0,onChange:E=>d(E.target.value),children:g().map(E=>u("option",{value:E,children:E},E))}),u(qs,{children:":"}),u(Cr,{value:f,name:`${n}[minute]`,inline:!0,onChange:E=>p(E.target.value),children:S().map(E=>u("option",{value:E,children:E},E))})]})]})}const Zs=m.textarea`
     width: 100%;
     height: 10rem;
     padding: 0.5rem;

@@ -3092,13 +3092,13 @@ function cu({
   return /* @__PURE__ */ W(Ms, { children: [
     /* @__PURE__ */ u(va, { children: e }),
     /* @__PURE__ */ W(Ns, { children: [
-      /* @__PURE__ */ u(yr, { value: c, name: `${t}['hour']`, inline: !0, onChange: (E) => d(E.target.value), children: g().map((E) => /* @__PURE__ */ u("option", { value: E, children: E }, E)) }),
+      /* @__PURE__ */ u(yr, { value: c, name: `${t}[hour]`, inline: !0, onChange: (E) => d(E.target.value), children: g().map((E) => /* @__PURE__ */ u("option", { value: E, children: E }, E)) }),
       /* @__PURE__ */ u(Ds, { children: ":" }),
       /* @__PURE__ */ u(
         yr,
         {
           value: f,
-          name: `${t}['minute']`,
+          name: `${t}[minute]`,
           inline: !0,
           onChange: (E) => m(E.target.value),
           children: k().map((E) => /* @__PURE__ */ u("option", { value: E, children: E }, E))

@@ -62,7 +62,7 @@ export default function TimeSelect({
         <TimseSelectStyled>
             <Label>{label}</Label>
             <TimeSelectInput>
-                <SelectInputStyled value={hour} name={`${name}['hour']`} inline onChange={e => setHour(e.target.value)}>
+                <SelectInputStyled value={hour} name={`${name}[hour]`} inline onChange={e => setHour(e.target.value)}>
                     {calculateHours().map(hour => (
                         <option key={hour} value={hour}>
                             {hour}
@@ -72,7 +72,7 @@ export default function TimeSelect({
                 <Divider>:</Divider>
                 <SelectInputStyled
                     value={minute}
-                    name={`${name}['minute']`}
+                    name={`${name}[minute]`}
                     inline
                     onChange={e => setMinute(e.target.value)}
                 >
