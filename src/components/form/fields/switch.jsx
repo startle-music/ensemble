@@ -4,7 +4,7 @@ import Label from '../labels';
 import theme from '../../../style/theme';
 
 const Wrap = styled.div`
-    font-family: ${theme.main.font};
+    font-family: ${p => p.theme.main.font};
 
     .switch {
         position: relative;

@@ -44,7 +44,7 @@ const Input = styled.input`
 
 const CaptionWrap = styled.p`
     color: ${({ inputColour }) => inputColour};
-    font-family: ${theme.main.font};
+    font-family: ${p => p.theme.main.font};
     font-size: 0.75rem;
     margin: 0.6rem 0;
 `;

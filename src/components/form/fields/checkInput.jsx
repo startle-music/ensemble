@@ -10,7 +10,7 @@ const Checkbox = styled.div`
     //margin-right: ${props => (props.inline ? '0.8rem' : 0)};
     //margin-bottom: 0.8rem;
     font-size: 1rem;
-    font-family: ${theme.main.font};
+    font-family: ${p => p.theme.main.font};
     
 `;
 
@@ -54,7 +54,7 @@ const CheckboxInput = styled.input`
 
     &:checked:after {
         content: '\\2714';
-        font-family: 'MuseoSansReg', sans-serif;
+        font-family: ${p => p.theme.main.font};
         color: ${props => (props.color !== null ? props.color : props.theme.form.input.color)};
         font-size: 1.1rem;
     }

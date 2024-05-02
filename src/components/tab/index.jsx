@@ -7,7 +7,7 @@ const Wrap = styled.a`
     color: ${props => props.theme.tabs.tab.color};
     padding: 0.3rem 0.6rem;
     font-size: 1rem;
-    font-family: ${theme.main.font};
+    font-family: ${p => p.theme.main.font};
     border-bottom: 3px solid transparent;
     cursor: pointer;
     white-space: nowrap;

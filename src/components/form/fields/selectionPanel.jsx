@@ -5,7 +5,7 @@ import theme from '../../../style/theme';
 
 const Wrap = styled.div`
     display: flex;
-    font-family: ${theme.main.font};
+    font-family: ${p => p.theme.main.font};
     flex-wrap: ${props => (props.small ? `nowrap` : `wrap`)};
     justify-content: ${props => (props.small ? `space-between` : `center`)};
     background-color: ${props =>

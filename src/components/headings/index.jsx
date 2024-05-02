@@ -4,7 +4,7 @@ import theme from '../../style/theme';
 
 export const headingBase = css`
     color: ${theme.main.color};
-    font-family: ${theme.main.font};
+    font-family: ${p => p.theme.main.font};
     margin: 0;
     margin-bottom: ${props => props.margin || '.75em'};
 `;

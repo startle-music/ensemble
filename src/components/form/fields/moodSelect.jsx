@@ -31,7 +31,7 @@ const moods = [
 ];
 
 const Wrap = styled.div`
-    font-family: ${theme.main.font};
+    font-family: ${p => p.theme.main.font};
     user-select: none;
 
     g {
@@ -43,7 +43,7 @@ const Wrap = styled.div`
     }
 
     text {
-        font-family: ${theme.main.font};
+        font-family: ${p => p.theme.main.font};
     }
 `;
 
