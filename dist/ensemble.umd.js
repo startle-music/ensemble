@@ -204,7 +204,7 @@ Check the top-level render call using <`+x+">.")}return b}}function Va(l,b){{if(
     ${Kn}
 `;m.input`
     ${Kn}
-`;const pi=e=>{const{children:n,to:t,Component:r}=e;return f("btnBase",{...e,children:f(r,{to:t,children:n})})},bi=e=>{const{children:n,href:t}=e;return f(mi,{href:t,...e,children:n})};m.div`
+`;const pi=e=>{const{children:n,to:t,Component:r}=e;return f(r,{to:t,children:f("btnBase",{...e,children:n})})},bi=e=>{const{children:n,href:t}=e;return f(mi,{href:t,...e,children:n})};m.div`
     position: relative;
     user-select: none;
 

@@ -176,9 +176,9 @@ const RouteLinkButton = props => {
     const { children, to, Component } = props;
     // should href be to and import nextjs route link component?
     return (
-        <btnBase {...props}>
-            <Component to={to}>{children}</Component>
-        </btnBase>
+        <Component to={to}>
+            <btnBase {...props}>{children}</btnBase>
+        </Component>
     );
 };
 
