@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Label from '../labels';
+import theme from '../../../style/theme';
 
 const Checkbox = styled.div`
     

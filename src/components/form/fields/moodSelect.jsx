@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import theme from '../../../style/theme';
 
 const THUNDERSTRUCK = 'thunderstruck';
 const INVIGORATED = 'invigorated';
@@ -26,7 +27,7 @@ const moods = [
     RELAXED,
     SATISFIED,
     MERRY,
-    DELIGHTED,
+    DELIGHTED
 ];
 
 const Wrap = styled.div`
@@ -34,7 +35,7 @@ const Wrap = styled.div`
     user-select: none;
 
     g {
-        cursor: ${({readonly}) => readonly ? 'default' : 'pointer'};
+        cursor: ${({ readonly }) => (readonly ? 'default' : 'pointer')};
     }
 
     path {
@@ -42,65 +43,63 @@ const Wrap = styled.div`
     }
 
     text {
-        
         font-family: ${theme.main.font};
     }
-
 `;
 
 const Radio = styled.input`
-    display:none;
+    display: none;
 `;
 
 const handleClick = (className, setSelected, parentOnClick) => {
-    const mood = moods.find((obj) => className.includes(obj));
+    const mood = moods.find(obj => className.includes(obj));
     parentOnClick(mood);
     setSelected(mood);
 };
 
-const MoodPath = ({ d, className, fill, transform, opacity = 1, selected, adjacent = [], setSelected, parentOnClick }) => {
+const MoodPath = ({
+    d,
+    className,
+    fill,
+    transform,
+    opacity = 1,
+    selected,
+    adjacent = [],
+    setSelected,
+    parentOnClick
+}) => {
     const pathProps = {
-        onClick:() => handleClick(className, setSelected, parentOnClick),
-        d:d,
-        className:className,
-        fill:fill,
-        transform:transform,
-        opacity:opacity
-    }
+        onClick: () => handleClick(className, setSelected, parentOnClick),
+        d,
+        className,
+        fill,
+        transform,
+        opacity
+    };
     if (className.includes('selected')) {
         if (className.includes(selected)) {
-            return (
-                <path {...pathProps}/>
-            );
+            return <path {...pathProps} />;
         }
-        return (
-            <path {...{...pathProps, ...{opacity: 0}}}/>
-        );
-        //return null;
+        return <path {...{ ...pathProps, ...{ opacity: 0 } }} />;
+        // return null;
     }
     if (className.includes('adjacent')) {
         if (adjacent.includes(selected)) {
-            return (
-                <path {...pathProps}/>
-            );
+            return <path {...pathProps} />;
         }
-        return (
-            <path {...{...pathProps, ...{opacity: 0}}}/>
-        );
-        //return null;
+        return <path {...{ ...pathProps, ...{ opacity: 0 } }} />;
+        // return null;
     }
-    return (
-        <path {...pathProps}/>
-    );
+    return <path {...pathProps} />;
 };
 
-const MoodSelector = ({readonly = false, defaultValue = null, onMoodClick = ()=>{}}) => {
+const MoodSelector = ({ readonly = false, defaultValue = null, onMoodClick = () => {} }) => {
     const [selected, setSelected] = useState(defaultValue);
     const passToAll = {
-        setSelected: setSelected,
-        selected: selected,
+        setSelected,
+        selected,
         parentOnClick: onMoodClick
-    }
+    };
     if (readonly === true) {
         passToAll.parentOnClick = () => {};
         passToAll.setSelected = () => {};
@@ -448,9 +447,9 @@ const MoodSelector = ({readonly = false, defaultValue = null, onMoodClick = ()=>
                     </g>
                 </g>
             </svg>
-            {moods.map(obj=>{
-                return(<Radio checked={selected===obj} type="radio" id="html" name={"mood"} value={obj}></Radio>)
-            })}
+            {moods.map(obj => (
+                <Radio checked={selected === obj} type="radio" id="html" name="mood" value={obj} />
+            ))}
         </Wrap>
     );
 };
