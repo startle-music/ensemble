@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Label from '../labels';
+import theme from '../../../style/theme';
 
 const Wrap = styled.div`
     font-family: ${theme.main.font};
@@ -48,7 +49,7 @@ const Wrap = styled.div`
     }
 
     input:focus + .slider {
-        box-shadow: 0 0 1px  ${props => props.primaryColour};
+        box-shadow: 0 0 1px ${props => props.primaryColour};
     }
 
     input:checked + .slider:before {
@@ -80,35 +81,32 @@ const SpanLabel = styled.span`
     margin-left: 0.75rem;
 `;
 
+const getColours = colour => {
+    const altColour = 'white';
+    const primaryColour = 'red';
 
-const getColours = (colour) => {
-    
-    let altColour = 'white';
-    let primaryColour = 'red';
-        
-    /*if(theme.colors[colour]) {
+    /* if(theme.colors[colour]) {
         altColour = theme.generalColors.white;
         primaryColour = theme.colors[colour];
-    }*/
+    } */
 
     return { altColour, primaryColour };
-}
+};
 
-const Switch = ({name, id, checked, value, label, colour='simplyRed', className = null, ...rest}) => {
-    
-    const attributes = {...rest, ...getColours(colour, checked)};
+const Switch = ({ name, id, checked, value, label, colour = 'simplyRed', className = null, ...rest }) => {
+    const attributes = { ...rest, ...getColours(colour, checked) };
     console.log('switch attributes', attributes);
     return (
         <Wrap className={className} {...attributes}>
             <PaddedLabel htmlFor={name} {...attributes}>
                 <div className="switch">
                     <input id={id} name={name} value={value} defaultChecked={checked} type="checkbox" {...attributes} />
-                    <span className="slider round" {...attributes}></span>
+                    <span className="slider round" {...attributes} />
                 </div>
                 <SpanLabel className="spanLabel">{label}</SpanLabel>
             </PaddedLabel>
         </Wrap>
     );
-}
+};
 
 export default Switch;
