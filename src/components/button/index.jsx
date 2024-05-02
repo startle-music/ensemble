@@ -95,6 +95,11 @@ const btnInline = css`
             color: ${({ theme }) => theme.button.active.hover.background};
         }
     }
+
+    & + button,
+    & + a {
+        margin-left: 0;
+    }
 `;
 
 const btnOutline = css`

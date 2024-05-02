@@ -139,6 +139,11 @@ Check the top-level render call using <`+x+">.")}return b}}function Ja(l,b){{if(
             color: ${({theme:e})=>e.button.active.hover.background};
         }
     }
+
+    & + button,
+    & + a {
+        margin-left: 0;
+    }
 `,di=m.css`
     background: ${({theme:e})=>e.button.color};
     border: ${({theme:e})=>e.button.border};

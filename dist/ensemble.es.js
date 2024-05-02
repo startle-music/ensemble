@@ -745,6 +745,11 @@ const Lt = _n.Fragment, u = _n.jsx, W = _n.jsxs, ki = p.div`
             color: ${({ theme: e }) => e.button.active.hover.background};
         }
     }
+
+    & + button,
+    & + a {
+        margin-left: 0;
+    }
 `, Ti = ae`
     background: ${({ theme: e }) => e.button.color};
     border: ${({ theme: e }) => e.button.border};
