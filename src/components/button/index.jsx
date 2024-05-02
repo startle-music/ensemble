@@ -173,12 +173,12 @@ const InputButtonBase = styled.input`
 `;
 
 const RouteLinkButton = props => {
-    const { children, to, Component } = props;
+    const { children, to } = props;
     // should href be to and import nextjs route link component?
     return (
-        <Component to={to}>
-            <btnBase {...props}>{children}</btnBase>
-        </Component>
+        <RouteLinkBase href={to} {...props}>
+            {children}
+        </RouteLinkBase>
     );
 };
 
