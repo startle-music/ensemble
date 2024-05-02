@@ -7116,11 +7116,11 @@ const $f = p.circle`
 `, Tf = ({ progress: e, max: t = 100, size: n, strokeWidth: r = 10 }) => {
   const a = (n - 10) / 2, i = a * 2 * Math.PI, o = i - e / t * i;
   return /* @__PURE__ */ W(Pf, { width: n, height: n, children: [
-    /* @__PURE__ */ u($f, { "stroke-width": r, r: a, cx: n / 2, cy: n / 2 }),
+    /* @__PURE__ */ u($f, { strokeWidth: r, r: a, cx: n / 2, cy: n / 2 }),
     /* @__PURE__ */ u(
       Ef,
       {
-        "stroke-width": r,
+        strokeWidth: r,
         r: a,
         cx: n / 2,
         cy: n / 2,

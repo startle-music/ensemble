@@ -34,9 +34,9 @@ const CircularProgress = ({ progress, max = 100, size, strokeWidth = 10 }) => {
 
     return (
         <SvgContainer width={size} height={size}>
-            <CircleBackground stroke-width={strokeWidth} r={radius} cx={size / 2} cy={size / 2} />
+            <CircleBackground strokeWidth={strokeWidth} r={radius} cx={size / 2} cy={size / 2} />
             <CircleProgress
-                stroke-width={strokeWidth}
+                strokeWidth={strokeWidth}
                 r={radius}
                 cx={size / 2}
                 cy={size / 2}
