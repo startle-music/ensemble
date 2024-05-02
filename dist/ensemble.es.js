@@ -814,7 +814,7 @@ p.input`
 `;
 const Ri = (e) => {
   const { children: t, to: n, Component: r } = e;
-  return /* @__PURE__ */ f("btnBase", { href: n, ...e, children: /* @__PURE__ */ f(r, { children: t }) });
+  return /* @__PURE__ */ f("btnBase", { ...e, children: /* @__PURE__ */ f(r, { to: n, children: t }) });
 }, Ai = (e) => {
   const { children: t, href: n } = e;
   return /* @__PURE__ */ f(Oi, { href: n, ...e, children: t });
