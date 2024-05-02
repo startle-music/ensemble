@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components';
 const CircleBackground = styled.circle`
     fill: none;
     stroke: ${p => p.theme.main.background};
+    stroke-width: ${props => props.strokeWidth};
 `;
 
 const CircleProgress = styled.circle`
@@ -14,6 +15,7 @@ const CircleProgress = styled.circle`
     stroke-linejoin: round;
     stroke-dasharray: ${props => props.dashArray};
     stroke-dashoffset: ${props => props.dashOffset};
+    stroke-width: ${props => props.strokeWidth};
     transition: stroke-dashoffset 0.35s;
     transform: rotate(-90deg);
     transform-origin: 50% 50%;

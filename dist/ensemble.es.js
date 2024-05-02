@@ -7097,6 +7097,7 @@ function Au({ children: e }) {
 const $f = p.circle`
     fill: none;
     stroke: ${(e) => e.theme.main.background};
+    stroke-width: ${(e) => e.strokeWidth};
 `, Ef = p.circle`
     fill: none;
     stroke: ${(e) => e.theme.main.brand};
@@ -7104,6 +7105,7 @@ const $f = p.circle`
     stroke-linejoin: round;
     stroke-dasharray: ${(e) => e.dashArray};
     stroke-dashoffset: ${(e) => e.dashOffset};
+    stroke-width: ${(e) => e.strokeWidth};
     transition: stroke-dashoffset 0.35s;
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
