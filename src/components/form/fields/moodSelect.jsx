@@ -30,7 +30,7 @@ const moods = [
 ];
 
 const Wrap = styled.div`
-    font-family: MuseoSansReg, sans-serif;
+    font-family: ${theme.main.font};
     user-select: none;
 
     g {
@@ -43,7 +43,7 @@ const Wrap = styled.div`
 
     text {
         
-        font-family: MuseoSansReg, sans-serif;
+        font-family: ${theme.main.font};
     }
 
 `;

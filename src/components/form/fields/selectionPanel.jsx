@@ -4,7 +4,7 @@ import { transparentize } from 'polished';
 
 const Wrap = styled.div`
     display: flex;
-    font-family: MuseoSansReg, sans-serif;
+    font-family: ${theme.main.font};
     flex-wrap: ${props => (props.small ? `nowrap` : `wrap`)};
     justify-content: ${props => (props.small ? `space-between` : `center`)};
     background-color: ${(props) => props.backgroundColor !== null ? 

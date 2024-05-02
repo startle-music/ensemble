@@ -9,7 +9,7 @@ const Checkbox = styled.div`
     //margin-right: ${props => (props.inline ? '0.8rem' : 0)};
     //margin-bottom: 0.8rem;
     font-size: 1rem;
-    font-family: MuseoSansReg, sans-serif;
+    font-family: ${theme.main.font};
     
 `;
 

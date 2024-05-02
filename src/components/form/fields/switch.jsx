@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Label from '../labels';
 
 const Wrap = styled.div`
-    font-family: MuseoSansReg, sans-serif;
+    font-family: ${theme.main.font};
 
     .switch {
         position: relative;
