@@ -503,15 +503,19 @@ To pass a single animation please supply them in simple values, e.g. animation('
 `;function yo({padded:e,children:n}){return f(vo,{padded:e,children:n})}const xo=m.div`
     display: ${e=>e.passthrough?"contents":"block"};
 `;function mr({check:e,value:n,passThrough:t,children:r}){return e===n?f(xo,{passthrough:t,children:r}):null}const wo=m.div`
-    grid-column: ${e=>e.offset?`col-start ${e.offset} / span ${e.span}`:`span ${e.span}`};
     //grid-row: 1;
+    grid-column: col-start 1 / span 12;
     display: flex;
-    justify-content: ${e=>e.pull==="right"?"flex-end":"flex-start"};
+
+    @media (min-width: ${({collapse:e=768})=>`${e}px`}) {
+        grid-column: ${e=>e.offset?`col-start ${e.offset} / span ${e.span}`:`span ${e.span}`};
+        justify-content: ${e=>e.pull==="right"?"flex-end":"flex-start"};
+    }
 `,ko=m.div`
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(12, [col-start] 1fr);
     gap: ${e=>e.theme.layout.gap.lg};
+    grid-template-columns: repeat(12, [col-start] 1fr);
     grid-auto-flow: row;
 
     ${mr} {

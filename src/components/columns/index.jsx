@@ -5,17 +5,22 @@ import styled from 'styled-components';
 import ToggleArea from '../toggleArea';
 
 const ColumnStyled = styled.div`
-    grid-column: ${props => (props.offset ? `col-start ${props.offset} / span ${props.span}` : `span ${props.span}`)};
     //grid-row: 1;
+    grid-column: col-start 1 / span 12;
     display: flex;
-    justify-content: ${props => (props.pull === 'right' ? 'flex-end' : 'flex-start')};
+
+    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+        grid-column: ${props =>
+            props.offset ? `col-start ${props.offset} / span ${props.span}` : `span ${props.span}`};
+        justify-content: ${props => (props.pull === 'right' ? 'flex-end' : 'flex-start')};
+    }
 `;
 
 export const ColumnWrapper = styled.div`
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(12, [col-start] 1fr);
     gap: ${props => props.theme.layout.gap.lg};
+    grid-template-columns: repeat(12, [col-start] 1fr);
     grid-auto-flow: row;
 
     ${ToggleArea} {
