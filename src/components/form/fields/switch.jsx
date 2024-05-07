@@ -45,11 +45,11 @@ const Wrap = styled.div`
     }
 
     input:checked + .slider {
-        background-color: ${props => props.primaryColour};
+        background-color: ${props => props.theme.main.brand};
     }
 
     input:focus + .slider {
-        box-shadow: 0 0 1px ${props => props.primaryColour};
+        box-shadow: 0 0 1px ${props => props.theme.main.brand};
     }
 
     input:checked + .slider:before {
@@ -81,20 +81,20 @@ const SpanLabel = styled.span`
     margin-left: 0.75rem;
 `;
 
-const getColours = colour => {
-    const altColour = 'white';
-    const primaryColour = 'red';
+// const getColours = colour => {
+//     let altColour = 'white';
+//     let primaryColour = 'red';
 
-    /* if(theme.colors[colour]) {
-        altColour = theme.generalColors.white;
-        primaryColour = theme.colors[colour];
-    } */
+//     if (theme.colors[colour]) {
+//         altColour = theme.colors.white;
+//         primaryColour = theme.colors[colour];
+//     }
 
-    return { altColour, primaryColour };
-};
+//     return { altColour, primaryColour };
+// };
 
-const Switch = ({ name, id, checked, value, label, colour = 'simplyRed', className = null, ...rest }) => {
-    const attributes = { ...rest, ...getColours(colour, checked) };
+const Switch = ({ name, id, checked, value, label, className = null, ...rest }) => {
+    const attributes = { ...rest };
     console.log('switch attributes', attributes);
     return (
         <Wrap className={className} {...attributes}>

@@ -30,6 +30,7 @@ import TextArea from '../components/form/fields/textArea';
 import Modal, { ModalBody, ModalFooter, ModalHeader } from '../components/modal';
 
 import Steps, { Step } from '../components/steps';
+import Switch from '../components/form/fields/switch';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -419,6 +420,9 @@ const FormContents = ({ radio, modalOpen, step }) => (
                                     />
                                 </Column>
                             </ColumnWrapper>
+                        </FormRow>
+                        <FormRow>
+                            <Switch label="Switch" colour="greenDay" />
                         </FormRow>
                     </Form>
                 </Step>

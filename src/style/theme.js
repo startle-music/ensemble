@@ -290,7 +290,8 @@ const theme = {
             active: brandColors.simplyRed,
             border: `3px solid ${brandColors.simplyRed}`
         }
-    }
+    },
+    colors: { ...brandColors, ...generalColors }
 };
 
 export const absoluteFill = {

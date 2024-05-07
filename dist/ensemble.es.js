@@ -45,7 +45,7 @@ var dr;
 function wi() {
   return dr || (dr = 1, process.env.NODE_ENV !== "production" && function() {
     var e = oe, t = Symbol.for("react.element"), n = Symbol.for("react.portal"), r = Symbol.for("react.fragment"), a = Symbol.for("react.strict_mode"), i = Symbol.for("react.profiler"), o = Symbol.for("react.provider"), s = Symbol.for("react.context"), c = Symbol.for("react.forward_ref"), d = Symbol.for("react.suspense"), f = Symbol.for("react.suspense_list"), m = Symbol.for("react.memo"), g = Symbol.for("react.lazy"), k = Symbol.for("react.offscreen"), E = Symbol.iterator, P = "@@iterator";
-    function O(l) {
+    function R(l) {
       if (l === null || typeof l != "object")
         return null;
       var b = E && l[E] || l[P];
@@ -54,14 +54,14 @@ function wi() {
     var T = e.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     function I(l) {
       {
-        for (var b = arguments.length, y = new Array(b > 1 ? b - 1 : 0), R = 1; R < b; R++)
-          y[R - 1] = arguments[R];
+        for (var b = arguments.length, y = new Array(b > 1 ? b - 1 : 0), A = 1; A < b; A++)
+          y[A - 1] = arguments[A];
         F("error", l, y);
       }
     }
     function F(l, b, y) {
       {
-        var R = T.ReactDebugCurrentFrame, X = R.getStackAddendum();
+        var A = T.ReactDebugCurrentFrame, X = A.getStackAddendum();
         X !== "" && (b += "%s", y = y.concat([X]));
         var V = y.map(function(G) {
           return String(G);
@@ -79,9 +79,9 @@ function wi() {
       l.$$typeof === le || l.getModuleId !== void 0));
     }
     function He(l, b, y) {
-      var R = l.displayName;
-      if (R)
-        return R;
+      var A = l.displayName;
+      if (A)
+        return A;
       var X = b.displayName || b.name || "";
       return X !== "" ? y + "(" + X + ")" : y;
     }
@@ -120,8 +120,8 @@ function wi() {
           case c:
             return He(l, l.render, "ForwardRef");
           case m:
-            var R = l.displayName || null;
-            return R !== null ? R : de(l.type) || "Memo";
+            var A = l.displayName || null;
+            return A !== null ? A : de(l.type) || "Memo";
           case g: {
             var X = l, V = X._payload, G = X._init;
             try {
@@ -202,8 +202,8 @@ function wi() {
           try {
             throw Error();
           } catch (X) {
-            var R = X.stack.trim().match(/\n( *(at )?)/);
-            j = R && R[1] || "";
+            var A = X.stack.trim().match(/\n( *(at )?)/);
+            j = A && A[1] || "";
           }
         return `
 ` + j + l;
@@ -222,7 +222,7 @@ function wi() {
         if (y !== void 0)
           return y;
       }
-      var R;
+      var A;
       q = !0;
       var X = Error.prepareStackTrace;
       Error.prepareStackTrace = void 0;
@@ -241,14 +241,14 @@ function wi() {
             try {
               Reflect.construct(G, []);
             } catch ($e) {
-              R = $e;
+              A = $e;
             }
             Reflect.construct(l, [], G);
           } else {
             try {
               G.call();
             } catch ($e) {
-              R = $e;
+              A = $e;
             }
             l.call(G.prototype);
           }
@@ -256,14 +256,14 @@ function wi() {
           try {
             throw Error();
           } catch ($e) {
-            R = $e;
+            A = $e;
           }
           l();
         }
       } catch ($e) {
-        if ($e && R && typeof $e.stack == "string") {
+        if ($e && A && typeof $e.stack == "string") {
           for (var Y = $e.stack.split(`
-`), ce = R.stack.split(`
+`), ce = A.stack.split(`
 `), te = Y.length - 1, ne = ce.length - 1; te >= 1 && ne >= 0 && Y[te] !== ce[ne]; )
             ne--;
           for (; te >= 1 && ne >= 0; te--, ne--)
@@ -312,7 +312,7 @@ function wi() {
           case m:
             return Me(l.type, b, y);
           case g: {
-            var R = l, X = R._payload, V = R._init;
+            var A = l, X = A._payload, V = A._init;
             try {
               return Me(V(X), b, y);
             } catch {
@@ -329,7 +329,7 @@ function wi() {
       } else
         Jn.setExtraStackFrame(null);
     }
-    function Va(l, b, y, R, X) {
+    function Va(l, b, y, A, X) {
       {
         var V = Function.call.bind(yt);
         for (var G in l)
@@ -337,14 +337,14 @@ function wi() {
             var Y = void 0;
             try {
               if (typeof l[G] != "function") {
-                var ce = Error((R || "React class") + ": " + y + " type `" + G + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof l[G] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
+                var ce = Error((A || "React class") + ": " + y + " type `" + G + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof l[G] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
                 throw ce.name = "Invariant Violation", ce;
               }
-              Y = l[G](b, G, R, y, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
+              Y = l[G](b, G, A, y, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
             } catch (te) {
               Y = te;
             }
-            Y && !(Y instanceof Error) && (xt(X), I("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", R || "React class", y, G, typeof Y), xt(null)), Y instanceof Error && !(Y.message in Vn) && (Vn[Y.message] = !0, xt(X), I("Failed %s type: %s", y, Y.message), xt(null));
+            Y && !(Y instanceof Error) && (xt(X), I("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", A || "React class", y, G, typeof Y), xt(null)), Y instanceof Error && !(Y.message in Vn) && (Vn[Y.message] = !0, xt(X), I("Failed %s type: %s", y, Y.message), xt(null));
           }
       }
     }
@@ -423,7 +423,7 @@ function wi() {
         });
       }
     }
-    var si = function(l, b, y, R, X, V, G) {
+    var si = function(l, b, y, A, X, V, G) {
       var Y = {
         // This tag allows us to uniquely identify this as a React Element
         $$typeof: t,
@@ -444,7 +444,7 @@ function wi() {
         configurable: !1,
         enumerable: !1,
         writable: !1,
-        value: R
+        value: A
       }), Object.defineProperty(Y, "_source", {
         configurable: !1,
         enumerable: !1,
@@ -452,7 +452,7 @@ function wi() {
         value: X
       }), Object.freeze && (Object.freeze(Y.props), Object.freeze(Y)), Y;
     };
-    function li(l, b, y, R, X) {
+    function li(l, b, y, A, X) {
       {
         var V, G = {}, Y = null, ce = null;
         y !== void 0 && (er(y), Y = "" + y), ri(b) && (er(b.key), Y = "" + b.key), ni(b) && (ce = b.ref, ai(b, X));
@@ -467,7 +467,7 @@ function wi() {
           var ne = typeof l == "function" ? l.displayName || l.name || "Unknown" : l;
           Y && ii(G, ne), ce && oi(G, ne);
         }
-        return si(l, Y, ce, X, R, rt.current, G);
+        return si(l, Y, ce, X, A, rt.current, G);
       }
     }
     var Zt = T.ReactCurrentOwner, rr = T.ReactDebugCurrentFrame;
@@ -528,8 +528,8 @@ Check the top-level render call using <` + y + ">.");
         if (ir[y])
           return;
         ir[y] = !0;
-        var R = "";
-        l && l._owner && l._owner !== Zt.current && (R = " It was passed a child from " + de(l._owner.type) + "."), Xe(l), I('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', y, R), Xe(null);
+        var A = "";
+        l && l._owner && l._owner !== Zt.current && (A = " It was passed a child from " + de(l._owner.type) + "."), Xe(l), I('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', y, A), Xe(null);
       }
     }
     function sr(l, b) {
@@ -538,13 +538,13 @@ Check the top-level render call using <` + y + ">.");
           return;
         if (qt(l))
           for (var y = 0; y < l.length; y++) {
-            var R = l[y];
-            Vt(R) && or(R, b);
+            var A = l[y];
+            Vt(A) && or(A, b);
           }
         else if (Vt(l))
           l._store && (l._store.validated = !0);
         else if (l) {
-          var X = O(l);
+          var X = R(l);
           if (typeof X == "function" && X !== l.entries)
             for (var V = X.call(l), G; !(G = V.next()).done; )
               Vt(G.value) && or(G.value, b);
@@ -566,8 +566,8 @@ Check the top-level render call using <` + y + ">.");
         else
           return;
         if (y) {
-          var R = de(b);
-          Va(y, l.props, "prop", R, l);
+          var A = de(b);
+          Va(y, l.props, "prop", A, l);
         } else if (b.PropTypes !== void 0 && !Kt) {
           Kt = !0;
           var X = de(b);
@@ -579,16 +579,16 @@ Check the top-level render call using <` + y + ">.");
     function di(l) {
       {
         for (var b = Object.keys(l.props), y = 0; y < b.length; y++) {
-          var R = b[y];
-          if (R !== "children" && R !== "key") {
-            Xe(l), I("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", R), Xe(null);
+          var A = b[y];
+          if (A !== "children" && A !== "key") {
+            Xe(l), I("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", A), Xe(null);
             break;
           }
         }
         l.ref !== null && (Xe(l), I("Invalid attribute `ref` supplied to `React.Fragment`."), Xe(null));
       }
     }
-    function lr(l, b, y, R, X, V) {
+    function lr(l, b, y, A, X, V) {
       {
         var G = je(l);
         if (!G) {
@@ -605,7 +605,7 @@ Check the top-level render call using <` + y + ">.");
         if (G) {
           var ge = b.children;
           if (ge !== void 0)
-            if (R)
+            if (A)
               if (qt(ge)) {
                 for (var Ze = 0; Ze < ge.length; Ze++)
                   sr(ge[Ze], l);
@@ -655,7 +655,7 @@ const Lt = _n.Fragment, u = _n.jsx, W = _n.jsxs, ki = p.div`
     filter: blur(0px);
     transform: scale(1.2);
     animation: ${Ci} 3s;
-`, jf = ({ src: e = null }) => /* @__PURE__ */ u(ki, { className: "background", children: /* @__PURE__ */ u($i, { className: "background__inner", src: e }) }), Si = ae`
+`, Lf = ({ src: e = null }) => /* @__PURE__ */ u(ki, { className: "background", children: /* @__PURE__ */ u($i, { className: "background__inner", src: e }) }), Si = ae`
     background: ${({ theme: e }) => e.button.background};
     border: ${({ theme: e }) => e.button.border};
     color: ${({ theme: e }) => e.button.color};
@@ -1414,9 +1414,9 @@ function la(e) {
   }
   var g = Gi.exec(t.substring(0, 50));
   if (g) {
-    var k = parseInt("" + g[1], 10), E = parseInt("" + g[2], 10) / 100, P = parseInt("" + g[3], 10) / 100, O = "rgb(" + ft(k, E, P) + ")", T = Qt.exec(O);
+    var k = parseInt("" + g[1], 10), E = parseInt("" + g[2], 10) / 100, P = parseInt("" + g[3], 10) / 100, R = "rgb(" + ft(k, E, P) + ")", T = Qt.exec(R);
     if (!T)
-      throw new xe(4, t, O);
+      throw new xe(4, t, R);
     return {
       red: parseInt("" + T[1], 10),
       green: parseInt("" + T[2], 10),
@@ -1576,7 +1576,7 @@ const x = {
   blueMonday: "#30a4c5",
   greenDay: "#7cc530",
   purpleRain: "#6033b9"
-}, A = {
+}, O = {
   lightGrey: "#eef0f4",
   lightBlueGrey: "#787e89",
   midGrey: "#e7e7e7",
@@ -1596,15 +1596,15 @@ function jn(e, t) {
 const Te = {
   main: {
     spacing: 1.6,
-    background: A.midGrey,
+    background: O.midGrey,
     font: "MuseoSansReg, sans-serif",
     borderRadius: "0.45rem",
     color: x.paintItBlack,
-    bodyColor: A.lightBlueGrey,
-    contrastColor: A.white,
+    bodyColor: O.lightBlueGrey,
+    contrastColor: O.white,
     fontSize: "16px",
-    boxBackground: A.white,
-    border: A.midGrey,
+    boxBackground: O.white,
+    border: O.midGrey,
     brand: x.paintItBlack
   },
   layout: {
@@ -1645,15 +1645,15 @@ const Te = {
   },
   table: {
     header: {
-      background: A.white,
+      background: O.white,
       color: x.paintItBlack,
-      border: A.midGrey
+      border: O.midGrey
     },
     row: {
-      background: A.white,
+      background: O.white,
       color: x.paintItBlack,
       hover: {
-        background: A.lightGrey
+        background: O.lightGrey
       }
     }
   },
@@ -1668,15 +1668,15 @@ const Te = {
   },
   form: {
     input: {
-      background: A.lightGrey,
+      background: O.lightGrey,
       color: x.paintItBlack,
-      placeholder: pa(0.12, A.midGrey),
+      placeholder: pa(0.12, O.midGrey),
       fontSize: "1rem",
       small: {
         color: x.paintItBlack,
         fontSize: "0.875rem"
       },
-      border: A.midGrey
+      border: O.midGrey
     },
     label: {
       color: x.paintItBlack,
@@ -1687,13 +1687,13 @@ const Te = {
       }
     },
     select: {
-      background: A.lightGrey,
-      border: A.midGrey
+      background: O.lightGrey,
+      border: O.midGrey
     }
   },
   text: {
     h1: {
-      color: A.white,
+      color: O.white,
       fontSize: "3rem",
       padding: "1rem 0",
       margin: "0"
@@ -1739,57 +1739,57 @@ const Te = {
     }
   },
   selectionPanel: {
-    background: A.lightGrey,
+    background: O.lightGrey,
     color: x.blueMonday,
     active: {
       background: x.blueMonday,
-      color: A.white
+      color: O.white
     }
   },
   nowPlaying: {
-    artistColor: A.blueGrey,
+    artistColor: O.blueGrey,
     loaderColor: x.simplyRed,
     volumeMain: x.simplyRed,
     volumeBg: x.fadeToGrey
   },
   rowComponent: {
-    actionShadow: A.lightBlueGrey
+    actionShadow: O.lightBlueGrey
   },
   pagination: {
-    color: A.lightBlueGrey
+    color: O.lightBlueGrey
   },
   toast: {
-    background: A.white,
-    color: A.lightBlueGrey,
+    background: O.white,
+    color: O.lightBlueGrey,
     highlight: {
       success: x.greenDay,
       danger: x.simplyRed,
       warning: x.yellowSubmarine,
-      default: A.lightBlueGrey,
+      default: O.lightBlueGrey,
       information: x.blueMonday
     }
   },
   dashboard: {
     online: x.greenDay,
     offline: x.simplyRed,
-    fetching: A.lightBlueGrey
+    fetching: O.lightBlueGrey
   },
   button: {
     background: x.paintItBlack,
-    color: A.white,
+    color: O.white,
     border: `2px solid ${x.paintItBlack}`,
     hover: {
       background: x.paintItBlack,
-      color: A.white,
+      color: O.white,
       border: `2px solid ${x.paintItBlack}`
     },
     active: {
       background: x.paintItBlack,
-      color: A.white,
+      color: O.white,
       border: `2px solid ${x.paintItBlack}`,
       hover: {
         background: x.paintItBlack,
-        color: A.white,
+        color: O.white,
         border: `2px solid ${x.paintItBlack}`
       }
     }
@@ -1801,25 +1801,26 @@ const Te = {
       active: x.simplyRed,
       border: `3px solid ${x.simplyRed}`
     }
-  }
+  },
+  colors: { ...x, ...O }
 };
 jn(Te, {
   button: {
     background: x.simplyRed,
-    color: A.white,
+    color: O.white,
     border: `2px solid ${x.simplyRed}`,
     hover: {
       background: x.simplyRed,
-      color: A.white,
+      color: O.white,
       border: `2px solid ${x.simplyRed}`
     },
     active: {
       background: x.simplyRed,
-      color: A.white,
+      color: O.white,
       border: `2px solid ${x.simplyRed}`,
       hover: {
         background: x.simplyRed,
-        color: A.white,
+        color: O.white,
         border: `2px solid ${x.simplyRed}`
       }
     }
@@ -1827,27 +1828,27 @@ jn(Te, {
   form: {
     input: {
       background: x.simplyRed,
-      color: A.white
+      color: O.white
     }
   }
 });
 jn(Te, {
   button: {
     background: x.mrBlueSky,
-    color: A.white,
+    color: O.white,
     border: `2px solid ${x.mrBlueSky}`,
     hover: {
       background: x.mrBlueSky,
-      color: A.white,
+      color: O.white,
       border: `2px solid ${x.mrBlueSky}`
     },
     active: {
       background: x.mrBlueSky,
-      color: A.white,
+      color: O.white,
       border: `2px solid ${x.mrBlueSky}`,
       hover: {
         background: x.mrBlueSky,
-        color: A.white,
+        color: O.white,
         border: `2px solid ${x.mrBlueSky}`
       }
     }
@@ -1859,35 +1860,35 @@ jn(Te, {
   },
   button: {
     background: x.greenDay,
-    color: A.white,
+    color: O.white,
     border: `2px solid ${x.greenDay}`,
     hover: {
       background: x.greenDay,
-      color: A.white,
+      color: O.white,
       border: `2px solid ${x.greenDay}`
     },
     active: {
       background: x.greenDay,
-      color: A.white,
+      color: O.white,
       border: `2px solid ${x.greenDay}`,
       hover: {
         background: x.greenDay,
-        color: A.white,
+        color: O.white,
         border: `2px solid ${x.greenDay}`
       }
     }
   },
   form: {
     input: {
-      background: A.lightGrey,
+      background: O.lightGrey,
       color: x.greenDay,
-      placeholder: pa(0.12, A.midGrey),
+      placeholder: pa(0.12, O.midGrey),
       fontSize: "1rem",
       small: {
         color: x.greenDay,
         fontSize: "0.875rem"
       },
-      border: A.midGrey
+      border: O.midGrey
     },
     label: {
       color: x.greenDay,
@@ -1898,8 +1899,8 @@ jn(Te, {
       }
     },
     select: {
-      background: A.lightGrey,
-      border: A.midGrey
+      background: O.lightGrey,
+      border: O.midGrey
     }
   }
 });
@@ -1959,7 +1960,7 @@ function uo(e) {
   let t = "white";
   return e !== null && (t = e), t;
 }
-const Ff = ({ label: e, value: t, name: n = null, color: r = "red", textColor: a = null, onClick: i = null, onRemove: o = null }) => {
+const jf = ({ label: e, value: t, name: n = null, color: r = "red", textColor: a = null, onClick: i = null, onRemove: o = null }) => {
   let s = n;
   n === null && (s = `chip-name-${e}`);
   let c = fo;
@@ -1981,7 +1982,7 @@ const Ff = ({ label: e, value: t, name: n = null, color: r = "red", textColor: a
   ] });
 }, mo = p.div`
     margin-bottom: 1em;
-`, Mf = ({ value: e, isOpen: t, handleChangeOverlayColor: n, id: r, toggleColorPicker: a, removeOverlayColor: i }) => (console.log(e), /* @__PURE__ */ W("div", { className: "color-picker", children: [
+`, Ff = ({ value: e, isOpen: t, handleChangeOverlayColor: n, id: r, toggleColorPicker: a, removeOverlayColor: i }) => (console.log(e), /* @__PURE__ */ W("div", { className: "color-picker", children: [
   /* @__PURE__ */ W(
     ye,
     {
@@ -2149,7 +2150,7 @@ const Ff = ({ label: e, value: t, name: n = null, color: r = "red", textColor: a
     }
     `, So = p.div`
     ${$o}
-`, Nf = bo, Df = ho, zf = yo, Bf = wo, Wf = Co, Yf = So, Eo = p.section`
+`, Mf = bo, Nf = ho, Df = yo, zf = wo, Bf = Co, Wf = So, Eo = p.section`
     display: block;
     background: ${(e) => e.theme.main.contrastColor};
     border-radius: ${(e) => e.theme.layout.borderRadius.lg};
@@ -2157,7 +2158,7 @@ const Ff = ({ label: e, value: t, name: n = null, color: r = "red", textColor: a
     max-width: ${(e) => e.theme.container.maxWidth.lg};
     margin: ${(e) => e.theme.container.margin.lg};
 `;
-function Hf({ padded: e, children: t }) {
+function Yf({ padded: e, children: t }) {
   return /* @__PURE__ */ u(Eo, { padded: e, children: t });
 }
 const Po = p.div`
@@ -2175,7 +2176,7 @@ const Oo = p.div`
         grid-column: ${(e) => e.offset ? `col-start ${e.offset} / span ${e.span}` : `span ${e.span}`};
         justify-content: ${(e) => e.pull === "right" ? "flex-end" : "flex-start"};
     }
-`, Uf = p.div`
+`, Hf = p.div`
     width: 100%;
     display: grid;
     gap: ${(e) => e.theme.layout.gap.lg};
@@ -2186,7 +2187,7 @@ const Oo = p.div`
         display: contents;
     }
 `;
-function Gf({ span: e = 4, offset: t = "", pull: n = "left", children: r }) {
+function Uf({ span: e = 4, offset: t = "", pull: n = "left", children: r }) {
   return /* @__PURE__ */ u(Oo, { span: e, offset: t, pull: n, children: r });
 }
 const Ro = () => /* @__PURE__ */ u("svg", { width: "64px", height: "64px", viewBox: "0 0 64 64", version: "1.1", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ u("g", { id: "Icon/Check-Circle-Light", stroke: "none", strokeWidth: "1", fillRule: "evenodd", children: /* @__PURE__ */ u(
@@ -2257,7 +2258,7 @@ const Ro = () => /* @__PURE__ */ u("svg", { width: "64px", height: "64px", viewB
 `, No = p.div`
     text-align: ${(e) => e.align};
     margin: 0.5em 0 0.5em 0;
-`, qf = (e) => {
+`, Gf = (e) => {
   const { type: t, children: n, clearResponseBox: r, data: a, className: i } = e, o = {
     default: {
       backgroundColor: "#E8E9EB",
@@ -2531,7 +2532,7 @@ const Uo = (e, t, n) => {
         white-space: nowrap;
     }
 `;
-class Xf extends oe.Component {
+class qf extends oe.Component {
   constructor(t) {
     super(t), this.state = {
       overflowed: !1
@@ -2560,13 +2561,13 @@ class Xf extends oe.Component {
 }
 const Ko = p.tr`
     ${qo}
-`, Zf = ({ children: e, background: t = null, opacity: n = 1, stickyActions: r = !0, className: a = null, ...i }) => /* @__PURE__ */ u(Ko, { className: a, background: t, opacity: n, stickyActions: r, ...i, children: e }), Vo = p.th`
+`, Xf = ({ children: e, background: t = null, opacity: n = 1, stickyActions: r = !0, className: a = null, ...i }) => /* @__PURE__ */ u(Ko, { className: a, background: t, opacity: n, stickyActions: r, ...i, children: e }), Vo = p.th`
     ${ga}
     padding: 15px 15px;
-`, Kf = ({ children: e, className: t }) => /* @__PURE__ */ u(Vo, { className: t, children: e }), Jo = p.td`
+`, Zf = ({ children: e, className: t }) => /* @__PURE__ */ u(Vo, { className: t, children: e }), Jo = p.td`
     ${ga}
     text-align: ${(e) => e.align ? e.align : null};
-`, Vf = ({ children: e, align: t, className: n }) => /* @__PURE__ */ u(Jo, { className: n, align: t, children: e }), Qo = p.div`
+`, Kf = ({ children: e, align: t, className: n }) => /* @__PURE__ */ u(Jo, { className: n, align: t, children: e }), Qo = p.div`
     display:flex;
     width:100%;
     font-family: inherit;
@@ -2596,7 +2597,7 @@ const Ko = p.tr`
     width:1.5rem;
     margin-right:.5rem;
     color: ${(e) => e.fill};
-`, Jf = ({ fill: e, leftText: t = "", rightText: n = "", Icon: r }) => /* @__PURE__ */ W(rs, { children: [
+`, Vf = ({ fill: e, leftText: t = "", rightText: n = "", Icon: r }) => /* @__PURE__ */ W(rs, { children: [
   /* @__PURE__ */ u(as, { fill: e, children: /* @__PURE__ */ u(r, { fill: e }) }),
   /* @__PURE__ */ u(ns, { fill: e, leftText: t, rightText: n })
 ] }), Fn = ae`
@@ -2629,7 +2630,7 @@ const Ko = p.tr`
     background-color:#fff;
 `, cs = p.div`
     margin-top:.25rem;
-`, Qf = ({ text: e = "", children: t, ...n }) => /* @__PURE__ */ W(ls, { ...n, children: [
+`, Jf = ({ text: e = "", children: t, ...n }) => /* @__PURE__ */ W(ls, { ...n, children: [
   /* @__PURE__ */ u(et, { type: "small", children: e }),
   /* @__PURE__ */ u(cs, { children: t })
 ] }), fs = p.div`
@@ -2649,13 +2650,13 @@ const Ko = p.tr`
 
     }
     //grid-template-rows: ${({ rows: e }) => e};
-`, eu = ({ children: e, columns: t = "12rem", ...n }) => /* @__PURE__ */ u(fs, { ...n, columnString: typeof t == "string" ? t : null, columnArray: typeof t != "string" ? t : null, children: e }), us = p.div`
+`, Qf = ({ children: e, columns: t = "12rem", ...n }) => /* @__PURE__ */ u(fs, { ...n, columnString: typeof t == "string" ? t : null, columnArray: typeof t != "string" ? t : null, children: e }), us = p.div`
     display: flex;
     flex-wrap: nowrap;
     border-bottom: 1px solid ${(e) => e.theme.main.color};
-`, tu = ({ children: e }) => /* @__PURE__ */ u(us, { children: e }), ds = p.div`
+`, eu = ({ children: e }) => /* @__PURE__ */ u(us, { children: e }), ds = p.div`
     padding: 0.6rem 0.4rem;
-`, nu = ({ children: e, ...t }) => /* @__PURE__ */ u(ds, { ...t, children: e }), hr = p.div`
+`, tu = ({ children: e, ...t }) => /* @__PURE__ */ u(ds, { ...t, children: e }), hr = p.div`
     padding: 0.6rem 0.4rem;
 `, ms = ae`
     //color: ${(e) => e.theme.main.color};
@@ -2666,7 +2667,7 @@ const Ko = p.tr`
     font-weight: 700;
     font-size: 0.95rem;
     //color: ${(e) => e.theme.main.color};
-`, ru = ({ type: e, children: t }) => {
+`, nu = ({ type: e, children: t }) => {
   switch (e) {
     case "smalltableheader":
       return /* @__PURE__ */ u(hr, { children: /* @__PURE__ */ u(ps, { children: t }) });
@@ -2681,7 +2682,7 @@ const Ko = p.tr`
     > * {
         font-weight: 700;
     }
-`, au = ({ children: e }) => /* @__PURE__ */ u(bs, { children: e }), gs = p.form`
+`, ru = ({ children: e }) => /* @__PURE__ */ u(bs, { children: e }), gs = p.form`
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -2690,10 +2691,10 @@ const Ko = p.tr`
     flex-direction: ${(e) => e.inline ? "row" : "column"};
     padding: 0 0 ${(e) => e.theme.container.padding.vertical.lg} 0;
 `;
-function iu({ inline: e = !1, grid: t = !1, nested: n, children: r }) {
+function au({ inline: e = !1, grid: t = !1, nested: n, children: r }) {
   return /* @__PURE__ */ u(hs, { inline: e, nested: n, grid: t, children: r });
 }
-function ou({ children: e, submitButton: t, onSubmit: n, forwardRef: r = null, ...a }) {
+function iu({ children: e, submitButton: t, onSubmit: n, forwardRef: r = null, ...a }) {
   return /* @__PURE__ */ W(gs, { ref: r, onSubmit: n, ...a, children: [
     e,
     t
@@ -2762,7 +2763,7 @@ const vs = ae`
     font-family: ${(e) => e.theme.main.font};
     font-size: 0.75rem;
     margin: 0.6rem 0;
-`, $s = ({ children: e, inputColour: t }) => e === null ? null : /* @__PURE__ */ u(Cs, { inputColour: t, children: e }), su = ({
+`, $s = ({ children: e, inputColour: t }) => e === null ? null : /* @__PURE__ */ u(Cs, { inputColour: t, children: e }), ou = ({
   id: e,
   name: t,
   inputBackground: n = null,
@@ -2781,8 +2782,8 @@ const vs = ae`
 }) => {
   let P = () => null;
   i !== null && (P = () => /* @__PURE__ */ u(Lt, { children: i }));
-  let O = () => null;
-  o !== null && (O = () => /* @__PURE__ */ u(Lt, { children: o }));
+  let R = () => null;
+  o !== null && (R = () => /* @__PURE__ */ u(Lt, { children: o }));
   let T = {
     inputBackground: "white",
     inputColour: "black",
@@ -2814,7 +2815,7 @@ const vs = ae`
           ...E
         }
       ),
-      /* @__PURE__ */ u(O, {})
+      /* @__PURE__ */ u(R, {})
     ] }),
     /* @__PURE__ */ u($s, { ...T, children: d })
   ] });
@@ -3027,7 +3028,7 @@ const vs = ae`
         box-shadow: inset 0 0 0 0.4rem
             ${(e) => e.backgroundColor !== null ? e.backgroundColor : e.theme.form.input.background};
     }
-`, lu = ({
+`, su = ({
   name: e,
   label: t = "",
   required: n,
@@ -3072,7 +3073,7 @@ const vs = ae`
     margin: 0 0.5rem;
     color: ${({ theme: e }) => e.main.color};
 `;
-function cu({
+function lu({
   label: e,
   name: t,
   hourMin: n = 0,
@@ -3129,7 +3130,7 @@ const zs = p.textarea`
     resize: none;
     font-family: ${(e) => e.theme.main.font};
 `;
-function fu({ name: e, value: t, onChange: n, placeholder: r }) {
+function cu({ name: e, value: t, onChange: n, placeholder: r }) {
   return /* @__PURE__ */ u(zs, { name: e, value: t, onChange: n, placeholder: r });
 }
 function xr(e, t) {
@@ -4668,7 +4669,7 @@ function Ml(e) {
   }];
 }
 function qn(e) {
-  var t = e.icons, n = t.main, r = t.mask, a = e.prefix, i = e.iconName, o = e.transform, s = e.symbol, c = e.title, d = e.maskId, f = e.titleId, m = e.extra, g = e.watchable, k = g === void 0 ? !1 : g, E = r.found ? r : n, P = E.width, O = E.height, T = a === "fak", I = [S.replacementClass, i ? "".concat(S.cssPrefix, "-").concat(i) : ""].filter(function(le) {
+  var t = e.icons, n = t.main, r = t.mask, a = e.prefix, i = e.iconName, o = e.transform, s = e.symbol, c = e.title, d = e.maskId, f = e.titleId, m = e.extra, g = e.watchable, k = g === void 0 ? !1 : g, E = r.found ? r : n, P = E.width, R = E.height, T = a === "fak", I = [S.replacementClass, i ? "".concat(S.cssPrefix, "-").concat(i) : ""].filter(function(le) {
     return m.classes.indexOf(le) === -1;
   }).filter(function(le) {
     return le !== "" || !!le;
@@ -4680,10 +4681,10 @@ function qn(e) {
       class: I,
       role: m.attributes.role || "img",
       xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 ".concat(P, " ").concat(O)
+      viewBox: "0 0 ".concat(P, " ").concat(R)
     })
   }, H = T && !~m.classes.indexOf("fa-fw") ? {
-    width: "".concat(P / O * 16 * 0.0625, "em")
+    width: "".concat(P / R * 16 * 0.0625, "em")
   } : {};
   k && (F.attributes[Be] = ""), c && (F.children.push({
     tag: "title",
@@ -5094,7 +5095,7 @@ function tc(e) {
   };
 }
 var nc = function(t) {
-  var n = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, r = n.transform, a = r === void 0 ? we : r, i = n.symbol, o = i === void 0 ? !1 : i, s = n.mask, c = s === void 0 ? null : s, d = n.maskId, f = d === void 0 ? null : d, m = n.title, g = m === void 0 ? null : m, k = n.titleId, E = k === void 0 ? null : k, P = n.classes, O = P === void 0 ? [] : P, T = n.attributes, I = T === void 0 ? {} : T, F = n.styles, H = F === void 0 ? {} : F;
+  var n = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, r = n.transform, a = r === void 0 ? we : r, i = n.symbol, o = i === void 0 ? !1 : i, s = n.mask, c = s === void 0 ? null : s, d = n.maskId, f = d === void 0 ? null : d, m = n.title, g = m === void 0 ? null : m, k = n.titleId, E = k === void 0 ? null : k, P = n.classes, R = P === void 0 ? [] : P, T = n.attributes, I = T === void 0 ? {} : T, F = n.styles, H = F === void 0 ? {} : F;
   if (t) {
     var v = t.prefix, ie = t.iconName, ue = t.icon;
     return Ut(C({
@@ -5123,7 +5124,7 @@ var nc = function(t) {
         extra: {
           attributes: I,
           styles: H,
-          classes: O
+          classes: R
         }
       });
     });
@@ -5155,7 +5156,7 @@ var nc = function(t) {
           height: 512,
           icon: {}
         })]).then(function(P) {
-          var O = Mn(P, 2), T = O[0], I = O[1];
+          var R = Mn(P, 2), T = R[0], I = R[1];
           k([n, qn({
             icons: {
               main: T,
@@ -5304,12 +5305,12 @@ function zr(e, t) {
     if (o && !c)
       return e.removeChild(o), r();
     if (c && f !== "none" && f !== "") {
-      var m = s.getPropertyValue("content"), g = ~["Sharp"].indexOf(c[2]) ? ee : J, k = ~["Solid", "Regular", "Light", "Thin", "Duotone", "Brands", "Kit"].indexOf(c[2]) ? dt[g][c[2].toLowerCase()] : nl[g][d], E = lc(m), P = E.value, O = E.isSecondary, T = c[0].startsWith("FontAwesome"), I = Un(k, P), F = I;
+      var m = s.getPropertyValue("content"), g = ~["Sharp"].indexOf(c[2]) ? ee : J, k = ~["Solid", "Regular", "Light", "Thin", "Duotone", "Brands", "Kit"].indexOf(c[2]) ? dt[g][c[2].toLowerCase()] : nl[g][d], E = lc(m), P = E.value, R = E.isSecondary, T = c[0].startsWith("FontAwesome"), I = Un(k, P), F = I;
       if (T) {
         var H = Tl(P);
         H.iconName && H.prefix && (I = H.iconName, k = H.prefix);
       }
-      if (I && !O && (!o || o.getAttribute(Dn) !== k || o.getAttribute(zn) !== F)) {
+      if (I && !R && (!o || o.getAttribute(Dn) !== k || o.getAttribute(zn) !== F)) {
         e.setAttribute(n, F), o && e.removeChild(o);
         var v = Jl(), ie = v.extra;
         ie.attributes[xn] = t, En(I, k).then(function(ue) {
@@ -5516,7 +5517,7 @@ var bc = {
         })
       }, P = f.children ? {
         children: f.children.map(Hr)
-      } : {}, O = {
+      } : {}, R = {
         tag: "g",
         attributes: C({}, k.inner),
         children: [Hr(C({
@@ -5526,7 +5527,7 @@ var bc = {
       }, T = {
         tag: "g",
         attributes: C({}, k.outer),
-        children: [O]
+        children: [R]
       }, I = "mask-".concat(s || bt()), F = "clip-".concat(s || bt()), H = {
         tag: "mask",
         attributes: C(C({}, an), {}, {
@@ -5668,7 +5669,7 @@ function xc() {
   if (Ur)
     return Z;
   Ur = 1;
-  var e = typeof Symbol == "function" && Symbol.for, t = e ? Symbol.for("react.element") : 60103, n = e ? Symbol.for("react.portal") : 60106, r = e ? Symbol.for("react.fragment") : 60107, a = e ? Symbol.for("react.strict_mode") : 60108, i = e ? Symbol.for("react.profiler") : 60114, o = e ? Symbol.for("react.provider") : 60109, s = e ? Symbol.for("react.context") : 60110, c = e ? Symbol.for("react.async_mode") : 60111, d = e ? Symbol.for("react.concurrent_mode") : 60111, f = e ? Symbol.for("react.forward_ref") : 60112, m = e ? Symbol.for("react.suspense") : 60113, g = e ? Symbol.for("react.suspense_list") : 60120, k = e ? Symbol.for("react.memo") : 60115, E = e ? Symbol.for("react.lazy") : 60116, P = e ? Symbol.for("react.block") : 60121, O = e ? Symbol.for("react.fundamental") : 60117, T = e ? Symbol.for("react.responder") : 60118, I = e ? Symbol.for("react.scope") : 60119;
+  var e = typeof Symbol == "function" && Symbol.for, t = e ? Symbol.for("react.element") : 60103, n = e ? Symbol.for("react.portal") : 60106, r = e ? Symbol.for("react.fragment") : 60107, a = e ? Symbol.for("react.strict_mode") : 60108, i = e ? Symbol.for("react.profiler") : 60114, o = e ? Symbol.for("react.provider") : 60109, s = e ? Symbol.for("react.context") : 60110, c = e ? Symbol.for("react.async_mode") : 60111, d = e ? Symbol.for("react.concurrent_mode") : 60111, f = e ? Symbol.for("react.forward_ref") : 60112, m = e ? Symbol.for("react.suspense") : 60113, g = e ? Symbol.for("react.suspense_list") : 60120, k = e ? Symbol.for("react.memo") : 60115, E = e ? Symbol.for("react.lazy") : 60116, P = e ? Symbol.for("react.block") : 60121, R = e ? Symbol.for("react.fundamental") : 60117, T = e ? Symbol.for("react.responder") : 60118, I = e ? Symbol.for("react.scope") : 60119;
   function F(v) {
     if (typeof v == "object" && v !== null) {
       var ie = v.$$typeof;
@@ -5727,7 +5728,7 @@ function xc() {
   }, Z.isSuspense = function(v) {
     return F(v) === m;
   }, Z.isValidElementType = function(v) {
-    return typeof v == "string" || typeof v == "function" || v === r || v === d || v === i || v === a || v === m || v === g || typeof v == "object" && v !== null && (v.$$typeof === E || v.$$typeof === k || v.$$typeof === o || v.$$typeof === s || v.$$typeof === f || v.$$typeof === O || v.$$typeof === T || v.$$typeof === I || v.$$typeof === P);
+    return typeof v == "string" || typeof v == "function" || v === r || v === d || v === i || v === a || v === m || v === g || typeof v == "object" && v !== null && (v.$$typeof === E || v.$$typeof === k || v.$$typeof === o || v.$$typeof === s || v.$$typeof === f || v.$$typeof === R || v.$$typeof === T || v.$$typeof === I || v.$$typeof === P);
   }, Z.typeOf = F, Z;
 }
 var K = {};
@@ -5742,10 +5743,10 @@ var K = {};
 var Gr;
 function wc() {
   return Gr || (Gr = 1, process.env.NODE_ENV !== "production" && function() {
-    var e = typeof Symbol == "function" && Symbol.for, t = e ? Symbol.for("react.element") : 60103, n = e ? Symbol.for("react.portal") : 60106, r = e ? Symbol.for("react.fragment") : 60107, a = e ? Symbol.for("react.strict_mode") : 60108, i = e ? Symbol.for("react.profiler") : 60114, o = e ? Symbol.for("react.provider") : 60109, s = e ? Symbol.for("react.context") : 60110, c = e ? Symbol.for("react.async_mode") : 60111, d = e ? Symbol.for("react.concurrent_mode") : 60111, f = e ? Symbol.for("react.forward_ref") : 60112, m = e ? Symbol.for("react.suspense") : 60113, g = e ? Symbol.for("react.suspense_list") : 60120, k = e ? Symbol.for("react.memo") : 60115, E = e ? Symbol.for("react.lazy") : 60116, P = e ? Symbol.for("react.block") : 60121, O = e ? Symbol.for("react.fundamental") : 60117, T = e ? Symbol.for("react.responder") : 60118, I = e ? Symbol.for("react.scope") : 60119;
+    var e = typeof Symbol == "function" && Symbol.for, t = e ? Symbol.for("react.element") : 60103, n = e ? Symbol.for("react.portal") : 60106, r = e ? Symbol.for("react.fragment") : 60107, a = e ? Symbol.for("react.strict_mode") : 60108, i = e ? Symbol.for("react.profiler") : 60114, o = e ? Symbol.for("react.provider") : 60109, s = e ? Symbol.for("react.context") : 60110, c = e ? Symbol.for("react.async_mode") : 60111, d = e ? Symbol.for("react.concurrent_mode") : 60111, f = e ? Symbol.for("react.forward_ref") : 60112, m = e ? Symbol.for("react.suspense") : 60113, g = e ? Symbol.for("react.suspense_list") : 60120, k = e ? Symbol.for("react.memo") : 60115, E = e ? Symbol.for("react.lazy") : 60116, P = e ? Symbol.for("react.block") : 60121, R = e ? Symbol.for("react.fundamental") : 60117, T = e ? Symbol.for("react.responder") : 60118, I = e ? Symbol.for("react.scope") : 60119;
     function F(w) {
       return typeof w == "string" || typeof w == "function" || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-      w === r || w === d || w === i || w === a || w === m || w === g || typeof w == "object" && w !== null && (w.$$typeof === E || w.$$typeof === k || w.$$typeof === o || w.$$typeof === s || w.$$typeof === f || w.$$typeof === O || w.$$typeof === T || w.$$typeof === I || w.$$typeof === P);
+      w === r || w === d || w === i || w === a || w === m || w === g || typeof w == "object" && w !== null && (w.$$typeof === E || w.$$typeof === k || w.$$typeof === o || w.$$typeof === s || w.$$typeof === f || w.$$typeof === R || w.$$typeof === T || w.$$typeof === I || w.$$typeof === P);
     }
     function H(w) {
       if (typeof w == "object" && w !== null) {
@@ -5993,7 +5994,7 @@ function $c() {
       this.message = h, this.data = $ && typeof $ == "object" ? $ : {}, this.stack = "";
     }
     P.prototype = Error.prototype;
-    function O(h) {
+    function R(h) {
       if (process.env.NODE_ENV !== "production")
         var $ = {}, N = 0;
       function M(U, L, j, D, q, z, se) {
@@ -6028,10 +6029,10 @@ function $c() {
         }
         return null;
       }
-      return O($);
+      return R($);
     }
     function I() {
-      return O(o);
+      return R(o);
     }
     function F(h) {
       function $(N, M, _, U, L) {
@@ -6049,7 +6050,7 @@ function $c() {
         }
         return null;
       }
-      return O($);
+      return R($);
     }
     function H() {
       function h($, N, M, _, U) {
@@ -6060,7 +6061,7 @@ function $c() {
         }
         return null;
       }
-      return O(h);
+      return R(h);
     }
     function v() {
       function h($, N, M, _, U) {
@@ -6071,7 +6072,7 @@ function $c() {
         }
         return null;
       }
-      return O(h);
+      return R(h);
     }
     function ie(h) {
       function $(N, M, _, U, L) {
@@ -6081,7 +6082,7 @@ function $c() {
         }
         return null;
       }
-      return O($);
+      return R($);
     }
     function ue(h) {
       if (!Array.isArray(h))
@@ -6098,7 +6099,7 @@ function $c() {
         });
         return new P("Invalid " + U + " `" + L + "` of value `" + String(j) + "` " + ("supplied to `" + _ + "`, expected one of " + q + "."));
       }
-      return O($);
+      return R($);
     }
     function ke(h) {
       function $(N, M, _, U, L) {
@@ -6115,7 +6116,7 @@ function $c() {
           }
         return null;
       }
-      return O($);
+      return R($);
     }
     function le(h) {
       if (!Array.isArray(h))
@@ -6137,13 +6138,13 @@ function $c() {
         var be = q.length > 0 ? ", expected one of type [" + q.join(", ") + "]" : "";
         return new P("Invalid " + j + " `" + D + "` supplied to " + ("`" + L + "`" + be + "."));
       }
-      return O(M);
+      return R(M);
     }
     function je() {
       function h($, N, M, _, U) {
         return fe($[N]) ? null : new P("Invalid " + _ + " `" + U + "` supplied to " + ("`" + M + "`, expected a ReactNode."));
       }
-      return O(h);
+      return R(h);
     }
     function He(h, $, N, M, _) {
       return new P(
@@ -6165,7 +6166,7 @@ function $c() {
         }
         return null;
       }
-      return O($);
+      return R($);
     }
     function de(h) {
       function $(N, M, _, U, L) {
@@ -6188,7 +6189,7 @@ Valid keys: ` + JSON.stringify(Object.keys(h), null, "  ")
         }
         return null;
       }
-      return O($);
+      return R($);
     }
     function fe(h) {
       switch (typeof h) {
@@ -6407,7 +6408,7 @@ function Lc() {
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
 function jc(e) {
-  var t, n = e.beat, r = e.fade, a = e.beatFade, i = e.bounce, o = e.shake, s = e.flash, c = e.spin, d = e.spinPulse, f = e.spinReverse, m = e.pulse, g = e.fixedWidth, k = e.inverse, E = e.border, P = e.listItem, O = e.flip, T = e.size, I = e.rotation, F = e.pull, H = (t = {
+  var t, n = e.beat, r = e.fade, a = e.beatFade, i = e.bounce, o = e.shake, s = e.flash, c = e.spin, d = e.spinPulse, f = e.spinReverse, m = e.pulse, g = e.fixedWidth, k = e.inverse, E = e.border, P = e.listItem, R = e.flip, T = e.size, I = e.rotation, F = e.pull, H = (t = {
     "fa-beat": n,
     "fa-fade": r,
     "fa-beat-fade": a,
@@ -6422,9 +6423,9 @@ function jc(e) {
     "fa-inverse": k,
     "fa-border": E,
     "fa-li": P,
-    "fa-flip": O === !0,
-    "fa-flip-horizontal": O === "horizontal" || O === "both",
-    "fa-flip-vertical": O === "vertical" || O === "both"
+    "fa-flip": R === !0,
+    "fa-flip-horizontal": R === "horizontal" || R === "both",
+    "fa-flip-vertical": R === "vertical" || R === "both"
   }, Je(t, "fa-".concat(T), typeof T < "u" && T !== null), Je(t, "fa-rotate-".concat(I), typeof I < "u" && I !== null && I !== 0), Je(t, "fa-pull-".concat(F), typeof F < "u" && F !== null), Je(t, "fa-swap-opacity", e.swapOpacity), t);
   return Object.keys(H).map(function(v) {
     return H[v] ? v : null;
@@ -6524,8 +6525,8 @@ var Ye = /* @__PURE__ */ oe.forwardRef(function(e, t) {
   var E = k.abstract, P = {
     ref: t
   };
-  return Object.keys(e).forEach(function(O) {
-    Ye.defaultProps.hasOwnProperty(O) || (P[O] = e[O]);
+  return Object.keys(e).forEach(function(R) {
+    Ye.defaultProps.hasOwnProperty(R) || (P[R] = e[R]);
   }), Bc(E[0], P);
 });
 Ye.displayName = "FontAwesomeIcon";
@@ -6646,7 +6647,7 @@ const Yc = p.div`
     color: ${(e) => e.theme.main.color};
     font-weight: normal;
 `;
-function uu({ name: e, index: t, checked: n, setChecked: r, value: a, label: i, icon: o }) {
+function fu({ name: e, index: t, checked: n, setChecked: r, value: a, label: i, icon: o }) {
   const s = e + t;
   return /* @__PURE__ */ u(Yc, { children: /* @__PURE__ */ W(Hc, { checked: n, htmlFor: s, children: [
     /* @__PURE__ */ u(Uc, { checked: n, children: /* @__PURE__ */ u(Ye, { icon: Wc }) }),
@@ -6699,11 +6700,11 @@ const Zc = p.div`
     }
 
     input:checked + .slider {
-        background-color: ${(e) => e.primaryColour};
+        background-color: ${(e) => e.theme.main.brand};
     }
 
     input:focus + .slider {
-        box-shadow: 0 0 1px ${(e) => e.primaryColour};
+        box-shadow: 0 0 1px ${(e) => e.theme.main.brand};
     }
 
     input:checked + .slider:before {
@@ -6731,12 +6732,12 @@ const Zc = p.div`
 `, Vc = p.span`
     font-size: 1.1em;
     margin-left: 0.75rem;
-`, Jc = (e) => ({ altColour: "white", primaryColour: "red" }), du = ({ name: e, id: t, checked: n, value: r, label: a, colour: i = "simplyRed", className: o = null, ...s }) => {
-  const c = { ...s, ...Jc() };
-  return console.log("switch attributes", c), /* @__PURE__ */ u(Zc, { className: o, ...c, children: /* @__PURE__ */ W(Kc, { htmlFor: e, ...c, children: [
+`, uu = ({ name: e, id: t, checked: n, value: r, label: a, className: i = null, ...o }) => {
+  const s = { ...o };
+  return console.log("switch attributes", s), /* @__PURE__ */ u(Zc, { className: i, ...s, children: /* @__PURE__ */ W(Kc, { htmlFor: e, ...s, children: [
     /* @__PURE__ */ W("div", { className: "switch", children: [
-      /* @__PURE__ */ u("input", { id: t, name: e, value: r, defaultChecked: n, type: "checkbox", ...c }),
-      /* @__PURE__ */ u("span", { className: "slider round", ...c })
+      /* @__PURE__ */ u("input", { id: t, name: e, value: r, defaultChecked: n, type: "checkbox", ...s }),
+      /* @__PURE__ */ u("span", { className: "slider round", ...s })
     ] }),
     /* @__PURE__ */ u(Vc, { className: "spanLabel", children: a })
   ] }) });
@@ -6745,35 +6746,35 @@ const Zc = p.div`
     font-family: ${(e) => e.theme.main.font};
     margin: 0;
     margin-bottom: ${(e) => e.margin || ".75em"};
-`, Qc = p.h3`
+`, Jc = p.h3`
     ${Gt}
     font-size: 2.2rem;
-`, ef = p.h1`
+`, Qc = p.h1`
     ${Gt}
     font-size: 1.6rem;
-`, tf = p.h2`
+`, ef = p.h2`
     ${Gt}
     font-weight: lighter;
     font-size: 1.4rem;
-`, nf = p.h4`
+`, tf = p.h4`
     ${Gt}
     font-size: 1.2rem;
-`, rf = ({ type: e = "heading", children: t, ...n }) => {
+`, nf = ({ type: e = "heading", children: t, ...n }) => {
   switch (e.toLowerCase()) {
     case "hero":
-      return /* @__PURE__ */ u(Qc, { ...n, children: t });
+      return /* @__PURE__ */ u(Jc, { ...n, children: t });
     case "title":
-      return /* @__PURE__ */ u(ef, { ...n, children: t });
+      return /* @__PURE__ */ u(Qc, { ...n, children: t });
     case "subtitle":
-      return /* @__PURE__ */ u(tf, { ...n, children: t });
+      return /* @__PURE__ */ u(ef, { ...n, children: t });
     default:
-      return /* @__PURE__ */ u(nf, { ...n, children: t });
+      return /* @__PURE__ */ u(tf, { ...n, children: t });
   }
-}, af = p.hr`
+}, rf = p.hr`
     width: ${({ width: e }) => e};
     margin: 0 auto;
     border-bottom: 1px solid ${({ color: e }) => e !== null ? e : Te.generalColors.midGrey};
-`, mu = ({ width: e = "100%", color: t = null }) => /* @__PURE__ */ u(af, { width: e, color: t }), of = p.a`
+`, du = ({ width: e = "100%", color: t = null }) => /* @__PURE__ */ u(rf, { width: e, color: t }), af = p.a`
     display: inline-block;
     color: ${(e) => e.theme.tabs.tab.color};
     padding: 0.3rem 0.6rem;
@@ -6788,10 +6789,10 @@ const Zc = p.div`
         color: ${(e) => e.theme.tabs.tab.active};
         border-bottom: ${(e) => e.theme.tabs.tab.border};
     }
-`, pu = ({ id: e, checked: t = !1, children: n, ...r }) => /* @__PURE__ */ u(of, { id: e, className: t ? "active" : "", ...r, children: n }, `tab-${e}`), na = p.div`
+`, mu = ({ id: e, checked: t = !1, children: n, ...r }) => /* @__PURE__ */ u(af, { id: e, className: t ? "active" : "", ...r, children: n }, `tab-${e}`), na = p.div`
     display: block;
     position: relative;
-`, bu = ({
+`, pu = ({
   children: e,
   ...t
 }) => {
@@ -6811,7 +6812,7 @@ const Zc = p.div`
     }
   }
   return /* @__PURE__ */ u(na, { className: "tabbed-content", ...t, onClick: a, children: e });
-}, sf = p.div`
+}, of = p.div`
     display: none;
     position: relative;
     opacity: 0;
@@ -6823,13 +6824,13 @@ const Zc = p.div`
         
     }
 
-`, gu = ({
+`, bu = ({
   checked: e = !1,
   children: t,
   ...n
-}) => /* @__PURE__ */ u(sf, { className: e ? "active" : "", ...n, children: t }), lf = p.div`
+}) => /* @__PURE__ */ u(of, { className: e ? "active" : "", ...n, children: t }), sf = p.div`
 
-`, cf = p.div`
+`, lf = p.div`
     border-bottom: 1px solid ${(e) => e.theme.tabs.color};
     padding: 0;    
     margin: 0 auto;
@@ -6850,16 +6851,16 @@ const Zc = p.div`
     > a {
         scroll-snap-align: start;
     }
+`, gu = ({
+  children: e,
+  ...t
+}) => /* @__PURE__ */ u(sf, { ...t, children: /* @__PURE__ */ u(lf, { children: e }) }), cf = p.div`
+    display: block;
+    position: relative;
 `, hu = ({
   children: e,
   ...t
-}) => /* @__PURE__ */ u(lf, { ...t, children: /* @__PURE__ */ u(cf, { children: e }) }), ff = p.div`
-    display: block;
-    position: relative;
-`, vu = ({
-  children: e,
-  ...t
-}) => /* @__PURE__ */ u(ff, { ...t, children: e }), uf = p.div`
+}) => /* @__PURE__ */ u(cf, { ...t, children: e }), ff = p.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -6868,28 +6869,28 @@ const Zc = p.div`
     width: 100%;
     aspect-ratio: 16/9;
     padding: 2rem;
-`, df = p(Ye)`
+`, uf = p(Ye)`
     width: 2rem;
     height: 2rem;
     margin-bottom: 1rem;
-`, mf = p(et)`
+`, df = p(et)`
     margin-bottom: 1rem;
 `;
-function pf({ icon: e, title: t = "", component: n = null, className: r }) {
-  return /* @__PURE__ */ W(uf, { className: r, children: [
-    /* @__PURE__ */ u(df, { icon: e, color: Te.form.input.border }),
-    /* @__PURE__ */ u(mf, { type: "heading", children: t }),
+function mf({ icon: e, title: t = "", component: n = null, className: r }) {
+  return /* @__PURE__ */ W(ff, { className: r, children: [
+    /* @__PURE__ */ u(uf, { icon: e, color: Te.form.input.border }),
+    /* @__PURE__ */ u(df, { type: "heading", children: t }),
     n
   ] });
 }
-const bf = p(pf)`
+const pf = p(mf)`
     background: ${(e) => e.theme.actionPanel.background};
     border: 2px dashed ${(e) => e.theme.actionPanel.border};
 `;
-function yu({ icon: e, title: t = "", component: n = null }) {
-  return /* @__PURE__ */ u(bf, { icon: e, title: t, component: n });
+function vu({ icon: e, title: t = "", component: n = null }) {
+  return /* @__PURE__ */ u(pf, { icon: e, title: t, component: n });
 }
-const gf = p.div`
+const bf = p.div`
     font-family: ${(e) => e.theme.main.fontFamily};
     color: ${(e) => e.theme.main.color};
 `, ra = p.div`
@@ -6919,9 +6920,9 @@ const gf = p.div`
     align-items: center;
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.table.header.border}` : "none"};
 `;
-function xu({ data: e }) {
+function yu({ data: e }) {
   const { headings: t } = e, { rows: n } = e;
-  return /* @__PURE__ */ W(gf, { children: [
+  return /* @__PURE__ */ W(bf, { children: [
     /* @__PURE__ */ W(ra, { border: !0, children: [
       /* @__PURE__ */ u(aa, { collapse: !0, children: /* @__PURE__ */ u(vr, {}) }),
       t.map((r) => /* @__PURE__ */ u(aa, { children: /* @__PURE__ */ u(et, { children: r }) }, r))
@@ -6932,7 +6933,7 @@ function xu({ data: e }) {
     ] }, r.name))
   ] });
 }
-const wu = p.div`
+const xu = p.div`
     color: ${(e) => e.theme.main.color};
     padding: ${(e) => e.theme.layout.padding.vertical} ${(e) => e.theme.layout.padding.horizontal};
     //remove margin on text and header
@@ -6945,15 +6946,15 @@ const wu = p.div`
     p {
         margin: 0;
     }
-`, ku = p.div`
+`, wu = p.div`
     color: ${(e) => e.theme.main.color};
-`, Cu = p.div`
+`, ku = p.div`
     border-top: 1px solid ${(e) => e.theme.main.border};
     color: ${(e) => e.theme.main.color};
     display: flex;
     justify-content: space-between;
     padding: ${(e) => e.theme.layout.padding.vertical} ${(e) => e.theme.layout.padding.horizontal};
-`, hf = p.div`
+`, gf = p.div`
     display: flex;
     position: fixed;
     top: 0;
@@ -6964,7 +6965,7 @@ const wu = p.div`
     z-index: 8888;
     justify-content: center;
     align-items: center;
-`, vf = p.div`
+`, hf = p.div`
     display: block;
     position: absolute;
     top: 0;
@@ -6974,7 +6975,7 @@ const wu = p.div`
     overflow: hidden;
     background: rgba(0, 0, 0, 0.7);
     z-index: -1;
-`, yf = p.div`
+`, vf = p.div`
     width: 30rem;
     min-height: 4rem;
     max-width: 90%;
@@ -6987,7 +6988,7 @@ const wu = p.div`
     //padding: 2rem;
     text-align: center;
 `;
-function $u({
+function Cu({
   content: e = null,
   onClose: t = () => {
   },
@@ -6999,19 +7000,19 @@ function $u({
 }) {
   return oa(() => (n(), () => {
     t();
-  }), [t, n]), r ? /* @__PURE__ */ W(hf, { children: [
-    /* @__PURE__ */ u(vf, { onClick: () => t(null) }),
-    /* @__PURE__ */ u(yf, { id: "mainModal", transparent: a, children: e })
+  }), [t, n]), r ? /* @__PURE__ */ W(gf, { children: [
+    /* @__PURE__ */ u(hf, { onClick: () => t(null) }),
+    /* @__PURE__ */ u(vf, { id: "mainModal", transparent: a, children: e })
   ] }) : null;
 }
-const xf = p.ul`
+const yf = p.ul`
     overflow-y: auto;
     height: 50vh;
     padding: ${(e) => e.padding ? e.padding : e.theme.container.padding.horizontal.lg};
     margin: ${(e) => e.margin ? e.margin : `0 0 ${e.theme.layout.margin}`};
     border: 1px solid ${(e) => e.theme.main.border};
     \list-style: none;
-`, wf = p.li`
+`, xf = p.li`
     font-family: ${(e) => e.theme.main.font};
 
     &::before {
@@ -7030,10 +7031,10 @@ const xf = p.ul`
         }
     }
 `;
-function kf({ padding: e = null, margin: t, children: n }) {
-  return /* @__PURE__ */ u(xf, { padding: e, margin: t, children: n });
+function wf({ padding: e = null, margin: t, children: n }) {
+  return /* @__PURE__ */ u(yf, { padding: e, margin: t, children: n });
 }
-const Cf = p.div`
+const kf = p.div`
     padding: 1rem;
     margin: ${(e) => e.margin || "0 0 1em"};
     box-sizing: border-box;
@@ -7043,31 +7044,31 @@ const Cf = p.div`
     align-items: center;
     border-radius: ${(e) => e.theme.main.borderRadius};
     border: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
+`, $u = p.div`
+    padding: 0 1rem;
+    border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
 `, Su = p.div`
     padding: 0 1rem;
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
 `, Eu = p.div`
     padding: 0 1rem;
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
-`, Pu = p.div`
-    padding: 0 1rem;
-    border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
     margin-left: auto;
 `;
-function Tu({ horizontal: e, margin: t, border: n = !0, children: r }) {
-  return /* @__PURE__ */ u(Cf, { horizontal: e, margin: t, border: n, children: r });
+function Pu({ horizontal: e, margin: t, border: n = !0, children: r }) {
+  return /* @__PURE__ */ u(kf, { horizontal: e, margin: t, border: n, children: r });
 }
-const $f = p(kf)`
+const Cf = p(wf)`
     & .placeholder {
         background-color: ${(e) => e.theme.main.background};
     }
-`, Ou = p(wf)`
+`, Tu = p(xf)`
     cursor: grab;
     user-select: none;
     &:active {
         cursor: grabbing;
     }
-`, Ru = p.div`
+`, Ou = p.div`
     cursor: grab;
     user-select: none;
     &:active {
@@ -7078,7 +7079,7 @@ const $f = p(kf)`
         content: '⋮⋮';
     }
 `;
-function Au({ children: e }) {
+function Ru({ children: e }) {
   const t = (i) => {
     const { id: o } = i.currentTarget;
     i.dataTransfer.setData("text/plain", o);
@@ -7101,13 +7102,13 @@ function Au({ children: e }) {
       onDrop: r
     })
   );
-  return /* @__PURE__ */ u($f, { children: a });
+  return /* @__PURE__ */ u(Cf, { children: a });
 }
-const Sf = p.circle`
+const $f = p.circle`
     fill: none;
     stroke: ${(e) => e.theme.main.background};
     stroke-width: ${(e) => e.strokeWidth};
-`, Ef = p.circle`
+`, Sf = p.circle`
     fill: none;
     stroke: ${(e) => e.theme.main.brand};
     stroke-linecap: round;
@@ -7118,16 +7119,16 @@ const Sf = p.circle`
     transition: stroke-dashoffset 0.35s;
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
-`, Pf = p.svg`
+`, Ef = p.svg`
     display: block;
     margin: 10px;
     max-width: 100%;
-`, Tf = ({ progress: e, max: t = 100, size: n, strokeWidth: r = 10 }) => {
+`, Pf = ({ progress: e, max: t = 100, size: n, strokeWidth: r = 10 }) => {
   const a = (n - 10) / 2, i = a * 2 * Math.PI, o = i - e / t * i;
-  return /* @__PURE__ */ W(Pf, { width: n, height: n, children: [
-    /* @__PURE__ */ u(Sf, { strokeWidth: r, r: a, cx: n / 2, cy: n / 2 }),
+  return /* @__PURE__ */ W(Ef, { width: n, height: n, children: [
+    /* @__PURE__ */ u($f, { strokeWidth: r, r: a, cx: n / 2, cy: n / 2 }),
     /* @__PURE__ */ u(
-      Ef,
+      Sf,
       {
         strokeWidth: r,
         r: a,
@@ -7138,23 +7139,23 @@ const Sf = p.circle`
       }
     )
   ] });
-}, Of = p.div``, Rf = p.div`
+}, Tf = p.div``, Of = p.div`
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
-`, Af = p.div`
+`, Rf = p.div`
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
     border-top: 1px solid ${(e) => e.theme.main.border};
     padding-top: ${(e) => e.theme.layout.padding.vertical};
-`, If = p.div``, Iu = p.div``;
-function _u({ children: e, position: t = 0, handleNext: n, handleBack: r, handleEnd: a, endText: i = "Submit" }) {
+`, Af = p.div``, Au = p.div``;
+function Iu({ children: e, position: t = 0, handleNext: n, handleBack: r, handleEnd: a, endText: i = "Submit" }) {
   let o = t;
-  return t < 0 ? o = 0 : t > oe.Children.count(e) - 1 && (o = oe.Children.count(e) - 1), /* @__PURE__ */ W(Of, { children: [
-    /* @__PURE__ */ W(Rf, { children: [
+  return t < 0 ? o = 0 : t > oe.Children.count(e) - 1 && (o = oe.Children.count(e) - 1), /* @__PURE__ */ W(Tf, { children: [
+    /* @__PURE__ */ W(Of, { children: [
       /* @__PURE__ */ u(
-        Tf,
+        Pf,
         {
           progress: o + 1,
           max: oe.Children.count(e),
@@ -7162,18 +7163,18 @@ function _u({ children: e, position: t = 0, handleNext: n, handleBack: r, handle
           strokeWidth: 8
         }
       ),
-      /* @__PURE__ */ W(If, { children: [
+      /* @__PURE__ */ W(Af, { children: [
         /* @__PURE__ */ W(et, { children: [
           "Step ",
           o + 1,
           " of ",
           oe.Children.count(e)
         ] }),
-        oe.Children.map(e, (s, c) => c === o ? /* @__PURE__ */ u(rf, { margin: "0px", children: s.props.title }) : null)
+        oe.Children.map(e, (s, c) => c === o ? /* @__PURE__ */ u(nf, { margin: "0px", children: s.props.title }) : null)
       ] })
     ] }),
     oe.Children.map(e, (s, c) => c === o ? s : null),
-    /* @__PURE__ */ W(Af, { children: [
+    /* @__PURE__ */ W(Rf, { children: [
       /* @__PURE__ */ u(ye, { onClick: r, disabled: o === 0, children: "Previous" }),
       // if last step show submit button
       o === oe.Children.count(e) - 1 ? /* @__PURE__ */ u(ye, { onClick: a, children: i }) : /* @__PURE__ */ u(ye, { onClick: n, disabled: o === oe.Children.count(e) - 1, children: "Next Step" })
@@ -7181,72 +7182,72 @@ function _u({ children: e, position: t = 0, handleNext: n, handleBack: r, handle
   ] });
 }
 export {
-  pf as ActionPanel,
-  jf as Background,
+  mf as ActionPanel,
+  Lf as Background,
   ye as Button,
-  Tu as Card,
-  Eu as CardBody,
-  Pu as CardFooter,
-  Su as CardHeader,
+  Pu as Card,
+  Su as CardBody,
+  Eu as CardFooter,
+  $u as CardHeader,
   vr as Checkbox,
-  Ff as Chip,
-  Mf as ColorPicker,
-  Gf as Column,
-  Wf as ColumnContainer,
-  Uf as ColumnWrapper,
-  Hf as Container,
-  Bf as Content,
-  Au as DragDropList,
-  Ou as DraggableListItem,
-  Ru as DraggableListItemHandle,
-  yu as DroppableActionPanel,
-  eu as FlexTable,
-  nu as FlexTableCell,
-  au as FlexTableHead,
-  ru as FlexTableHeader,
-  tu as FlexTableRow,
-  ou as Form,
-  iu as FormRow,
-  Yf as GridContainer,
-  zf as Header,
-  rf as Heading,
-  mu as Hr,
-  Jf as IconBoxes,
-  su as Input,
+  jf as Chip,
+  Ff as ColorPicker,
+  Uf as Column,
+  Bf as ColumnContainer,
+  Hf as ColumnWrapper,
+  Yf as Container,
+  zf as Content,
+  Ru as DragDropList,
+  Tu as DraggableListItem,
+  Ou as DraggableListItemHandle,
+  vu as DroppableActionPanel,
+  Qf as FlexTable,
+  tu as FlexTableCell,
+  ru as FlexTableHead,
+  nu as FlexTableHeader,
+  eu as FlexTableRow,
+  iu as Form,
+  au as FormRow,
+  Wf as GridContainer,
+  Df as Header,
+  nf as Heading,
+  du as Hr,
+  Vf as IconBoxes,
+  ou as Input,
   Bt as Label,
-  wf as ListItem,
-  $u as Modal,
-  ku as ModalBody,
-  Cu as ModalFooter,
-  wu as ModalHeader,
-  Nf as Pod,
-  Df as PositionContainer,
-  lu as Radio,
-  uu as RadioPanel,
-  Qf as Rectangle,
-  qf as ResponseBox,
-  xu as ResponsiveTable,
-  kf as ScrollableList,
+  xf as ListItem,
+  Cu as Modal,
+  wu as ModalBody,
+  ku as ModalFooter,
+  xu as ModalHeader,
+  Mf as Pod,
+  Nf as PositionContainer,
+  su as Radio,
+  fu as RadioPanel,
+  Jf as Rectangle,
+  Gf as ResponseBox,
+  yu as ResponsiveTable,
+  wf as ScrollableList,
   Rs as Select,
-  Iu as Step,
-  _u as Steps,
-  du as Switch,
-  pu as Tab,
-  vu as TabContent,
-  hu as TabGroup,
-  gu as TabPane,
-  bu as TabWrap,
-  Xf as Table,
+  Au as Step,
+  Iu as Steps,
+  uu as Switch,
+  mu as Tab,
+  hu as TabContent,
+  gu as TabGroup,
+  bu as TabPane,
+  pu as TabWrap,
+  qf as Table,
   ia as TableCell,
   aa as TableHeading,
   ra as TableRow,
-  Vf as Td,
+  Kf as Td,
   et as Text,
-  fu as TextArea,
+  cu as TextArea,
   ns as TextPairs,
-  Kf as Th,
-  cu as TimeSelect,
+  Zf as Th,
+  lu as TimeSelect,
   To as ToggleArea,
-  Zf as Tr,
+  Xf as Tr,
   Te as extendDefaultTheme
 };
