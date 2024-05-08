@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import Label from './label';
 
 const Text = styled.label`
     font-weight: bold;
@@ -86,7 +87,7 @@ const StyledSelect = styled.div`
     }
 `;
 
-const Label = ({ children }) => (children ? <Text>{children}</Text> : null);
+// const Label = ({ children }) => (children ? <Label>{children}</Label> : null);
 
 const SelectInput = ({ value, name, children, label, inline = false, onChange = () => {} }) => (
     <Wrapper>
