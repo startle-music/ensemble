@@ -145,7 +145,8 @@ const btnBase = css`
     font-family: ${({ theme }) => theme.main.font};
     height: 3rem;
     padding: ${({ icon }) => (icon === true ? `0.6rem` : `0.667rem 1.333rem`)};
-    font-size: ${({ icon }) => (icon === true ? `1.333rem` : `1rem`)};
+    //font-size: ${({ icon }) => (icon === true ? `1.333rem` : `1rem`)};
+    font-size: 1rem;
     border-radius: ${({ rounded, theme }) => (rounded === true ? '10rem' : theme.main.borderRadius)};
     cursor: pointer;
     box-shadow: none;
@@ -229,7 +230,7 @@ const Button = props => {
 
     // if content is not a string
     if (typeof content !== 'string') {
-        // attributes.icon = true;
+        attributes.icon = true;
     }
 
     // if theme is set and is an object
