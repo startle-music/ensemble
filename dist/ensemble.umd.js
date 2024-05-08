@@ -794,11 +794,13 @@ To pass a single animation please supply them in simple values, e.g. animation('
     width: 100%;
 `,Ts=m.label`
     display: block;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: ${e=>e.theme.main.font};
     padding-bottom: 0.5rem;
     box-sizing: border-box;
     color: ${e=>e.theme.main.color};
+    margin: 0;
+    margin-bottom: ${e=>e.margin||".75em"};
 `,Es=m.span`
     display: inline-block;
     margin-left: 0.3rem;
