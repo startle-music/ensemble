@@ -141,6 +141,7 @@ const btnBase = css`
     box-sizing: border-box;
     font-weight: 600;
     display: ${({ display }) => display || `block`};
+    flex: 1;
     font-family: ${({ theme }) => theme.main.font};
     height: 3rem;
     padding: ${({ icon }) => (icon === true ? `0.6rem` : `0.667rem 1.333rem`)};
@@ -228,7 +229,7 @@ const Button = props => {
 
     // if content is not a string
     if (typeof content !== 'string') {
-        attributes.icon = true;
+        // attributes.icon = true;
     }
 
     // if theme is set and is an object

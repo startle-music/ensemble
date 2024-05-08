@@ -787,6 +787,7 @@ const Lt = _n.Fragment, u = _n.jsx, W = _n.jsxs, ki = p.div`
     box-sizing: border-box;
     font-weight: 600;
     display: ${({ display: e }) => e || "block"};
+    flex: 1;
     font-family: ${({ theme: e }) => e.main.font};
     height: 3rem;
     padding: ${({ icon: e }) => e === !0 ? "0.6rem" : "0.667rem 1.333rem"};
@@ -846,7 +847,7 @@ const ye = (e) => {
     ...e,
     icon: !1
   };
-  return typeof o != "string" && (s.icon = !0), r !== null && typeof r == "object" && (s.themeOveride = r), a !== !1 ? /* @__PURE__ */ u(Ri, { ...s, children: o }) : i !== !1 ? /* @__PURE__ */ u(Ai, { ...s, children: o }) : /* @__PURE__ */ u(Oi, { ...s, children: o });
+  return r !== null && typeof r == "object" && (s.themeOveride = r), a !== !1 ? /* @__PURE__ */ u(Ri, { ...s, children: o }) : i !== !1 ? /* @__PURE__ */ u(Ai, { ...s, children: o }) : /* @__PURE__ */ u(Oi, { ...s, children: o });
 };
 function jt() {
   return jt = Object.assign ? Object.assign.bind() : function(e) {
@@ -3121,7 +3122,7 @@ const zs = p.textarea`
     width: 100%;
     height: 10rem;
     padding: 0.5rem;
-    margin: 0.5rem 0;
+    margin: 0 0 1rem;
     border: 1px solid ${(e) => e.theme.main.border};
     border-radius: ${(e) => e.theme.main.borderRadius};
     background: ${(e) => e.theme.main.background};
