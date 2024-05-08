@@ -164,7 +164,10 @@ const btnBase = css`
         fill: currentColor;
         height: 1.1rem;
         width: 1em;
+        margin: ${({ icon }) => (icon === true ? `0 0.4rem` : `0`)};
     }
+
+
 `;
 
 const BaseButton = styled.button`

@@ -810,7 +810,10 @@ const Lt = _n.Fragment, u = _n.jsx, W = _n.jsxs, ki = p.div`
         fill: currentColor;
         height: 1.1rem;
         width: 1em;
+        margin: ${({ icon: e }) => e === !0 ? "0 0.4rem" : "0"};
     }
+
+
 `, Oi = p.button`
     ${Ln}
 `, sa = p.a`

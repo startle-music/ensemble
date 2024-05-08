@@ -204,7 +204,10 @@ Check the top-level render call using <`+w+">.")}return b}}function Ja(l,b){{if(
         fill: currentColor;
         height: 1.1rem;
         width: 1em;
+        margin: ${({icon:e})=>e===!0?"0 0.4rem":"0"};
     }
+
+
 `,mi=m.button`
     ${Kn}
 `,rr=m.a`
