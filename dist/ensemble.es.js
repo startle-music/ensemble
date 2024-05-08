@@ -2828,7 +2828,7 @@ const vs = ae`
 }, Ss = p.label`
     font-weight: bold;
     margin-bottom: 0.75rem;
-    color: 'black';
+    color: ${(e) => e.theme.form.label.color};
     text-align: left;
 `, Es = p.div`
     display: flex;
@@ -2857,7 +2857,7 @@ const vs = ae`
         background: 'white';
         padding: 0.875rem 0.6rem;
         font-family: MuseoSans, sans-serif;
-        color: 'black';
+        color: ${(e) => e.theme.form.label.color};
     }
 `, Ts = p.div`
     margin: 0;

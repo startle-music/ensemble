@@ -843,7 +843,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
 `,As=({children:e,inputColour:n})=>e===null?null:f(Rs,{inputColour:n,children:e}),Is=({id:e,name:n,inputBackground:t=null,inputColour:r=null,inputBorder:a=null,prepend:i=null,append:o=null,label:s=null,type:c="text",caption:d=null,required:u=!1,placeholder:p=!1,defaultValue:g=null,status:S=null,...E})=>{let P=()=>null;i!==null&&(P=()=>f(wn,{children:i}));let A=()=>null;o!==null&&(A=()=>f(wn,{children:o}));let O={inputBackground:"white",inputColour:"black",inputBorder:xe.main.border};return t!==null&&(O={...O,inputBackground:t}),r!==null&&(O={...O,inputColour:r}),a!==null&&(O={...O,inputBorder:a}),z(ln,{htmlFor:n,block:!0,children:[s!==null?f(wr,{required:u,children:s}):null,z(Ps,{...E,...O,children:[f(P,{}),f(Os,{type:c,name:n,required:u,placeholder:p,defaultValue:g,id:e,...O,...E}),f(A,{})]}),f(As,{...O,children:d})]})},_s=m.label`
     font-weight: bold;
     margin-bottom: 0.75rem;
-    color: 'black';
+    color: ${e=>e.theme.form.label.color};
     text-align: left;
 `,Ls=m.div`
     display: flex;
@@ -872,7 +872,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
         background: 'white';
         padding: 0.875rem 0.6rem;
         font-family: MuseoSans, sans-serif;
-        color: 'black';
+        color: ${e=>e.theme.form.label.color};
     }
 `,Fs=m.div`
     margin: 0;

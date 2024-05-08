@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 const Text = styled.label`
     font-weight: bold;
     margin-bottom: 0.75rem;
-    color: 'black';
+    color: ${props => props.theme.form.label.color};
     text-align: left;
 `;
 
@@ -37,7 +37,7 @@ const Dropdown = styled.select`
         background: 'white';
         padding: 0.875rem 0.6rem;
         font-family: MuseoSans, sans-serif;
-        color: 'black';
+        color: ${props => props.theme.form.label.color};
     }
 `;
 
