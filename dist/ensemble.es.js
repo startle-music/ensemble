@@ -787,8 +787,8 @@ const Lt = _n.Fragment, u = _n.jsx, W = _n.jsxs, ki = p.div`
     box-sizing: border-box;
     font-weight: 600;
     display: ${({ display: e }) => e || "block"};
-    flex: 1;
     font-family: ${({ theme: e }) => e.main.font};
+    width: ${({ width: e }) => e || "auto"};
     height: 3rem;
     padding: ${({ icon: e }) => e === !0 ? "0.6rem" : "0.667rem 1.333rem"};
     //font-size: ${({ icon: e }) => e === !0 ? "1.333rem" : "1rem"};
