@@ -37,7 +37,7 @@ export { default as FlexTableHead } from './components/flextable/head';
 
 // form
 export { default as Form, FormRow } from './components/form';
-export { default as Label } from './components/form/labels';
+export { default as Label } from './components/form/fields/label';
 export { default as Input } from './components/form/fields/regularInput';
 export { default as Select } from './components/form/fields/select';
 export { default as Checkbox } from './components/form/fields/checkInput';

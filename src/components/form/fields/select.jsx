@@ -2,13 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import Label from './label';
 
-const Text = styled.label`
-    font-weight: bold;
-    margin-bottom: 0.75rem;
-    color: ${props => props.theme.form.label.color};
-    text-align: left;
-`;
-
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;

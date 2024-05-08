@@ -14,11 +14,12 @@ import DroppableActionPanel from '../components/droppableActionPanel';
 import TimeSelect from '../components/form/fields/timeSelect';
 
 import Form, { FormRow } from '../components/form';
-import Label from '../components/form/labels';
+import Label from '../components/form/fields/label';
 import Heading from '../components/headings';
 import RadioComponent from '../components/form/fields/radio';
 import ToggleArea from '../components/toggleArea';
 import ScrollableList, { ListItem } from '../components/scrollableList';
+import Checkbox from '../components/form/fields/checkInput';
 
 import Card, { CardHeader, CardBody, CardFooter } from '../components/card';
 
@@ -423,6 +424,13 @@ const FormContents = ({ radio, modalOpen, step }) => (
                         </FormRow>
                         <FormRow>
                             <Switch label="Switch" colour="greenDay" />
+                        </FormRow>
+                        <FormRow>
+                            <Label>News to include:</Label>
+                            <FormRow inline nested>
+                                <Checkbox label="National news" />
+                                <Checkbox label="Local news" />
+                            </FormRow>
                         </FormRow>
                     </Form>
                 </Step>

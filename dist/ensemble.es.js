@@ -2706,16 +2706,7 @@ function ru({ children: e, submitButton: t, onSubmit: n, forwardRef: r = null, .
     t
   ] });
 }
-const vs = ae`
-    //margin-bottom:5px;
-    //font-size: 0.9rem;
-    color: ${(e) => Te.main.color};
-`, Bt = p.label`
-    ${vs}
-    margin-bottom: ${(e) => e.margin || 0};
-    display: ${({ block: e }) => e ? "block" : "inline-block"};
-    width: 100%;
-`, ys = p.label`
+const vs = p.label`
     display: block;
     font-size: 1.2rem;
     font-family: ${(e) => e.theme.main.font};
@@ -2725,16 +2716,25 @@ const vs = ae`
     margin: 0;
     margin-bottom: ${(e) => e.margin || ".75em"};
     font-weight: bold;
-`, xs = p.span`
+`, ys = p.span`
     display: inline-block;
     margin-left: 0.3rem;
 `, Mn = ({ children: e, required: t = !1 }) => {
   let n = () => null;
-  return t && (n = /* @__PURE__ */ u(xs, { children: "*" })), /* @__PURE__ */ W(ys, { children: [
+  return t && (n = /* @__PURE__ */ u(ys, { children: "*" })), /* @__PURE__ */ W(vs, { children: [
     e,
     /* @__PURE__ */ u(n, {})
   ] });
-}, ws = p.div`
+}, xs = ae`
+    //margin-bottom:5px;
+    //font-size: 0.9rem;
+    color: ${(e) => Te.main.color};
+`, Bt = p.label`
+    ${xs}
+    margin-bottom: ${(e) => e.margin || 0};
+    display: ${({ block: e }) => e ? "block" : "inline-block"};
+    width: 100%;
+`, ws = p.div`
     display: flex;
     align-items: center;
     background: ${({ inputBackground: e }) => e};
@@ -2828,14 +2828,7 @@ const vs = ae`
     ] }),
     /* @__PURE__ */ u($s, { ...T, children: d })
   ] });
-};
-p.label`
-    font-weight: bold;
-    margin-bottom: 0.75rem;
-    color: ${(e) => e.theme.form.label.color};
-    text-align: left;
-`;
-const Ss = p.div`
+}, Ss = p.div`
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -7223,7 +7216,7 @@ export {
   fu as Hr,
   Zf as IconBoxes,
   au as Input,
-  Bt as Label,
+  Mn as Label,
   vf as ListItem,
   wu as Modal,
   yu as ModalBody,
