@@ -2724,12 +2724,13 @@ const vs = ae`
     color: ${(e) => e.theme.main.color};
     margin: 0;
     margin-bottom: ${(e) => e.margin || ".75em"};
+    font-weight: bold;
 `, xs = p.span`
     display: inline-block;
     margin-left: 0.3rem;
 `, Mn = ({ children: e, required: t = !1 }) => {
   let n = () => null;
-  return t && (n = () => /* @__PURE__ */ u(xs, { children: "*" })), /* @__PURE__ */ W(ys, { children: [
+  return t && (n = /* @__PURE__ */ u(xs, { children: "*" })), /* @__PURE__ */ W(ys, { children: [
     e,
     /* @__PURE__ */ u(n, {})
   ] });
@@ -2911,14 +2912,12 @@ const Ss = p.div`
   r ? /* @__PURE__ */ u(Mn, { htmlFor: t, children: r }) : null,
   /* @__PURE__ */ u(Ps, { inline: a, children: /* @__PURE__ */ u(Es, { value: e, name: t, onChange: i, inline: !0, children: n }) })
 ] }), Os = p.div`
-    
     flex-direction: row;
     //display: ${(e) => e.inline ? "inline-flex" : "flex"};
-    //margin-right: ${(e) => e.inline ? "0.8rem" : 0};
+    margin: ${(e) => e.margin ? e.margin : "0 2rem 0.8rem 0"};
     //margin-bottom: 0.8rem;
     font-size: 1rem;
     font-family: ${(e) => e.theme.main.font};
-    
 `, Rs = p(Bt)`
    display: inline-flex;
    align-items: center;
@@ -2950,8 +2949,8 @@ const Ss = p.div`
     }
 
     &:checked {
-        background-color: ${(e) => e.backgroundColor !== null ? e.backgroundColor : e.theme.form.input.background};
-        color: ${(e) => e.color !== null ? e.color : e.theme.form.input.color};
+        background-color: ${(e) => e.backgroundColor !== null ? e.backgroundColor : e.theme.form.input.color};
+        color: ${(e) => e.color !== null ? e.color : "white"};
     }
 
     &:checked:after {

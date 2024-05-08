@@ -4,14 +4,12 @@ import Label from '../labels';
 import theme from '../../../style/theme';
 
 const Checkbox = styled.div`
-    
     flex-direction: row;
     //display: ${props => (props.inline ? 'inline-flex' : 'flex')};
-    //margin-right: ${props => (props.inline ? '0.8rem' : 0)};
+    margin: ${props => (props.margin ? props.margin : '0 2rem 0.8rem 0')};
     //margin-bottom: 0.8rem;
     font-size: 1rem;
     font-family: ${p => p.theme.main.font};
-    
 `;
 
 const PaddedLabel = styled(Label)`
@@ -48,8 +46,8 @@ const CheckboxInput = styled.input`
 
     &:checked {
         background-color: ${props =>
-            props.backgroundColor !== null ? props.backgroundColor : props.theme.form.input.background};
-        color: ${props => (props.color !== null ? props.color : props.theme.form.input.color)};
+            props.backgroundColor !== null ? props.backgroundColor : props.theme.form.input.color};
+        color: ${props => (props.color !== null ? props.color : 'white')};
     }
 
     &:checked:after {

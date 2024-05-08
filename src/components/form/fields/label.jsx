@@ -11,6 +11,7 @@ const LabelWrap = styled.label`
     color: ${props => props.theme.main.color};
     margin: 0;
     margin-bottom: ${props => props.margin || '.75em'};
+    font-weight: bold;
 `;
 
 const StyledRequired = styled.span`
@@ -21,7 +22,7 @@ const StyledRequired = styled.span`
 const Label = ({ children, required = false }) => {
     let Required = () => null;
     if (required) {
-        Required = () => <StyledRequired>*</StyledRequired>;
+        Required = <StyledRequired>*</StyledRequired>;
     }
     return (
         <LabelWrap>
