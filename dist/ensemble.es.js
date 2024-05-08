@@ -2180,6 +2180,7 @@ const Oo = p.div`
     @media (min-width: ${({ collapse: e = 768 }) => `${e}px`}) {
         grid-column: ${(e) => e.offset ? `col-start ${e.offset} / span ${e.span}` : `span ${e.span}`};
         justify-content: ${(e) => e.pull === "right" ? "flex-end" : "flex-start"};
+        algin-items: ${(e) => e.align === "top" ? "flex-start" : "flex-end"};
     }
 `, Hf = p.div`
     width: 100%;
@@ -2192,8 +2193,8 @@ const Oo = p.div`
         display: contents;
     }
 `;
-function Uf({ span: e = 4, offset: t = "", pull: n = "left", children: r }) {
-  return /* @__PURE__ */ u(Oo, { span: e, offset: t, pull: n, children: r });
+function Uf({ span: e = 4, offset: t = "", pull: n = "left", align: r = "top", children: a }) {
+  return /* @__PURE__ */ u(Oo, { span: e, offset: t, pull: n, align: r, children: a });
 }
 const Ro = () => /* @__PURE__ */ u("svg", { width: "64px", height: "64px", viewBox: "0 0 64 64", version: "1.1", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ u("g", { id: "Icon/Check-Circle-Light", stroke: "none", strokeWidth: "1", fillRule: "evenodd", children: /* @__PURE__ */ u(
   "path",

@@ -13,6 +13,7 @@ const ColumnStyled = styled.div`
         grid-column: ${props =>
             props.offset ? `col-start ${props.offset} / span ${props.span}` : `span ${props.span}`};
         justify-content: ${props => (props.pull === 'right' ? 'flex-end' : 'flex-start')};
+        algin-items: ${props => (props.align === 'top' ? 'flex-start' : 'flex-end')};
     }
 `;
 
@@ -28,9 +29,9 @@ export const ColumnWrapper = styled.div`
     }
 `;
 
-export default function Column({ span = 4, offset = '', pull = 'left', children }) {
+export default function Column({ span = 4, offset = '', pull = 'left', align = 'top', children }) {
     return (
-        <ColumnStyled span={span} offset={offset} pull={pull}>
+        <ColumnStyled span={span} offset={offset} pull={pull} align={align}>
             {children}
         </ColumnStyled>
     );
