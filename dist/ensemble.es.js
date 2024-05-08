@@ -2693,12 +2693,12 @@ const Ko = p.tr`
     flex-direction: column;
     width: 100%;
 `, hs = p.div`
-    display: ${(e) => e.grid ? "contents" : "flex"};
+    display: ${(e) => e.display ? e.display : "flex"};
     flex-direction: ${(e) => e.inline ? "row" : "column"};
     padding: 0 0 ${(e) => e.theme.container.padding.vertical.lg} 0;
 `;
-function au({ inline: e = !1, grid: t = !1, nested: n, children: r }) {
-  return /* @__PURE__ */ u(hs, { inline: e, nested: n, grid: t, children: r });
+function au({ inline: e = !1, display: t = !1, nested: n, children: r }) {
+  return /* @__PURE__ */ u(hs, { inline: e, nested: n, display: t, children: r });
 }
 function iu({ children: e, submitButton: t, onSubmit: n, forwardRef: r = null, ...a }) {
   return /* @__PURE__ */ W(gs, { ref: r, onSubmit: n, ...a, children: [
