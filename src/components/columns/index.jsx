@@ -13,7 +13,7 @@ const ColumnStyled = styled.div`
         grid-column: ${props =>
             props.offset ? `col-start ${props.offset} / span ${props.span}` : `span ${props.span}`};
         justify-content: ${props => (props.pull === 'right' ? 'flex-end' : 'flex-start')};
-        algin-items: ${props => (props.align === 'top' ? 'flex-start' : 'flex-end')};
+        align-items: ${props => (props.align === 'top' ? 'flex-start' : 'flex-end')};
     }
 `;
 

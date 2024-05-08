@@ -515,7 +515,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
     @media (min-width: ${({collapse:e=768})=>`${e}px`}) {
         grid-column: ${e=>e.offset?`col-start ${e.offset} / span ${e.span}`:`span ${e.span}`};
         justify-content: ${e=>e.pull==="right"?"flex-end":"flex-start"};
-        algin-items: ${e=>e.align==="top"?"flex-start":"flex-end"};
+        align-items: ${e=>e.align==="top"?"flex-start":"flex-end"};
     }
 `,ko=m.div`
     width: 100%;
