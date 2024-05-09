@@ -51,7 +51,7 @@ export default function ResponsiveTable({ data }) {
         <ResponsiveTableWrap>
             <Row border>
                 <Heading collapse>
-                    <Checkbox />
+                    <Checkbox margin="0px" />
                 </Heading>
                 {headings.map(heading => (
                     <Heading key={heading}>
@@ -62,7 +62,7 @@ export default function ResponsiveTable({ data }) {
             {rows.map(row => (
                 <Row key={row.name}>
                     <Cell collapse>
-                        <Checkbox />
+                        <Checkbox margin="0px" />
                     </Cell>
                     {Object.keys(row).map(key => (
                         <Cell key={key} border justify={key === 'actions' ? 'flex-end' : 'flex-start'}>

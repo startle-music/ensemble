@@ -8,13 +8,17 @@ import theme from '../../style/theme';
 
 const ActionPanelStyled = styled.div`
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
+    justify-content: space-between;
     border: 1px solid ${theme.form.input.border};
     width: 100%;
-    aspect-ratio: 16/9;
     padding: 2rem;
+    align-items: center;
+
+    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+        justify-content: space-around;
+        flex-direction: column;
+        aspect-ratio: 16/9;
+    }
 `;
 
 const Icon = styled(FontAwesomeIcon)`
@@ -24,7 +28,9 @@ const Icon = styled(FontAwesomeIcon)`
 `;
 
 const Title = styled(Text)`
-    margin-bottom: 1rem;
+    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+        margin-bottom: 1rem;
+    }
 `;
 
 /**
@@ -32,11 +38,13 @@ const Title = styled(Text)`
  * @param {string} icon
  * @returns
  */
-export default function ActionPanel({ icon, title = '', component = null, className }) {
+export default function ActionPanel({ icon, title = '', component = null, className, collapse }) {
     return (
-        <ActionPanelStyled className={className}>
+        <ActionPanelStyled className={className} collapse={collapse}>
             <Icon icon={icon} color={theme.form.input.border} />
-            <Title type="heading">{title}</Title>
+            <Title type="heading" collapse={collapse}>
+                {title}
+            </Title>
             {component}
         </ActionPanelStyled>
     );

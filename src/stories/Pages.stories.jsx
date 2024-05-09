@@ -50,15 +50,15 @@ const Icon = () => (
     </span>
 );
 
-const tableActions = (
+const TableActions = id => (
     <>
-        <Button key="aaa" onClick={() => alert('yo')} inline>
+        <Button key={`aaa${id}`} onClick={() => alert('yo')} inline>
             <FontAwesomeIcon icon={faTrash} />
         </Button>
-        <Button key="aaa" inline>
+        <Button key={`bbb${id}`} inline>
             <FontAwesomeIcon icon={faPencil} />
         </Button>
-        <Button key="aaa" inline>
+        <Button key={`ccc${id}`} inline>
             <FontAwesomeIcon icon={faPlay} />
         </Button>
     </>
@@ -72,28 +72,28 @@ const tableData = {
             type: 'Jingle',
             fileType: 'mp3',
             added: '2020-01-01',
-            actions: tableActions
+            actions: <TableActions id={1} />
         },
         {
             name: 'Jingle 2',
             type: 'Jingle',
             fileType: 'mp3',
             added: '2020-01-02',
-            actions: tableActions
+            actions: <TableActions id={2} />
         },
         {
             name: 'Jingle 3',
             type: 'Jingle',
             fileType: 'mp3',
             added: '2020-01-03',
-            actions: tableActions
+            actions: <TableActions id={3} />
         },
         {
             name: 'Jingle 4',
             type: 'Jingle',
             fileType: 'mp3',
             added: '2020-01-04',
-            actions: tableActions
+            actions: <TableActions id={4} />
         }
     ]
 };

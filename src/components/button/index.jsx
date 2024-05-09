@@ -151,14 +151,16 @@ const btnBase = css`
     cursor: pointer;
     box-shadow: none;
 
-    ${({ action, outline }) => (action === true ? btnAction : outline === true ? btnOutline : btnPrimary)};
-    ${({ inline }) => (inline === true ? btnInline : '')};
-
     /* if a button is followed by a button add left margin to the trailing button */
     & + button,
     & + a {
         margin-left: 0.4rem;
     }
+
+    ${({ action, outline }) => (action === true ? btnAction : outline === true ? btnOutline : btnPrimary)};
+    ${({ inline }) => (inline === true ? btnInline : '')};
+
+    
 
     svg {
         fill: currentColor;

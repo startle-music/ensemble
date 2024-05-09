@@ -67,9 +67,10 @@ const CheckboxComponent = ({
     className = null,
     backgroundColor = null,
     color = null,
+    margin = null,
     ...rest
 }) => (
-    <Checkbox inline={inline} className={className}>
+    <Checkbox inline={inline} className={className} margin={margin}>
         <PaddedLabel htmlFor={id} disabled={disabled}>
             <CheckboxInput
                 type="checkbox"
