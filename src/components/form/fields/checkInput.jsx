@@ -13,7 +13,7 @@ const Checkbox = styled.div`
 `;
 
 const PaddedLabel = styled(Label)`
-   display: inline-flex;
+   display: flex;
    align-items: center;
     //padding: 0.25rem 0 0.25rem 2.25rem;
     line-height: 1.5rem;
@@ -26,9 +26,6 @@ const CheckboxInput = styled.input`
     padding: 0;
     border-radius: 3px;
     display: inline-flex;
-    /* position: absolute;
-    left: 0;
-    top: 0; */
     justify-content: center;
     width: 1.5rem;
     height: 1.5rem;
@@ -53,7 +50,7 @@ const CheckboxInput = styled.input`
     &:checked:after {
         content: '\\2714';
         font-family: ${p => p.theme.main.font};
-        color: ${props => (props.color !== null ? props.color : props.theme.form.input.color)};
+        color: ${props => (props.color !== null ? props.color : props.theme.form.checkbox.checkColour)};
         font-size: 1.1rem;
     }
 `;

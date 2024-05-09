@@ -40,6 +40,7 @@ export const Cell = styled.div`
     padding: 0.5rem;
     align-items: center;
     border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
+    justify-content: ${({ justify }) => justify || 'flex-start'};
 `;
 
 export default function ResponsiveTable({ data }) {
@@ -64,7 +65,7 @@ export default function ResponsiveTable({ data }) {
                         <Checkbox />
                     </Cell>
                     {Object.keys(row).map(key => (
-                        <Cell key={key} border>
+                        <Cell key={key} border justify={key === 'actions' ? 'flex-end' : 'flex-start'}>
                             {key !== 'actions' ? <Text>{row[key]}</Text> : row[key]}
                         </Cell>
                     ))}

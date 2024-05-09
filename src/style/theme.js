@@ -177,6 +177,9 @@ const theme = {
         select: {
             background: generalColors.lightGrey,
             border: generalColors.midGrey
+        },
+        checkbox: {
+            checkColour: generalColors.white
         }
     },
     text: {
