@@ -17,7 +17,6 @@ export default function DroppableActionPanel({ icon, title = '', component = nul
     const [over, setOver] = useState(false);
 
     const handleDragOver = e => {
-        console.log('drag over');
         e.preventDefault();
         setOver(true);
     };
@@ -32,7 +31,7 @@ export default function DroppableActionPanel({ icon, title = '', component = nul
         setOver(false);
 
         const file = e.dataTransfer.files[0];
-        console.log(file);
+        // console.log(file);
 
         // Call the dropHandler with the dropped file
         dropHandler(file);

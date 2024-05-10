@@ -24,7 +24,9 @@ const ActionPanelStyled = styled.div`
 const Icon = styled(FontAwesomeIcon)`
     width: 2rem;
     height: 2rem;
-    margin-bottom: 1rem;
+    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+        margin-bottom: 1rem;
+    }
 `;
 
 const Title = styled(Text)`
@@ -38,10 +40,10 @@ const Title = styled(Text)`
  * @param {string} icon
  * @returns
  */
-export default function ActionPanel({ icon, title = '', component = null, className, collapse }) {
+export default function ActionPanel({ icon, title = '', component = null, className, collapse, ...rest }) {
     return (
-        <ActionPanelStyled className={className} collapse={collapse}>
-            <Icon icon={icon} color={theme.form.input.border} />
+        <ActionPanelStyled className={className} collapse={collapse} {...rest}>
+            <Icon icon={icon} color={theme.form.input.border} collapse={collapse} />
             <Title type="heading" collapse={collapse}>
                 {title}
             </Title>

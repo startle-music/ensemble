@@ -16,20 +16,27 @@ const Label = styled.label`
     //justify-content: center;
     display: block;
     width: 100%;
-    padding: 3rem 2rem;
+    padding: 2rem 1rem;
+
     border: ${props =>
         props.checked ? `1px solid ${props.theme.main.brand}` : `1px solid ${props.theme.main.border}`};
     background-color: ${props => (props.checked ? `${props.theme.main.brand}33` : 'transparent')};
     border-radius: ${props => props.theme.layout.borderRadius.lg};
     color: ${props => (props.checked ? props.theme.main.brand : props.theme.main.background)};
     transition: all 0.35s;
+
+    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+        padding: 3rem 2rem;
+    }
 `;
 
 const RadioPlaceholder = styled.div`
     display: block;
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+
     background-color: ${props => (props.checked ? `${props.theme.main.brand}` : 'tranparent')};
     border: ${props =>
         props.checked ? `1px solid ${props.theme.main.brand}` : `1px solid ${props.theme.main.border}`};
@@ -38,6 +45,12 @@ const RadioPlaceholder = styled.div`
     height: 1em;
     border-radius: 50%;
     color: ${props => props.theme.main.contrastColor};
+
+    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+        top: 1rem;
+        right: 1rem;
+        transform: translateY(0);
+    }
 
     svg {
         opacity: ${props => (props.checked ? 1 : 0)};
@@ -56,14 +69,25 @@ const Radio = styled.input.attrs({ type: 'radio' })`
 const PanelBody = styled.div`
     width: 100%;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
 
+    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+        justify-content: center;
+        flex-direction: column;
+    }
+
     svg {
-        margin-bottom: ${props => props.theme.layout.padding.vertical};
-        width: 3rem;
-        height: 3rem;
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+
+        @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+            margin-bottom: ${props => props.theme.layout.padding.vertical};
+            margin-right: 0;
+            width: 3rem;
+            height: 3rem;
+        }
     }
 `;
 
@@ -72,12 +96,12 @@ const P = styled(Text)`
     font-weight: normal;
 `;
 
-export default function RadioPanel({ name, index, checked, setChecked, value, label, icon }) {
+export default function RadioPanel({ name, index, checked, setChecked, value, label, icon, collapse = 768 }) {
     // add prop to parent if radio is checked
     const n = name + index;
 
     return (
-        <StyledRadioPanel>
+        <StyledRadioPanel collapse={collapse}>
             <Label checked={checked} htmlFor={n}>
                 <RadioPlaceholder checked={checked}>
                     <FontAwesomeIcon icon={faCheck} />
