@@ -7115,6 +7115,7 @@ const xf = p.div`
 `, Cu = p.div`
     padding: 0 1rem;
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
+    text-align: ${(e) => e.align || "left"};
 `, $u = p.div`
     padding: 0 1rem;
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};

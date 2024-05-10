@@ -22,6 +22,7 @@ export const CardHeader = styled.div`
 export const CardBody = styled.div`
     padding: 0 1rem;
     border-bottom: ${props => (props.border ? `1px solid ${props.theme.main.border}` : 'none')};
+    text-align: ${props => props.align || 'left'};
 `;
 
 export const CardFooter = styled.div`

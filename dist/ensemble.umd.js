@@ -2199,6 +2199,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `,Wf=m.div`
     padding: 0 1rem;
     border-bottom: ${e=>e.border?`1px solid ${e.theme.main.border}`:"none"};
+    text-align: ${e=>e.align||"left"};
 `,Yf=m.div`
     padding: 0 1rem;
     border-bottom: ${e=>e.border?`1px solid ${e.theme.main.border}`:"none"};
