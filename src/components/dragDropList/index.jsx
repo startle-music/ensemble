@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
 
@@ -27,13 +27,23 @@ export const DraggableListItemHandle = styled.div`
 
     &::before {
         content: '⋮⋮';
+        colour: ${props => props.theme.main.color};
     }
 `;
 
 export default function DragDropList({ children }) {
+    const [orderedChildren, setOrderedChildren] = useState(children);
+    const [draggedItemId, setDraggedItemId] = useState(null);
+
+    function updateParentList(reorderedChildren) {
+        // This function should be implemented according to your state management
+        setOrderedChildren(reorderedChildren.map(child => React.cloneElement(child)));
+    }
+    b;
     const handleDragStart = e => {
-        const { id } = e.currentTarget;
-        e.dataTransfer.setData('text/plain', id);
+        // Directly set the ID of the dragged item into state
+        console.log('drag start', e.currentTarget.id);
+        setDraggedItemId(e.currentTarget.id);
     };
 
     const handleDragOver = e => {
@@ -42,35 +52,53 @@ export default function DragDropList({ children }) {
 
     const handleDrop = e => {
         e.preventDefault();
-        const draggedItemId = e.dataTransfer.getData('text/plain');
         const targetId = e.currentTarget.id;
 
-        // Prevent dropping on itself
-        if (draggedItemId === targetId) return;
+        console.log('draggedItemId', draggedItemId);
 
-        // Find the elements
-        const draggedItemIndex = children.findIndex(child => child.key === draggedItemId);
-        const targetItemIndex = children.findIndex(child => child.key === targetId);
+        if (draggedItemId === targetId) {
+            setDraggedItemId(null); // Reset on drop to self
+            return;
+        }
 
-        // Reorder the children
+        const draggedItemIndex = React.Children.toArray(orderedChildren).findIndex(
+            child => child.props.id === draggedItemId
+        );
+        const targetItemIndex = React.Children.toArray(orderedChildren).findIndex(child => child.props.id === targetId);
+
+        console.log('Dropped on:', e.currentTarget.id); // Check drop target
+        console.log('Dragged item ID:', draggedItemId); // Verify dragged item ID
+
+        if (draggedItemIndex < 0 || targetItemIndex < 0) {
+            console.error('Invalid indices', draggedItemIndex, targetItemIndex);
+            return; // Exit if indices are invalid
+        }
+
         const reorderedChildren = React.Children.toArray(children);
         const [reorderedItem] = reorderedChildren.splice(draggedItemIndex, 1);
         reorderedChildren.splice(targetItemIndex, 0, reorderedItem);
 
-        // Update the state or notify the parent component to update the list
-        // This part needs to be implemented according to your state management
-        updateParentList(reorderedChildren);
+        updateParentList(reorderedChildren); // Assuming updateList updates the state in the parent component
+        setDraggedItemId(null); // Reset the dragged item ID state
     };
 
-    const childrenWithProps = React.Children.map(children, (child, index) =>
-        React.cloneElement(child, {
-            id: `draggable-item-${index}`,
-            draggable: 'true',
-            onDragStart: handleDragStart,
-            onDragOver: handleDragOver,
-            onDrop: handleDrop
-        })
-    );
+    useEffect(() => {
+        // set initial children with an id prop
+        const initialChildren = React.Children.map(children, (child, index) =>
+            React.cloneElement(child, {
+                id: `draggable-item-${index}`,
+                draggable: 'true',
+                onDragStart: handleDragStart,
+                onDragOver: handleDragOver,
+                onDrop: handleDrop
+            })
+        );
 
-    return <DraggableScrollableList>{childrenWithProps}</DraggableScrollableList>;
+        setOrderedChildren(initialChildren);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    console.log(2, React.Children.toArray(orderedChildren));
+
+    return <DraggableScrollableList>{orderedChildren}</DraggableScrollableList>;
 }

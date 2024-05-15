@@ -18,7 +18,7 @@ export const Row = styled.div`
     justify-content: space-between;
     align-items: stretch;
     border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
-    padding: 0 2rem;
+    padding: ${p => (p.rowPadding ? p.rowPadding : `0 ${p.theme.layout.padding.horizontal}`)};
 
     &:last-child > div {
         border-bottom: none;
@@ -43,13 +43,13 @@ export const Cell = styled.div`
     justify-content: ${({ justify }) => justify || 'flex-start'};
 `;
 
-export default function ResponsiveTable({ data }) {
+export default function ResponsiveTable({ data, rowPadding = null }) {
     const { headings } = data;
     const { rows } = data;
 
     return (
         <ResponsiveTableWrap>
-            <Row border>
+            <Row border rowPadding={rowPadding}>
                 <Heading collapse>
                     <Checkbox margin="0px" />
                 </Heading>
@@ -60,7 +60,7 @@ export default function ResponsiveTable({ data }) {
                 ))}
             </Row>
             {rows.map(row => (
-                <Row key={row.name}>
+                <Row key={row.name} rowPadding={rowPadding}>
                     <Cell collapse>
                         <Checkbox margin="0px" />
                     </Cell>

@@ -23,6 +23,7 @@ export const ColumnWrapper = styled.div`
     gap: ${props => props.theme.layout.gap.lg};
     grid-template-columns: repeat(12, [col-start] 1fr);
     grid-auto-flow: row;
+    margin: ${p => (p.margin ? p.margin : '0')};
 
     ${ToggleArea} {
         display: contents;
