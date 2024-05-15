@@ -39,7 +39,7 @@ export default function DragDropList({ children }) {
         // This function should be implemented according to your state management
         setOrderedChildren(reorderedChildren.map(child => React.cloneElement(child)));
     }
-    b;
+
     const handleDragStart = e => {
         // Directly set the ID of the dragged item into state
         console.log('drag start', e.currentTarget.id);
