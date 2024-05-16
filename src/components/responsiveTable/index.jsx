@@ -38,6 +38,7 @@ export const Heading = styled.div`
 
     &:first-child {
         flex-grow: 0;
+        overflow: visible;
     }
 `;
 
@@ -54,6 +55,7 @@ export const Cell = styled.div`
 
     &:first-child {
         flex-grow: 0;
+        overflow: visible;
     }
 `;
 

@@ -2104,6 +2104,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
     &:first-child {
         flex-grow: 0;
+        overflow: visible;
     }
 `,Kt=m.div`
     display: flex;
@@ -2118,6 +2119,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
     &:first-child {
         flex-grow: 0;
+        overflow: visible;
     }
 `;function If({data:e,rowPadding:n=null}){const{headings:t}=e,{rows:r}=e;return z(Af,{children:[z(Xt,{border:!0,rowPadding:n,children:[d(Zt,{collapse:!0,children:d(st,{margin:"0px"})}),t.map(a=>d(Zt,{columns:t.length,children:d(Fe,{children:a})},a))]}),r.map(a=>z(Xt,{rowPadding:n,children:[d(Kt,{collapse:!0,children:d(st,{margin:"0px"})}),Object.keys(a).map(i=>d(Kt,{border:!0,justify:i==="actions"?"flex-end":"flex-start",columns:t.length,children:i!=="actions"?d(Fe,{children:a[i]}):a[i]},i))]},a.name))]})}const Rf=m.div`
     color: ${e=>e.theme.main.color};

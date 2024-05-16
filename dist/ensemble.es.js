@@ -6985,6 +6985,7 @@ const mf = p.div`
 
     &:first-child {
         flex-grow: 0;
+        overflow: visible;
     }
 `, sa = p.div`
     display: flex;
@@ -6999,6 +7000,7 @@ const mf = p.div`
 
     &:first-child {
         flex-grow: 0;
+        overflow: visible;
     }
 `;
 function hu({ data: e, rowPadding: t = null }) {
