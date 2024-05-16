@@ -1610,6 +1610,7 @@ const Te = {
     bodyColor: O.lightBlueGrey,
     contrastColor: O.white,
     fontSize: "16px",
+    fontWeight: "400",
     boxBackground: O.white,
     border: O.midGrey,
     brand: x.paintItBlack
@@ -2614,14 +2615,14 @@ const Ko = p.tr`
   /* @__PURE__ */ d(ns, { fill: e, leftText: t, rightText: n })
 ] }), Dn = ie`
     font-family: ${(e) => e.theme.main.font};
-    font-weight: lighter;
+    font-weight: ${({ fontWeight: e, theme: t }) => e || t.main.fontWeight};
     margin: 0;
 `, is = p.p`
     ${Dn}
     font-size: 0.8rem;
 `, os = p.p`
     ${Dn}
-    font-weight: lighter;
+    font-weight: ${({ fontWeight: e, theme: t }) => e || t.main.fontWeight};
     font-size: 0.95rem;
     color: ${(e) => e.theme.main.color};
 `, ss = p.p`
@@ -6978,6 +6979,12 @@ const mf = p.div`
     font-weight: bold;
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.table.header.border}` : "none"};
     align-items: center;
+    width: ${(e) => e.columns ? `calc(100% / ${e.columns})` : "auto"};
+    flex-grow: 1;
+
+    &:first-child {
+        flex-grow: 0;
+    }
 `, sa = p.div`
     display: flex;
     flex: ${({ collapse: e }) => e ? "0" : "1"};
@@ -6985,17 +6992,32 @@ const mf = p.div`
     align-items: center;
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.table.header.border}` : "none"};
     justify-content: ${({ justify: e }) => e || "flex-start"};
+    width: ${(e) => e.columns ? `calc(100% - 50px / ${e.columns})` : "auto"};
+    flex-grow: 1;
+
+    &:first-child {
+        flex-grow: 0;
+    }
 `;
 function hu({ data: e, rowPadding: t = null }) {
   const { headings: n } = e, { rows: r } = e;
   return /* @__PURE__ */ W(mf, { children: [
     /* @__PURE__ */ W(ia, { border: !0, rowPadding: t, children: [
       /* @__PURE__ */ d(oa, { collapse: !0, children: /* @__PURE__ */ d(xr, { margin: "0px" }) }),
-      n.map((a) => /* @__PURE__ */ d(oa, { children: /* @__PURE__ */ d(et, { children: a }) }, a))
+      n.map((a) => /* @__PURE__ */ d(oa, { columns: n.length, children: /* @__PURE__ */ d(et, { children: a }) }, a))
     ] }),
     r.map((a) => /* @__PURE__ */ W(ia, { rowPadding: t, children: [
       /* @__PURE__ */ d(sa, { collapse: !0, children: /* @__PURE__ */ d(xr, { margin: "0px" }) }),
-      Object.keys(a).map((i) => /* @__PURE__ */ d(sa, { border: !0, justify: i === "actions" ? "flex-end" : "flex-start", children: i !== "actions" ? /* @__PURE__ */ d(et, { children: a[i] }) : a[i] }, i))
+      Object.keys(a).map((i) => /* @__PURE__ */ d(
+        sa,
+        {
+          border: !0,
+          justify: i === "actions" ? "flex-end" : "flex-start",
+          columns: n.length,
+          children: i !== "actions" ? /* @__PURE__ */ d(et, { children: a[i] }) : a[i]
+        },
+        i
+      ))
     ] }, a.name))
   ] });
 }

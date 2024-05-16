@@ -90,6 +90,7 @@ const theme = {
         bodyColor: generalColors.lightBlueGrey,
         contrastColor: generalColors.white,
         fontSize: '16px',
+        fontWeight: '400',
         boxBackground: generalColors.white,
         border: generalColors.midGrey,
         brand: brandColors.paintItBlack

@@ -32,6 +32,12 @@ export const Heading = styled.div`
     font-weight: bold;
     border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
     align-items: center;
+    width: ${props => (props.columns ? `calc(100% / ${props.columns})` : 'auto')};
+    flex-grow: 1;
+
+    &:first-child {
+        flex-grow: 0;
+    }
 `;
 
 export const Cell = styled.div`
@@ -41,6 +47,12 @@ export const Cell = styled.div`
     align-items: center;
     border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
     justify-content: ${({ justify }) => justify || 'flex-start'};
+    width: ${props => (props.columns ? `calc(100% - 50px / ${props.columns})` : 'auto')};
+    flex-grow: 1;
+
+    &:first-child {
+        flex-grow: 0;
+    }
 `;
 
 export default function ResponsiveTable({ data, rowPadding = null }) {
@@ -54,7 +66,7 @@ export default function ResponsiveTable({ data, rowPadding = null }) {
                     <Checkbox margin="0px" />
                 </Heading>
                 {headings.map(heading => (
-                    <Heading key={heading}>
+                    <Heading key={heading} columns={headings.length}>
                         <Text>{heading}</Text>
                     </Heading>
                 ))}
@@ -65,7 +77,12 @@ export default function ResponsiveTable({ data, rowPadding = null }) {
                         <Checkbox margin="0px" />
                     </Cell>
                     {Object.keys(row).map(key => (
-                        <Cell key={key} border justify={key === 'actions' ? 'flex-end' : 'flex-start'}>
+                        <Cell
+                            key={key}
+                            border
+                            justify={key === 'actions' ? 'flex-end' : 'flex-start'}
+                            columns={headings.length}
+                        >
                             {key !== 'actions' ? <Text>{row[key]}</Text> : row[key]}
                         </Cell>
                     ))}

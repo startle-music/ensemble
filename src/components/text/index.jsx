@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 export const TextBase = css`
     font-family: ${props => props.theme.main.font};
-    font-weight: lighter;
+    font-weight: ${({ fontWeight, theme }) => fontWeight || theme.main.fontWeight};
     margin: 0;
 `;
 
@@ -14,7 +14,7 @@ const Help = styled.p`
 
 const Small = styled.p`
     ${TextBase}
-    font-weight: lighter;
+    font-weight: ${({ fontWeight, theme }) => fontWeight || theme.main.fontWeight};
     font-size: 0.95rem;
     color: ${props => props.theme.main.color};
 `;
