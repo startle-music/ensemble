@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 import styled from 'styled-components';
 
@@ -31,74 +31,56 @@ export const DraggableListItemHandle = styled.div`
     }
 `;
 
+const DraggableItem = styled.div`
+    cursor: grab;
+`;
+
 export default function DragDropList({ children }) {
-    const [orderedChildren, setOrderedChildren] = useState(children);
-    const [draggedItemId, setDraggedItemId] = useState(null);
+    const [order, setOrder] = useState(React.Children.toArray(children));
+    const dragItem = useRef();
+    const dragOverItem = useRef();
 
-    function updateParentList(reorderedChildren) {
-        // This function should be implemented according to your state management
-        setOrderedChildren(reorderedChildren.map(child => React.cloneElement(child)));
-    }
+    const handleDragStart = position => {
+        dragItem.current = position;
+    };
 
-    const handleDragStart = e => {
-        // Directly set the ID of the dragged item into state
-        console.log('drag start', e.currentTarget.id);
-        setDraggedItemId(e.currentTarget.id);
+    const handleDragEnter = position => {
+        dragOverItem.current = position;
     };
 
     const handleDragOver = e => {
-        e.preventDefault(); // Necessary to allow dropping
-    };
-
-    const handleDrop = e => {
         e.preventDefault();
-        const targetId = e.currentTarget.id;
+        const draggedOverIndex = dragOverItem.current;
 
-        console.log('draggedItemId', draggedItemId);
+        if (draggedOverIndex === undefined) return;
 
-        if (draggedItemId === targetId) {
-            setDraggedItemId(null); // Reset on drop to self
-            return;
-        }
-
-        const draggedItemIndex = React.Children.toArray(orderedChildren).findIndex(
-            child => child.props.id === draggedItemId
-        );
-        const targetItemIndex = React.Children.toArray(orderedChildren).findIndex(child => child.props.id === targetId);
-
-        console.log('Dropped on:', e.currentTarget.id); // Check drop target
-        console.log('Dragged item ID:', draggedItemId); // Verify dragged item ID
-
-        if (draggedItemIndex < 0 || targetItemIndex < 0) {
-            console.error('Invalid indices', draggedItemIndex, targetItemIndex);
-            return; // Exit if indices are invalid
-        }
-
-        const reorderedChildren = React.Children.toArray(children);
-        const [reorderedItem] = reorderedChildren.splice(draggedItemIndex, 1);
-        reorderedChildren.splice(targetItemIndex, 0, reorderedItem);
-
-        updateParentList(reorderedChildren); // Assuming updateList updates the state in the parent component
-        setDraggedItemId(null); // Reset the dragged item ID state
+        const updatedOrder = [...order];
+        const draggedItemContent = updatedOrder[dragItem.current];
+        updatedOrder.splice(dragItem.current, 1);
+        updatedOrder.splice(draggedOverIndex, 0, draggedItemContent);
+        dragItem.current = draggedOverIndex;
+        setOrder(updatedOrder);
     };
 
-    useEffect(() => {
-        // set initial children with an id prop
-        const initialChildren = React.Children.map(children, (child, index) =>
-            React.cloneElement(child, {
-                id: `draggable-item-${index}`,
-                draggable: 'true',
-                onDragStart: handleDragStart,
-                onDragOver: handleDragOver,
-                onDrop: handleDrop
-            })
-        );
+    const handleDrop = () => {
+        dragItem.current = null;
+        dragOverItem.current = null;
+    };
 
-        setOrderedChildren(initialChildren);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [children]);
-
-    console.log(2, React.Children.toArray(orderedChildren));
-
-    return <DraggableScrollableList>{orderedChildren}</DraggableScrollableList>;
+    return (
+        <DraggableScrollableList>
+            {order.map((child, index) => (
+                <DraggableItem
+                    key={index}
+                    draggable
+                    onDragStart={() => handleDragStart(index)}
+                    onDragEnter={() => handleDragEnter(index)}
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop}
+                >
+                    {child}
+                </DraggableItem>
+            ))}
+        </DraggableScrollableList>
+    );
 }
