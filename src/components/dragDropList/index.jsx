@@ -40,6 +40,10 @@ export default function DragDropList({ children }) {
     const dragItem = useRef();
     const dragOverItem = useRef();
 
+    useEffect(() => {
+        setOrder(React.Children.toArray(children));
+    }, [children]);
+
     const handleDragStart = position => {
         dragItem.current = position;
     };
