@@ -6907,8 +6907,11 @@ const qc = p.div`
 `, cf = p(Ye)`
     width: 2rem;
     height: 2rem;
+
     @media (min-width: ${({ collapse: e = 768 }) => `${e}px`}) {
         margin-bottom: 1rem;
+        width: 3rem;
+        height: 3rem;
     }
 `, ff = p(et)`
     @media (min-width: ${({ collapse: e = 768 }) => `${e}px`}) {

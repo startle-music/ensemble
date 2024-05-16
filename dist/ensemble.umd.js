@@ -2060,8 +2060,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `,Ef=m(Be)`
     width: 2rem;
     height: 2rem;
+
     @media (min-width: ${({collapse:e=768})=>`${e}px`}) {
         margin-bottom: 1rem;
+        width: 3rem;
+        height: 3rem;
     }
 `,Tf=m(Fe)`
     @media (min-width: ${({collapse:e=768})=>`${e}px`}) {
