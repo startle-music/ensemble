@@ -1878,14 +1878,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
 
     svg {
-        width: 2rem;
+        width: 2rem !important; //ugly hack to override fontawesome default size
         height: 2rem;
         margin-right: 1rem;
 
         @media (min-width: ${({collapse:e=768})=>`${e}px`}) {
             margin-bottom: ${e=>e.theme.layout.padding.vertical};
             margin-right: 0;
-            width: 3rem;
+            width: 3rem !important; //ugly hack to override fontawesome default size
             height: 3rem;
         }
     }

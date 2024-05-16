@@ -78,14 +78,14 @@ const PanelBody = styled.div`
     }
 
     svg {
-        width: 2rem;
+        width: 2rem !important; //ugly hack to override fontawesome default size
         height: 2rem;
         margin-right: 1rem;
 
         @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
             margin-bottom: ${props => props.theme.layout.padding.vertical};
             margin-right: 0;
-            width: 3rem;
+            width: 3rem !important; //ugly hack to override fontawesome default size
             height: 3rem;
         }
     }
