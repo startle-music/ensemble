@@ -34,6 +34,7 @@ export const Heading = styled.div`
     align-items: center;
     width: ${props => (props.columns ? `calc(100% / ${props.columns})` : 'auto')};
     flex-grow: 1;
+    overflow: hidden;
 
     &:first-child {
         flex-grow: 0;
@@ -49,6 +50,7 @@ export const Cell = styled.div`
     justify-content: ${({ justify }) => justify || 'flex-start'};
     width: ${props => (props.columns ? `calc(100% - 50px / ${props.columns})` : 'auto')};
     flex-grow: 1;
+    overflow: hidden;
 
     &:first-child {
         flex-grow: 0;

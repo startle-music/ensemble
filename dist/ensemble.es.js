@@ -6981,6 +6981,7 @@ const mf = p.div`
     align-items: center;
     width: ${(e) => e.columns ? `calc(100% / ${e.columns})` : "auto"};
     flex-grow: 1;
+    overflow: hidden;
 
     &:first-child {
         flex-grow: 0;
@@ -6994,6 +6995,7 @@ const mf = p.div`
     justify-content: ${({ justify: e }) => e || "flex-start"};
     width: ${(e) => e.columns ? `calc(100% - 50px / ${e.columns})` : "auto"};
     flex-grow: 1;
+    overflow: hidden;
 
     &:first-child {
         flex-grow: 0;
