@@ -7211,7 +7211,7 @@ function Tu({ children: e }) {
       })
     );
     n(f);
-  }, []), console.log(2, ne.Children.toArray(t)), /* @__PURE__ */ d(wf, { children: t });
+  }, [e]), console.log(2, ne.Children.toArray(t)), /* @__PURE__ */ d(wf, { children: t });
 }
 const kf = p.circle`
     fill: none;

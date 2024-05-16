@@ -96,7 +96,7 @@ export default function DragDropList({ children }) {
 
         setOrderedChildren(initialChildren);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [children]);
 
     console.log(2, React.Children.toArray(orderedChildren));
 
