@@ -40,7 +40,7 @@ export default function TimeSelect({
         setHour(hourValue);
         setMinute(minuteValue);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [hourValue, minuteValue]);
 
     function calculateHours() {
         const hours = [];
