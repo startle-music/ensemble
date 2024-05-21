@@ -100,7 +100,7 @@ const Switch = ({ name, id, checked, value, label, className = null, ...rest }) 
         <Wrap className={className} {...attributes}>
             <PaddedLabel htmlFor={name} {...attributes}>
                 <div className="switch">
-                    <input id={id} name={name} value={value} defaultChecked={checked} type="checkbox" {...attributes} />
+                    <input id={id} name={name} value={value} checked={checked} type="checkbox" {...attributes} />
                     <span className="slider round" {...attributes} />
                 </div>
                 <SpanLabel className="spanLabel">{label}</SpanLabel>

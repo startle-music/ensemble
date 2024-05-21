@@ -6767,7 +6767,7 @@ const Xc = p.div`
   const s = { ...o };
   return console.log("switch attributes", s), /* @__PURE__ */ d(Xc, { className: i, ...s, children: /* @__PURE__ */ W(Zc, { htmlFor: e, ...s, children: [
     /* @__PURE__ */ W("div", { className: "switch", children: [
-      /* @__PURE__ */ d("input", { id: t, name: e, value: r, defaultChecked: n, type: "checkbox", ...s }),
+      /* @__PURE__ */ d("input", { id: t, name: e, value: r, checked: n, type: "checkbox", ...s }),
       /* @__PURE__ */ d("span", { className: "slider round", ...s })
     ] }),
     /* @__PURE__ */ d(Kc, { className: "spanLabel", children: a })

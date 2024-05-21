@@ -1966,7 +1966,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `,sf=m.span`
     font-size: 1.1em;
     margin-left: 0.75rem;
-`,lf=({name:e,id:n,checked:t,value:r,label:a,className:i=null,...o})=>{const s={...o};return console.log("switch attributes",s),d(af,{className:i,...s,children:z(of,{htmlFor:e,...s,children:[z("div",{className:"switch",children:[d("input",{id:n,name:e,value:r,defaultChecked:t,type:"checkbox",...s}),d("span",{className:"slider round",...s})]}),d(sf,{className:"spanLabel",children:a})]})})},Un=m.css`
+`,lf=({name:e,id:n,checked:t,value:r,label:a,className:i=null,...o})=>{const s={...o};return console.log("switch attributes",s),d(af,{className:i,...s,children:z(of,{htmlFor:e,...s,children:[z("div",{className:"switch",children:[d("input",{id:n,name:e,value:r,checked:t,type:"checkbox",...s}),d("span",{className:"slider round",...s})]}),d(sf,{className:"spanLabel",children:a})]})})},Un=m.css`
     color: ${we.main.color};
     font-family: ${e=>e.theme.main.font};
     margin: 0;
