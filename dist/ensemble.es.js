@@ -3097,13 +3097,13 @@ function lu({
   function h() {
     const E = [];
     for (let P = n; P <= r; P++)
-      E.push(P);
+      E.push(P < 10 ? `0${P}` : P);
     return E;
   }
   function k() {
     const E = [];
     for (let P = i; P <= o; P++)
-      E.push(P);
+      E.push(P < 10 ? `0${P}` : P);
     return E;
   }
   return /* @__PURE__ */ W(Fs, { children: [

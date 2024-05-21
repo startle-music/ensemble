@@ -45,7 +45,8 @@ export default function TimeSelect({
     function calculateHours() {
         const hours = [];
         for (let i = hourMin; i <= hourMax; i++) {
-            hours.push(i);
+            // pad the number with a leading zero if it is less than 10
+            hours.push(i < 10 ? `0${i}` : i);
         }
         return hours;
     }
@@ -53,7 +54,8 @@ export default function TimeSelect({
     function calculateMinutes() {
         const minutes = [];
         for (let i = minuteMin; i <= minuteMax; i++) {
-            minutes.push(i);
+            // / pad the number with a leading zero if it is less than 10
+            minutes.push(i < 10 ? `0${i}` : i);
         }
         return minutes;
     }
