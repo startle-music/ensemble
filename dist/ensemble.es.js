@@ -3109,7 +3109,17 @@ function lu({
   return /* @__PURE__ */ W(Fs, { children: [
     /* @__PURE__ */ d(Nn, { children: e }),
     /* @__PURE__ */ W(Ms, { children: [
-      /* @__PURE__ */ d(kr, { value: c, name: `${t}[hour]`, inline: !0, onChange: (E) => f(E.target.value), children: h().map((E) => /* @__PURE__ */ d("option", { value: E, children: E }, E)) }),
+      /* @__PURE__ */ d(
+        kr,
+        {
+          value: c,
+          name: `${t}[hour]`,
+          inline: !0,
+          onChange: (E) => f(E.target.value),
+          children: h().map((E) => /* @__PURE__ */ d("option", { value: E, children: E }, `${t}-${E}`))
+        },
+        `${t}-hour`
+      ),
       /* @__PURE__ */ d(Ds, { children: ":" }),
       /* @__PURE__ */ d(
         kr,
@@ -3118,8 +3128,9 @@ function lu({
           name: `${t}[minute]`,
           inline: !0,
           onChange: (E) => m(E.target.value),
-          children: k().map((E) => /* @__PURE__ */ d("option", { value: E, children: E }, E))
-        }
+          children: k().map((E) => /* @__PURE__ */ d("option", { value: E, children: E }, `${t}-${E}`))
+        },
+        `${t}-minute`
       )
     ] })
   ] });
