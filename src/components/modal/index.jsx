@@ -3,7 +3,9 @@ import styled from 'styled-components';
 
 export const ModalHeader = styled.div`
     color: ${props => props.theme.main.color};
-    padding: ${props => props.theme.layout.padding.vertical} ${props => props.theme.layout.padding.horizontal};
+    padding: ${props => props.theme.layout.padding.vertical.sm} ${props => props.theme.layout.padding.horizontal.sm};
+    border-bottom: 1px solid ${props => props.theme.main.border};
+
     //remove margin on text and header
     h1,
     h2,
@@ -18,6 +20,7 @@ export const ModalHeader = styled.div`
 
 export const ModalBody = styled.div`
     color: ${props => props.theme.main.color};
+    padding: ${props => props.theme.layout.padding.vertical.sm} ${props => props.theme.layout.padding.horizontal.sm};
 `;
 
 export const ModalFooter = styled.div`
@@ -25,7 +28,7 @@ export const ModalFooter = styled.div`
     color: ${props => props.theme.main.color};
     display: flex;
     justify-content: space-between;
-    padding: ${props => props.theme.layout.padding.vertical} ${props => props.theme.layout.padding.horizontal};
+    padding: ${props => props.theme.layout.padding.vertical.sm} ${props => props.theme.layout.padding.horizontal.sm};
 `;
 
 const Wrap = styled.div`

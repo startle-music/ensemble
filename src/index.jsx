@@ -66,7 +66,7 @@ export { default as DroppableActionPanel } from './components/droppableActionPan
 export {
     default as ResponsiveTable,
     Cell as TableCell,
-    Heading as TableHeading,
+    TableHeading,
     Row as TableRow
 } from './components/responsiveTable';
 

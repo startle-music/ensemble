@@ -65,6 +65,38 @@ const btnAction = css`
     }
 `;
 
+const btnNeutral = css`
+    background: ${({ theme }) => theme.colors.fadeToGrey};
+    border: ${({ theme }) => theme.colors.fadeToGrey};
+    color: ${({ theme }) => theme.main.color};
+
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:active {
+        opacity: 0.4;
+        cursor: default;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    &:hover {
+        background: ${({ theme }) => theme.colors.fadeToGrey};
+        border: ${({ theme }) => theme.colors.fadeToGrey};
+        color: ${({ theme }) => theme.main.color};
+    }
+    &:active {
+        background: ${({ theme }) => theme.colors.fadeToGrey};
+        border: ${({ theme }) => theme.colors.fadeToGrey};
+        color: ${({ theme }) => theme.main.color};
+
+        &:hover {
+            background: ${({ theme }) => theme.colors.fadeToGrey};
+            border: ${({ theme }) => theme.colors.fadeToGrey};
+            color: ${({ theme }) => theme.main.color};
+        }
+    }
+`;
+
 const btnInline = css`
     background: transparent;
     border: 0;
@@ -139,15 +171,18 @@ const btnBase = css`
     position: relative;
     text-align: center;
     box-sizing: border-box;
-    font-weight: 600;
+    font-weight: ${({ theme }) => theme.button.fontWeight};
     display: ${({ display }) => display || `block`};
     font-family: ${({ theme }) => theme.main.font};
     width: ${({ width }) => width || `auto`};
-    height: 3rem;
-    padding: ${({ icon }) => (icon === true ? `0.6rem` : `0.667rem 1.333rem`)};
+    min-height: ${p => p.theme.button.minHeight};
+    padding: ${({ icon, theme }) =>
+        icon === true
+            ? `${theme.button.padding.vertical.xs}`
+            : `${theme.button.padding.vertical.xs} ${theme.button.padding.horizontal.xs}`};
     //font-size: ${({ icon }) => (icon === true ? `1.333rem` : `1rem`)};
-    font-size: 1rem;
-    border-radius: ${({ rounded, theme }) => (rounded === true ? '10rem' : theme.main.borderRadius)};
+    font-size: 0.9rem;
+    border-radius: ${({ rounded, theme }) => (rounded === true ? '10rem' : theme.layout.borderRadius.sm)};
     cursor: pointer;
     box-shadow: none;
 
@@ -156,8 +191,9 @@ const btnBase = css`
     & + a {
         margin-left: 0.4rem;
     }
-
+    
     ${({ action, outline }) => (action === true ? btnAction : outline === true ? btnOutline : btnPrimary)};
+    ${({ neutral }) => (neutral === true ? btnNeutral : '')};
     ${({ inline }) => (inline === true ? btnInline : '')};
 
     

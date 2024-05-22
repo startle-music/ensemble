@@ -12,6 +12,7 @@ const CardStyled = styled.div`
     align-items: center;
     border-radius: ${props => props.theme.main.borderRadius};
     border: ${props => (props.border ? `1px solid ${props.theme.main.border}` : 'none')};
+    background: ${props => props.theme.colors.white};
 `;
 
 export const CardHeader = styled.div`

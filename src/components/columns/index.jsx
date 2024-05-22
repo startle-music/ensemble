@@ -8,8 +8,17 @@ const ColumnStyled = styled.div`
     //grid-row: 1;
     grid-column: col-start 1 / span 12;
     display: flex;
+    margin-bottom: ${props => props.theme.layout.padding.vertical.sm};
 
-    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    @media (min-width: ${p => p.theme.layout.breakpoints.sm}) {
+        margin-bottom: 0;
+    }
+
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         grid-column: ${props =>
             props.offset ? `col-start ${props.offset} / span ${props.span}` : `span ${props.span}`};
         justify-content: ${props => (props.pull === 'right' ? 'flex-end' : 'flex-start')};
@@ -19,11 +28,18 @@ const ColumnStyled = styled.div`
 
 export const ColumnWrapper = styled.div`
     width: 100%;
-    display: grid;
-    gap: ${props => props.theme.layout.gap.lg};
     grid-template-columns: repeat(12, [col-start] 1fr);
     grid-auto-flow: row;
     margin: ${p => (p.margin ? p.margin : '0')};
+
+    @media (min-width: ${p => p.theme.layout.breakpoints.sm}) {
+        display: grid;
+        gap: ${props => props.theme.layout.gap.sm};
+    }
+
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
+        gap: ${props => props.theme.layout.gap.lg};
+    }
 
     ${ToggleArea} {
         display: contents;

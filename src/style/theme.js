@@ -96,6 +96,13 @@ const theme = {
         brand: brandColors.paintItBlack
     },
     layout: {
+        breakpoints: {
+            xs: '320px',
+            sm: '576px',
+            md: '768px',
+            lg: '992px',
+            xl: '1200px'
+        },
         borderRadius: {
             lg: '0.667rem',
             sm: '0.276rem',
@@ -103,8 +110,16 @@ const theme = {
         },
         margin: '2rem',
         padding: {
-            vertical: '1rem',
-            horizontal: '2rem'
+            horizontal: {
+                lg: '2.667rem',
+                sm: '1.333rem',
+                xs: '0.667rem'
+            },
+            vertical: {
+                lg: '2rem',
+                sm: '1rem',
+                xs: '0.5rem'
+            }
         },
         gap: {
             lg: '2rem',
@@ -269,6 +284,18 @@ const theme = {
     button: {
         background: brandColors.paintItBlack,
         color: generalColors.white,
+        minHeight: '2rem',
+        fontWeight: '400',
+        padding: {
+            vertical: {
+                xs: '0.4rem',
+                sm: '0.6rem'
+            },
+            horizontal: {
+                xs: '1rem',
+                sm: '1.5rem'
+            }
+        },
         border: `2px solid ${brandColors.paintItBlack}`,
         hover: {
             background: brandColors.paintItBlack,

@@ -25,7 +25,7 @@ const Label = styled.label`
     color: ${props => (props.checked ? props.theme.main.brand : props.theme.main.background)};
     transition: all 0.35s;
 
-    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         padding: 3rem 2rem;
     }
 `;
@@ -46,7 +46,7 @@ const RadioPlaceholder = styled.div`
     border-radius: 50%;
     color: ${props => props.theme.main.contrastColor};
 
-    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         top: 1rem;
         right: 1rem;
         transform: translateY(0);
@@ -72,7 +72,7 @@ const PanelBody = styled.div`
     justify-content: flex-start;
     align-items: center;
 
-    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         justify-content: center;
         flex-direction: column;
     }
@@ -82,8 +82,8 @@ const PanelBody = styled.div`
         height: 2rem;
         margin-right: 1rem;
 
-        @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
-            margin-bottom: ${props => props.theme.layout.padding.vertical};
+        @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
+            margin-bottom: ${props => props.theme.layout.padding.vertical.sm};
             margin-right: 0;
             width: 3rem !important; //ugly hack to override fontawesome default size
             height: 3rem;
@@ -96,12 +96,12 @@ const P = styled(Text)`
     font-weight: normal;
 `;
 
-export default function RadioPanel({ name, index, checked, setChecked, value, label, icon, collapse = 768 }) {
+export default function RadioPanel({ name, index, checked, setChecked, value, label, icon }) {
     // add prop to parent if radio is checked
     const n = name + index;
 
     return (
-        <StyledRadioPanel collapse={collapse}>
+        <StyledRadioPanel>
             <Label checked={checked} htmlFor={n}>
                 <RadioPlaceholder checked={checked}>
                     <FontAwesomeIcon icon={faCheck} />

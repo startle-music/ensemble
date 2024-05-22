@@ -19,7 +19,7 @@ export const StepsFooter = styled.div`
     justify-content: space-between;
     margin-top: 1rem;
     border-top: 1px solid ${props => props.theme.main.border};
-    padding-top: ${props => props.theme.layout.padding.vertical};
+    padding-top: ${props => props.theme.layout.padding.vertical.lg};
 `;
 
 const HeaderBody = styled.div``;
@@ -64,7 +64,7 @@ export default function Steps({ children, position = 0, handleNext, handleBack, 
                 return null;
             })}
             <StepsFooter>
-                <Button onClick={handleBack} disabled={stepPosition === 0}>
+                <Button onClick={handleBack} disabled={stepPosition === 0} neutral>
                     Previous
                 </Button>
                 {// if last step show submit button

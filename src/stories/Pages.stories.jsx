@@ -256,8 +256,8 @@ function ModalContent() {
                 <ScrollableListExample />
             </ModalBody>
             <ModalFooter>
+                <Button neutral>Cancel</Button>
                 <Button>Save</Button>
-                <Button>Cancel</Button>
             </ModalFooter>
         </>
     );
@@ -356,7 +356,7 @@ const FormContents = ({ radio, modalOpen, step }) => (
                                 </Column>
                             </ColumnWrapper>
                         </FormRow>
-                        <DragDropList>
+                        <DragDropList background>
                             {ListData.map((item, index) => (
                                 <DraggableListItem key={index}>
                                     <Card horizontal border>

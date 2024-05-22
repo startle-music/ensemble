@@ -35,7 +35,7 @@ const DraggableItem = styled.div`
     cursor: grab;
 `;
 
-export default function DragDropList({ children }) {
+export default function DragDropList({ children, ...rest }) {
     const [order, setOrder] = useState(React.Children.toArray(children));
     const dragItem = useRef();
     const dragOverItem = useRef();
@@ -72,7 +72,7 @@ export default function DragDropList({ children }) {
     };
 
     return (
-        <DraggableScrollableList>
+        <DraggableScrollableList {...rest}>
             {order.map((child, index) => (
                 <DraggableItem
                     key={index}

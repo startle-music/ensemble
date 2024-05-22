@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Checkbox from '../form/fields/checkInput';
 import Text from '../text';
+import Heading from '../headings';
 
 export const ResponsiveTableWrap = styled.div`
     font-family: ${props => props.theme.main.fontFamily};
@@ -11,24 +12,42 @@ export const ResponsiveTableWrap = styled.div`
 `;
 
 export const Row = styled.div`
-    display: flex;
     flex-wrap: wrap;
     width: 100%;
-    margin: 0.5rem 0;
     justify-content: space-between;
     align-items: stretch;
-    border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
-    padding: ${p => (p.rowPadding ? p.rowPadding : `0 ${p.theme.layout.padding.horizontal}`)};
+    padding: ${p =>
+        p.rowPadding ? p.rowPadding : `${p.theme.layout.padding.vertical.xs} ${p.theme.layout.padding.horizontal.xs}`};
+    border-bottom: ${props => `1px solid ${props.theme.table.header.border}`};
 
-    &:last-child > div {
+    &.tableHeader {
+        display: none;
+    }
+
+    &:last-child {
         border-bottom: none;
+
+        div {
+            border-bottom: none;
+        }
+    }
+
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
+        display: flex;
+        border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
+        padding: ${p => (p.rowPadding ? p.rowPadding : 0)};
+
+        &.tableHeader {
+            display: flex;
+        }
     }
 `;
 
-export const Heading = styled.div`
+export const TableHeading = styled.div`
     display: flex;
     flex: ${({ collapse }) => (collapse ? '0' : '1')};
-    padding: 0.5rem;
+    //padding: 0.5rem;
+    padding: ${props => props.theme.layout.padding.vertical.xs} ${props => props.theme.layout.padding.horizontal.xs};
     font-weight: bold;
     border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
     align-items: center;
@@ -43,19 +62,42 @@ export const Heading = styled.div`
 `;
 
 export const Cell = styled.div`
-    display: flex;
+    display: block;
     flex: ${({ collapse }) => (collapse ? '0' : '1')};
-    padding: 0.5rem;
+    //padding: 0.5rem;
+    padding: ${props => props.theme.layout.padding.vertical.xs} ${props => props.theme.layout.padding.horizontal.xs};
     align-items: center;
-    border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
-    justify-content: ${({ justify }) => justify || 'flex-start'};
     width: ${props => (props.columns ? `calc(100% - 50px / ${props.columns})` : 'auto')};
     flex-grow: 1;
     overflow: hidden;
 
+    &.actions {
+        display: flex;
+        justify-content: 'flex-start';
+    }
+
     &:first-child {
+        display: flex;
         flex-grow: 0;
         overflow: visible;
+    }
+
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
+        display: flex;
+        border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
+        justify-content: ${({ justify }) => justify || 'flex-start'};
+
+        &.actions {
+            justify-content: ${({ justify }) => justify || 'flex-start'};
+        }
+    }
+
+    .responsiveHeading {
+        margin-bottom: 0;
+
+        @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
+            display: none;
+        }
     }
 `;
 
@@ -65,28 +107,30 @@ export default function ResponsiveTable({ data, rowPadding = null }) {
 
     return (
         <ResponsiveTableWrap>
-            <Row border rowPadding={rowPadding}>
-                <Heading collapse>
+            <Row border rowPadding={rowPadding} className="tableHeader">
+                <TableHeading>
                     <Checkbox margin="0px" />
-                </Heading>
+                </TableHeading>
                 {headings.map(heading => (
-                    <Heading key={heading} columns={headings.length}>
-                        <Text>{heading}</Text>
-                    </Heading>
+                    <TableHeading key={heading} columns={headings.length}>
+                        <Text fontWeight="bold">{heading}</Text>
+                    </TableHeading>
                 ))}
             </Row>
             {rows.map(row => (
                 <Row key={row.name} rowPadding={rowPadding}>
-                    <Cell collapse>
+                    <Cell className="rowCheckbox">
                         <Checkbox margin="0px" />
                     </Cell>
-                    {Object.keys(row).map(key => (
+                    {Object.keys(row).map((key, index) => (
                         <Cell
                             key={key}
                             border
                             justify={key === 'actions' ? 'flex-end' : 'flex-start'}
+                            className={key === 'actions' ? 'actions' : null}
                             columns={headings.length}
                         >
+                            <Heading className="responsiveHeading">{headings[index]}</Heading>
                             {key !== 'actions' ? <Text>{row[key]}</Text> : row[key]}
                         </Cell>
                     ))}

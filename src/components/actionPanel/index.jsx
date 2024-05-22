@@ -8,24 +8,40 @@ import theme from '../../style/theme';
 
 const ActionPanelStyled = styled.div`
     display: flex;
-    justify-content: space-between;
-    border: 1px solid ${theme.form.input.border};
+    justify-content: center;
+    border: 1px solid ${p => p.theme.form.input.border};
     width: 100%;
-    padding: 2rem;
+    padding: 1rem;
     align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
 
-    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
-        justify-content: space-around;
+    @media (min-width: ${p => p.theme.layout.breakpoints.xs}) {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         flex-direction: column;
+        justify-content: space-around;
         aspect-ratio: 16/9;
+        padding: 2rem;
+        justify-content: space-between;
+        text-align: center;
     }
 `;
 
 const Icon = styled(FontAwesomeIcon)`
     width: 2rem;
     height: 2rem;
+    margin-bottom: 1rem;
 
-    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+    @media (min-width: ${p => p.theme.layout.breakpoints.xs}) {
+        margin-bottom: 0;
+    }
+
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         margin-bottom: 1rem;
         width: 3rem;
         height: 3rem;
@@ -33,7 +49,7 @@ const Icon = styled(FontAwesomeIcon)`
 `;
 
 const Title = styled(Text)`
-    @media (min-width: ${({ collapse = 768 }) => `${collapse}px`}) {
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         margin-bottom: 1rem;
     }
 `;
@@ -43,13 +59,11 @@ const Title = styled(Text)`
  * @param {string} icon
  * @returns
  */
-export default function ActionPanel({ icon, title = '', component = null, className, collapse, ...rest }) {
+export default function ActionPanel({ icon, title = '', component = null, className, ...rest }) {
     return (
-        <ActionPanelStyled className={className} collapse={collapse} {...rest}>
-            <Icon icon={icon} color={theme.form.input.border} collapse={collapse} />
-            <Title type="heading" collapse={collapse}>
-                {title}
-            </Title>
+        <ActionPanelStyled className={className} {...rest}>
+            <Icon icon={icon} color={theme.form.input.border} />
+            <Title type="heading">{title}</Title>
             {component}
         </ActionPanelStyled>
     );
