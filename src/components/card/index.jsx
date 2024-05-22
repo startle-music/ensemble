@@ -13,6 +13,7 @@ const CardStyled = styled.div`
     border-radius: ${props => props.theme.main.borderRadius};
     border: ${props => (props.border ? `1px solid ${props.theme.main.border}` : 'none')};
     background: ${props => props.theme.generalColors.white};
+    color: ${props => props.theme.main.color};
 `;
 
 export const CardHeader = styled.div`

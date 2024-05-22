@@ -2347,6 +2347,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     border-radius: ${e=>e.theme.main.borderRadius};
     border: ${e=>e.border?`1px solid ${e.theme.main.border}`:"none"};
     background: ${e=>e.theme.generalColors.white};
+    color: ${e=>e.theme.main.color};
 `,Wf=m.div`
     padding: 0 1rem;
     border-bottom: ${e=>e.border?`1px solid ${e.theme.main.border}`:"none"};

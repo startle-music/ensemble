@@ -7319,6 +7319,7 @@ const kf = p.div`
     border-radius: ${(e) => e.theme.main.borderRadius};
     border: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
     background: ${(e) => e.theme.generalColors.white};
+    color: ${(e) => e.theme.main.color};
 `, Su = p.div`
     padding: 0 1rem;
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
