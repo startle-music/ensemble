@@ -716,8 +716,8 @@ const jt = jn.Fragment, u = jn.jsx, D = jn.jsxs, Ci = p.div`
         }
     }
 `, Oi = ae`
-    background: ${({ theme: e }) => e.colors.fadeToGrey};
-    border: ${({ theme: e }) => e.colors.fadeToGrey};
+    background: ${({ theme: e }) => e.mainColors.fadeToGrey};
+    border: ${({ theme: e }) => e.mainColors.fadeToGrey};
     color: ${({ theme: e }) => e.main.color};
 
     &:disabled,
@@ -730,18 +730,18 @@ const jt = jn.Fragment, u = jn.jsx, D = jn.jsxs, Ci = p.div`
     }
 
     &:hover {
-        background: ${({ theme: e }) => e.colors.fadeToGrey};
-        border: ${({ theme: e }) => e.colors.fadeToGrey};
+        background: ${({ theme: e }) => e.mainColors.fadeToGrey};
+        border: ${({ theme: e }) => e.mainColors.fadeToGrey};
         color: ${({ theme: e }) => e.main.color};
     }
     &:active {
-        background: ${({ theme: e }) => e.colors.fadeToGrey};
-        border: ${({ theme: e }) => e.colors.fadeToGrey};
+        background: ${({ theme: e }) => e.mainColors.fadeToGrey};
+        border: ${({ theme: e }) => e.mainColors.fadeToGrey};
         color: ${({ theme: e }) => e.main.color};
 
         &:hover {
-            background: ${({ theme: e }) => e.colors.fadeToGrey};
-            border: ${({ theme: e }) => e.colors.fadeToGrey};
+            background: ${({ theme: e }) => e.mainColors.fadeToGrey};
+            border: ${({ theme: e }) => e.mainColors.fadeToGrey};
             color: ${({ theme: e }) => e.main.color};
         }
     }
@@ -7271,7 +7271,7 @@ const yf = p.ul`
     margin: ${(e) => e.margin ? e.margin : `0 0 ${e.theme.layout.padding.vertical.lg}`};
     border: 1px solid ${(e) => e.theme.main.border};
     list-style: none;
-    background: ${(e) => e.background ? e.theme.colors.lightGrey : e.theme.colors.white};
+    background: ${(e) => e.background ? e.theme.mainColors.lightGrey : e.theme.mainColors.white};
 `, xf = p.li`
     font-family: ${(e) => e.theme.main.font};
 

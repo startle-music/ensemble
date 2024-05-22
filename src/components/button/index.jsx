@@ -66,8 +66,8 @@ const btnAction = css`
 `;
 
 const btnNeutral = css`
-    background: ${({ theme }) => theme.colors.fadeToGrey};
-    border: ${({ theme }) => theme.colors.fadeToGrey};
+    background: ${({ theme }) => theme.mainColors.fadeToGrey};
+    border: ${({ theme }) => theme.mainColors.fadeToGrey};
     color: ${({ theme }) => theme.main.color};
 
     &:disabled,
@@ -80,18 +80,18 @@ const btnNeutral = css`
     }
 
     &:hover {
-        background: ${({ theme }) => theme.colors.fadeToGrey};
-        border: ${({ theme }) => theme.colors.fadeToGrey};
+        background: ${({ theme }) => theme.mainColors.fadeToGrey};
+        border: ${({ theme }) => theme.mainColors.fadeToGrey};
         color: ${({ theme }) => theme.main.color};
     }
     &:active {
-        background: ${({ theme }) => theme.colors.fadeToGrey};
-        border: ${({ theme }) => theme.colors.fadeToGrey};
+        background: ${({ theme }) => theme.mainColors.fadeToGrey};
+        border: ${({ theme }) => theme.mainColors.fadeToGrey};
         color: ${({ theme }) => theme.main.color};
 
         &:hover {
-            background: ${({ theme }) => theme.colors.fadeToGrey};
-            border: ${({ theme }) => theme.colors.fadeToGrey};
+            background: ${({ theme }) => theme.mainColors.fadeToGrey};
+            border: ${({ theme }) => theme.mainColors.fadeToGrey};
             color: ${({ theme }) => theme.main.color};
         }
     }

@@ -32,15 +32,15 @@ const ProgressBarTotal = styled.div`
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-color: ${theme.brandColors.fadeToGrey};
+    background-color: ${theme.mainColors.fadeToGrey};
     border-radius: 1rem;
 `;
 
 const getBarColor = progress => {
     if (progress === 100) {
-        return theme.brandColors.greenDay;
+        return theme.mainColors.greenDay;
     }
-    return theme.brandColors.simplyRed;
+    return theme.mainColors.simplyRed;
 };
 
 const ProgressBar = ({ progress, text = true }) => {
