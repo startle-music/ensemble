@@ -322,6 +322,8 @@ const theme = {
             border: `3px solid ${brandColors.simplyRed}`
         }
     },
+    mainColors: brandColors,
+    generalColors,
     colors: { ...brandColors, ...generalColors }
 };
 

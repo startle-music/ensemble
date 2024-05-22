@@ -26,21 +26,21 @@ const ProgressBarFiller = styled.div`
         content: '.';
         visibility: hidden;
     }
-`
+`;
 
 const ProgressBarTotal = styled.div`
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-color: ${theme.colors.fadeToGrey};
+    background-color: ${theme.brandColors.fadeToGrey};
     border-radius: 1rem;
-`
+`;
 
-const getBarColor = (progress) => {
+const getBarColor = progress => {
     if (progress === 100) {
-        return theme.colors.greenDay;
+        return theme.brandColors.greenDay;
     }
-    return theme.colors.simplyRed;
+    return theme.brandColors.simplyRed;
 };
 
 const ProgressBar = ({ progress, text = true }) => {
@@ -48,9 +48,9 @@ const ProgressBar = ({ progress, text = true }) => {
     return (
         <ProgressBarContainer progress={progress} color={color}>
             <ProgressBarTotal>
-                <ProgressBarFiller progress={progress} color={color}/>
+                <ProgressBarFiller progress={progress} color={color} />
             </ProgressBarTotal>
-            { text ? <Text>{`${progress}%`}</Text> : null }
+            {text ? <Text>{`${progress}%`}</Text> : null}
         </ProgressBarContainer>
     );
 };

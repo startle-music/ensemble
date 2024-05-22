@@ -54,16 +54,16 @@ function $i() {
     var T = e.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     function I(l) {
       {
-        for (var h = arguments.length, y = new Array(h > 1 ? h - 1 : 0), A = 1; A < h; A++)
-          y[A - 1] = arguments[A];
-        F("error", l, y);
+        for (var h = arguments.length, x = new Array(h > 1 ? h - 1 : 0), A = 1; A < h; A++)
+          x[A - 1] = arguments[A];
+        F("error", l, x);
       }
     }
-    function F(l, h, y) {
+    function F(l, h, x) {
       {
         var A = T.ReactDebugCurrentFrame, X = A.getStackAddendum();
-        X !== "" && (h += "%s", y = y.concat([X]));
-        var J = y.map(function(U) {
+        X !== "" && (h += "%s", x = x.concat([X]));
+        var J = x.map(function(U) {
           return String(U);
         });
         J.unshift("Warning: " + h), Function.prototype.apply.call(console[l], console, J);
@@ -78,12 +78,12 @@ function $i() {
       // with.
       l.$$typeof === le || l.getModuleId !== void 0));
     }
-    function He(l, h, y) {
+    function He(l, h, x) {
       var A = l.displayName;
       if (A)
         return A;
       var X = h.displayName || h.name || "";
-      return X !== "" ? y + "(" + X + ")" : y;
+      return X !== "" ? x + "(" + X + ")" : x;
     }
     function Ge(l) {
       return l.displayName || "Context";
@@ -115,8 +115,8 @@ function $i() {
             var h = l;
             return Ge(h) + ".Consumer";
           case o:
-            var y = l;
-            return Ge(y._context) + ".Provider";
+            var x = l;
+            return Ge(x._context) + ".Provider";
           case c:
             return He(l, l.render, "ForwardRef");
           case m:
@@ -196,7 +196,7 @@ function $i() {
       }
     }
     var L = T.ReactCurrentDispatcher, j;
-    function z(l, h, y) {
+    function z(l, h, x) {
       {
         if (j === void 0)
           try {
@@ -218,9 +218,9 @@ function $i() {
       if (!l || q)
         return "";
       {
-        var y = B.get(l);
-        if (y !== void 0)
-          return y;
+        var x = B.get(l);
+        if (x !== void 0)
+          return x;
       }
       var A;
       q = !0;
@@ -285,14 +285,14 @@ function $i() {
       var Ze = l ? l.displayName || l.name : "", dr = Ze ? z(Ze) : "";
       return typeof l == "function" && B.set(l, dr), dr;
     }
-    function be(l, h, y) {
+    function be(l, h, x) {
       return w(l, !1);
     }
     function qe(l) {
       var h = l.prototype;
       return !!(h && h.isReactComponent);
     }
-    function Me(l, h, y) {
+    function Me(l, h, x) {
       if (l == null)
         return "";
       if (typeof l == "function")
@@ -310,11 +310,11 @@ function $i() {
           case c:
             return be(l.render);
           case m:
-            return Me(l.type, h, y);
+            return Me(l.type, h, x);
           case b: {
             var A = l, X = A._payload, J = A._init;
             try {
-              return Me(J(X), h, y);
+              return Me(J(X), h, x);
             } catch {
             }
           }
@@ -324,12 +324,12 @@ function $i() {
     var yt = Object.prototype.hasOwnProperty, er = {}, tr = T.ReactDebugCurrentFrame;
     function xt(l) {
       if (l) {
-        var h = l._owner, y = Me(l.type, l._source, h ? h.type : null);
-        tr.setExtraStackFrame(y);
+        var h = l._owner, x = Me(l.type, l._source, h ? h.type : null);
+        tr.setExtraStackFrame(x);
       } else
         tr.setExtraStackFrame(null);
     }
-    function Qa(l, h, y, A, X) {
+    function Qa(l, h, x, A, X) {
       {
         var J = Function.call.bind(yt);
         for (var U in l)
@@ -337,14 +337,14 @@ function $i() {
             var Y = void 0;
             try {
               if (typeof l[U] != "function") {
-                var ce = Error((A || "React class") + ": " + y + " type `" + U + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof l[U] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
+                var ce = Error((A || "React class") + ": " + x + " type `" + U + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof l[U] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
                 throw ce.name = "Invariant Violation", ce;
               }
-              Y = l[U](h, U, A, y, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
+              Y = l[U](h, U, A, x, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
             } catch (te) {
               Y = te;
             }
-            Y && !(Y instanceof Error) && (xt(X), I("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", A || "React class", y, U, typeof Y), xt(null)), Y instanceof Error && !(Y.message in er) && (er[Y.message] = !0, xt(X), I("Failed %s type: %s", y, Y.message), xt(null));
+            Y && !(Y instanceof Error) && (xt(X), I("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", A || "React class", x, U, typeof Y), xt(null)), Y instanceof Error && !(Y.message in er) && (er[Y.message] = !0, xt(X), I("Failed %s type: %s", x, Y.message), xt(null));
           }
       }
     }
@@ -354,8 +354,8 @@ function $i() {
     }
     function ti(l) {
       {
-        var h = typeof Symbol == "function" && Symbol.toStringTag, y = h && l[Symbol.toStringTag] || l.constructor.name || "Object";
-        return y;
+        var h = typeof Symbol == "function" && Symbol.toStringTag, x = h && l[Symbol.toStringTag] || l.constructor.name || "Object";
+        return x;
       }
     }
     function ni(l) {
@@ -397,40 +397,40 @@ function $i() {
     }
     function oi(l, h) {
       if (typeof l.ref == "string" && rt.current && h && rt.current.stateNode !== h) {
-        var y = de(rt.current.type);
-        Zt[y] || (I('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', de(rt.current.type), l.ref), Zt[y] = !0);
+        var x = de(rt.current.type);
+        Zt[x] || (I('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', de(rt.current.type), l.ref), Zt[x] = !0);
       }
     }
     function si(l, h) {
       {
-        var y = function() {
+        var x = function() {
           ar || (ar = !0, I("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", h));
         };
-        y.isReactWarning = !0, Object.defineProperty(l, "key", {
-          get: y,
+        x.isReactWarning = !0, Object.defineProperty(l, "key", {
+          get: x,
           configurable: !0
         });
       }
     }
     function li(l, h) {
       {
-        var y = function() {
+        var x = function() {
           ir || (ir = !0, I("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", h));
         };
-        y.isReactWarning = !0, Object.defineProperty(l, "ref", {
-          get: y,
+        x.isReactWarning = !0, Object.defineProperty(l, "ref", {
+          get: x,
           configurable: !0
         });
       }
     }
-    var ci = function(l, h, y, A, X, J, U) {
+    var ci = function(l, h, x, A, X, J, U) {
       var Y = {
         // This tag allows us to uniquely identify this as a React Element
         $$typeof: t,
         // Built-in properties that belong on the element
         type: l,
         key: h,
-        ref: y,
+        ref: x,
         props: U,
         // Record the component responsible for creating this element.
         _owner: J
@@ -452,10 +452,10 @@ function $i() {
         value: X
       }), Object.freeze && (Object.freeze(Y.props), Object.freeze(Y)), Y;
     };
-    function fi(l, h, y, A, X) {
+    function fi(l, h, x, A, X) {
       {
         var J, U = {}, Y = null, ce = null;
-        y !== void 0 && (rr(y), Y = "" + y), ii(h) && (rr(h.key), Y = "" + h.key), ai(h) && (ce = h.ref, oi(h, X));
+        x !== void 0 && (rr(x), Y = "" + x), ii(h) && (rr(h.key), Y = "" + h.key), ai(h) && (ce = h.ref, oi(h, X));
         for (J in h)
           yt.call(h, J) && !ri.hasOwnProperty(J) && (U[J] = h[J]);
         if (l && l.defaultProps) {
@@ -473,8 +473,8 @@ function $i() {
     var Kt = T.ReactCurrentOwner, or = T.ReactDebugCurrentFrame;
     function Xe(l) {
       if (l) {
-        var h = l._owner, y = Me(l.type, l._source, h ? h.type : null);
-        or.setExtraStackFrame(y);
+        var h = l._owner, x = Me(l.type, l._source, h ? h.type : null);
+        or.setExtraStackFrame(x);
       } else
         or.setExtraStackFrame(null);
     }
@@ -498,10 +498,10 @@ Check the render method of \`` + l + "`.";
     function ui(l) {
       {
         if (l !== void 0) {
-          var h = l.fileName.replace(/^.*[\\\/]/, ""), y = l.lineNumber;
+          var h = l.fileName.replace(/^.*[\\\/]/, ""), x = l.lineNumber;
           return `
 
-Check your code at ` + h + ":" + y + ".";
+Check your code at ` + h + ":" + x + ".";
         }
         return "";
       }
@@ -511,10 +511,10 @@ Check your code at ` + h + ":" + y + ".";
       {
         var h = sr();
         if (!h) {
-          var y = typeof l == "string" ? l : l.displayName || l.name;
-          y && (h = `
+          var x = typeof l == "string" ? l : l.displayName || l.name;
+          x && (h = `
 
-Check the top-level render call using <` + y + ">.");
+Check the top-level render call using <` + x + ">.");
         }
         return h;
       }
@@ -524,12 +524,12 @@ Check the top-level render call using <` + y + ">.");
         if (!l._store || l._store.validated || l.key != null)
           return;
         l._store.validated = !0;
-        var y = di(h);
-        if (lr[y])
+        var x = di(h);
+        if (lr[x])
           return;
-        lr[y] = !0;
+        lr[x] = !0;
         var A = "";
-        l && l._owner && l._owner !== Kt.current && (A = " It was passed a child from " + de(l._owner.type) + "."), Xe(l), I('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', y, A), Xe(null);
+        l && l._owner && l._owner !== Kt.current && (A = " It was passed a child from " + de(l._owner.type) + "."), Xe(l), I('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', x, A), Xe(null);
       }
     }
     function fr(l, h) {
@@ -537,8 +537,8 @@ Check the top-level render call using <` + y + ">.");
         if (typeof l != "object")
           return;
         if (Xt(l))
-          for (var y = 0; y < l.length; y++) {
-            var A = l[y];
+          for (var x = 0; x < l.length; x++) {
+            var A = l[x];
             Vt(A) && cr(A, h);
           }
         else if (Vt(l))
@@ -556,18 +556,18 @@ Check the top-level render call using <` + y + ">.");
         var h = l.type;
         if (h == null || typeof h == "string")
           return;
-        var y;
+        var x;
         if (typeof h == "function")
-          y = h.propTypes;
+          x = h.propTypes;
         else if (typeof h == "object" && (h.$$typeof === c || // Note: Memo only checks outer props here.
         // Inner props are checked in the reconciler.
         h.$$typeof === m))
-          y = h.propTypes;
+          x = h.propTypes;
         else
           return;
-        if (y) {
+        if (x) {
           var A = de(h);
-          Qa(y, l.props, "prop", A, l);
+          Qa(x, l.props, "prop", A, l);
         } else if (h.PropTypes !== void 0 && !Jt) {
           Jt = !0;
           var X = de(h);
@@ -578,8 +578,8 @@ Check the top-level render call using <` + y + ">.");
     }
     function pi(l) {
       {
-        for (var h = Object.keys(l.props), y = 0; y < h.length; y++) {
-          var A = h[y];
+        for (var h = Object.keys(l.props), x = 0; x < h.length; x++) {
+          var A = h[x];
           if (A !== "children" && A !== "key") {
             Xe(l), I("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", A), Xe(null);
             break;
@@ -588,7 +588,7 @@ Check the top-level render call using <` + y + ">.");
         l.ref !== null && (Xe(l), I("Invalid attribute `ref` supplied to `React.Fragment`."), Xe(null));
       }
     }
-    function ur(l, h, y, A, X, J) {
+    function ur(l, h, x, A, X, J) {
       {
         var U = je(l);
         if (!U) {
@@ -599,7 +599,7 @@ Check the top-level render call using <` + y + ">.");
           var te;
           l === null ? te = "null" : Xt(l) ? te = "array" : l !== void 0 && l.$$typeof === t ? (te = "<" + (de(l.type) || "Unknown") + " />", Y = " Did you accidentally export a JSX literal instead of a component?") : te = typeof l, I("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", te, Y);
         }
-        var ne = fi(l, h, y, X, J);
+        var ne = fi(l, h, x, X, J);
         if (ne == null)
           return ne;
         if (U) {
@@ -618,11 +618,11 @@ Check the top-level render call using <` + y + ">.");
         return l === r ? pi(ne) : mi(ne), ne;
       }
     }
-    function bi(l, h, y) {
-      return ur(l, h, y, !0);
+    function bi(l, h, x) {
+      return ur(l, h, x, !0);
     }
-    function hi(l, h, y) {
-      return ur(l, h, y, !1);
+    function hi(l, h, x) {
+      return ur(l, h, x, !1);
     }
     var gi = hi, vi = bi;
     it.Fragment = r, it.jsx = gi, it.jsxs = vi;
@@ -1604,7 +1604,7 @@ function lo(e, t) {
   }));
 }
 var co = /* @__PURE__ */ pa(lo), fo = co;
-const x = {
+const y = {
   simplyRed: "#e83948",
   orangeCrush: "#f7823b",
   yellowSubmarine: "#f9bd45",
@@ -1637,14 +1637,14 @@ const Le = {
     background: O.midGrey,
     font: "MuseoSansReg, sans-serif",
     borderRadius: "0.45rem",
-    color: x.paintItBlack,
+    color: y.paintItBlack,
     bodyColor: O.lightBlueGrey,
     contrastColor: O.white,
     fontSize: "16px",
     fontWeight: "400",
     boxBackground: O.white,
     border: O.midGrey,
-    brand: x.paintItBlack
+    brand: y.paintItBlack
   },
   layout: {
     breakpoints: {
@@ -1700,43 +1700,43 @@ const Le = {
   table: {
     header: {
       background: O.white,
-      color: x.paintItBlack,
+      color: y.paintItBlack,
       border: O.midGrey
     },
     row: {
       background: O.white,
-      color: x.paintItBlack,
+      color: y.paintItBlack,
       hover: {
         background: O.lightGrey
       }
     }
   },
   actionPanel: {
-    background: x.mrBlueSky,
-    color: x.paintItBlack,
-    border: x.blueMonday
+    background: y.mrBlueSky,
+    color: y.paintItBlack,
+    border: y.blueMonday
   },
   // styling for each component
   background: {
-    background: x.paintItBlack
+    background: y.paintItBlack
   },
   form: {
     input: {
       background: O.lightGrey,
-      color: x.paintItBlack,
+      color: y.paintItBlack,
       placeholder: ha(0.12, O.midGrey),
       fontSize: "1rem",
       small: {
-        color: x.paintItBlack,
+        color: y.paintItBlack,
         fontSize: "0.875rem"
       },
       border: O.midGrey
     },
     label: {
-      color: x.paintItBlack,
+      color: y.paintItBlack,
       fontSize: "1rem",
       small: {
-        color: x.paintItBlack,
+        color: y.paintItBlack,
         fontSize: "0.875rem"
       }
     },
@@ -1756,58 +1756,58 @@ const Le = {
       margin: "0"
     },
     h2: {
-      color: x.paintItBlack,
+      color: y.paintItBlack,
       fontSize: "1.5rem",
       padding: "1rem 0",
       margin: "0"
     },
     h3: {
-      color: x.paintItBlack,
+      color: y.paintItBlack,
       fontSize: "1.125rem",
       padding: "0.785rem 0",
       margin: "0"
     },
     h4: {
-      color: x.paintItBlack,
+      color: y.paintItBlack,
       fontSize: "1rem",
       padding: "0.75rem 0",
       margin: "0"
     },
     h5: {
-      color: x.paintItBlack,
+      color: y.paintItBlack,
       fontSize: "0.875rem",
       padding: "0",
       margin: "0"
     },
     h6: {
-      color: x.paintItBlack,
+      color: y.paintItBlack,
       fontSize: "0.875rem",
       fontStyle: "italic",
       padding: "0",
       margin: "0"
     },
     p: {
-      color: x.paintItBlack,
+      color: y.paintItBlack,
       fontSize: "1rem",
       small: {
-        color: x.paintItBlack,
+        color: y.paintItBlack,
         fontSize: "0.875rem"
       }
     }
   },
   selectionPanel: {
     background: O.lightGrey,
-    color: x.blueMonday,
+    color: y.blueMonday,
     active: {
-      background: x.blueMonday,
+      background: y.blueMonday,
       color: O.white
     }
   },
   nowPlaying: {
     artistColor: O.blueGrey,
-    loaderColor: x.simplyRed,
-    volumeMain: x.simplyRed,
-    volumeBg: x.fadeToGrey
+    loaderColor: y.simplyRed,
+    volumeMain: y.simplyRed,
+    volumeBg: y.fadeToGrey
   },
   rowComponent: {
     actionShadow: O.lightBlueGrey
@@ -1819,20 +1819,20 @@ const Le = {
     background: O.white,
     color: O.lightBlueGrey,
     highlight: {
-      success: x.greenDay,
-      danger: x.simplyRed,
-      warning: x.yellowSubmarine,
+      success: y.greenDay,
+      danger: y.simplyRed,
+      warning: y.yellowSubmarine,
       default: O.lightBlueGrey,
-      information: x.blueMonday
+      information: y.blueMonday
     }
   },
   dashboard: {
-    online: x.greenDay,
-    offline: x.simplyRed,
+    online: y.greenDay,
+    offline: y.simplyRed,
     fetching: O.lightBlueGrey
   },
   button: {
-    background: x.paintItBlack,
+    background: y.paintItBlack,
     color: O.white,
     minHeight: "2rem",
     fontWeight: "400",
@@ -1846,124 +1846,126 @@ const Le = {
         sm: "1.5rem"
       }
     },
-    border: `2px solid ${x.paintItBlack}`,
+    border: `2px solid ${y.paintItBlack}`,
     hover: {
-      background: x.paintItBlack,
+      background: y.paintItBlack,
       color: O.white,
-      border: `2px solid ${x.paintItBlack}`
+      border: `2px solid ${y.paintItBlack}`
     },
     active: {
-      background: x.paintItBlack,
+      background: y.paintItBlack,
       color: O.white,
-      border: `2px solid ${x.paintItBlack}`,
+      border: `2px solid ${y.paintItBlack}`,
       hover: {
-        background: x.paintItBlack,
+        background: y.paintItBlack,
         color: O.white,
-        border: `2px solid ${x.paintItBlack}`
+        border: `2px solid ${y.paintItBlack}`
       }
     }
   },
   tabs: {
-    color: x.fadeToGrey,
+    color: y.fadeToGrey,
     tab: {
-      color: x.paintItBlack,
-      active: x.simplyRed,
-      border: `3px solid ${x.simplyRed}`
+      color: y.paintItBlack,
+      active: y.simplyRed,
+      border: `3px solid ${y.simplyRed}`
     }
   },
-  colors: { ...x, ...O }
+  mainColors: y,
+  generalColors: O,
+  colors: { ...y, ...O }
 };
 Mn(Le, {
   button: {
-    background: x.simplyRed,
+    background: y.simplyRed,
     color: O.white,
-    border: `2px solid ${x.simplyRed}`,
+    border: `2px solid ${y.simplyRed}`,
     hover: {
-      background: x.simplyRed,
+      background: y.simplyRed,
       color: O.white,
-      border: `2px solid ${x.simplyRed}`
+      border: `2px solid ${y.simplyRed}`
     },
     active: {
-      background: x.simplyRed,
+      background: y.simplyRed,
       color: O.white,
-      border: `2px solid ${x.simplyRed}`,
+      border: `2px solid ${y.simplyRed}`,
       hover: {
-        background: x.simplyRed,
+        background: y.simplyRed,
         color: O.white,
-        border: `2px solid ${x.simplyRed}`
+        border: `2px solid ${y.simplyRed}`
       }
     }
   },
   form: {
     input: {
-      background: x.simplyRed,
+      background: y.simplyRed,
       color: O.white
     }
   }
 });
 Mn(Le, {
   button: {
-    background: x.mrBlueSky,
+    background: y.mrBlueSky,
     color: O.white,
-    border: `2px solid ${x.mrBlueSky}`,
+    border: `2px solid ${y.mrBlueSky}`,
     hover: {
-      background: x.mrBlueSky,
+      background: y.mrBlueSky,
       color: O.white,
-      border: `2px solid ${x.mrBlueSky}`
+      border: `2px solid ${y.mrBlueSky}`
     },
     active: {
-      background: x.mrBlueSky,
+      background: y.mrBlueSky,
       color: O.white,
-      border: `2px solid ${x.mrBlueSky}`,
+      border: `2px solid ${y.mrBlueSky}`,
       hover: {
-        background: x.mrBlueSky,
+        background: y.mrBlueSky,
         color: O.white,
-        border: `2px solid ${x.mrBlueSky}`
+        border: `2px solid ${y.mrBlueSky}`
       }
     }
   }
 });
 Mn(Le, {
   main: {
-    brand: x.greenDay
+    brand: y.greenDay
   },
   button: {
-    background: x.greenDay,
+    background: y.greenDay,
     color: O.white,
-    border: `2px solid ${x.greenDay}`,
+    border: `2px solid ${y.greenDay}`,
     hover: {
-      background: x.greenDay,
+      background: y.greenDay,
       color: O.white,
-      border: `2px solid ${x.greenDay}`
+      border: `2px solid ${y.greenDay}`
     },
     active: {
-      background: x.greenDay,
+      background: y.greenDay,
       color: O.white,
-      border: `2px solid ${x.greenDay}`,
+      border: `2px solid ${y.greenDay}`,
       hover: {
-        background: x.greenDay,
+        background: y.greenDay,
         color: O.white,
-        border: `2px solid ${x.greenDay}`
+        border: `2px solid ${y.greenDay}`
       }
     }
   },
   form: {
     input: {
       background: O.lightGrey,
-      color: x.greenDay,
+      color: y.greenDay,
       placeholder: ha(0.12, O.midGrey),
       fontSize: "1rem",
       small: {
-        color: x.greenDay,
+        color: y.greenDay,
         fontSize: "0.875rem"
       },
       border: O.midGrey
     },
     label: {
-      color: x.greenDay,
+      color: y.greenDay,
       fontSize: "1rem",
       small: {
-        color: x.greenDay,
+        color: y.greenDay,
         fontSize: "0.875rem"
       }
     },
@@ -7302,7 +7304,7 @@ const kf = p.div`
     align-items: center;
     border-radius: ${(e) => e.theme.main.borderRadius};
     border: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
-    background: ${(e) => e.theme.colors.white};
+    background: ${(e) => e.theme.generalColors.white};
 `, Su = p.div`
     padding: 0 1rem;
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
