@@ -265,7 +265,7 @@ function ModalContent() {
 
 const FormContents = ({ radio, modalOpen, step }) => (
     <>
-        <Modal isOpen={modalOpen} content={<ModalContent />} />
+        <Modal isOpen={modalOpen} content={<ModalContent />} wide />
         <Container padded>
             <Heading type="title">Form</Heading>
             <Steps position={step}>

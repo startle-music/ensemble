@@ -57,7 +57,7 @@ const Background = styled.div`
 `;
 
 const ModalWrap = styled.div`
-    width: 30rem;
+    width: 100%;
     min-height: 4rem;
     max-width: 90%;
     max-height: 90%;
@@ -68,6 +68,18 @@ const ModalWrap = styled.div`
     overflow: auto;
     //padding: 2rem;
     text-align: center;
+
+    @media (min-width: ${props => props.theme.layout.breakpoints.sm}) {
+        width: ${props => (props.wide ? '90%' : '70%')};
+    }
+
+    @media (min-width: ${props => props.theme.layout.breakpoints.md}) {
+        width: ${props => (props.wide ? '80%' : '60%')};
+    }
+
+    @media (min-width: ${props => props.theme.layout.breakpoints.xxl}) {
+        width: ${props => (props.wide ? '70%' : '50%')};
+    }
 `;
 
 /**
@@ -83,7 +95,8 @@ function Modal({
     onOpen = () => {},
     isOpen = false,
     transparent = false,
-    className = null
+    className = null,
+    wide = false
 }) {
     useEffect(() => {
         onOpen();
@@ -100,7 +113,7 @@ function Modal({
     return (
         <Wrap>
             <Background onClick={() => onClose(null)} />
-            <ModalWrap id="mainModal" transparent={transparent}>
+            <ModalWrap id="mainModal" transparent={transparent} wide={wide}>
                 {content}
             </ModalWrap>
         </Wrap>

@@ -200,7 +200,7 @@ const btnBase = css`
 
     svg {
         fill: currentColor;
-        height: 1.1rem;
+        height: 1rem;
         width: 1em;
         margin: ${({ icon }) => (icon === true ? `0 0.4rem` : `0`)};
     }

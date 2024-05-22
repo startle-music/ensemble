@@ -101,7 +101,8 @@ const theme = {
             sm: '576px',
             md: '768px',
             lg: '992px',
-            xl: '1200px'
+            xl: '1200px',
+            xxl: '1400px'
         },
         borderRadius: {
             lg: '0.667rem',

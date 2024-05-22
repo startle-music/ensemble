@@ -841,7 +841,7 @@ const jt = jn.Fragment, u = jn.jsx, D = jn.jsxs, Ci = p.div`
 
     svg {
         fill: currentColor;
-        height: 1.1rem;
+        height: 1rem;
         width: 1em;
         margin: ${({ icon: e }) => e === !0 ? "0 0.4rem" : "0"};
     }
@@ -1652,7 +1652,8 @@ const Le = {
       sm: "576px",
       md: "768px",
       lg: "992px",
-      xl: "1200px"
+      xl: "1200px",
+      xxl: "1400px"
     },
     borderRadius: {
       lg: "0.667rem",
@@ -7235,7 +7236,7 @@ const wu = p.div`
     background: rgba(0, 0, 0, 0.7);
     z-index: -1;
 `, vf = p.div`
-    width: 30rem;
+    width: 100%;
     min-height: 4rem;
     max-width: 90%;
     max-height: 90%;
@@ -7246,6 +7247,18 @@ const wu = p.div`
     overflow: auto;
     //padding: 2rem;
     text-align: center;
+
+    @media (min-width: ${(e) => e.theme.layout.breakpoints.sm}) {
+        width: ${(e) => e.wide ? "90%" : "70%"};
+    }
+
+    @media (min-width: ${(e) => e.theme.layout.breakpoints.md}) {
+        width: ${(e) => e.wide ? "80%" : "60%"};
+    }
+
+    @media (min-width: ${(e) => e.theme.layout.breakpoints.xxl}) {
+        width: ${(e) => e.wide ? "70%" : "50%"};
+    }
 `;
 function Cu({
   content: e = null,
@@ -7255,13 +7268,14 @@ function Cu({
   },
   isOpen: r = !1,
   transparent: a = !1,
-  className: i = null
+  className: i = null,
+  wide: o = !1
 }) {
   return Ln(() => (n(), () => {
     t();
   }), [t, n]), r ? /* @__PURE__ */ D(hf, { children: [
     /* @__PURE__ */ u(gf, { onClick: () => t(null) }),
-    /* @__PURE__ */ u(vf, { id: "mainModal", transparent: a, children: e })
+    /* @__PURE__ */ u(vf, { id: "mainModal", transparent: a, wide: o, children: e })
   ] }) : null;
 }
 const yf = p.ul`
