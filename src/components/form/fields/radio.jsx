@@ -49,8 +49,8 @@ const RadioInput = styled.input`
     }
 
     &:checked {
-        background-color: ${props => (props.color !== null ? props.color : props.theme.form.input.color)};
-        color: ${props => (props.color !== null ? props.color : props.theme.form.input.color)};
+        background-color: ${props => (props.color !== null ? props.color : props.theme.main.brand)};
+        color: ${props => (props.color !== null ? props.color : props.theme.main.brand)};
         box-shadow: inset 0 0 0 0.4rem
             ${props => (props.backgroundColor !== null ? props.backgroundColor : props.theme.form.input.background)};
     }

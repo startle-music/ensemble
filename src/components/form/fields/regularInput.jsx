@@ -27,13 +27,13 @@ const Input = styled.input`
     margin: 0;
     background: transparent;
     font-size: 1rem;
-    padding: 0.8rem 0.4rem;
+    padding: 0.73rem 0.4rem;
     color: inherit;
     width: 100%;
     font-family: ${props => props.theme.main.font};
 
     &::placeholder {
-        color: ${({ inputColour }) => inputColour};
+        color: ${({ inputColour }) => lighten(0.3, inputColour)};
         opacity: 1; /* Firefox */
     }
 
@@ -79,6 +79,7 @@ const FieldComponent = ({
     id,
     name,
     inputBackground = null,
+    background = false,
     inputColour = null,
     inputBorder = null,
     prepend = null,
@@ -107,6 +108,14 @@ const FieldComponent = ({
         inputColour: 'black',
         inputBorder: theme.main.border
     };
+
+    if (background) {
+        colours = {
+            inputBackground: theme.form.input.background,
+            inputColour: theme.form.input.color,
+            inputBorder: theme.main.border
+        };
+    }
 
     if (inputBackground !== null) {
         colours = {

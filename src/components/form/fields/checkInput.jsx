@@ -42,8 +42,7 @@ const CheckboxInput = styled.input`
     }
 
     &:checked {
-        background-color: ${props =>
-            props.backgroundColor !== null ? props.backgroundColor : props.theme.form.input.color};
+        background-color: ${props => (props.backgroundColor !== null ? props.backgroundColor : props.theme.main.brand)};
         color: ${props => (props.color !== null ? props.color : 'white')};
     }
 

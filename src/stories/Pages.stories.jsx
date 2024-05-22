@@ -272,12 +272,7 @@ const FormContents = ({ radio, modalOpen, step }) => (
                 <Step title="Frequency and adverts">
                     <Form>
                         <FormRow>
-                            <RegularInput
-                                label="Search"
-                                inputBorder={theme.form.input.border}
-                                placeholder="Search"
-                                inputColour={theme.form.input.placeholder}
-                            />
+                            <RegularInput label="Search" placeholder="Search" background />
                         </FormRow>
                         <FormRow inline>
                             <RadioComponent
@@ -306,12 +301,7 @@ const FormContents = ({ radio, modalOpen, step }) => (
                             <FormRow>
                                 <ColumnWrapper>
                                     <Column span={6}>
-                                        <RegularInput
-                                            label="Start Date"
-                                            inputBorder={theme.form.input.border}
-                                            type="date"
-                                            inputColour={theme.form.input.placeholder}
-                                        />
+                                        <RegularInput label="Start Date" type="date" background />
                                     </Column>
                                     <Column span={6}>
                                         <TimeSelect
@@ -380,7 +370,7 @@ const FormContents = ({ radio, modalOpen, step }) => (
                             <RadioComponent
                                 label={
                                     <>
-                                        <RegularInput inline /> {` songs`}
+                                        <RegularInput inline background /> {` songs`}
                                     </>
                                 }
                                 name="songs"
@@ -392,7 +382,7 @@ const FormContents = ({ radio, modalOpen, step }) => (
                             <RadioComponent
                                 label={
                                     <>
-                                        <RegularInput inline /> {` minutes`}
+                                        <RegularInput inline background /> {` minutes`}
                                     </>
                                 }
                                 name="time"

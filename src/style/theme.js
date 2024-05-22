@@ -47,7 +47,8 @@ const generalColors = {
     lightBlueGrey: '#787e89',
     midGrey: '#e7e7e7',
     blueGrey: '#6a707d',
-    darkGrey: '#696f7c' /* nice */,
+    // darkGrey: '#696f7c' /* nice */,
+    darkGrey: '#787E89' /* nice */,
     white: '#ffffff',
     green: '#7ec17e',
     sliverColor: 'rgb(199,55,71)',
@@ -174,7 +175,7 @@ const theme = {
     form: {
         input: {
             background: generalColors.lightGrey,
-            color: brandColors.paintItBlack,
+            color: generalColors.darkGrey,
             placeholder: darken(0.12, generalColors.midGrey),
             fontSize: '1rem',
             small: {
@@ -193,10 +194,15 @@ const theme = {
         },
         select: {
             background: generalColors.lightGrey,
+            color: generalColors.darkGrey,
             border: generalColors.midGrey
         },
         checkbox: {
             checkColour: generalColors.white
+        },
+        switch: {
+            background: generalColors.lightGrey,
+            border: generalColors.midGrey
         }
     },
     text: {
@@ -338,6 +344,9 @@ export const absoluteFill = {
 export default theme;
 
 export const simplyRed = extendDefaultTheme(theme, {
+    main: {
+        brand: brandColors.simplyRed
+    },
     button: {
         background: brandColors.simplyRed,
         color: generalColors.white,
@@ -360,13 +369,16 @@ export const simplyRed = extendDefaultTheme(theme, {
     },
     form: {
         input: {
-            background: brandColors.simplyRed,
-            color: generalColors.white
+            background: generalColors.lightGrey,
+            color: generalColors.darkGrey
         }
     }
 });
 
 export const mrBlueSky = extendDefaultTheme(theme, {
+    main: {
+        brand: brandColors.mrBlueSky
+    },
     button: {
         background: brandColors.mrBlueSky,
         color: generalColors.white,
@@ -385,6 +397,12 @@ export const mrBlueSky = extendDefaultTheme(theme, {
                 color: generalColors.white,
                 border: `2px solid ${brandColors.mrBlueSky}`
             }
+        }
+    },
+    form: {
+        input: {
+            background: generalColors.lightGrey,
+            color: generalColors.darkGrey
         }
     }
 });
@@ -416,7 +434,7 @@ export const greenDay = extendDefaultTheme(theme, {
     form: {
         input: {
             background: generalColors.lightGrey,
-            color: brandColors.greenDay,
+            color: generalColors.darkGrey,
             placeholder: darken(0.12, generalColors.midGrey),
             fontSize: '1rem',
             small: {
@@ -435,6 +453,7 @@ export const greenDay = extendDefaultTheme(theme, {
         },
         select: {
             background: generalColors.lightGrey,
+            color: generalColors.darkGrey,
             border: generalColors.midGrey
         }
     }

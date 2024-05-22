@@ -27,7 +27,8 @@ const Wrap = styled.div`
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #ccc;
+        background-color: ${props => theme.mainColors.fadeToGrey};
+
         -webkit-transition: 0.4s;
         transition: 0.4s;
     }
@@ -53,9 +54,9 @@ const Wrap = styled.div`
     }
 
     input:checked + .slider:before {
-        -webkit-transform: translateX(19px);
-        -ms-transform: translateX(19px);
-        transform: translateX(19px);
+        -webkit-transform: translateX(18px);
+        -ms-transform: translateX(18px);
+        transform: translateX(18px);
     }
 
     /* Rounded sliders */

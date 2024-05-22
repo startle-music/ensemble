@@ -19,9 +19,11 @@ const Dropdown = styled.select`
     -webkit-appearance: none;
     background: transparent;
     border: none;
-    padding: ${props => (props.inline ? '0.875rem 1.6rem 0.875rem 0.6rem' : '0.875rem 0.6rem')};
+    padding: ${props => (props.inline ? '0.76rem 1.6rem 0.76rem 0.6rem' : '0.875rem 0.6rem')};
     font-family: ${props => props.theme.main.font};
+    color: ${props => props.theme.form.select.color};
     font-weight: 400;
+    font-size: 1rem;
 
     &:focus {
         outline: none;
@@ -31,7 +33,7 @@ const Dropdown = styled.select`
         background: 'white';
         padding: 0.875rem 0.6rem;
         font-family: MuseoSans, sans-serif;
-        color: ${props => props.theme.form.label.color};
+        color: ${props => props.theme.form.select.color};
     }
 `;
 

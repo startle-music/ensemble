@@ -9,7 +9,7 @@ const TextAreaStyled = styled.textarea`
     margin: 0 0 1rem;
     border: 1px solid ${props => props.theme.main.border};
     border-radius: ${props => props.theme.main.borderRadius};
-    background: ${props => props.theme.main.background};
+    background: ${props => props.theme.form.input.background};
     box-sizing: border-box;
     font-size: ${props => props.theme.main.fontSize};
     resize: none;
