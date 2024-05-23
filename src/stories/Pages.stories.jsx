@@ -167,6 +167,74 @@ const TableContents = () => (
         <Container>
             <ResponsiveTable data={tableData} />
         </Container>
+
+        <Container>
+            <ContainerContent padded>
+                <ColumnWrapper>
+                    <Column span={4}>
+                        <DroppableActionPanel
+                            icon={faFileAudio}
+                            title="Drag audio files here to upload"
+                            component={
+                                <>
+                                    <Button key="aaa" onClick={() => alert('yo')}>
+                                        Upload File
+                                    </Button>
+                                    <form>
+                                        <input type="file" hidden />
+                                    </form>
+                                </>
+                            }
+                        />
+                    </Column>
+                    <Column span={4}>
+                        <ActionPanel
+                            icon={faFileAudio}
+                            title="Drag audio files"
+                            component={
+                                <Button key="aaa" onClick={() => alert('yo')}>
+                                    Upload File
+                                </Button>
+                            }
+                        />
+                    </Column>
+                    <Column span={4}>
+                        <ActionPanel
+                            icon={faFileAudio}
+                            title="Drag audio files here to upload"
+                            component={
+                                <Button key="aaa" onClick={() => alert('yo')}>
+                                    Upload File
+                                </Button>
+                            }
+                        />
+                    </Column>
+                </ColumnWrapper>
+            </ContainerContent>
+            <ContainerContent padded>
+                <ColumnWrapper>
+                    <Column span={3}>
+                        <RegularInput
+                            prepend={<Icon />}
+                            inputBorder={theme.form.input.border}
+                            placeholder="Search"
+                            inputColour={theme.form.input.placeholder}
+                        />
+                    </Column>
+                    <Column span={3}>
+                        <Select>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </Select>
+                    </Column>
+                    <Column span={3} offset={10} pull="right">
+                        <Button>Test</Button>
+                    </Column>
+                </ColumnWrapper>
+            </ContainerContent>
+            <ResponsiveTable data={tableData} />
+        </Container>
     </>
 );
 
@@ -267,7 +335,7 @@ const FormContents = ({ radio, modalOpen, step }) => (
     <>
         <Modal isOpen={modalOpen} content={<ModalContent />} wide />
         <Container padded wide>
-            <ContainerContent>
+            <ContainerContent narrow>
                 <Heading type="title">Form</Heading>
                 <Steps position={step}>
                     <Step title="Frequency and adverts">

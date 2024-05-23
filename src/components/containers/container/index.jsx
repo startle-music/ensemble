@@ -27,15 +27,23 @@ const ContainerStyled = styled.section`
 `;
 
 export const ContainerContent = styled.div`
-    max-width: ${props => (props.wide ? '100%' : props.theme.container.maxWidth.sm)};
+    max-width: ${props => (props.narrow ? props.theme.container.maxWidth.sm : '100%')};
     padding: ${props =>
         props.padded
             ? `${props.theme.container.padding.vertical.sm} ${props.theme.container.padding.horizontal.sm}`
             : 0};
     margin: 0 auto;
 
+    & + & {
+        padding-top: 0;
+    }
+
     @media (min-width: ${p => p.theme.layout.breakpoints.lg}) {
-        max-width: ${props => (props.wide ? '100%' : props.theme.container.maxWidth.md)};
+        max-width: ${props => (props.narrow ? props.theme.container.maxWidth.md : '100%')};
+        padding: ${props =>
+            props.padded
+                ? `${props.theme.container.padding.vertical.lg} ${props.theme.container.padding.horizontal.lg}`
+                : 0};
     }
 `;
 

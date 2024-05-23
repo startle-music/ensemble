@@ -2258,12 +2258,17 @@ const Mf = ({ label: e, value: t, name: n = null, color: r = "red", textColor: a
         margin: ${(e) => e.margin ? e.theme.container.margin.lg : 0};
     }
 `, Hf = p.div`
-    max-width: ${(e) => e.wide ? "100%" : e.theme.container.maxWidth.sm};
+    max-width: ${(e) => e.narrow ? e.theme.container.maxWidth.sm : "100%"};
     padding: ${(e) => e.padded ? `${e.theme.container.padding.vertical.sm} ${e.theme.container.padding.horizontal.sm}` : 0};
     margin: 0 auto;
 
+    & + & {
+        padding-top: 0;
+    }
+
     @media (min-width: ${(e) => e.theme.layout.breakpoints.lg}) {
-        max-width: ${(e) => e.wide ? "100%" : e.theme.container.maxWidth.md};
+        max-width: ${(e) => e.narrow ? e.theme.container.maxWidth.md : "100%"};
+        padding: ${(e) => e.padded ? `${e.theme.container.padding.vertical.lg} ${e.theme.container.padding.horizontal.lg}` : 0};
     }
 `;
 function Uf({ padded: e, margin: t = !0, children: n, wide: r }) {

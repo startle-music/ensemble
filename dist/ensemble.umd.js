@@ -547,12 +547,17 @@ To pass a single animation please supply them in simple values, e.g. animation('
         margin: ${e=>e.margin?e.theme.container.margin.lg:0};
     }
 `,wo=m.div`
-    max-width: ${e=>e.wide?"100%":e.theme.container.maxWidth.sm};
+    max-width: ${e=>e.narrow?e.theme.container.maxWidth.sm:"100%"};
     padding: ${e=>e.padded?`${e.theme.container.padding.vertical.sm} ${e.theme.container.padding.horizontal.sm}`:0};
     margin: 0 auto;
 
+    & + & {
+        padding-top: 0;
+    }
+
     @media (min-width: ${e=>e.theme.layout.breakpoints.lg}) {
-        max-width: ${e=>e.wide?"100%":e.theme.container.maxWidth.md};
+        max-width: ${e=>e.narrow?e.theme.container.maxWidth.md:"100%"};
+        padding: ${e=>e.padded?`${e.theme.container.padding.vertical.lg} ${e.theme.container.padding.horizontal.lg}`:0};
     }
 `;function xo({padded:e,margin:n=!0,children:t,wide:r}){return u(yo,{padded:e,wide:r,margin:n,children:t})}const ko=m.div`
     display: ${e=>e.passthrough?"contents":"block"};
