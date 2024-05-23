@@ -6,6 +6,7 @@ import Text from '../../text';
 
 const StyledRadioPanel = styled.div`
     width: 100%;
+    height: 100%;
     position: relative;
 `;
 
@@ -16,6 +17,7 @@ const Label = styled.label`
     //justify-content: center;
     display: block;
     width: 100%;
+    height: 100%;
     padding: 2rem 1rem;
 
     border: ${props =>
@@ -68,6 +70,7 @@ const Radio = styled.input.attrs({ type: 'radio' })`
 
 const PanelBody = styled.div`
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
