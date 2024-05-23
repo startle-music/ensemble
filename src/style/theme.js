@@ -113,9 +113,9 @@ const theme = {
         margin: '2rem',
         padding: {
             horizontal: {
-                lg: '2.667rem',
-                sm: '1.333rem',
-                xs: '0.667rem'
+                lg: '2rem',
+                sm: '1rem',
+                xs: '0.6rem'
             },
             vertical: {
                 lg: '2rem',
@@ -131,11 +131,12 @@ const theme = {
     container: {
         maxWidth: {
             lg: '1060px',
+            md: '720px',
             sm: '100%'
         },
         padding: {
             horizontal: {
-                lg: '2.667rem',
+                lg: '2rem',
                 sm: '1.333rem'
             },
             vertical: {

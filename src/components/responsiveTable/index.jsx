@@ -11,6 +11,16 @@ export const ResponsiveTableWrap = styled.div`
     color: ${props => props.theme.main.color};
 `;
 
+const CellText = styled(Text)`
+    display: inline-block;
+    margin-left: 0.5rem;
+
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
+        display: block;
+        margin-left: 0;
+    }
+`;
+
 export const Row = styled.div`
     flex-wrap: wrap;
     width: 100%;
@@ -59,6 +69,15 @@ export const TableHeading = styled.div`
         flex-grow: 0;
         overflow: visible;
     }
+
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
+        &:first-child {
+            padding-left: ${props => props.theme.layout.padding.horizontal.lg};
+        }
+        &:last-child {
+            padding-right: ${props => props.theme.layout.padding.horizontal.lg};
+        }
+    }
 `;
 
 export const Cell = styled.div`
@@ -90,10 +109,18 @@ export const Cell = styled.div`
         &.actions {
             justify-content: ${({ justify }) => justify || 'flex-start'};
         }
+
+        &:first-child {
+            padding-left: ${props => props.theme.layout.padding.horizontal.lg};
+        }
+        &:last-child {
+            padding-right: ${props => props.theme.layout.padding.horizontal.lg};
+        }
     }
 
     .responsiveHeading {
         margin-bottom: 0;
+        display: inline-block;
 
         @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
             display: none;
@@ -131,7 +158,7 @@ export default function ResponsiveTable({ data, rowPadding = null }) {
                             columns={headings.length}
                         >
                             <Heading className="responsiveHeading">{headings[index]}</Heading>
-                            {key !== 'actions' ? <Text>{row[key]}</Text> : row[key]}
+                            {key !== 'actions' ? <CellText>{row[key]}</CellText> : row[key]}
                         </Cell>
                     ))}
                 </Row>
