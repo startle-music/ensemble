@@ -121,7 +121,7 @@ const TableContents = () => (
                 <Column span={4}>
                     <ActionPanel
                         icon={faFileAudio}
-                        title="Drag audio files here to upload"
+                        title="Drag audio files"
                         component={
                             <Button key="aaa" onClick={() => alert('yo')}>
                                 Upload File

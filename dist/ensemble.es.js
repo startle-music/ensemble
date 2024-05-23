@@ -7025,6 +7025,7 @@ const Kc = p.div`
     justify-content: center;
     border: 1px solid ${(e) => e.theme.form.input.border};
     width: 100%;
+    height: 100%;
     padding: 1rem;
     align-items: center;
     flex-wrap: wrap;
