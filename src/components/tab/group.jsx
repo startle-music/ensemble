@@ -1,12 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const Wrap = styled.div`
-
-`;
+const Wrap = styled.div``;
 const Tabs = styled.div`
-    border-bottom: 1px solid ${(props) => props.theme.tabs.color};
-    padding: 0;    
+    border-bottom: 1px solid ${props => props.theme.tabs.color};
+    padding: 0;
     margin: 0 auto;
     display: flex;
     flex-wrap: nowrap;
@@ -25,20 +23,12 @@ const Tabs = styled.div`
     > a {
         scroll-snap-align: start;
     }
-`
+`;
 
-const TabGroup = ({
-    children,
-    ...rest
-}) => {
-
-    return (
-        <Wrap {...rest}>
-            <Tabs>
-                { children }
-            </Tabs>
-        </Wrap>
-    );
-}
+const TabGroup = ({ children, ...rest }) => (
+    <Wrap {...rest}>
+        <Tabs>{children}</Tabs>
+    </Wrap>
+);
 
 export default TabGroup;
