@@ -7236,23 +7236,23 @@ function ku({ data: e, rowPadding: t = null }) {
       /* @__PURE__ */ u(sa, { children: /* @__PURE__ */ u(wr, { margin: "0px" }) }),
       n.map((a) => /* @__PURE__ */ u(sa, { columns: n.length, children: /* @__PURE__ */ u(tt, { fontWeight: "bold", children: a }) }, a))
     ] }),
-    r.map((a) => /* @__PURE__ */ N(oa, { rowPadding: t, children: [
+    r.map((a, i) => /* @__PURE__ */ N(oa, { rowPadding: t, children: [
       /* @__PURE__ */ u(la, { className: "rowCheckbox", children: /* @__PURE__ */ u(wr, { margin: "0px" }) }),
-      Object.keys(a).map((i, o) => /* @__PURE__ */ N(
+      Object.keys(a).map((o, s) => /* @__PURE__ */ N(
         la,
         {
           border: !0,
-          justify: i === "actions" ? "flex-end" : "flex-start",
-          className: i === "actions" ? "actions" : null,
+          justify: o === "actions" ? "flex-end" : "flex-start",
+          className: o === "actions" ? "actions" : null,
           columns: n.length,
           children: [
-            /* @__PURE__ */ u(Qa, { className: "responsiveHeading", children: n[o] }),
-            i !== "actions" ? /* @__PURE__ */ u(bf, { children: a[i] }) : a[i]
+            /* @__PURE__ */ u(Qa, { className: "responsiveHeading", children: n[i] }),
+            o !== "actions" ? /* @__PURE__ */ u(bf, { children: a[o] }) : a[o]
           ]
         },
-        `${i}-${o}`
+        `${o}-${i}-${s}`
       ))
-    ] }, a.name))
+    ] }, `${a.name}-${i}`))
   ] });
 }
 const $u = p.div`

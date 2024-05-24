@@ -144,14 +144,14 @@ export default function ResponsiveTable({ data, rowPadding = null }) {
                     </TableHeading>
                 ))}
             </Row>
-            {rows.map(row => (
-                <Row key={row.name} rowPadding={rowPadding}>
+            {rows.map((row, index) => (
+                <Row key={`${row.name}-${index}`} rowPadding={rowPadding}>
                     <Cell className="rowCheckbox">
                         <Checkbox margin="0px" />
                     </Cell>
-                    {Object.keys(row).map((key, index) => (
+                    {Object.keys(row).map((key, index2) => (
                         <Cell
-                            key={`${key}-${index}`}
+                            key={`${key}-${index}-${index2}`}
                             border
                             justify={key === 'actions' ? 'flex-end' : 'flex-start'}
                             className={key === 'actions' ? 'actions' : null}
