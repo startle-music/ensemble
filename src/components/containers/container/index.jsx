@@ -38,7 +38,7 @@ export const ContainerContent = styled.div`
         padding-top: 0;
     }
 
-    @media (min-width: ${p => p.theme.layout.breakpoints.lg}) {
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         max-width: ${props => (props.narrow ? props.theme.container.maxWidth.md : '100%')};
         padding: ${props =>
             props.padded

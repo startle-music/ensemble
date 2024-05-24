@@ -132,8 +132,6 @@ export default function ResponsiveTable({ data, rowPadding = null }) {
     const { headings } = data;
     const { rows } = data;
 
-    console.log('responsiveTableData', data);
-
     return (
         <ResponsiveTableWrap>
             <Row border rowPadding={rowPadding} className="tableHeader">

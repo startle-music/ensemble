@@ -555,7 +555,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
         padding-top: 0;
     }
 
-    @media (min-width: ${e=>e.theme.layout.breakpoints.lg}) {
+    @media (min-width: ${e=>e.theme.layout.breakpoints.md}) {
         max-width: ${e=>e.narrow?e.theme.container.maxWidth.md:"100%"};
         padding: ${e=>e.padded?`${e.theme.container.padding.vertical.lg} ${e.theme.container.padding.horizontal.lg}`:0};
     }
@@ -2284,7 +2284,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             display: none;
         }
     }
-`;function Lf({data:e,rowPadding:n=null}){const{headings:t}=e,{rows:r}=e;return console.log("responsiveTableData",e),D(If,{children:[D(Zt,{border:!0,rowPadding:n,className:"tableHeader",children:[u(Kt,{children:u(st,{margin:"0px"})}),t.map(a=>u(Kt,{columns:t.length,children:u(Fe,{fontWeight:"bold",children:a})},a))]}),r.map(a=>D(Zt,{rowPadding:n,children:[u(Jt,{className:"rowCheckbox",children:u(st,{margin:"0px"})}),Object.keys(a).map((i,o)=>D(Jt,{border:!0,justify:i==="actions"?"flex-end":"flex-start",className:i==="actions"?"actions":null,columns:t.length,children:[u(Xt,{className:"responsiveHeading",children:t[o]}),i!=="actions"?u(_f,{children:a[i]}):a[i]]},`${i}-${o}`))]},a.name))]})}const jf=m.div`
+`;function Lf({data:e,rowPadding:n=null}){const{headings:t}=e,{rows:r}=e;return D(If,{children:[D(Zt,{border:!0,rowPadding:n,className:"tableHeader",children:[u(Kt,{children:u(st,{margin:"0px"})}),t.map(a=>u(Kt,{columns:t.length,children:u(Fe,{fontWeight:"bold",children:a})},a))]}),r.map(a=>D(Zt,{rowPadding:n,children:[u(Jt,{className:"rowCheckbox",children:u(st,{margin:"0px"})}),Object.keys(a).map((i,o)=>D(Jt,{border:!0,justify:i==="actions"?"flex-end":"flex-start",className:i==="actions"?"actions":null,columns:t.length,children:[u(Xt,{className:"responsiveHeading",children:t[o]}),i!=="actions"?u(_f,{children:a[i]}):a[i]]},`${i}-${o}`))]},a.name))]})}const jf=m.div`
     color: ${e=>e.theme.main.color};
     padding: ${e=>e.theme.layout.padding.vertical.sm} ${e=>e.theme.layout.padding.horizontal.sm};
     border-bottom: 1px solid ${e=>e.theme.main.border};
