@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const ScrollableListStyled = styled.ul`
     overflow-y: auto;
-    height: 50vh;
+    max-height: 50vh;
     padding: ${props =>
         props.padding
             ? props.padding

@@ -7346,7 +7346,7 @@ function Eu({
 }
 const xf = p.ul`
     overflow-y: auto;
-    height: 50vh;
+    max-height: 50vh;
     padding: ${(e) => e.padding ? e.padding : `${e.theme.layout.padding.vertical.sm} ${e.theme.layout.padding.horizontal.sm}`};
     margin: ${(e) => e.margin ? e.margin : `0 0 ${e.theme.layout.padding.vertical.lg}`};
     border: 1px solid ${(e) => e.theme.main.border};
