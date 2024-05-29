@@ -43,6 +43,7 @@ const statusColours = {
 };
 
 const generalColors = {
+    blueWhite: '#F3FBFD',
     lightGrey: '#eef0f4',
     lightBlueGrey: '#787e89',
     midGrey: '#e7e7e7',
