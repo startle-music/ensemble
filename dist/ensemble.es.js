@@ -7350,7 +7350,7 @@ const xf = p.ul`
     margin: ${(e) => e.margin ? e.margin : `0 0 ${e.theme.layout.padding.vertical.lg}`};
     border: 1px solid ${(e) => e.theme.main.border};
     list-style: none;
-    background: ${(e) => e.background ? e.theme.mainColors.lightGrey : e.theme.mainColors.white};
+    background: ${(e) => e.background ? e.theme.generalColors.lightGrey : e.theme.mainColors.white};
 `, wf = p.li`
     font-family: ${(e) => e.theme.main.font};
 

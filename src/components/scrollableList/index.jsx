@@ -12,7 +12,7 @@ const ScrollableListStyled = styled.ul`
     margin: ${props => (props.margin ? props.margin : `0 0 ${props.theme.layout.padding.vertical.lg}`)};
     border: 1px solid ${props => props.theme.main.border};
     list-style: none;
-    background: ${props => (props.background ? props.theme.mainColors.lightGrey : props.theme.mainColors.white)};
+    background: ${props => (props.background ? props.theme.generalColors.lightGrey : props.theme.mainColors.white)};
 `;
 
 export const ListItem = styled.li`
