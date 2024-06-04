@@ -189,6 +189,7 @@ const theme = {
         label: {
             color: brandColors.paintItBlack,
             fontSize: '1rem',
+            margin: '0.666rem',
             small: {
                 color: brandColors.paintItBlack,
                 fontSize: '0.875rem'

@@ -1739,6 +1739,7 @@ const ge = {
     label: {
       color: x.paintItBlack,
       fontSize: "1rem",
+      margin: "0.666rem",
       small: {
         color: x.paintItBlack,
         fontSize: "0.875rem"
@@ -2839,11 +2840,11 @@ const ws = p.label`
     display: block;
     font-size: 1.2rem;
     font-family: ${(e) => e.theme.main.font};
-    padding-bottom: 0.5rem;
+    //padding-bottom: 0.5rem;
     box-sizing: border-box;
     color: ${(e) => e.theme.main.color};
     margin: 0;
-    margin-bottom: ${(e) => e.margin || ".75em"};
+    margin-bottom: ${(e) => e.margin || ".666rem"};
     font-weight: bold;
 `, ks = p.span`
     display: inline-block;
@@ -3275,11 +3276,12 @@ const Bs = p.textarea`
     font-size: ${(e) => e.theme.main.fontSize};
     resize: none;
     font-family: ${(e) => e.theme.main.font};
-    transition: border 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 
     &:focus {
         outline: none;
         border: 1px solid ${(e) => e.theme.main.brand};
+        background-color: ${(e) => e.theme.generalColors.white};
     }
 `;
 function du({ name: e, value: t, onChange: n, placeholder: r }) {
@@ -7507,6 +7509,10 @@ const Ef = p.circle`
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
+
+    & h4 {
+        margin: 0;
+    }
 `, If = p.div`
     display: flex;
     justify-content: space-between;
@@ -7534,7 +7540,7 @@ function ju({ children: e, position: t = 0, handleNext: n, handleBack: r, handle
           " of ",
           se.Children.count(e)
         ] }),
-        se.Children.map(e, (s, c) => c === o ? /* @__PURE__ */ d(Va, { margin: "0px", children: s.props.title }) : null)
+        se.Children.map(e, (s, c) => c === o ? /* @__PURE__ */ d(Va, { children: s.props.title }) : null)
       ] })
     ] }),
     se.Children.map(e, (s, c) => c === o ? s : null),

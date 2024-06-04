@@ -14,11 +14,12 @@ const TextAreaStyled = styled.textarea`
     font-size: ${props => props.theme.main.fontSize};
     resize: none;
     font-family: ${props => props.theme.main.font};
-    transition: border 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 
     &:focus {
         outline: none;
         border: 1px solid ${props => props.theme.main.brand};
+        background-color: ${props => props.theme.generalColors.white};
     }
 `;
 

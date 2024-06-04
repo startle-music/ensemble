@@ -12,6 +12,10 @@ export const StepsHeader = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
+
+    & h4 {
+        margin: 0;
+    }
 `;
 
 export const StepsFooter = styled.div`
@@ -51,7 +55,7 @@ export default function Steps({ children, position = 0, handleNext, handleBack, 
                     </Text>
                     {React.Children.map(children, (child, i) => {
                         if (i === stepPosition) {
-                            return <Heading margin="0px">{child.props.title}</Heading>;
+                            return <Heading>{child.props.title}</Heading>;
                         }
                         return null;
                     })}
