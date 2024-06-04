@@ -42,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
 
 
     html, body {
+        font-size: 15px;
         font-family: ${themeBase.main.font};
     }
 

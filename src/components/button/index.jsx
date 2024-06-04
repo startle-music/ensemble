@@ -181,7 +181,7 @@ const btnBase = css`
             ? `${theme.button.padding.vertical.xs}`
             : `${theme.button.padding.vertical.xs} ${theme.button.padding.horizontal.xs}`};
     //font-size: ${({ icon }) => (icon === true ? `1.333rem` : `1rem`)};
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-radius: ${({ rounded, theme }) => (rounded === true ? '10rem' : theme.layout.borderRadius.sm)};
     cursor: pointer;
     box-shadow: none;

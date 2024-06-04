@@ -29,6 +29,7 @@ const Label = styled.label`
 
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         padding: 3rem 2rem;
+        aspect-ratio: 12 / 7;
     }
 `;
 

@@ -27,7 +27,7 @@ const Input = styled.input`
     margin: 0;
     background: transparent;
     font-size: 1rem;
-    padding: 0.73rem 0.4rem;
+    padding: 0.667rem 1rem;
     color: inherit;
     width: 100%;
     font-family: ${props => props.theme.main.font};
@@ -39,6 +39,19 @@ const Input = styled.input`
 
     &:focus {
         outline: none;
+    }
+
+    &[type='date'] {
+        padding: 0.6rem 1rem;
+    }
+
+    &[type='date']::-webkit-calendar-picker-indicator {
+        //color: rgba(0, 0, 0, 0);
+        //opacity: 1;
+        display: block;
+        //background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
+        padding: 0;
+        //border-width: thin;
     }
 `;
 
@@ -70,6 +83,13 @@ const getColours = status => {
     return colourObject;
 };
 
+const Prepend = styled.div`
+    font-size: 1.4rem;
+`;
+const Append = styled.div`
+    font-size: 1.4rem;
+`;
+
 /**
  *
  * @prop {label} string
@@ -93,15 +113,15 @@ const FieldComponent = ({
     status = null,
     ...rest
 }) => {
-    let Prepend = () => null;
-    if (prepend !== null) {
-        Prepend = () => <>{prepend}</>;
-    }
+    // let Prepend = () => null;
+    // if (prepend !== null) {
+    //     Prepend = () => <>{prepend}</>;
+    // }
 
-    let Append = () => null;
-    if (append !== null) {
-        Append = () => <>{append}</>;
-    }
+    // let Append = () => null;
+    // if (append !== null) {
+    //     Append = () => <>{append}</>;
+    // }
 
     let colours = {
         inputBackground: 'white',
@@ -146,11 +166,9 @@ const FieldComponent = ({
 
     return (
         <Field htmlFor={name} block>
-            {
-                // label !== null ? <Label required={required}>{label}</Label> : null
-            }
+            {label !== null ? <Label required={required}>{label}</Label> : null}
             <Wrap {...{ ...rest, ...colours }}>
-                <Prepend />
+                {prepend ? <Prepend>{prepend}</Prepend> : null}
                 <Input
                     type={type}
                     name={name}
@@ -161,7 +179,7 @@ const FieldComponent = ({
                     {...colours}
                     {...rest}
                 />
-                <Append />
+                {append ? <Append>{append}</Append> : null}
             </Wrap>
             <Caption {...colours}>{caption}</Caption>
         </Field>

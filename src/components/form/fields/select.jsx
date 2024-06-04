@@ -19,7 +19,7 @@ const Dropdown = styled.select`
     -webkit-appearance: none;
     background: transparent;
     border: none;
-    padding: ${props => (props.inline ? '0.76rem 1.6rem 0.76rem 0.6rem' : '0.875rem 0.6rem')};
+    padding: ${props => (props.inline ? '0.667rem 1.6rem 0.667rem 0.6rem' : '0.667rem 0.6rem')};
     font-family: ${props => props.theme.main.font};
     color: ${props => props.theme.form.select.color};
     font-weight: 400;
@@ -63,11 +63,11 @@ const StyledSelect = styled.div`
         top: 37%;
         z-index: 100;
         box-sizing: border-box;
-        height: 0.5rem;
-        width: 0.5rem;
+        height: 0.4rem;
+        width: 0.4rem;
         border-style: solid;
         border-color: #787e89;
-        border-width: 0px 2px 2px 0px;
+        border-width: 0px 1px 1px 0px;
         transform: rotate(45deg);
         transition: border-width 150ms ease-in-out;
         pointer-events: none;

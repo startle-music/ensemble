@@ -91,7 +91,7 @@ const theme = {
         color: brandColors.paintItBlack,
         bodyColor: generalColors.lightBlueGrey,
         contrastColor: generalColors.white,
-        fontSize: '16px',
+        fontSize: '15px',
         fontWeight: '400',
         boxBackground: generalColors.white,
         border: generalColors.midGrey,
@@ -165,9 +165,15 @@ const theme = {
         }
     },
     actionPanel: {
-        background: brandColors.mrBlueSky,
         color: brandColors.paintItBlack,
-        border: brandColors.blueMonday
+        base: {
+            background: '#F2FCFF',
+            border: '#7BC5DA'
+        },
+        over: {
+            background: brandColors.mrBlueSky,
+            border: brandColors.blueMonday
+        }
     },
 
     // styling for each component
@@ -301,11 +307,11 @@ const theme = {
         },
         padding: {
             vertical: {
-                xs: '0.4rem',
+                xs: '0.6rem',
                 sm: '0.6rem'
             },
             horizontal: {
-                xs: '1rem',
+                xs: '1.5rem',
                 sm: '1.5rem'
             }
         },
