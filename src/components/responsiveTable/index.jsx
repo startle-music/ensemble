@@ -9,16 +9,17 @@ import Heading from '../headings';
 export const ResponsiveTableWrap = styled.div`
     font-family: ${props => props.theme.main.fontFamily};
     color: ${props => props.theme.main.color};
+    overflow-x: auto;
+    display: block;
+`;
 
-    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
-        display: table;
-        width: 100%;
-    }
+const Table = styled.table`
+    width: 100%;
 `;
 
 const CellText = styled(Text)`
     display: inline-block;
-    margin-left: 0.5rem;
+    //margin-left: 0.5rem;
 
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         display: block;
@@ -34,9 +35,11 @@ export const Row = styled.div`
     padding: ${p =>
         p.rowPadding ? p.rowPadding : `${p.theme.layout.padding.vertical.xs} ${p.theme.layout.padding.horizontal.xs}`};
     border-bottom: ${props => `1px solid ${props.theme.table.header.border}`};
+    display: table-row;
 
     &.tableHeader {
-        display: none;
+        //display: none;
+        display: table-row;
     }
 
     &:last-child {
@@ -51,7 +54,6 @@ export const Row = styled.div`
         //display: flex;
         border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
         padding: ${p => (p.rowPadding ? p.rowPadding : 0)};
-        display: table-row;
 
         &.tableHeader {
             //display: flex;
@@ -72,6 +74,8 @@ export const TableHeading = styled.div`
     flex-grow: 1;
     overflow: hidden;
     display: table-cell;
+    white-space: nowrap;
+    vertical-align: middle;
 
     &:first-child {
         flex-grow: 0;
@@ -97,6 +101,10 @@ export const Cell = styled.div`
     //width: ${props => (props.columns ? `calc(100% - 50px / ${props.columns})` : 'auto')};
     flex-grow: 1;
     overflow: hidden;
+    display: table-cell;
+
+    white-space: nowrap;
+    vertical-align: middle;
 
     &.actions {
         display: flex;
@@ -104,7 +112,7 @@ export const Cell = styled.div`
     }
 
     &:first-child {
-        display: flex;
+        //display: flex;
         flex-grow: 0;
         overflow: visible;
     }
@@ -113,7 +121,7 @@ export const Cell = styled.div`
         //display: flex;
         border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
         justify-content: ${({ justify }) => justify || 'flex-start'};
-        display: table-cell;
+        
 
         &.actions {
             justify-content: ${({ justify }) => justify || 'flex-start'};
@@ -143,35 +151,37 @@ export default function ResponsiveTable({ data, rowPadding = null }) {
 
     return (
         <ResponsiveTableWrap>
-            <Row border rowPadding={rowPadding} className="tableHeader">
-                <TableHeading>
-                    <Checkbox margin="0px" />
-                </TableHeading>
-                {headings.map(heading => (
-                    <TableHeading key={heading} columns={headings.length}>
-                        <Text fontWeight="bold">{heading}</Text>
-                    </TableHeading>
-                ))}
-            </Row>
-            {rows.map((row, index) => (
-                <Row key={`${row.name}-${index}`} rowPadding={rowPadding}>
-                    <Cell className="rowCheckbox">
+            <Table>
+                <Row border rowPadding={rowPadding} className="tableHeader">
+                    <TableHeading>
                         <Checkbox margin="0px" />
-                    </Cell>
-                    {Object.keys(row).map((key, index2) => (
-                        <Cell
-                            key={`${key}-${index}-${index2}`}
-                            border
-                            justify={key === 'actions' ? 'flex-end' : 'flex-start'}
-                            className={key === 'actions' ? 'actions' : null}
-                            columns={headings.length}
-                        >
-                            <Heading className="responsiveHeading">{headings[index]}</Heading>
-                            {key !== 'actions' ? <CellText>{row[key]}</CellText> : row[key]}
-                        </Cell>
+                    </TableHeading>
+                    {headings.map(heading => (
+                        <TableHeading key={heading} columns={headings.length}>
+                            <Text fontWeight="bold">{heading}</Text>
+                        </TableHeading>
                     ))}
                 </Row>
-            ))}
+                {rows.map((row, index) => (
+                    <Row key={`${row.name}-${index}`} rowPadding={rowPadding}>
+                        <Cell className="rowCheckbox">
+                            <Checkbox margin="0px" />
+                        </Cell>
+                        {Object.keys(row).map((key, index2) => (
+                            <Cell
+                                key={`${key}-${index}-${index2}`}
+                                border
+                                justify={key === 'actions' ? 'flex-end' : 'flex-start'}
+                                className={key === 'actions' ? 'actions' : null}
+                                columns={headings.length}
+                            >
+                                {/* <Heading className="responsiveHeading">{headings[index]}</Heading> */}
+                                {key !== 'actions' ? <CellText>{row[key]}</CellText> : row[key]}
+                            </Cell>
+                        ))}
+                    </Row>
+                ))}
+            </Table>
         </ResponsiveTableWrap>
     );
 }
