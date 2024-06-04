@@ -34,7 +34,7 @@ const btnPrimary = css`
 `;
 
 const btnAction = css`
-    background: ${({ theme, icon }) => (icon === true ? theme.main.background : theme.button.color)};
+    background: ${({ theme, icon }) => (icon === true ? theme.button.action.background : theme.button.color)};
     border: ${({ theme }) => theme.button.background};
     color: ${({ theme }) => theme.button.background};
 
@@ -48,17 +48,17 @@ const btnAction = css`
     }
 
     &:hover {
-        background: ${({ theme, icon }) => (icon === true ? theme.main.background : theme.button.color)};
+        background: ${({ theme, icon }) => (icon === true ? theme.button.action.background : theme.button.color)};
         border: ${({ theme }) => theme.button.hover.background};
         color: ${({ theme }) => theme.button.hover.background};
     }
     &:active {
-        background: ${({ theme, icon }) => (icon === true ? theme.main.background : theme.button.color)};
+        background: ${({ theme, icon }) => (icon === true ? theme.button.action.background : theme.button.color)};
         border: ${({ theme }) => theme.button.active.background};
         color: ${({ theme }) => theme.button.active.background};
 
         &:hover {
-            background: ${({ theme, icon }) => (icon === true ? theme.main.background : theme.button.color)};
+            background: ${({ theme, icon }) => (icon === true ? theme.button.action.background : theme.button.color)};
             border: ${({ theme }) => theme.button.active.hover.background};
             color: ${({ theme }) => theme.button.active.hover.background};
         }

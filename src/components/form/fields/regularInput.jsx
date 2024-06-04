@@ -33,7 +33,7 @@ const Input = styled.input`
     font-family: ${props => props.theme.main.font};
 
     &::placeholder {
-        color: ${({ inputColour }) => lighten(0.3, inputColour)};
+        color: ${p => p.theme.form.input.placeholder};
         opacity: 1; /* Firefox */
     }
 
@@ -146,7 +146,9 @@ const FieldComponent = ({
 
     return (
         <Field htmlFor={name} block>
-            {label !== null ? <Label required={required}>{label}</Label> : null}
+            {
+                // label !== null ? <Label required={required}>{label}</Label> : null
+            }
             <Wrap {...{ ...rest, ...colours }}>
                 <Prepend />
                 <Input

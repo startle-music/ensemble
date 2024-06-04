@@ -21,6 +21,7 @@ const StyledRequired = styled.span`
 
 const Label = ({ children, required = false }) => {
     let Required = () => null;
+
     if (required) {
         Required = <StyledRequired>*</StyledRequired>;
     }

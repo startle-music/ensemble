@@ -9,6 +9,11 @@ import Heading from '../headings';
 export const ResponsiveTableWrap = styled.div`
     font-family: ${props => props.theme.main.fontFamily};
     color: ${props => props.theme.main.color};
+
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
+        display: table;
+        width: 100%;
+    }
 `;
 
 const CellText = styled(Text)`
@@ -43,27 +48,30 @@ export const Row = styled.div`
     }
 
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
-        display: flex;
+        //display: flex;
         border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
         padding: ${p => (p.rowPadding ? p.rowPadding : 0)};
+        display: table-row;
 
         &.tableHeader {
-            display: flex;
+            //display: flex;
+            display: table-row;
         }
     }
 `;
 
 export const TableHeading = styled.div`
-    display: flex;
+    //display: flex;
     flex: ${({ collapse }) => (collapse ? '0' : '1')};
     //padding: 0.5rem;
     padding: ${props => props.theme.layout.padding.vertical.xs} ${props => props.theme.layout.padding.horizontal.xs};
     font-weight: bold;
     border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
     align-items: center;
-    width: ${props => (props.columns ? `calc(100% / ${props.columns})` : 'auto')};
+    //width: ${props => (props.columns ? `calc(100% / ${props.columns})` : 'auto')};
     flex-grow: 1;
     overflow: hidden;
+    display: table-cell;
 
     &:first-child {
         flex-grow: 0;
@@ -86,7 +94,7 @@ export const Cell = styled.div`
     //padding: 0.5rem;
     padding: ${props => props.theme.layout.padding.vertical.xs} ${props => props.theme.layout.padding.horizontal.xs};
     align-items: center;
-    width: ${props => (props.columns ? `calc(100% - 50px / ${props.columns})` : 'auto')};
+    //width: ${props => (props.columns ? `calc(100% - 50px / ${props.columns})` : 'auto')};
     flex-grow: 1;
     overflow: hidden;
 
@@ -102,9 +110,10 @@ export const Cell = styled.div`
     }
 
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
-        display: flex;
+        //display: flex;
         border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
         justify-content: ${({ justify }) => justify || 'flex-start'};
+        display: table-cell;
 
         &.actions {
             justify-content: ${({ justify }) => justify || 'flex-start'};

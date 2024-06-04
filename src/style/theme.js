@@ -114,12 +114,12 @@ const theme = {
         margin: '2rem',
         padding: {
             horizontal: {
-                lg: '2rem',
+                lg: '1.333rem',
                 sm: '1rem',
                 xs: '0.6rem'
             },
             vertical: {
-                lg: '2rem',
+                lg: '1rem',
                 sm: '1rem',
                 xs: '0.5rem'
             }
@@ -137,11 +137,11 @@ const theme = {
         },
         padding: {
             horizontal: {
-                lg: '2rem',
+                lg: '1.333rem',
                 sm: '1.333rem'
             },
             vertical: {
-                lg: '2rem',
+                lg: '1.333rem',
                 sm: '1rem'
             }
         },
@@ -295,6 +295,9 @@ const theme = {
         color: generalColors.white,
         minHeight: '2rem',
         fontWeight: '400',
+        action: {
+            background: generalColors.lightGrey
+        },
         padding: {
             vertical: {
                 xs: '0.4rem',

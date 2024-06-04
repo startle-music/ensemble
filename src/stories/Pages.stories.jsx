@@ -147,9 +147,9 @@ const TableContents = () => (
                 <Column span={3}>
                     <RegularInput
                         prepend={<Icon />}
-                        inputBorder={theme.form.input.border}
+                        // inputBorder={theme.form.input.border}
                         placeholder="Search"
-                        inputColour={theme.form.input.placeholder}
+                        // inputColour={theme.form.input.placeholder}
                     />
                 </Column>
                 <Column span={3}>
