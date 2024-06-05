@@ -26,7 +26,7 @@ const ActionPanelStyled = styled.div`
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         flex-direction: column;
         justify-content: space-around;
-        aspect-ratio: 16/9;
+        aspect-ratio: 12/9;
         padding: 2rem;
         justify-content: space-between;
         text-align: center;
