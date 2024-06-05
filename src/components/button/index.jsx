@@ -34,8 +34,8 @@ const btnPrimary = css`
 `;
 
 const btnAction = css`
-    background: ${({ theme, icon }) => (icon === true ? theme.button.action.background : theme.button.color)};
-    border: ${({ theme }) => theme.button.background};
+    background: ${({ theme }) => theme.button.action.background};
+    border: ${({ theme }) => theme.button.action.border};
     color: ${({ theme }) => theme.button.background};
 
     &:disabled,
@@ -48,26 +48,27 @@ const btnAction = css`
     }
 
     &:hover {
-        background: ${({ theme, icon }) => (icon === true ? theme.button.action.background : theme.button.color)};
-        border: ${({ theme }) => theme.button.hover.background};
+        background: ${({ theme }) => theme.button.action.background};
+        border: ${({ theme }) => theme.button.action.border};
         color: ${({ theme }) => theme.button.hover.background};
     }
+
     &:active {
-        background: ${({ theme, icon }) => (icon === true ? theme.button.action.background : theme.button.color)};
-        border: ${({ theme }) => theme.button.active.background};
+        background: ${({ theme }) => theme.button.action.background};
+        border: ${({ theme }) => theme.button.action.border};
         color: ${({ theme }) => theme.button.active.background};
 
         &:hover {
-            background: ${({ theme, icon }) => (icon === true ? theme.button.action.background : theme.button.color)};
-            border: ${({ theme }) => theme.button.active.hover.background};
+            background: ${({ theme }) => theme.button.action.background};
+            border: ${({ theme }) => theme.button.action.border};
             color: ${({ theme }) => theme.button.active.hover.background};
         }
     }
 `;
 
 const btnNeutral = css`
-    background: ${({ theme }) => theme.mainColors.fadeToGrey};
-    border: ${({ theme }) => theme.mainColors.fadeToGrey};
+    background: ${({ theme }) => theme.button.neutral.background};
+    border: ${({ theme }) => theme.button.neutral.border};
     color: ${({ theme }) => theme.main.color};
 
     &:disabled,
@@ -80,18 +81,18 @@ const btnNeutral = css`
     }
 
     &:hover {
-        background: ${({ theme }) => theme.mainColors.fadeToGrey};
-        border: ${({ theme }) => theme.mainColors.fadeToGrey};
+        background: ${({ theme }) => theme.button.neutral.background};
+        border: ${({ theme }) => theme.button.neutral.border};
         color: ${({ theme }) => theme.main.color};
     }
     &:active {
-        background: ${({ theme }) => theme.mainColors.fadeToGrey};
-        border: ${({ theme }) => theme.mainColors.fadeToGrey};
+        background: ${({ theme }) => theme.button.neutral.background};
+        border: ${({ theme }) => theme.button.neutral.border};
         color: ${({ theme }) => theme.main.color};
 
         &:hover {
-            background: ${({ theme }) => theme.mainColors.fadeToGrey};
-            border: ${({ theme }) => theme.mainColors.fadeToGrey};
+            background: ${({ theme }) => theme.button.neutral.background};
+            border: ${({ theme }) => theme.button.neutral.border};
             color: ${({ theme }) => theme.main.color};
         }
     }
@@ -181,10 +182,12 @@ const btnBase = css`
             ? `${theme.button.padding.vertical.xs}`
             : `${theme.button.padding.vertical.xs} ${theme.button.padding.horizontal.xs}`};
     //font-size: ${({ icon }) => (icon === true ? `1.333rem` : `1rem`)};
-    font-size: 1rem;
-    border-radius: ${({ rounded, theme }) => (rounded === true ? '10rem' : theme.layout.borderRadius.sm)};
+    font-size: ${p => (p.small ? `.9rem` : `1rem`)};
+    border-radius: ${({ rounded, theme }) => (rounded === true ? '10rem' : theme.layout.borderRadius.md)};
     cursor: pointer;
     box-shadow: none;
+
+    ${p => (p.small ? `padding: .3rem .2rem;` : null)}
 
     /* if a button is followed by a button add left margin to the trailing button */
     & + button,
@@ -195,8 +198,6 @@ const btnBase = css`
     ${({ action, outline }) => (action === true ? btnAction : outline === true ? btnOutline : btnPrimary)};
     ${({ neutral }) => (neutral === true ? btnNeutral : '')};
     ${({ inline }) => (inline === true ? btnInline : '')};
-
-    
 
     svg {
         fill: currentColor;

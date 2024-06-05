@@ -10,7 +10,7 @@ const LabelWrap = styled.label`
     box-sizing: border-box;
     color: ${props => props.theme.main.color};
     margin: 0;
-    margin-bottom: ${props => props.margin || '.666rem'};
+    margin-bottom: ${props => props.margin || props.theme.form.label.margin};
     font-weight: bold;
 `;
 

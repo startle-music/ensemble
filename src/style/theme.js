@@ -302,9 +302,6 @@ const theme = {
         color: generalColors.white,
         minHeight: '2rem',
         fontWeight: '400',
-        action: {
-            background: generalColors.lightGrey
-        },
         padding: {
             vertical: {
                 xs: '0.6rem',
@@ -330,6 +327,14 @@ const theme = {
                 color: generalColors.white,
                 border: `2px solid ${brandColors.paintItBlack}`
             }
+        },
+        action: {
+            background: generalColors.lightGrey,
+            border: `2px solid ${generalColors.lightGrey}`
+        },
+        neutral: {
+            background: brandColors.fadeToGrey,
+            border: `2px solid ${brandColors.fadeToGrey}`
         }
     },
     tabs: {

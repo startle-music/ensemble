@@ -16,6 +16,10 @@ export const StepsHeader = styled.div`
     & h4 {
         margin: 0;
     }
+
+    button {
+        margin: 0 0 0 auto;
+    }
 `;
 
 export const StepsFooter = styled.div`
@@ -30,7 +34,15 @@ const HeaderBody = styled.div``;
 
 export const Step = styled.div``;
 
-export default function Steps({ children, position = 0, handleNext, handleBack, handleEnd, endText = 'Submit' }) {
+export default function Steps({
+    children,
+    position = 0,
+    handleNext,
+    handleBack,
+    handleEnd,
+    endText = 'Submit',
+    handleCancel = null
+}) {
     let stepPosition = position;
     // lock position between 0 and children.length
     if (position < 0) {
@@ -60,6 +72,11 @@ export default function Steps({ children, position = 0, handleNext, handleBack, 
                         return null;
                     })}
                 </HeaderBody>
+                {handleCancel ? (
+                    <Button action small onClick={handleCancel}>
+                        Cancel
+                    </Button>
+                ) : null}
             </StepsHeader>
             {React.Children.map(children, (child, i) => {
                 if (i === stepPosition) {

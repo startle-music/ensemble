@@ -337,7 +337,12 @@ const FormContents = ({ radio, modalOpen, step }) => (
         <Container padded wide>
             <ContainerContent narrow>
                 <Heading type="title">Form</Heading>
-                <Steps position={step}>
+                <Steps
+                    position={step}
+                    handleCancel={() => {
+                        alert('yo');
+                    }}
+                >
                     <Step title="Frequency and adverts">
                         <Form>
                             <FormRow>
@@ -430,7 +435,9 @@ const FormContents = ({ radio, modalOpen, step }) => (
                                         </Card>
                                     </DraggableListItem>
                                 ))}
-                                <Button type="button">Add a playlist</Button>
+                                <Button type="button" action>
+                                    Add a playlist
+                                </Button>
                             </DragDropList>
                             <FormRow>
                                 <TextArea name="text" onChange={() => {}} placeholder="Please enter your text here" />
