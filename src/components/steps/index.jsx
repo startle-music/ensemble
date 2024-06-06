@@ -8,6 +8,23 @@ import Button from '../button';
 
 const StyledSteps = styled.div``;
 
+const StepContent = styled.div`
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.6);
+        visibility: ${p => (p.loading ? 'visible' : 'hidden')};
+        opacity: ${p => (p.loading ? 1 : 0)};
+        transition: all 0.3s;
+    }
+`;
+
 export const StepsHeader = styled.div`
     display: flex;
     align-items: center;
@@ -41,7 +58,8 @@ export default function Steps({
     handleBack,
     handleEnd,
     endText = 'Submit',
-    handleCancel = null
+    handleCancel = null,
+    loading = false
 }) {
     let stepPosition = position;
     // lock position between 0 and children.length
@@ -78,12 +96,14 @@ export default function Steps({
                     </Button>
                 ) : null}
             </StepsHeader>
-            {React.Children.map(children, (child, i) => {
-                if (i === stepPosition) {
-                    return child;
-                }
-                return null;
-            })}
+            <StepContent loading={loading}>
+                {React.Children.map(children, (child, i) => {
+                    if (i === stepPosition) {
+                        return child;
+                    }
+                    return null;
+                })}
+            </StepContent>
             <StepsFooter>
                 <Button onClick={handleBack} disabled={stepPosition === 0} neutral>
                     Previous

@@ -331,7 +331,7 @@ function ModalContent() {
     );
 }
 
-const FormContents = ({ radio, modalOpen, step }) => (
+const FormContents = ({ radio, modalOpen, step, loading }) => (
     <>
         <Modal isOpen={modalOpen} content={<ModalContent />} wide />
         <Container padded wide>
@@ -339,6 +339,7 @@ const FormContents = ({ radio, modalOpen, step }) => (
                 <Heading type="title">Form</Heading>
                 <Steps
                     position={step}
+                    loading={loading}
                     handleCancel={() => {
                         alert('yo');
                     }}
@@ -511,7 +512,8 @@ export const FormExample = {
         id: 'Form Page',
         radio: 'radio2',
         modalOpen: false,
-        step: 0
+        step: 0,
+        loading: false
     },
     render: args => (
         <Page>
