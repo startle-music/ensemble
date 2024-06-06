@@ -1931,7 +1931,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
     @media (min-width: ${e=>e.theme.layout.breakpoints.md}) {
         padding: 3rem 2rem;
-        aspect-ratio: 12 / 7;
+        aspect-ratio: 12 / 9;
     }
 `,rf=m.div`
     display: block;
@@ -2147,7 +2147,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     justify-content: center;
     border: 1px solid ${e=>e.theme.form.input.border};
     width: 100%;
-    height: 100%;
+    height:
     padding: 1rem;
     align-items: center;
     flex-wrap: wrap;
@@ -2162,7 +2162,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     @media (min-width: ${e=>e.theme.layout.breakpoints.md}) {
         flex-direction: column;
         justify-content: space-around;
-        aspect-ratio: 12/9;
+        aspect-ratio: 16/9;
         padding: 2rem;
         justify-content: space-between;
         text-align: center;

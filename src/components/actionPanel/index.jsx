@@ -11,7 +11,7 @@ const ActionPanelStyled = styled.div`
     justify-content: center;
     border: 1px solid ${p => p.theme.form.input.border};
     width: 100%;
-    height: 100%;
+    height:
     padding: 1rem;
     align-items: center;
     flex-wrap: wrap;
@@ -26,7 +26,7 @@ const ActionPanelStyled = styled.div`
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         flex-direction: column;
         justify-content: space-around;
-        aspect-ratio: 12/9;
+        aspect-ratio: 16/9;
         padding: 2rem;
         justify-content: space-between;
         text-align: center;
