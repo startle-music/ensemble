@@ -6,7 +6,7 @@ const LabelWrap = styled.label`
     display: block;
     font-size: 1.2rem;
     font-family: ${props => props.theme.main.font};
-    //padding-bottom: 0.5rem;
+    padding-bottom: 0.6666666rem;
     box-sizing: border-box;
     color: ${props => props.theme.main.color};
     margin: 0;

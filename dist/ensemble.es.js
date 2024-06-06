@@ -2852,7 +2852,7 @@ const xs = p.label`
     display: block;
     font-size: 1.2rem;
     font-family: ${(e) => e.theme.main.font};
-    //padding-bottom: 0.5rem;
+    padding-bottom: 0.6666666rem;
     box-sizing: border-box;
     color: ${(e) => e.theme.main.color};
     margin: 0;
@@ -3161,7 +3161,7 @@ const xs = p.label`
         margin: 0 0.5rem;
 
         input {
-            width: 3rem;
+            width: 4.5rem;
         }
     }
 `, zs = p.input`

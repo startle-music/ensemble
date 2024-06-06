@@ -23,7 +23,7 @@ const PaddedLabel = styled(Label)`
         margin: 0 0.5rem;
 
         input {
-            width: 3rem;
+            width: 4.5rem;
         }
     }
 `;

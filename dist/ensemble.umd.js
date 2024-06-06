@@ -859,7 +859,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
     display: block;
     font-size: 1.2rem;
     font-family: ${e=>e.theme.main.font};
-    //padding-bottom: 0.5rem;
+    padding-bottom: 0.6666666rem;
     box-sizing: border-box;
     color: ${e=>e.theme.main.color};
     margin: 0;
@@ -1070,7 +1070,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
         margin: 0 0.5rem;
 
         input {
-            width: 3rem;
+            width: 4.5rem;
         }
     }
 `,Gs=m.input`
