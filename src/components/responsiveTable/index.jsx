@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styled from 'styled-components';
 
@@ -149,12 +149,37 @@ export default function ResponsiveTable({ data, rowPadding = null }) {
     const { headings } = data;
     const { rows } = data;
 
+    const [isCheckAll, setIsCheckAll] = useState(false);
+    const [isChecked, setIsChecked] = useState([]);
+
+    const checkAll = e => {
+        setIsCheckAll(!isCheckAll);
+        setIsChecked(data.rows.map(row => row.id));
+        if (isCheckAll) {
+            setIsChecked([]);
+        }
+    };
+
+    function handleSingle(e) {
+        const { checked, value } = e.target;
+
+        console.log('checked', checked, 'value', value, isChecked);
+
+        if (checked) {
+            if (isChecked.includes(value)) return;
+            setIsChecked([...isChecked, parseInt(value)]);
+        } else {
+            setIsCheckAll(false);
+            setIsChecked(isChecked.filter(item => item !== parseInt(value)));
+        }
+    }
+
     return (
         <ResponsiveTableWrap>
             <Table>
                 <Row border rowPadding={rowPadding} className="tableHeader">
                     <TableHeading>
-                        <Checkbox margin="0px" />
+                        <Checkbox margin="0px" onChange={checkAll} checked={isCheckAll} />
                     </TableHeading>
                     {headings.map(heading => (
                         <TableHeading key={heading} columns={headings.length}>
@@ -165,20 +190,30 @@ export default function ResponsiveTable({ data, rowPadding = null }) {
                 {rows.map((row, index) => (
                     <Row key={`${row.name}-${index}`} rowPadding={rowPadding}>
                         <Cell className="rowCheckbox">
-                            <Checkbox margin="0px" />
+                            <Checkbox
+                                margin="0px"
+                                checked={isChecked.includes(row.id)}
+                                value={row.id}
+                                onChange={e => handleSingle(e)}
+                            />
                         </Cell>
-                        {Object.keys(row).map((key, index2) => (
-                            <Cell
-                                key={`${key}-${index}-${index2}`}
-                                border
-                                justify={key === 'actions' ? 'flex-end' : 'flex-start'}
-                                className={key === 'actions' ? 'actions' : null}
-                                columns={headings.length}
-                            >
-                                {/* <Heading className="responsiveHeading">{headings[index]}</Heading> */}
-                                {key !== 'actions' ? <CellText>{row[key]}</CellText> : row[key]}
-                            </Cell>
-                        ))}
+                        {Object.keys(row).map((key, index2) => {
+                            if (key === 'id') {
+                                return null;
+                            }
+                            return (
+                                <Cell
+                                    key={`${key}-${index}-${index2}`}
+                                    border
+                                    justify={key === 'actions' ? 'flex-end' : 'flex-start'}
+                                    className={key === 'actions' ? 'actions' : null}
+                                    columns={headings.length}
+                                >
+                                    {/* <Heading className="responsiveHeading">{headings[index]}</Heading> */}
+                                    {key !== 'actions' ? <CellText>{row[key]}</CellText> : row[key]}
+                                </Cell>
+                            );
+                        })}
                     </Row>
                 ))}
             </Table>

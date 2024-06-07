@@ -68,6 +68,7 @@ const tableData = {
     headings: ['Jingle Element Name', 'Jingle Element Type', 'File Type', 'Added', ''],
     rows: [
         {
+            id: 1,
             name: 'Jingle 1',
             type: 'Jingle',
             fileType: 'mp3',
@@ -75,6 +76,7 @@ const tableData = {
             actions: <TableActions id={1} />
         },
         {
+            id: 2,
             name: 'Jingle 2',
             type: 'Jingle',
             fileType: 'mp3',
@@ -82,6 +84,7 @@ const tableData = {
             actions: <TableActions id={2} />
         },
         {
+            id: 3,
             name: 'Jingle 3',
             type: 'Jingle',
             fileType: 'mp3',
@@ -89,6 +92,7 @@ const tableData = {
             actions: <TableActions id={3} />
         },
         {
+            id: 4,
             name: 'Jingle 4',
             type: 'Jingle',
             fileType: 'mp3',
