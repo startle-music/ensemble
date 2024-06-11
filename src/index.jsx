@@ -46,6 +46,7 @@ export { default as TimeSelect } from './components/form/fields/timeSelect';
 export { default as TextArea } from './components/form/fields/textArea';
 export { default as RadioPanel } from './components/form/fields/radioPanel';
 export { default as Switch } from './components/form/fields/switch';
+export { default as InputExpander } from './components/form/fields/inputExpander';
 
 // headings
 export { default as Heading } from './components/headings';
