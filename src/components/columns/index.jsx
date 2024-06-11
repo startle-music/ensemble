@@ -7,11 +7,15 @@ import ToggleArea from '../toggleArea';
 const ColumnStyled = styled.div`
     //grid-row: 1;
     grid-column: col-start 1 / span 12;
-    display: flex;
-    margin-bottom: ${props => props.theme.layout.padding.vertical.sm};
+    display: ${p => (p.inline ? 'inline-flex' : 'flex')};
+    margin-bottom: ${props => (props.inline ? null : props.theme.layout.padding.vertical.sm)};
+    float: ${props => (props.pull === 'right' ? 'right' : 'none')};
+
+    margin-right: ${props => (props.inline ? props.theme.layout.gap.sm : 0)};
 
     &:last-child {
         margin-bottom: 0;
+        margin-right: 0;
     }
 
     @media (min-width: ${p => p.theme.layout.breakpoints.sm}) {
@@ -28,6 +32,7 @@ const ColumnStyled = styled.div`
 
 export const ColumnWrapper = styled.div`
     width: 100%;
+    position: relative;
     grid-template-columns: repeat(12, [col-start] 1fr);
     grid-auto-flow: row;
     margin: ${p => (p.margin ? p.margin : '0')};
@@ -46,9 +51,9 @@ export const ColumnWrapper = styled.div`
     }
 `;
 
-export default function Column({ span = 4, offset = '', pull = 'left', align = 'top', children }) {
+export default function Column({ span = 4, offset = '', pull = 'left', align = 'top', children, inline }) {
     return (
-        <ColumnStyled span={span} offset={offset} pull={pull} align={align}>
+        <ColumnStyled span={span} offset={offset} pull={pull} align={align} inline={inline}>
             {children}
         </ColumnStyled>
     );

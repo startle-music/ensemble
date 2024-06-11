@@ -11,7 +11,6 @@ const ActionPanelStyled = styled.div`
     justify-content: center;
     border: 1px solid ${p => p.theme.form.input.border};
     width: 100%;
-    height:
     padding: 1rem;
     align-items: center;
     flex-wrap: wrap;

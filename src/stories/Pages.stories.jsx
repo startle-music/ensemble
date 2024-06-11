@@ -1,6 +1,6 @@
 import { useArgs } from '@storybook/preview-api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTrash, faPencil, faPlay, faFileAudio } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTrash, faPencil, faPlay, faFileAudio, faArrowsUpDown } from '@fortawesome/free-solid-svg-icons';
 import Container, { ContainerContent } from '../components/containers/container';
 import Page from '../components/page';
 import RegularInput from '../components/form/fields/regularInput';
@@ -20,6 +20,7 @@ import RadioComponent from '../components/form/fields/radio';
 import ToggleArea from '../components/toggleArea';
 import ScrollableList, { ListItem } from '../components/scrollableList';
 import Checkbox from '../components/form/fields/checkInput';
+import InputExpander from '../components/form/fields/inputExpander';
 
 import Card, { CardHeader, CardBody, CardFooter } from '../components/card';
 
@@ -148,22 +149,26 @@ const TableContents = () => (
         </Container>
         <Container padded>
             <ColumnWrapper>
-                <Column span={3}>
-                    <RegularInput
-                        prepend={<Icon />}
-                        // inputBorder={theme.form.input.border}
-                        placeholder="Search"
-                        // inputColour={theme.form.input.placeholder}
-                    />
+                <Column span={3} inline>
+                    <InputExpander type="formWhite" icon={faSearch}>
+                        <RegularInput
+                            prepend={<Icon />}
+                            // inputBorder={theme.form.input.border}
+                            placeholder="Search"
+                            // inputColour={theme.form.input.placeholder}
+                        />
+                    </InputExpander>
                 </Column>
-                <Column span={3}>
-                    <Select>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                    </Select>
+                <Column span={3} inline>
+                    <InputExpander type="select" icon={faArrowsUpDown}>
+                        <Select>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </Select>
+                    </InputExpander>
                 </Column>
-                <Column span={3} offset={10} pull="right">
+                <Column span={3} offset={10} pull="right" inline>
                     <Button>Test</Button>
                 </Column>
             </ColumnWrapper>

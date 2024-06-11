@@ -2300,11 +2300,15 @@ function Ro({ check: e, value: t, passThrough: n, children: r }) {
 const Ao = p.div`
     //grid-row: 1;
     grid-column: col-start 1 / span 12;
-    display: flex;
-    margin-bottom: ${(e) => e.theme.layout.padding.vertical.sm};
+    display: ${(e) => e.inline ? "inline-flex" : "flex"};
+    margin-bottom: ${(e) => e.inline ? null : e.theme.layout.padding.vertical.sm};
+    float: ${(e) => e.pull === "right" ? "right" : "none"};
+
+    margin-right: ${(e) => e.inline ? e.theme.layout.gap.sm : 0};
 
     &:last-child {
         margin-bottom: 0;
+        margin-right: 0;
     }
 
     @media (min-width: ${(e) => e.theme.layout.breakpoints.sm}) {
@@ -2318,6 +2322,7 @@ const Ao = p.div`
     }
 `, Jf = p.div`
     width: 100%;
+    position: relative;
     grid-template-columns: repeat(12, [col-start] 1fr);
     grid-auto-flow: row;
     margin: ${(e) => e.margin ? e.margin : "0"};
@@ -2335,8 +2340,8 @@ const Ao = p.div`
         display: contents;
     }
 `;
-function Vf({ span: e = 4, offset: t = "", pull: n = "left", align: r = "top", children: a }) {
-  return /* @__PURE__ */ d(Ao, { span: e, offset: t, pull: n, align: r, children: a });
+function Vf({ span: e = 4, offset: t = "", pull: n = "left", align: r = "top", children: a, inline: i }) {
+  return /* @__PURE__ */ d(Ao, { span: e, offset: t, pull: n, align: r, inline: i, children: a });
 }
 const Io = () => /* @__PURE__ */ d("svg", { width: "64px", height: "64px", viewBox: "0 0 64 64", version: "1.1", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ d("g", { id: "Icon/Check-Circle-Light", stroke: "none", strokeWidth: "1", fillRule: "evenodd", children: /* @__PURE__ */ d(
   "path",
@@ -7069,7 +7074,6 @@ const Jc = p.div`
     justify-content: center;
     border: 1px solid ${(e) => e.theme.form.input.border};
     width: 100%;
-    height:
     padding: 1rem;
     align-items: center;
     flex-wrap: wrap;
