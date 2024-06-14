@@ -2313,6 +2313,7 @@ const Ao = p.div`
 
     @media (min-width: ${(e) => e.theme.layout.breakpoints.sm}) {
         margin-bottom: 0;
+        margin-right: 0;
     }
 
     @media (min-width: ${(e) => e.theme.layout.breakpoints.md}) {
@@ -6980,6 +6981,7 @@ const ef = p.div`
     }
 `, of = p.div`
     width: ${(e) => e.expanded ? "100%" : "0"};
+    opacity: ${(e) => e.expanded ? "1" : "0"};
     transition: all 0.3s;
     overflow: hidden;
 
@@ -7289,7 +7291,8 @@ const Tf = p.div`
     color: ${(e) => e.theme.main.color};
     overflow-x: auto;
     display: block;
-`, Of = p.table`
+`, Of = p.div`
+    display: table;
     width: 100%;
 `, Rf = p(nt)`
     display: inline-block;

@@ -20,6 +20,7 @@ const ColumnStyled = styled.div`
 
     @media (min-width: ${p => p.theme.layout.breakpoints.sm}) {
         margin-bottom: 0;
+        margin-right: 0;
     }
 
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {

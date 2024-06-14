@@ -25,6 +25,7 @@ const Expander = styled.div`
 
 const ExpanderContent = styled.div`
     width: ${props => (props.expanded ? '100%' : '0')};
+    opacity: ${props => (props.expanded ? '1' : '0')};
     transition: all 0.3s;
     overflow: hidden;
 

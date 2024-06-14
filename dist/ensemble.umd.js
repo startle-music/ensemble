@@ -578,6 +578,7 @@ To pass a single animation please supply them in simple values, e.g. animation('
 
     @media (min-width: ${e=>e.theme.layout.breakpoints.sm}) {
         margin-bottom: 0;
+        margin-right: 0;
     }
 
     @media (min-width: ${e=>e.theme.layout.breakpoints.md}) {
@@ -2088,6 +2089,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
 `,vf=m.div`
     width: ${e=>e.expanded?"100%":"0"};
+    opacity: ${e=>e.expanded?"1":"0"};
     transition: all 0.3s;
     overflow: hidden;
 
@@ -2314,7 +2316,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     color: ${e=>e.theme.main.color};
     overflow-x: auto;
     display: block;
-`,qf=m.table`
+`,qf=m.div`
+    display: table;
     width: 100%;
 `,Xf=m(Me)`
     display: inline-block;

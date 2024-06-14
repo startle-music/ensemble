@@ -13,7 +13,8 @@ export const ResponsiveTableWrap = styled.div`
     display: block;
 `;
 
-const Table = styled.table`
+const Table = styled.div`
+    display: table;
     width: 100%;
 `;
 
