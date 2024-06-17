@@ -31,6 +31,7 @@ const ExpanderContent = styled.div`
 
     @media (min-width: ${p => p.theme.layout.breakpoints.sm}) {
         width: auto;
+        opacity: 1;
     }
 `;
 

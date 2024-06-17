@@ -6987,6 +6987,7 @@ const ef = p.div`
 
     @media (min-width: ${(e) => e.theme.layout.breakpoints.sm}) {
         width: auto;
+        opacity: 1;
     }
 `, sf = p(pe)`
     /* position: relative;

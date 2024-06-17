@@ -2095,6 +2095,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
     @media (min-width: ${e=>e.theme.layout.breakpoints.sm}) {
         width: auto;
+        opacity: 1;
     }
 `,yf=m(fe)`
     /* position: relative;
