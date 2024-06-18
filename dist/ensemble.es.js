@@ -7281,7 +7281,7 @@ function zu({ icon: e, title: t = "", component: n = null, dropHandler: r = () =
       },
       onDrop: (d) => {
         d.preventDefault(), i(!1);
-        const f = d.dataTransfer.files[0];
+        const { files: f } = d.dataTransfer;
         r(f);
       }
     }

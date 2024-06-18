@@ -37,11 +37,11 @@ export default function DroppableActionPanel({ icon, title = '', component = nul
         e.preventDefault();
         setOver(false);
 
-        const file = e.dataTransfer.files[0];
+        const { files } = e.dataTransfer;
         // console.log(file);
 
         // Call the dropHandler with the dropped file
-        dropHandler(file);
+        dropHandler(files);
     };
 
     return (

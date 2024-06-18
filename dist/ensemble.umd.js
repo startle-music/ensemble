@@ -2312,7 +2312,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     & > form {
         position: absolute;
     }
-`;function Gf({icon:e,title:n="",component:t=null,dropHandler:r=()=>{}}){const[a,i]=X.useState(!1);return u(Hf,{icon:e,title:n,component:t,over:a,dropHandler:r,onDragOver:d=>{d.preventDefault(),i(!0)},onDragLeave:d=>{d.preventDefault(),i(!1)},onDrop:d=>{d.preventDefault(),i(!1);const f=d.dataTransfer.files[0];r(f)}})}const Uf=m.div`
+`;function Gf({icon:e,title:n="",component:t=null,dropHandler:r=()=>{}}){const[a,i]=X.useState(!1);return u(Hf,{icon:e,title:n,component:t,over:a,dropHandler:r,onDragOver:d=>{d.preventDefault(),i(!0)},onDragLeave:d=>{d.preventDefault(),i(!1)},onDrop:d=>{d.preventDefault(),i(!1);const{files:f}=d.dataTransfer;r(f)}})}const Uf=m.div`
     font-family: ${e=>e.theme.main.fontFamily};
     color: ${e=>e.theme.main.color};
     overflow-x: auto;
