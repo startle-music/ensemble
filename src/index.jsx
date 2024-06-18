@@ -1,3 +1,5 @@
+import CircularProgress from './components/circularProgress';
+
 export { default as Background } from './components/background';
 
 export { default as Button } from './components/button';
@@ -81,3 +83,5 @@ export { default as DragDropList, DraggableListItem, DraggableListItemHandle } f
 export { default as extendDefaultTheme } from './style/theme';
 
 export { default as Steps, Step } from './components/steps';
+
+export { default as CircularProgress } from './components/circularProgress';
