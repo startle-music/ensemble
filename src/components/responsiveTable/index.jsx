@@ -146,7 +146,7 @@ export const Cell = styled.div`
     }
 `;
 
-export default function ResponsiveTable({ data, rowPadding = null }) {
+export default function ResponsiveTable({ data, rowPadding = null, tableRef }) {
     const { headings } = data;
     const { rows } = data;
 
@@ -177,10 +177,10 @@ export default function ResponsiveTable({ data, rowPadding = null }) {
 
     return (
         <ResponsiveTableWrap>
-            <Table>
+            <Table ref={tableRef}>
                 <Row border rowPadding={rowPadding} className="tableHeader">
                     <TableHeading>
-                        <Checkbox margin="0px" onChange={checkAll} checked={isCheckAll} />
+                        <Checkbox margin="0px" onChange={checkAll} checked={isCheckAll} value="0" />
                     </TableHeading>
                     {headings.map(heading => (
                         <TableHeading key={heading} columns={headings.length}>

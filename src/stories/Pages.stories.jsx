@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useArgs } from '@storybook/preview-api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTrash, faPencil, faPlay, faFileAudio, faArrowsUpDown } from '@fortawesome/free-solid-svg-icons';
@@ -103,82 +104,32 @@ const tableData = {
     ]
 };
 
-const TableContents = () => (
-    <>
-        <Container padded>
-            <ColumnWrapper>
-                <Column span={4}>
-                    <DroppableActionPanel
-                        icon={faFileAudio}
-                        title="Drag audio files here to upload"
-                        component={
-                            <>
-                                <Button key="aaa" onClick={() => alert('yo')}>
-                                    Upload File
-                                </Button>
-                                <form>
-                                    <input type="file" hidden />
-                                </form>
-                            </>
-                        }
-                    />
-                </Column>
-                <Column span={4}>
-                    <ActionPanel
-                        icon={faFileAudio}
-                        title="Drag audio files"
-                        component={
-                            <Button key="aaa" onClick={() => alert('yo')}>
-                                Upload File
-                            </Button>
-                        }
-                    />
-                </Column>
-                <Column span={4}>
-                    <ActionPanel
-                        icon={faFileAudio}
-                        title="Drag audio files here to upload"
-                        component={
-                            <Button key="aaa" onClick={() => alert('yo')}>
-                                Upload File
-                            </Button>
-                        }
-                    />
-                </Column>
-            </ColumnWrapper>
-        </Container>
-        <Container padded>
-            <ColumnWrapper>
-                <Column span={3} inline>
-                    <InputExpander type="formWhite" icon={faSearch}>
-                        <RegularInput
-                            prepend={<Icon />}
-                            // inputBorder={theme.form.input.border}
-                            placeholder="Search"
-                            // inputColour={theme.form.input.placeholder}
-                        />
-                    </InputExpander>
-                </Column>
-                <Column span={3} inline>
-                    <InputExpander type="select" icon={faArrowsUpDown}>
-                        <Select>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                        </Select>
-                    </InputExpander>
-                </Column>
-                <Column span={3} offset={10} pull="right" inline>
-                    <Button>Test</Button>
-                </Column>
-            </ColumnWrapper>
-        </Container>
-        <Container>
-            <ResponsiveTable data={tableData} />
-        </Container>
+const TableContents = () => {
+    const table = useRef();
 
-        <Container>
-            <ContainerContent padded>
+    function handleDelete() {
+        const tableElem = table.current;
+        if (tableElem) {
+            // get checkboxes that are selected but not in a header row
+            const checkBoxesSelected = tableElem.querySelectorAll('input[type="checkbox"]:checked');
+            console.log(checkBoxesSelected);
+
+            const values = [];
+
+            // get values from checkboxes
+            for (let i = 0; i < checkBoxesSelected.length; i++) {
+                if (checkBoxesSelected[i].value !== '0') {
+                    values.push(parseInt(checkBoxesSelected[i].value));
+                }
+            }
+
+            console.log(values);
+        }
+    }
+
+    return (
+        <>
+            <Container padded>
                 <ColumnWrapper>
                     <Column span={4}>
                         <DroppableActionPanel
@@ -219,33 +170,107 @@ const TableContents = () => (
                         />
                     </Column>
                 </ColumnWrapper>
-            </ContainerContent>
-            <ContainerContent padded>
+            </Container>
+            <Container padded>
                 <ColumnWrapper>
-                    <Column span={3}>
-                        <RegularInput
-                            prepend={<Icon />}
-                            inputBorder={theme.form.input.border}
-                            placeholder="Search"
-                            inputColour={theme.form.input.placeholder}
-                        />
+                    <Column span={3} inline>
+                        <InputExpander type="formWhite" icon={faSearch}>
+                            <RegularInput
+                                prepend={<Icon />}
+                                // inputBorder={theme.form.input.border}
+                                placeholder="Search"
+                                // inputColour={theme.form.input.placeholder}
+                            />
+                        </InputExpander>
                     </Column>
-                    <Column span={3}>
-                        <Select>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                        </Select>
+                    <Column span={3} inline>
+                        <InputExpander type="select" icon={faArrowsUpDown}>
+                            <Select>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </Select>
+                        </InputExpander>
                     </Column>
-                    <Column span={3} offset={10} pull="right">
-                        <Button>Test</Button>
+                    <Column span={3} offset={10} pull="right" inline>
+                        <Button onClick={handleDelete}>Test</Button>
                     </Column>
                 </ColumnWrapper>
-            </ContainerContent>
-            <ResponsiveTable data={tableData} />
-        </Container>
-    </>
-);
+            </Container>
+            <Container>
+                <ResponsiveTable data={tableData} tableRef={table} />
+            </Container>
+
+            <Container>
+                <ContainerContent padded>
+                    <ColumnWrapper>
+                        <Column span={4}>
+                            <DroppableActionPanel
+                                icon={faFileAudio}
+                                title="Drag audio files here to upload"
+                                component={
+                                    <>
+                                        <Button key="aaa" onClick={() => alert('yo')}>
+                                            Upload File
+                                        </Button>
+                                        <form>
+                                            <input type="file" hidden />
+                                        </form>
+                                    </>
+                                }
+                            />
+                        </Column>
+                        <Column span={4}>
+                            <ActionPanel
+                                icon={faFileAudio}
+                                title="Drag audio files"
+                                component={
+                                    <Button key="aaa" onClick={() => alert('yo')}>
+                                        Upload File
+                                    </Button>
+                                }
+                            />
+                        </Column>
+                        <Column span={4}>
+                            <ActionPanel
+                                icon={faFileAudio}
+                                title="Drag audio files here to upload"
+                                component={
+                                    <Button key="aaa" onClick={() => alert('yo')}>
+                                        Upload File
+                                    </Button>
+                                }
+                            />
+                        </Column>
+                    </ColumnWrapper>
+                </ContainerContent>
+                <ContainerContent padded>
+                    <ColumnWrapper>
+                        <Column span={3}>
+                            <RegularInput
+                                prepend={<Icon />}
+                                inputBorder={theme.form.input.border}
+                                placeholder="Search"
+                                inputColour={theme.form.input.placeholder}
+                            />
+                        </Column>
+                        <Column span={3}>
+                            <Select>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </Select>
+                        </Column>
+                        <Column span={3} offset={10} pull="right">
+                            <Button>Test</Button>
+                        </Column>
+                    </ColumnWrapper>
+                </ContainerContent>
+                <ResponsiveTable data={tableData} />
+            </Container>
+        </>
+    );
+};
 
 export const TableExample = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
