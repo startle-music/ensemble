@@ -158,13 +158,6 @@ export default function ResponsiveTable({ data, rowPadding = null, getIsChecked 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isChecked]);
 
-    // clear checked items when data changes
-    useEffect(() => {
-        setIsChecked([]);
-        setIsCheckAll(false);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [data]);
-
     const checkAll = e => {
         setIsCheckAll(!isCheckAll);
         setIsChecked(data.rows.map(row => row.id));
