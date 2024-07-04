@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
 
@@ -146,12 +146,17 @@ export const Cell = styled.div`
     }
 `;
 
-export default function ResponsiveTable({ data, rowPadding = null, tableRef }) {
+export default function ResponsiveTable({ data, rowPadding = null, getIsChecked }) {
     const { headings } = data;
     const { rows } = data;
 
     const [isCheckAll, setIsCheckAll] = useState(false);
     const [isChecked, setIsChecked] = useState([]);
+
+    useEffect(() => {
+        getIsChecked(isChecked);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isChecked]);
 
     const checkAll = e => {
         setIsCheckAll(!isCheckAll);
