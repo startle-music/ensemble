@@ -7467,7 +7467,7 @@ function Nu({ data: e, rowPadding: t = null, getIsChecked: n }) {
     } else
       o(!1), c(s.filter((S) => S !== parseInt(y)));
   }
-  return /* @__PURE__ */ u(If, { children: /* @__PURE__ */ z(_f, { ref: tableRef, children: [
+  return /* @__PURE__ */ u(If, { children: /* @__PURE__ */ z(_f, { children: [
     /* @__PURE__ */ z(ia, { border: !0, rowPadding: t, className: "tableHeader", children: [
       /* @__PURE__ */ u(oa, { children: /* @__PURE__ */ u(xr, { margin: "0px", onChange: d, checked: i, value: "0" }) }),
       r.map((m) => /* @__PURE__ */ u(oa, { columns: r.length, children: /* @__PURE__ */ u(nt, { fontWeight: "bold", children: m }) }, m))

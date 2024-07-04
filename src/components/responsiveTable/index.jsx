@@ -182,7 +182,7 @@ export default function ResponsiveTable({ data, rowPadding = null, getIsChecked 
 
     return (
         <ResponsiveTableWrap>
-            <Table ref={tableRef}>
+            <Table>
                 <Row border rowPadding={rowPadding} className="tableHeader">
                     <TableHeading>
                         <Checkbox margin="0px" onChange={checkAll} checked={isCheckAll} value="0" />
