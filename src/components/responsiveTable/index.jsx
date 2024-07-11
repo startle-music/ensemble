@@ -81,6 +81,8 @@ export const TableHeading = styled.div`
     &:first-child {
         flex-grow: 0;
         overflow: visible;
+        //stop table cell from expanding
+        width: 1px;
     }
 
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
@@ -116,6 +118,7 @@ export const Cell = styled.div`
         //display: flex;
         flex-grow: 0;
         overflow: visible;
+        width: 1px;
     }
 
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {

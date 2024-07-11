@@ -2397,6 +2397,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     &:first-child {
         flex-grow: 0;
         overflow: visible;
+        //stop table cell from expanding
+        width: 1px;
     }
 
     @media (min-width: ${e=>e.theme.layout.breakpoints.md}) {
@@ -2430,6 +2432,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         //display: flex;
         flex-grow: 0;
         overflow: visible;
+        width: 1px;
     }
 
     @media (min-width: ${e=>e.theme.layout.breakpoints.md}) {

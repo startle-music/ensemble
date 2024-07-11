@@ -7388,6 +7388,8 @@ const If = p.div`
     &:first-child {
         flex-grow: 0;
         overflow: visible;
+        //stop table cell from expanding
+        width: 1px;
     }
 
     @media (min-width: ${(e) => e.theme.layout.breakpoints.md}) {
@@ -7421,6 +7423,7 @@ const If = p.div`
         //display: flex;
         flex-grow: 0;
         overflow: visible;
+        width: 1px;
     }
 
     @media (min-width: ${(e) => e.theme.layout.breakpoints.md}) {
