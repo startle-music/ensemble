@@ -7450,7 +7450,8 @@ const If = p.div`
         }
     }
 `;
-function Nu({ data: e, rowPadding: t = null, getIsChecked: n }) {
+function Nu({ data: e, rowPadding: t = null, getIsChecked: n = () => {
+} }) {
   const { headings: r } = e, { rows: a } = e, [i, o] = We(!1), [s, c] = We([]);
   Bt(() => {
     n(s);

@@ -146,7 +146,7 @@ export const Cell = styled.div`
     }
 `;
 
-export default function ResponsiveTable({ data, rowPadding = null, getIsChecked }) {
+export default function ResponsiveTable({ data, rowPadding = null, getIsChecked = () => {} }) {
     const { headings } = data;
     const { rows } = data;
 
