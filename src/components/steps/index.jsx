@@ -59,7 +59,8 @@ export default function Steps({
     handleEnd,
     endText = 'Submit',
     handleCancel = null,
-    loading = false
+    loading = false,
+    submitComponent = null
 }) {
     let stepPosition = position;
     // lock position between 0 and children.length
@@ -110,7 +111,7 @@ export default function Steps({
                 </Button>
                 {// if last step show submit button
                 stepPosition === React.Children.count(children) - 1 ? (
-                    <Button onClick={handleEnd}>{endText}</Button>
+                    submitComponent || <Button onClick={handleEnd}>{endText}</Button>
                 ) : (
                     <Button onClick={handleNext} disabled={stepPosition === React.Children.count(children) - 1}>
                         Next Step
