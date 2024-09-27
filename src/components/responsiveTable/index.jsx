@@ -77,6 +77,7 @@ export const TableHeading = styled.div`
     display: table-cell;
     white-space: nowrap;
     vertical-align: middle;
+    border-bottom: ${props => `1px solid ${props.theme.table.header.border}`};
 
     &:first-child {
         flex-grow: 0;

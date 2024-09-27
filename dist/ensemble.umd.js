@@ -2393,6 +2393,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     display: table-cell;
     white-space: nowrap;
     vertical-align: middle;
+    border-bottom: ${e=>`1px solid ${e.theme.table.header.border}`};
 
     &:first-child {
         flex-grow: 0;
