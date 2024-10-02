@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Text from '../text';
+import Heading from '../headings';
 import theme from '../../style/theme';
 
 const ActionPanelStyled = styled.div`
@@ -11,6 +12,7 @@ const ActionPanelStyled = styled.div`
     justify-content: center;
     border: 1px solid ${p => p.theme.form.input.border};
     width: 100%;
+    height: 100%;
     padding: 1rem;
     align-items: center;
     flex-wrap: wrap;
@@ -19,7 +21,7 @@ const ActionPanelStyled = styled.div`
     @media (min-width: ${p => p.theme.layout.breakpoints.xs}) {
         flex-wrap: nowrap;
         justify-content: space-between;
-        text-align: left;
+        text-align: center;
     }
 
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
@@ -36,6 +38,7 @@ const Icon = styled(FontAwesomeIcon)`
     width: 2rem;
     height: 2rem;
     margin-bottom: 1rem;
+    margin-right: 1rem;
 
     @media (min-width: ${p => p.theme.layout.breakpoints.xs}) {
         margin-bottom: 0;
@@ -48,9 +51,15 @@ const Icon = styled(FontAwesomeIcon)`
     }
 `;
 
-const Title = styled(Text)`
+const Title = styled(Heading)`
+    margin: 0;
+    margin-right: auto;
+    padding-right: 0.5rem;
+
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         margin-bottom: 1rem;
+        padding-right: 0;
+        margin-right: 0;
     }
 `;
 

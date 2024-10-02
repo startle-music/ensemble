@@ -20,6 +20,7 @@ const Expander = styled.div`
 
     @media (min-width: ${p => p.theme.layout.breakpoints.sm}) {
         position: relative;
+        z-index: 100;
     }
 `;
 
@@ -30,7 +31,7 @@ const ExpanderContent = styled.div`
     overflow: hidden;
 
     @media (min-width: ${p => p.theme.layout.breakpoints.sm}) {
-        width: auto;
+        width: 100%;
         opacity: 1;
     }
 `;
