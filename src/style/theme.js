@@ -166,7 +166,7 @@ const theme = {
     },
     actionPanel: {
         color: brandColors.paintItBlack,
-        iconColor: generalColors.fadeToGrey,
+        iconColor: brandColors.fadeToGrey,
         base: {
             background: '#F2FCFF',
             border: '#7BC5DA'

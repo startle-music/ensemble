@@ -1753,7 +1753,7 @@ const ve = {
   },
   actionPanel: {
     color: x.paintItBlack,
-    iconColor: E.fadeToGrey,
+    iconColor: x.fadeToGrey,
     base: {
       background: "#F2FCFF",
       border: "#7BC5DA"
