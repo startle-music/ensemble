@@ -62,7 +62,7 @@ const Title = styled(Text)`
 export default function ActionPanel({ icon, title = '', component = null, className, ...rest }) {
     return (
         <ActionPanelStyled className={className} {...rest}>
-            <Icon icon={icon} color={theme.form.input.border} />
+            <Icon icon={icon} color={theme.actionPanel.iconColor} />
             <Title type="heading">{title}</Title>
             {component}
         </ActionPanelStyled>

@@ -28,46 +28,12 @@ const CellText = styled(Text)`
     }
 `;
 
-export const Row = styled.div`
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-between;
-    align-items: stretch;
-    padding: ${p =>
-        p.rowPadding ? p.rowPadding : `${p.theme.layout.padding.vertical.xs} ${p.theme.layout.padding.horizontal.xs}`};
-    border-bottom: ${props => `1px solid ${props.theme.table.header.border}`};
-    display: table-row;
-
-    &.tableHeader {
-        //display: none;
-        display: table-row;
-    }
-
-    &:last-child {
-        border-bottom: none;
-
-        div {
-            border-bottom: none;
-        }
-    }
-
-    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
-        //display: flex;
-        border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
-        padding: ${p => (p.rowPadding ? p.rowPadding : 0)};
-
-        &.tableHeader {
-            //display: flex;
-            display: table-row;
-        }
-    }
-`;
-
 export const TableHeading = styled.div`
     //display: flex;
     flex: ${({ collapse }) => (collapse ? '0' : '1')};
     //padding: 0.5rem;
-    padding: ${props => props.theme.layout.padding.vertical.xs} ${props => props.theme.layout.padding.horizontal.xs};
+    padding: ${props => props.theme.layout.padding.vertical.lg} ${props =>
+    props.theme.layout.padding.horizontal.xs} ${props => props.theme.layout.padding.vertical.xs};
     font-weight: bold;
     border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
     align-items: center;
@@ -146,6 +112,45 @@ export const Cell = styled.div`
 
         @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
             display: none;
+        }
+    }
+`;
+
+export const Row = styled.div`
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: ${p =>
+        p.rowPadding ? p.rowPadding : `${p.theme.layout.padding.vertical.xs} ${p.theme.layout.padding.horizontal.xs}`};
+    border-bottom: ${props => `1px solid ${props.theme.table.header.border}`};
+    display: table-row;
+
+    &.tableHeader {
+        //display: none;
+        display: table-row;
+    }
+
+    &:last-child {
+        border-bottom: none;
+
+        div {
+            border-bottom: none;
+        }
+
+        ${Cell} {
+            padding-bottom: ${props => props.theme.layout.padding.vertical.lg};
+        }
+    }
+
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
+        //display: flex;
+        border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
+        padding: ${p => (p.rowPadding ? p.rowPadding : 0)};
+
+        &.tableHeader {
+            //display: flex;
+            display: table-row;
         }
     }
 `;
