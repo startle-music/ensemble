@@ -57,7 +57,7 @@ const Background = styled.div`
 `;
 
 const ModalWrap = styled.div`
-    width: 100%;
+    width: ${props => props.width.xs};
     min-height: 4rem;
     max-width: 90%;
     max-height: 90%;
@@ -70,15 +70,15 @@ const ModalWrap = styled.div`
     text-align: center;
 
     @media (min-width: ${props => props.theme.layout.breakpoints.sm}) {
-        width: ${props => (props.wide ? '90%' : '70%')};
+        width: ${props => props.width.sm};
     }
 
     @media (min-width: ${props => props.theme.layout.breakpoints.md}) {
-        width: ${props => (props.wide ? '80%' : '60%')};
+        width: ${props => props.width.md};
     }
 
     @media (min-width: ${props => props.theme.layout.breakpoints.xxl}) {
-        width: ${props => (props.wide ? '70%' : '50%')};
+        width: ${props => props.width.lg};
     }
 `;
 
@@ -96,7 +96,7 @@ function Modal({
     isOpen = false,
     transparent = false,
     className = null,
-    wide = false
+    width = 'standard'
 }) {
     useEffect(() => {
         onOpen();
@@ -110,10 +110,31 @@ function Modal({
         return null;
     }
 
+    const widths = {
+        narrow: {
+            xs: '25rem',
+            sm: '25rem',
+            md: '25rem',
+            lg: '25rem'
+        },
+        standard: {
+            xs: '40rem',
+            sm: '40rem',
+            md: '40rem',
+            lg: '40rem'
+        },
+        wide: {
+            xs: '60rem',
+            sm: '60rem',
+            md: '60rem',
+            lg: '60rem'
+        }
+    };
+
     return (
         <Wrap>
             <Background onClick={() => onClose(null)} />
-            <ModalWrap id="mainModal" transparent={transparent} wide={wide}>
+            <ModalWrap id="mainModal" transparent={transparent} width={widths[width]}>
                 {content}
             </ModalWrap>
         </Wrap>

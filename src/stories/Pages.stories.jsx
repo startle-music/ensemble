@@ -358,7 +358,6 @@ function ModalContent() {
                 <ScrollableListExample />
             </ModalBody>
             <ModalFooter>
-                <Button neutral>Cancel</Button>
                 <Button>Save</Button>
             </ModalFooter>
         </>
@@ -367,7 +366,7 @@ function ModalContent() {
 
 const FormContents = ({ radio, modalOpen, step, loading }) => (
     <>
-        <Modal isOpen={modalOpen} content={<ModalContent />} wide />
+        <Modal isOpen={modalOpen} content={<ModalContent />} />
         <Container padded wide>
             <ContainerContent narrow>
                 <Heading type="title">Form</Heading>

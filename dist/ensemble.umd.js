@@ -2521,7 +2521,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     background: rgba(0, 0, 0, 0.7);
     z-index: -1;
 `,iu=m.div`
-    width: 100%;
+    width: ${e=>e.width.xs};
     min-height: 4rem;
     max-width: 90%;
     max-height: 90%;
@@ -2534,17 +2534,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     text-align: center;
 
     @media (min-width: ${e=>e.theme.layout.breakpoints.sm}) {
-        width: ${e=>e.wide?"90%":"70%"};
+        width: ${e=>e.width.sm};
     }
 
     @media (min-width: ${e=>e.theme.layout.breakpoints.md}) {
-        width: ${e=>e.wide?"80%":"60%"};
+        width: ${e=>e.width.md};
     }
 
     @media (min-width: ${e=>e.theme.layout.breakpoints.xxl}) {
-        width: ${e=>e.wide?"70%":"50%"};
+        width: ${e=>e.width.lg};
     }
-`;function ou({content:e=null,onClose:n=()=>{},onOpen:t=()=>{},isOpen:r=!1,transparent:a=!1,className:i=null,wide:o=!1}){return G.useEffect(()=>(t(),()=>{n()}),[n,t]),r?F(ru,{children:[d(au,{onClick:()=>n(null)}),d(iu,{id:"mainModal",transparent:a,wide:o,children:e})]}):null}const su=m.ul`
+`;function ou({content:e=null,onClose:n=()=>{},onOpen:t=()=>{},isOpen:r=!1,transparent:a=!1,className:i=null,width:o="standard"}){return G.useEffect(()=>(t(),()=>{n()}),[n,t]),r?F(ru,{children:[d(au,{onClick:()=>n(null)}),d(iu,{id:"mainModal",transparent:a,width:{narrow:{xs:"25rem",sm:"25rem",md:"25rem",lg:"25rem"},standard:{xs:"40rem",sm:"40rem",md:"40rem",lg:"40rem"},wide:{xs:"60rem",sm:"60rem",md:"60rem",lg:"60rem"}}[o],children:e})]}):null}const su=m.ul`
     overflow-y: auto;
     max-height: 50vh;
     padding: ${e=>e.padding?e.padding:`${e.theme.layout.padding.vertical.sm} ${e.theme.layout.padding.horizontal.sm}`};

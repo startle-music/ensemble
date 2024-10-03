@@ -7561,7 +7561,7 @@ const Du = p.div`
     background: rgba(0, 0, 0, 0.7);
     z-index: -1;
 `, Mf = p.div`
-    width: 100%;
+    width: ${(e) => e.width.xs};
     min-height: 4rem;
     max-width: 90%;
     max-height: 90%;
@@ -7574,15 +7574,15 @@ const Du = p.div`
     text-align: center;
 
     @media (min-width: ${(e) => e.theme.layout.breakpoints.sm}) {
-        width: ${(e) => e.wide ? "90%" : "70%"};
+        width: ${(e) => e.width.sm};
     }
 
     @media (min-width: ${(e) => e.theme.layout.breakpoints.md}) {
-        width: ${(e) => e.wide ? "80%" : "60%"};
+        width: ${(e) => e.width.md};
     }
 
     @media (min-width: ${(e) => e.theme.layout.breakpoints.xxl}) {
-        width: ${(e) => e.wide ? "70%" : "50%"};
+        width: ${(e) => e.width.lg};
     }
 `;
 function Yu({
@@ -7594,13 +7594,32 @@ function Yu({
   isOpen: r = !1,
   transparent: a = !1,
   className: i = null,
-  wide: o = !1
+  width: o = "standard"
 }) {
   return Bt(() => (n(), () => {
     t();
   }), [t, n]), r ? /* @__PURE__ */ z(jf, { children: [
     /* @__PURE__ */ d(Ff, { onClick: () => t(null) }),
-    /* @__PURE__ */ d(Mf, { id: "mainModal", transparent: a, wide: o, children: e })
+    /* @__PURE__ */ d(Mf, { id: "mainModal", transparent: a, width: {
+      narrow: {
+        xs: "25rem",
+        sm: "25rem",
+        md: "25rem",
+        lg: "25rem"
+      },
+      standard: {
+        xs: "40rem",
+        sm: "40rem",
+        md: "40rem",
+        lg: "40rem"
+      },
+      wide: {
+        xs: "60rem",
+        sm: "60rem",
+        md: "60rem",
+        lg: "60rem"
+      }
+    }[o], children: e })
   ] }) : null;
 }
 const zf = p.ul`
