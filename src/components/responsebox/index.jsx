@@ -46,13 +46,17 @@ const XWrap = styled.button`
 `;
 
 const IconWrap = styled.div`
+    display: flex;
     width: 1rem;
     justify-self: flex-start;
     margin-right: 15px;
+    color: ${props => props.color};
 
     svg {
         width: 1rem;
         height: 1rem;
+        fill: current-color;
+        stroke: current-color;
     }
 `;
 
@@ -117,8 +121,8 @@ const ResponseBox = props => {
         <ResponseBoxStyled className={className}>
             <ResponseBoxText backgroundColor={color.backgroundColor} borderColor={color.borderColor}>
                 <LeftDiv>
-                    <IconWrap>
-                        <Icon color={color.borderColor} />
+                    <IconWrap color={color.borderColor}>
+                        <Icon />
                     </IconWrap>
                     <TextWrap color={color.borderColor}>{children}</TextWrap>
                 </LeftDiv>
