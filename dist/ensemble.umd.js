@@ -2590,7 +2590,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     border-bottom: ${e=>e.border?`1px solid ${e.theme.main.border}`:"none"};
     text-align: ${e=>e.align||"left"};
 `,uu=m.div`
-    padding: 0 1rem;
+    padding: ${e=>e.padding?e.padding:"0 1rem"};
     border-bottom: ${e=>e.border?`1px solid ${e.theme.main.border}`:"none"};
     margin-left: auto;
 `;function du({horizontal:e,margin:n,border:t=!0,children:r}){return d(lu,{horizontal:e,margin:n,border:t,children:r})}const mu=m(Ya)`

@@ -7672,7 +7672,7 @@ const Bf = p.div`
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
     text-align: ${(e) => e.align || "left"};
 `, Uu = p.div`
-    padding: 0 1rem;
+    padding: ${(e) => e.padding ? e.padding : "0 1rem"};
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
     margin-left: auto;
 `;

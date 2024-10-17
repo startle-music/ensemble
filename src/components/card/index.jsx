@@ -28,7 +28,7 @@ export const CardBody = styled.div`
 `;
 
 export const CardFooter = styled.div`
-    padding: 0 1rem;
+    padding: ${props => (props.padding ? props.padding : `0 1rem`)};
     border-bottom: ${props => (props.border ? `1px solid ${props.theme.main.border}` : 'none')};
     margin-left: auto;
 `;
