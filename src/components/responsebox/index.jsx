@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import Times from '../icons/Times';
 import CheckCircleLight from '../icons/CheckCircleLight';
 import ExclamationCircleLight from '../icons/ExclamationCircleLight';
@@ -47,15 +49,13 @@ const XWrap = styled.button`
 
 const IconWrap = styled.div`
     display: flex;
-    width: 1rem;
+    // width: 1rem;
     justify-self: flex-start;
     align-self: center;
     margin-right: 15px;
     color: ${props => props.color};
 
     svg {
-        width: 1rem;
-        height: 1rem;
         fill: currentColor;
         stroke: currentColor;
     }
@@ -67,7 +67,7 @@ const ResponseBoxStyled = styled.div`
 `;
 
 const ResponseBox = props => {
-    const { type, children, clearResponseBox, data, className } = props;
+    const { type, children, clearResponseBox, data, className, icon } = props;
     const colorDictionary = {
         default: {
             backgroundColor: '#E8E9EB',
@@ -100,16 +100,30 @@ const ResponseBox = props => {
     }
 
     const color = colorDictionary[type] || colorDictionary.default;
-    let Icon = () => <InfoCircleLight />;
-    if (type === 'success') {
-        Icon = () => <CheckCircleLight />;
-    } else if (type === 'danger') {
-        Icon = () => <TimesCircleLight />;
-    } else if (type === 'warning') {
-        Icon = () => <ExclamationCircleLight />;
-    } else if (type === 'default' || type === 'info') {
-        Icon = () => <InfoCircleLight />;
+
+    let faIcon = faInfoCircle;
+
+    switch (type) {
+        case 'success':
+            faIcon = CheckCircleLight;
+            break;
+        case 'danger':
+            faIcon = TimesCircleLight;
+            break;
+        case 'warning':
+            faIcon = ExclamationCircleLight;
+            break;
+        case 'info':
+            faIcon = faInfoCircle;
+            break;
+        default:
+            faIcon = faInfoCircle;
     }
+
+    if (icon) {
+        faIcon = icon;
+    }
+
     let XButton = () => null;
     if (clearResponseBox !== undefined) {
         XButton = () => (
@@ -123,7 +137,7 @@ const ResponseBox = props => {
             <ResponseBoxText backgroundColor={color.backgroundColor} borderColor={color.borderColor}>
                 <LeftDiv>
                     <IconWrap color={color.borderColor}>
-                        <Icon />
+                        <FontAwesomeIcon icon={faIcon} size="2x" />
                     </IconWrap>
                     <TextWrap color={color.borderColor}>{children}</TextWrap>
                 </LeftDiv>

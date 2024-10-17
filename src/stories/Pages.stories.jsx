@@ -34,6 +34,7 @@ import Modal, { ModalBody, ModalFooter, ModalHeader } from '../components/modal'
 
 import Steps, { Step } from '../components/steps';
 import Switch from '../components/form/fields/switch';
+import ResponseBox from '../components/responsebox';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -267,6 +268,11 @@ const TableContents = () => {
                     </ColumnWrapper>
                 </ContainerContent>
                 <ResponsiveTable data={tableData} />
+                <ContainerContent padded>
+                    <ResponseBox type="info">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ac libero ultrices.
+                    </ResponseBox>
+                </ContainerContent>
             </Container>
         </>
     );
