@@ -659,14 +659,15 @@ To pass a single animation please supply them in simple values, e.g. animation('
     display: flex;
     width: 1rem;
     justify-self: flex-start;
+    align-self: center;
     margin-right: 15px;
     color: ${e=>e.color};
 
     svg {
         width: 1rem;
         height: 1rem;
-        fill: current-color;
-        stroke: current-color;
+        fill: currentColor;
+        stroke: currentColor;
     }
 `,zo=m.div`
     text-align: ${e=>e.align};

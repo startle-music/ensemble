@@ -49,14 +49,15 @@ const IconWrap = styled.div`
     display: flex;
     width: 1rem;
     justify-self: flex-start;
+    align-self: center;
     margin-right: 15px;
     color: ${props => props.color};
 
     svg {
         width: 1rem;
         height: 1rem;
-        fill: current-color;
-        stroke: current-color;
+        fill: currentColor;
+        stroke: currentColor;
     }
 `;
 
