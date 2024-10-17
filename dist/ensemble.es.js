@@ -2411,10 +2411,10 @@ const Mo = () => /* @__PURE__ */ d("svg", { width: "64px", height: "64px", viewB
     margin-bottom: 30px;
     font-size: 1rem;
     color: ${(e) => e.borderColor};
-    border-radius: 0.45em;
+    border-radius: ${(e) => e.theme.main.borderRadius};
     width: 100%;
     background-color: ${(e) => e.backgroundColor};
-    border: 0.15rem solid ${(e) => e.borderColor};
+    border: 1px solid ${(e) => e.borderColor};
     justify-content: space-between;
     align-items: center;
 `, Bo = p.p`
@@ -2437,13 +2437,12 @@ const Mo = () => /* @__PURE__ */ d("svg", { width: "64px", height: "64px", viewB
     }
 `, Ho = p.div`
     width: 1rem;
-    height: 1rem;
     justify-self: flex-start;
     margin-right: 15px;
 
     svg {
-        width: 100%;
-        height: 100%;
+        width: 1rem;
+        height: 1rem;
     }
 `, Go = p.div`
     text-align: ${(e) => e.align};
@@ -2480,7 +2479,7 @@ const Mo = () => /* @__PURE__ */ d("svg", { width: "64px", height: "64px", viewB
   let u = () => null;
   return r !== void 0 && (u = () => /* @__PURE__ */ d(Yo, { color: c.borderColor, onClick: () => s(a), children: /* @__PURE__ */ d(ga, {}) })), /* @__PURE__ */ d(Go, { className: i, children: /* @__PURE__ */ z(Do, { backgroundColor: c.backgroundColor, borderColor: c.borderColor, children: [
     /* @__PURE__ */ z(Wo, { children: [
-      /* @__PURE__ */ d(Ho, { color: c.borderColor, children: /* @__PURE__ */ d(f, {}) }),
+      /* @__PURE__ */ d(Ho, { children: /* @__PURE__ */ d(f, { color: c.borderColor }) }),
       /* @__PURE__ */ d(Bo, { color: c.borderColor, children: n })
     ] }),
     /* @__PURE__ */ d(u, {})

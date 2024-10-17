@@ -13,10 +13,10 @@ const ResponseBoxText = styled.div`
     margin-bottom: 30px;
     font-size: 1rem;
     color: ${props => props.borderColor};
-    border-radius: 0.45em;
+    border-radius: ${props => props.theme.main.borderRadius};
     width: 100%;
     background-color: ${props => props.backgroundColor};
-    border: 0.15rem solid ${props => props.borderColor};
+    border: 1px solid ${props => props.borderColor};
     justify-content: space-between;
     align-items: center;
 `;
@@ -47,13 +47,12 @@ const XWrap = styled.button`
 
 const IconWrap = styled.div`
     width: 1rem;
-    height: 1rem;
     justify-self: flex-start;
     margin-right: 15px;
 
     svg {
-        width: 100%;
-        height: 100%;
+        width: 1rem;
+        height: 1rem;
     }
 `;
 
@@ -118,8 +117,8 @@ const ResponseBox = props => {
         <ResponseBoxStyled className={className}>
             <ResponseBoxText backgroundColor={color.backgroundColor} borderColor={color.borderColor}>
                 <LeftDiv>
-                    <IconWrap color={color.borderColor}>
-                        <Icon />
+                    <IconWrap>
+                        <Icon color={color.borderColor} />
                     </IconWrap>
                     <TextWrap color={color.borderColor}>{children}</TextWrap>
                 </LeftDiv>
