@@ -17,12 +17,12 @@ const CardStyled = styled.div`
 `;
 
 export const CardHeader = styled.div`
-    padding: 0 1rem;
+    padding: ${props => (props.padding ? props.padding : `0 1rem`)};
     border-bottom: ${props => (props.border ? `1px solid ${props.theme.main.border}` : 'none')};
 `;
 
 export const CardBody = styled.div`
-    padding: 0 1rem;
+    padding: ${props => (props.padding ? props.padding : `0 1rem`)};
     border-bottom: ${props => (props.border ? `1px solid ${props.theme.main.border}` : 'none')};
     text-align: ${props => props.align || 'left'};
 `;

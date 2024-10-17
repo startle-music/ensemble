@@ -7665,10 +7665,10 @@ const Bf = p.div`
     background: ${(e) => e.theme.generalColors.white};
     color: ${(e) => e.theme.main.color};
 `, Hu = p.div`
-    padding: 0 1rem;
+    padding: ${(e) => e.padding ? e.padding : "0 1rem"};
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
 `, Gu = p.div`
-    padding: 0 1rem;
+    padding: ${(e) => e.padding ? e.padding : "0 1rem"};
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
     text-align: ${(e) => e.align || "left"};
 `, Uu = p.div`
