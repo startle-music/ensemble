@@ -2303,7 +2303,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     @media (min-width: ${e=>e.theme.layout.breakpoints.md}) {
         flex-direction: column;
         justify-content: space-around;
-        aspect-ratio: 16/9;
+        //aspect-ratio: 16/9;
         padding: 2rem;
         justify-content: space-between;
         text-align: center;
