@@ -10,9 +10,9 @@ const btnPrimary = css`
     &:disabled:hover,
     &:disabled:active {
         opacity: 0.4;
-        cursor: default;
+        cursor: not-allowed;
         user-select: none;
-        pointer-events: none;
+        //pointer-events: none;
     }
 
     &:hover {
@@ -20,6 +20,7 @@ const btnPrimary = css`
         border: ${({ theme }) => theme.button.hover.border};
         color: ${({ theme }) => theme.button.hover.color};
     }
+
     &:active {
         background: ${({ theme }) => theme.button.active.background};
         border: ${({ theme }) => theme.button.active.border};
@@ -42,9 +43,9 @@ const btnAction = css`
     &:disabled:hover,
     &:disabled:active {
         opacity: 0.4;
-        cursor: default;
+        cursor: not-allowed;
         user-select: none;
-        pointer-events: none;
+        //pointer-events: none;
     }
 
     &:hover {
@@ -75,9 +76,9 @@ const btnNeutral = css`
     &:disabled:hover,
     &:disabled:active {
         opacity: 0.4;
-        cursor: default;
+        cursor: not-allowed;
         user-select: none;
-        pointer-events: none;
+        //pointer-events: none;
     }
 
     &:hover {
@@ -107,9 +108,9 @@ const btnInline = css`
     &:disabled:hover,
     &:disabled:active {
         opacity: 0.4;
-        cursor: default;
+        cursor: not-allowed;
         user-select: none;
-        pointer-events: none;
+        //pointer-events: none;
     }
 
     &:hover {
@@ -144,9 +145,9 @@ const btnOutline = css`
     &:disabled:hover,
     &:disabled:active {
         opacity: 0.4;
-        cursor: default;
+        cursor: not-allowed;
         user-select: none;
-        pointer-events: none;
+        //pointer-events: none;
     }
 
     &:hover {
@@ -198,6 +199,17 @@ const btnBase = css`
     ${({ action, outline }) => (action === true ? btnAction : outline === true ? btnOutline : btnPrimary)};
     ${({ neutral }) => (neutral === true ? btnNeutral : '')};
     ${({ inline }) => (inline === true ? btnInline : '')};
+
+    /* &[title]:disabled:hover:before{
+        content: attr(title);
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #ddd;
+        border-radius: ${({ theme }) => theme.layout.borderRadius.md};
+        transform: translate(-25%, -100%);
+        padding: ${({ theme }) => `${theme.button.padding.vertical.xs} ${theme.button.padding.horizontal.xs}`}
+    } */
 
     svg {
         fill: currentColor;

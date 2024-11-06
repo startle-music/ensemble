@@ -55,11 +55,13 @@ const Title = styled(Heading)`
     margin: 0;
     margin-right: auto;
     padding-right: 0.5rem;
+    text-align: left;
 
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         margin-bottom: 1rem;
         padding-right: 0;
         margin-right: 0;
+        text-align: center;
     }
 `;
 

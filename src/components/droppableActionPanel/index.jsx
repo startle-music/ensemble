@@ -4,11 +4,14 @@ import styled from 'styled-components';
 import ActionPanel from '../actionPanel';
 
 const DroppableActionPanelStyled = styled(ActionPanel)`
-    background: ${props =>
-        props.over ? props.theme.actionPanel.over.background : props.theme.actionPanel.base.background};
-        border: 2px dashed ${props =>
-            props.over ? props.theme.actionPanel.over.border : props.theme.actionPanel.base.border};
-    position: relative;
+        @media (min-width: ${p => p.theme.layout.breakpoints.sm}) {
+            background: ${props =>
+                props.over ? props.theme.actionPanel.over.background : props.theme.actionPanel.base.background};
+                border: 2px dashed ${props =>
+                    props.over ? props.theme.actionPanel.over.border : props.theme.actionPanel.base.border};
+            position: relative;
+        }
+
     /* background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${props =>
         props.over
             ? props.theme.actionPanel.over.border

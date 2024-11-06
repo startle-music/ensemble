@@ -5,6 +5,7 @@ export const TextBase = css`
     font-family: ${props => props.theme.main.font};
     font-weight: ${({ fontWeight, theme }) => fontWeight || theme.main.fontWeight};
     margin: 0;
+    color: ${props => (props.color ? props.color : props.theme.main.color)};
 `;
 
 const Help = styled.p`
@@ -16,7 +17,6 @@ const Small = styled.p`
     ${TextBase}
     font-weight: ${({ fontWeight, theme }) => fontWeight || theme.main.fontWeight};
     font-size: 0.95rem;
-    color: ${props => props.theme.main.color};
 `;
 
 const Paragraph = styled.p`

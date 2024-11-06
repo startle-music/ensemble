@@ -9,8 +9,6 @@ const ColumnStyled = styled.div`
     grid-column: col-start 1 / span 12;
     display: ${p => (p.inline ? 'inline-flex' : 'flex')};
     margin-bottom: ${props => (props.inline ? null : props.theme.layout.padding.vertical.sm)};
-    float: ${props => (props.pull === 'right' ? 'right' : 'none')};
-
     margin-right: ${props => (props.inline ? props.theme.layout.gap.sm : 0)};
 
     &:last-child {
@@ -28,18 +26,20 @@ const ColumnStyled = styled.div`
             props.offset ? `col-start ${props.offset} / span ${props.span}` : `span ${props.span}`};
         justify-content: ${props => (props.pull === 'right' ? 'flex-end' : 'flex-start')};
         align-items: ${props => (props.align === 'top' ? 'flex-start' : 'flex-end')};
+        justify-self: ${props => (props.pull === 'right' ? 'end' : '')};
     }
 `;
 
 export const ColumnWrapper = styled.div`
     width: 100%;
     position: relative;
-    grid-template-columns: repeat(12, [col-start] 1fr);
-    grid-auto-flow: row;
     margin: ${p => (p.margin ? p.margin : '0')};
+    //display: flex;
 
     @media (min-width: ${p => p.theme.layout.breakpoints.sm}) {
         display: grid;
+        grid-auto-flow: row;
+        grid-template-columns: repeat(12, [col-start] 1fr);
         gap: ${props => props.theme.layout.gap.sm};
     }
 

@@ -699,9 +699,9 @@ const la = Fn.Fragment, d = Fn.jsx, M = Fn.jsxs, Ci = p.circle`
     &:disabled:hover,
     &:disabled:active {
         opacity: 0.4;
-        cursor: default;
+        cursor: not-allowed;
         user-select: none;
-        pointer-events: none;
+        //pointer-events: none;
     }
 
     &:hover {
@@ -709,6 +709,7 @@ const la = Fn.Fragment, d = Fn.jsx, M = Fn.jsxs, Ci = p.circle`
         border: ${({ theme: e }) => e.button.hover.border};
         color: ${({ theme: e }) => e.button.hover.color};
     }
+
     &:active {
         background: ${({ theme: e }) => e.button.active.background};
         border: ${({ theme: e }) => e.button.active.border};
@@ -729,9 +730,9 @@ const la = Fn.Fragment, d = Fn.jsx, M = Fn.jsxs, Ci = p.circle`
     &:disabled:hover,
     &:disabled:active {
         opacity: 0.4;
-        cursor: default;
+        cursor: not-allowed;
         user-select: none;
-        pointer-events: none;
+        //pointer-events: none;
     }
 
     &:hover {
@@ -760,9 +761,9 @@ const la = Fn.Fragment, d = Fn.jsx, M = Fn.jsxs, Ci = p.circle`
     &:disabled:hover,
     &:disabled:active {
         opacity: 0.4;
-        cursor: default;
+        cursor: not-allowed;
         user-select: none;
-        pointer-events: none;
+        //pointer-events: none;
     }
 
     &:hover {
@@ -790,9 +791,9 @@ const la = Fn.Fragment, d = Fn.jsx, M = Fn.jsxs, Ci = p.circle`
     &:disabled:hover,
     &:disabled:active {
         opacity: 0.4;
-        cursor: default;
+        cursor: not-allowed;
         user-select: none;
-        pointer-events: none;
+        //pointer-events: none;
     }
 
     &:hover {
@@ -825,9 +826,9 @@ const la = Fn.Fragment, d = Fn.jsx, M = Fn.jsxs, Ci = p.circle`
     &:disabled:hover,
     &:disabled:active {
         opacity: 0.4;
-        cursor: default;
+        cursor: not-allowed;
         user-select: none;
-        pointer-events: none;
+        //pointer-events: none;
     }
 
     &:hover {
@@ -874,6 +875,17 @@ const la = Fn.Fragment, d = Fn.jsx, M = Fn.jsxs, Ci = p.circle`
     ${({ action: e, outline: t }) => e === !0 ? Ii : t === !0 ? Li : Ai};
     ${({ neutral: e }) => e === !0 ? _i : ""};
     ${({ inline: e }) => e === !0 ? ji : ""};
+
+    /* &[title]:disabled:hover:before{
+        content: attr(title);
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #ddd;
+        border-radius: ${({ theme: e }) => e.layout.borderRadius.md};
+        transform: translate(-25%, -100%);
+        padding: ${({ theme: e }) => `${e.button.padding.vertical.xs} ${e.button.padding.horizontal.xs}`}
+    } */
 
     svg {
         fill: currentColor;
@@ -2338,8 +2350,6 @@ const Fo = p.div`
     grid-column: col-start 1 / span 12;
     display: ${(e) => e.inline ? "inline-flex" : "flex"};
     margin-bottom: ${(e) => e.inline ? null : e.theme.layout.padding.vertical.sm};
-    float: ${(e) => e.pull === "right" ? "right" : "none"};
-
     margin-right: ${(e) => e.inline ? e.theme.layout.gap.sm : 0};
 
     &:last-child {
@@ -2356,16 +2366,18 @@ const Fo = p.div`
         grid-column: ${(e) => e.offset ? `col-start ${e.offset} / span ${e.span}` : `span ${e.span}`};
         justify-content: ${(e) => e.pull === "right" ? "flex-end" : "flex-start"};
         align-items: ${(e) => e.align === "top" ? "flex-start" : "flex-end"};
+        justify-self: ${(e) => e.pull === "right" ? "end" : ""};
     }
 `, cu = p.div`
     width: 100%;
     position: relative;
-    grid-template-columns: repeat(12, [col-start] 1fr);
-    grid-auto-flow: row;
     margin: ${(e) => e.margin ? e.margin : "0"};
+    //display: flex;
 
     @media (min-width: ${(e) => e.theme.layout.breakpoints.sm}) {
         display: grid;
+        grid-auto-flow: row;
+        grid-template-columns: repeat(12, [col-start] 1fr);
         gap: ${(e) => e.theme.layout.gap.sm};
     }
 
@@ -6277,6 +6289,7 @@ const cc = p.tr`
     font-family: ${(e) => e.theme.main.font};
     font-weight: ${({ fontWeight: e, theme: t }) => e || t.main.fontWeight};
     margin: 0;
+    color: ${(e) => e.color ? e.color : e.theme.main.color};
 `, vc = p.p`
     ${Qn}
     font-size: 0.8rem;
@@ -6284,7 +6297,6 @@ const cc = p.tr`
     ${Qn}
     font-weight: ${({ fontWeight: e, theme: t }) => e || t.main.fontWeight};
     font-size: 0.95rem;
-    color: ${(e) => e.theme.main.color};
 `, xc = p.p`
     ${Qn}
     font-size: 1rem;
@@ -7299,11 +7311,13 @@ const qt = te`
     margin: 0;
     margin-right: auto;
     padding-right: 0.5rem;
+    text-align: left;
 
     @media (min-width: ${(e) => e.theme.layout.breakpoints.md}) {
         margin-bottom: 1rem;
         padding-right: 0;
         margin-right: 0;
+        text-align: center;
     }
 `;
 function Af({ icon: e, title: t = "", component: n = null, className: r, ...a }) {
@@ -7314,9 +7328,12 @@ function Af({ icon: e, title: t = "", component: n = null, className: r, ...a })
   ] });
 }
 const If = p(Af)`
-    background: ${(e) => e.over ? e.theme.actionPanel.over.background : e.theme.actionPanel.base.background};
-        border: 2px dashed ${(e) => e.over ? e.theme.actionPanel.over.border : e.theme.actionPanel.base.border};
-    position: relative;
+        @media (min-width: ${(e) => e.theme.layout.breakpoints.sm}) {
+            background: ${(e) => e.over ? e.theme.actionPanel.over.background : e.theme.actionPanel.base.background};
+                border: 2px dashed ${(e) => e.over ? e.theme.actionPanel.over.border : e.theme.actionPanel.base.border};
+            position: relative;
+        }
+
     /* background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${(e) => e.over ? e.theme.actionPanel.over.border : e.theme.actionPanel.base.border}' stroke-width='4' stroke-dasharray='%2c 14' stroke-dashoffset='3' stroke-linecap='square'/%3e%3c/svg%3e"); */
 
     & > form {

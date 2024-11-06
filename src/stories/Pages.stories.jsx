@@ -55,7 +55,7 @@ const Icon = () => (
 
 const TableActions = id => (
     <>
-        <Button key={`aaa${id}`} onClick={() => alert('yo')} inline>
+        <Button key={`aaa${id}`} onClick={() => alert('yo')} disabled title="In Use" inline>
             <FontAwesomeIcon icon={faTrash} />
         </Button>
         <Button key={`bbb${id}`} inline>
