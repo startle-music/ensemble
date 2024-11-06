@@ -2376,7 +2376,7 @@ const Fo = p.div`
 
     @media (min-width: ${(e) => e.theme.layout.breakpoints.sm}) {
         display: grid;
-        grid-auto-flow: row;
+        grid-auto-flow: ${(e) => e.dense ? "dense" : "row"};
         grid-template-columns: repeat(12, [col-start] 1fr);
         gap: ${(e) => e.theme.layout.gap.sm};
     }

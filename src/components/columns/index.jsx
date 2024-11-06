@@ -30,6 +30,11 @@ const ColumnStyled = styled.div`
     }
 `;
 
+/**
+ * ColumnWrapper
+ * @param {string} margin - margin value with unit
+ * @param {boolean} dense - dense layout
+ */
 export const ColumnWrapper = styled.div`
     width: 100%;
     position: relative;
@@ -38,7 +43,7 @@ export const ColumnWrapper = styled.div`
 
     @media (min-width: ${p => p.theme.layout.breakpoints.sm}) {
         display: grid;
-        grid-auto-flow: row;
+        grid-auto-flow: ${p => (p.dense ? 'dense' : 'row')};
         grid-template-columns: repeat(12, [col-start] 1fr);
         gap: ${props => props.theme.layout.gap.sm};
     }
