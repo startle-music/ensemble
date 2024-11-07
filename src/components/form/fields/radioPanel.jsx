@@ -29,7 +29,7 @@ const Label = styled.label`
 
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         padding: 3rem 2rem;
-        aspect-ratio: 12 / 9;
+        aspect-ratio: 16/10;
     }
 `;
 
@@ -40,12 +40,12 @@ const RadioPlaceholder = styled.div`
     right: 2rem;
     transform: translateY(-50%);
 
-    background-color: ${props => (props.checked ? `${props.theme.main.brand}` : 'tranparent')};
+    background-color: ${props => (props.checked ? `${props.theme.main.brand}` : 'transparent')};
     border: ${props =>
         props.checked ? `1px solid ${props.theme.main.brand}` : `1px solid ${props.theme.main.border}`};
-    padding: 0.75rem;
-    width: 1em;
-    height: 1em;
+    //padding: 0.75rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
     color: ${props => props.theme.main.contrastColor};
 
@@ -61,6 +61,8 @@ const RadioPlaceholder = styled.div`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        width: 60%;
+        height: 60%;
     }
 `;
 
@@ -82,15 +84,15 @@ const PanelBody = styled.div`
     }
 
     svg {
-        width: 2rem !important; //ugly hack to override fontawesome default size
-        height: 2rem;
+        width: 2em !important; //ugly hack to override fontawesome default size
+        height: 2em;
         margin-right: 1rem;
 
         @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
             margin-bottom: ${props => props.theme.layout.padding.vertical.sm};
             margin-right: 0;
-            width: 3rem !important; //ugly hack to override fontawesome default size
-            height: 3rem;
+            width: 3em !important; //ugly hack to override fontawesome default size
+            height: 3em;
         }
     }
 `;

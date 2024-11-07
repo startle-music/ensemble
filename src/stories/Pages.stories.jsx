@@ -36,6 +36,8 @@ import Steps, { Step } from '../components/steps';
 import Switch from '../components/form/fields/switch';
 import ResponseBox from '../components/responsebox';
 
+import Hr from '../components/hr';
+
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
     title: 'Pages/Studio',
@@ -411,6 +413,7 @@ const FormContents = ({ radio, modalOpen, step, loading }) => (
                                     checked={radio === 'radio3'}
                                 />
                             </FormRow>
+                            <Hr />
                             <ToggleArea check="radio2" value={radio}>
                                 <FormRow>
                                     <ColumnWrapper>

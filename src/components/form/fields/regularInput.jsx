@@ -27,7 +27,7 @@ const Input = styled.input`
     margin: 0;
     background: transparent;
     font-size: 1rem;
-    padding: 0.667rem 1rem;
+    padding: 0.667rem;
     color: inherit;
     width: 100%;
     font-family: ${props => props.theme.main.font};

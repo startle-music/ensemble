@@ -28,8 +28,9 @@ const StepContent = styled.div`
 export const StepsHeader = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     border-bottom: 1px solid ${props => props.theme.main.border};
+    padding-bottom: 0.5rem;
 
     & h4 {
         margin: 0;
@@ -46,6 +47,10 @@ export const StepsFooter = styled.div`
     margin-top: 1rem;
     border-top: 1px solid ${props => props.theme.main.border};
     padding-top: ${props => props.theme.layout.padding.vertical.lg};
+`;
+
+const StepText = styled(Text)`
+    color: ${props => props.theme.generalColors.darkGrey};
 `;
 
 const HeaderBody = styled.div``;
@@ -82,9 +87,9 @@ export default function Steps({
                     strokeWidth={8}
                 />
                 <HeaderBody>
-                    <Text>
+                    <StepText>
                         Step {stepPosition + 1} of {React.Children.count(children)}
-                    </Text>
+                    </StepText>
                     {React.Children.map(children, (child, i) => {
                         if (i === stepPosition) {
                             return <Heading>{child.props.title}</Heading>;
