@@ -2654,6 +2654,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
+    border-bottom: 1px solid ${e=>e.theme.main.border};
 
     & h4 {
         margin: 0;

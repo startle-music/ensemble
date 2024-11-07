@@ -29,6 +29,7 @@ export const StepsHeader = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
+    border-bottom: 1px solid ${props => props.theme.main.border};
 
     & h4 {
         margin: 0;
