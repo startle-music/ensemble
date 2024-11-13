@@ -49,10 +49,10 @@ const RadioInput = styled.input`
     }
 
     &:checked {
-        background-color: ${props => (props.color !== null ? props.color : props.theme.main.brand)};
+        background-color: ${props =>
+            props.backgroundColor !== null ? props.backgroundColor : props.theme.form.input.background};
         color: ${props => (props.color !== null ? props.color : props.theme.main.brand)};
-        box-shadow: inset 0 0 0 0.4rem
-            ${props => (props.backgroundColor !== null ? props.backgroundColor : props.theme.form.input.background)};
+        box-shadow: inset 0 0 0 0.4rem ${props => (props.color !== null ? props.color : props.theme.main.brand)};
     }
 `;
 

@@ -5,6 +5,7 @@ import CircularProgress from '../circularProgress';
 import Text from '../text';
 import Heading from '../headings';
 import Button from '../button';
+import Column, { ColumnWrapper } from '../columns';
 
 const StyledSteps = styled.div``;
 
@@ -112,17 +113,22 @@ export default function Steps({
                 })}
             </StepContent>
             <StepsFooter>
-                <Button onClick={handleBack} disabled={stepPosition === 0} neutral>
-                    Previous
-                </Button>
-                {// if last step show submit button
-                stepPosition === React.Children.count(children) - 1 ? (
-                    submitComponent || <Button onClick={handleEnd}>{endText}</Button>
-                ) : (
-                    <Button onClick={handleNext} disabled={stepPosition === React.Children.count(children) - 1}>
-                        Next Step
-                    </Button>
-                )}
+                <ColumnWrapper dense>
+                    <Column span={6} pull="right" offset={7}>
+                        {stepPosition === React.Children.count(children) - 1 ? (
+                            submitComponent || <Button onClick={handleEnd}>{endText}</Button>
+                        ) : (
+                            <Button onClick={handleNext} disabled={stepPosition === React.Children.count(children) - 1}>
+                                Next Step
+                            </Button>
+                        )}
+                    </Column>
+                    <Column span={6}>
+                        <Button onClick={handleBack} disabled={stepPosition === 0} neutral>
+                            Previous
+                        </Button>
+                    </Column>
+                </ColumnWrapper>
             </StepsFooter>
         </StyledSteps>
     );
