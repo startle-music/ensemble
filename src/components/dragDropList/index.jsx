@@ -44,10 +44,6 @@ export default function DragDropList({ setDataOrder = () => {}, children, ...res
         setOrder(React.Children.toArray(children));
     }, [children]);
 
-    useEffect(() => {
-        setDataOrder(order);
-    }, [order, setDataOrder]);
-
     const handleDragStart = position => {
         dragItem.current = position;
     };
@@ -73,6 +69,8 @@ export default function DragDropList({ setDataOrder = () => {}, children, ...res
     const handleDrop = () => {
         dragItem.current = null;
         dragOverItem.current = null;
+        console.log('order', order);
+        setDataOrder(order);
     };
 
     return (

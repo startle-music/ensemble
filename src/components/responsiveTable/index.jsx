@@ -155,12 +155,12 @@ export const Row = styled.div`
     }
 `;
 
-export default function ResponsiveTable({ data, rowPadding = null, getIsChecked = () => {} }) {
+export default function ResponsiveTable({ data, rowPadding = null, getIsChecked = () => {}, isChecked = [] }) {
     const { headings } = data;
     const { rows } = data;
 
     const [isCheckAll, setIsCheckAll] = useState(false);
-    const [isChecked, setIsChecked] = useState([]);
+    // const [isChecked, setIsChecked] = useState([]);
 
     useEffect(() => {
         getIsChecked(isChecked);
