@@ -2638,7 +2638,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
 `,gu=m.div`
     cursor: grab;
-`;function vu({setDataOrder:e,children:n,...t}){const[r,a]=G.useState(G.Children.toArray(n)),i=G.useRef(),o=G.useRef();G.useEffect(()=>{a(G.Children.toArray(n))},[n]),G.useEffect(()=>{e(r)},[r,e]);const s=p=>{i.current=p},c=p=>{o.current=p},f=p=>{p.preventDefault();const h=o.current;if(h===void 0)return;const v=[...r],E=v[i.current];v.splice(i.current,1),v.splice(h,0,E),i.current=h,a(v)},u=()=>{i.current=null,o.current=null};return d(pu,{...t,children:r.map((p,h)=>d(gu,{draggable:!0,onDragStart:()=>s(h),onDragEnter:()=>c(h),onDragOver:f,onDrop:u,children:p},h))})}const yu=m.div``,wu=m.div`
+`;function vu({setDataOrder:e=()=>{},children:n,...t}){const[r,a]=G.useState(G.Children.toArray(n)),i=G.useRef(),o=G.useRef();G.useEffect(()=>{a(G.Children.toArray(n))},[n]),G.useEffect(()=>{e(r)},[r,e]);const s=p=>{i.current=p},c=p=>{o.current=p},f=p=>{p.preventDefault();const h=o.current;if(h===void 0)return;const v=[...r],E=v[i.current];v.splice(i.current,1),v.splice(h,0,E),i.current=h,a(v)},u=()=>{i.current=null,o.current=null};return d(pu,{...t,children:r.map((p,h)=>d(gu,{draggable:!0,onDragStart:()=>s(h),onDragEnter:()=>c(h),onDragOver:f,onDrop:u,children:p},h))})}const yu=m.div``,wu=m.div`
     position: relative;
 
     &:after {

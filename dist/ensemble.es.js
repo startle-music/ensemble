@@ -7739,7 +7739,8 @@ const Gf = p(Yf)`
 `, Uf = p.div`
     cursor: grab;
 `;
-function Ju({ setDataOrder: e, children: t, ...n }) {
+function Ju({ setDataOrder: e = () => {
+}, children: t, ...n }) {
   const [r, a] = We(se.Children.toArray(t)), i = pr(), o = pr();
   ct(() => {
     a(se.Children.toArray(t));

@@ -35,7 +35,7 @@ const DraggableItem = styled.div`
     cursor: grab;
 `;
 
-export default function DragDropList({ setDataOrder, children, ...rest }) {
+export default function DragDropList({ setDataOrder = () => {}, children, ...rest }) {
     const [order, setOrder] = useState(React.Children.toArray(children));
     const dragItem = useRef();
     const dragOverItem = useRef();
