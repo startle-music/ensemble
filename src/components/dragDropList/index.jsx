@@ -35,7 +35,7 @@ const DraggableItem = styled.div`
     cursor: grab;
 `;
 
-export default function DragDropList({ children, ...rest }) {
+export default function DragDropList({ setDataOrder, children, ...rest }) {
     const [order, setOrder] = useState(React.Children.toArray(children));
     const dragItem = useRef();
     const dragOverItem = useRef();
@@ -43,6 +43,10 @@ export default function DragDropList({ children, ...rest }) {
     useEffect(() => {
         setOrder(React.Children.toArray(children));
     }, [children]);
+
+    useEffect(() => {
+        setDataOrder(order);
+    }, [order, setDataOrder]);
 
     const handleDragStart = position => {
         dragItem.current = position;
