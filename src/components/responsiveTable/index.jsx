@@ -155,7 +155,7 @@ export const Row = styled.div`
     }
 `;
 
-export default function ResponsiveTable({ data, rowPadding = null, getIsChecked = () => {}, isChecked = [] }) {
+export default function ResponsiveTable({ data, rowPadding = null, setIsChecked = () => {}, isChecked = [] }) {
     const { headings } = data;
     const { rows } = data;
 
@@ -163,7 +163,7 @@ export default function ResponsiveTable({ data, rowPadding = null, getIsChecked 
     // const [isChecked, setIsChecked] = useState([]);
 
     useEffect(() => {
-        getIsChecked(isChecked);
+        setIsChecked(isChecked);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isChecked]);
 
