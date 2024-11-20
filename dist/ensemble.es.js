@@ -7847,7 +7847,7 @@ function ed({
     /* @__PURE__ */ d(Xf, { loading: s, children: se.Children.map(e, (f, m) => m === u ? f : null) }),
     /* @__PURE__ */ d(Zf, { children: /* @__PURE__ */ M(Mo, { dense: !0, children: [
       /* @__PURE__ */ d(vr, { span: 6, pull: "right", offset: 7, children: u === se.Children.count(e) - 1 ? c || /* @__PURE__ */ d(pe, { onClick: a, children: i }) : /* @__PURE__ */ d(pe, { onClick: n, disabled: u === se.Children.count(e) - 1, children: "Next Step" }) }),
-      /* @__PURE__ */ d(vr, { span: 6, children: /* @__PURE__ */ d(pe, { onClick: r, disabled: u === 0, neutral: !0, children: "Previous" }) })
+      /* @__PURE__ */ d(vr, { span: 6, children: u === 0 ? null : /* @__PURE__ */ d(pe, { onClick: r, neutral: !0, children: "Previous" }) })
     ] }) })
   ] });
 }

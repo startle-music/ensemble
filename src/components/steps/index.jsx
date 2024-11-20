@@ -124,9 +124,11 @@ export default function Steps({
                         )}
                     </Column>
                     <Column span={6}>
-                        <Button onClick={handleBack} disabled={stepPosition === 0} neutral>
-                            Previous
-                        </Button>
+                        {stepPosition === 0 ? null : (
+                            <Button onClick={handleBack} neutral>
+                                Previous
+                            </Button>
+                        )}
                     </Column>
                 </ColumnWrapper>
             </StepsFooter>
