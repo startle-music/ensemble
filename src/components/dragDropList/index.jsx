@@ -37,6 +37,7 @@ const DraggableItem = styled.div`
 
 export default function DragDropList({ setDataOrder = () => {}, children, ...rest }) {
     const [order, setOrder] = useState(React.Children.toArray(children));
+    const [localDataOrder, setLocalDataOrder] = useState([]);
     const dragItem = useRef();
     const dragOverItem = useRef();
 
@@ -63,6 +64,13 @@ export default function DragDropList({ setDataOrder = () => {}, children, ...res
         updatedOrder.splice(dragItem.current, 1);
         updatedOrder.splice(draggedOverIndex, 0, draggedItemContent);
         dragItem.current = draggedOverIndex;
+
+        // keep track of index changes in local state, so we can update the parent state when the drop is complete
+        // format is [oldIndex, newIndex]
+        const updatedLocalDataOrder = [...localDataOrder];
+        updatedLocalDataOrder.push([dragItem.current, draggedOverIndex]);
+        setLocalDataOrder(updatedLocalDataOrder);
+
         setOrder(updatedOrder);
     };
 
@@ -70,7 +78,8 @@ export default function DragDropList({ setDataOrder = () => {}, children, ...res
         dragItem.current = null;
         dragOverItem.current = null;
         console.log('order', order);
-        setDataOrder(order);
+        console.log('localDataOrder', localDataOrder);
+        setDataOrder(localDataOrder);
     };
 
     return (
