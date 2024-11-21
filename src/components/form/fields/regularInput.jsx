@@ -51,6 +51,7 @@ const Input = styled.input`
         display: block;
         //background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
         padding: 0;
+        color: inherit;
         //border-width: thin;
     }
 `;
