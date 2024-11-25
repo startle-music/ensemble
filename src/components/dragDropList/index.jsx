@@ -70,6 +70,7 @@ export default function DragDropList({ setDataOrder = () => {}, children, ...res
     const handleDrop = () => {
         dragItem.current = null;
         dragOverItem.current = null;
+        setDataOrder(order);
     };
 
     return (

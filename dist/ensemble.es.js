@@ -7758,7 +7758,7 @@ function Ju({ setDataOrder: e = () => {
     const y = [...r], P = y[i.current];
     y.splice(i.current, 1), y.splice(b, 0, P), i.current = b, a(y);
   }, f = () => {
-    i.current = null, o.current = null;
+    i.current = null, o.current = null, e(r);
   };
   return /* @__PURE__ */ d(Gf, { ...n, children: r.map((m, b) => /* @__PURE__ */ d(
     Uf,
