@@ -30,6 +30,8 @@ const ColumnStyled = styled.div`
     }
 `;
 
+const ToggleAreaStyled = styled(ToggleArea)``;
+
 /**
  * ColumnWrapper
  * @param {string} margin - margin value with unit
@@ -52,7 +54,7 @@ export const ColumnWrapper = styled.div`
         gap: ${props => props.theme.layout.gap.lg};
     }
 
-    ${ToggleArea} {
+    ${ToggleAreaStyled} {
         display: contents;
     }
 `;
