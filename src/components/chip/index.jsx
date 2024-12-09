@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import styled, { css } from 'styled-components'
-import theme from '../../style/theme';
+import styled, { css } from 'styled-components';
 import { darken, lighten } from 'polished';
+import theme from '../../style/theme';
 import Close from '../icons/Times';
 
 const Wrap = styled.div`
@@ -9,8 +9,8 @@ const Wrap = styled.div`
     border-radius: 10.325em;
     margin: 0 0.325em 0 0;
     overflow: hidden;
-    background: ${({backgroundColor}) => backgroundColor};
-    color: ${({color}) => color};
+    background: ${({ backgroundColor }) => backgroundColor};
+    color: ${({ color }) => color};
     align-items: center;
 
     input,
@@ -63,13 +63,21 @@ const defaultOnClick = () => null;
 function calculateTextColour(textColor) {
     let color = 'white';
 
-    if(textColor !== null) {
-        color = textColor
+    if (textColor !== null) {
+        color = textColor;
     }
-    return color
+    return color;
 }
 
-const Chip = ({ label, value, name = null, color = 'red', textColor = null, onClick = null, onRemove = null }) => {
+export default function Chip({
+    label,
+    value,
+    name = null,
+    color = 'red',
+    textColor = null,
+    onClick = null,
+    onRemove = null
+}) {
     let chipName = name;
     if (name === null) {
         chipName = `chip-name-${label}`;
@@ -80,20 +88,23 @@ const Chip = ({ label, value, name = null, color = 'red', textColor = null, onCl
         onClickFunction = onClick;
     }
 
-    const textColour = calculateTextColour(textColor)
+    const textColour = calculateTextColour(textColor);
 
     return (
-        <Wrap backgroundColor={color} color={textColour}>
-            <label
-                htmlFor={chipName}
-                onClick={onClickFunction}
-            >
+        <ChipWrap color={color} textColor={textColour}>
+            <label htmlFor={chipName} onClick={onClickFunction}>
                 <input type="checkbox" name={chipName} value={value} defaultChecked />
                 {label}
             </label>
-            { renderClose(onRemove, { label, name, value }) }
+            {renderClose(onRemove, { label, name, value })}
+        </ChipWrap>
+    );
+}
+
+export function ChipWrap({ children, color = 'red', textColour = null }) {
+    return (
+        <Wrap backgroundColor={color} color={textColour}>
+            {children}
         </Wrap>
     );
-};
-
-export default Chip;
+}
