@@ -16,21 +16,12 @@ const Wrap = styled.div`
     padding: ${p => p.theme.layout.padding.vertical.xs} ${p => p.theme.layout.padding.horizontal.sm};
     font-family: ${p => p.theme.main.font};
 
-    input,
-    input:checked {
-        display: none;
+    & + & {
+        margin-left: ${p => p.theme.layout.padding.horizontal.xs};
     }
+`;
 
-    label {
-        padding: 0.5em 0.75em;
-        color: inherit;
-        cursor: pointer;
-
-        &:focus {
-            background: rgba(0, 0, 0, 0.175);
-        }
-    }
-
+const StyledChip = styled.div`
     button {
         display: inline-block;
         padding: 1em 0.6em 0.3em 0.5em;
@@ -48,8 +39,19 @@ const Wrap = styled.div`
         }
     }
 
-    & + & {
-        margin-left: ${p => p.theme.layout.padding.horizontal.xs};
+    input,
+    input:checked {
+        display: none;
+    }
+
+    label {
+        padding: 0.5em 0.75em;
+        color: inherit;
+        cursor: pointer;
+
+        &:focus {
+            background: rgba(0, 0, 0, 0.175);
+        }
     }
 `;
 
@@ -105,13 +107,15 @@ export default function Chip({
     const textColour = calculateTextColour(textColor);
 
     return (
-        <ChipWrap color={color} textColor={textColour}>
-            <label htmlFor={chipName} onClick={onClickFunction}>
-                <input type="checkbox" name={chipName} value={value} defaultChecked />
-                {label}
-            </label>
-            {renderClose(onRemove, { label, name, value })}
-        </ChipWrap>
+        <StyledChip>
+            <ChipWrap color={color} textColor={textColour}>
+                <label htmlFor={chipName} onClick={onClickFunction}>
+                    <input type="checkbox" name={chipName} value={value} defaultChecked />
+                    {label}
+                </label>
+                {renderClose(onRemove, { label, name, value })}
+            </ChipWrap>
+        </StyledChip>
     );
 }
 
