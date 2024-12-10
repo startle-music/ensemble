@@ -448,9 +448,9 @@ To pass a single animation please supply them in simple values, e.g. animation('
     border-radius: 10.325em;
     margin-bottom: ${e=>e.theme.layout.padding.vertical.sm};
     overflow: hidden;
-    background: ${({backgroundColor:e})=>`${e}55`};
-    border: 1px solid ${({backgroundColor:e})=>e};
-    color: ${({color:e,backgroundColor:n})=>e||n};
+    background: ${({backgroundColor:e})=>`${e}`};
+    //border: 1px solid ${({backgroundColor:e})=>e};
+    color: ${({color:e,backgroundColor:n})=>e||"white"};
     align-items: center;
     padding: ${e=>e.theme.layout.padding.vertical.xs} ${e=>e.theme.layout.padding.horizontal.sm};
     font-family: ${e=>e.theme.main.font};

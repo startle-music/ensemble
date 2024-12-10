@@ -9,9 +9,9 @@ const Wrap = styled.div`
     border-radius: 10.325em;
     margin-bottom: ${p => p.theme.layout.padding.vertical.sm};
     overflow: hidden;
-    background: ${({ backgroundColor }) => `${backgroundColor}55`};
-    border: 1px solid ${({ backgroundColor }) => backgroundColor};
-    color: ${({ color, backgroundColor }) => color || backgroundColor};
+    background: ${({ backgroundColor }) => `${backgroundColor}`};
+    //border: 1px solid ${({ backgroundColor }) => backgroundColor};
+    color: ${({ color, backgroundColor }) => color || 'white'};
     align-items: center;
     padding: ${p => p.theme.layout.padding.vertical.xs} ${p => p.theme.layout.padding.horizontal.sm};
     font-family: ${p => p.theme.main.font};
