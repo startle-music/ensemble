@@ -4,7 +4,7 @@ export { default as Background } from './components/background';
 
 export { default as Button } from './components/button';
 
-export { default as Chip, ChipWrap } from './components/chip';
+export { default as Chip, ChipWrap, ChipGroup } from './components/chip';
 
 export { default as ColorPicker } from './components/colorpicker';
 

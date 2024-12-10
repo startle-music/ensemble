@@ -37,6 +37,7 @@ import Switch from '../components/form/fields/switch';
 import ResponseBox from '../components/responsebox';
 
 import Hr from '../components/hr';
+import Chip, { ChipGroup, ChipWrap } from '../components/chip';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -387,6 +388,10 @@ const FormContents = ({ radio, modalOpen, step, loading }) => (
                 >
                     <Step title="Frequency and adverts">
                         <Form>
+                            <ChipGroup>
+                                <ChipWrap>Something</ChipWrap>
+                                <ChipWrap>Something Else</ChipWrap>
+                            </ChipGroup>
                             <FormRow>
                                 <RegularInput label="Search" placeholder="Search" background />
                             </FormRow>
