@@ -11,7 +11,7 @@ const Wrap = styled.div`
     overflow: hidden;
     background: ${({ backgroundColor }) => `${backgroundColor}`};
     //border: 1px solid ${({ backgroundColor }) => backgroundColor};
-    color: ${({ color, backgroundColor }) => color || 'white'};
+    color: ${({ color }) => color || 'white'};
     align-items: center;
     padding: ${p => p.theme.layout.padding.vertical.xs} ${p => p.theme.layout.padding.horizontal.sm};
     font-family: ${p => p.theme.main.font};
@@ -77,12 +77,19 @@ const renderClose = (onRemove, data) => {
 
 const defaultOnClick = () => null;
 function calculateTextColour(textColor) {
-    let color = 'white';
-
-    if (textColor !== null) {
-        color = textColor;
+    // check if hex value is light or dark and use a contrasting colour
+    if (textColor === null) {
+        return '#ffffff';
     }
-    return color;
+
+    const hex = textColor.replace('#', '');
+    const r = parseInt(hex.substr(0, 2), 16);
+    const g = parseInt(hex.substr(2, 2), 16);
+    const b = parseInt(hex.substr(4, 2), 16);
+
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+    return brightness > 155 ? '#000000' : '#ffffff';
 }
 
 export default function Chip({
@@ -108,7 +115,7 @@ export default function Chip({
 
     return (
         <StyledChip>
-            <ChipWrap color={color} textColor={textColour}>
+            <ChipWrap color={color}>
                 <label htmlFor={chipName} onClick={onClickFunction}>
                     <input type="checkbox" name={chipName} value={value} defaultChecked />
                     {label}
@@ -119,9 +126,10 @@ export default function Chip({
     );
 }
 
-export function ChipWrap({ children, color = '#FF0000', textColour = null }) {
+export function ChipWrap({ children, color = '#FF0000' }) {
+    const computedTextColur = calculateTextColour(color);
     return (
-        <Wrap backgroundColor={color} color={textColour}>
+        <Wrap backgroundColor={color} color={computedTextColur}>
             {children}
         </Wrap>
     );
