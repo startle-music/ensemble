@@ -15,10 +15,7 @@ const Wrap = styled.div`
     align-items: center;
     padding: ${p => p.theme.layout.padding.vertical.xs} ${p => p.theme.layout.padding.horizontal.sm};
     font-family: ${p => p.theme.main.font};
-
-    & + & {
-        margin-left: ${p => p.theme.layout.padding.horizontal.xs};
-    }
+    margin-right: ${p => p.theme.layout.padding.horizontal.xs};
 `;
 
 const StyledChip = styled.div`
