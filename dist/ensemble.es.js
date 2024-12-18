@@ -2070,7 +2070,7 @@ const va = () => /* @__PURE__ */ d("svg", { width: "64px", height: "64px", viewB
 ) }) }), vo = p.div`
     display: inline-flex;
     border-radius: 10.325em;
-    margin-bottom: ${(e) => e.theme.layout.padding.vertical.sm};
+    margin: ${(e) => e.margin || e.theme.layout.padding.vertical.sm};
     overflow: hidden;
     background: ${({ backgroundColor: e }) => `${e}`};
     //border: 1px solid ${({ backgroundColor: e }) => e};
@@ -2078,7 +2078,7 @@ const va = () => /* @__PURE__ */ d("svg", { width: "64px", height: "64px", viewB
     align-items: center;
     padding: ${(e) => e.theme.layout.padding.vertical.xs} ${(e) => e.theme.layout.padding.horizontal.sm};
     font-family: ${(e) => e.theme.main.font};
-    margin-right: ${(e) => e.theme.layout.padding.horizontal.xs};
+    //margin-right: ${(e) => e.theme.layout.padding.horizontal.xs};
 `, yo = p.div`
     button {
         display: inline-block;
@@ -2116,6 +2116,7 @@ const va = () => /* @__PURE__ */ d("svg", { width: "64px", height: "64px", viewB
     flex-wrap: wrap;
     margin: 0;
     padding: 0;
+    gap: ${(e) => e.theme.layout.padding.horizontal.xs};
 `, wo = (e, t) => {
   if (console.log("onRemove", e), e === null)
     return null;

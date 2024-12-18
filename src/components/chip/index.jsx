@@ -7,7 +7,7 @@ import Close from '../icons/Times';
 const Wrap = styled.div`
     display: inline-flex;
     border-radius: 10.325em;
-    margin-bottom: ${p => p.theme.layout.padding.vertical.sm};
+    margin: ${p => p.margin || p.theme.layout.padding.vertical.sm};
     overflow: hidden;
     background: ${({ backgroundColor }) => `${backgroundColor}`};
     //border: 1px solid ${({ backgroundColor }) => backgroundColor};
@@ -15,7 +15,7 @@ const Wrap = styled.div`
     align-items: center;
     padding: ${p => p.theme.layout.padding.vertical.xs} ${p => p.theme.layout.padding.horizontal.sm};
     font-family: ${p => p.theme.main.font};
-    margin-right: ${p => p.theme.layout.padding.horizontal.xs};
+    //margin-right: ${p => p.theme.layout.padding.horizontal.xs};
 `;
 
 const StyledChip = styled.div`
@@ -57,6 +57,7 @@ const StyledChipGroup = styled.div`
     flex-wrap: wrap;
     margin: 0;
     padding: 0;
+    gap: ${p => p.theme.layout.padding.horizontal.xs};
 `;
 
 const renderClose = (onRemove, data) => {
