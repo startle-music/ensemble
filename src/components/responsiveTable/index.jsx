@@ -62,6 +62,15 @@ export const TableHeading = styled.div`
     }
 `;
 
+const CellContent = styled.div`
+    display: flex;
+    justify-content: flex-start;
+
+    @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
+        justify-content: flex-end;
+    }
+`;
+
 export const Cell = styled.div`
     display: block;
     flex: ${({ collapse }) => (collapse ? '0' : '1')};
@@ -76,10 +85,10 @@ export const Cell = styled.div`
     white-space: nowrap;
     vertical-align: middle;
 
-    &.actions {
+    /* &.actions {
         display: flex;
         justify-content: 'flex-start';
-    }
+    } */
 
     &:first-child {
         //display: flex;
@@ -91,12 +100,12 @@ export const Cell = styled.div`
     @media (min-width: ${p => p.theme.layout.breakpoints.md}) {
         //display: flex;
         border-bottom: ${props => (props.border ? `1px solid ${props.theme.table.header.border}` : 'none')};
-        justify-content: ${({ justify }) => justify || 'flex-start'};
+        
         
 
-        &.actions {
+        /* &.actions {
             justify-content: ${({ justify }) => justify || 'flex-start'};
-        }
+        } */
 
         &:first-child {
             padding-left: ${props => props.theme.layout.padding.horizontal.lg};
@@ -220,12 +229,16 @@ export default function ResponsiveTable({ data, rowPadding = null, setIsChecked 
                                 <Cell
                                     key={`${key}-${index}-${index2}`}
                                     border
-                                    justify={key === 'actions' ? 'flex-end' : 'flex-start'}
-                                    className={key === 'actions' ? 'actions' : null}
+                                    // justify={key === 'actions' ? 'flex-end' : 'flex-start'}
+                                    // className={key === 'actions' ? 'actions' : null}
                                     columns={headings.length}
                                 >
                                     {/* <Heading className="responsiveHeading">{headings[index]}</Heading> */}
-                                    {key !== 'actions' ? <CellText>{row[key]}</CellText> : row[key]}
+                                    {key !== 'actions' ? (
+                                        <CellText>{row[key]}</CellText>
+                                    ) : (
+                                        <CellContent className="actions">{row[key]}</CellContent>
+                                    )}
                                 </Cell>
                             );
                         })}

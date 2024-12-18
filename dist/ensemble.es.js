@@ -690,7 +690,7 @@ const ca = Fn.Fragment, d = Fn.jsx, M = Fn.jsxs, Ei = p.circle`
     filter: blur(0px);
     transform: scale(1.2);
     animation: ${Ai} 3s;
-`, iu = ({ src: e = null }) => /* @__PURE__ */ d(Ri, { className: "background", children: /* @__PURE__ */ d(Ii, { className: "background__inner", src: e }) }), _i = te`
+`, ou = ({ src: e = null }) => /* @__PURE__ */ d(Ri, { className: "background", children: /* @__PURE__ */ d(Ii, { className: "background__inner", src: e }) }), _i = te`
     background: ${({ theme: e }) => e.button.background};
     border: ${({ theme: e }) => e.button.border};
     color: ${({ theme: e }) => e.button.color};
@@ -2128,7 +2128,7 @@ function ya(e) {
   const t = e.replace("#", ""), n = parseInt(t.substr(0, 2), 16), r = parseInt(t.substr(2, 2), 16), a = parseInt(t.substr(4, 2), 16);
   return (n * 299 + r * 587 + a * 114) / 1e3 > 155 ? "#000000" : "#ffffff";
 }
-function ou({
+function su({
   label: e,
   value: t,
   name: n = null,
@@ -2152,12 +2152,12 @@ function $o({ children: e, color: t = "#FF0000" }) {
   const n = ya(t);
   return /* @__PURE__ */ d(vo, { backgroundColor: t, color: n, children: e });
 }
-function su({ children: e }) {
+function lu({ children: e }) {
   return /* @__PURE__ */ d(xo, { children: e });
 }
 const Co = p.div`
     margin-bottom: 1em;
-`, lu = ({ value: e, isOpen: t, handleChangeOverlayColor: n, id: r, toggleColorPicker: a, removeOverlayColor: i }) => (console.log(e), /* @__PURE__ */ M("div", { className: "color-picker", children: [
+`, cu = ({ value: e, isOpen: t, handleChangeOverlayColor: n, id: r, toggleColorPicker: a, removeOverlayColor: i }) => (console.log(e), /* @__PURE__ */ M("div", { className: "color-picker", children: [
   /* @__PURE__ */ M(
     pe,
     {
@@ -2325,7 +2325,7 @@ const Co = p.div`
     }
     `, Fo = p.div`
     ${Lo}
-`, cu = Eo, fu = To, uu = Ro, du = Io, mu = jo, pu = Fo, zo = p.section`
+`, fu = Eo, uu = To, du = Ro, mu = Io, pu = jo, hu = Fo, zo = p.section`
     display: block;
     background: ${(e) => e.theme.main.contrastColor};
     border-radius: ${(e) => e.theme.layout.borderRadius.sm};
@@ -2340,7 +2340,7 @@ const Co = p.div`
         max-width: ${(e) => e.wide ? "100%" : e.theme.container.maxWidth.lg};
         margin: ${(e) => e.margin ? e.theme.container.margin.lg : 0};
     }
-`, hu = p.div`
+`, bu = p.div`
     max-width: ${(e) => e.narrow ? e.theme.container.maxWidth.sm : "100%"};
     padding: ${(e) => e.padded ? `${e.theme.container.padding.vertical.sm} ${e.theme.container.padding.horizontal.sm}` : 0};
     margin: 0 auto;
@@ -2354,7 +2354,7 @@ const Co = p.div`
         padding: ${(e) => e.padded ? `${e.theme.container.padding.vertical.lg} ${e.theme.container.padding.horizontal.lg}` : 0};
     }
 `;
-function bu({ padded: e, margin: t = !0, children: n, wide: r }) {
+function gu({ padded: e, margin: t = !0, children: n, wide: r }) {
   return /* @__PURE__ */ d(zo, { padded: e, wide: r, margin: t, children: n });
 }
 const Mo = p.div`
@@ -5945,7 +5945,7 @@ const Vl = () => /* @__PURE__ */ d("svg", { width: "64px", height: "64px", viewB
 `, rc = p.div`
     text-align: ${(e) => e.align};
     margin: 0.5em 0 0.5em 0;
-`, gu = (e) => {
+`, vu = (e) => {
   const { type: t, children: n, clearResponseBox: r, data: a, className: i, icon: o } = e, s = {
     default: {
       backgroundColor: "#E8E9EB",
@@ -6235,7 +6235,7 @@ const fc = (e, t, n) => {
         white-space: nowrap;
     }
 `;
-let vu = class extends se.Component {
+let yu = class extends se.Component {
   constructor(t) {
     super(t), this.state = {
       overflowed: !1
@@ -6264,13 +6264,13 @@ let vu = class extends se.Component {
 };
 const hc = p.tr`
     ${dc}
-`, xu = ({ children: e, background: t = null, opacity: n = 1, stickyActions: r = !0, className: a = null, ...i }) => /* @__PURE__ */ d(hc, { className: a, background: t, opacity: n, stickyActions: r, ...i, children: e }), bc = p.th`
+`, wu = ({ children: e, background: t = null, opacity: n = 1, stickyActions: r = !0, className: a = null, ...i }) => /* @__PURE__ */ d(hc, { className: a, background: t, opacity: n, stickyActions: r, ...i, children: e }), bc = p.th`
     ${Ja}
     padding: 15px 15px;
-`, wu = ({ children: e, className: t }) => /* @__PURE__ */ d(bc, { className: t, children: e }), gc = p.td`
+`, ku = ({ children: e, className: t }) => /* @__PURE__ */ d(bc, { className: t, children: e }), gc = p.td`
     ${Ja}
     text-align: ${(e) => e.align ? e.align : null};
-`, ku = ({ children: e, align: t, className: n }) => /* @__PURE__ */ d(gc, { className: n, align: t, children: e }), vc = p.div`
+`, $u = ({ children: e, align: t, className: n }) => /* @__PURE__ */ d(gc, { className: n, align: t, children: e }), vc = p.div`
     display:flex;
     width:100%;
     font-family: inherit;
@@ -6300,7 +6300,7 @@ const hc = p.tr`
     width:1.5rem;
     margin-right:.5rem;
     color: ${(e) => e.fill};
-`, $u = ({ fill: e, leftText: t = "", rightText: n = "", Icon: r }) => /* @__PURE__ */ M(kc, { children: [
+`, Cu = ({ fill: e, leftText: t = "", rightText: n = "", Icon: r }) => /* @__PURE__ */ M(kc, { children: [
   /* @__PURE__ */ d($c, { fill: e, children: /* @__PURE__ */ d(r, { fill: e }) }),
   /* @__PURE__ */ d(wc, { fill: e, leftText: t, rightText: n })
 ] }), Qn = te`
@@ -6333,7 +6333,7 @@ const hc = p.tr`
     background-color:#fff;
 `, Tc = p.div`
     margin-top:.25rem;
-`, Cu = ({ text: e = "", children: t, ...n }) => /* @__PURE__ */ M(Pc, { ...n, children: [
+`, Su = ({ text: e = "", children: t, ...n }) => /* @__PURE__ */ M(Pc, { ...n, children: [
   /* @__PURE__ */ d(yt, { type: "small", children: e }),
   /* @__PURE__ */ d(Tc, { children: t })
 ] }), Oc = p.div`
@@ -6353,13 +6353,13 @@ const hc = p.tr`
 
     }
     //grid-template-rows: ${({ rows: e }) => e};
-`, Su = ({ children: e, columns: t = "12rem", ...n }) => /* @__PURE__ */ d(Oc, { ...n, columnString: typeof t == "string" ? t : null, columnArray: typeof t != "string" ? t : null, children: e }), Rc = p.div`
+`, Eu = ({ children: e, columns: t = "12rem", ...n }) => /* @__PURE__ */ d(Oc, { ...n, columnString: typeof t == "string" ? t : null, columnArray: typeof t != "string" ? t : null, children: e }), Rc = p.div`
     display: flex;
     flex-wrap: nowrap;
     border-bottom: 1px solid ${(e) => e.theme.main.color};
-`, Eu = ({ children: e }) => /* @__PURE__ */ d(Rc, { children: e }), Ac = p.div`
+`, Pu = ({ children: e }) => /* @__PURE__ */ d(Rc, { children: e }), Ac = p.div`
     padding: 0.6rem 0.4rem;
-`, Pu = ({ children: e, ...t }) => /* @__PURE__ */ d(Ac, { ...t, children: e }), ra = p.div`
+`, Tu = ({ children: e, ...t }) => /* @__PURE__ */ d(Ac, { ...t, children: e }), ra = p.div`
     padding: 0.6rem 0.4rem;
 `, Ic = te`
     //color: ${(e) => e.theme.main.color};
@@ -6370,7 +6370,7 @@ const hc = p.tr`
     font-weight: 700;
     font-size: 0.95rem;
     //color: ${(e) => e.theme.main.color};
-`, Tu = ({ type: e, children: t }) => {
+`, Ou = ({ type: e, children: t }) => {
   switch (e) {
     case "smalltableheader":
       return /* @__PURE__ */ d(ra, { children: /* @__PURE__ */ d(_c, { children: t }) });
@@ -6385,7 +6385,7 @@ const hc = p.tr`
     > * {
         font-weight: 700;
     }
-`, Ou = ({ children: e }) => /* @__PURE__ */ d(jc, { children: e }), Lc = p.form`
+`, Ru = ({ children: e }) => /* @__PURE__ */ d(jc, { children: e }), Lc = p.form`
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -6394,10 +6394,10 @@ const hc = p.tr`
     flex-direction: ${(e) => e.inline ? "row" : "column"};
     padding: 0 0 ${(e) => e.theme.container.padding.vertical.lg} 0;
 `;
-function Ru({ inline: e = !1, display: t = !1, nested: n, children: r }) {
+function Au({ inline: e = !1, display: t = !1, nested: n, children: r }) {
   return /* @__PURE__ */ d(Fc, { inline: e, nested: n, display: t, children: r });
 }
-function Au({ children: e, submitButton: t, onSubmit: n, forwardRef: r = null, ...a }) {
+function Iu({ children: e, submitButton: t, onSubmit: n, forwardRef: r = null, ...a }) {
   return /* @__PURE__ */ M(Lc, { ref: r, onSubmit: n, ...a, children: [
     e,
     t
@@ -6487,7 +6487,7 @@ const zc = p.label`
     font-size: 1.4rem;
 `, Gc = p.div`
     font-size: 1.4rem;
-`, Iu = ({
+`, _u = ({
   id: e,
   name: t,
   inputBackground: n = null,
@@ -6745,7 +6745,7 @@ const zc = p.label`
         color: ${(e) => e.color !== null ? e.color : e.theme.main.brand};
         box-shadow: inset 0 0 0 0.4rem ${(e) => e.color !== null ? e.color : e.theme.main.brand};
     }
-`, _u = ({
+`, ju = ({
   name: e,
   label: t = "",
   required: n,
@@ -6790,7 +6790,7 @@ const zc = p.label`
     margin: 0 0.5rem;
     color: ${({ theme: e }) => e.main.color};
 `;
-function ju({
+function Lu({
   label: e,
   name: t,
   hourMin: n = 0,
@@ -6865,7 +6865,7 @@ const of = p.textarea`
         background-color: ${(e) => e.theme.generalColors.white};
     }
 `;
-function Lu({ name: e, value: t, onChange: n, placeholder: r }) {
+function Fu({ name: e, value: t, onChange: n, placeholder: r }) {
   return /* @__PURE__ */ d(of, { name: e, value: t, onChange: n, placeholder: r });
 }
 const sf = p.div`
@@ -6953,7 +6953,7 @@ const sf = p.div`
     color: ${(e) => e.theme.main.color};
     font-weight: normal;
 `;
-function Fu({ name: e, index: t, checked: n, setChecked: r, value: a, label: i, icon: o }) {
+function zu({ name: e, index: t, checked: n, setChecked: r, value: a, label: i, icon: o }) {
   const s = e + t;
   return /* @__PURE__ */ d(sf, { children: /* @__PURE__ */ M(lf, { checked: n, htmlFor: s, children: [
     /* @__PURE__ */ d(cf, { checked: n, children: /* @__PURE__ */ d($e, { icon: Xl }) }),
@@ -7039,7 +7039,7 @@ const mf = p.div`
 `, hf = p.span`
     font-size: 1.1em;
     margin-left: 0.75rem;
-`, zu = ({ name: e, id: t, checked: n, value: r, label: a, className: i = null, ...o }) => {
+`, Mu = ({ name: e, id: t, checked: n, value: r, label: a, className: i = null, ...o }) => {
   const s = { ...o };
   return console.log("switch attributes", s), /* @__PURE__ */ d(mf, { className: i, ...s, children: /* @__PURE__ */ M(pf, { htmlFor: e, ...s, children: [
     /* @__PURE__ */ M("div", { className: "switch", children: [
@@ -7163,7 +7163,7 @@ const mf = p.div`
         display: none;
     }
 `;
-function Mu({ children: e, icon: t = Gl, type: n = "button" }) {
+function Nu({ children: e, icon: t = Gl, type: n = "button" }) {
   const [r, a] = et(!1);
   return /* @__PURE__ */ M(bf, { children: [
     /* @__PURE__ */ d($f, { type: n, onClick: () => a(!0), children: /* @__PURE__ */ d($e, { icon: t }) }),
@@ -7208,7 +7208,7 @@ const qt = te`
     margin-bottom: ${({ theme: e }) => e.layout.padding.vertical.sm};
     border: 0;
     border-bottom: 1px solid ${({ color: e }) => e !== null ? e : ve.main.border};
-`, Nu = ({ width: e = "100%", color: t = null }) => /* @__PURE__ */ d(Tf, { width: e, color: t }), Of = p.a`
+`, Du = ({ width: e = "100%", color: t = null }) => /* @__PURE__ */ d(Tf, { width: e, color: t }), Of = p.a`
     display: inline-block;
     color: ${(e) => e.theme.tabs.tab.color};
     padding: 0.3rem 0.6rem;
@@ -7223,10 +7223,10 @@ const qt = te`
         color: ${(e) => e.theme.tabs.tab.active};
         border-bottom: ${(e) => e.theme.tabs.tab.border};
     }
-`, Du = ({ id: e, checked: t = !1, children: n, ...r }) => /* @__PURE__ */ d(Of, { id: e, className: t ? "active" : "", ...r, children: n }, `tab-${e}`), oa = p.div`
+`, Bu = ({ id: e, checked: t = !1, children: n, ...r }) => /* @__PURE__ */ d(Of, { id: e, className: t ? "active" : "", ...r, children: n }, `tab-${e}`), oa = p.div`
     display: block;
     position: relative;
-`, Bu = ({
+`, Wu = ({
   children: e,
   ...t
 }) => {
@@ -7258,7 +7258,7 @@ const qt = te`
         
     }
 
-`, Wu = ({
+`, Yu = ({
   checked: e = !1,
   children: t,
   ...n
@@ -7283,10 +7283,10 @@ const qt = te`
     > a {
         scroll-snap-align: start;
     }
-`, Yu = ({ children: e, ...t }) => /* @__PURE__ */ d(Af, { ...t, children: /* @__PURE__ */ d(If, { children: e }) }), _f = p.div`
+`, Hu = ({ children: e, ...t }) => /* @__PURE__ */ d(Af, { ...t, children: /* @__PURE__ */ d(If, { children: e }) }), _f = p.div`
     display: block;
     position: relative;
-`, Hu = ({
+`, Gu = ({
   children: e,
   ...t
 }) => /* @__PURE__ */ d(_f, { ...t, children: e }), jf = p.div`
@@ -7362,7 +7362,7 @@ const Mf = p(zf)`
         position: absolute;
     }
 `;
-function Gu({ icon: e, title: t = "", component: n = null, dropHandler: r = () => {
+function Uu({ icon: e, title: t = "", component: n = null, dropHandler: r = () => {
 } }) {
   const [a, i] = et(!1);
   return /* @__PURE__ */ d(
@@ -7434,6 +7434,13 @@ const Nf = p.div`
             padding-right: ${(e) => e.theme.layout.padding.horizontal.lg};
         }
     }
+`, Wf = p.div`
+    display: flex;
+    justify-content: flex-start;
+
+    @media (min-width: ${(e) => e.theme.layout.breakpoints.md}) {
+        justify-content: flex-end;
+    }
 `, Ln = p.div`
     display: block;
     flex: ${({ collapse: e }) => e ? "0" : "1"};
@@ -7448,10 +7455,10 @@ const Nf = p.div`
     white-space: nowrap;
     vertical-align: middle;
 
-    &.actions {
+    /* &.actions {
         display: flex;
         justify-content: 'flex-start';
-    }
+    } */
 
     &:first-child {
         //display: flex;
@@ -7463,12 +7470,12 @@ const Nf = p.div`
     @media (min-width: ${(e) => e.theme.layout.breakpoints.md}) {
         //display: flex;
         border-bottom: ${(e) => e.border ? `1px solid ${e.theme.table.header.border}` : "none"};
-        justify-content: ${({ justify: e }) => e || "flex-start"};
+        
         
 
-        &.actions {
+        /* &.actions {
             justify-content: ${({ justify: e }) => e || "flex-start"};
-        }
+        } */
 
         &:first-child {
             padding-left: ${(e) => e.theme.layout.padding.horizontal.lg};
@@ -7523,7 +7530,7 @@ const Nf = p.div`
         }
     }
 `;
-function Uu({ data: e, rowPadding: t = null, setIsChecked: n = () => {
+function qu({ data: e, rowPadding: t = null, setIsChecked: n = () => {
 }, isChecked: r = [] }) {
   const { headings: a } = e, { rows: i } = e, [o, s] = et(!1);
   Bt(() => {
@@ -7560,17 +7567,15 @@ function Uu({ data: e, rowPadding: t = null, setIsChecked: n = () => {
         Ln,
         {
           border: !0,
-          justify: h === "actions" ? "flex-end" : "flex-start",
-          className: h === "actions" ? "actions" : null,
           columns: a.length,
-          children: h !== "actions" ? /* @__PURE__ */ d(Bf, { children: f[h] }) : f[h]
+          children: h !== "actions" ? /* @__PURE__ */ d(Bf, { children: f[h] }) : /* @__PURE__ */ d(Wf, { className: "actions", children: f[h] })
         },
         `${h}-${m}-${y}`
       ))
     ] }, `${f.name}-${m}`))
   ] }) });
 }
-const qu = p.div`
+const Xu = p.div`
     color: ${(e) => e.theme.main.color};
     padding: ${(e) => e.theme.layout.padding.vertical.sm} ${(e) => e.theme.layout.padding.horizontal.sm};
     border-bottom: 1px solid ${(e) => e.theme.main.border};
@@ -7585,16 +7590,16 @@ const qu = p.div`
     p {
         margin: 0;
     }
-`, Xu = p.div`
+`, Vu = p.div`
     color: ${(e) => e.theme.main.color};
     padding: ${(e) => e.theme.layout.padding.vertical.sm} ${(e) => e.theme.layout.padding.horizontal.sm};
-`, Vu = p.div`
+`, Zu = p.div`
     border-top: 1px solid ${(e) => e.theme.main.border};
     color: ${(e) => e.theme.main.color};
     display: flex;
     justify-content: space-between;
     padding: ${(e) => e.theme.layout.padding.vertical.sm} ${(e) => e.theme.layout.padding.horizontal.sm};
-`, Wf = p.div`
+`, Yf = p.div`
     display: flex;
     position: fixed;
     top: 0;
@@ -7605,7 +7610,7 @@ const qu = p.div`
     z-index: 8888;
     justify-content: center;
     align-items: center;
-`, Yf = p.div`
+`, Hf = p.div`
     display: block;
     position: absolute;
     top: 0;
@@ -7615,7 +7620,7 @@ const qu = p.div`
     overflow: hidden;
     background: rgba(0, 0, 0, 0.7);
     z-index: -1;
-`, Hf = p.div`
+`, Gf = p.div`
     width: ${(e) => e.width.xs};
     min-height: 4rem;
     max-width: 90%;
@@ -7640,7 +7645,7 @@ const qu = p.div`
         width: ${(e) => e.width.lg};
     }
 `;
-function Zu({
+function Ku({
   content: e = null,
   onClose: t = () => {
   },
@@ -7653,9 +7658,9 @@ function Zu({
 }) {
   return Bt(() => (n(), () => {
     t();
-  }), [t, n]), r ? /* @__PURE__ */ M(Wf, { children: [
-    /* @__PURE__ */ d(Yf, { onClick: () => t(null) }),
-    /* @__PURE__ */ d(Hf, { id: "mainModal", transparent: a, width: {
+  }), [t, n]), r ? /* @__PURE__ */ M(Yf, { children: [
+    /* @__PURE__ */ d(Hf, { onClick: () => t(null) }),
+    /* @__PURE__ */ d(Gf, { id: "mainModal", transparent: a, width: {
       narrow: {
         xs: "25rem",
         sm: "25rem",
@@ -7677,7 +7682,7 @@ function Zu({
     }[o], children: e })
   ] }) : null;
 }
-const Gf = p.ul`
+const Uf = p.ul`
     overflow-y: auto;
     max-height: 50vh;
     padding: ${(e) => e.padding ? e.padding : `${e.theme.layout.padding.vertical.sm} ${e.theme.layout.padding.horizontal.sm}`};
@@ -7685,7 +7690,7 @@ const Gf = p.ul`
     border: 1px solid ${(e) => e.theme.main.border};
     list-style: none;
     background: ${(e) => e.background ? e.theme.generalColors.blueWhite : e.theme.mainColors.white};
-`, Uf = p.li`
+`, qf = p.li`
     font-family: ${(e) => e.theme.main.font};
 
     &::before {
@@ -7704,10 +7709,10 @@ const Gf = p.ul`
         }
     }
 `;
-function qf({ padding: e = null, margin: t, children: n, background: r }) {
-  return /* @__PURE__ */ d(Gf, { padding: e, margin: t, background: r, children: n });
+function Xf({ padding: e = null, margin: t, children: n, background: r }) {
+  return /* @__PURE__ */ d(Uf, { padding: e, margin: t, background: r, children: n });
 }
-const Xf = p.div`
+const Vf = p.div`
     padding: 1rem;
     margin: ${(e) => e.margin || "0 0 1em"};
     box-sizing: border-box;
@@ -7719,32 +7724,32 @@ const Xf = p.div`
     border: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
     background: ${(e) => e.theme.generalColors.white};
     color: ${(e) => e.theme.main.color};
-`, Ku = p.div`
-    padding: ${(e) => e.padding ? e.padding : "0 1rem"};
-    border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
 `, Ju = p.div`
     padding: ${(e) => e.padding ? e.padding : "0 1rem"};
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
-    text-align: ${(e) => e.align || "left"};
 `, Qu = p.div`
+    padding: ${(e) => e.padding ? e.padding : "0 1rem"};
+    border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
+    text-align: ${(e) => e.align || "left"};
+`, ed = p.div`
     padding: ${(e) => e.padding ? e.padding : "0 1rem"};
     border-bottom: ${(e) => e.border ? `1px solid ${e.theme.main.border}` : "none"};
     margin-left: auto;
 `;
-function ed({ horizontal: e, margin: t, border: n = !0, children: r }) {
-  return /* @__PURE__ */ d(Xf, { horizontal: e, margin: t, border: n, children: r });
+function td({ horizontal: e, margin: t, border: n = !0, children: r }) {
+  return /* @__PURE__ */ d(Vf, { horizontal: e, margin: t, border: n, children: r });
 }
-const Vf = p(qf)`
+const Zf = p(Xf)`
     & .placeholder {
         background-color: ${(e) => e.theme.main.background};
     }
-`, td = p(Uf)`
+`, nd = p(qf)`
     cursor: grab;
     user-select: none;
     &:active {
         cursor: grabbing;
     }
-`, nd = p.div`
+`, rd = p.div`
     cursor: grab;
     user-select: none;
     &:active {
@@ -7755,10 +7760,10 @@ const Vf = p(qf)`
         content: '⋮⋮';
         colour: ${(e) => e.theme.main.color};
     }
-`, Zf = p.div`
+`, Kf = p.div`
     cursor: grab;
 `;
-function rd({ setDataOrder: e = () => {
+function ad({ setDataOrder: e = () => {
 }, children: t, ...n }) {
   const [r, a] = et(se.Children.toArray(t)), i = pr(), o = pr();
   Bt(() => {
@@ -7778,8 +7783,8 @@ function rd({ setDataOrder: e = () => {
   }, f = () => {
     i.current = null, o.current = null, e(r);
   };
-  return /* @__PURE__ */ d(Vf, { ...n, children: r.map((m, h) => /* @__PURE__ */ d(
-    Zf,
+  return /* @__PURE__ */ d(Zf, { ...n, children: r.map((m, h) => /* @__PURE__ */ d(
+    Kf,
     {
       draggable: !0,
       onDragStart: () => s(h),
@@ -7791,7 +7796,7 @@ function rd({ setDataOrder: e = () => {
     h
   )) });
 }
-const Kf = p.div``, Jf = p.div`
+const Jf = p.div``, Qf = p.div`
     position: relative;
 
     &:after {
@@ -7806,7 +7811,7 @@ const Kf = p.div``, Jf = p.div`
         opacity: ${(e) => e.loading ? 1 : 0};
         transition: all 0.3s;
     }
-`, Qf = p.div`
+`, eu = p.div`
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
@@ -7820,16 +7825,16 @@ const Kf = p.div``, Jf = p.div`
     button {
         margin: 0 0 0 auto;
     }
-`, eu = p.div`
+`, tu = p.div`
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
     border-top: 1px solid ${(e) => e.theme.main.border};
     padding-top: ${(e) => e.theme.layout.padding.vertical.lg};
-`, tu = p(yt)`
+`, nu = p(yt)`
     color: ${(e) => e.theme.generalColors.darkGrey};
-`, nu = p.div``, ad = p.div``;
-function id({
+`, ru = p.div``, id = p.div``;
+function od({
   children: e,
   position: t = 0,
   handleNext: n,
@@ -7841,8 +7846,8 @@ function id({
   submitComponent: c = null
 }) {
   let u = t;
-  return t < 0 ? u = 0 : t > se.Children.count(e) - 1 && (u = se.Children.count(e) - 1), /* @__PURE__ */ M(Kf, { children: [
-    /* @__PURE__ */ M(Qf, { children: [
+  return t < 0 ? u = 0 : t > se.Children.count(e) - 1 && (u = se.Children.count(e) - 1), /* @__PURE__ */ M(Jf, { children: [
+    /* @__PURE__ */ M(eu, { children: [
       /* @__PURE__ */ d(
         Oi,
         {
@@ -7852,8 +7857,8 @@ function id({
           strokeWidth: 8
         }
       ),
-      /* @__PURE__ */ M(nu, { children: [
-        /* @__PURE__ */ M(tu, { children: [
+      /* @__PURE__ */ M(ru, { children: [
+        /* @__PURE__ */ M(nu, { children: [
           "Step ",
           u + 1,
           " of ",
@@ -7863,8 +7868,8 @@ function id({
       ] }),
       o ? /* @__PURE__ */ d(pe, { action: !0, small: !0, onClick: o, children: "Cancel" }) : null
     ] }),
-    /* @__PURE__ */ d(Jf, { loading: s, children: se.Children.map(e, (f, m) => m === u ? f : null) }),
-    /* @__PURE__ */ d(eu, { children: /* @__PURE__ */ M(Wo, { dense: !0, children: [
+    /* @__PURE__ */ d(Qf, { loading: s, children: se.Children.map(e, (f, m) => m === u ? f : null) }),
+    /* @__PURE__ */ d(tu, { children: /* @__PURE__ */ M(Wo, { dense: !0, children: [
       /* @__PURE__ */ d(vr, { span: 6, pull: "right", offset: 7, children: u === se.Children.count(e) - 1 ? c || /* @__PURE__ */ d(pe, { onClick: a, children: i }) : /* @__PURE__ */ d(pe, { onClick: n, disabled: u === se.Children.count(e) - 1, children: "Next Step" }) }),
       /* @__PURE__ */ d(vr, { span: 6, children: u === 0 ? null : /* @__PURE__ */ d(pe, { onClick: r, neutral: !0, children: "Previous" }) })
     ] }) })
@@ -7872,76 +7877,76 @@ function id({
 }
 export {
   zf as ActionPanel,
-  iu as Background,
+  ou as Background,
   pe as Button,
-  ed as Card,
-  Ju as CardBody,
-  Qu as CardFooter,
-  Ku as CardHeader,
+  td as Card,
+  Qu as CardBody,
+  ed as CardFooter,
+  Ju as CardHeader,
   aa as Checkbox,
-  ou as Chip,
-  su as ChipGroup,
+  su as Chip,
+  lu as ChipGroup,
   $o as ChipWrap,
   Oi as CircularProgress,
-  lu as ColorPicker,
+  cu as ColorPicker,
   vr as Column,
-  mu as ColumnContainer,
+  pu as ColumnContainer,
   Wo as ColumnWrapper,
-  bu as Container,
-  hu as ContainerContent,
-  du as Content,
-  rd as DragDropList,
-  td as DraggableListItem,
-  nd as DraggableListItemHandle,
-  Gu as DroppableActionPanel,
-  Su as FlexTable,
-  Pu as FlexTableCell,
-  Ou as FlexTableHead,
-  Tu as FlexTableHeader,
-  Eu as FlexTableRow,
-  Au as Form,
-  Ru as FormRow,
-  pu as GridContainer,
-  uu as Header,
+  gu as Container,
+  bu as ContainerContent,
+  mu as Content,
+  ad as DragDropList,
+  nd as DraggableListItem,
+  rd as DraggableListItemHandle,
+  Uu as DroppableActionPanel,
+  Eu as FlexTable,
+  Tu as FlexTableCell,
+  Ru as FlexTableHead,
+  Ou as FlexTableHeader,
+  Pu as FlexTableRow,
+  Iu as Form,
+  Au as FormRow,
+  hu as GridContainer,
+  du as Header,
   ei as Heading,
-  Nu as Hr,
-  $u as IconBoxes,
-  Iu as Input,
-  Mu as InputExpander,
+  Du as Hr,
+  Cu as IconBoxes,
+  _u as Input,
+  Nu as InputExpander,
   er as Label,
-  Uf as ListItem,
-  Zu as Modal,
-  Xu as ModalBody,
-  Vu as ModalFooter,
-  qu as ModalHeader,
-  cu as Pod,
-  fu as PositionContainer,
-  _u as Radio,
-  Fu as RadioPanel,
-  Cu as Rectangle,
-  gu as ResponseBox,
-  Uu as ResponsiveTable,
-  qf as ScrollableList,
+  qf as ListItem,
+  Ku as Modal,
+  Vu as ModalBody,
+  Zu as ModalFooter,
+  Xu as ModalHeader,
+  fu as Pod,
+  uu as PositionContainer,
+  ju as Radio,
+  zu as RadioPanel,
+  Su as Rectangle,
+  vu as ResponseBox,
+  qu as ResponsiveTable,
+  Xf as ScrollableList,
   Vc as Select,
-  ad as Step,
-  id as Steps,
-  zu as Switch,
-  Du as Tab,
-  Hu as TabContent,
-  Yu as TabGroup,
-  Wu as TabPane,
-  Bu as TabWrap,
-  vu as Table,
+  id as Step,
+  od as Steps,
+  Mu as Switch,
+  Bu as Tab,
+  Gu as TabContent,
+  Hu as TabGroup,
+  Yu as TabPane,
+  Wu as TabWrap,
+  yu as Table,
   Ln as TableCell,
   sa as TableHeading,
   la as TableRow,
-  ku as Td,
+  $u as Td,
   yt as Text,
-  Lu as TextArea,
+  Fu as TextArea,
   wc as TextPairs,
-  wu as Th,
-  ju as TimeSelect,
+  ku as Th,
+  Lu as TimeSelect,
   No as ToggleArea,
-  xu as Tr,
+  wu as Tr,
   ve as extendDefaultTheme
 };
