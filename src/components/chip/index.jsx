@@ -7,7 +7,7 @@ import Close from '../icons/Times';
 const Wrap = styled.div`
     display: inline-flex;
     border-radius: 10.325em;
-    margin: ${p => p.margin || p.theme.layout.padding.vertical.sm};
+    margin: ${p => p.margin || `0 ${p.theme.layout.padding.vertical.sm} ${p.theme.layout.padding.vertical.sm} 0`};
     overflow: hidden;
     background: ${({ backgroundColor }) => `${backgroundColor}`};
     //border: 1px solid ${({ backgroundColor }) => backgroundColor};
@@ -124,10 +124,10 @@ export default function Chip({
     );
 }
 
-export function ChipWrap({ children, color = '#FF0000' }) {
+export function ChipWrap({ children, color = '#FF0000', margin }) {
     const computedTextColur = calculateTextColour(color);
     return (
-        <Wrap backgroundColor={color} color={computedTextColur}>
+        <Wrap backgroundColor={color} color={computedTextColur} margin={margin}>
             {children}
         </Wrap>
     );

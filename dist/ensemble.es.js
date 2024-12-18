@@ -2070,7 +2070,7 @@ const va = () => /* @__PURE__ */ d("svg", { width: "64px", height: "64px", viewB
 ) }) }), vo = p.div`
     display: inline-flex;
     border-radius: 10.325em;
-    margin: ${(e) => e.margin || e.theme.layout.padding.vertical.sm};
+    margin: ${(e) => e.margin || `0 ${e.theme.layout.padding.vertical.sm} ${e.theme.layout.padding.vertical.sm} 0`};
     overflow: hidden;
     background: ${({ backgroundColor: e }) => `${e}`};
     //border: 1px solid ${({ backgroundColor: e }) => e};
@@ -2149,9 +2149,9 @@ function su({
     wo(o, { label: e, name: n, value: t })
   ] }) });
 }
-function $o({ children: e, color: t = "#FF0000" }) {
-  const n = ya(t);
-  return /* @__PURE__ */ d(vo, { backgroundColor: t, color: n, children: e });
+function $o({ children: e, color: t = "#FF0000", margin: n }) {
+  const r = ya(t);
+  return /* @__PURE__ */ d(vo, { backgroundColor: t, color: r, margin: n, children: e });
 }
 function lu({ children: e }) {
   return /* @__PURE__ */ d(xo, { children: e });
