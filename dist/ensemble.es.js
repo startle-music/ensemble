@@ -2153,8 +2153,8 @@ function $o({ children: e, color: t = "#FF0000", margin: n }) {
   const r = ya(t);
   return /* @__PURE__ */ d(vo, { backgroundColor: t, color: r, margin: n, children: e });
 }
-function lu({ children: e }) {
-  return /* @__PURE__ */ d(xo, { children: e });
+function lu({ children: e, ...t }) {
+  return /* @__PURE__ */ d(xo, { ...t, children: e });
 }
 const Co = p.div`
     margin-bottom: 1em;

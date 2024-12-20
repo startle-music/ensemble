@@ -133,6 +133,6 @@ export function ChipWrap({ children, color = '#FF0000', margin }) {
     );
 }
 
-export function ChipGroup({ children }) {
-    return <StyledChipGroup>{children}</StyledChipGroup>;
+export function ChipGroup({ children, ...rest }) {
+    return <StyledChipGroup {...rest}>{children}</StyledChipGroup>;
 }
