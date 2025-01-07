@@ -13,8 +13,9 @@ const Wrap = styled.div`
     //border: 1px solid ${({ backgroundColor }) => backgroundColor};
     color: ${({ color }) => color || 'white'};
     align-items: center;
-    padding: ${p => p.theme.layout.padding.vertical.xs} ${p => p.theme.layout.padding.horizontal.sm};
+    padding: 0.4rem 0.6em;
     font-family: ${p => p.theme.main.font};
+    font-size: 0.9rem;
     //margin-right: ${p => p.theme.layout.padding.horizontal.xs};
 `;
 

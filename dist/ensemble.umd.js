@@ -452,8 +452,9 @@ To pass a single animation please supply them in simple values, e.g. animation('
     //border: 1px solid ${({backgroundColor:e})=>e};
     color: ${({color:e})=>e||"white"};
     align-items: center;
-    padding: ${e=>e.theme.layout.padding.vertical.xs} ${e=>e.theme.layout.padding.horizontal.sm};
+    padding: 0.4rem 0.6em;
     font-family: ${e=>e.theme.main.font};
+    font-size: 0.9rem;
     //margin-right: ${e=>e.theme.layout.padding.horizontal.xs};
 `,to=m.div`
     button {
