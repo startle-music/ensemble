@@ -7660,7 +7660,7 @@ function Ku({
 }) {
   return Bt(() => (n(), () => {
     t();
-  }), [t, n]), r ? /* @__PURE__ */ M(Yf, { children: [
+  }), []), r ? /* @__PURE__ */ M(Yf, { children: [
     /* @__PURE__ */ d(Hf, { onClick: () => t(null) }),
     /* @__PURE__ */ d(Gf, { id: "mainModal", transparent: a, width: {
       narrow: {

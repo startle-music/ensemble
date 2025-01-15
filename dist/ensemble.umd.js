@@ -2585,7 +2585,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     @media (min-width: ${e=>e.theme.layout.breakpoints.xxl}) {
         width: ${e=>e.width.lg};
     }
-`;function mu({content:e=null,onClose:n=()=>{},onOpen:t=()=>{},isOpen:r=!1,transparent:a=!1,className:i=null,width:o="standard"}){return X.useEffect(()=>(t(),()=>{n()}),[n,t]),r?F(fu,{children:[d(uu,{onClick:()=>n(null)}),d(du,{id:"mainModal",transparent:a,width:{narrow:{xs:"25rem",sm:"25rem",md:"25rem",lg:"25rem"},standard:{xs:"40rem",sm:"40rem",md:"40rem",lg:"40rem"},wide:{xs:"60rem",sm:"60rem",md:"60rem",lg:"60rem"}}[o],children:e})]}):null}const pu=m.ul`
+`;function mu({content:e=null,onClose:n=()=>{},onOpen:t=()=>{},isOpen:r=!1,transparent:a=!1,className:i=null,width:o="standard"}){return X.useEffect(()=>(t(),()=>{n()}),[]),r?F(fu,{children:[d(uu,{onClick:()=>n(null)}),d(du,{id:"mainModal",transparent:a,width:{narrow:{xs:"25rem",sm:"25rem",md:"25rem",lg:"25rem"},standard:{xs:"40rem",sm:"40rem",md:"40rem",lg:"40rem"},wide:{xs:"60rem",sm:"60rem",md:"60rem",lg:"60rem"}}[o],children:e})]}):null}const pu=m.ul`
     overflow-y: auto;
     max-height: 50vh;
     padding: ${e=>e.padding?e.padding:`${e.theme.layout.padding.vertical.sm} ${e.theme.layout.padding.horizontal.sm}`};
