@@ -65,12 +65,14 @@ export default function ScrollableList({
     const [itemHeights, setItemHeights] = useState([]);
     const [itemPositions, setItemPositions] = useState([]);
     const [totalListHeight, setTotalListHeight] = useState(0);
+    const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
 
     // Initialize and update list dimensions
     useEffect(() => {
         if (virtualized && listRef.current) {
             const updateHeight = () => {
                 setListHeight(listRef.current.clientHeight);
+                setWindowSize({ width: window.innerWidth, height: window.innerHeight });
             };
             
             updateHeight();
@@ -96,8 +98,8 @@ export default function ScrollableList({
         setTotalListHeight(currentPosition);
     }, []);
 
-    // Measure all children heights
-    useEffect(() => {
+    // Function to measure item heights
+    const measureItemHeights = useCallback(() => {
         if (!virtualized || !children) return;
         
         const childrenArray = React.Children.toArray(children);
@@ -111,35 +113,49 @@ export default function ScrollableList({
             return;
         }
 
-        // Wait a bit to ensure refs are attached
-        const timeoutId = setTimeout(() => {
-            const newHeights = [];
-            let allMeasured = true;
-            
-            childrenArray.forEach((_, index) => {
-                const element = itemsRef.current[index];
-                if (element) {
-                    newHeights[index] = element.getBoundingClientRect().height;
-                } else {
-                    newHeights[index] = defaultItemHeight;
-                    allMeasured = false;
-                }
-            });
-            
-            setItemHeights(newHeights);
-            calculateItemPositions(newHeights);
-
-            // If we couldn't measure all items, we'll try again with a longer timeout
-            if (!allMeasured && measureRef.current) {
-                const firstChildHeight = measureRef.current.getBoundingClientRect().height;
-                if (firstChildHeight > 0) {
-                    setDefaultItemHeight(firstChildHeight);
-                }
+        const newHeights = [];
+        let allMeasured = true;
+        
+        childrenArray.forEach((_, index) => {
+            const element = itemsRef.current[index];
+            if (element) {
+                newHeights[index] = element.getBoundingClientRect().height;
+            } else {
+                newHeights[index] = defaultItemHeight;
+                allMeasured = false;
             }
-        }, 50);
+        });
+        
+        setItemHeights(newHeights);
+        calculateItemPositions(newHeights);
+
+        // If we couldn't measure all items, use the first child height as a fallback
+        if (!allMeasured && measureRef.current) {
+            const firstChildHeight = measureRef.current.getBoundingClientRect().height;
+            if (firstChildHeight > 0) {
+                setDefaultItemHeight(firstChildHeight);
+            }
+        }
+    }, [children, itemHeight, virtualized, calculateItemPositions, defaultItemHeight]);
+
+    // Measure all children heights - initial and on changes
+    useEffect(() => {
+        if (!virtualized || !children) return;
+        
+        // Initial measurement with a short delay to ensure refs are attached
+        const timeoutId = setTimeout(measureItemHeights, 50);
         
         return () => clearTimeout(timeoutId);
-    }, [children, itemHeight, virtualized, calculateItemPositions, defaultItemHeight]);
+    }, [children, measureItemHeights, virtualized]);
+    
+    // Re-measure heights on window resize if no fixed itemHeight is provided
+    useEffect(() => {
+        if (!itemHeight) {
+            // Use a debounced version to avoid excessive recalculations
+            const timeoutId = setTimeout(measureItemHeights, 100);
+            return () => clearTimeout(timeoutId);
+        }
+    }, [windowSize, itemHeight, measureItemHeights]);
 
     // Find the visible range based on item positions
     const getVisibleRange = useCallback(() => {
