@@ -65,21 +65,34 @@ export default function ScrollableList({
     const [itemHeights, setItemHeights] = useState([]);
     const [itemPositions, setItemPositions] = useState([]);
     const [totalListHeight, setTotalListHeight] = useState(0);
-    const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
+    const [containerWidth, setContainerWidth] = useState(0);
 
     // Initialize and update list dimensions
     useEffect(() => {
         if (virtualized && listRef.current) {
             const updateHeight = () => {
                 setListHeight(listRef.current.clientHeight);
-                setWindowSize({ width: window.innerWidth, height: window.innerHeight });
             };
             
+            // Initialize the height
             updateHeight();
-            window.addEventListener('resize', updateHeight);
+            
+            // Create a ResizeObserver to watch the container's size changes
+            const resizeObserver = new ResizeObserver(entries => {
+                for (let entry of entries) {
+                    if (entry.target === listRef.current) {
+                        setListHeight(entry.target.clientHeight);
+                        setContainerWidth(entry.target.clientWidth);
+                    }
+                }
+            });
+            
+            // Start observing the list container
+            resizeObserver.observe(listRef.current);
             
             return () => {
-                window.removeEventListener('resize', updateHeight);
+                // Clean up observer when component unmounts
+                resizeObserver.disconnect();
             };
         }
     }, [virtualized]);
@@ -148,14 +161,14 @@ export default function ScrollableList({
         return () => clearTimeout(timeoutId);
     }, [children, measureItemHeights, virtualized]);
     
-    // Re-measure heights on window resize if no fixed itemHeight is provided
+    // Re-measure heights on container width change if no fixed itemHeight is provided
     useEffect(() => {
-        if (!itemHeight) {
+        if (!itemHeight && containerWidth > 0) {
             // Use a debounced version to avoid excessive recalculations
             const timeoutId = setTimeout(measureItemHeights, 100);
             return () => clearTimeout(timeoutId);
         }
-    }, [windowSize, itemHeight, measureItemHeights]);
+    }, [containerWidth, itemHeight, measureItemHeights]);
 
     // Find the visible range based on item positions
     const getVisibleRange = useCallback(() => {
