@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 
 const ScrollableListStyled = styled.ul`
@@ -38,8 +38,8 @@ const VirtualizedContainer = styled.div`
     width: 100%;
 `;
 
-// Invisible element used to measure the first item's height
-const MeasureItem = styled.div`
+// Container for measuring item heights
+const MeasureContainer = styled.div`
     position: absolute;
     visibility: hidden;
     top: 0;
@@ -52,17 +52,21 @@ export default function ScrollableList({
     margin, 
     children, 
     background,
-    itemHeight = null, // Optional, will be calculated if not provided
+    itemHeight = null, // Optional, will be used as default if not measuring individual items
     overscan = 5, // Number of extra items to render above and below the visible area
-    virtualized = true // New prop to toggle virtualization
+    virtualized = true // Toggle virtualization
 }) {
     const listRef = useRef(null);
     const measureRef = useRef(null);
+    const itemsRef = useRef({});
     const [scrollTop, setScrollTop] = useState(0);
     const [listHeight, setListHeight] = useState(0);
-    const [measuredItemHeight, setMeasuredItemHeight] = useState(itemHeight || 40);
+    const [defaultItemHeight, setDefaultItemHeight] = useState(itemHeight || 40);
+    const [itemHeights, setItemHeights] = useState([]);
+    const [itemPositions, setItemPositions] = useState([]);
+    const [totalListHeight, setTotalListHeight] = useState(0);
 
-    // Initialize and update list dimensions and measure first item height
+    // Initialize and update list dimensions
     useEffect(() => {
         if (virtualized && listRef.current) {
             const updateHeight = () => {
@@ -78,15 +82,105 @@ export default function ScrollableList({
         }
     }, [virtualized]);
 
-    // Measure the first child's height if not explicitly provided
+    // Calculate item positions based on their heights
+    const calculateItemPositions = useCallback((heights) => {
+        const positions = [];
+        let currentPosition = 0;
+        
+        heights.forEach(height => {
+            positions.push(currentPosition);
+            currentPosition += height;
+        });
+        
+        setItemPositions(positions);
+        setTotalListHeight(currentPosition);
+    }, []);
+
+    // Measure all children heights
     useEffect(() => {
-        if (virtualized && !itemHeight && measureRef.current && children && React.Children.count(children) > 0) {
-            const firstChildHeight = measureRef.current.clientHeight;
-            if (firstChildHeight > 0) {
-                setMeasuredItemHeight(firstChildHeight);
+        if (!virtualized || !children) return;
+        
+        const childrenArray = React.Children.toArray(children);
+        if (childrenArray.length === 0) return;
+
+        // If itemHeight is provided, use it for all items
+        if (itemHeight) {
+            const heights = Array(childrenArray.length).fill(itemHeight);
+            setItemHeights(heights);
+            calculateItemPositions(heights);
+            return;
+        }
+
+        // Wait a bit to ensure refs are attached
+        const timeoutId = setTimeout(() => {
+            const newHeights = [];
+            let allMeasured = true;
+            
+            childrenArray.forEach((_, index) => {
+                const element = itemsRef.current[index];
+                if (element) {
+                    newHeights[index] = element.getBoundingClientRect().height;
+                } else {
+                    newHeights[index] = defaultItemHeight;
+                    allMeasured = false;
+                }
+            });
+            
+            setItemHeights(newHeights);
+            calculateItemPositions(newHeights);
+
+            // If we couldn't measure all items, we'll try again with a longer timeout
+            if (!allMeasured && measureRef.current) {
+                const firstChildHeight = measureRef.current.getBoundingClientRect().height;
+                if (firstChildHeight > 0) {
+                    setDefaultItemHeight(firstChildHeight);
+                }
+            }
+        }, 50);
+        
+        return () => clearTimeout(timeoutId);
+    }, [children, itemHeight, virtualized, calculateItemPositions, defaultItemHeight]);
+
+    // Find the visible range based on item positions
+    const getVisibleRange = useCallback(() => {
+        if (itemPositions.length === 0) {
+            return { startIndex: 0, endIndex: 0 };
+        }
+        
+        // Binary search to find the first visible item
+        let startIndex = 0;
+        let endIndex = itemPositions.length - 1;
+        
+        while (startIndex <= endIndex) {
+            const middle = Math.floor((startIndex + endIndex) / 2);
+            if (itemPositions[middle] <= scrollTop) {
+                if (middle === itemPositions.length - 1 || itemPositions[middle + 1] > scrollTop) {
+                    startIndex = middle;
+                    break;
+                }
+                startIndex = middle + 1;
+            } else {
+                endIndex = middle - 1;
             }
         }
-    }, [children, itemHeight, virtualized]);
+        
+        // Find the last visible item
+        let visibleEndIndex = startIndex;
+        const scrollBottom = scrollTop + listHeight;
+        
+        while (
+            visibleEndIndex < itemPositions.length - 1 && 
+            itemPositions[visibleEndIndex + 1] < scrollBottom
+        ) {
+            visibleEndIndex++;
+        }
+        
+        // Add overscan
+        const rangeStartIndex = Math.max(0, startIndex - overscan);
+        const rangeEndIndex = Math.min(itemPositions.length - 1, visibleEndIndex + overscan);
+        
+        return { startIndex: rangeStartIndex, endIndex: rangeEndIndex };
+    }, [itemPositions, scrollTop, listHeight, overscan]);
 
     // Handle scroll events
     const handleScroll = (e) => {
@@ -99,37 +193,39 @@ export default function ScrollableList({
     let renderedChildren = children;
     
     if (virtualized && React.Children.count(children) > 0) {
-        // Get first child for measurement
-        const firstChild = React.Children.toArray(children)[0];
-        
-        // Calculate which items should be visible
         const childrenArray = React.Children.toArray(children);
-        const totalHeight = childrenArray.length * measuredItemHeight;
-        const startIndex = Math.max(0, Math.floor(scrollTop / measuredItemHeight) - overscan);
-        const endIndex = Math.min(
-            childrenArray.length - 1,
-            Math.ceil((scrollTop + listHeight) / measuredItemHeight) + overscan
-        );
-
-        // Get visible children
+        const { startIndex, endIndex } = getVisibleRange();
+        
+        // Get visible children based on calculated range
         const visibleChildren = childrenArray.slice(startIndex, endIndex + 1);
         
         renderedChildren = (
             <>
-                {/* Invisible first item used for measurement */}
-                {!itemHeight && firstChild && (
-                    <MeasureItem ref={measureRef}>
-                        {firstChild}
-                    </MeasureItem>
-                )}
-                <VirtualizedContainer style={{ height: totalHeight + 'px' }}>
+                {/* Invisible container to measure items */}
+                <MeasureContainer ref={measureRef}>
+                    {React.Children.map(children, (child, index) => (
+                        <div
+                            key={`measure-${index}`}
+                            ref={el => {
+                                itemsRef.current[index] = el;
+                            }}
+                        >
+                            {React.cloneElement(child, {
+                                style: { position: 'static', visibility: 'hidden' }
+                            })}
+                        </div>
+                    ))}
+                </MeasureContainer>
+                
+                <VirtualizedContainer style={{ height: totalListHeight + 'px' }}>
                     {visibleChildren.map((child, index) => {
+                        const actualIndex = startIndex + index;
                         // Clone the child element (li) and add absolute positioning props
                         return React.cloneElement(child, {
-                            key: startIndex + index,
+                            key: `item-${actualIndex}`,
                             style: {
                                 position: 'absolute',
-                                top: (startIndex + index) * measuredItemHeight + 'px',
+                                top: itemPositions[actualIndex] + 'px',
                                 width: '100%',
                                 ...(child.props.style || {})
                             }

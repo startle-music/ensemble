@@ -326,7 +326,7 @@ const ListData = [
     },
     {
         title: 'Item 8',
-        description: 'Description 8',
+        description: 'Description 8 lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ac libero ultrices. impsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ac libero ultrices.',
         action: <Button>Test</Button>
     },
     {
