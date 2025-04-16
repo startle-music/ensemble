@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, forwardRef, useImperativeHandle } from 'react';
 import styled from 'styled-components';
 
 const ScrollableListStyled = styled.ul`
@@ -47,15 +47,19 @@ const MeasureContainer = styled.div`
     width: 100%;
 `;
 
-export default function ScrollableList({ 
-    padding = null, 
-    margin, 
-    children, 
-    background,
-    itemHeight = null, // Optional, will be used as default if not measuring individual items
-    overscan = 5, // Number of extra items to render above and below the visible area
-    virtualized = true // Toggle virtualization
-}) {
+// Export the component with forwardRef to allow parent access
+export default forwardRef(function ScrollableList(
+    { 
+        padding = null, 
+        margin, 
+        children, 
+        background,
+        itemHeight = null,
+        overscan = 5,
+        virtualized = true
+    },
+    ref // Reference from parent component
+) {
     const listRef = useRef(null);
     const measureRef = useRef(null);
     const itemsRef = useRef({});
@@ -66,23 +70,6 @@ export default function ScrollableList({
     const [itemPositions, setItemPositions] = useState([]);
     const [totalListHeight, setTotalListHeight] = useState(0);
     const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
-
-    // Initialize and update list dimensions
-    useEffect(() => {
-        if (virtualized && listRef.current) {
-            const updateHeight = () => {
-                setListHeight(listRef.current.clientHeight);
-                setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-            };
-            
-            updateHeight();
-            window.addEventListener('resize', updateHeight);
-            
-            return () => {
-                window.removeEventListener('resize', updateHeight);
-            };
-        }
-    }, [virtualized]);
 
     // Calculate item positions based on their heights
     const calculateItemPositions = useCallback((heights) => {
@@ -137,6 +124,41 @@ export default function ScrollableList({
             }
         }
     }, [children, itemHeight, virtualized, calculateItemPositions, defaultItemHeight]);
+
+    // Expose functions to parent via ref
+    useImperativeHandle(ref, () => ({
+        recalculate: () => {
+            // First update list container height
+            if (listRef.current) {
+                setListHeight(listRef.current.clientHeight);
+            }
+            // Then recalculate item heights
+            measureItemHeights();
+        },
+        // Add other functions you might want to expose
+        scrollTo: (index) => {
+            if (listRef.current && itemPositions[index] !== undefined) {
+                listRef.current.scrollTop = itemPositions[index];
+            }
+        }
+    }), [measureItemHeights, itemPositions]);
+
+    // Initialize and update list dimensions
+    useEffect(() => {
+        if (virtualized && listRef.current) {
+            const updateHeight = () => {
+                setListHeight(listRef.current.clientHeight);
+                setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+            };
+            
+            updateHeight();
+            window.addEventListener('resize', updateHeight);
+            
+            return () => {
+                window.removeEventListener('resize', updateHeight);
+            };
+        }
+    }, [virtualized]);
 
     // Measure all children heights - initial and on changes
     useEffect(() => {
@@ -263,4 +285,4 @@ export default function ScrollableList({
             {renderedChildren}
         </ScrollableListStyled>
     );
-}
+});
