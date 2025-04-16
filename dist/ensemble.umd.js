@@ -2596,6 +2596,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     position: relative;
 `,Ua=m.li`
     font-family: ${e=>e.theme.main.font};
+    transition: all 0.2s ease;
 
     &::before {
         content: '';

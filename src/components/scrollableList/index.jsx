@@ -17,6 +17,7 @@ const ScrollableListStyled = styled.ul`
 
 export const ListItem = styled.li`
     font-family: ${props => props.theme.main.font};
+    transition: all 0.2s ease;
 
     &::before {
         content: '';

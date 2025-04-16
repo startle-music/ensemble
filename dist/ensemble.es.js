@@ -7695,6 +7695,7 @@ const qf = p.ul`
     position: relative;
 `, Xf = p.li`
     font-family: ${(e) => e.theme.main.font};
+    transition: all 0.2s ease;
 
     &::before {
         content: '';
