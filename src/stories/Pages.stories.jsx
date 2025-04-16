@@ -338,7 +338,7 @@ const ListData = [
 
 function ScrollableListExample() {
     return (
-        <ScrollableList padding="0px">
+        <ScrollableList padding="0px" virtualized>
             {ListData.map((item, index) => (
                 <ListItem key={index} border>
                     <Card horizontal border={false} margin="0">
