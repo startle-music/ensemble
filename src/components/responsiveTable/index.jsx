@@ -181,7 +181,8 @@ export default function ResponsiveTable({ data, rowPadding = null, setIsChecked 
         const targetIds = targetRows.map(row => row.id);
         
         if (targetIds.length === 0) {
-            setIsCheckAll(false);
+            // If no filtered items, check if any items are selected
+            setIsCheckAll(isChecked.length > 0);
             return;
         }
 

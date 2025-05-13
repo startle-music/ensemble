@@ -7541,7 +7541,7 @@ function Zu({ data: e, rowPadding: t = null, setIsChecked: n = () => {
   }, [r]), Ne(() => {
     const h = (a.length > 0 ? a : o).map((x) => x.id);
     if (h.length === 0) {
-      c(!1);
+      c(r.length > 0);
       return;
     }
     const g = h.every((x) => r.includes(x));
