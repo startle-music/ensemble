@@ -70,10 +70,11 @@ const RadioComponent = ({
     className = '',
     defaultChecked = false,
     id = false,
+    onChange,
     ...rest
 }) => (
-    <Radio inline={inline} className={className} margin={margin}>
-        <PaddedLabel htmlFor={id} disabled={disabled}>
+    <Radio inline={inline} className={className} margin={margin} checked={checked}>
+        <PaddedLabel htmlFor={id} disabled={disabled} checked={checked}>
             <RadioInput
                 type="radio"
                 checked={checked}
@@ -82,10 +83,10 @@ const RadioComponent = ({
                 name={name}
                 id={id || name}
                 required={required}
-                defaultChecked={checked}
                 backgroundColor={backgroundColor}
                 color={color}
                 margin={label !== ''}
+                onChange={onChange}
                 {...rest}
             />
             {label}

@@ -164,12 +164,11 @@ export const Row = styled.div`
     }
 `;
 
-export default function ResponsiveTable({ data, rowPadding = null, setIsChecked = () => {}, isChecked = [] }) {
+export default function ResponsiveTable({ data, rowPadding = null, setIsChecked = () => {}, isChecked = [], filteredRows = [] }) {
     const { headings } = data;
     const { rows } = data;
 
     const [isCheckAll, setIsCheckAll] = useState(false);
-    // const [isChecked, setIsChecked] = useState([]);
 
     useEffect(() => {
         setIsChecked(isChecked);
@@ -177,11 +176,20 @@ export default function ResponsiveTable({ data, rowPadding = null, setIsChecked 
     }, [isChecked]);
 
     const checkAll = e => {
-        setIsCheckAll(!isCheckAll);
-        setIsChecked(data.rows.map(row => row.id));
-        if (isCheckAll) {
-            setIsChecked([]);
+        const targetRows = filteredRows.length > 0 ? filteredRows : rows;
+        const targetIds = targetRows.map(row => row.id);
+        
+        if (!isCheckAll) {
+            // If not all are checked, check all filtered items
+            const newChecked = [...new Set([...isChecked, ...targetIds])];
+            setIsChecked(newChecked);
+        } else {
+            // If all are checked, uncheck all filtered items
+            const newChecked = isChecked.filter(id => !targetIds.includes(id));
+            setIsChecked(newChecked);
         }
+        
+        setIsCheckAll(!isCheckAll);
     };
 
     function handleSingle(e) {

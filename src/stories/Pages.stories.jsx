@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useArgs } from '@storybook/preview-api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTrash, faPencil, faPlay, faFileAudio, faArrowsUpDown } from '@fortawesome/free-solid-svg-icons';
@@ -337,13 +337,26 @@ const ListData = [
 ];
 
 function ScrollableListExample() {
+    const [selectedRadio, setSelectedRadio] = useState('radio-1');
+
+    console.log(selectedRadio);
+
     return (
         <ScrollableList padding="0px" virtualized>
             {ListData.map((item, index) => (
                 <ListItem key={index} border>
                     <Card horizontal border={false} margin="0">
                         <CardHeader>
-                            <RadioComponent name="radio" value="radio1" margin="0" />
+                            <RadioComponent 
+                                name="radio-list" 
+                                value={`radio-${index}`} 
+                                margin="0"
+                                checked={selectedRadio === `radio-${index}`}
+                                onChange={() => {
+                                    console.log(`radio-${index}`)
+                                    setSelectedRadio(`radio-${index}`)}
+                                }
+                            />
                         </CardHeader>
                         <CardBody>
                             <Heading margin="0">{item.title}</Heading>
@@ -450,7 +463,7 @@ const FormContents = ({ radio, modalOpen, step, loading }) => (
                                             index="1"
                                             checked={radio === 'radio1'}
                                             setChecked={() => {}}
-                                            value="radio1"
+                                            value="radio1- "
                                             label="Radio 1"
                                             icon={faFileAudio}
                                         />
