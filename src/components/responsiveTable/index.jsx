@@ -175,6 +175,13 @@ export default function ResponsiveTable({ data, rowPadding = null, setIsChecked 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isChecked]);
 
+    useEffect(() => {
+        const targetRows = filteredRows.length > 0 ? filteredRows : rows;
+        const targetIds = targetRows.map(row => row.id);
+        const allTargetsChecked = targetIds.every(id => isChecked.includes(id));
+        setIsCheckAll(allTargetsChecked);
+    }, [filteredRows, rows, isChecked]);
+
     const checkAll = e => {
         const targetRows = filteredRows.length > 0 ? filteredRows : rows;
         const targetIds = targetRows.map(row => row.id);
