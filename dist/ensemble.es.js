@@ -7539,9 +7539,14 @@ function Zu({ data: e, rowPadding: t = null, setIsChecked: n = () => {
   Ne(() => {
     n(r);
   }, [r]), Ne(() => {
-    const g = (a.length > 0 ? a : o).map((x) => x.id).every((x) => r.includes(x));
+    const h = (a.length > 0 ? a : o).map((x) => x.id);
+    if (h.length === 0) {
+      c(!1);
+      return;
+    }
+    const g = h.every((x) => r.includes(x));
     c(g);
-  }, [a, o, r]);
+  }, [a, r, o]);
   const u = (m) => {
     const g = (a.length > 0 ? a : o).map((x) => x.id);
     if (s) {

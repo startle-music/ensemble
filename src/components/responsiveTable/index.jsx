@@ -175,12 +175,20 @@ export default function ResponsiveTable({ data, rowPadding = null, setIsChecked 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isChecked]);
 
+    // Update isCheckAll state when filtered rows or checked items change
     useEffect(() => {
         const targetRows = filteredRows.length > 0 ? filteredRows : rows;
         const targetIds = targetRows.map(row => row.id);
-        const allTargetsChecked = targetIds.every(id => isChecked.includes(id));
-        setIsCheckAll(allTargetsChecked);
-    }, [filteredRows, rows, isChecked]);
+        
+        if (targetIds.length === 0) {
+            setIsCheckAll(false);
+            return;
+        }
+
+        // Check if all target items are selected
+        const allSelected = targetIds.every(id => isChecked.includes(id));
+        setIsCheckAll(allSelected);
+    }, [filteredRows, isChecked, rows]);
 
     const checkAll = e => {
         const targetRows = filteredRows.length > 0 ? filteredRows : rows;
