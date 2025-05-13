@@ -186,9 +186,9 @@ export default function ResponsiveTable({ data, rowPadding = null, setIsChecked 
             return;
         }
 
-        // Check if all target items are selected
-        const allSelected = targetIds.every(id => isChecked.includes(id));
-        setIsCheckAll(allSelected);
+        // Check if any target items are selected
+        const anySelected = targetIds.some(id => isChecked.includes(id));
+        setIsCheckAll(anySelected);
     }, [filteredRows, isChecked, rows]);
 
     const checkAll = e => {

@@ -7544,7 +7544,7 @@ function Zu({ data: e, rowPadding: t = null, setIsChecked: n = () => {
       c(r.length > 0);
       return;
     }
-    const g = h.every((x) => r.includes(x));
+    const g = h.some((x) => r.includes(x));
     c(g);
   }, [a, r, o]);
   const u = (m) => {
