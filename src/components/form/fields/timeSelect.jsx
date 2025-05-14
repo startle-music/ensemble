@@ -71,8 +71,8 @@ export default function TimeSelect({
                     key={`${name}-hour`}
                     inline
                     onChange={e => {
-                        setHour(e.target.value);
                         onChange(e);
+                        setHour(e.target.value);
                     }}
                 >
                     {calculateHours().map(hour => (
@@ -88,8 +88,8 @@ export default function TimeSelect({
                     name={`${name}[minute]`}
                     inline
                     onChange={e => {
-                        setMinute(e.target.value);
                         onChange(e);
+                        setMinute(e.target.value); 
                     }}
                 >
                     {calculateMinutes().map(minute => (

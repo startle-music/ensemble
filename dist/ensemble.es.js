@@ -6830,7 +6830,7 @@ function zu({
           name: `${t}[hour]`,
           inline: !0,
           onChange: (k) => {
-            f(k.target.value), c(k);
+            c(k), f(k.target.value);
           },
           children: g().map((k) => /* @__PURE__ */ d("option", { value: k, children: k }, `${t}-${k}`))
         },
@@ -6844,7 +6844,7 @@ function zu({
           name: `${t}[minute]`,
           inline: !0,
           onChange: (k) => {
-            h(k.target.value), c(k);
+            c(k), h(k.target.value);
           },
           children: P().map((k) => /* @__PURE__ */ d("option", { value: k, children: k }, `${t}-${k}`))
         },
