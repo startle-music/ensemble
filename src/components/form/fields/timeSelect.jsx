@@ -31,7 +31,8 @@ export default function TimeSelect({
     hourValue,
     minuteMin = 0,
     minuteMax = 59,
-    minuteValue
+    minuteValue,
+    onChange
 }) {
     const [hour, setHour] = useState(hourValue);
     const [minute, setMinute] = useState(minuteValue);
@@ -69,7 +70,10 @@ export default function TimeSelect({
                     name={`${name}[hour]`}
                     key={`${name}-hour`}
                     inline
-                    onChange={e => setHour(e.target.value)}
+                    onChange={e => {
+                        setHour(e.target.value);
+                        onChange(e);
+                    }}
                 >
                     {calculateHours().map(hour => (
                         <option key={`${name}-${hour}`} value={hour}>
@@ -83,7 +87,10 @@ export default function TimeSelect({
                     key={`${name}-minute`}
                     name={`${name}[minute]`}
                     inline
-                    onChange={e => setMinute(e.target.value)}
+                    onChange={e => {
+                        setMinute(e.target.value);
+                        onChange(e);
+                    }}
                 >
                     {calculateMinutes().map(minute => (
                         <option key={`${name}-${minute}`} value={minute}>
