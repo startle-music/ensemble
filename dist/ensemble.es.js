@@ -6802,7 +6802,8 @@ function zu({
   minuteMin: i = 0,
   minuteMax: o = 59,
   minuteValue: s,
-  onChange: c
+  onChange: c = () => {
+  }
 }) {
   const [u, f] = ye(a), [m, h] = ye(s);
   Ne(() => {

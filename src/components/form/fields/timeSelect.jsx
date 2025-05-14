@@ -32,7 +32,7 @@ export default function TimeSelect({
     minuteMin = 0,
     minuteMax = 59,
     minuteValue,
-    onChange
+    onChange = () => {}
 }) {
     const [hour, setHour] = useState(hourValue);
     const [minute, setMinute] = useState(minuteValue);
