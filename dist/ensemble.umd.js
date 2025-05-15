@@ -1930,7 +1930,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         color: ${e=>e.color!==null?e.color:e.theme.main.brand};
         box-shadow: inset 0 0 0 0.4rem ${e=>e.color!==null?e.color:e.theme.main.brand};
     }
-`,lf=({name:e,label:t="",required:n,checked:r,inline:a=!1,disabled:i=!1,value:o,margin:s=null,backgroundColor:c=null,color:u=null,className:f="",defaultChecked:p=!1,id:h=!1,onChange:g,...P})=>{const[k,S]=useState(r);return useEffect(()=>{S(r)},[r]),d(af,{inline:a,className:f,margin:s,checked:k,children:z(of,{htmlFor:h,disabled:i,checked:k,children:[d(sf,{type:"radio",checked:k,disabled:i,value:o,name:e,id:h||e,required:n,backgroundColor:c,color:u,margin:t!=="",onChange:g,...P}),t]})})},cf=m.div`
+`,lf=({name:e,label:t="",required:n,checked:r,inline:a=!1,disabled:i=!1,value:o,margin:s=null,backgroundColor:c=null,color:u=null,className:f="",defaultChecked:p=!1,id:h=!1,onChange:g,...P})=>{const[k,S]=I.useState(r);return I.useEffect(()=>{S(r)},[r]),d(af,{inline:a,className:f,margin:s,checked:k,children:z(of,{htmlFor:h,disabled:i,checked:k,children:[d(sf,{type:"radio",checked:k,disabled:i,value:o,name:e,id:h||e,required:n,backgroundColor:c,color:u,margin:t!=="",onChange:g,...P}),t]})})},cf=m.div`
     width: 100%;
 `,ff=m.div`
     display: flex;
