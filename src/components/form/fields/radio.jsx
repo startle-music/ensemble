@@ -72,12 +72,19 @@ const RadioComponent = ({
     id = false,
     onChange,
     ...rest
-}) => (
-    <Radio inline={inline} className={className} margin={margin} checked={checked}>
-        <PaddedLabel htmlFor={id} disabled={disabled} checked={checked}>
+}) => {
+    const [isChecked, setIsChecked] = useState(checked);
+
+    useEffect(() => {
+        setIsChecked(checked);
+    }, [checked]);
+
+    return (
+        <Radio inline={inline} className={className} margin={margin} checked={isChecked}>
+            <PaddedLabel htmlFor={id} disabled={disabled} checked={isChecked}>
             <RadioInput
                 type="radio"
-                checked={checked}
+                checked={isChecked}
                 disabled={disabled}
                 value={value}
                 name={name}
@@ -92,6 +99,7 @@ const RadioComponent = ({
             {label}
         </PaddedLabel>
     </Radio>
-);
+    );
+};
 
 export default RadioComponent;
