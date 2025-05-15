@@ -32,6 +32,7 @@ const TextWrap = styled.p`
 
 const LeftDiv = styled.div`
     display: flex;
+    align-items: center;
 `;
 
 const XWrap = styled.button`

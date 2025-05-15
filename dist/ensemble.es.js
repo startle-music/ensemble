@@ -5921,6 +5921,7 @@ const Zl = () => /* @__PURE__ */ d("svg", { width: "64px", height: "64px", viewB
     flex-grow: 1;
 `, tc = p.div`
     display: flex;
+    align-items: center;
 `, nc = p.button`
     width: 0.8rem;
     height: 0.8rem;

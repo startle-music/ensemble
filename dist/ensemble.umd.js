@@ -1448,6 +1448,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     flex-grow: 1;
 `,Ul=m.div`
     display: flex;
+    align-items: center;
 `,ql=m.button`
     width: 0.8rem;
     height: 0.8rem;
