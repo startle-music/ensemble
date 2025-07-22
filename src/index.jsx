@@ -49,6 +49,7 @@ export { default as TextArea } from './components/form/fields/textArea';
 export { default as RadioPanel } from './components/form/fields/radioPanel';
 export { default as Switch } from './components/form/fields/switch';
 export { default as InputExpander } from './components/form/fields/inputExpander';
+export { default as MoodSelect } from './components/form/fields/moodSelect';
 
 // headings
 export { default as Heading } from './components/headings';
